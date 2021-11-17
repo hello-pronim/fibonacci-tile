@@ -1,7 +1,7 @@
 import css from "@styled-system/css";
 import styled from "@emotion/styled";
 import theme from "styles/theme";
-import { position } from "styled-system";
+import { borderBottom, position } from "styled-system";
 
 const SliderWrapper = styled("div")(() =>
   css({
@@ -50,11 +50,30 @@ const BannerDescription = styled("p")(() =>
   })
 );
 
+const TextWrapper = styled("div")(() =>
+  css({
+    fontSize: 24,
+    textAlign: "center",
+    fontWeight: 400,
+    lineHeight: "33.6px",
+    letterSpacing: "1%",
+    paddingTop: 15,
+    paddingBottom: 15,
+    color: "#746E68",
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: "#D4D4D8",
+    borderTop: 1
+  })
+);
+
+
 export {
   SliderWrapper,
   BannerTextWrapper,
   SlideItem,
   BannerSubHeading,
   BannerHeading,
-  BannerDescription
+  BannerDescription,
+  TextWrapper
 };
