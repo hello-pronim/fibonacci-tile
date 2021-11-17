@@ -38,7 +38,7 @@ const Header = () => {
         <Wrapper>
           <NavIcon isOpen={navOpen} onClick={() => setNavOpen(!navOpen)} />
           <NavLeft>
-            <NavItem href="#">Our Products</NavItem>
+            <NavItem href="/products">Our Products</NavItem>
             <NavItem href="#">In Use</NavItem>
             <NavItem href="#">Our Story</NavItem>
             <NavItem href="#">Latest</NavItem>
