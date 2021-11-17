@@ -67,6 +67,36 @@ const TextWrapper = styled("div")(() =>
   })
 );
 
+const ProductListItems = styled("div")(() =>
+  css({
+    display: "flex",
+    justifyContent: "space-between",
+    flexWrap: "wrap",
+    marginTop: 135
+  })
+);
+
+const ProductItem = styled("div")(() =>
+  css({
+    width: 228,
+    height: 228,
+  })
+);
+
+const ProductTitle = styled("h2")(() =>
+  css({
+    fontSize: 16,
+    textAlign: "center"
+  })
+);
+
+const ProductSubTitle = styled("span")(() =>
+  css({
+    fontSize: 12,
+    textAlign: "center",
+    display: "block"
+  })
+);
 
 export {
   SliderWrapper,
@@ -75,5 +105,9 @@ export {
   BannerSubHeading,
   BannerHeading,
   BannerDescription,
-  TextWrapper
+  TextWrapper,
+  ProductListItems,
+  ProductItem,
+  ProductTitle,
+  ProductSubTitle
 };

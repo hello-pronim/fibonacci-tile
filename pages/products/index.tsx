@@ -3,6 +3,7 @@ import Header from "@componentscommon/header";
 import TopSlider from "@components/pages/products/TopSlider";
 import TextWrapper from "@components/pages/products/Text";
 import ProductFilters from "@components/pages/products/ProductFilters";
+import ProductLists from "@components/pages/products/ProductLists";
 const Home = () => {
 
   return (
@@ -18,6 +19,7 @@ const Home = () => {
       <Header />
       <TopSlider />
       <TextWrapper title="40 unique creations. Thoughtfully designed. Sustainably made. Purpose-built."/>
+      <ProductLists/>
     </>
   );
 };
