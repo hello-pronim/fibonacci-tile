@@ -1,4 +1,9 @@
 import Slider from "react-slick";
+import Image from "next/image";
+import Slide1 from "public/banner1.jpg";
+import {
+  SliderWrapper,
+} from "./styles";
 
 function TopSlider() {
   const settings = {
@@ -9,14 +14,16 @@ function TopSlider() {
     slidesToScroll: 1,
   };
   return (
-    <Slider {...settings}>
-      <div>
-        <h3>1</h3>
-      </div>
-      <div>
-        <h3>2</h3>
-      </div>
-    </Slider>
+    <SliderWrapper>
+      <Slider {...settings}>
+          <div className="slide-item">
+            <Image src={Slide1} alt="image-1" />
+          </div>
+          <div className="slide-item">
+            <Image src={Slide1} alt="image-1" />
+          </div>
+      </Slider>
+    </SliderWrapper>
   );
 }
 

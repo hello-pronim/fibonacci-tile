@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Header from "@componentscommon/header";
-import TopSlider from "@componentspages/products/TopSlider";
+import TopSlider from "@components/pages/products/TopSlider";
 import ProductFilters from "@components/pages/products/ProductFilters";
 const Home = () => {
 
