@@ -3,6 +3,11 @@ import Image from "next/image";
 import Slide1 from "public/banner1.jpg";
 import {
   SliderWrapper,
+  SlideItem,
+  BannerTextWrapper,
+  BannerSubHeading,
+  BannerHeading,
+  BannerDescription
 } from "./styles";
 
 function TopSlider() {
@@ -16,12 +21,26 @@ function TopSlider() {
   return (
     <SliderWrapper>
       <Slider {...settings}>
-          <div className="slide-item">
+          <SlideItem>
             <Image src={Slide1} alt="image-1" />
-          </div>
-          <div className="slide-item">
+            <BannerTextWrapper>
+              <BannerSubHeading>VIEW OUR</BannerSubHeading>
+              <BannerHeading>Terrazzo</BannerHeading>
+              <BannerDescription>
+                40 unique creations. Thoughtfully designed. Sustainably made. Purpose-built.
+              </BannerDescription>
+            </BannerTextWrapper>
+          </SlideItem>
+          <SlideItem>
             <Image src={Slide1} alt="image-1" />
-          </div>
+            <BannerTextWrapper>
+              <BannerSubHeading>VIEW OUR</BannerSubHeading>
+              <BannerHeading>Collection</BannerHeading>
+              <BannerDescription>
+                Explore
+              </BannerDescription>
+            </BannerTextWrapper>
+          </SlideItem>
       </Slider>
     </SliderWrapper>
   );
