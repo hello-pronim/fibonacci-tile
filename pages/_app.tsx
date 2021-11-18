@@ -3,9 +3,10 @@ import Head from "next/head";
 import { AppProps } from "next/app";
 import global from "styles/global";
 import theme from "styles/theme";
-import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "styles/typefaces.css";
+
 function App({ Component, pageProps }: AppProps) {
   return (
     <>

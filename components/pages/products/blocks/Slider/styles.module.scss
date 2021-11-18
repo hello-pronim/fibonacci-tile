@@ -1,0 +1,29 @@
+.container {
+  width: 100%;
+  .slideItem {
+    position: relative;
+  }
+  .bannerTextWrapper {
+    position: absolute;
+    color: #ffffff;
+    top: 250px;
+    left: 50px;
+    width: 512px;
+  }
+  .bannerSubHeading {
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+  .bannerHeading {
+    font-size: 80px;
+    line-height: 88px;
+    text-transform: uppercase;
+    padding-top: 60px;
+  }
+  .bannerDescription {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 400;
+    padding-top: 16px;
+  }
+}

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import Logo from "public/assets/brandmarks/logo-primary.svg";
+import LogoWhite from "public/assets/brandmarks/logo-secondary.svg";
 import {
   Container,
   Wrapper,
@@ -29,26 +31,50 @@ const transitionStyles = {
   exited: { opacity: 0 },
 };
 
-const  Header = ({ }) => {
+const Header = ({ mode = "light" }) => {
   const [navOpen, setNavOpen] = useState(false);
+  const activeLogo = mode === "dark" ? Logo : LogoWhite;
   return (
     <>
       <Container position="absolute" navOpen={navOpen}>
         <Wrapper>
-          <NavIcon isOpen={navOpen} onClick={() => setNavOpen(!navOpen)} />
+          {/* <NavIcon isOpen={navOpen} onClick={() => setNavOpen(!navOpen)} /> */}
           <NavLeft>
-            <NavItem href="/products">Our Products</NavItem>
-            <NavItem href="#">In Use</NavItem>
-            <NavItem href="#">Our Story</NavItem>
-            <NavItem href="#">Latest</NavItem>
+            <NavItem href="/products" mode={mode}>
+              Our Products
+            </NavItem>
+            <NavItem href="#" mode={mode}>
+              In Use
+            </NavItem>
+            <NavItem href="#" mode={mode}>
+              Our Story
+            </NavItem>
+            <NavItem href="#" mode={mode}>
+              Latest
+            </NavItem>
           </NavLeft>
           <LogoWrapper>
-            <Image src={Logo} width="158" height="40" alt="Fibonacci" />
+            <Link href="/">
+              <a>
+                <Image
+                  src={activeLogo}
+                  width="158"
+                  height="40"
+                  alt="Fibonacci"
+                />
+              </a>
+            </Link>
           </LogoWrapper>
           <NavRight>
-            <NavItem href="#">Support</NavItem>
-            <NavItem href="#">Contact</NavItem>
-            <NavItem href="#">Selections</NavItem>
+            <NavItem href="#" mode={mode}>
+              Support
+            </NavItem>
+            <NavItem href="#" mode={mode}>
+              Contact
+            </NavItem>
+            <NavItem href="#" mode={mode}>
+              Selections
+            </NavItem>
           </NavRight>
         </Wrapper>
       </Container>
@@ -67,10 +93,10 @@ const  Header = ({ }) => {
             }}
           >
             <DrawerInner>
-              <NavItem href="/products">Our Products</NavItem>
-              <NavItem href="#">In Use</NavItem>
-              <NavItem href="#">Our Story</NavItem>
-              <NavItem href="#">Latest</NavItem>
+              <NavItem mode={mode} href="/products">Our Products</NavItem>
+              <NavItem mode={mode} href="#">In Use</NavItem>
+              <NavItem mode={mode} href="#">Our Story</NavItem>
+              <NavItem mode={mode} href="#">Latest</NavItem>
             </DrawerInner>
             <DrawerFooter>
               <p>footer content</p>

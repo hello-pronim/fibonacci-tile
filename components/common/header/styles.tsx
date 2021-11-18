@@ -6,6 +6,14 @@ export interface containerProps {
   position: string;
 }
 
+export interface navItemProps {
+  mode: string;
+}
+
+export interface NavIconProps {
+  isOpen: boolean;
+}
+
 const Container = styled("div")(({ ...props }: containerProps) =>
   css({
     position: props.position ? props.position : "relative",
@@ -50,7 +58,6 @@ const NavRight = styled("div")(() =>
       "&:nth-last-child(1)": {
         display: "block",
       },
-      color: "#ffffff"
     },
     [theme.mediaQueries.small]: {
       a: {
@@ -75,7 +82,6 @@ const NavLeft = styled("div")(() =>
     columnGap: [15, 15, 15, 15, 15, 30, 30],
     a: {
       display: "none",
-      color: "#ffffff"
     },
     [theme.mediaQueries.xSmall]: {
       flex: 1,
@@ -103,19 +109,15 @@ const NavLeft = styled("div")(() =>
   })
 );
 
-const NavItem = styled("a")(() =>
+const NavItem = styled("a")(({ mode }: navItemProps) =>
   css({
     textDecoration: "none",
     fontSize: [1, 1, 1, 1, 1, 3, 3],
     fontFamily: 1,
-    color: "charcoal",
+    color: mode === "light" ? "white" : "charcoal",
     alignSelf: "center",
   })
 );
-
-export interface NavIconProps {
-  isOpen: boolean;
-}
 
 const NavIcon = styled("button")(({ isOpen }: NavIconProps) =>
   css({

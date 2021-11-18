@@ -62,6 +62,7 @@ const theme = {
     warm: "#f5eee8",
     cold: "#edece8",
     greys: ["#1c1c1c", "#2d2d2d", "#5c5c5c", "#8b8b8b", "#bbbbbb", "#f6f6f6"],
+    secondary: "#746E68",
     info: "#3683ef",
     success: "#cef564",
     warning: "#ffb442",
@@ -81,7 +82,6 @@ const theme = {
     "1660px",
     "1920px",
   ],
-
   mediaQueries: {
     xxSmall: `@media screen and (min-width: 375px)`,
     xSmall: `@media screen and (min-width: 600px)`,

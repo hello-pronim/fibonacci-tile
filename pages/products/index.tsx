@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Footer from "@components/common/footer";
 import ProductPage from "@components/pages/products";
 
 const Products = () => {
@@ -9,6 +10,7 @@ const Products = () => {
         <meta name="description" content="Fibonacci Products page" />
       </Head>
       <ProductPage />
+      <Footer />
     </>
   );
 };

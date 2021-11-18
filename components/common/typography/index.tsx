@@ -29,13 +29,6 @@ const component = new Map([
   ["Body-Small", BodySmall],
   ["Body-XSmall", BodyXSmall],
 ]);
-
-const Text = ({ Base, variant, children, ...props }: TextTypes) => {
-  const textVariant = component.get(variant);
-  console.log(props.altFont);
-  return <Base css={textVariant({ ...props })}>{children}</Base>;
-};
-
 type TextTypes = {
   Base: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span";
   variant:
@@ -56,4 +49,8 @@ type TextTypes = {
   altFont?: boolean;
 };
 
+const Text = ({ Base, variant, children, ...props }: TextTypes) => {
+  const textVariant = component.get(variant);
+  return <Base css={textVariant({ ...props })}>{children}</Base>;
+};
 export default Text;
