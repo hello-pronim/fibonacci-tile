@@ -29,12 +29,11 @@ const transitionStyles = {
   exited: { opacity: 0 },
 };
 
-const Header = () => {
+const  Header = ({ }) => {
   const [navOpen, setNavOpen] = useState(false);
-  console.log(navOpen);
   return (
     <>
-      <Container navOpen={navOpen}>
+      <Container position="absolute" navOpen={navOpen}>
         <Wrapper>
           <NavIcon isOpen={navOpen} onClick={() => setNavOpen(!navOpen)} />
           <NavLeft>
@@ -53,7 +52,13 @@ const Header = () => {
           </NavRight>
         </Wrapper>
       </Container>
-      <Transition in={navOpen} timeout={duration} appear mountOnEnter unmountOnExit>
+      <Transition
+        in={navOpen}
+        timeout={duration}
+        appear
+        mountOnEnter
+        unmountOnExit
+      >
         {(state) => (
           <NavDrawer
             css={{
@@ -62,10 +67,10 @@ const Header = () => {
             }}
           >
             <DrawerInner>
-            <NavItem href="#">Our Products</NavItem>
-            <NavItem href="#">In Use</NavItem>
-            <NavItem href="#">Our Story</NavItem>
-            <NavItem href="#">Latest</NavItem>
+              <NavItem href="/products">Our Products</NavItem>
+              <NavItem href="#">In Use</NavItem>
+              <NavItem href="#">Our Story</NavItem>
+              <NavItem href="#">Latest</NavItem>
             </DrawerInner>
             <DrawerFooter>
               <p>footer content</p>

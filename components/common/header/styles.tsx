@@ -3,17 +3,18 @@ import styled from "@emotion/styled";
 import theme from "styles/theme";
 export interface containerProps {
   navOpen: boolean;
+  position: string;
 }
 
 const Container = styled("div")(({ ...props }: containerProps) =>
   css({
-    position: "relative",
+    position: props.position ? props.position : "relative",
     width: "100%",
     display: "flex",
     justifyContent: "center",
-    backgroundColor: "white",
+    // backgroundColor: "white",
     borderBottom: "1px solid",
-    transition: 'ease all 0.3s',
+    transition: "ease all 0.3s",
     borderColor: props.navOpen ? "white" : "stone",
     zIndex: 10,
   })
@@ -49,6 +50,7 @@ const NavRight = styled("div")(() =>
       "&:nth-last-child(1)": {
         display: "block",
       },
+      color: "#ffffff"
     },
     [theme.mediaQueries.small]: {
       a: {
@@ -73,6 +75,7 @@ const NavLeft = styled("div")(() =>
     columnGap: [15, 15, 15, 15, 15, 30, 30],
     a: {
       display: "none",
+      color: "#ffffff"
     },
     [theme.mediaQueries.xSmall]: {
       flex: 1,
@@ -173,12 +176,12 @@ const DrawerInner = styled("div")(() =>
     width: "100%",
     p: 16,
     a: {
-      textAlign: 'left',
+      textAlign: "left",
       fontSize: 3,
-      mr: 'auto',
-      py: '7px',
-      mb: '15px',
-    }
+      mr: "auto",
+      py: "7px",
+      mb: "15px",
+    },
   })
 );
 

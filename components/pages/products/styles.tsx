@@ -1,11 +1,17 @@
 import css from "@styled-system/css";
 import styled from "@emotion/styled";
-import theme from "styles/theme";
-import { position } from "styled-system";
+
+const HeaderContainer = styled("div")(({ ...props }) =>
+  css({
+    position: "relative",
+    width: "100%",
+  })
+);
 
 const SliderWrapper = styled("div")(() =>
   css({
-    width: "100%"
+    width: "100%",
+    position: "relative",
   })
 );
 
@@ -51,6 +57,7 @@ const BannerDescription = styled("p")(() =>
 );
 
 export {
+  HeaderContainer,
   SliderWrapper,
   BannerTextWrapper,
   SlideItem,
