@@ -9,6 +9,10 @@ import ArrowDownIcon from "@components/icons/arrowDown";
 import GridIcon from "@components/icons/grid";
 import ListIcon from "@components/icons/list";
 import CollectionIcon from "@components/icons/collection";
+import ProductFilter from "./ProductFilter";
+import SortByFilter from "./SortByFilter";
+import SearchFilter from "./SearchFilter";
+import ColourSchemeFilter from "./ColourSchemeFilter";
 import styles from "./styles.module.scss";
 
 export default function ProductFilters({}) {
@@ -116,51 +120,10 @@ export default function ProductFilters({}) {
       </section>
       {activeFilter && (
         <section className={styles.filterContainer}>
-          {activeFilter === "search" && (
-            <div className={styles.searchContainer}>
-              <div className={styles.searchLabel}>
-                <SearchIcon />
-                <Text variant="Body-Small">Start Typing</Text>
-              </div>
-              <input placeholder="Search by product name or colour" />
-            </div>
-          )}
-          {activeFilter === "products" && (
-            <div className={styles.productsFilterContainer}>
-              <div className={styles.productFilterItem}>
-                <Text as="h3" variant="Body-Small">
-                  All products
-                </Text>
-              </div>
-              <div className={styles.productFilterItem}>
-                <Text as="h3" variant="Body-Small">
-                  Tiles
-                </Text>
-                <Text as="p" variant="Body-Small">
-                  Amet orci facilisi magna nunc vel, est leo adipiscing. Rhoncus
-                  aenean.
-                </Text>
-              </div>
-              <div className={styles.productFilterItem}>
-                <Text as="h3" variant="Body-Small">
-                  Slabs
-                </Text>
-                <Text as="p" variant="Body-Small">
-                  Amet orci facilisi magna nunc vel, est leo adipiscing. Rhoncus
-                  aenean.
-                </Text>
-              </div>
-              <div className={styles.productFilterItem}>
-                <Text as="h3" variant="Body-Small">
-                  Latest Releases
-                </Text>
-                <Text as="p" variant="Body-Small">
-                  Amet orci facilisi magna nunc vel, est leo adipiscing. Rhoncus
-                  aenean.
-                </Text>
-              </div>
-            </div>
-          )}
+          {activeFilter === "search" && <SearchFilter />}
+          {activeFilter === "products" && <ProductFilter />}
+          {activeFilter === "sort-by" && <SortByFilter />}
+          {activeFilter === "colour-schemes" && <ColourSchemeFilter />}
         </section>
       )}
     </>
