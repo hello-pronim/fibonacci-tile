@@ -30,23 +30,23 @@ export default function FooterBottom() {
                 <MiddleWrapper>
                     <MenuItem>
                         <MenuItemTitle>Our products</MenuItemTitle>
-                        <MenuListItem href="/products">Collections</MenuListItem>
-                        <MenuListItem href="/products">In Use</MenuListItem>
-                        <MenuListItem href="/products">Latest News</MenuListItem>
+                        <MenuListItem arrowVisible={false} href="/products">Collections</MenuListItem>
+                        <MenuListItem arrowVisible={false} href="/products">In Use</MenuListItem>
+                        <MenuListItem arrowVisible={false} href="/products">Latest News</MenuListItem>
                     </MenuItem>
                     <MenuItem>
                         <MenuItemTitle>Support</MenuItemTitle>
-                        <MenuListItem href="/products">Technical guides</MenuListItem>
-                        <MenuListItem href="/products">Specifications</MenuListItem>
-                        <MenuListItem href="/products">Maintenance & care guides</MenuListItem>
-                        <MenuListItem href="/products">Downloads</MenuListItem>
-                        <MenuListItem href="/products">FAQs</MenuListItem>
+                        <MenuListItem arrowVisible={false} href="/products">Technical guides</MenuListItem>
+                        <MenuListItem arrowVisible={false} href="/products">Specifications</MenuListItem>
+                        <MenuListItem arrowVisible={false} href="/products">Maintenance & care guides</MenuListItem>
+                        <MenuListItem arrowVisible={false} href="/products">Downloads</MenuListItem>
+                        <MenuListItem arrowVisible={false} href="/products">FAQs</MenuListItem>
                     </MenuItem>
                     <MenuItem>
                         <MenuItemTitle>Samples and contact</MenuItemTitle>
-                        <MenuListItem href="/products">Ordering samples</MenuListItem>
-                        <MenuListItem href="/products">Call 1300 342 662</MenuListItem>
-                        <MenuListItem href="/products">Contact Us</MenuListItem>
+                        <MenuListItem arrowVisible={false} href="/products">Ordering samples</MenuListItem>
+                        <MenuListItem arrowVisible={false} href="/products">Call 1300 342 662</MenuListItem>
+                        <MenuListItem arrowVisible={false} href="/products">Contact Us</MenuListItem>
                     </MenuItem>
                     <MenuItem>
                         <MenuItemTitle>Tag us</MenuItemTitle>
@@ -63,9 +63,9 @@ export default function FooterBottom() {
                     </MenuItem>
                     <MenuItem>
                         <MenuItemTitle>Follow us</MenuItemTitle>
-                        <MenuListItem href="/products">Instagram</MenuListItem>
-                        <MenuListItem href="/products">Facebook</MenuListItem>
-                        <MenuListItem href="/products">Linkedin</MenuListItem>
+                        <MenuListItem arrowVisible={true} href="/products">Instagram</MenuListItem>
+                        <MenuListItem arrowVisible={true} href="/products">Facebook</MenuListItem>
+                        <MenuListItem arrowVisible={true} href="/products">Linkedin</MenuListItem>
                     </MenuItem>
                     <MenuItem>
                         <MenuItemTitle>Newsletter</MenuItemTitle>
@@ -73,6 +73,7 @@ export default function FooterBottom() {
                             Be the first to know about season launches, exciting new products, and exclusive offers
                             by joining our mailing list.
                         </Text>
+                        
                     </MenuItem>
                 </MiddleWrapper>
                 <MenuRight>

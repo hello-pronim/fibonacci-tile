@@ -3,7 +3,9 @@ import styled from "@emotion/styled";
 import theme from "styles/theme";
 import { grid } from "styled-system";
 
-
+export interface MenuItemProps {
+  arrowVisible: boolean;
+}
 
 const FooterWrapper = styled("div")(() =>
   css({
@@ -48,15 +50,27 @@ const MenuItemTitle = styled("h2")(() =>
   })
 );
 
-const MenuListItem = styled("a")(() =>
+const MenuListItem = styled("a")(({ arrowVisible }: MenuItemProps) =>
   css({
     textDecoration: "none",
     fontSize: [2],
     fontFamily: 1,
     color: "white",
     marginTop: 20,
+    position: "relative",
     "&:hover": {
-        color: theme.colors.stoneTints[7],
+      color: theme.colors.stoneTints[7],
+    },
+    "&:after": {
+      position: "absolute",
+      content: "' '",
+      display: arrowVisible === true ? "block" : "none",
+      height: 16,
+      width: 16,
+      backgroundImage: `url(${ "assets/icons/arrow.svg"})`,
+      backgroundRepeat: "no-repeat",
+      top: 3,
+      left: 88
     },
   })
 );
