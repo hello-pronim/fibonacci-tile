@@ -1,9 +1,13 @@
 import React from "react";
-import styles from "./styles.module.scss";
+import Text from "@components/common/typography";
 
 const Homepage = () => {
-  return <section className={styles.container}>
-    Homepage
-  </section>;
+  return (
+    <section>
+      <Text as="h2" variant="Display-XLarge">
+        Fibonacci
+      </Text>
+    </section>
+  );
 };
 export default Homepage;

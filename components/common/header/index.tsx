@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Logo from "public/assets/brandmarks/logo-primary.svg";
 import LogoWhite from "public/assets/brandmarks/logo-secondary.svg";
+import styles from "./styles.module.scss";
 import {
   Container,
   Wrapper,
@@ -36,13 +37,12 @@ const Header = ({ mode = "light" }) => {
   const activeLogo = mode === "dark" ? Logo : LogoWhite;
   return (
     <>
-      <Container position="absolute" navOpen={navOpen}>
-        <Wrapper>
-          {/* <NavIcon isOpen={navOpen} onClick={() => setNavOpen(!navOpen)} /> */}
-          <NavLeft>
-            <NavItem href="/products" mode={mode}>
-              Our Products
-            </NavItem>
+      <section className={styles.container}>
+        <div className={styles.wrapper}>
+          <div className={styles.navLeft}>
+            <Link href="/products">
+              <a className={styles.navItem}>Our Products</a>
+            </Link>
             <NavItem href="#" mode={mode}>
               In Use
             </NavItem>
@@ -52,7 +52,7 @@ const Header = ({ mode = "light" }) => {
             <NavItem href="#" mode={mode}>
               Latest
             </NavItem>
-          </NavLeft>
+          </div>
           <LogoWrapper>
             <Link href="/">
               <a>
@@ -76,9 +76,9 @@ const Header = ({ mode = "light" }) => {
               Selections
             </NavItem>
           </NavRight>
-        </Wrapper>
-      </Container>
-      <Transition
+        </div>
+      </section>
+      {/* <Transition
         in={navOpen}
         timeout={duration}
         appear
@@ -93,17 +93,25 @@ const Header = ({ mode = "light" }) => {
             }}
           >
             <DrawerInner>
-              <NavItem mode={mode} href="/products">Our Products</NavItem>
-              <NavItem mode={mode} href="#">In Use</NavItem>
-              <NavItem mode={mode} href="#">Our Story</NavItem>
-              <NavItem mode={mode} href="#">Latest</NavItem>
+              <NavItem mode={mode} href="/products">
+                Our Products
+              </NavItem>
+              <NavItem mode={mode} href="#">
+                In Use
+              </NavItem>
+              <NavItem mode={mode} href="#">
+                Our Story
+              </NavItem>
+              <NavItem mode={mode} href="#">
+                Latest
+              </NavItem>
             </DrawerInner>
             <DrawerFooter>
               <p>footer content</p>
             </DrawerFooter>
           </NavDrawer>
         )}
-      </Transition>
+      </Transition> */}
     </>
   );
 };

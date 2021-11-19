@@ -1,0 +1,34 @@
+.container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid;
+  transition: ease all 0.3s;
+  z-index: 10;
+}
+.wrapper {
+  width: 100%;
+  max-width: 2560px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  padding: 32px 0;
+}
+
+.logoWrapper {
+  justify-self: "center";
+}
+
+.navLeft {
+  display: flex;
+  flex: 0;
+  min-width: -webkit-min-content;
+  a: {
+    display: none;
+  }
+}
+.navItem {
+    
+}
