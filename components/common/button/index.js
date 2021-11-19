@@ -4,10 +4,9 @@ import {
     ButtonWrapper
 } from "./styles";
 
-export default function Button({ title, link, buttonStyle }) {
-  // const buttonTheme = buttonStyle === "light" ? styles.light : styles.dark;
+export default function Button({ title, link }) {
   return (
-    <ButtonWrapper mode={"dark"}>
+    <ButtonWrapper mode={"dark"} visibleArrow={true} visibleBorder={true}>
         <Link href={link}>
             <a>{title}</a>
         </Link>
