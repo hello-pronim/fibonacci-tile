@@ -5,7 +5,7 @@
   padding: 20px;
   text-align: center;
   &:hover {
-    background-color: #EDECE8;
+    background-color: #edece8;
   }
 }
 .cardImg {
@@ -26,9 +26,34 @@
     cursor: pointer;
     background-color: #fff;
     border: 1px solid #ccc;
+    .hovered {
+      display: none;
+    }
+    .initial {
+      display: inline-block;
+    }
+    &:hover {
+      width: inherit;
+      height: inherit;
+      border-radius: 15px;
+      padding: 5px 8px;
+      color: #fff;
+      background-color: #000;
+      .hovered {
+        display: block;
+      }
+      .initial {
+        display: none;
+      }
+    }
+  }
+
+  button.checkedButton {
+    background-color: transparent;
+    border: none;
+    border-radius: inherit;
   }
 }
-
 .cardIsActive {
   button.addBtn {
     width: inherit;

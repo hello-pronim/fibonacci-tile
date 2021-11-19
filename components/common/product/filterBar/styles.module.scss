@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+.filters {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+.filterItem {
+    width: 250px;
+}
+.searchItem {
+    width: 200px;
+    align-items: center;
+}
+.displayOptions {
+    border-radius: 5px;
+    background: #F6F6F6;
+}
