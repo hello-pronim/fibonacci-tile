@@ -1,6 +1,7 @@
 import css from "@styled-system/css";
 import styled from "@emotion/styled";
 import theme from "styles/theme";
+import { grid } from "styled-system";
 
 
 
@@ -18,9 +19,27 @@ const FooterWrapper = styled("div")(() =>
 
 const LogoWrapper = styled("div")(() =>
   css({
-   
+    
   })
 );
+
+const MiddleWrapper = styled("div")(() =>
+  css({
+    display: "grid",
+    padding: 55,
+    gridTemplateColumns: "repeat(3, 1fr)",
+    gridTemplateRows: "repeat(3, 1fr)",
+    gridColumnGap: 15,
+    gridRowGap: 15
+  })
+);
+
+const MenuItem = styled("div")(() =>
+  css({
+    
+  })
+);
+
 
 const MenuWrapper = styled("div")(() =>
   css({
@@ -86,6 +105,8 @@ export {
     FooterWrapper,
     MenuWrapper,
     LogoWrapper,
+    MenuItem,
+    MiddleWrapper,
     MenuRight,
     MenuRightItem,
     FooterBottomWrapper,

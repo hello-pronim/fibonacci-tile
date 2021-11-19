@@ -4,6 +4,8 @@ import style from "./footer.module.scss";
 import {
     FooterWrapper,
     LogoWrapper,
+    MiddleWrapper,
+    MenuItem,
     MenuRight,
     MenuRightItem,
     FooterBottomWrapper,
@@ -22,9 +24,15 @@ export default function FooterBottom() {
                     alt="Fibonacci"
                     />
                 </LogoWrapper>
-                <LogoWrapper>
-                    asdfsadfsadf
-                </LogoWrapper>
+                <MiddleWrapper>
+                    <MenuItem>one</MenuItem>
+                    <MenuItem>one</MenuItem>
+                    <MenuItem>one</MenuItem>
+                    <MenuItem>one</MenuItem>
+                    <MenuItem>one</MenuItem>
+                    <MenuItem>one</MenuItem>
+
+                </MiddleWrapper>
                 <MenuRight>
                     <MenuRightItem>Other</MenuRightItem>
                     <MenuRightItem>On</MenuRightItem>
