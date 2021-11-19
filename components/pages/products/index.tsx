@@ -13,9 +13,9 @@ const ProductsPage = () => {
       <SectionTitle title="40 unique creations. Thoughtfully designed. Sustainably made. Purpose-built."/>
       <ProductFilterBar />
       <ProductLists items={[...Array(15)]} />
-      <CTAPanel />
+      <CTAPanel imagePosition="left" />
       <ProductLists items={[...Array(15)]} />
-      <CTAPanel />
+      <CTAPanel imagePosition="right" />
     </Container>
   );
 };
