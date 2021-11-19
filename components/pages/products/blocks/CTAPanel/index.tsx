@@ -16,7 +16,7 @@ const CTAPanel = ({ imagePosition = "left" }) => {
           day delivery to Melbourne metropolitan and 1-2 days interstate.</p>
         <p>Remember, the more we know about your project, the better we can help you specify the 
           perfect product, so feel free to overshare.</p>
-        <Button title="Order samples" link="http://localhost:3000/products" />
+        <Button mode="dark" title="Order samples" link="http://localhost:3000/products" />
       </div>
       {imagePosition === 'right' &&  <Image src={CTAImage} alt="CTA-1" /> }
     </section>
