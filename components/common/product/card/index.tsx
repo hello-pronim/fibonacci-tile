@@ -4,18 +4,11 @@ import classnames from "classnames";
 import Text from "@components/common/typography";
 import AddIcon from "@components/icons/add";
 import CheckIcon from "@components/icons/check";
-import CrossIcon from "./icons/cross";
+import CrossIcon from "@components/icons/cross";
 import ProductImg from "public/placeholder-product-image.jpg";
 import styles from "./styles.module.scss";
 
 const ProductCard = ({ product, isSelected = false, onProductSelect }) => {
-  // const [isActiveCard, setIsActiveCard] = useState(false);
-  // const onMouseButtonHover = () => {
-  //   setIsActiveCard(true);
-  // };
-  // const onMouseButtonLeave = () => {
-  //   setIsActiveCard(false);
-  // };
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>

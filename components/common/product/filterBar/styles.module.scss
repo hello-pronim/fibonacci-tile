@@ -1,20 +1,62 @@
 .container {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  padding: 20px;
+  align-items: center;
+}
+.logoWrapper {
+  width: 100px;
 }
 .filters {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-}
-.filterItem {
-    width: 250px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .searchItem {
-    width: 200px;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 2px;
+  cursor: pointer;
+  &:hover {
+    background: #f6f6f6;
+  }
+}
+.filterItem {
+  margin-left: 10px;
+  display: flex;
+  width: 200px;
+  padding: 20px;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  &:hover {
+    background: #f6f6f6;
+  }
+}
+.displayOptionsContainer {
+  border-right: 3px solid #edece8;
+  border-left: 3px solid #edece8;
+  padding: 0 20px;
 }
 .displayOptions {
-    border-radius: 5px;
-    background: #F6F6F6;
+  display: flex;
+  border-radius: 40px;
+  background: #f6f6f6;
+  padding: 5px 0;
+  .iconContainer {
+    display: flex;
+    justify-content: center;
+    width: 85px;
+    margin: 0 5px;
+    background: #fff;
+    border-radius: 40px;
+    padding: 10px;
+  }
+}
+.selections {
+  margin-left: 25px;
+}
+.selectionCount {
+  font-size: 12px;
+  padding: 2px;
+  background: #d6cec5;
 }
