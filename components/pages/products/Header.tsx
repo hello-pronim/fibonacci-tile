@@ -5,7 +5,7 @@ import styles from "./styles.module.scss";
 const ProductsHeader = () => {
   return (
     <section className={styles.headerContainer}>
-      <Header />
+      <Header position="absolute" />
       <Slider />
     </section>
   );

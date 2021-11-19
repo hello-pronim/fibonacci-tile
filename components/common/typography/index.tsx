@@ -1,3 +1,6 @@
+import styled from "@emotion/styled";
+import { space } from "styled-system";
+
 import {
   DisplayXLarge,
   DisplayLarge,
@@ -30,7 +33,6 @@ const component = new Map([
   ["Body-XSmall", BodyXSmall],
 ]);
 type TextTypes = {
-  Base: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span";
   variant:
     | "Display-XLarge"
     | "Display-Large"
@@ -49,8 +51,10 @@ type TextTypes = {
   altFont?: boolean;
 };
 
-const Text = ({ Base, variant, children, ...props }: TextTypes) => {
+// default Text element
+const Text = styled.span(({ variant, ...props }: TextTypes) => {
   const textVariant = component.get(variant);
-  return <Base css={textVariant({ ...props })}>{children}</Base>;
-};
+  return textVariant({ ...props });
+}, space);
+
 export default Text;

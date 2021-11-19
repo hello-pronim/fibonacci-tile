@@ -31,12 +31,12 @@ const transitionStyles = {
   exited: { opacity: 0 },
 };
 
-const Header = ({ mode = "light" }) => {
+const Header = ({ mode = "light", position = "relative" }) => {
   const [navOpen, setNavOpen] = useState(false);
   const activeLogo = mode === "dark" ? Logo : LogoWhite;
   return (
     <>
-      <Container position="absolute" navOpen={navOpen}>
+      <Container position={position} navOpen={navOpen}>
         <Wrapper>
           {/* <NavIcon isOpen={navOpen} onClick={() => setNavOpen(!navOpen)} /> */}
           <NavLeft>
