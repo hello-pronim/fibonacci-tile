@@ -16,7 +16,8 @@
   justify-content: center;
   padding: 2px;
   cursor: pointer;
-  &:hover {
+  &:hover,
+  &.activeFilter {
     background: #f6f6f6;
   }
 }
@@ -28,7 +29,8 @@
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-  &:hover {
+  &:hover,
+  &.activeFilter {
     background: #f6f6f6;
   }
 }
@@ -43,6 +45,7 @@
   background: #f6f6f6;
   padding: 5px 0;
   .iconContainer {
+    cursor: pointer;
     display: flex;
     justify-content: center;
     width: 85px;
@@ -50,6 +53,15 @@
     background: #fff;
     border-radius: 40px;
     padding: 10px;
+    &:hover,
+    &.active {
+      background: #b0aba7;
+      .displayIcon {
+        path {
+          fill: #fff;
+        }
+      }
+    }
   }
 }
 .selections {
@@ -59,4 +71,40 @@
   font-size: 12px;
   padding: 2px;
   background: #d6cec5;
+}
+
+.filterContainer {
+  padding: 40px;
+  background: #f6f6f6;
+}
+.searchContainer {
+  .searchLabel {
+    display: flex;
+    span {
+      margin-left: 10px;
+    }
+  }
+  input {
+    margin-top: 10px;
+    width: 100%;
+    font-size: 32px;
+    border: none;
+    border-left: 1px solid #c4c4c4;
+    padding-left: 10px;
+    background: none;
+    outline: none;
+  }
+  ::placeholder {
+    color: #e5e5e5;
+  }
+}
+
+.productsFilterContainer {
+  display: flex;
+  justify-content: space-between;
+  .productFilterItem {
+    border-right: 1px solid #c4c4c4;
+    padding: 40px;
+    width: 200px;
+  }
 }

@@ -1,6 +1,7 @@
-function GridIcon({ color = "#B0ABA7" }) {
+function GridIcon({ color = "#B0ABA7", className = "icon" }) {
   return (
     <svg
+      className={className}
       width="18"
       height="18"
       viewBox="0 0 18 18"

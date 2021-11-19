@@ -11,54 +11,158 @@ import ListIcon from "@components/icons/list";
 import CollectionIcon from "@components/icons/collection";
 import styles from "./styles.module.scss";
 
-export default function ProductFilters() {
+export default function ProductFilters({}) {
   const [activeFilter, setActiveFilter] = useState(null);
+  const [activeDisplayMode, setActiveDisplayMode] = useState("grid");
+  const changeDisplayMode = (mode) => {
+    setActiveDisplayMode(mode);
+  };
   return (
-    <section className={styles.container}>
-      <div className={styles.logoWrapper}>
-        <Link href="/">
-          <a>
-            <Image src={Logo} width="158" height="40" alt="Fibonacci" />
-          </a>
-        </Link>
-      </div>
-      <div className={styles.filters}>
-        <div className={styles.searchItem}>
-          <Text variant="Body-Small" mr="10px">
-            Search
-          </Text>
-          <SearchIcon />
+    <>
+      <section className={styles.container}>
+        <div className={styles.logoWrapper}>
+          <Link href="/">
+            <a>
+              <Image src={Logo} width="158" height="40" alt="Fibonacci" />
+            </a>
+          </Link>
         </div>
-        <div className={classnames(styles.filterItem, styles.productItem)}>
-          <Text variant="Body-Small">Products</Text>
-          <ArrowDownIcon />
-        </div>
-        <div className={classnames(styles.filterItem, styles.colourSchemeItem)}>
-          <Text variant="Body-Small">Colour Schemes</Text>
-          <ArrowDownIcon />
-        </div>
-        <div className={classnames(styles.filterItem, styles.sortByItem)}>
-          <Text variant="Body-Small">Sort by</Text>
-          <ArrowDownIcon />
-        </div>
-      </div>
-      <div className={styles.displayOptionsContainer}>
-        <div className={styles.displayOptions}>
-          <div className={styles.iconContainer}>
-            <GridIcon />
+        <div className={styles.filters}>
+          <div
+            className={classnames(styles.searchItem, {
+              [styles.activeFilter]: activeFilter === "search",
+            })}
+            onClick={() => {
+              setActiveFilter("search");
+            }}
+          >
+            <Text variant="Body-Small" mr="10px">
+              Search
+            </Text>
+            <SearchIcon />
           </div>
-          <div className={styles.iconContainer}>
-            <ListIcon />
+          <div
+            className={classnames(styles.filterItem, styles.productItem, {
+              [styles.activeFilter]: activeFilter === "products",
+            })}
+            onClick={() => {
+              setActiveFilter("products");
+            }}
+          >
+            <Text variant="Body-Small">Products</Text>
+            <ArrowDownIcon />
           </div>
-          <div className={styles.iconContainer}>
-            <CollectionIcon />
+          <div
+            className={classnames(styles.filterItem, styles.colourSchemeItem, {
+              [styles.activeFilter]: activeFilter === "colour-schemes",
+            })}
+            onClick={() => {
+              setActiveFilter("colour-schemes");
+            }}
+          >
+            <Text variant="Body-Small">Colour Schemes</Text>
+            <ArrowDownIcon />
+          </div>
+          <div
+            className={classnames(styles.filterItem, styles.sortByItem, {
+              [styles.activeFilter]: activeFilter === "sort-by",
+            })}
+            onClick={() => {
+              setActiveFilter("sort-by");
+            }}
+          >
+            <Text variant="Body-Small">Sort by</Text>
+            <ArrowDownIcon />
           </div>
         </div>
-      </div>
-      <div className={styles.selections}>
-        <Text variant="Body-Small">Selections</Text>{" "}
-        <span className={styles.selectionCount}>88</span>
-      </div>
-    </section>
+        <div className={styles.displayOptionsContainer}>
+          <div className={styles.displayOptions}>
+            <div
+              className={classnames(styles.iconContainer, {
+                [styles.active]: activeDisplayMode === "grid",
+              })}
+              onClick={() => {
+                changeDisplayMode("grid");
+              }}
+            >
+              <GridIcon className={styles.displayIcon} />
+            </div>
+            <div
+              className={classnames(styles.iconContainer, {
+                [styles.active]: activeDisplayMode === "list",
+              })}
+              onClick={() => {
+                changeDisplayMode("list");
+              }}
+            >
+              <ListIcon className={styles.displayIcon} />
+            </div>
+            <div
+              className={classnames(styles.iconContainer, {
+                [styles.active]: activeDisplayMode === "collection",
+              })}
+              onClick={() => {
+                changeDisplayMode("collection");
+              }}
+            >
+              <CollectionIcon className={styles.displayIcon} />
+            </div>
+          </div>
+        </div>
+        <div className={styles.selections}>
+          <Text variant="Body-Small">Selections</Text>{" "}
+          <span className={styles.selectionCount}>88</span>
+        </div>
+      </section>
+      {activeFilter && (
+        <section className={styles.filterContainer}>
+          {activeFilter === "search" && (
+            <div className={styles.searchContainer}>
+              <div className={styles.searchLabel}>
+                <SearchIcon />
+                <Text variant="Body-Small">Start Typing</Text>
+              </div>
+              <input placeholder="Search by product name or colour" />
+            </div>
+          )}
+          {activeFilter === "products" && (
+            <div className={styles.productsFilterContainer}>
+              <div className={styles.productFilterItem}>
+                <Text as="h3" variant="Body-Small">
+                  All products
+                </Text>
+              </div>
+              <div className={styles.productFilterItem}>
+                <Text as="h3" variant="Body-Small">
+                  Tiles
+                </Text>
+                <Text as="p" variant="Body-Small">
+                  Amet orci facilisi magna nunc vel, est leo adipiscing. Rhoncus
+                  aenean.
+                </Text>
+              </div>
+              <div className={styles.productFilterItem}>
+                <Text as="h3" variant="Body-Small">
+                  Slabs
+                </Text>
+                <Text as="p" variant="Body-Small">
+                  Amet orci facilisi magna nunc vel, est leo adipiscing. Rhoncus
+                  aenean.
+                </Text>
+              </div>
+              <div className={styles.productFilterItem}>
+                <Text as="h3" variant="Body-Small">
+                  Latest Releases
+                </Text>
+                <Text as="p" variant="Body-Small">
+                  Amet orci facilisi magna nunc vel, est leo adipiscing. Rhoncus
+                  aenean.
+                </Text>
+              </div>
+            </div>
+          )}
+        </section>
+      )}
+    </>
   );
 }

@@ -1,6 +1,7 @@
-function CollectionIcon({ color = "#B0ABA7" }) {
+function CollectionIcon({ color = "#B0ABA7", className="icon" }) {
   return (
     <svg
+      className={className}
       width="19"
       height="20"
       viewBox="0 0 19 20"
