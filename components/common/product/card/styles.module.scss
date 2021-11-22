@@ -57,17 +57,22 @@
   position: relative;
   box-shadow: 0px 24px 38px rgba(20, 20, 20, 0.08),
     0px 9px 46px rgba(20, 20, 20, 0.08), 0px 11px 15px rgba(20, 20, 20, 0.16);
-  button.addBtn {
-    text-transform: uppercase;
+  .actionBtnContainer {
     position: absolute;
     margin-left: auto;
     margin-right: auto;
     left: 0;
     right: 0;
     bottom: -15px;
+    height: 39px;
+    width: 39px;
+  }
+  button.actionBtn {
+    display: block;
+    text-transform: uppercase;
     border-radius: 50%;
-    height: 22px;
-    width: 15px;
+    height: 35px;
+    width: 25px;
     cursor: pointer;
     background-color: #fff;
     border: 1px solid #ccc;
@@ -78,10 +83,12 @@
       display: inline-block;
     }
     &:hover {
-      width: inherit;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 150px;
       height: inherit;
-      border-radius: 15px;
-      padding: 5px 8px;
+      border-radius: 14px;
       color: #fff;
       background-color: #000;
       .hovered {
@@ -94,9 +101,7 @@
   }
 
   button.checkedButton {
-    background-color: transparent;
-    border: none;
-    border-radius: inherit;
+    background-color: #000;
   }
 }
 .cardIsActive {
