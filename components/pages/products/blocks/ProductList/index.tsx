@@ -6,8 +6,15 @@ import { useAppContext } from "@contexts/AppContext";
 import { style } from "styled-system";
 
 function ProductLists({ items }) {
-  const { state } = useAppContext();
-  const onProductSelect = () => {};
+  const { state, dispatch } = useAppContext();
+  const onProductSelect = (product) => {
+    dispatch({
+      type: "SELECT_PRODUCTS", 
+      products: [product]
+    });
+    setItem('SELECT_PRODUCTS', product);
+  };
+  console.log("state", state)
   return (
     <section
       className={classnames(styles.container, {

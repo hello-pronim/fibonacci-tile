@@ -106,7 +106,7 @@ const ProductCard = ({
             className={classnames(styles.addBtn, {
               [styles.checkedButton]: isSelected,
             })}
-            onClick={onProductSelect}
+            onClick={()=> onProductSelect(product)}
           >
             {!isSelected && (
               <span className={styles.hovered}>

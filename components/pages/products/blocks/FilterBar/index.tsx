@@ -42,10 +42,7 @@ export default function ProductFilters({ show }) {
         value: layoutMode,
       });
     }
-  }, []);
-  if (!show) {
-    return null;
-  }
+  },[])
   return (
     <section ref={ref} className={styles.container}>
       <div className={styles.topBar}>
