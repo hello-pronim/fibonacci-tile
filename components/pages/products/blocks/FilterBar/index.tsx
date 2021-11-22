@@ -17,7 +17,7 @@ import SearchFilter from "./SearchFilter";
 import ColourSchemeFilter from "./ColourSchemeFilter";
 import styles from "./styles.module.scss";
 
-export default function ProductFilters() {
+export default function ProductFilters({ show }) {
   const { state, dispatch } = useAppContext();
   const [activeFilter, setActiveFilter] = useState(null);
   const ref = useRef(null);
@@ -39,6 +39,10 @@ export default function ProductFilters() {
       }
     };
   };
+
+  if (!show) {
+    return null;
+  }
 
   return (
     <section ref={ref} className={styles.container}>
