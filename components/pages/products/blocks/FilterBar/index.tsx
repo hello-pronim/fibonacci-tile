@@ -26,17 +26,19 @@ export default function ProductFilters({ show }) {
   const { state, dispatch } = useAppContext();
   const [activeFilter, setActiveFilter] = useState(null);
   const changeDisplayMode = (mode) => {
-    setItem("LAYOUT_MODE", mode);
+    setItem("PRODUCT_DISPLAY_MODE", mode);
     dispatch({
-      type: "LAYOUT_MODE",
+      type: "PRODUCT_DISPLAY_MODE",
       value: mode,
     });
   };
   useEffect(() => {
-    const layoutMode = getItem("LAYOUT_MODE") ? getItem("LAYOUT_MODE") : "grid";
+    const layoutMode = getItem("PRODUCT_DISPLAY_MODE")
+      ? getItem("PRODUCT_DISPLAY_MODE")
+      : "grid";
     if (layoutMode) {
       dispatch({
-        type: "LAYOUT_MODE",
+        type: "PRODUCT_DISPLAY_MODE",
         value: layoutMode,
       });
     }
@@ -106,7 +108,7 @@ export default function ProductFilters({ show }) {
           <div className={styles.displayOptions}>
             <div
               className={classnames(styles.iconContainer, {
-                [styles.active]: state?.layoutMode === "grid",
+                [styles.active]: state?.productDisplayMode === "grid",
               })}
               onClick={() => {
                 changeDisplayMode("grid");
@@ -116,7 +118,7 @@ export default function ProductFilters({ show }) {
             </div>
             <div
               className={classnames(styles.iconContainer, {
-                [styles.active]: state?.layoutMode === "list",
+                [styles.active]: state?.productDisplayMode === "list",
               })}
               onClick={() => {
                 changeDisplayMode("list");
@@ -126,7 +128,7 @@ export default function ProductFilters({ show }) {
             </div>
             <div
               className={classnames(styles.iconContainer, {
-                [styles.active]: state?.layoutMode === "collection",
+                [styles.active]: state?.productDisplayMode === "collection",
               })}
               onClick={() => {
                 changeDisplayMode("collection");
@@ -138,7 +140,9 @@ export default function ProductFilters({ show }) {
         </div>
         <div className={styles.selections}>
           <Text variant="Body-Small">Selections</Text>{" "}
-          <span className={styles.selectionCount}>88</span>
+          <span className={styles.selectionCount}>
+            {state?.selectedProducts.length}
+          </span>
         </div>
       </div>
       {activeFilter && (

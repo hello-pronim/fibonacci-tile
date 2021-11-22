@@ -6,6 +6,15 @@
   grid-column-gap: 15px;
   grid-row-gap: 15px;
   &.list_view {
-    display: list-item;
+    display: block;
+  }
+  .tableActionContainer {
+    background-color: #fff;
+  }
+  .tableHeader {
+    background: #e5e5e5;
+    & > div {
+      padding: 15px;
+    }
   }
 }

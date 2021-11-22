@@ -1,6 +1,7 @@
 export const initialState = {
     selectedProducts: [],
-    filter: {}
+    filter: {},
+    productDisplayMode: 'grid'
  };
  export const AppReducer = (state, action) => {
     switch (action.type){
@@ -13,10 +14,10 @@ export const initialState = {
              ],
           };
        }
-       case "LAYOUT_MODE": {
+       case "PRODUCT_DISPLAY_MODE": {
          return {
             ...state,
-            layoutMode: action.value,
+            productDisplayMode: action.value,
          };
       }
        case "REMOVE_PRODUCTS": {

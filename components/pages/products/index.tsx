@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import Container from "@components/common/layout/container";
-import ProductFilterBar from "@components/common/product/filterBar";
 import ProductsHeader from "./Header";
+import ProductFilterBar from "./blocks/FilterBar";
 import CTAPanel from "./blocks/CTAPanel";
 import FooterCTAPanel from "./blocks/FooterCTAPanel";
 import SectionTitle from "./blocks/SectionTitle";
@@ -12,7 +12,7 @@ const ProductsPage = () => {
   const ref = useRef(null);
   useEffect(() => {
     const handleScroll = () => {
-      if (ref && ref.current.offsetTop < window.pageYOffset) {
+      if (ref && ref.current.offsetTop < window.pageYOffset + 60) {
         setShowFilterBar(true);
       } else {
         setShowFilterBar(false);

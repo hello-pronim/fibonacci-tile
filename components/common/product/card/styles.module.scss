@@ -8,7 +8,32 @@
     background-color: #edece8;
   }
 }
-.cardImg {
+.tableRow {
+  border-top: 1px solid #D4D4D8;
+  & > div {
+    padding: 10px;
+    padding-bottom: 25px;
+  }
+  & > div.imgCell {
+    padding-right: 0;
+    width: 350px;
+    .cardImgContainer {
+      box-shadow: none;
+    }
+  }
+  & > div.descCell {
+    width: 400px;
+  }
+  & > div.rowDetailButton {
+    text-align: center;
+    width: 50px;
+  }
+  .cardImg {
+    height: 100px;
+    overflow: hidden;
+  }
+}
+.cardImgContainer {
   position: relative;
   box-shadow: 0px 24px 38px rgba(20, 20, 20, 0.08),
     0px 9px 46px rgba(20, 20, 20, 0.08), 0px 11px 15px rgba(20, 20, 20, 0.16);
