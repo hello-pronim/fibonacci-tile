@@ -3,17 +3,20 @@ import ProductCard from "@components/common/product/card";
 import Text from "@components/common/typography";
 import styles from "./styles.module.scss";
 import { useAppContext } from "@contexts/AppContext";
-import { setItem } from "@utils/localStorage";
 
 function ProductLists({ items }) {
   const { state, dispatch } = useAppContext();
-  const onProductSelect = (product) => {
-    // check if product already in selected
+  const toggleProductSelect = (product) => {
     const checkProductSelected =
       state?.selectedProducts.findIndex((sp) => sp.id === product.id) !== -1;
     if (!checkProductSelected) {
       dispatch({
         type: "SELECT_PRODUCTS",
+        products: [product],
+      });
+    } else {
+      dispatch({
+        type: "UNSELECT_PRODUCTS",
         products: [product],
       });
     }
@@ -54,7 +57,7 @@ function ProductLists({ items }) {
                     (sp) => sp.id === item.id
                   ) !== -1
                 }
-                onProductSelect={onProductSelect}
+                toggleProductSelect={toggleProductSelect}
                 key={`product-${item.id}`}
               />
             );
@@ -70,7 +73,7 @@ function ProductLists({ items }) {
               state?.selectedProducts.findIndex((sp) => sp.id === item.id) !==
               -1
             }
-            onProductSelect={onProductSelect}
+            toggleProductSelect={toggleProductSelect}
             key={`product-${item.id}`}
           />
         ))}

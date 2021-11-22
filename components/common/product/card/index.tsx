@@ -14,7 +14,7 @@ const ProductCard = ({
   product,
   displayMode = "grid",
   isSelected = false,
-  onProductSelect,
+  toggleProductSelect,
 }) => {
   const [detailShown, setDetailShown] = useState(false);
   if (displayMode === "list") {
@@ -106,7 +106,7 @@ const ProductCard = ({
             className={classnames(styles.addBtn, {
               [styles.checkedButton]: isSelected,
             })}
-            onClick={() => onProductSelect(product)}
+            onClick={() => toggleProductSelect(product)}
           >
             {!isSelected && (
               <span className={styles.hovered}>
