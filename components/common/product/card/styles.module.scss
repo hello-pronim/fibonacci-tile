@@ -58,6 +58,9 @@
   box-shadow: 0px 24px 38px rgba(20, 20, 20, 0.08),
     0px 9px 46px rgba(20, 20, 20, 0.08), 0px 11px 15px rgba(20, 20, 20, 0.16);
   .actionBtnContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
     margin-left: auto;
     margin-right: auto;
@@ -66,6 +69,9 @@
     bottom: -15px;
     height: 39px;
     width: 39px;
+    &:hover {
+      width: inherit;
+    }
   }
   button.actionBtn {
     display: block;
@@ -92,7 +98,10 @@
       color: #fff;
       background-color: #000;
       .hovered {
-        display: block;
+        display: flex;
+        span {
+          margin-left: 5px;
+        }
       }
       .initial {
         display: none;
