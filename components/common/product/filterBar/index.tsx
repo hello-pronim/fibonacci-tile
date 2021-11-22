@@ -16,7 +16,7 @@ import SearchFilter from "./SearchFilter";
 import ColourSchemeFilter from "./ColourSchemeFilter";
 import styles from "./styles.module.scss";
 import { setItem, getItem } from "@utils/localStorage";
-import { useAppContext } from "@context/AppContext";
+import { useAppContext } from "@contexts/AppContext";
 
 export default function ProductFilters({ show }) {
   const ref = useRef(null);
