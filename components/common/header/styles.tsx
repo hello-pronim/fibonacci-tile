@@ -116,6 +116,7 @@ const NavItem = styled("a")(({ mode }: navItemProps) =>
     fontFamily: 1,
     color: mode === "light" ? "white" : "charcoal",
     alignSelf: "center",
+    fontWeight: 300,
   })
 );
 

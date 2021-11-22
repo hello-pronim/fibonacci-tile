@@ -6,24 +6,27 @@
   .bannerTextWrapper {
     position: absolute;
     color: #ffffff;
-    top: 250px;
-    left: 50px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    left: 70px;
     width: 512px;
   }
   .bannerSubHeading {
-    font-size: 18px;
+    font-size: 12px;
+    line-height: 1.5;
     text-transform: uppercase;
+    letter-spacing: 0.1em;
   }
   .bannerHeading {
     font-size: 80px;
-    line-height: 88px;
-    text-transform: uppercase;
-    padding-top: 60px;
+    line-height: 1;
+    padding-top: 25px;
   }
   .bannerDescription {
     font-size: 20px;
-    line-height: 28px;
-    font-weight: 400;
-    padding-top: 16px;
+    line-height: 1.6;
+    font-weight: 300;
+    padding-top: 25px;
   }
 }
