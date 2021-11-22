@@ -133,7 +133,9 @@ const NavIcon = styled("button")(({ isOpen }: NavIconProps) =>
     width: 32,
     height: 32,
     cursor: "pointer",
-
+    [theme.mediaQueries.medium]: {
+      display: "none",
+    },
     "&:before": {
       position: "relative",
       backgroundColor: "charcoal",

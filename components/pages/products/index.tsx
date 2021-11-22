@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Container from "@components/common/layout/container";
-import ProductFilterBar from "@components/common/product/filterBar";
 import ProductsHeader from "./Header";
+import ProductFilterBar from "./blocks/FilterBar";
 import CTAPanel from "./blocks/CTAPanel";
 import FooterCTAPanel from "./blocks/FooterCTAPanel";
 import SectionTitle from "./blocks/SectionTitle";

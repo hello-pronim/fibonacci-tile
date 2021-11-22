@@ -1,7 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import classnames from "classnames";
+import useOnClickOutside from "use-onclickoutside";
 import Text from "@components/common/typography";
 import Logo from "public/assets/brandmarks/symbol-primary.svg";
 import SearchIcon from "@components/icons/search";
@@ -14,32 +15,37 @@ import SortByFilter from "./SortByFilter";
 import SearchFilter from "./SearchFilter";
 import ColourSchemeFilter from "./ColourSchemeFilter";
 import styles from "./styles.module.scss";
-import { setItem, getItem } from "../../../../utils";
-import { useAppContext } from "@context/AppContext";
+import { setItem, getItem } from "@utils/localStorage";
+import { useAppContext } from "@contexts/AppContext";
 
-
-export default function ProductFilters({}) {
+export default function ProductFilters({ show }) {
+  const ref = useRef(null);
+  useOnClickOutside(ref, () => {
+    setActiveFilter(null);
+  });
   const { state, dispatch } = useAppContext();
   const [activeFilter, setActiveFilter] = useState(null);
   const changeDisplayMode = (mode) => {
-    setItem('LAYOUT_MODE', mode);
+    setItem("PRODUCT_DISPLAY_MODE", mode);
     dispatch({
-      type: "LAYOUT_MODE", 
-      value: mode
+      type: "PRODUCT_DISPLAY_MODE",
+      value: mode,
     });
   };
-  useEffect(()=> {
-    const layoutMode = getItem('LAYOUT_MODE') ? getItem('LAYOUT_MODE') : "grid";
-    if(layoutMode) {
+  useEffect(() => {
+    const layoutMode = getItem("PRODUCT_DISPLAY_MODE")
+      ? getItem("PRODUCT_DISPLAY_MODE")
+      : "grid";
+    if (layoutMode) {
       dispatch({
-        type: "LAYOUT_MODE", 
-        value: layoutMode
+        type: "PRODUCT_DISPLAY_MODE",
+        value: layoutMode,
       });
     }
   },[])
   return (
-    <>
-      <section className={styles.container}>
+    <section ref={ref} className={styles.container}>
+      <div className={styles.topBar}>
         <div className={styles.logoWrapper}>
           <Link href="/">
             <a>
@@ -99,7 +105,7 @@ export default function ProductFilters({}) {
           <div className={styles.displayOptions}>
             <div
               className={classnames(styles.iconContainer, {
-                [styles.active]: state?.layoutMode === "grid",
+                [styles.active]: state?.productDisplayMode === "grid",
               })}
               onClick={() => {
                 changeDisplayMode("grid");
@@ -109,7 +115,7 @@ export default function ProductFilters({}) {
             </div>
             <div
               className={classnames(styles.iconContainer, {
-                [styles.active]: state?.layoutMode === "list",
+                [styles.active]: state?.productDisplayMode === "list",
               })}
               onClick={() => {
                 changeDisplayMode("list");
@@ -119,7 +125,7 @@ export default function ProductFilters({}) {
             </div>
             <div
               className={classnames(styles.iconContainer, {
-                [styles.active]: state?.layoutMode === "collection",
+                [styles.active]: state?.productDisplayMode === "collection",
               })}
               onClick={() => {
                 changeDisplayMode("collection");
@@ -131,17 +137,19 @@ export default function ProductFilters({}) {
         </div>
         <div className={styles.selections}>
           <Text variant="Body-Small">Selections</Text>{" "}
-          <span className={styles.selectionCount}>88</span>
+          <span className={styles.selectionCount}>
+            {state?.selectedProducts.length}
+          </span>
         </div>
-      </section>
+      </div>
       {activeFilter && (
-        <section className={styles.filterContainer}>
+        <div className={styles.filterContainer}>
           {activeFilter === "search" && <SearchFilter />}
           {activeFilter === "products" && <ProductFilter />}
           {activeFilter === "sort-by" && <SortByFilter />}
           {activeFilter === "colour-schemes" && <ColourSchemeFilter />}
-        </section>
+        </div>
       )}
-    </>
+    </section>
   );
 }
