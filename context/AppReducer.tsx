@@ -1,5 +1,6 @@
 export const initialState = {
     selectedProducts: [],
+    filter: {}
  };
  export const AppReducer = (state, action) => {
     switch (action.type){

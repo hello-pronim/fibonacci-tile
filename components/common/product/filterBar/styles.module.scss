@@ -107,4 +107,21 @@
     padding: 40px;
     width: 200px;
   }
+  .productFilterItemTitle {
+    border: none;
+  }
+  .colorSchemsContainer {
+    display: flex;
+    flex-grow: 1;
+    .colourScheme {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      text-align: center;
+      width: 88px;
+      padding: 20px;
+      cursor: pointer;
+      flex-direction: column;
+    }
+  }
 }
