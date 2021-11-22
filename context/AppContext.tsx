@@ -1,7 +1,7 @@
 import { createContext, useContext, useMemo, useReducer } from "react";
 import { AppReducer, initialState } from "./AppReducer";
 
-const AppContext = createContext({});
+const AppContext = createContext({state: null, dispatch: null});
 export function AppWrapper({ children }) {
   const [state, dispatch] = useReducer(AppReducer, initialState);
   const contextValue = useMemo(() => {

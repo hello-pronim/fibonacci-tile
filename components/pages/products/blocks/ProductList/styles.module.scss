@@ -5,4 +5,7 @@
   grid-template-rows: repeat(3, 1fr);
   grid-column-gap: 15px;
   grid-row-gap: 15px;
+  &.list_view {
+    display: list-item;
+  }
 }

@@ -13,6 +13,12 @@ export const initialState = {
              ],
           };
        }
+       case "LAYOUT_MODE": {
+         return {
+            ...state,
+            layoutMode: action.value,
+         };
+      }
        case "REMOVE_PRODUCTS": {
         return {
            ...state,

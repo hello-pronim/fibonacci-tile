@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import classnames from "classnames";
 import Text from "@components/common/typography";
 import Logo from "public/assets/brandmarks/symbol-primary.svg";
@@ -14,13 +14,30 @@ import SortByFilter from "./SortByFilter";
 import SearchFilter from "./SearchFilter";
 import ColourSchemeFilter from "./ColourSchemeFilter";
 import styles from "./styles.module.scss";
+import { setItem, getItem } from "../../../../utils";
+import { useAppContext } from "@context/AppContext";
+
 
 export default function ProductFilters({}) {
+  const { state, dispatch } = useAppContext();
   const [activeFilter, setActiveFilter] = useState(null);
-  const [activeDisplayMode, setActiveDisplayMode] = useState("grid");
   const changeDisplayMode = (mode) => {
-    setActiveDisplayMode(mode);
+    setItem('LAYOUT_MODE', mode);
+    dispatch({
+      type: "LAYOUT_MODE", 
+      value: mode
+    });
   };
+  useEffect(()=> {
+    const layoutMode = getItem('LAYOUT_MODE') ? getItem('LAYOUT_MODE') : "grid";
+    if(layoutMode) {
+      dispatch({
+        type: "LAYOUT_MODE", 
+        value: layoutMode
+      });
+    }
+    console.log("i am rendering");
+  },[])
   return (
     <>
       <section className={styles.container}>
@@ -83,7 +100,7 @@ export default function ProductFilters({}) {
           <div className={styles.displayOptions}>
             <div
               className={classnames(styles.iconContainer, {
-                [styles.active]: activeDisplayMode === "grid",
+                [styles.active]: state?.layoutMode === "grid",
               })}
               onClick={() => {
                 changeDisplayMode("grid");
@@ -93,7 +110,7 @@ export default function ProductFilters({}) {
             </div>
             <div
               className={classnames(styles.iconContainer, {
-                [styles.active]: activeDisplayMode === "list",
+                [styles.active]: state?.layoutMode === "list",
               })}
               onClick={() => {
                 changeDisplayMode("list");
@@ -103,7 +120,7 @@ export default function ProductFilters({}) {
             </div>
             <div
               className={classnames(styles.iconContainer, {
-                [styles.active]: activeDisplayMode === "collection",
+                [styles.active]: state?.layoutMode === "collection",
               })}
               onClick={() => {
                 changeDisplayMode("collection");
