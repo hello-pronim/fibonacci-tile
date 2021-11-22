@@ -36,7 +36,6 @@ export default function ProductFilters({}) {
         value: layoutMode
       });
     }
-    console.log("i am rendering");
   },[])
   return (
     <>
