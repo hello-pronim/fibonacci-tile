@@ -11,7 +11,7 @@ function TopSlider() {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 8000,
+    autoplaySpeed: 6000,
     speed: 2000,
     arrows: false,
   };
