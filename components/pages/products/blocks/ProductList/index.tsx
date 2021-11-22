@@ -8,10 +8,15 @@ import { setItem } from "@utils/localStorage";
 function ProductLists({ items }) {
   const { state, dispatch } = useAppContext();
   const onProductSelect = (product) => {
-    dispatch({
-      type: "SELECT_PRODUCTS",
-      products: [product],
-    });
+    // check if product already in selected
+    const checkProductSelected =
+      state?.selectedProducts.findIndex((sp) => sp.id === product.id) !== -1;
+    if (!checkProductSelected) {
+      dispatch({
+        type: "SELECT_PRODUCTS",
+        products: [product],
+      });
+    }
   };
   return (
     <section
@@ -39,25 +44,34 @@ function ProductLists({ items }) {
             </div>
             <div className={styles.tableActionContainer}></div>
           </div>
-          {items.map((item, i) => (
-            <ProductCard
-              displayMode="list"
-              product={item}
-              isSelected={false}
-              onProductSelect={onProductSelect}
-              key={i}
-            />
-          ))}
+          {items.map((item: any) => {
+            return (
+              <ProductCard
+                displayMode="list"
+                product={item}
+                isSelected={
+                  state?.selectedProducts.findIndex(
+                    (sp) => sp.id === item.id
+                  ) !== -1
+                }
+                onProductSelect={onProductSelect}
+                key={`product-${item.id}`}
+              />
+            );
+          })}
         </div>
       )}
       {state?.productDisplayMode !== "list" &&
-        items.map((item, i) => (
+        items.map((item) => (
           <ProductCard
             displayMode={state?.productDisplayMode}
             product={item}
-            isSelected={false}
+            isSelected={
+              state?.selectedProducts.findIndex((sp) => sp.id === item.id) !==
+              -1
+            }
             onProductSelect={onProductSelect}
-            key={i}
+            key={`product-${item.id}`}
           />
         ))}
     </section>

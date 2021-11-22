@@ -26,7 +26,7 @@ const ProductCard = ({
       >
         <div>
           <Text as="h3" variant="Display-XSmall" altFont={true}>
-            Neues Grey Superfine
+            {product.title}
           </Text>
         </div>
         <div>
@@ -106,7 +106,7 @@ const ProductCard = ({
             className={classnames(styles.addBtn, {
               [styles.checkedButton]: isSelected,
             })}
-            onClick={()=> onProductSelect(product)}
+            onClick={() => onProductSelect(product)}
           >
             {!isSelected && (
               <span className={styles.hovered}>

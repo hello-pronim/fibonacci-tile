@@ -109,7 +109,7 @@ const ProductsPage = () => {
       </section>
       <ProductLists items={products} />
       <CTAPanel imagePosition="left" />
-      <ProductLists items={[...Array(15)]} />
+      <ProductLists items={products} />
       <CTAPanel imagePosition="right" />
       <FooterCTAPanel />
     </Container>
