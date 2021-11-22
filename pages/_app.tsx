@@ -6,7 +6,7 @@ import theme from "styles/theme";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "styles/typefaces.css";
-import { AppWrapper } from "@context/AppContext";
+import { AppWrapper } from "@contexts/AppContext";
 
 function App({ Component, pageProps }: AppProps) {
   return (

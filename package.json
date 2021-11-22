@@ -24,7 +24,8 @@
     "react-transition-group": "^4.4.2",
     "sass": "^1.43.4",
     "slick-carousel": "^1.8.1",
-    "styled-system": "^5.1.5"
+    "styled-system": "^5.1.5",
+    "use-onclickoutside": "^0.4.0"
   },
   "devDependencies": {
     "@types/react": "^17.0.32",
