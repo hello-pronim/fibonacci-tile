@@ -26,23 +26,11 @@ export default function ProductFilters({ show }) {
   const { state, dispatch } = useAppContext();
   const [activeFilter, setActiveFilter] = useState(null);
   const changeDisplayMode = (mode) => {
-    setItem("PRODUCT_DISPLAY_MODE", mode);
     dispatch({
       type: "PRODUCT_DISPLAY_MODE",
       value: mode,
     });
   };
-  useEffect(() => {
-    const layoutMode = getItem("PRODUCT_DISPLAY_MODE")
-      ? getItem("PRODUCT_DISPLAY_MODE")
-      : "grid";
-    if (layoutMode) {
-      dispatch({
-        type: "PRODUCT_DISPLAY_MODE",
-        value: layoutMode,
-      });
-    }
-  },[])
   return (
     <section ref={ref} className={styles.container}>
       <div className={styles.topBar}>
@@ -138,7 +126,9 @@ export default function ProductFilters({ show }) {
         <div className={styles.selections}>
           <Text variant="Body-Small">Selections</Text>{" "}
           <span className={styles.selectionCount}>
-            {state?.selectedProducts.length ? state?.selectedProducts.length : 0}
+            {state?.selectedProducts.length
+              ? state?.selectedProducts.length
+              : 0}
           </span>
         </div>
       </div>

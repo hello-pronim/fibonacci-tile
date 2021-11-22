@@ -9,12 +9,10 @@ function ProductLists({ items }) {
   const { state, dispatch } = useAppContext();
   const onProductSelect = (product) => {
     dispatch({
-      type: "SELECT_PRODUCTS", 
-      products: [product]
+      type: "SELECT_PRODUCTS",
+      products: [product],
     });
-    setItem('SELECT_PRODUCTS', product);
   };
-  console.log("state", state)
   return (
     <section
       className={classnames(styles.container, {
