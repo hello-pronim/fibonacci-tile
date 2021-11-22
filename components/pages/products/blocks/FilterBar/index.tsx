@@ -138,7 +138,7 @@ export default function ProductFilters({ show }) {
         <div className={styles.selections}>
           <Text variant="Body-Small">Selections</Text>{" "}
           <span className={styles.selectionCount}>
-            {state?.selectedProducts.length}
+            {state?.selectedProducts.length ? state?.selectedProducts.length : 0}
           </span>
         </div>
       </div>

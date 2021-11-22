@@ -3,7 +3,7 @@ import ProductCard from "@components/common/product/card";
 import Text from "@components/common/typography";
 import styles from "./styles.module.scss";
 import { useAppContext } from "@contexts/AppContext";
-import { style } from "styled-system";
+import { setItem } from "@utils/localStorage";
 
 function ProductLists({ items }) {
   const { state, dispatch } = useAppContext();
