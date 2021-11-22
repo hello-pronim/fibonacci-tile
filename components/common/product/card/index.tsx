@@ -26,7 +26,7 @@ const ProductCard = ({
       >
         <div>
           <Text as="h3" variant="Display-XSmall" altFont={true}>
-            {product.title}
+            {product.name}
           </Text>
         </div>
         <div>
@@ -137,7 +137,7 @@ const ProductCard = ({
           </button>
         </div>
         <Text as="h3" variant="Display-XSmall" altFont={true} marginTop="25px">
-          Neues Grey Superfine
+          {product.name}
         </Text>
         <Text as="h4" variant="Body-Small">
           Word • Word • Word
