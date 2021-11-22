@@ -38,7 +38,7 @@ const Header = ({ mode = "light", position = "relative" }) => {
     <>
       <Container position={position} navOpen={navOpen}>
         <Wrapper>
-          {/* <NavIcon isOpen={navOpen} onClick={() => setNavOpen(!navOpen)} /> */}
+          <NavIcon isOpen={navOpen} onClick={() => setNavOpen(!navOpen)} />
           <NavLeft>
             <NavItem href="/products" mode={mode}>
               Our Products
@@ -93,10 +93,18 @@ const Header = ({ mode = "light", position = "relative" }) => {
             }}
           >
             <DrawerInner>
-              <NavItem mode={mode} href="/products">Our Products</NavItem>
-              <NavItem mode={mode} href="#">In Use</NavItem>
-              <NavItem mode={mode} href="#">Our Story</NavItem>
-              <NavItem mode={mode} href="#">Latest</NavItem>
+              <NavItem mode={mode} href="/products">
+                Our Products
+              </NavItem>
+              <NavItem mode={mode} href="#">
+                In Use
+              </NavItem>
+              <NavItem mode={mode} href="#">
+                Our Story
+              </NavItem>
+              <NavItem mode={mode} href="#">
+                Latest
+              </NavItem>
             </DrawerInner>
             <DrawerFooter>
               <p>footer content</p>
