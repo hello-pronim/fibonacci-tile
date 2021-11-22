@@ -9,7 +9,7 @@
   }
 }
 .tableRow {
-  border-top: 1px solid #D4D4D8;
+  border-top: 1px solid #d4d4d8;
   & > div {
     padding: 10px;
     padding-bottom: 25px;
@@ -27,10 +27,30 @@
   & > div.rowDetailButton {
     text-align: center;
     width: 50px;
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
   }
   .cardImg {
-    height: 100px;
+    height: 60px;
     overflow: hidden;
+  }
+  &.detailView {
+    & > div {
+      padding-top: 30px;
+      vertical-align: top;
+    }
+    & > div.imgCell {
+      padding-top: 10px;
+    }
+    & > div.rowDetailButton {
+      padding-top: 25px;
+    }
+    .cardImg {
+      height: initial;
+    }
   }
 }
 .cardImgContainer {

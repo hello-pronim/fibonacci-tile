@@ -6,6 +6,7 @@ import AddIcon from "@components/icons/add";
 import CheckIcon from "@components/icons/check";
 import CrossIcon from "@components/icons/cross";
 import ArrowDown from "@components/icons/arrowDown";
+import ArrowUp from "@components/icons/arrowUp";
 import ProductImg from "public/placeholder-product-image.jpg";
 import styles from "./styles.module.scss";
 
@@ -15,9 +16,14 @@ const ProductCard = ({
   isSelected = false,
   onProductSelect,
 }) => {
+  const [detailShown, setDetailShown] = useState(false);
   if (displayMode === "list") {
     return (
-      <div className={classnames(styles.tableRow)}>
+      <div
+        className={classnames(styles.tableRow, {
+          [styles.detailView]: detailShown,
+        })}
+      >
         <div>
           <Text as="h3" variant="Display-XSmall" altFont={true}>
             Neues Grey Superfine
@@ -79,8 +85,13 @@ const ProductCard = ({
           </div>
         </div>
         <div className={styles.rowDetailButton}>
-          <button  onClick={() => {}}>
-            <ArrowDown />
+          <button
+            onClick={() => {
+              setDetailShown(!detailShown);
+            }}
+          >
+            {!detailShown && <ArrowDown />}
+            {detailShown && <ArrowUp />}
           </button>
         </div>
       </div>
