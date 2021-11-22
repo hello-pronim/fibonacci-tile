@@ -1,7 +1,7 @@
 import ProductCard from "@components/common/product/card";
 import classnames from "classnames";
 import styles from "./styles.module.scss";
-import { useAppContext } from "@context/AppContext";
+import { useAppContext } from "@contexts/AppContext";
 
 function ProductLists({ items }) {
   const { state } = useAppContext();
