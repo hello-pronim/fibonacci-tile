@@ -1,7 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import classnames from "classnames";
+import useOnClickOutside from "use-onclickoutside";
 import Text from "@components/common/typography";
 import Logo from "public/assets/brandmarks/symbol-primary.svg";
 import SearchIcon from "@components/icons/search";
@@ -14,33 +15,38 @@ import SortByFilter from "./SortByFilter";
 import SearchFilter from "./SearchFilter";
 import ColourSchemeFilter from "./ColourSchemeFilter";
 import styles from "./styles.module.scss";
-import { setItem, getItem } from "../../../../utils";
+import { setItem, getItem } from "@utils/localStorage";
 import { useAppContext } from "@context/AppContext";
 
-
-export default function ProductFilters({}) {
+export default function ProductFilters({ show }) {
+  const ref = useRef(null);
+  useOnClickOutside(ref, () => {
+    setActiveFilter(null);
+  });
   const { state, dispatch } = useAppContext();
   const [activeFilter, setActiveFilter] = useState(null);
   const changeDisplayMode = (mode) => {
-    setItem('LAYOUT_MODE', mode);
+    setItem("LAYOUT_MODE", mode);
     dispatch({
-      type: "LAYOUT_MODE", 
-      value: mode
+      type: "LAYOUT_MODE",
+      value: mode,
     });
   };
-  useEffect(()=> {
-    const layoutMode = getItem('LAYOUT_MODE') ? getItem('LAYOUT_MODE') : "grid";
-    if(layoutMode) {
+  useEffect(() => {
+    const layoutMode = getItem("LAYOUT_MODE") ? getItem("LAYOUT_MODE") : "grid";
+    if (layoutMode) {
       dispatch({
-        type: "LAYOUT_MODE", 
-        value: layoutMode
+        type: "LAYOUT_MODE",
+        value: layoutMode,
       });
     }
-    console.log("i am rendering");
-  },[])
+  }, []);
+  if (!show) {
+    return null;
+  }
   return (
-    <>
-      <section className={styles.container}>
+    <section ref={ref} className={styles.container}>
+      <div className={styles.topBar}>
         <div className={styles.logoWrapper}>
           <Link href="/">
             <a>
@@ -134,15 +140,15 @@ export default function ProductFilters({}) {
           <Text variant="Body-Small">Selections</Text>{" "}
           <span className={styles.selectionCount}>88</span>
         </div>
-      </section>
+      </div>
       {activeFilter && (
-        <section className={styles.filterContainer}>
+        <div className={styles.filterContainer}>
           {activeFilter === "search" && <SearchFilter />}
           {activeFilter === "products" && <ProductFilter />}
           {activeFilter === "sort-by" && <SortByFilter />}
           {activeFilter === "colour-schemes" && <ColourSchemeFilter />}
-        </section>
+        </div>
       )}
-    </>
+    </section>
   );
 }
