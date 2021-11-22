@@ -34,11 +34,5 @@ export const AppReducer = (state, action) => {
         selectedProducts: newSelectedProducts ? newSelectedProducts : [],
       };
     }
-    case "REMOVE_PRODUCTS": {
-      return {
-        ...state,
-        selectedProducts: [...state.selectedProducts, ...action.products],
-      };
-    }
   }
 };
