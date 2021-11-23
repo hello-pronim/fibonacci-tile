@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Footer from "@components/common/footer";
+import Footer from "@components/common/Footer";
 import ProductPage from "@components/pages/products";
 
 const Products = () => {

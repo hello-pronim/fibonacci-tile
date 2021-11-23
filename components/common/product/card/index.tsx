@@ -140,10 +140,16 @@ const ProductCard = ({
             </button>
           </div>
         </div>
-        <Text as="h3" variant="Display-XSmall" altFont={true} className={styles.cardTitle} marginTop="25px">
+        <Text
+          as="h3"
+          variant="Display-XSmall"
+          altFont={true}
+          className={styles.cardTitle}
+          marginTop="25px"
+        >
           {product.name}
         </Text>
-        <Text as="h4" variant="Body-Small" className={styles.cardSubTitle} >
+        <Text as="h4" variant="Body-Small" className={styles.cardSubTitle}>
           Word • Word • Word
         </Text>
       </div>

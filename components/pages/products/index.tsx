@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
-import Container from "@components/common/layout/container";
 import ProductsHeader from "./Header";
 import ProductFilterBar from "./blocks/FilterBar";
 import CTAPanel from "./blocks/CTAPanel";
 import FooterCTAPanel from "./blocks/FooterCTAPanel";
 import SectionTitle from "./blocks/SectionTitle";
 import ProductLists from "./blocks/ProductList";
+import styles from './styles.module.scss';
 
 const ProductsPage = () => {
   const [showFilterBar, setShowFilterBar] = useState(false);
@@ -101,7 +101,7 @@ const ProductsPage = () => {
     },
   ];
   return (
-    <Container>
+    <div className={styles.container}>
       <ProductsHeader />
       <SectionTitle title="40 unique creations. Thoughtfully designed. Sustainably made. Purpose-built." />
       <section ref={ref}>
@@ -112,7 +112,7 @@ const ProductsPage = () => {
       <ProductLists items={products} />
       <CTAPanel imagePosition="right" />
       <FooterCTAPanel />
-    </Container>
+    </div>
   );
 };
 export default ProductsPage;

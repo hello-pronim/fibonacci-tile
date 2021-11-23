@@ -1,152 +1,212 @@
 import css from "@styled-system/css";
 import styled from "@emotion/styled";
 import theme from "styles/theme";
-import { grid } from "styled-system";
 
-export interface MenuItemProps {
-  arrowVisible: boolean;
-}
-
-const FooterWrapper = styled("div")(() =>
+const Container = styled("div")(({ ...props }) =>
   css({
-    maxWidth: 2560,
-    display: "flex",
-    justifyContent: "space-between",
-    px: 31,
-    py: 65,
-    backgroundColor: "charcoal"
-  })
-);
-
-const LogoWrapper = styled("div")(() =>
-  css({
-    width: 115
-  })
-);
-
-const MiddleWrapper = styled("div")(() =>
-  css({
-    display: "grid",
-    px: 55,
-    gridTemplateColumns: "repeat(3, 1fr)",
-    gridTemplateRows: "repeat(2, 1fr)",
-    gridColumnGap: 25,
-    gridRowGap: 25
-  })
-);
-
-const MenuItem = styled("div")(() =>
-  css({
-    display: "flex",
-    flexDirection: "column"
-  })
-);
-
-const MenuItemTitle = styled("h2")(() =>
-  css({
-    color: theme.colors.stoneTints[7],
-    fontSize: [2],
-    fontFamily: 1,
-  })
-);
-
-const MenuListItem = styled("a")(({ arrowVisible }: MenuItemProps) =>
-  css({
-    textDecoration: "none",
-    fontSize: [2],
-    fontFamily: 1,
-    color: "white",
-    marginTop: 20,
     position: "relative",
-    "&:hover": {
-      color: theme.colors.stoneTints[7],
-    },
-    "&:after": {
-      position: "absolute",
-      content: "' '",
-      display: arrowVisible === true ? "block" : "none",
-      height: 16,
-      width: 16,
-      backgroundImage: `url(${ "assets/icons/arrow.svg"})`,
-      backgroundRepeat: "no-repeat",
-      top: 3,
-      left: 88
-    },
-  })
-);
-
-
-
-const MenuWrapper = styled("div")(() =>
-  css({
-    px:200
-  })
-);
-
-const MenuRight = styled("div")(() =>
-  css({
-    width: 30,
+    width: "100%",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "space-between",
-    color: "secondary"
+    backgroundColor: "charcoal",
   })
 );
 
-const MenuRightItem = styled("div")(() =>
+const FooterWrapper = styled("div")(({ ...props }) =>
   css({
-    textTransform: "uppercase",
-    transform: "rotate(-90deg)"
-  })
-);
-
-const FooterBottomWrapper = styled("div")(() =>
-  css({
-    width: "100%",
+    boxSizing: "border-box",
+    mx: "auto",
     maxWidth: 2560,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    py: 31,
-    backgroundColor: theme.colors.greys[0]
+    width: "100%",
+
+    backgroundColor: "charcoal",
+    color: "#fff",
+    display: "grid",
+    columnGap: [30, 30, 30, 30, 30, 100],
+    rowGap: 64,
+    py: 64,
+    px: 24,
+    [theme.mediaQueries.small]: {
+      gridTemplateColumns: "64px 1fr 1fr 1fr 64px",
+      gridTemplateRows: "auto",
+    },
   })
 );
 
-const FooterNav = styled("div")(() =>
+const RotatedLogo = styled("div")(() =>
   css({
+    display: "none",
+    [theme.mediaQueries.small]: {
+      display: "block",
+      gridColumn: 1,
+      gridRow: "1 / span 2",
+    },
+  })
+);
+
+const SubFooterWrapper = styled("div")(({ ...props }) =>
+  css({
+    mx: "auto",
+    maxWidth: 2560,
+    position: "relative",
+    boxSizing: "border-box",
     width: "100%",
     display: "flex",
+    flexDirection: ["column", "column", "row"],
+    rowGap: 16,
+    backgroundColor: theme.colors.greys[0],
     justifyContent: "space-between",
-    alignItems: "center",
-    px: 24
+    alignItems: ["flex-start", "flex-start", "center"],
+    color: "#fff",
+    padding: "21px 65px 21px 16px",
   })
 );
 
-const NavItem = styled("a")(() =>
+const SubFooterItems = styled("div")(() =>
   css({
-    textDecoration: "none",
-    fontSize: [1],
+    fontSize: 1,
+    lineHeight: 0,
     fontFamily: 1,
-    color: theme.colors.stoneTints[7],
-    "&:hover": {
-        color: "white"
-      },
+    color: theme.colors.stoneTints[4],
+    a: { color: "stone", textDecoration: "none" },
+  })
+);
+const Column = styled("div")(() =>
+  css({
+    display: "flex",
+    flexDirection: "column",
+    rowGap: 80,
   })
 );
 
+const Segment = styled("div")(({ col, row }: { col: number; row: number }) =>
+  css({
+    [theme.mediaQueries.medium]: {
+      gridColumn: col && col,
+      gridRow: row && row,
+    },
+  })
+);
 
+const SegmentTitle = styled("h4")(() =>
+  css({
+    fontFamily: 1,
+    fontSize: 2,
+    lineHeight: 4,
+    fontWeight: 0,
+    paddingBottom: 16,
+    color: "concrete",
+  })
+);
+
+const ItemList = styled("ul")(() => ({}));
+
+const Item = styled("li")(() =>
+  css({
+    fontFamily: 1,
+    fontSize: 2,
+    lineHeight: 4,
+    fontWeight: 0,
+    color: "white",
+    "&:not(:last-child)": {
+      paddingBottom: 16,
+    },
+    a: { color: "inherit", textDecoration: "none" },
+  })
+);
+
+const TextSegment = styled("p")(() =>
+  css({
+    fontFamily: 1,
+    fontSize: 2,
+    lineHeight: 4,
+    fontWeight: 0,
+    color: "white",
+    span: {
+      color: "concrete",
+    },
+  })
+);
+
+const FooterFlavourText = styled("div")(() =>
+  css({
+    display: "none",
+    writingMode: "vertical-lr",
+    justifyContent: "space-between",
+    transform: "rotate(180deg)",
+    color: "concrete",
+    textTransform: "uppercase",
+    fontSize: 3,
+    fontWeight: 1,
+    letterSpacing: 3,
+    [theme.mediaQueries.small]: {
+      display: "flex",
+      gridColumn: 5,
+      gridRow: "1 / span 2",
+    },
+  })
+);
+
+const Signup = styled("form")(() =>
+  css({
+    paddingTop: 16,
+    input: {
+      border: "none",
+      width: "100%",
+      px: "8px",
+      py: "10px",
+      color: "white",
+      mb: "8px",
+      fontFamily: 1,
+      fontSize: 2,
+      lineHeight: 4,
+      fontWeight: 0,
+      "&::placeholder": {
+        color: "white",
+      },
+      bg: theme.colors.greys[2],
+    },
+    button: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      width: "100%",
+      textAlign: "left",
+      border: "1px solid white",
+      color: "white",
+      backgroundColor: "transparent",
+      fontFamily: 1,
+      fontSize: 2,
+      lineHeight: 4,
+      fontWeight: 0,
+      px: 16,
+      py: 11,
+    },
+  })
+);
+
+const Symbol = styled("div")(
+  css({
+    position: "absolute",
+    display: "flex",
+    flex: 0,
+    right: 16,
+  })
+);
 
 export {
-    FooterWrapper,
-    MenuWrapper,
-    LogoWrapper,
-    MenuItem,
-    MenuItemTitle,
-    MenuListItem,
-    MiddleWrapper,
-    MenuRight,
-    MenuRightItem,
-    FooterBottomWrapper,
-    FooterNav,
-    NavItem
+  Container,
+  FooterWrapper,
+  SubFooterWrapper,
+  RotatedLogo,
+  FooterFlavourText,
+  Column,
+  Segment,
+  SegmentTitle,
+  ItemList,
+  Item,
+  TextSegment,
+  Signup,
+  SubFooterItems,
+  Symbol,
 };
