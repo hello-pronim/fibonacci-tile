@@ -31,11 +31,9 @@ export const AppReducer = (state, action) => {
           if (existingColourSchemes.indexOf(value) === -1) {
             newColorSchemes = [...state.filter.colourSchemes, value];
           } else {
-            console.log("here", state?.filter?.colourSchemes, value);
             newColorSchemes = state?.filter?.colourSchemes.filter((item) => {
               return item !== value;
             });
-            console.log("newscheme", newColorSchemes);
           }
           return {
             ...state,
