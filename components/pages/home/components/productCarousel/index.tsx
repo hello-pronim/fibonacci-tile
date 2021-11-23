@@ -152,15 +152,10 @@ const ProductCarousel = () => {
       </NextWrapper>
       <Wrapper>
         <Slider {...settings} ref={slider}>
-          {products && products.map((product) => {
-            console.log(product.name);
-            return (
-              <ProductCard
-              key={product.id}
-              product={product}
-              />
-            );
-          })}
+          {products &&
+            products.map((product) => {
+              return <ProductCard key={product.id} product={product} />;
+            })}
         </Slider>
         <BottomBar>
           <ProgBar>

@@ -1,0 +1,17 @@
+@mixin bp($point) {
+  @media (min-width: #{$point}) {
+    @content;
+  }
+}
+
+@mixin bp-max($point) {
+  @media (max-width: #{$point}) {
+    @content;
+  }
+}
+
+@mixin bp-h($point) {
+  @media (min-height: #{$point}) {
+    @content;
+  }
+}
