@@ -86,12 +86,7 @@ const Header = ({ mode = "light", position = "relative" }) => {
         unmountOnExit
       >
         {(state) => (
-          <NavDrawer
-            css={{
-              ...defaultStyle,
-              ...transitionStyles[state],
-            }}
-          >
+          <NavDrawer>
             <DrawerInner>
               <NavItem mode={mode} href="/products">
                 Our Products

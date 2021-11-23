@@ -3,7 +3,7 @@ import Image from "next/image";
 import classnames from "classnames";
 import Text from "@components/common/typography";
 import AddIcon from "@components/icons/add";
-import CheckIcon from "@components/icons/check";
+import CheckMarkIcon from "@components/icons/checkmark";
 import CrossIcon from "@components/icons/cross";
 import ArrowDown from "@components/icons/arrowDown";
 import ArrowUp from "@components/icons/arrowUp";
@@ -49,39 +49,41 @@ const ProductCard = ({
             <div className={styles.cardImg}>
               <Image src={ProductImg} alt="Product-1" />
             </div>
-            <button
-              className={classnames(styles.addBtn, {
-                [styles.checkedButton]: isSelected,
-              })}
-              onClick={toggleProductSelect}
-            >
-              {!isSelected && (
-                <span className={styles.hovered}>
-                  <AddIcon color="white" />{" "}
-                  <Text color="white" variant="Body-XSmall">
-                    Add To Selection
-                  </Text>
-                </span>
-              )}
-              {!isSelected && (
-                <span className={styles.initial}>
-                  <AddIcon color="black" />
-                </span>
-              )}
-              {isSelected && (
-                <span className={styles.initial}>
-                  <CheckIcon />
-                </span>
-              )}
-              {isSelected && (
-                <span className={styles.hovered}>
-                  <CrossIcon />{" "}
-                  <Text color="white" variant="Body-XSmall">
-                    Remove Selection
-                  </Text>
-                </span>
-              )}
-            </button>
+            <div className={styles.actionBtnContainer}>
+              <button
+                className={classnames(styles.actionBtn, {
+                  [styles.checkedButton]: isSelected,
+                })}
+                onClick={() => toggleProductSelect(product)}
+              >
+                {!isSelected && (
+                  <span className={styles.hovered}>
+                    <AddIcon color="white" />{" "}
+                    <Text color="white" variant="Body-XSmall">
+                      Add To Selection
+                    </Text>
+                  </span>
+                )}
+                {!isSelected && (
+                  <span className={styles.initial}>
+                    <AddIcon color="black" />
+                  </span>
+                )}
+                {isSelected && (
+                  <span className={styles.initial}>
+                    <CheckMarkIcon color="white" />
+                  </span>
+                )}
+                {isSelected && (
+                  <span className={styles.hovered}>
+                    <CrossIcon />{" "}
+                    <Text color="white" variant="Body-XSmall">
+                      Remove Selection
+                    </Text>
+                  </span>
+                )}
+              </button>
+            </div>
           </div>
         </div>
         <div className={styles.rowDetailButton}>
@@ -102,44 +104,46 @@ const ProductCard = ({
       <div className={styles.container}>
         <div className={styles.cardImgContainer}>
           <Image src={ProductImg} alt="Product-1" />
-          <button
-            className={classnames(styles.addBtn, {
-              [styles.checkedButton]: isSelected,
-            })}
-            onClick={() => toggleProductSelect(product)}
-          >
-            {!isSelected && (
-              <span className={styles.hovered}>
-                <AddIcon color="white" />{" "}
-                <Text color="white" variant="Body-XSmall">
-                  Add To Selection
-                </Text>
-              </span>
-            )}
-            {!isSelected && (
-              <span className={styles.initial}>
-                <AddIcon color="black" />
-              </span>
-            )}
-            {isSelected && (
-              <span className={styles.initial}>
-                <CheckIcon />
-              </span>
-            )}
-            {isSelected && (
-              <span className={styles.hovered}>
-                <CrossIcon />{" "}
-                <Text color="white" variant="Body-XSmall">
-                  Remove Selection
-                </Text>
-              </span>
-            )}
-          </button>
+          <div className={styles.actionBtnContainer}>
+            <button
+              className={classnames(styles.actionBtn, {
+                [styles.checkedButton]: isSelected,
+              })}
+              onClick={() => toggleProductSelect(product)}
+            >
+              {!isSelected && (
+                <span className={styles.hovered}>
+                  <AddIcon color="white" />{" "}
+                  <Text color="white" variant="Body-XSmall">
+                    Add To Selection
+                  </Text>
+                </span>
+              )}
+              {!isSelected && (
+                <span className={styles.initial}>
+                  <AddIcon color="black" />
+                </span>
+              )}
+              {isSelected && (
+                <span className={styles.initial}>
+                  <CheckMarkIcon color="white" />
+                </span>
+              )}
+              {isSelected && (
+                <span className={styles.hovered}>
+                  <CrossIcon />{" "}
+                  <Text color="white" variant="Body-XSmall">
+                    Remove Selection
+                  </Text>
+                </span>
+              )}
+            </button>
+          </div>
         </div>
-        <Text as="h3" variant="Display-XSmall" altFont={true} marginTop="25px">
+        <Text as="h3" variant="Display-XSmall" altFont={true} className={styles.cardTitle} marginTop="25px">
           {product.name}
         </Text>
-        <Text as="h4" variant="Body-Small">
+        <Text as="h4" variant="Body-Small" className={styles.cardSubTitle} >
           Word • Word • Word
         </Text>
       </div>

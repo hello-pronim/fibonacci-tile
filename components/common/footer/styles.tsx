@@ -29,7 +29,7 @@ const MiddleWrapper = styled("div")(() =>
     display: "grid",
     px: 55,
     gridTemplateColumns: "repeat(3, 1fr)",
-    gridTemplateRows: "repeat(3, 1fr)",
+    gridTemplateRows: "repeat(2, 1fr)",
     gridColumnGap: 25,
     gridRowGap: 25
   })

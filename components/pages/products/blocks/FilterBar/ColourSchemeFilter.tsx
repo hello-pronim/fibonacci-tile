@@ -2,8 +2,19 @@ import classnames from "classnames";
 import Text from "@components/common/typography";
 import styles from "./styles.module.scss";
 import CheckMarkIcon from "@components/icons/checkmark";
+import { useAppContext } from "@contexts/AppContext";
 
 export default function ColourSchemeFilter({}) {
+  const { state, dispatch } = useAppContext();
+  const handleFilter = (value) => {
+    dispatch({
+      type: "SELECT_PRODUCT_FILTER",
+      filter: {
+        type: 'colourSchemes',
+        value
+      },
+    });
+  }
   const schemeArray = [
     { label: "Warm", colour: "#DEDCDC" },
     { label: "Cool", colour: "#DEE2E4" },
@@ -36,6 +47,7 @@ export default function ColourSchemeFilter({}) {
             style={{
               background: scheme.colour,
             }}
+            onClick={()=> handleFilter(scheme.textColour)}
           >
             <CheckMarkIcon color={scheme.textColour} />
             <Text variant="Body-Small" color={scheme.textColour}>

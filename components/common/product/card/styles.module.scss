@@ -55,37 +55,54 @@
 }
 .cardImgContainer {
   position: relative;
-  box-shadow: 0px 24px 38px rgba(20, 20, 20, 0.08),
-    0px 9px 46px rgba(20, 20, 20, 0.08), 0px 11px 15px rgba(20, 20, 20, 0.16);
-  button.addBtn {
-    text-transform: uppercase;
+  box-shadow: 0px 24px 38px rgba(20, 20, 20, 0.08), 0px 9px 46px rgba(20, 20, 20, 0.08), 0px 11px 15px rgba(20, 20, 20, 0.16);
+  display: flex;
+  .actionBtnContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
     margin-left: auto;
     margin-right: auto;
     left: 0;
     right: 0;
-    bottom: -15px;
+    bottom: -20px;
+    height: 39px;
+    width: 39px;
+    &:hover {
+      width: inherit;
+    }
+  }
+  button.actionBtn {
+    display: block;
+    text-transform: uppercase;
     border-radius: 50%;
-    height: 22px;
-    width: 15px;
+    height: 35px;
+    width: 25px;
     cursor: pointer;
     background-color: #fff;
-    border: 1px solid #ccc;
+    border: 1px solid #B0ABA7;
     .hovered {
       display: none;
     }
     .initial {
-      display: inline-block;
+      display: flex;
+      justify-content: center;
     }
     &:hover {
-      width: inherit;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 150px;
       height: inherit;
-      border-radius: 15px;
-      padding: 5px 8px;
+      border-radius: 14px;
       color: #fff;
       background-color: #000;
       .hovered {
-        display: block;
+        display: flex;
+        span {
+          margin-left: 5px;
+        }
       }
       .initial {
         display: none;
@@ -94,9 +111,7 @@
   }
 
   button.checkedButton {
-    background-color: transparent;
-    border: none;
-    border-radius: inherit;
+    background-color: #000;
   }
 }
 .cardIsActive {
@@ -108,4 +123,13 @@
     color: #fff;
     background-color: #000;
   }
+}
+.cardTitle {
+  font-size: 22px !important;
+  letter-spacing: 0.01em !important;
+  line-height: 1.1 !important;
+  margin: 35px 0px 10px 0px !important;
+}
+.cardSubTitle {
+  font-weight: 300 !important;
 }
