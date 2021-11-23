@@ -111,7 +111,7 @@ const Item = styled("li")(() =>
     "&:not(:last-child)": {
       paddingBottom: 16,
     },
-    a: {color: 'inherit', textDecoration: 'none'},
+    a: { color: "inherit", textDecoration: "none" },
   })
 );
 

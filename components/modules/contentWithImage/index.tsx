@@ -16,9 +16,7 @@ const ContentWithImageModule = () => {
           <br/> <br/>
           Remember, the more we know about your project, the better we can help you specify the perfect product, so feel free to overshare.
         </Text>
-        <Button href="#">
-         How to order samples 
-        </Button>        
+        <Button mode="" title="How to order samples" link="#" />   
       </Wrapper>
       <ImageWrapper>
         <Image alt="" src={SamplesImage} layout="responsive" width={1074} height={630}/>

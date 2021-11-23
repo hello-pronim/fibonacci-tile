@@ -116,6 +116,7 @@ const NavItem = styled("a")(({ mode }: navItemProps) =>
     fontFamily: 1,
     color: mode === "light" ? "white" : "charcoal",
     alignSelf: "center",
+    fontWeight: 300,
   })
 );
 
@@ -133,7 +134,9 @@ const NavIcon = styled("button")(({ isOpen }: NavIconProps) =>
     width: 32,
     height: 32,
     cursor: "pointer",
-
+    [theme.mediaQueries.medium]: {
+      display: "none",
+    },
     "&:before": {
       position: "relative",
       backgroundColor: "white",

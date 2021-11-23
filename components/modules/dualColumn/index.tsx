@@ -101,7 +101,7 @@ const DualColumnModule = () => {
         <Text Base="h3" variant="Display-Medium">
           LIKE NO OTHER
         </Text>
-        <Button href="#">Our design process</Button>
+        <Button mode="" title="Our design process" link="#" />
       </BottomRow>
     </Container>
   );

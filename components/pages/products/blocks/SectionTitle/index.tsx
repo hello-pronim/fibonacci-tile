@@ -5,10 +5,11 @@ function SectionTitle({ title }) {
   return (
     <section className={style.container}>
       <Text
-        Base="h2"
+        as="h2"
         variant="Display-XSmall"
         color="secondary"
         altFont={true}
+        className={style.title}
       >
         {title}
       </Text>

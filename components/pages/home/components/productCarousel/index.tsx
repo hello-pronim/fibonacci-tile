@@ -66,6 +66,84 @@ const ProductCarousel = () => {
     ],
   };
 
+  const products = [
+    {
+      id: 1,
+      name: "Neues Grey Superfine",
+      description: " Word • Word • Word",
+    },
+    {
+      id: 2,
+      name: "Neues Grey Superfine",
+      description: " Word • Word • Word",
+    },
+    {
+      id: 3,
+      name: "Neues Grey Superfine",
+      description: " Word • Word • Word",
+    },
+    {
+      id: 4,
+      name: "Neues Grey Superfine",
+      description: " Word • Word • Word",
+    },
+    {
+      id: 5,
+      name: "Neues Grey Superfine",
+      description: " Word • Word • Word",
+    },
+    {
+      id: 6,
+      name: "Neues Grey Superfine",
+      description: " Word • Word • Word",
+    },
+    {
+      id: 7,
+      name: "Neues Grey Superfine",
+      description: " Word • Word • Word",
+    },
+    {
+      id: 8,
+      name: "Neues Grey Superfine",
+      description: " Word • Word • Word",
+    },
+    {
+      id: 9,
+      name: "Neues Grey Superfine",
+      description: " Word • Word • Word",
+    },
+    {
+      id: 10,
+      name: "Neues Grey Superfine",
+      description: " Word • Word • Word",
+    },
+    {
+      id: 11,
+      name: "Neues Grey Superfine",
+      description: " Word • Word • Word",
+    },
+    {
+      id: 12,
+      name: "Neues Grey Superfine",
+      description: " Word • Word • Word",
+    },
+    {
+      id: 13,
+      name: "Neues Grey Superfine",
+      description: " Word • Word • Word",
+    },
+    {
+      id: 14,
+      name: "Neues Grey Superfine",
+      description: " Word • Word • Word",
+    },
+    {
+      id: 15,
+      name: "Neues Grey Superfine",
+      description: " Word • Word • Word",
+    },
+  ];
+
   return (
     <Container>
       <AccentText top={176}>A superlative selection</AccentText>
@@ -74,21 +152,15 @@ const ProductCarousel = () => {
       </NextWrapper>
       <Wrapper>
         <Slider {...settings} ref={slider}>
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
+          {products && products.map((product) => {
+            console.log(product.name);
+            return (
+              <ProductCard
+              key={product.id}
+              product={product}
+              />
+            );
+          })}
         </Slider>
         <BottomBar>
           <ProgBar>

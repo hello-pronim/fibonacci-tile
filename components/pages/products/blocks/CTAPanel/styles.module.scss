@@ -1,0 +1,32 @@
+.ctaContainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    .ctaDetails {
+        width: 34%;
+        padding: 0px 75px;
+        h2 {
+            font-size: 44px;
+            line-height: 1.1;
+            letter-spacing: -0.01em;
+            margin-bottom: 30px;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.4;
+            font-weight: 300;
+            margin-bottom: 15px;
+        }
+        p:last-of-type {
+            margin-bottom: 30px;
+        } 
+    }
+    .leftImg {
+        width: 55%;
+        order: 2;
+    }
+    .rightImg {
+        width: 55%;
+    }
+}

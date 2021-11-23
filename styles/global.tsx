@@ -40,6 +40,18 @@ const global = css`
     height: auto;
   }
   /* reset end */
+  .display-table {
+    display: table;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  .display-table > div {
+    display: table-row;
+  }
+  .display-table > div > div {
+    display: table-cell;
+    vertical-align: middle;
+  }
 `;
 
 export default global;

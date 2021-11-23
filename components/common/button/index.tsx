@@ -1,17 +1,12 @@
-import React from "react";
 import Link from "next/link";
-import { Wrapper, Label } from "./styles";
-import Arrow from "@components/common/icons/arrow";
+import { ButtonWrapper } from "./styles";
 
-const Button = ({ children, ...props }) => {
+export default function Button({ title, link, mode }) {
   return (
-    <Link href={props.href} passHref>
-      <Wrapper>
-        {children && <Label>{children}</Label>}
-        <Arrow width={30} />
-      </Wrapper>
-    </Link>
+    <ButtonWrapper mode={mode} visibleArrow={true} visibleBorder={true}>
+      <Link href={link}>
+        <a>{title}</a>
+      </Link>
+    </ButtonWrapper>
   );
-};
-
-export default Button;
+}
