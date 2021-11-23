@@ -4,23 +4,8 @@ import Text from "@components/common/typography";
 import styles from "./styles.module.scss";
 import { useAppContext } from "@contexts/AppContext";
 
-function ProductLists({ items }) {
+function ProductLists({ products }) {
   const { state, dispatch } = useAppContext();
-  const toggleProductSelect = (product) => {
-    const checkProductSelected =
-      state?.selectedProducts.findIndex((sp) => sp.id === product.id) !== -1;
-    if (!checkProductSelected) {
-      dispatch({
-        type: "SELECT_PRODUCTS",
-        products: [product],
-      });
-    } else {
-      dispatch({
-        type: "UNSELECT_PRODUCTS",
-        products: [product],
-      });
-    }
-  };
   return (
     <section
       className={classnames(styles.container, {
@@ -47,34 +32,45 @@ function ProductLists({ items }) {
             </div>
             <div className={styles.tableActionContainer}></div>
           </div>
-          {items.map((item: any) => {
+          {products.map((product: any) => {
             return (
               <ProductCard
                 displayMode="list"
-                product={item}
+                product={product}
                 isSelected={
                   state?.selectedProducts.findIndex(
-                    (sp) => sp.id === item.id
+                    (sp) => sp.id === product.id
                   ) !== -1
                 }
-                toggleProductSelect={toggleProductSelect}
-                key={`product-${item.id}`}
+                toggleProductSelect={() =>
+                  dispatch({
+                    type: "TOGGLE_PRODUCT_SELECTION",
+                    product,
+                  })
+                }
+                key={`product-${product.id}`}
               />
             );
           })}
         </div>
       )}
       {state?.productDisplayMode !== "list" &&
-        items.map((item) => (
+        products.map((product) => (
           <ProductCard
             displayMode={state?.productDisplayMode}
-            product={item}
+            product={product}
             isSelected={
-              state?.selectedProducts.findIndex((sp) => sp.id === item.id) !==
-              -1
+              state?.selectedProducts.findIndex(
+                (sp) => sp.id === product.id
+              ) !== -1
             }
-            toggleProductSelect={toggleProductSelect}
-            key={`product-${item.id}`}
+            toggleProductSelect={() =>
+              dispatch({
+                type: "TOGGLE_PRODUCT_SELECTION",
+                product,
+              })
+            }
+            key={`product-${product.id}`}
           />
         ))}
     </section>

@@ -107,9 +107,9 @@ const ProductsPage = () => {
       <section ref={ref}>
         <ProductFilterBar show={showFilterBar} />
       </section>
-      <ProductLists items={products} />
+      <ProductLists products={products} />
       <CTAPanel imagePosition="left" />
-      <ProductLists items={products} />
+      <ProductLists products={products} />
       <CTAPanel imagePosition="right" />
       <FooterCTAPanel />
     </div>

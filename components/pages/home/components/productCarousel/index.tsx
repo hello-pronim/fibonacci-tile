@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import Link from "next/link";
+import { useAppContext } from "@contexts/AppContext";
 import Container from "@components/common/layout/container";
 import ProductCard from "@components/common/product/card";
 import AccentText from "@components/common/accentText";
@@ -18,6 +19,7 @@ import Arrow from "@componentscommon/icons/arrow";
 import theme from "styles/theme";
 
 const ProductCarousel = () => {
+  const { state, dispatch } = useAppContext();
   const slider = React.useRef<Slider>(null);
   const [slideCount, setSlideCount] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -154,7 +156,23 @@ const ProductCarousel = () => {
         <Slider {...settings} ref={slider}>
           {products &&
             products.map((product) => {
-              return <ProductCard key={product.id} product={product} />;
+              return (
+                <ProductCard
+                  isSelected={
+                    state?.selectedProducts.findIndex(
+                      (sp) => sp.id === product.id
+                    ) !== -1
+                  }
+                  toggleProductSelect={() => {
+                    dispatch({
+                      type: "TOGGLE_PRODUCT_SELECTION",
+                      product,
+                    });
+                  }}
+                  key={product.id}
+                  product={product}
+                />
+              );
             })}
         </Slider>
         <BottomBar>
