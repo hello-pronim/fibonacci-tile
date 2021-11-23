@@ -2,11 +2,13 @@ import classnames from "classnames";
 import Text from "@components/common/typography";
 import styles from "./styles.module.scss";
 import CheckMarkIcon from "@components/icons/checkmark";
+import Cross from "@components/icons/cross";
 import { useAppContext } from "@contexts/AppContext";
 
 export default function ColourSchemeFilter({}) {
   const { state, dispatch } = useAppContext();
   const handleFilter = (value) => {
+    console.log(value)
     dispatch({
       type: "SELECT_PRODUCT_FILTER",
       filter: {
@@ -49,12 +51,17 @@ export default function ColourSchemeFilter({}) {
             }}
             onClick={()=> handleFilter(scheme.value)}
           >
-            <CheckMarkIcon color={scheme.textColour} />
+            {state.filter.colourSchemes.indexOf(scheme.value) !== -1 && (
+              <CheckMarkIcon color={scheme.textColour} />
+            )}  
             <Text variant="Body-Small" color={scheme.textColour}>
               {scheme.label}
             </Text>
           </div>
         ))}
+      </div>
+      <div onClick={()=> handleFilter("clear")} className={styles.clearFilter}>
+        Clear Filter <Cross color={"#0D0D0D"}/>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ export const initialState = {
     searchText: null,
     products: "all",
     colourSchemes: [],
-    sortBy: null,
+    sortBy: "featured",
   },
   productDisplayMode: "grid",
 };
@@ -28,18 +28,31 @@ export const AppReducer = (state, action) => {
             ? state.filter.colourSchemes
             : [];
           let newColorSchemes;
-          if (existingColourSchemes.indexOf(value) === -1) {
-            newColorSchemes = [...state.filter.colourSchemes, value];
-          } else {
-            newColorSchemes = state?.filter?.colourSchemes.filter((item) => {
-              return item !== value;
-            });
+          if(value !== "clear") {
+            if (existingColourSchemes.indexOf(value) === -1) {
+              newColorSchemes = [...state.filter.colourSchemes, value];
+            } else {
+              newColorSchemes = state?.filter?.colourSchemes.filter((item) => {
+                return item !== value;
+              });
+            }
+          }else {
+            newColorSchemes = []
           }
           return {
             ...state,
             filter: {
               ...state.filter,
               [action.filter.type]: newColorSchemes,
+            },
+          };
+        }
+        if(action?.filter?.type === "searchText" && action?.filter?.value ==="clear") {
+          return {
+            ...state,
+            filter: {
+              ...state.filter,
+              [action.filter.type]: null,
             },
           };
         }
