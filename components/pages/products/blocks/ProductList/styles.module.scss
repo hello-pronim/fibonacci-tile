@@ -1,10 +1,23 @@
+@import '@styles/settings';
+
 .container {
-  display: grid;
   padding: 55px;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
   grid-column-gap: 15px;
   grid-row-gap: 15px;
+  @include bp($max) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  @include bp($xxl) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @include bp($xl) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include bp($lg) {
+    grid-template-columns: repeat(4, 1fr);
+  }
   &.list_view {
     display: block;
   }

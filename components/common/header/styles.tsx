@@ -37,6 +37,9 @@ const Wrapper = styled("div")(() =>
     justifyContent: "space-between",
     px: 32,
     height: 80,
+    "@media screen and (max-width: 768px)": {
+      px: 10,
+    },
   })
 );
 
