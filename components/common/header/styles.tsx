@@ -136,7 +136,7 @@ const NavIcon = styled("button")(({ isOpen }: NavIconProps) =>
 
     "&:before": {
       position: "relative",
-      backgroundColor: "charcoal",
+      backgroundColor: "white",
       content: "' '",
       display: "block",
       height: "2px",
@@ -147,7 +147,7 @@ const NavIcon = styled("button")(({ isOpen }: NavIconProps) =>
     },
     "&:after": {
       position: "relative",
-      backgroundColor: "charcoal",
+      backgroundColor: "white",
       content: "' '",
       display: "block",
       height: "2px",
@@ -155,18 +155,22 @@ const NavIcon = styled("button")(({ isOpen }: NavIconProps) =>
       width: 16,
       transform: isOpen && "translateY(-1px) rotate(-135deg)",
     },
+    [theme.mediaQueries.medium]: {
+      display: "none",
+    },
   })
 );
 
 const NavDrawer = styled("div")(() =>
   css({
     position: "absolute",
+    top: 80,
     display: "flex",
     flexDirection: "column",
-    background: "white",
-    height: "calc(100% - 80px)",
+    height: "calc(100vh - 80px)",
     width: "100%",
     boxSizing: "border-box",
+    zIndex: 999,
   })
 );
 
@@ -176,8 +180,10 @@ const DrawerInner = styled("div")(() =>
     flexDirection: "column",
     flex: 1,
     width: "100%",
-    p: 16,
+    background: "white",
+    padding: "16px",
     a: {
+      color: "charcoal",
       textAlign: "left",
       fontSize: 3,
       mr: "auto",
@@ -189,6 +195,13 @@ const DrawerInner = styled("div")(() =>
 
 const DrawerFooter = styled("div")(() =>
   css({
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-start",
+    justifyContent: "flex-start",
+    textAlign: "left",
+    rowGap: "8px",
+    a: { mr: "auto", color: "charcoal" },
     bg: "cold",
     px: 15,
     py: 20,

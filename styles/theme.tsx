@@ -90,8 +90,7 @@ const theme = {
     large: `@media screen and (min-width: 1440px)`,
     xLarge: `@media screen and (min-width: 1660px)`,
     xxLarge: `@media screen and (min-width: 1920px)`,
-
-  }
+  },
 };
 
 export default theme;
