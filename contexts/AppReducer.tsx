@@ -1,6 +1,10 @@
 export const initialState = {
   selectedProducts: [],
-  filter: {},
+  filter: {
+    products: null,
+    colourSchemes: [],
+    sortyBy: null
+  },
   productDisplayMode: "grid",
 };
 export const AppReducer = (state, action) => {
