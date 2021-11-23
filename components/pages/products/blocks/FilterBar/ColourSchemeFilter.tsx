@@ -16,17 +16,17 @@ export default function ColourSchemeFilter({}) {
     });
   }
   const schemeArray = [
-    { label: "Warm", colour: "#DEDCDC" },
-    { label: "Cool", colour: "#DEE2E4" },
-    { label: "Blacks", colour: "#666366", textColour: "#FFF" },
-    { label: "Greys", colour: "#F0EBE7" },
-    { label: "Whites", colour: "#F7F6F5" },
-    { label: "Earthy", colour: "#E7DBC9" },
-    { label: "Pinks", colour: "#F1E1DA" },
-    { label: "Blues", colour: "#E2E9EC" },
-    { label: "Oranges", colour: "#EFCDB4" },
+    { label: "Warm", value: "warm", colour: "#DEDCDC" },
+    { label: "Cool", value: "cool", colour: "#DEE2E4" },
+    { label: "Blacks", value: "blacks", colour: "#666366", textColour: "#FFF" },
+    { label: "Greys", value: "greys", colour: "#F0EBE7" },
+    { label: "Whites", value: "whites", colour: "#F7F6F5" },
+    { label: "Earthy", value: "earthy", colour: "#E7DBC9" },
+    { label: "Pinks", value: "pinks", colour: "#F1E1DA" },
+    { label: "Blues", value: "blues", colour: "#E2E9EC" },
+    { label: "Oranges", value: "oranges", colour: "#EFCDB4" },
   ];
-  const selectColor = () => {};
+
   return (
     <div className={styles.productsFilterContainer}>
       <div
@@ -47,7 +47,7 @@ export default function ColourSchemeFilter({}) {
             style={{
               background: scheme.colour,
             }}
-            onClick={()=> handleFilter(scheme.textColour)}
+            onClick={()=> handleFilter(scheme.value)}
           >
             <CheckMarkIcon color={scheme.textColour} />
             <Text variant="Body-Small" color={scheme.textColour}>

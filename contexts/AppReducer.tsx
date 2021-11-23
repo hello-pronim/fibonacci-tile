@@ -2,9 +2,9 @@ export const initialState = {
   selectedProducts: [],
   filter: {
     searchText: null,
-    products: 'all',
+    products: "all",
     colourSchemes: [],
-    sortBy: null
+    sortBy: null,
   },
   productDisplayMode: "grid",
 };
@@ -21,18 +21,29 @@ export const AppReducer = (state, action) => {
       };
     }
     case "SELECT_PRODUCT_FILTER": {
-      // console.log('action.value', action.filter)
-      let value = action.filter.value;
-      if(action?.filter?.type && action?.filter?.value ) {
-        if(action.filter.type === "colourSchemes"){
-            let existingColourSchemes = state.filter.colourSchemes;
-            const colourSchemeIndex = state.filter.colourSchemes.indexOf(value);
-            if( colourSchemeIndex === -1) {
-              existingColourSchemes.push(value)
-            }else {
-              existingColourSchemes.splice(colourSchemeIndex, 1);
-            }
-            value = existingColourSchemes;
+      if (action?.filter?.type && action?.filter?.value) {
+        let value = action.filter.value;
+        if (action.filter.type === "colourSchemes") {
+          const existingColourSchemes = state?.filter?.colourSchemes
+            ? state.filter.colourSchemes
+            : [];
+          let newColorSchemes;
+          if (existingColourSchemes.indexOf(value) === -1) {
+            newColorSchemes = [...state.filter.colourSchemes, value];
+          } else {
+            console.log("here", state?.filter?.colourSchemes, value);
+            newColorSchemes = state?.filter?.colourSchemes.filter((item) => {
+              return item !== value;
+            });
+            console.log("newscheme", newColorSchemes);
+          }
+          return {
+            ...state,
+            filter: {
+              ...state.filter,
+              [action.filter.type]: newColorSchemes,
+            },
+          };
         }
         return {
           ...state,
@@ -40,14 +51,10 @@ export const AppReducer = (state, action) => {
             ...state.filter,
             [action.filter.type]: value,
           },
-        }
+        };
       }
-      // return {
-      //   ...state,
-      //   filter: {...state.filter},
-      // };
+      return state;
     }
-   
     case "TOGGLE_PRODUCT_SELECTION": {
       // check if product is in selectedProducts
       const checkProductSelected = state.selectedProducts.findIndex(
