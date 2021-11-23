@@ -55,8 +55,8 @@
 }
 .cardImgContainer {
   position: relative;
-  box-shadow: 0px 24px 38px rgba(20, 20, 20, 0.08),
-    0px 9px 46px rgba(20, 20, 20, 0.08), 0px 11px 15px rgba(20, 20, 20, 0.16);
+  box-shadow: 0px 24px 38px rgba(20, 20, 20, 0.08), 0px 9px 46px rgba(20, 20, 20, 0.08), 0px 11px 15px rgba(20, 20, 20, 0.16);
+  display: flex;
   .actionBtnContainer {
     display: flex;
     align-items: center;
@@ -66,7 +66,7 @@
     margin-right: auto;
     left: 0;
     right: 0;
-    bottom: -15px;
+    bottom: -20px;
     height: 39px;
     width: 39px;
     &:hover {
@@ -81,12 +81,13 @@
     width: 25px;
     cursor: pointer;
     background-color: #fff;
-    border: 1px solid #ccc;
+    border: 1px solid #B0ABA7;
     .hovered {
       display: none;
     }
     .initial {
-      display: inline-block;
+      display: flex;
+      justify-content: center;
     }
     &:hover {
       display: flex;
@@ -122,4 +123,13 @@
     color: #fff;
     background-color: #000;
   }
+}
+.cardTitle {
+  font-size: 22px !important;
+  letter-spacing: 0.01em !important;
+  line-height: 1.1 !important;
+  margin: 35px 0px 10px 0px !important;
+}
+.cardSubTitle {
+  font-weight: 300 !important;
 }
