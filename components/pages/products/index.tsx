@@ -6,10 +6,13 @@ import FooterCTAPanel from "./blocks/FooterCTAPanel";
 import SectionTitle from "./blocks/SectionTitle";
 import ProductLists from "./blocks/ProductList";
 import styles from './styles.module.scss';
+import { useAppContext } from "@contexts/AppContext";
 
 const ProductsPage = () => {
+  const { state, dispatch } = useAppContext();
   const [showFilterBar, setShowFilterBar] = useState(false);
   const ref = useRef(null);
+  
   useEffect(() => {
     const handleScroll = () => {
       if (ref && ref.current.offsetTop < window.pageYOffset + 60) {
@@ -23,6 +26,11 @@ const ProductsPage = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [ref]);
+
+  useEffect(() => {
+    console.log("Filter state changed fetching filtered products....");
+  },[state.filter]);
+
   const products = [
     {
       id: 1,
