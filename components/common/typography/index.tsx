@@ -47,7 +47,6 @@ type TextTypes = {
     | "Body-Small"
     | "Body-XSmall";
   children: React.ReactNode;
-  color?: string;
   altFont?: boolean;
 };
 // default Text element

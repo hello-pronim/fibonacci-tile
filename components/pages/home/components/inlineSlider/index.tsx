@@ -63,7 +63,33 @@ const InlineSlider = () => {
               height="900"
             />
             <ContentWrapper className="slide-content">
-              <Text Base="h6" variant="Body-Large" color={theme.colors.stone}>
+              <Text as="h6" variant="Body-Large" color="stone">
+                City, Country
+              </Text>
+              <Text
+                as="h3"
+                variant="Display-Large"
+                color="white"
+              >
+                Project Name <br />
+                Project Name
+              </Text>
+              <LinkWrapper>
+                <Link href="#">View project</Link>
+                <Arrow type="short" color={theme.colors.white} />
+              </LinkWrapper>
+            </ContentWrapper>
+          </SlideItem>
+          <SlideItem>
+            <Image
+              src={Slide1}
+              alt="image-1"
+              layout="responsive"
+              width="1460"
+              height="900"
+            />
+            <ContentWrapper className="slide-content">
+              <Text as="h6" variant="Body-Large" color="stone">
                 City, Country
               </Text>
               <Text
@@ -89,7 +115,7 @@ const InlineSlider = () => {
               height="900"
             />
             <ContentWrapper className="slide-content">
-              <Text Base="h6" variant="Body-Large" color={theme.colors.stone}>
+              <Text as="h6" variant="Body-Large" color="stone">
                 City, Country
               </Text>
               <Text
@@ -115,39 +141,13 @@ const InlineSlider = () => {
               height="900"
             />
             <ContentWrapper className="slide-content">
-              <Text Base="h6" variant="Body-Large" color={theme.colors.stone}>
+              <Text as="h6" variant="Body-Large" color="stone">
                 City, Country
               </Text>
               <Text
-                Base="h3"
+                as="h3"
                 variant="Display-Large"
-                color={theme.colors.white}
-              >
-                Project Name <br />
-                Project Name
-              </Text>
-              <LinkWrapper>
-                <Link href="#">View project</Link>
-                <Arrow type="short" color={theme.colors.white} />
-              </LinkWrapper>
-            </ContentWrapper>
-          </SlideItem>
-          <SlideItem>
-            <Image
-              src={Slide1}
-              alt="image-1"
-              layout="responsive"
-              width="1460"
-              height="900"
-            />
-            <ContentWrapper className="slide-content">
-              <Text Base="h6" variant="Body-Large" color={theme.colors.stone}>
-                City, Country
-              </Text>
-              <Text
-                Base="h3"
-                variant="Display-Large"
-                color={theme.colors.white}
+                color="white"
               >
                 Project Name <br />
                 Project Name

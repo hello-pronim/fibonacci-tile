@@ -14,7 +14,7 @@ const SupportModule = () => {
   return (
     <Container>
       <Wrapper>
-        <Text Base="h6" variant="Display-Overline">
+        <Text as="h6" variant="Display-Overline">
           HOW CAN WE HELP?
         </Text>
         <TileWrapper>
@@ -23,7 +23,7 @@ const SupportModule = () => {
               <Icon>
                 <Image alt="" src={SupportIcon} width={48} height={48} />
               </Icon>
-              <Text Base="h5" variant="Display-XSmall" altFont>
+              <Text as="h5" variant="Display-XSmall" altFont>
                 Product Support
               </Text>
             </TileInner>
@@ -33,7 +33,7 @@ const SupportModule = () => {
               <Icon>
                 <Image alt="" src={SupportIcon} width={48} height={48} />
               </Icon>
-              <Text Base="h5" variant="Display-XSmall" altFont>
+              <Text as="h5" variant="Display-XSmall" altFont>
                 How to order samples
               </Text>
             </TileInner>
@@ -43,7 +43,7 @@ const SupportModule = () => {
               <Icon>
                 <Image alt="" src={SupportIcon} width={48} height={48} />
               </Icon>
-              <Text Base="h5" variant="Display-XSmall" altFont>
+              <Text as="h5" variant="Display-XSmall" altFont>
                 Request a quote
               </Text>
             </TileInner>
@@ -53,7 +53,7 @@ const SupportModule = () => {
               <Icon>
                 <Image alt="" src={SupportIcon} width={48} height={48} />
               </Icon>
-              <Text Base="h5" variant="Display-XSmall" altFont>
+              <Text as="h5" variant="Display-XSmall" altFont>
                 General Enquiry
               </Text>
             </TileInner>
