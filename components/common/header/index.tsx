@@ -16,7 +16,8 @@ import {
   DrawerInner,
 } from "./styles";
 import { Transition } from "react-transition-group";
-import Text from "@componentscommon/typography";
+import Text from "@components/common/typography";
+import ProductSelectionCount from "@components/common/product/selectionCount";
 
 const duration = 400;
 
@@ -74,7 +75,7 @@ const Header = ({ mode = "light", position = "relative" }) => {
               Contact
             </NavItem>
             <NavItem href="#" mode={mode}>
-              Selections
+              Selections <ProductSelectionCount />
             </NavItem>
           </NavRight>
         </Wrapper>
@@ -113,7 +114,7 @@ const Header = ({ mode = "light", position = "relative" }) => {
                 </NavItem>
               </DrawerInner>
               <DrawerFooter>
-                <Text Base="h4" variant="Body-Regular">
+                <Text as="h4" variant="Body-Regular">
                   Follow Us
                 </Text>
                 <NavItem mode={mode} href="#">
