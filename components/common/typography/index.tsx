@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { space } from "styled-system";
+import { color, space, typography } from "styled-system";
 
 import {
   DisplayXLarge,
@@ -50,11 +50,15 @@ type TextTypes = {
   color?: string;
   altFont?: boolean;
 };
-
 // default Text element
-const Text = styled.span(({ variant, ...props }: TextTypes) => {
-  const textVariant = component.get(variant);
-  return textVariant({ ...props });
-}, space);
+const Text = styled.span(
+  ({ variant, ...props }: TextTypes) => {
+    const textVariant = component.get(variant);
+    return textVariant({ ...props, color: "charcoal" });
+  },
+  color,
+  space,
+  typography
+);
 
 export default Text;
