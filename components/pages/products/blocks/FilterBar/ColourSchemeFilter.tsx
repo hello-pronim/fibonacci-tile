@@ -30,7 +30,7 @@ export default function ColourSchemeFilter({}) {
   ];
 
   return (
-    <div className={styles.productsFilterContainer}>
+    <div className={styles.colorSchemesContainer}>
       <div
         className={classnames(
           styles.productFilterItem,
@@ -41,7 +41,7 @@ export default function ColourSchemeFilter({}) {
           Refine your colour schemes
         </Text>
       </div>
-      <div className={styles.colorSchemsContainer}>
+      <div className={styles.colorSchemeItemsContainer}>
         {schemeArray.map((scheme, index) => (
           <div
             key={`colour-${index}`}

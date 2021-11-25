@@ -8,10 +8,10 @@ const ContentWithImageModule = () => {
   return (
     <Container>
       <Wrapper>
-        <Text Base="h4" variant="Display-Medium">
+        <Text as="h4" variant="Display-Medium">
           Samples right now
         </Text>
-        <Text Base="p" variant="Body-Regular">
+        <Text as="p" variant="Body-Regular">
           Select your samples before 4pm for immediate dispatch and next working day delivery to Melbourne metropolitan and 1-2 days interstate.
           <br/> <br/>
           Remember, the more we know about your project, the better we can help you specify the perfect product, so feel free to overshare.

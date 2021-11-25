@@ -8,10 +8,10 @@ const QuoteModule = ({children, source}) => {
     return (
       <Container>
         <Wrapper>
-            <Text Base="h3" variant="Display-Medium" altFont>
+            <Text as="h3" variant="Display-Medium" altFont>
                 {children}
             </Text>
-            <Text Base="h5" variant="Body-Regular">
+            <Text as="h5" variant="Body-Regular">
                 {source}
             </Text>
         </Wrapper>

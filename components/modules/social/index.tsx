@@ -22,7 +22,7 @@ const SocialModule = () => {
         <Image alt="" src={Ig2} width={292} height={292} layout="fixed" />
       </ImageWrapper>
       <TextWrapper>
-        <Text Base="p" variant="Body-Small">
+        <Text as="p" variant="Body-Small">
           Tag <a href="#">#fibonacci</a> or <a href="#">#likenoother</a> in your
           post for your chance to be featured
         </Text>

@@ -3,18 +3,19 @@ import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
 import classnames from "classnames";
 import useOnClickOutside from "use-onclickoutside";
+import { useAppContext } from "@contexts/AppContext";
+import SelectionCount from "@components/common/product/selectionCount";
 import Text from "@components/common/typography";
-import Logo from "public/assets/brandmarks/symbol-primary.svg";
 import SearchIcon from "@components/icons/search";
 import ArrowDownIcon from "@components/icons/arrowDown";
 import GridIcon from "@components/icons/grid";
 import ListIcon from "@components/icons/list";
 import CollectionIcon from "@components/icons/collection";
-import { useAppContext } from "@contexts/AppContext";
 import ProductFilter from "./ProductFilter";
 import SortByFilter from "./SortByFilter";
 import SearchFilter from "./SearchFilter";
 import ColourSchemeFilter from "./ColourSchemeFilter";
+import Logo from "public/assets/brandmarks/symbol-primary.svg";
 import styles from "./styles.module.scss";
 
 export default function ProductFilters({ show }) {
@@ -124,11 +125,7 @@ export default function ProductFilters({ show }) {
         </div>
         <div className={styles.selections}>
           <Text variant="Body-Small">Selections</Text>{" "}
-          <span className={styles.selectionCount}>
-            {state?.selectedProducts.length
-              ? state?.selectedProducts.length
-              : 0}
-          </span>
+          <SelectionCount />
         </div>
       </div>
       {activeFilter && (
