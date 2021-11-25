@@ -99,13 +99,8 @@ export default function ProductFilter({}) {
           </Text>
         </div>
       </div>
-<<<<<<< HEAD
       <div onClick={()=> handleFilter('all')} className={styles.clearFilter}>
         Clear Filter <CloseIcon color={"#0D0D0D"}/>
-=======
-      <div onClick={() => handleFilter("all")} className={styles.clearFilter}>
-        Clear Filter <Cross color={"#0D0D0D"} />
->>>>>>> 47e73629ac935b15bbf31d5e2bb678938f1ed1cc
       </div>
     </div>
   );
