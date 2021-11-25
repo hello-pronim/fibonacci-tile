@@ -5,18 +5,20 @@ import {
   RightCol,
   Segment,
   BottomRow,
-} from './styles';
+} from "./styles";
 import Text from "@componentscommon/typography";
 import Image from "next/image";
-import AccentText from "@components/common/accentText";
+import AccentText, { AccentTextMobile } from "@components/common/accentText";
 import InspireRight from "public/assets/temp/inspire-right.png";
 import InspireLeft from "public/assets/temp/inspire-left.png";
 import Button from "@components/common/button";
+import { css } from "@styled-system/css";
+import theme from "@styles/theme";
 
 const DualColumnModule = () => {
   return (
     <Container>
-      <AccentText top={160}>Be inspired</AccentText>
+      <AccentText top={160}>Get inspired</AccentText>
       <LeftCol>
         <Segment>
           <Image
@@ -54,19 +56,33 @@ const DualColumnModule = () => {
         </Segment>
       </LeftCol>
       <RightCol>
-        <Text as="h4" variant="Display-Large" altFont>
-          From design
-          <br />
-          to delivery.
-        </Text>
+        <div>
+          <AccentTextMobile css={css({ pb: 60 })}>
+            Get inspired
+          </AccentTextMobile>
+          <Text
+            as="h4"
+            variant="Display-Small"
+            altFont
+            css={css({
+              [theme.mediaQueries.medium]: {
+                fontSize: 74,
+              },
+            })}
+          >
+            From design
+            <br />
+            to delivery.
+          </Text>
+        </div>
         <Segment>
           <ImageWrapper>
             <Image
               alt=""
               src={InspireRight}
               layout="responsive"
-              width={790}
-              height={560}
+              width={1715}
+              height={1221}
             />
           </ImageWrapper>
           <Text as="h6" variant="Display-Overline">
@@ -84,8 +100,8 @@ const DualColumnModule = () => {
               alt=""
               src={InspireRight}
               layout="responsive"
-              width={790}
-              height={560}
+              width={1715}
+              height={1221}
             />
           </ImageWrapper>
           <Text as="h6" variant="Display-Overline">

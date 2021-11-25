@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "public/assets/brandmarks/logo-primary.svg";
@@ -14,6 +14,9 @@ import {
   NavDrawer,
   DrawerFooter,
   DrawerInner,
+  AlertBar,
+  AlertLabel,
+  AlertClose,
 } from "./styles";
 import { Transition } from "react-transition-group";
 import Text from "@components/common/typography";
@@ -35,9 +38,30 @@ const transitionStyles = {
 
 const Header = ({ mode = "light", position = "relative" }) => {
   const [navOpen, setNavOpen] = useState(false);
+  const [alertActive, setAlertActive] = useState(true);
   const activeLogo = mode === "dark" ? Logo : LogoWhite;
+
+  useEffect(() => {
+    const alertState = sessionStorage.getItem("alert-state");
+    const alertToBool = alertState === "true";
+    alertState && setAlertActive(alertToBool);
+  }, []);
+
+  useEffect(() => {
+    sessionStorage.setItem("alert-state", alertActive.toString());
+  }, [alertActive]);
+
   return (
     <>
+      {alertActive && (
+        <AlertBar>
+          <AlertLabel>
+            Join Fibonacci today and save up to 20% on your order using code
+            SPRING at checkout. Promotion valid for new users only.
+          </AlertLabel>
+          <AlertClose onClick={() => setAlertActive(false)} />
+        </AlertBar>
+      )}
       <Container position={position} navOpen={navOpen}>
         <Wrapper>
           <NavIcon isOpen={navOpen} onClick={() => setNavOpen(!navOpen)} />

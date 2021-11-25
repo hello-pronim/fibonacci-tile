@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useAppContext } from "@contexts/AppContext";
 import Container from "@components/common/layout/container";
 import ProductCard from "@components/common/product/card";
-import AccentText from "@components/common/accentText";
+import AccentText, {AccentTextMobile} from "@components/common/accentText";
 import {
   Wrapper,
   ProgBar,
@@ -40,7 +40,7 @@ const ProductCarousel = () => {
 
   const settings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     slidesToShow: 5,
     slidesToScroll: 5,
     arrows: false,
@@ -153,6 +153,7 @@ const ProductCarousel = () => {
         <Arrow color={theme.colors.white} width={40} />
       </NextWrapper>
       <Wrapper>
+      <AccentTextMobile css={css({pb: 24})}>A superlative selection</AccentTextMobile>
         <Slider {...settings} ref={slider}>
           {products &&
             products.map((product) => {

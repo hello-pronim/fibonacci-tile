@@ -9,6 +9,9 @@ import {
 import Text from "@componentscommon/typography";
 import Image from "next/image";
 import SupportIcon from "public/assets/icons/support-icon.svg";
+import SamplesIcon from "public/assets/icons/sample-icon.svg";
+import QuoteIcon from "public/assets/icons/quote-icon.svg";
+import EnquiryIcon from "public/assets/icons/enquiry-icon.svg";
 
 const SupportModule = () => {
   return (
@@ -31,7 +34,7 @@ const SupportModule = () => {
           <Tile href="#">
             <TileInner>
               <Icon>
-                <Image alt="" src={SupportIcon} width={48} height={48} />
+                <Image alt="" src={SamplesIcon} width={48} height={48} />
               </Icon>
               <Text as="h5" variant="Display-XSmall" altFont>
                 How to order samples
@@ -41,7 +44,7 @@ const SupportModule = () => {
           <Tile href="#">
             <TileInner>
               <Icon>
-                <Image alt="" src={SupportIcon} width={48} height={48} />
+                <Image alt="" src={QuoteIcon} width={48} height={48} />
               </Icon>
               <Text as="h5" variant="Display-XSmall" altFont>
                 Request a quote
@@ -51,7 +54,7 @@ const SupportModule = () => {
           <Tile href="#">
             <TileInner>
               <Icon>
-                <Image alt="" src={SupportIcon} width={48} height={48} />
+                <Image alt="" src={EnquiryIcon} width={48} height={48} />
               </Icon>
               <Text as="h5" variant="Display-XSmall" altFont>
                 General Enquiry

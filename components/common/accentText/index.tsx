@@ -22,4 +22,19 @@ const AccentText = styled("span")(({ top }: { top?: number }) =>
   })
 );
 
+export const AccentTextMobile = styled("span")(
+  css({
+    fontFamily: 1,
+    fontWeight: 0,
+    color: "charcoal",
+    fontSize: 3,
+    lineHeight: 2,
+    letterSpacing: 0,
+    display: "block",
+    [theme.mediaQueries.small]: {
+      display: "none",
+    },
+  })
+);
+
 export default AccentText;

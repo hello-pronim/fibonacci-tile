@@ -48,22 +48,19 @@ const Tile = styled("a")(
     py: 40,
     justifyContent: "center",
     transition: "background ease 0.3s",
-    backgroundColor: theme.colors.stoneTints[8],
-    "&:nth-last-child(1)": {
-      backgroundColor: theme.colors.concreteTints[8],
-    },
-    "&:nth-last-child(2)": {
-      backgroundColor: "white",
+    backgroundColor: theme.colors.concreteTints[8],
+    '&:hover': {
+      bg: 'white',
     },
   })
 );
 
 const TileInner = styled("div")(
   css({
+    color: 'charcoal',
     [theme.mediaQueries.medium]: {
       position: "absolute",
       flexDirection: "column",
-
       justifyContent: "center",
       top: 0,
       bottom: 0,

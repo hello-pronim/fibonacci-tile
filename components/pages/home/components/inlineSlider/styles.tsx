@@ -148,11 +148,74 @@ const LinkWrapper = styled("div")(
     display: "flex",
     alignItems: "center",
     columnGap: 20,
+    svg: {
+      transition: 'ease all 0.3s',
+    },
+    '&:hover': {
+      svg: {
+        transform: 'translateX(6px)',
+      },
+    },
     a: {
       textDecoration: "none",
       fontSize: 2,
       lineHeight: 2,
       color: "charcoal",
+      '&:before': {
+        position:'relative',
+        backgroundColor:'charcoal',
+        content: "' '",
+        display: 'block',
+        height: '2px',
+        width: '100%',
+        transform: 'translateY(40px)',
+        transition: 'ease all 0.3s',
+        pointerEvents: 'none',
+        opacity: 0,
+      },
+      '&:hover': {
+        '&:before': {
+          transform: 'translateY(28px)',
+          opacity: 1,
+        },
+      },
+    },
+  })
+);
+
+const Pill = styled('div')(css({
+  display: 'flex',
+  alignItems: 'center',
+  columnGap: '4px',
+  py: '3.5px',
+  px: '12px',
+  bg: 'charcoal',
+  position:'absolute',
+  top: 32,
+  left: 32,
+  zIndex: 99999,
+  textTransform: 'uppercase',
+  color: 'white',
+  borderRadius: 32,
+  fontSize: 0,
+  lineHeight: 2,
+}))
+
+const SlideImage = styled("div")(
+  css({
+    display: "none !important",
+    "&: > *": { display: "none !important" },
+    [theme.mediaQueries.small]: {
+      display: "block !important",
+    },
+  })
+);
+
+const SlideImageMobile = styled("div")(
+  css({
+    display: "block !important",
+    [theme.mediaQueries.small]: {
+      display: "none !important",
     },
   })
 );
@@ -168,4 +231,7 @@ export {
   ProgBarInner,
   BottomBarInner,
   LinkWrapper,
+  Pill,
+  SlideImage,
+  SlideImageMobile,
 };
