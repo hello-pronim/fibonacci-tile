@@ -1,6 +1,6 @@
 import Text from "@components/common/typography";
 import SearchIcon from "@components/icons/search";
-import Cross from "@components/icons/cross";
+import CloseIcon from "@components/icons/close";
 import {DebounceInput} from 'react-debounce-input';
 import styles from "./styles.module.scss";
 import { useAppContext } from "@contexts/AppContext";
@@ -33,7 +33,7 @@ export default function SearchFilter({}) {
       />
 
       <div onClick={() => handleFilter("clear")} className={styles.clearFilter}>
-        Clear Search <Cross color={"#0D0D0D"}/>
+        Clear Search <CloseIcon color={"#0D0D0D"}/>
       </div>
     </div>
   );

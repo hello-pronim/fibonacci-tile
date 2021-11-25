@@ -2,7 +2,7 @@ import classnames from "classnames";
 import Text from "@components/common/typography";
 import styles from "./styles.module.scss";
 import CheckMarkIcon from "@components/icons/checkmark";
-import Cross from "@components/icons/cross";
+import CloseIcon from "@components/icons/close";
 import { useAppContext } from "@contexts/AppContext";
 
 export default function ColourSchemeFilter({}) {
@@ -61,7 +61,7 @@ export default function ColourSchemeFilter({}) {
         ))}
       </div>
       <div onClick={()=> handleFilter("clear")} className={styles.clearFilter}>
-        Clear Filter <Cross color={"#0D0D0D"}/>
+        Clear Filter <CloseIcon color={"#0D0D0D"}/>
       </div>
     </div>
   );

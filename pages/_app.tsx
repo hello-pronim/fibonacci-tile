@@ -7,10 +7,13 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "styles/typefaces.css";
 import { AppWrapper } from "@contexts/AppContext";
+import { ApolloProvider } from "@apollo/client";
+import apolloClient from "@utils/apolloClient";
 
 function App({ Component, pageProps }: AppProps) {
   return (
     <>
+    <ApolloProvider client={apolloClient}>
       <AppWrapper>
         <Head>
           <link rel="icon" href="/favicon.ico" />
@@ -22,6 +25,7 @@ function App({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </ThemeProvider>
       </AppWrapper>
+    </ApolloProvider>
     </>
   );
 }
