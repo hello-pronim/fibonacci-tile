@@ -24,7 +24,7 @@ const Container = styled("div")(({ ...props }: containerProps) =>
     borderBottom: "1px solid",
     transition: "ease all 0.3s",
     borderColor: props.navOpen ? "white" : "stone",
-    zIndex: 10,
+    zIndex: 1000,
   })
 );
 
@@ -214,6 +214,44 @@ const DrawerFooter = styled("div")(() =>
   })
 );
 
+const AlertBar = styled('div')(css({
+  boxSizing: 'border-box',
+  width: '100%',
+  bg: 'taupe',
+  position: 'relative',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  py: 10,
+  px: 28,
+}));
+
+const AlertLabel = styled('span')(css({
+  color: 'white',
+  fontSize: 1,
+  lineHeight: 0,
+}));
+
+const AlertClose = styled('button')(css({
+  position: 'absolute',
+  right: 28,
+  height: 16,
+  width: 16,
+  background: 'transparent',
+  border: 'none',
+  cursor: 'pointer',
+  '&:before': {
+    position:'relative',
+    bg:'white',
+    content: "' '",
+    display: 'block',
+    height: '2px',
+    transition: 'all .2s ease-in-out',
+    width: 16,
+    borderRadius: 2,
+  },
+}))
+
 export {
   Container,
   Wrapper,
@@ -225,4 +263,7 @@ export {
   NavDrawer,
   DrawerFooter,
   DrawerInner,
+  AlertBar,
+  AlertLabel,
+  AlertClose,
 };
