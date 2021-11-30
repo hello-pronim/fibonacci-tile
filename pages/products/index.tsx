@@ -1,27 +1,25 @@
 import Head from "next/head";
 import Footer from "@components/common/Footer";
 import ProductPage from "@components/pages/products";
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
+import { useAppContext } from "@contexts/AppContext";
+import { ProductsQuery } from "@gql/productGQL";
 
-const CountryQuery = gql `
-  query Countries {
-    countries {
-      code
-      name
-      emoji
-    }
-  }
-`;
 const Products = () => {
-  const {data, error, loading} = useQuery(CountryQuery);
-  console.log("data", data)
+  const {data, error, loading} = useQuery(ProductsQuery);
+  const { state, dispatch } = useAppContext();
+  if(loading) {
+   console.log("fetching data ...")
+  }else {
+    console.log("Success....")
+  }
   return (
     <>
       <Head>
         <title>Products | Fibonacci</title>
         <meta name="description" content="Fibonacci Products page" />
       </Head>
-      <ProductPage />
+      <ProductPage products={data?.entries} />
       <Footer />
     </>
   );

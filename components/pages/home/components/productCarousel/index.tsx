@@ -17,8 +17,11 @@ import {
 import { css } from "@styled-system/css";
 import Arrow from "@componentscommon/icons/arrow";
 import theme from "styles/theme";
+import { useQuery } from "@apollo/client";
+import { ProductsQuery } from "@gql/productGQL";
 
 const ProductCarousel = () => {
+  const {data, error, loading} = useQuery(ProductsQuery);
   const { state, dispatch } = useAppContext();
   const slider = React.useRef<Slider>(null);
   const [slideCount, setSlideCount] = useState(0);
@@ -68,84 +71,6 @@ const ProductCarousel = () => {
     ],
   };
 
-  const products = [
-    {
-      id: 1,
-      name: "Neues Grey Superfine",
-      description: " Word • Word • Word",
-    },
-    {
-      id: 2,
-      name: "Neues Grey Superfine",
-      description: " Word • Word • Word",
-    },
-    {
-      id: 3,
-      name: "Neues Grey Superfine",
-      description: " Word • Word • Word",
-    },
-    {
-      id: 4,
-      name: "Neues Grey Superfine",
-      description: " Word • Word • Word",
-    },
-    {
-      id: 5,
-      name: "Neues Grey Superfine",
-      description: " Word • Word • Word",
-    },
-    {
-      id: 6,
-      name: "Neues Grey Superfine",
-      description: " Word • Word • Word",
-    },
-    {
-      id: 7,
-      name: "Neues Grey Superfine",
-      description: " Word • Word • Word",
-    },
-    {
-      id: 8,
-      name: "Neues Grey Superfine",
-      description: " Word • Word • Word",
-    },
-    {
-      id: 9,
-      name: "Neues Grey Superfine",
-      description: " Word • Word • Word",
-    },
-    {
-      id: 10,
-      name: "Neues Grey Superfine",
-      description: " Word • Word • Word",
-    },
-    {
-      id: 11,
-      name: "Neues Grey Superfine",
-      description: " Word • Word • Word",
-    },
-    {
-      id: 12,
-      name: "Neues Grey Superfine",
-      description: " Word • Word • Word",
-    },
-    {
-      id: 13,
-      name: "Neues Grey Superfine",
-      description: " Word • Word • Word",
-    },
-    {
-      id: 14,
-      name: "Neues Grey Superfine",
-      description: " Word • Word • Word",
-    },
-    {
-      id: 15,
-      name: "Neues Grey Superfine",
-      description: " Word • Word • Word",
-    },
-  ];
-
   return (
     <Container>
       <AccentText top={176}>A superlative selection</AccentText>
@@ -155,8 +80,8 @@ const ProductCarousel = () => {
       <Wrapper>
       <AccentTextMobile css={css({pb: 24})}>A superlative selection</AccentTextMobile>
         <Slider {...settings} ref={slider}>
-          {products &&
-            products.map((product) => {
+          {data?.entries &&
+            data.entries.map((product) => {
               return (
                 <ProductCard
                   isSelected={

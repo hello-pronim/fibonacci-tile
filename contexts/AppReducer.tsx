@@ -7,6 +7,7 @@ export const initialState = {
     sortBy: "featured",
   },
   productDisplayMode: "grid",
+  loading: true,
 };
 
 export const AppReducer = (state, action) => {
@@ -85,6 +86,12 @@ export const AppReducer = (state, action) => {
           selectedProducts: [...state.selectedProducts, action.product],
         };
       }
+    }
+    case "SET_LOADING": {
+      return {
+        ...state,
+        loading: action.value,
+      };
     }
   }
 };
