@@ -19,6 +19,8 @@ import Arrow from "@componentscommon/icons/arrow";
 import theme from "styles/theme";
 import { useQuery } from "@apollo/client";
 import { ProductsQuery } from "@gql/productGQL";
+import NProgress from "nprogress";
+
 
 const ProductCarousel = () => {
   const {data, error, loading} = useQuery(ProductsQuery);
@@ -26,7 +28,11 @@ const ProductCarousel = () => {
   const slider = React.useRef<Slider>(null);
   const [slideCount, setSlideCount] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
-
+  if(loading) {
+    NProgress.start();
+  }else {
+    NProgress.done();
+  }
   const gotoNext = () => {
     slider.current !== null && slider.current.slickNext();
   };
@@ -77,8 +83,9 @@ const ProductCarousel = () => {
       <NextWrapper onClick={() => gotoNext()}>
         <Arrow color={theme.colors.white} width={40} />
       </NextWrapper>
+      {data?.entries &&
       <Wrapper>
-      <AccentTextMobile css={css({pb: 24})}>A superlative selection</AccentTextMobile>
+        <AccentTextMobile css={css({pb: 24})}>A superlative selection</AccentTextMobile>
         <Slider {...settings} ref={slider}>
           {data?.entries &&
             data.entries.map((product) => {
@@ -116,6 +123,7 @@ const ProductCarousel = () => {
           </BottomBarInner>
         </BottomBar>
       </Wrapper>
+      }
     </Container>
   );
 };
