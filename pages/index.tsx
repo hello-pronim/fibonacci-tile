@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Homepage from "@components/pages/home";
 import Header from "@components/common/header";
-import Footer from "@components/common/footer";
+import Footer from "@components/common/Footer";
 
 const Home = () => {
   return (
