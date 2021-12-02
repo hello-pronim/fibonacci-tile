@@ -9,6 +9,13 @@ import "styles/typefaces.css";
 import { AppWrapper } from "@contexts/AppContext";
 import { ApolloProvider } from "@apollo/client";
 import apolloClient from "@utils/apolloClient";
+import Router from "next/router";
+import "nprogress/nprogress.css";
+import NProgress from "nprogress";
+
+Router.events.on("routeChangeStart", NProgress.start);
+Router.events.on("routeChangeError", NProgress.done);
+Router.events.on("routeChangeComplete", NProgress.done);
 
 function App({ Component, pageProps }: AppProps) {
   return (

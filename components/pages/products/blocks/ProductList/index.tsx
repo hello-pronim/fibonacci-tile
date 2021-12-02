@@ -32,7 +32,7 @@ function ProductLists({ products }) {
             </div>
             <div className={styles.tableActionContainer}></div>
           </div>
-          {products.map((product: any) => {
+          {products?.map((product: any) => {
             return (
               <ProductCard
                 displayMode="list"
@@ -55,7 +55,7 @@ function ProductLists({ products }) {
         </div>
       )}
       {state?.productDisplayMode !== "list" &&
-        products.map((product) => (
+        products?.map((product) => (
           <ProductCard
             displayMode={state?.productDisplayMode}
             product={product}

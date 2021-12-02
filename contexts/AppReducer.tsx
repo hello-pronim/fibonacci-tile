@@ -7,6 +7,7 @@ export const initialState = {
     sortBy: "featured",
   },
   productDisplayMode: "grid",
+  loading: true,
 };
 
 export const AppReducer = (state, action) => {
