@@ -17,22 +17,22 @@ import {
 import { css } from "@styled-system/css";
 import Arrow from "@componentscommon/icons/arrow";
 import theme from "styles/theme";
-import { useQuery } from "@apollo/client";
-import { ProductsQuery } from "@gql/productGQL";
-import NProgress from "nprogress";
+// import { useQuery } from "@apollo/client";
+// import { ProductsQuery } from "@gql/productGQL";
+// import NProgress from "nprogress";
 
 
 const ProductCarousel = () => {
-  const {data, error, loading} = useQuery(ProductsQuery);
+  // const {data, error, loading} = useQuery(ProductsQuery);
   const { state, dispatch } = useAppContext();
   const slider = React.useRef<Slider>(null);
   const [slideCount, setSlideCount] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
-  if(loading) {
-    NProgress.start();
-  }else {
-    NProgress.done();
-  }
+  // if(loading) {
+  //   NProgress.start();
+  // }else {
+  //   NProgress.done();
+  // }
   const gotoNext = () => {
     slider.current !== null && slider.current.slickNext();
   };
@@ -77,18 +77,69 @@ const ProductCarousel = () => {
     ],
   };
 
+  const products = [
+    {
+      id: "1",
+      richText: "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+      slug: "polarity",
+      subHeading: "Complex • Robust • Diverse",
+      title: "Polarity",
+      uri: "products/polarity"
+    },
+    {
+      id: "2",
+      richText: "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+      slug: "polarity",
+      subHeading: "Complex • Robust • Diverse",
+      title: "Polarity",
+      uri: "products/polarity"
+    },
+    {
+      id: "3",
+      richText: "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+      slug: "polarity",
+      subHeading: "Complex • Robust • Diverse",
+      title: "Polarity",
+      uri: "products/polarity"
+    },
+    {
+      id: "4",
+      richText: "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+      slug: "polarity",
+      subHeading: "Complex • Robust • Diverse",
+      title: "Polarity",
+      uri: "products/polarity"
+    },
+    {
+      id: "5",
+      richText: "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+      slug: "polarity",
+      subHeading: "Complex • Robust • Diverse",
+      title: "Polarity",
+      uri: "products/polarity"
+    },
+    {
+      id: "6",
+      richText: "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+      slug: "polarity",
+      subHeading: "Complex • Robust • Diverse",
+      title: "Polarity",
+      uri: "products/polarity"
+    }
+  ]
+  
   return (
     <Container>
       <AccentText top={176}>A superlative selection</AccentText>
       <NextWrapper onClick={() => gotoNext()}>
         <Arrow color={theme.colors.white} width={40} />
       </NextWrapper>
-      {data?.entries &&
+      {products &&
       <Wrapper>
         <AccentTextMobile css={css({pb: 24})}>A superlative selection</AccentTextMobile>
         <Slider {...settings} ref={slider}>
-          {data?.entries &&
-            data.entries.map((product) => {
+          {products &&
+            products.map((product) => {
               return (
                 <ProductCard
                   isSelected={
