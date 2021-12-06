@@ -1,11 +1,65 @@
 import React, { useEffect, useState, useRef } from "react";
-import Container from "@components/common/layout/container";
+import RelatedProducts from "./blocks/relatedProducts";
+import ProductsHeader from "./Header";
+// import { useQuery } from "@apollo/client";
+// import { ProductsQuery } from "@gql/productGQL";
+// import NProgress from "nprogress";
 
 const ProductPage = () => {
+  // const {data, error, loading} = useQuery(ProductsQuery);
+  // if(loading) {
+  //   NProgress.start();
+  // }else {
+  //   NProgress.done();
+  // }
+  const products = [
+    {
+      id: "1",
+      richText: "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+      slug: "polarity",
+      subHeading: "Complex • Robust • Diverse",
+      title: "Polarity",
+      uri: "products/polarity"
+    },
+    {
+      id: "2",
+      richText: "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+      slug: "polarity",
+      subHeading: "Complex • Robust • Diverse",
+      title: "Polarity",
+      uri: "products/polarity"
+    },
+    {
+      id: "3",
+      richText: "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+      slug: "polarity",
+      subHeading: "Complex • Robust • Diverse",
+      title: "Polarity",
+      uri: "products/polarity"
+    },
+    {
+      id: "4",
+      richText: "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+      slug: "polarity",
+      subHeading: "Complex • Robust • Diverse",
+      title: "Polarity",
+      uri: "products/polarity"
+    },
+    {
+      id: "5",
+      richText: "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+      slug: "polarity",
+      subHeading: "Complex • Robust • Diverse",
+      title: "Polarity",
+      uri: "products/polarity"
+    }
+  ]
+  
   return (
-    <Container>
-        
-    </Container>
+    <>
+      <ProductsHeader mode="dark" />
+      <RelatedProducts title="More in our Terrazzo range" products={products} />
+    </>
   );
 };
 export default ProductPage;

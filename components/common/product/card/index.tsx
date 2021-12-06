@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Image from "next/image";
+import Link from 'next/link'
 import classnames from "classnames";
 import Text from "@components/common/typography";
 import AddIcon from "@components/icons/add";
@@ -25,9 +26,13 @@ const ProductCard = ({
         })}
       >
         <div>
-          <Text as="h3" variant="Display-XSmall" altFont={true}>
-            {product.name}
-          </Text>
+          <Link href={product.uri}>
+            <a className={styles.productListTitle}>
+              <Text as="h3" variant="Display-XSmall" altFont={true}>
+                {product.title}
+              </Text>
+            </a>
+          </Link>
         </div>
         <div>
           <Text as="h4" variant="Body-Small">
@@ -41,13 +46,17 @@ const ProductCard = ({
         </div>
         <div className={styles.descCell}>
           <Text as="h4" variant="Body-Small">
-            Word • Word • Word
+            {product.subHeading}
           </Text>
         </div>
         <div className={styles.imgCell}>
           <div className={styles.cardImgContainer}>
             <div className={styles.cardImg}>
-              <Image src={ProductImg} alt="Product-1" />
+              <Link href={product.uri}>
+                <a>
+                  <Image src={ProductImg} alt="Product-1" />
+                </a>
+              </Link>
             </div>
             <div className={styles.actionBtnContainer}>
               <button
@@ -103,7 +112,11 @@ const ProductCard = ({
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles.cardImgContainer}>
-          <Image src={ProductImg} alt="Product-1" />
+          <Link href={product.uri}>
+            <a>
+              <Image src={ProductImg} alt="Product-1" />
+            </a>
+          </Link>
           <div className={styles.actionBtnContainer}>
             <button
               className={classnames(styles.actionBtn, {
@@ -147,10 +160,14 @@ const ProductCard = ({
           className={styles.cardTitle}
           marginTop="25px"
         >
-          {product.name}
+          <Link href={product.uri}>
+            <a>
+              {product.title}
+            </a>
+          </Link>
         </Text>
         <Text as="h4" variant="Body-Small" className={styles.cardSubTitle}>
-          Word • Word • Word
+          {product.subHeading}
         </Text>
       </div>
     </div>

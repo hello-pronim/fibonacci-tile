@@ -2,13 +2,17 @@ import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import Image from "next/image";
 import Slide1 from "public/assets/temp/home-slide-1.png";
+import Slide1Mobile from "public/assets/temp/home-slide-1-mobile.png";
 import {
   Container,
   SlideItem,
   ContentWrapper,
   CounterWrapper,
   Loader,
+  SlideImage,
+  SlideImageMobile,
 } from "./styles";
+import { css } from "@emotion/react";
 
 const Hero = () => {
   const slider = React.useRef<Slider>(null);
@@ -43,7 +47,25 @@ const Hero = () => {
     <Container>
       <Slider {...settings} ref={slider}>
         <SlideItem>
-          <Image src={Slide1} alt="" layout="responsive" width="1920" height="880"/>
+          <SlideImage>
+            <Image
+              className="lrg-img"
+              src={Slide1}
+              alt=""
+              layout="responsive"
+              width="1920"
+              height="880"
+            />
+          </SlideImage>
+          <SlideImageMobile>
+            <Image
+              src={Slide1Mobile}
+              alt=""
+              layout="responsive"
+              width="750"
+              height="1240"
+            />
+          </SlideImageMobile>
           <ContentWrapper>
             <span>LIKE</span>
             <span>NO</span>
@@ -51,7 +73,13 @@ const Hero = () => {
           </ContentWrapper>
         </SlideItem>
         <SlideItem>
-          <Image src={Slide1} alt=""  layout="responsive" width="1920" height="880"/>
+          <Image
+            src={Slide1}
+            alt=""
+            layout="responsive"
+            width="1920"
+            height="880"
+          />
           <ContentWrapper>
             <span>LIKE</span>
             <span>NO</span>

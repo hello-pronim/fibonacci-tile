@@ -44,6 +44,16 @@ const RotatedLogo = styled("div")(() =>
   })
 );
 
+const MobileLogo = styled("div")(() =>
+  css({
+    display: "block",
+    gridRow: 1,
+    [theme.mediaQueries.small]: {
+      display: "none",
+    },
+  })
+);
+
 const SubFooterWrapper = styled("div")(({ ...props }) =>
   css({
     mx: "auto",
@@ -62,13 +72,17 @@ const SubFooterWrapper = styled("div")(({ ...props }) =>
   })
 );
 
-const SubFooterItems = styled("div")(() =>
+const SubFooterItems = styled("div")(({mobileOrder}: {mobileOrder: number}) =>
   css({
     fontSize: 1,
     lineHeight: 0,
     fontFamily: 1,
     color: theme.colors.stoneTints[4],
     a: { color: "stone", textDecoration: "none" },
+    order: mobileOrder && mobileOrder,
+    [theme.mediaQueries.small]: {
+      order: 'initial'
+    },
   })
 );
 const Column = styled("div")(() =>
@@ -79,9 +93,10 @@ const Column = styled("div")(() =>
   })
 );
 
-const Segment = styled("div")(({ col, row }: { col: number; row: number }) =>
+const Segment = styled("div")(({ col, row, mobileRow }: { col: number; row: number; mobileRow: number; }) =>
   css({
-    [theme.mediaQueries.medium]: {
+    gridRow: mobileRow && mobileRow,
+    [theme.mediaQueries.small]: {
       gridColumn: col && col,
       gridRow: row && row,
     },
@@ -209,4 +224,5 @@ export {
   Signup,
   SubFooterItems,
   Symbol,
+  MobileLogo,
 };

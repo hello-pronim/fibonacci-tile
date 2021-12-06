@@ -19,8 +19,15 @@ const Container = styled(Cntnr)(() =>
       bg: "background",
       overflow:'hidden',
       alignItems: 'flex-start',
-      rowGap: 60,
-      pt: 160,
+      rowGap: 120,
+      [theme.mediaQueries.medium]: {
+        rowGap: 60,
+      },
+      
+      pt: 60,
+      [theme.mediaQueries.medium]: {
+        pt: 160,
+      },
       pb: 80,
   })
 );
@@ -31,7 +38,7 @@ const LeftCol = styled("div")(() =>
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'flex-start',
-      rowGap: [60],
+      rowGap: [186],
       h3: {
         fontSize: 32,
         [theme.mediaQueries.medium]: {
@@ -46,9 +53,12 @@ const RightCol = styled("div")(() =>
       gridRow: [1],
       gridColumn: ['1 / span 2', '1 / span 6', '1 / span 6', '8 / span 12'],
       display: 'flex',
-      rowGap: [60],
+      rowGap: 120,
       flexDirection: 'column',
       justifyContent: 'flex-start',
+      [theme.mediaQueries.medium]: {
+        rowGap: 186,
+      },
       h3: {
         fontSize: 32,
         [theme.mediaQueries.medium]: {
@@ -77,7 +87,7 @@ const BottomRow = styled("div")(css({
   display: 'flex',
   rowGap: 40,
   flexDirection: 'column',
-  paddingTop: [20, 20, 66],
+  paddingTop: [20, 20, 30],
   gridColumn: ['1 / span 2', '1 / span 6', '1 / span 6', ' 2 / span 12'],
   h3: {
     fontSize: [7, 7, 7, 8, 9],
@@ -85,6 +95,9 @@ const BottomRow = styled("div")(css({
 }))
 
 const Segment = styled("div")(css({
+  h6: {
+    pt: 16,
+  },
   '& > *:not(:last-child)': {
     mb: '16px !important',
   },

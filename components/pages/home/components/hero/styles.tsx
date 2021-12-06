@@ -20,17 +20,42 @@ const SlideItem = styled("div")(
   })
 );
 
+const SlideImage = styled("div")(
+  css({
+    display: "none !important",
+    "&: > *": { display: "none !important" },
+    [theme.mediaQueries.small]: {
+      display: "block !important",
+    },
+  })
+);
+
+const SlideImageMobile = styled("div")(
+  css({
+    display: "block !important",
+    [theme.mediaQueries.small]: {
+      display: "none !important",
+    },
+  })
+);
+
 const ContentWrapper = styled("div")(
   css({
-    display: "none",
-    [theme.mediaQueries.medium]: {
+    display: "flex",
+    flexDirection: "column",
+    paddingTop: 110,
+    paddingBottom: 24,
+    px: 16,
+    [theme.mediaQueries.small]: {
+      alignItems: "center",
+      flexDirection: 'row',
       display: "flex",
+      px: 40,
     },
     position: "absolute",
     justifyContent: "space-between",
-    alignItems: "center",
     my: "auto",
-    px: 40,
+
     zIndex: 9999,
     left: 0,
     right: 0,
@@ -39,16 +64,27 @@ const ContentWrapper = styled("div")(
     color: "white",
     width: "100%",
     span: {
-      fontSize: 120,
+      fontSize: 56,
       display: "flex",
+      justifyContent: "flex-end",
+      [theme.mediaQueries.small]: {
+        width: 'initial',
+      },
+      [theme.mediaQueries.medium]: {
+        fontSize: 120,
+      },
+      width: "100%",
       "&:first-child": {
+        justifyContent: "flex-start",
         display: "flex",
-        flex: 1,
+        [theme.mediaQueries.small]: {
+          flex: 1,
+        },
       },
       "&:last-child": {
         display: "flex",
-        justifyContent: "flex-end",
-        flex: 1,
+        justifyContent: "flex-start",
+        [theme.mediaQueries.small]: { justifyContent: "flex-end", flex: 1 },
       },
     },
   })
@@ -57,7 +93,7 @@ const ContentWrapper = styled("div")(
 const CounterWrapper = styled("div")(
   css({
     position: "absolute",
-    display: "flex",
+    display: 'none',
     alignItems: "center",
     columnGap: 16,
     right: 40,
@@ -67,6 +103,9 @@ const CounterWrapper = styled("div")(
     fontSize: 2,
     lineHeight: 0,
     fontWeight: 0,
+    [theme.mediaQueries.small]: {
+      display: "flex",
+    },
   })
 );
 
@@ -100,4 +139,12 @@ const Loader = styled("div")(({ prog }: { prog: number }) =>
   })
 );
 
-export { Container, SlideItem, ContentWrapper, CounterWrapper, Loader };
+export {
+  Container,
+  SlideItem,
+  ContentWrapper,
+  CounterWrapper,
+  Loader,
+  SlideImage,
+  SlideImageMobile,
+};

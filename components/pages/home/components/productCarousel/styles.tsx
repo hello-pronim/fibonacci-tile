@@ -8,6 +8,11 @@ const Wrapper = styled("div")(
     gridColumn: "1 / span 12",
     py: 120,
     width: "100%",
+    '.slick-slider': {
+      '.slick-list': {
+        padding: '0 !important',
+      }
+    },
   })
 );
 
@@ -118,11 +123,37 @@ const LinkWrapper = styled("div")(
     display: "flex",
     alignItems: "center",
     columnGap: 20,
+    svg: {
+      transition: 'ease all 0.3s',
+    },
+    '&:hover': {
+      svg: {
+        transform: 'translateX(6px)',
+      },
+    },
     a: {
       textDecoration: "none",
       fontSize: 2,
       lineHeight: 2,
       color: "charcoal",
+      '&:before': {
+        position:'relative',
+        backgroundColor:'charcoal',
+        content: "' '",
+        display: 'block',
+        height: '2px',
+        width: '100%',
+        transform: 'translateY(40px)',
+        transition: 'ease all 0.3s',
+        pointerEvents: 'none',
+        opacity: 0,
+      },
+      '&:hover': {
+        '&:before': {
+          transform: 'translateY(28px)',
+          opacity: 1,
+        },
+      },
     },
   })
 );

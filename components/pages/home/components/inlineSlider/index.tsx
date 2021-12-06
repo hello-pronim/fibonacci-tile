@@ -3,7 +3,9 @@ import Slider from "react-slick";
 import Image from "next/image";
 import Text from "@components/common/typography";
 import Slide1 from "public/assets/temp/project-slide-1.png";
-import AccentText from "@components/common/accentText";
+import Slide1Mobile from "public/assets/temp/project-slide-mobile.png";
+import AccentText, {AccentTextMobile} from "@components/common/accentText";
+import AddIcon from "@components/icons/add";
 import Link from "next/link";
 import Arrow from "@components/common/icons/arrow";
 import {
@@ -16,6 +18,9 @@ import {
   LinkWrapper,
   BottomBar,
   ContentWrapper,
+  Pill,
+  SlideImage,
+  SlideImageMobile,
 } from "./styles";
 import { css } from "@styled-system/css";
 import theme from "styles/theme";
@@ -53,24 +58,36 @@ const InlineSlider = () => {
     <Container>
       <AccentText top={206}>A superlative selection</AccentText>
       <Wrapper>
+        <AccentTextMobile css={css({pb: 80})}>A superlative selection</AccentTextMobile>
         <Slider {...settings} ref={slider}>
           <SlideItem>
-            <Image
-              src={Slide1}
-              alt="image-1"
-              layout="responsive"
-              width="1460"
-              height="900"
-            />
+            <SlideImage>
+              <Image
+                src={Slide1}
+                alt="image-1"
+                layout="responsive"
+                width="1460"
+                height="900"
+              />
+            </SlideImage>
+            <SlideImageMobile>
+              <Image
+                src={Slide1Mobile}
+                alt="image-1"
+                layout="responsive"
+                width="343"
+                height="476"
+              />
+            </SlideImageMobile>
             <ContentWrapper className="slide-content">
+              <Pill>
+                <AddIcon color="white" />
+                New Release
+              </Pill>
               <Text as="h6" variant="Body-Large" color="stone">
                 City, Country
               </Text>
-              <Text
-                as="h3"
-                variant="Display-Large"
-                color="white"
-              >
+              <Text as="h3" variant="Display-Large" color="white">
                 Project Name <br />
                 Project Name
               </Text>
@@ -81,22 +98,33 @@ const InlineSlider = () => {
             </ContentWrapper>
           </SlideItem>
           <SlideItem>
-            <Image
-              src={Slide1}
-              alt="image-1"
-              layout="responsive"
-              width="1460"
-              height="900"
-            />
+            <SlideImage>
+              <Image
+                src={Slide1}
+                alt="image-1"
+                layout="responsive"
+                width="1460"
+                height="900"
+              />
+            </SlideImage>
+            <SlideImageMobile>
+              <Image
+                src={Slide1Mobile}
+                alt="image-1"
+                layout="responsive"
+                width="343"
+                height="476"
+              />
+            </SlideImageMobile>
             <ContentWrapper className="slide-content">
+              <Pill>
+                <AddIcon color="white" />
+                New Release
+              </Pill>
               <Text as="h6" variant="Body-Large" color="stone">
                 City, Country
               </Text>
-              <Text
-                Base="h3"
-                variant="Display-Large"
-                color={theme.colors.white}
-              >
+              <Text as="h3" variant="Display-Large" color="white">
                 Project Name <br />
                 Project Name
               </Text>
@@ -107,22 +135,33 @@ const InlineSlider = () => {
             </ContentWrapper>
           </SlideItem>
           <SlideItem>
-            <Image
-              src={Slide1}
-              alt="image-1"
-              layout="responsive"
-              width="1460"
-              height="900"
-            />
+            <SlideImage>
+              <Image
+                src={Slide1}
+                alt="image-1"
+                layout="responsive"
+                width="1460"
+                height="900"
+              />
+            </SlideImage>
+            <SlideImageMobile>
+              <Image
+                src={Slide1Mobile}
+                alt="image-1"
+                layout="responsive"
+                width="343"
+                height="476"
+              />
+            </SlideImageMobile>
             <ContentWrapper className="slide-content">
+              <Pill>
+                <AddIcon color="white" />
+                New Release
+              </Pill>
               <Text as="h6" variant="Body-Large" color="stone">
                 City, Country
               </Text>
-              <Text
-                Base="h3"
-                variant="Display-Large"
-                color={theme.colors.white}
-              >
+              <Text as="h3" variant="Display-Large" color="white">
                 Project Name <br />
                 Project Name
               </Text>
@@ -133,22 +172,33 @@ const InlineSlider = () => {
             </ContentWrapper>
           </SlideItem>
           <SlideItem>
-            <Image
-              src={Slide1}
-              alt="image-1"
-              layout="responsive"
-              width="1460"
-              height="900"
-            />
+            <SlideImage>
+              <Image
+                src={Slide1}
+                alt="image-1"
+                layout="responsive"
+                width="1460"
+                height="900"
+              />
+            </SlideImage>
+            <SlideImageMobile>
+              <Image
+                src={Slide1Mobile}
+                alt="image-1"
+                layout="responsive"
+                width="343"
+                height="476"
+              />
+            </SlideImageMobile>
             <ContentWrapper className="slide-content">
+              <Pill>
+                <AddIcon color="white" />
+                New Release
+              </Pill>
               <Text as="h6" variant="Body-Large" color="stone">
                 City, Country
               </Text>
-              <Text
-                as="h3"
-                variant="Display-Large"
-                color="white"
-              >
+              <Text as="h3" variant="Display-Large" color="white">
                 Project Name <br />
                 Project Name
               </Text>

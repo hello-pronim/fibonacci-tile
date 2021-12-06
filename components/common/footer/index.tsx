@@ -12,13 +12,16 @@ import {
   Signup,
   SubFooterItems,
   Symbol,
+  MobileLogo,
 } from "./styles";
 import Link from "next/link";
 import Image from "next/image";
 import RotatedTertiary from "public/assets/brandmarks/rotated-tertiary.svg";
+import Tertiary from "public/assets/brandmarks/logo-tertiary.svg";
 import SymbolWhite from "public/assets/brandmarks/symbol-secondary.svg";
 import Arrow from "@componentscommon/icons/arrow";
 import theme from "styles/theme";
+import { css } from "@styled-system/css";
 
 export default function Footer() {
   return (
@@ -32,7 +35,10 @@ export default function Footer() {
             alt="Fibonacci"
           />
         </RotatedLogo>
-        <Segment col={2} row={1}>
+        <MobileLogo>
+          <Image src={Tertiary} width="287" height="40" alt="Fibonacci" />
+        </MobileLogo>
+        <Segment col={2} row={1} mobileRow={2}>
           <SegmentTitle>our products</SegmentTitle>
           <ItemList>
             <Item>
@@ -49,7 +55,7 @@ export default function Footer() {
             </Item>
           </ItemList>
         </Segment>
-        <Segment col={2} row={2}>
+        <Segment col={2} row={2} mobileRow={5}>
           <SegmentTitle>Tag us</SegmentTitle>
           <TextSegment>
             Use <span>#likenoother</span> and on social to tempus mi nulla
@@ -57,7 +63,7 @@ export default function Footer() {
           </TextSegment>
         </Segment>
 
-        <Segment col={3} row={1}>
+        <Segment col={3} row={1} mobileRow={3}>
           <SegmentTitle>Resources</SegmentTitle>
           <ItemList>
             <Item>
@@ -77,7 +83,7 @@ export default function Footer() {
             </Item>
           </ItemList>
         </Segment>
-        <Segment col={3} row={2}>
+        <Segment col={3} row={2} mobileRow={6}>
           <SegmentTitle>Follow us</SegmentTitle>
           <ItemList>
             <Item>
@@ -91,7 +97,7 @@ export default function Footer() {
             </Item>
           </ItemList>
         </Segment>
-        <Segment col={4} row={1}>
+        <Segment col={4} row={1} mobileRow={4}>
           <SegmentTitle>Samples and contact</SegmentTitle>
           <ItemList>
             <Item>
@@ -106,7 +112,7 @@ export default function Footer() {
           </ItemList>
         </Segment>
 
-        <Segment col={4} row={2}>
+        <Segment col={4} row={2} mobileRow={7}>
           <SegmentTitle>Newsletter</SegmentTitle>
           <TextSegment>
             Be the first to know about season launches, exciting new products,
@@ -127,17 +133,25 @@ export default function Footer() {
         </FooterFlavourText>
       </FooterWrapper>
       <SubFooterWrapper>
-        <SubFooterItems>&#169; 2021 Fibonacci</SubFooterItems>
-        <SubFooterItems>
+        <SubFooterItems mobileOrder={1}>&#169; 2021 Fibonacci</SubFooterItems>
+        <SubFooterItems
+          mobileOrder={5}
+          css={css({
+            pt: 45,
+            [theme.mediaQueries.small]: {
+              pt: 'initial',
+            },
+          })}
+        >
           <Link href="#">Site Design by Traffic</Link>
         </SubFooterItems>
-        <SubFooterItems>
+        <SubFooterItems mobileOrder={2}>
           <Link href="#">Terms & Conditions</Link>
         </SubFooterItems>
-        <SubFooterItems>
+        <SubFooterItems mobileOrder={3}>
           <Link href="#">Privacy Policy</Link>
         </SubFooterItems>
-        <SubFooterItems>
+        <SubFooterItems mobileOrder={4}>
           <Link href="#">Get Help</Link>
         </SubFooterItems>
         <Symbol>

@@ -1,33 +1,36 @@
 @import '@styles/settings';
 
-// .container {
-//   padding: 55px;
-//   display: grid;
-//   grid-template-columns: repeat(1, 1fr);
-//   grid-column-gap: 15px;
-//   grid-row-gap: 15px;
-//   @include bp($max) {
-//     grid-template-columns: repeat(5, 1fr);
-//   }
-//   @include bp($xxl) {
-//     grid-template-columns: repeat(4, 1fr);
-//   }
-//   @include bp($xl) {
-//     grid-template-columns: repeat(3, 1fr);
-//   }
-//   @include bp($lg) {
-//     grid-template-columns: repeat(4, 1fr);
-//   }
-//   &.list_view {
-//     display: block;
-//   }
-//   .tableActionContainer {
-//     background-color: #fff;
-//   }
-//   .tableHeader {
-//     background: #e5e5e5;
-//     & > div {
-//       padding: 15px;
-//     }
-//   }
-// }
+.container {
+  padding: 55px;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+  @include bp($md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include bp($lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include bp($xl) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @include bp($xxl) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @include bp($max) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  &.list_view {
+    display: block;
+  }
+  .tableActionContainer {
+    background-color: #fff;
+  }
+  .tableHeader {
+    background: #e5e5e5;
+    & > div {
+      padding: 15px;
+    }
+  }
+}

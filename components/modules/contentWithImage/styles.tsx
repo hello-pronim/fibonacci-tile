@@ -1,6 +1,7 @@
 import css from "@styled-system/css";
 import styled from "@emotion/styled";
 import Cntnr from "@components/common/layout/container";
+import theme from 'styles/theme';
 
 export interface containerProps {
 }
@@ -29,6 +30,12 @@ const Wrapper = styled("div")(() =>
       flexDirection: 'column',
       justifyContent: 'center',
       rowGap: 32,
+      a: {
+        width: '100%',
+        [theme.mediaQueries.xSmall]: {
+          width: 'inherit',
+        },
+      },
   })
 );
 

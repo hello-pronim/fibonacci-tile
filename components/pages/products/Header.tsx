@@ -1,12 +1,11 @@
+import classnames from "classnames";
 import Header from "@components/common/header";
-import Slider from "./blocks/Slider";
 import styles from "./styles.module.scss";
 
-const ProductsHeader = () => {
+const ProductsHeader = ({ mode="light" }) => {
   return (
     <section className={styles.headerContainer}>
-      <Header position="absolute" />
-      <Slider />
+      <Header mode={mode} position="absolute" />
     </section>
   );
 };
