@@ -1,4 +1,5 @@
 import classnames from "classnames";
+import Container from "@components/common/layout/container";
 import ProductCard from "@components/common/product/card";
 import Text from "@components/common/typography";
 import styles from "./styles.module.scss";
@@ -7,11 +8,12 @@ import { useAppContext } from "@contexts/AppContext";
 function ProductLists({ products }) {
   const { state, dispatch } = useAppContext();
   return (
-    <section
-      className={classnames(styles.container, {
-        [styles.list_view]: state?.productDisplayMode === "list",
-      })}
-    >
+    // <section
+    //   className={classnames(styles.container, {
+    //     [styles.list_view]: state?.productDisplayMode === "list",
+    //   })}
+    // >
+    <Container>
       {state?.productDisplayMode === "list" && (
         <div className="display-table">
           <div className={styles.tableHeader}>
@@ -73,7 +75,7 @@ function ProductLists({ products }) {
             key={`product-${product.id}`}
           />
         ))}
-    </section>
+    </Container>
   );
 }
 

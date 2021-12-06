@@ -41,12 +41,13 @@ export default function ProductFilters({ show }) {
     };
   };
 
-  if (!show) {
-    return null;
-  }
-
   return (
-    <section ref={ref} className={styles.container}>
+    <div
+      ref={ref}
+      className={classnames(styles.container, {
+        [styles.active]: show,
+      })}
+    >
       <div className={styles.topBar}>
         <div className={styles.logoWrapper}>
           <Link href="/">
@@ -124,8 +125,7 @@ export default function ProductFilters({ show }) {
           </div>
         </div>
         <div className={styles.selections}>
-          <Text variant="Body-Small">Selections</Text>{" "}
-          <SelectionCount />
+          <Text variant="Body-Small">Selections</Text> <SelectionCount />
         </div>
       </div>
       {activeFilter && (
@@ -136,6 +136,6 @@ export default function ProductFilters({ show }) {
           {activeFilter === "colour-schemes" && <ColourSchemeFilter />}
         </div>
       )}
-    </section>
+    </div>
   );
 }
