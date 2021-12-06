@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Footer from "@components/common/Footer";
+import Footer from "@components/common/footer";
 import ProductPage from "@components/pages/products";
 // import { useQuery } from "@apollo/client";
 // import { ProductsQuery } from "@gql/productGQL";

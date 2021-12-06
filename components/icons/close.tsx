@@ -6,6 +6,6 @@ function CloseIcon({ color = "#B0ABA7", className="icon" }) {
         />
         </svg>
     );
-  }
-  
-  export default CloseIcon;
+}
+
+export default CloseIcon;
