@@ -9,30 +9,42 @@ import css from '@styled-system/css';
 const products = [
   {
     id: 1,
-    name: "Neues Grey Superfine",
-    description: " Word • Word • Word",
+    richText: "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+    slug: "polarity",
+    subHeading: "Complex • Robust • Diverse",
+    title: "Polarity",
+    uri: "products/polarity"
   },
   {
     id: 2,
-    name: "Neues Grey Superfine",
-    description: " Word • Word • Word",
+    richText: "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+    slug: "polarity",
+    subHeading: "Complex • Robust • Diverse",
+    title: "Polarity",
+    uri: "products/polarity"
   },
   {
     id: 3,
-    name: "Neues Grey Superfine",
-    description: " Word • Word • Word",
+    richText: "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+    slug: "polarity",
+    subHeading: "Complex • Robust • Diverse",
+    title: "Polarity",
+    uri: "products/polarity"
   },
   {
     id: 4,
-name: "Neues Grey Superfine",
-    description: " Word • Word • Word",
+    richText: "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+    slug: "polarity",
+    subHeading: "Complex • Robust • Diverse",
+    title: "Polarity",
+    uri: "products/polarity"
   },
 ];
 
 const FeaturedProducts = () => {
   const { state, dispatch } = useAppContext();
   return (
-    <Container css={css({pt: 180, pb: 120,})}>
+    <Container css={css({pt: 180, pb: 120})}>
       <LeftCol>
         <Text variant="Display-Medium" altFont>
           Featured Products

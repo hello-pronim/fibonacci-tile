@@ -5,16 +5,35 @@ import styled from '@emotion/styled';
 const LeftCol = styled('div')(css({
     position: 'relative',
     height: '100%',
-    gridColumn: '2 / span 5',
+    gridColumn: '2 / span 4',
     display: 'flex',
-    pt: 56,
 }))
 
 const RightCol = styled('div')(css({
-    gridColumn: '7 / span 9',
-    display: 'grid',
-    columnGap: '62px',
-    rowGap: '40px',
+    position: 'relative',
+    gridColumn: '7 / span 5',
+    display: 'flex',
+    flexDirection: 'column',
+}))
+
+const ImageLeft = styled('div')(css({
+    position: 'relative',
+    gridColumn: '2 / span 5',
+    display: 'flex',
+    height: '100%',
+    div: {
+        width: '100% !important',
+    },
+}))
+
+const ImageRight = styled('div')(css({
+    position: 'relative',
+    gridColumn: '7 / span 5',
+    display: 'flex',
+    height: '100%',
+    div: {
+        width: '100% !important',
+    },
 }))
 
 const FwWrapper = styled('div')(css({
@@ -25,4 +44,4 @@ const FwWrapper = styled('div')(css({
     width: '100%',
 }))
 
-export {LeftCol, RightCol, FwWrapper}
+export {LeftCol, RightCol, FwWrapper, ImageLeft, ImageRight}
