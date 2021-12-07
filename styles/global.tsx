@@ -52,6 +52,10 @@ const global = css`
     display: table-cell;
     vertical-align: middle;
   }
+  .modal-open {
+    overflow: hidden;
+    position: fixed;
+  }
 `;
 
 export default global;

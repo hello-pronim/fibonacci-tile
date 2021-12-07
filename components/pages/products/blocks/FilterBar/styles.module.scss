@@ -1,12 +1,14 @@
+@import "@styles/settings";
+
 .container {
   position: fixed;
   top: 0;
-  z-index: 99;
+  z-index: 9999;
   width: 100%;
   opacity: 0;
   &.active {
     opacity: 1;
-    transition: opacity .4s ease-in-out;
+    transition: opacity 0.4s ease-in-out;
   }
 }
 .topBar {
@@ -14,14 +16,32 @@
   align-items: center;
   background-color: #fff;
   justify-content: space-between;
-  padding-right: 80px;
+  padding: 10px;
+  @include bp($md) {
+    padding: 0;
+  }
   .logoWrapper {
-    width: 100px;
+    padding-left: 20px;
+    min-width: 60px;
+    @include bp($md) {
+      min-width: 100px;
+    }
+  }
+  .mobileFilter {
+    display: flex;
+    align-items: center;
+    @include bp($lg) {
+      display: none;
+    }
   }
   .filters {
-    display: flex;
+    flex-grow: 1;
     justify-content: space-between;
     align-items: center;
+    display: none;
+    @include bp($lg) {
+      display: flex;
+    }
   }
   .searchItem {
     display: flex;
@@ -37,7 +57,6 @@
   .filterItem {
     margin-right: 10px;
     display: flex;
-    width: 190px;
     padding: 20px;
     align-items: center;
     justify-content: space-between;
@@ -46,11 +65,19 @@
     &.activeFilter {
       background: #f6f6f6;
     }
+    @include bp($xl) {
+      width: 190px;
+    }
   }
   .displayOptionsContainer {
     border-right: 3px solid #edece8;
     border-left: 3px solid #edece8;
+    margin: 0 20px;
     padding: 0 20px;
+    display: none;
+    @include bp($md) {
+      display: block;
+    }
   }
   .displayOptions {
     display: flex;
@@ -78,8 +105,24 @@
     }
   }
   .selections {
-    width: 100px;
-    margin-left: 20px;
+    max-width: 120px;
+    padding-right: 20px;
+  }
+}
+.mobileFilterContainer {
+  z-index: 99999;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #F6F6F6;
+  padding: 10px;
+  .closeBtn {
+    float: right;
+    background: none;
+    border: none;
+    display: block;
   }
 }
 .filterContainer {
