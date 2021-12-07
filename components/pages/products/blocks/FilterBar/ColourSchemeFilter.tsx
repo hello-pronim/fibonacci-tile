@@ -5,7 +5,7 @@ import CheckMarkIcon from "@components/icons/checkmark";
 import CloseIcon from "@components/icons/close";
 import { useAppContext } from "@contexts/AppContext";
 
-export default function ColourSchemeFilter({}) {
+export default function ColourSchemeFilter({ isMobileFilterActive }) {
   const { state, dispatch } = useAppContext();
   const handleFilter = (value) => {
     console.log(value)
@@ -31,6 +31,7 @@ export default function ColourSchemeFilter({}) {
 
   return (
     <div className={styles.colorSchemesContainer}>
+      {!isMobileFilterActive && (
       <div
         className={classnames(
           styles.productFilterItem,
@@ -41,6 +42,7 @@ export default function ColourSchemeFilter({}) {
           Refine your colour schemes
         </Text>
       </div>
+      )}
       <div className={styles.colorSchemeItemsContainer}>
         {schemeArray.map((scheme, index) => (
           <div
@@ -51,12 +53,15 @@ export default function ColourSchemeFilter({}) {
             }}
             onClick={()=> handleFilter(scheme.value)}
           >
-            {state.filter.colourSchemes.indexOf(scheme.value) !== -1 && (
+            {!isMobileFilterActive && state.filter.colourSchemes.indexOf(scheme.value) !== -1 && (
               <CheckMarkIcon color={scheme.textColour} />
             )}  
             <Text variant="Body-Small" color={scheme.textColour}>
               {scheme.label}
             </Text>
+            {isMobileFilterActive && state.filter.colourSchemes.indexOf(scheme.value) !== -1 && (
+              <CheckMarkIcon color={scheme.textColour} />
+            )}  
           </div>
         ))}
       </div>

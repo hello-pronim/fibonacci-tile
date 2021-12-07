@@ -12,6 +12,7 @@ import GridIcon from "@components/icons/grid";
 import ListIcon from "@components/icons/list";
 import CloseIcon from "@componentsicons/close";
 import CollectionIcon from "@components/icons/collection";
+import theme from "styles/theme";
 import ProductFilter from "./ProductFilter";
 import SortByFilter from "./SortByFilter";
 import SearchFilter from "./SearchFilter";
@@ -162,7 +163,9 @@ export default function ProductFilters({ show }) {
           <button className={styles.closeBtn} onClick={toggleMobileFilter}>
             <CloseIcon />
           </button>
-          Filter here
+          <Text variant="Body-Large" as="div" display="block" mt="35px" mb="20px">
+            Filter
+          </Text>
           <div>
             <div
               className={classnames(styles.filterItem, styles.productItem, {
@@ -170,8 +173,8 @@ export default function ProductFilters({ show }) {
               })}
               onClick={handleActiveFilter("products")}
             >
-              <Text variant="Body-Small" mr="10px">
-                Products
+              <Text variant="Body-XSmall" mr="10px">
+                Products <Text variant="Body-XSmall" color={theme.colors.concreteTints[5]}>Selection</Text>
               </Text>
               <ArrowDownIcon />
             </div>
@@ -186,20 +189,20 @@ export default function ProductFilters({ show }) {
               )}
               onClick={handleActiveFilter("colour-schemes")}
             >
-              <Text variant="Body-Small" mr="10px">
-                Colour Schemes
+              <Text variant="Body-XSmall" mr="10px">
+                Colour Schemes <Text variant="Body-XSmall" color={theme.colors.concreteTints[5]}>Selection </Text>
               </Text>
               <ArrowDownIcon />
             </div>
-            {activeFilter === "colour-schemes" && <ColourSchemeFilter />}
+            {activeFilter === "colour-schemes" && <ColourSchemeFilter isMobileFilterActive="isMobileFilterActive" />}
             <div
               className={classnames(styles.filterItem, styles.sortByItem, {
                 [styles.activeFilter]: activeFilter === "sort-by",
               })}
               onClick={handleActiveFilter("sort-by")}
             >
-              <Text variant="Body-Small" mr="10px">
-                Sort by
+              <Text variant="Body-XSmall" mr="10px">
+                Sort by <Text variant="Body-XSmall" color={theme.colors.concreteTints[5]}>Selection </Text>
               </Text>
               <ArrowDownIcon />
             </div>
@@ -210,21 +213,21 @@ export default function ProductFilters({ show }) {
               })}
               onClick={handleActiveFilter("search")}
             >
-              <Text variant="Body-Small" mr="10px">
-                Search
+              <Text variant="Body-XSmall" mr="10px">
+                Search <Text variant="Body-XSmall" color={theme.colors.concreteTints[5]}>Selection </Text>
               </Text>
               <SearchIcon />
             </div>
-            {activeFilter === "search" && <SearchFilter />}
+            {activeFilter === "search" && <SearchFilter isMobileFilterActive="isMobileFilterActive" />}
           </div>
         </div>
       )}
       {!isMobileFilterActive && activeFilter && (
         <div className={styles.filterContainer}>
-          {activeFilter === "search" && <SearchFilter />}
+          {activeFilter === "search" && <SearchFilter isMobileFilterActive="isMobileFilterActive" />}
           {activeFilter === "products" && <ProductFilter />}
           {activeFilter === "sort-by" && <SortByFilter />}
-          {activeFilter === "colour-schemes" && <ColourSchemeFilter />}
+          {activeFilter === "colour-schemes" && <ColourSchemeFilter isMobileFilterActive="isMobileFilterActive" />}
         </div>
       )}
     </div>
