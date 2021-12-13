@@ -1,0 +1,154 @@
+.wrapper {
+  width: 100%;
+}
+.container {
+  text-align: center;
+  transition: background-color ease 0.3s;
+}
+.tableRow {
+  border-top: 1px solid #d4d4d8;
+  & > div {
+    padding: 10px;
+    padding-bottom: 25px;
+  }
+  & > div.imgCell {
+    padding-right: 0;
+    width: 350px;
+    .cardImgContainer {
+      box-shadow: none;
+    }
+  }
+  & > div.descCell {
+    width: 400px;
+  }
+  & > div.rowDetailButton {
+    text-align: center;
+    width: 50px;
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+  }
+  .cardImg {
+    // height: 60px;
+    overflow: hidden;
+  }
+  &.detailView {
+    & > div {
+      padding-top: 30px;
+      vertical-align: top;
+    }
+    & > div.imgCell {
+      padding-top: 10px;
+    }
+    & > div.rowDetailButton {
+      padding-top: 25px;
+    }
+    .cardImg {
+      height: initial;
+    }
+  }
+}
+a.productListTitle {
+  text-decoration: none;
+  color: #000;
+}
+.cardImgContainer {
+  position: relative;
+  display: flex;
+  transition: box-shadow ease 0.3s;
+  .actionBtnContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    bottom: -20px;
+    height: 39px;
+    width: 39px;
+    &:hover {
+      width: inherit;
+    }
+  }
+  button.actionBtn {
+    display: block;
+    text-transform: uppercase;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    cursor: pointer;
+    background-color: #fff;
+    border: 1px solid #B0ABA7;
+    transition: ease all 0.3s;
+    .hovered {
+      position: absolute;
+      visibility: none;
+      opacity: 0;
+    }
+    .initial {
+      display: flex;
+      justify-content: center;
+    }
+    &:hover {
+      border:none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 167px;
+      height: inherit;
+      border-radius: 32px;
+      color: #fff;
+      background-color: #000;
+      .hovered {
+        display: flex;
+        opacity: 1;
+        transition-delay: 0.4s;
+        transition: ease all 0.3s;
+        span {
+          margin-left: 5px;
+        }
+      }
+      .initial {
+        display: none;
+      }
+    }
+  }
+
+  button.checkedButton {
+    background-color: #000;
+    border: none;
+  }
+  a {
+    width: 100%;
+  }
+  & > a > div {
+    display: block !important;
+  }
+}
+.cardIsActive {
+  button.addBtn {
+    width: inherit;
+    height: inherit;
+    border-radius: 15px;
+    padding: 5px 8px;
+    color: #fff;
+    background-color: rgb(253, 246, 246);
+  }
+}
+.cardTitle {
+  font-size: 22px !important;
+  letter-spacing: 0.01em !important;
+  line-height: 1.1 !important;
+  margin: 35px 0px 10px 0px !important;
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+}
+.cardSubTitle {
+  font-weight: 300 !important;
+}

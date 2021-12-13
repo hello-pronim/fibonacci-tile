@@ -1,6 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
 import RelatedProducts from "./blocks/relatedProducts";
 import ProductsHeader from "./Header";
+import InlineSlider from "./blocks/inlineSlider";
+import Projects from "./blocks/projects";
+import AccordionModule from "@components/modules/accordion";
+import SingleHeroModule from "./blocks/singleHero";
 // import { useQuery } from "@apollo/client";
 // import { ProductsQuery } from "@gql/productGQL";
 // import NProgress from "nprogress";
@@ -58,6 +62,10 @@ const ProductPage = () => {
   return (
     <>
       <ProductsHeader mode="dark" />
+      <SingleHeroModule />
+      <Projects accentText="Fibonacci Live"/>
+      <InlineSlider/>
+      <AccordionModule accentText="Technical Specifications" />
       <RelatedProducts title="More in our Terrazzo range" products={products} />
     </>
   );
