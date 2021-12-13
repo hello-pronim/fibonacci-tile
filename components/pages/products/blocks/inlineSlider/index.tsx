@@ -17,10 +17,7 @@ import {
   SlideItem,
   LinkWrapper,
   BottomBar,
-  ContentWrapper,
-  Pill,
   SlideImage,
-  SlideImageMobile,
 } from "./styles";
 import { css } from "@styled-system/css";
 import theme from "styles/theme";
