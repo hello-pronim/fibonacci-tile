@@ -107,6 +107,33 @@
 }
 
 @font-face {
+  font-family: 'Everett';
+  src: url('../public/fonts/Everett-Medium.woff2') format('woff2'),
+      url('../public/fonts/Everett-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Everett';
+  src: url('../public/fonts/Everett-Regular.woff2') format('woff2'),
+      url('../public/fonts/Everett-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Everett';
+  src: url('../public/fonts/Everett-Light.woff2') format('woff2'),
+      url('../public/fonts/Everett-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* @font-face {
   font-family: "Everett";
   src: url("../public/fonts/TWKEverett-Bold.woff2") format("woff2"),
     url("../public/fonts/TWKEverett-Bold.woff") format("woff");
@@ -176,4 +203,4 @@
   font-weight: normal;
   font-style: italic;
   font-display: swap;
-}
+} */
