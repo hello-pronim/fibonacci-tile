@@ -3,6 +3,7 @@ import AccentText, { AccentTextMobile } from "@components/common/accentText";
 import Image from "next/image";
 import Button from "@components/common/button";
 import collection from "public/assets/temp/collection-temp.png";
+import Abstrakt from 'public/tmp/prod/abstrakt.jpeg';
 import Link from "next/link";
 import ProductCard from "@components/common/product/xlCard";
 import { useAppContext } from "@contexts/AppContext";
@@ -28,10 +29,11 @@ import theme from "@stylestheme";
 const product = {
     id: "1",
     richText: "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-    slug: "polarity",
+    slug: "abstrakt",
     subHeading: "Complex • Robust • Diverse",
-    title: "Polarity",
-    uri: "products/polarity"
+    title: "Abstrakt",
+    uri: "products/abstrakt",
+    img1: Abstrakt,
   };
 
 const SingleHeroModule = () => {
