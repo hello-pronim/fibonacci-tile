@@ -53,7 +53,8 @@ const Header = ({ mode = "light", position = "relative" }) => {
   }, [alertActive]);
 
   return (
-    <div css={css({position: 'sticky', top: 0, zIndex: 999})}>
+    <div>
+    {/* <div css={css({position: 'sticky', top: 0, zIndex: 999})}> */}
       {alertActive && (
         <AlertBar>
           <AlertLabel>
