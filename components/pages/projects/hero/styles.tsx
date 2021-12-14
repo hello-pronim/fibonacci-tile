@@ -25,7 +25,6 @@ const Pill = styled('div')(css({
     px: '12px',
     bg: 'charcoal',
     width: 'fit-content',
-    zIndex: 99999,
     textTransform: 'uppercase',
     color: 'white',
     borderRadius: 32,

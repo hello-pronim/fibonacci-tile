@@ -1,7 +1,7 @@
 import Head from "next/head";
 import ProjectPage from "@components/pages/projects";
 import Header from "@components/common/header";
-import Footer from "@components/common/Footer";
+import Footer from "@components/common/footer";
 
 const Project = () => {
   return (

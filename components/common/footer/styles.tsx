@@ -168,13 +168,13 @@ const Signup = styled("form")(() =>
     input: {
       border: "none",
       width: "100%",
-      px: "8px",
+      px: "16px",
       py: "10px",
       color: "white",
       mb: "8px",
       fontFamily: 1,
       fontSize: 2,
-      lineHeight: 4,
+      lineHeight: "125%",
       fontWeight: 0,
       "&::placeholder": {
         color: "white",
@@ -192,10 +192,11 @@ const Signup = styled("form")(() =>
       backgroundColor: "transparent",
       fontFamily: 1,
       fontSize: 2,
-      lineHeight: 4,
+      lineHeight: '125%',
       fontWeight: 0,
       px: 16,
-      py: 11,
+      py: '9px',
+      
     },
   })
 );

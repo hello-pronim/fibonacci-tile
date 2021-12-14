@@ -21,6 +21,7 @@ import {
 import { Transition } from "react-transition-group";
 import Text from "@components/common/typography";
 import ProductSelectionCount from "@components/common/product/selectionCount";
+import { css } from "@styled-system/css";
 
 const duration = 400;
 
@@ -52,7 +53,7 @@ const Header = ({ mode = "light", position = "relative" }) => {
   }, [alertActive]);
 
   return (
-    <>
+    <div css={css({position: 'sticky', top: 0, zIndex: 999})}>
       {alertActive && (
         <AlertBar>
           <AlertLabel>
@@ -62,7 +63,7 @@ const Header = ({ mode = "light", position = "relative" }) => {
           <AlertClose onClick={() => setAlertActive(false)} />
         </AlertBar>
       )}
-      <Container position={position} navOpen={navOpen}>
+      <Container position={position} navOpen={navOpen} mode={mode}>
         <Wrapper>
           <NavIcon isOpen={navOpen} onClick={() => setNavOpen(!navOpen)} />
           <NavLeft>
@@ -155,7 +156,7 @@ const Header = ({ mode = "light", position = "relative" }) => {
           )}
         </Transition>
       </Container>
-    </>
+    </div>
   );
 };
 
