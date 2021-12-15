@@ -11,7 +11,7 @@ const ProjectPage = () => {
     <BodyContent/>
     <FeaturedProducts/>
       <QuoteModule source="Rebeka Morgan, Build Her Collective">
-      ‘It certainly helps from a planning and ordering perspective that Fibonacci Stone carry so much stock.’
+      ‘It certainly helps from a planning and ordering perspective that Fibonacci carry so much stock.’
       </QuoteModule>
     </>
   );

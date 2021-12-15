@@ -28,7 +28,7 @@ const Products = () => {
       slug: "abstrakt",
       subHeading: "Complex • Robust • Diverse",
       title: "Abstrakt",
-      uri: "products/abstrakt",
+      uri: "/products/abstrakt",
       img1: Abstrakt,
     },
     {
@@ -37,7 +37,7 @@ const Products = () => {
       slug: "act-three",
       subHeading: "Complex • Robust • Diverse",
       title: "Act Three",
-      uri: "products/act-three",
+      uri: "/products/act-three",
       img1: ActThree,
     },
     {
@@ -46,7 +46,7 @@ const Products = () => {
       slug: "assemblage",
       subHeading: "Complex • Robust • Diverse",
       title: "Assemblage",
-      uri: "products/assemblage",
+      uri: "/products/assemblage",
       img1: Assemblage,
     },
     {
@@ -55,7 +55,7 @@ const Products = () => {
       slug: "bloc",
       subHeading: "Complex • Robust • Diverse",
       title: "Bloc",
-      uri: "products/bloc",
+      uri: "/products/bloc",
       img1: Bloc,
     },
     {
@@ -64,7 +64,7 @@ const Products = () => {
       slug: "brackish",
       subHeading: "Complex • Robust • Diverse",
       title: "Brackish",
-      uri: "products/brackish",
+      uri: "/products/brackish",
       img1: Brackish,
     },
     {
@@ -73,7 +73,7 @@ const Products = () => {
       slug: "carmelita",
       subHeading: "Complex • Robust • Diverse",
       title: "Carmelita",
-      uri: "products/carmelita",
+      uri: "/products/carmelita",
       img1: Carmelita,
     },
     {
@@ -82,7 +82,7 @@ const Products = () => {
       slug: "cloudburst",
       subHeading: "Complex • Robust • Diverse",
       title: "Cloudburst",
-      uri: "products/cloudburst",
+      uri: "/products/cloudburst",
       img1: CloudBurst,
     },
     {
@@ -91,7 +91,25 @@ const Products = () => {
       slug: "coolstream",
       subHeading: "Complex • Robust • Diverse",
       title: "CoolStream",
-      uri: "products/coolstream",
+      uri: "/products/coolstream",
+      img1: CoolStream,
+    },
+    {
+      id: "9",
+      richText: "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+      slug: "cloudburst",
+      subHeading: "Complex • Robust • Diverse",
+      title: "Cloudburst",
+      uri: "/products/cloudburst",
+      img1: CloudBurst,
+    },
+    {
+      id: "10",
+      richText: "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+      slug: "coolstream",
+      subHeading: "Complex • Robust • Diverse",
+      title: "CoolStream",
+      uri: "/products/coolstream",
       img1: CoolStream,
     }
   ]

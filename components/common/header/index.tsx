@@ -66,7 +66,7 @@ const Header = ({ mode = "light", position = "relative" }) => {
       )}
       <Container position={position} navOpen={navOpen} mode={mode}>
         <Wrapper>
-          <NavIcon isOpen={navOpen} onClick={() => setNavOpen(!navOpen)} />
+          <NavIcon mode={mode} isOpen={navOpen} onClick={() => setNavOpen(!navOpen)} />
           <NavLeft>
             <NavItem href="/products" mode={mode}>
               Our Products

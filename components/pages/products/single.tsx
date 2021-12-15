@@ -28,7 +28,7 @@ const ProductPage = () => {
       slug: "abstrakt",
       subHeading: "Complex • Robust • Diverse",
       title: "Abstrakt",
-      uri: "products/abstrakt",
+      uri: "/products/abstrakt",
       img1: Abstrakt,
     },
     {
@@ -37,7 +37,7 @@ const ProductPage = () => {
       slug: "act-three",
       subHeading: "Complex • Robust • Diverse",
       title: "Act Three",
-      uri: "products/act-three",
+      uri: "/products/act-three",
       img1: ActThree,
     },
     {
@@ -46,7 +46,7 @@ const ProductPage = () => {
       slug: "assemblage",
       subHeading: "Complex • Robust • Diverse",
       title: "Assemblage",
-      uri: "products/assemblage",
+      uri: "/products/assemblage",
       img1: Assemblage,
     },
     {
@@ -55,7 +55,7 @@ const ProductPage = () => {
       slug: "bloc",
       subHeading: "Complex • Robust • Diverse",
       title: "Bloc",
-      uri: "products/bloc",
+      uri: "/products/bloc",
       img1: Bloc,
     },
     {
@@ -64,7 +64,7 @@ const ProductPage = () => {
       slug: "brackish",
       subHeading: "Complex • Robust • Diverse",
       title: "Brackish",
-      uri: "products/brackish",
+      uri: "/products/brackish",
       img1: Brackish,
     },
   ]

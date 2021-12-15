@@ -3,7 +3,7 @@ import AccentText, { AccentTextMobile } from "@components/common/accentText";
 import Image from "next/image";
 import Button from "@components/common/button";
 import collection from "public/assets/temp/collection-temp.png";
-import Abstrakt from 'public/tmp/prod/abstrakt.jpeg';
+import Abstrakt from "public/tmp/prod/abstrakt.jpeg";
 import Link from "next/link";
 import ProductCard from "@components/common/product/xlCard";
 import { useAppContext } from "@contexts/AppContext";
@@ -19,6 +19,7 @@ import {
   Details,
   ImageWrapper,
   LinkWrapper,
+  LinkWrapperLeft,
   Pill,
 } from "./styles";
 import Text from "@componentscommon/typography";
@@ -27,14 +28,15 @@ import Arrow from "@components/common/icons/arrow";
 import theme from "@stylestheme";
 
 const product = {
-    id: "1",
-    richText: "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-    slug: "abstrakt",
-    subHeading: "Complex • Robust • Diverse",
-    title: "Abstrakt",
-    uri: "products/abstrakt",
-    img1: Abstrakt,
-  };
+  id: "1",
+  richText:
+    "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+  slug: "abstrakt",
+  subHeading: "Complex • Robust • Diverse",
+  title: "Abstrakt",
+  uri: "/products/abstrakt",
+  img1: Abstrakt,
+};
 
 const SingleHeroModule = () => {
   const { state, dispatch } = useAppContext();
@@ -45,8 +47,13 @@ const SingleHeroModule = () => {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          gridColumn: "1 / span 3",
+          gridColumn: "1 / span 2",
+          gridRow: 2,
           height: "100%",
+          [theme.mediaQueries.small]: {
+            gridColumn: "1 / span 3",
+            gridRow: 1,
+          },
         })}
       >
         <div
@@ -96,15 +103,19 @@ const SingleHeroModule = () => {
 
       <div
         css={css({
-          gridColumn: "5 / span 4",
+          gridColumn: "1 / span 2",
+          gridRow: 1,
           display: "flex",
-          flexDirection: 'column',
+          flexDirection: "column",
           justifyContent: "space-between",
           height: "100%",
+          [theme.mediaQueries.small]: {
+            gridColumn: "5 / span 4",
+          },
         })}
       >
         <div>
-        <ProductCard
+          <ProductCard
             displayMode={state?.productDisplayMode}
             product={product}
             isSelected={
@@ -121,11 +132,20 @@ const SingleHeroModule = () => {
             key={`product-${product.id}`}
           />
         </div>
-        <div css={css({ display: "flex", justifyContent: "space-between", flexDirection: 'row' })}>
-          <LinkWrapper>
+        <div
+          css={css({
+            display: "none",
+            justifyContent: "space-between",
+            flexDirection: "row",
+            [theme.mediaQueries.small]: {
+              display: "flex",
+            },
+          })}
+        >
+          <LinkWrapperLeft>
             <Arrow type="short" direction="left" />
             <Link href="#">Previous Product</Link>
-          </LinkWrapper>
+          </LinkWrapperLeft>
           <LinkWrapper>
             <Link href="#">Next Product</Link>
             <Arrow type="short" />
@@ -138,8 +158,13 @@ const SingleHeroModule = () => {
           display: "flex",
           flexDirection: "column",
           rowGap: 60,
-          gridColumn: "10 / span 3",
+          gridColumn: "1 / span 2",
+          gridRow: 4,
           justifyContent: "space-between",
+          [theme.mediaQueries.small]: {
+            gridColumn: "10 / span 3",
+            gridRow: 1,
+        },
         })}
       >
         <div
@@ -203,7 +228,7 @@ const SingleHeroModule = () => {
             </Text>
           </div>
           <LinkWrapper>
-            <Link href="#">View technical specifications</Link>
+            <Link href="#technical-specifications">View technical specifications</Link>
             <Arrow type="short" />
           </LinkWrapper>
         </div>

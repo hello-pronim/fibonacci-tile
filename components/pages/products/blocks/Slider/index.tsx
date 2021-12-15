@@ -10,7 +10,8 @@ function TopSlider() {
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
+    center: true,
+    // autoplay: true,
     autoplaySpeed: 6000,
     speed: 2000,
     arrows: false,
@@ -19,7 +20,7 @@ function TopSlider() {
     <section className={styles.container}>
       <Slider {...settings}>
         <div className={styles.slideItem}>
-          <Image src={Slide1} alt="image-1" />
+          <Image src={Slide1} alt="image-1" width={3080} height={1410} layout="responsive" />
           <div className={styles.bannerTextWrapper}>
             <h3 className={styles.bannerSubHeading}>VIEW OUR</h3>
             <h2 className={styles.bannerHeading}>Terrazzo</h2>

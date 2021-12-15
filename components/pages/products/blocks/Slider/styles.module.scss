@@ -1,7 +1,10 @@
 .container {
   width: 100%;
+  .slick-list{padding:0 20% 0 0 !important;}
+
   .slideItem {
     position: relative;
+  
   }
   .bannerTextWrapper {
     position: absolute;

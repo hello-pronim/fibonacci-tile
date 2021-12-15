@@ -13,6 +13,7 @@ export interface navItemProps {
 
 export interface NavIconProps {
   isOpen: boolean;
+  mode: string;
 }
 
 const Container = styled("div")(({ ...props }: containerProps) =>
@@ -127,7 +128,7 @@ const NavItem = styled("a")(({ mode }: navItemProps) =>
   })
 );
 
-const NavIcon = styled("button")(({ isOpen }: NavIconProps) =>
+const NavIcon = styled("button")(({ isOpen, mode }: NavIconProps) =>
   css({
     padding: 0,
     background: "none",
@@ -146,7 +147,7 @@ const NavIcon = styled("button")(({ isOpen }: NavIconProps) =>
     },
     "&:before": {
       position: "relative",
-      backgroundColor: "white",
+      backgroundColor: mode === 'dark' ? 'charcoal' : "white",
       content: "' '",
       display: "block",
       height: "2px",
@@ -157,7 +158,7 @@ const NavIcon = styled("button")(({ isOpen }: NavIconProps) =>
     },
     "&:after": {
       position: "relative",
-      backgroundColor: "white",
+      backgroundColor: mode === 'dark' ? 'charcoal' : "white",
       content: "' '",
       display: "block",
       height: "2px",

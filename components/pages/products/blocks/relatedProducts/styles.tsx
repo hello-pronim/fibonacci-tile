@@ -39,7 +39,7 @@ const Container = styled("div")(({ ...props }: containerProps) =>
     margin: "0 auto",
     boxSizing: "border-box",
     maxWidth: 2560,
-    display: "grid",
+    display: ["none", "none", "grid"],
     gridTemplateColumns: [
       "repeat(2, 1fr)",
       "repeat(2, 1fr)",
@@ -48,11 +48,26 @@ const Container = styled("div")(({ ...props }: containerProps) =>
     ],
     columnGap: [16, 16, 16, 16, 24, 48, 40],
     px: [16, 16, 40, 56, 80],
+  //   [theme.mediaQueries.small]: {
+  //     display: "grid",
+  // },
   })
 );
+
+const SliderWrapper = styled('div')(css({
+  display: 'block',
+  '.slick-list': {
+      paddingLeft: '0 !important',
+  },
+  [theme.mediaQueries.xSmall]: {
+      display: 'none',
+  },
+}))
+
 
 export {
     RelatedProductsContainer,
     Heading,
-    Container
+    Container,
+    SliderWrapper
 };

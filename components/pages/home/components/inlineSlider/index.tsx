@@ -56,9 +56,9 @@ const InlineSlider = () => {
 
   return (
     <Container>
-      <AccentText top={206}>A superlative selection</AccentText>
+      <AccentText top={206}>An imaginative selection</AccentText>
       <Wrapper>
-        <AccentTextMobile css={css({pb: 80})}>A superlative selection</AccentTextMobile>
+        <AccentTextMobile css={css({pb: 80})}>An imaginative selection</AccentTextMobile>
         <Slider {...settings} ref={slider}>
           <SlideItem>
             <SlideImage>

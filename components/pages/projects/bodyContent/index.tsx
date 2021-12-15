@@ -13,16 +13,45 @@ import ProjHalf2 from "public/assets/temp/proj-half-2.jpg";
 import Container from "@components/common/layout/container";
 import css from "@styled-system/css";
 import AccentText from "@componentscommon/accentText";
+import theme from "styles/theme";
 
 const BodyContent = () => {
   return (
     <>
-      <Container css={css({ py: 120, bg: "#FFFFF8" })}>
+      <Container
+        css={css({
+          pt: 80,
+          pb: 80,
+          bg: "#FFFFF8",
+          [theme.mediaQueries.small]: {
+            pt: 120,
+            pb: 160,
+          },
+        })}
+      >
         <AccentText top={300}>Nelson’s Cafe</AccentText>
         <FwWrapper>
-          <Text variant="Display-Medium" altFont css={css({ mb: 65 })}>
+          <Text
+            variant="Display-Medium"
+            altFont
+            css={css({
+              mb: 65,
+              fontSize: 24,
+              [theme.mediaQueries.small]: {
+                fontSize: 42,
+              },
+            })}
+          >
             Poppin’ delivers one out of the Box
-            <br /> at Zunica’s Nelson café.
+            <br
+              css={css({
+                display: "none",
+                [theme.mediaQueries.small]: {
+                  display: "block",
+                },
+              })}
+            />{" "}
+            at Zunica’s Nelson café.
           </Text>
           <Image
             alt=""
@@ -37,9 +66,18 @@ const BodyContent = () => {
           </Text>
         </FwWrapper>
       </Container>
-      <Container css={css({ bg: "#FFFFF8" })}>
+      <Container css={css({ bg: "#FFFFF8", rowGap: 80 })}>
         <LeftCol>
-          <Text variant="Display-Medium" altFont>
+          <Text
+            variant="Display-Medium"
+            altFont
+            css={css({
+              fontSize: 24,
+              [theme.mediaQueries.small]: {
+                fontSize: 42,
+              },
+            })}
+          >
             Bespoke benchtops, countertops and tables were skilfully created by
             stonemasons from Fibonacci’s striking ‘Poppin’ slabs
           </Text>
@@ -71,7 +109,16 @@ const BodyContent = () => {
           </Text>
         </RightCol>
       </Container>
-      <Container css={css({ py: 120, bg: "#FFFFF8" })}>
+      <Container
+        css={css({
+          py: 80,
+          bg: "#FFFFF8",
+          gridRowGap: 16,
+          [theme.mediaQueries.small]: {
+            py: 120,
+          },
+        })}
+      >
         <ImageLeft>
           <Image
             alt=""
@@ -126,38 +173,34 @@ const BodyContent = () => {
           </Text>
         </FwWrapper>
       </Container>
-      <Container css={css({ py: 120, bg: "#FFFFF8" })}>
-        <ImageLeft css={css({alignItems: 'center'})}>
-          <Text variant="Display-Medium" css={css({ mt: 16 })} altFont>
+      <Container css={css({ pb: 120, bg: "#FFFFF8", rowGap: 80 })}>
+        <ImageLeft css={css({ alignItems: "center" })}>
+          <Text
+            variant="Display-Medium"
+            css={css({
+              fontSize: 24,
+
+              [theme.mediaQueries.small]: {
+                mt: 16,
+                fontSize: 42,
+              },
+            })}
+            altFont
+          >
             Adding a burst of complexity to the <br /> overall calm of the
             space.
           </Text>
         </ImageLeft>
         <ImageRight>
-          <Image
-            alt=""
-            src={Plant}
-            layout="fixed"
-            objectFit="cover"
-          ></Image>
+          <Image alt="" src={Plant} layout="fixed" objectFit="cover"></Image>
         </ImageRight>
       </Container>
-      <Container css={css({ bg: "#FFFFF8" })}>
+      <Container css={css({ bg: "#FFFFF8", gridRowGap: 16, })}>
         <ImageLeft>
-          <Image
-            alt=""
-            src={Nelsons2}
-            layout="fixed"
-            objectFit="cover"
-          ></Image>
+          <Image alt="" src={Nelsons2} layout="fixed" objectFit="cover"></Image>
         </ImageLeft>
         <ImageRight>
-          <Image
-            alt=""
-            src={Nelsons3}
-            layout="fixed"
-            objectFit="cover"
-          ></Image>
+          <Image alt="" src={Nelsons3} layout="fixed" objectFit="cover"></Image>
         </ImageRight>
       </Container>
       <Container css={css({ py: 120, bg: "#FFFFF8" })}>

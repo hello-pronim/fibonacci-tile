@@ -29,7 +29,7 @@ const DualColumnModule = () => {
             height={560}
           />
           <Text as="h6" variant="Display-Overline">
-            INTUITIVE EVOCATE CREATIONS
+            INTUITIVE EVOCATIVE CREATIONS
           </Text>
           <Text as="h3" variant="Display-Medium">
             The Fibonacci design aesthetic creates confident, intuitive and
@@ -108,8 +108,9 @@ const DualColumnModule = () => {
             READY RIGHT NOW
           </Text>
           <Text as="h3" variant="Display-Medium">
-            Fibonacci guarantees no lead times or minimum orders on any tile or
-            slab, and samples are supplied immediately upon request.
+            You don’t have to wait whilst we ‘make your order’. We continually
+            replenish our inventory, diminishing our lead times. And you can
+            order as many, or as few as you’d like.
           </Text>
         </Segment>
       </RightCol>

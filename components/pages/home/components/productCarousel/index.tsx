@@ -83,7 +83,7 @@ const ProductCarousel = () => {
       slug: "abstrakt",
       subHeading: "Complex • Robust • Diverse",
       title: "Abstrakt",
-      uri: "products/abstrakt",
+      uri: "/products/abstrakt",
       img1: Abstrakt,
     },
     {
@@ -92,7 +92,7 @@ const ProductCarousel = () => {
       slug: "act-three",
       subHeading: "Complex • Robust • Diverse",
       title: "Act Three",
-      uri: "products/act-three",
+      uri: "/products/act-three",
       img1: ActThree,
     },
     {
@@ -101,7 +101,7 @@ const ProductCarousel = () => {
       slug: "assemblage",
       subHeading: "Complex • Robust • Diverse",
       title: "Assemblage",
-      uri: "products/assemblage",
+      uri: "/products/assemblage",
       img1: Assemblage,
     },
     {
@@ -110,7 +110,7 @@ const ProductCarousel = () => {
       slug: "bloc",
       subHeading: "Complex • Robust • Diverse",
       title: "Bloc",
-      uri: "products/bloc",
+      uri: "/products/bloc",
       img1: Bloc,
     },
     {
@@ -119,7 +119,7 @@ const ProductCarousel = () => {
       slug: "brackish",
       subHeading: "Complex • Robust • Diverse",
       title: "Brackish",
-      uri: "products/brackish",
+      uri: "/products/brackish",
       img1: Brackish,
     },
     {
@@ -128,7 +128,7 @@ const ProductCarousel = () => {
       slug: "carmelita",
       subHeading: "Complex • Robust • Diverse",
       title: "Carmelita",
-      uri: "products/carmelita",
+      uri: "/products/carmelita",
       img1: Carmelita,
     },
     {
@@ -137,7 +137,7 @@ const ProductCarousel = () => {
       slug: "cloudburst",
       subHeading: "Complex • Robust • Diverse",
       title: "Cloudburst",
-      uri: "products/cloudburst",
+      uri: "/products/cloudburst",
       img1: CloudBurst,
     },
     {
@@ -146,7 +146,7 @@ const ProductCarousel = () => {
       slug: "coolstream",
       subHeading: "Complex • Robust • Diverse",
       title: "CoolStream",
-      uri: "products/coolstream",
+      uri: "/products/coolstream",
       img1: CoolStream,
     },
     {
@@ -155,7 +155,7 @@ const ProductCarousel = () => {
       slug: "abstrakt",
       subHeading: "Complex • Robust • Diverse",
       title: "Abstrakt",
-      uri: "products/abstrakt",
+      uri: "/products/abstrakt",
       img1: Abstrakt,
     },
     {
@@ -164,7 +164,7 @@ const ProductCarousel = () => {
       slug: "act-three",
       subHeading: "Complex • Robust • Diverse",
       title: "Act Three",
-      uri: "products/act-three",
+      uri: "/products/act-three",
       img1: ActThree,
     },
     {
@@ -173,7 +173,7 @@ const ProductCarousel = () => {
       slug: "assemblage",
       subHeading: "Complex • Robust • Diverse",
       title: "Assemblage",
-      uri: "products/assemblage",
+      uri: "/products/assemblage",
       img1: Assemblage,
     },
     {
@@ -182,7 +182,7 @@ const ProductCarousel = () => {
       slug: "bloc",
       subHeading: "Complex • Robust • Diverse",
       title: "Bloc",
-      uri: "products/bloc",
+      uri: "/products/bloc",
       img1: Bloc,
     },
     {
@@ -191,7 +191,7 @@ const ProductCarousel = () => {
       slug: "brackish",
       subHeading: "Complex • Robust • Diverse",
       title: "Brackish",
-      uri: "products/brackish",
+      uri: "/products/brackish",
       img1: Brackish,
     },
     {
@@ -200,7 +200,7 @@ const ProductCarousel = () => {
       slug: "carmelita",
       subHeading: "Complex • Robust • Diverse",
       title: "Carmelita",
-      uri: "products/carmelita",
+      uri: "/products/carmelita",
       img1: Carmelita,
     },
     {
@@ -209,19 +209,19 @@ const ProductCarousel = () => {
       slug: "cloudburst",
       subHeading: "Complex • Robust • Diverse",
       title: "Cloudburst",
-      uri: "products/cloudburst",
+      uri: "/products/cloudburst",
       img1: CloudBurst,
     },
   ]
 
   return (
     <Container>
-      <AccentText top={176}>A superlative selection</AccentText>
+      <AccentText top={176}>An imaginative selection</AccentText>
       <NextWrapper onClick={() => gotoNext()}>
         <Arrow color={theme.colors.white} width={40} />
       </NextWrapper>
       <Wrapper>
-      <AccentTextMobile css={css({pb: 24})}>A superlative selection</AccentTextMobile>
+      <AccentTextMobile css={css({pb: 24})}>An imaginative selection</AccentTextMobile>
         <Slider {...settings} ref={slider}>
           {products &&
             products.map((product) => {

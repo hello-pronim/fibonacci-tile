@@ -1,7 +1,7 @@
 import css from "@styled-system/css";
 import styled from "@emotion/styled";
 import Cntnr from "@components/common/layout/container";
-import { grid } from "styled-system";
+import theme from 'styles/theme';
 
 const Container = styled(Cntnr)(() =>
   css({
@@ -20,8 +20,8 @@ const Wrapper = styled('div')(() =>
 
 const IntroWrapper = styled('div')(() =>
   css({
-    gridRow: '1',
-    gridColumn: '2 / span 7',
+    gridRow: 1,
+    gridColumn: ['1 / span 2', '1 / span 2', '1 / span 6', '2 / span 7' , '2 / span 7'],
     pb: 80,
   })
 );
@@ -32,6 +32,10 @@ const Sections = styled('div')(() =>
     gridColumn: '10 / span 3',
     pl: 16,
     borderLeft: `1px solid #c4c4c4`,
+    display: 'none',
+    [theme.mediaQueries.small]: {
+      display: 'block',
+  },
   })
 );
 
@@ -50,10 +54,14 @@ const SectionItem = styled('li')(() =>
 
 const Details = styled('div')(() =>
   css({
-    gridRow: 2,
-    gridColumn: 2,
+    gridRow: 3,
+    gridColumn: '1 / span 2',
     display: 'flex',
     flexDirection: 'column',
+    [theme.mediaQueries.small]: {
+      gridRow: 2,
+      gridColumn: 2,
+  },
   })
 );
 
@@ -81,11 +89,15 @@ const Project = styled('div')(() =>
 
 const Bottom = styled('div')(() =>
   css({
-    gridRow: 3,
-    gridColumn: '9 / span 3',
+    gridRow: 4,
+    gridColumn: '1 / span 2',
     width: '100%',
     display: 'flex',
-    justifyContent: 'flex-end',
+    [theme.mediaQueries.small]: {
+      gridRow: 3,
+      gridColumn: '9 / span 3',
+      justifyContent: 'flex-end'
+  },
   })
 );
 

@@ -11,7 +11,7 @@ const Project = () => {
         <meta name="description" content="Fibonacci project" />
         <meta name="robots" content="index, follow" />
       </Head>
-      <Header mode="dark" position="absolute" />
+      <Header mode="dark" position="relative" />
       <ProjectPage />
       <Footer />
     </>
