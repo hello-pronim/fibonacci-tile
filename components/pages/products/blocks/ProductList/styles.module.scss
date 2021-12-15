@@ -1,7 +1,8 @@
 @import '@styles/settings';
 
 .container {
-  padding: 55px;
+  position: relative;
+  padding: 80px;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-column-gap: 15px;

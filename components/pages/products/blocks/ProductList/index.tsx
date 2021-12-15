@@ -3,8 +3,14 @@ import ProductCard from "@components/common/product/card";
 import Text from "@components/common/typography";
 import styles from "./styles.module.scss";
 import { useAppContext } from "@contexts/AppContext";
+import AccentText, {AccentTextMobile} from "@components/common/accentText";
 
-function ProductLists({ products }) {
+interface productListProps {
+  products: any;
+  accentText?: string;
+}
+
+function ProductLists({ products, accentText }:productListProps) {
   const { state, dispatch } = useAppContext();
   return (
     <section
@@ -12,6 +18,9 @@ function ProductLists({ products }) {
         [styles.list_view]: state?.productDisplayMode === "list",
       })}
     >
+      {accentText && <AccentText top={120}>
+        Be inspired
+      </AccentText>}
       {state?.productDisplayMode === "list" && (
         <div className="display-table">
           <div className={styles.tableHeader}>

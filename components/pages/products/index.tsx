@@ -40,7 +40,7 @@ const ProductsPage = ({ products }) => {
       <section ref={ref}>
         <ProductFilterBar show={showFilterBar} />
       </section>
-      <ProductLists products={products} />
+      <ProductLists products={products} accentText="Be inspired"/>
       <CTAPanel imagePosition="left" />
       <ProductLists products={products} />
       <CTAPanel imagePosition="right" />
