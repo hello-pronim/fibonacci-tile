@@ -14,14 +14,19 @@
   align-items: center;
   background-color: #fff;
   justify-content: space-between;
+  padding-left: 24px;
   padding-right: 80px;
+  padding-top: 12px;
+  padding-bottom: 12px;
   .logoWrapper {
-    width: 100px;
+    padding-right: 33px;
   }
   .filters {
     display: flex;
+    flex: 1;
     justify-content: space-between;
     align-items: center;
+    column-gap: 64px;
   }
   .searchItem {
     display: flex;
@@ -29,6 +34,7 @@
     padding: 2px;
     margin-right: 10px;
     cursor: pointer;
+    text-transform: uppercase;
     &:hover,
     &.activeFilter {
       background: #f6f6f6;
@@ -37,15 +43,32 @@
   .filterItem {
     margin-right: 10px;
     display: flex;
-    width: 190px;
-    padding: 20px;
+    flex: 1;
+    padding: 19.5px 33px;
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
+    text-transform: uppercase;
     &:hover,
     &.activeFilter {
       background: #f6f6f6;
     }
+  }
+  .productSelection {
+    display: flex;
+    padding-top: 19.5px;
+    padding-left: 33px;
+    padding-bottom: 19.5px;
+    padding-right: 33px;
+    background-color: #f6f6f6;
+    justify-content: space-between;
+    flex: 1;
+    text-transform: uppercase;
+  }
+  .selection {
+    color: #b1aba6 !important;
+    margin-left: 4px;
+    display: none;
   }
   .displayOptionsContainer {
     border-right: 3px solid #edece8;
