@@ -39,7 +39,7 @@ export default function Footer() {
           <Image src={Tertiary} width="287" height="40" alt="Fibonacci" />
         </MobileLogo>
         <Segment col={2} row={1} mobileRow={2}>
-          <SegmentTitle>our products</SegmentTitle>
+          <SegmentTitle>Our products</SegmentTitle>
           <ItemList>
             <Item>
               <a href="#">Terrazzos</a>
