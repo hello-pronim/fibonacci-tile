@@ -1,7 +1,7 @@
 import React from "react";
 import Text from "@components/common/typography";
 import Image from "next/image";
-import heroImage from "public/assets/temp/project-hero.png";
+import heroImage from "public/assets/temp/project-hero.jpg";
 import { LeftCol, RightCol, Pill, ContentWrapper, DetailsWrapper, Detail } from "./styles";
 import AddIcon from "@components/icons/add";
 import Container from "@components/common/layout/container";

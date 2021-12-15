@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AccentText, { AccentTextMobile } from "@components/common/accentText";
 import Image from "next/image";
 import Button from "@components/common/button";
-import Slide1 from "public/assets/temp/gallery-1.png";
+import Slide1 from "public/assets/temp/gallery-1.jpg";
 import Link from "next/link";
 import {
   Container,
