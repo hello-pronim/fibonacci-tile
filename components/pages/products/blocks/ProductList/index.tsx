@@ -25,19 +25,19 @@ function ProductLists({ products, accentText }:productListProps) {
         <div className="display-table">
           <div className={styles.tableHeader}>
             <div>
-              <Text variant="Body-XSmall">Product Name</Text>
+              <Text variant="Display-Overline">Product Name</Text>
             </div>
             <div>
-              <Text variant="Body-XSmall">Available In</Text>
+              <Text variant="Display-Overline">Available In</Text>
             </div>
             <div>
-              <Text variant="Body-XSmall">Collection Name</Text>
+              <Text variant="Display-Overline">Collection Name</Text>
             </div>
             <div>
-              <Text variant="Body-XSmall">Description</Text>
+              <Text variant="Display-Overline">Description</Text>
             </div>
             <div>
-              <Text variant="Body-XSmall">Image</Text>
+              <Text variant="Display-Overline">Image</Text>
             </div>
             <div className={styles.tableActionContainer}></div>
           </div>
