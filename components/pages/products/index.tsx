@@ -8,6 +8,7 @@ import ProductLists from "./blocks/ProductList";
 import styles from './styles.module.scss';
 import Slider from "./blocks/Slider";
 import { useAppContext } from "@contexts/AppContext";
+import { css } from "@styled-system/css";
 
 const ProductsPage = ({ products }) => {
   const { state, dispatch } = useAppContext();
@@ -36,8 +37,9 @@ const ProductsPage = ({ products }) => {
     <div className={styles.container}>
       <ProductsHeader />
       <Slider/>
-      <SectionTitle title="40 unique creations. Thoughtfully designed. Sustainably made. Purpose-built." />
-      <section ref={ref}>
+      <SectionTitle show={showFilterBar} title="40 unique creations. Thoughtfully designed. Sustainably made. Purpose-built." />
+      <section ref={ref} css={css({position: 'sticky',zIndex: 99999,
+  top: 0, height: showFilterBar ? 'auto' : 0})}>
         <ProductFilterBar show={showFilterBar} />
       </section>
       <ProductLists products={products} accentText="Be inspired"/>
