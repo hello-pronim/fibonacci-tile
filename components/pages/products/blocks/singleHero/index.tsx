@@ -59,7 +59,16 @@ const SingleHeroModule = () => {
         <div
           css={css({ display: "flex", flexDirection: "column", rowGap: 24 })}
         >
-          <Text variant="Display-Large" altFont>
+          <Text
+            variant="Display-Large"
+            altFont
+            css={css({
+              fontSize: 42,
+              [theme.mediaQueries.small]: {
+                fontSize: 74,
+              },
+            })}
+          >
             Polarity
           </Text>
           <span
@@ -164,7 +173,7 @@ const SingleHeroModule = () => {
           [theme.mediaQueries.small]: {
             gridColumn: "10 / span 3",
             gridRow: 1,
-        },
+          },
         })}
       >
         <div
@@ -228,7 +237,9 @@ const SingleHeroModule = () => {
             </Text>
           </div>
           <LinkWrapper>
-            <Link href="#technical-specifications">View technical specifications</Link>
+            <Link href="#technical-specifications">
+              View technical specifications
+            </Link>
             <Arrow type="short" />
           </LinkWrapper>
         </div>

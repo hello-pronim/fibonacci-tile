@@ -23,7 +23,7 @@ function TopSlider() {
     slider.current !== null && slider.current.slickNext();
   };
 
-  console.log(slider.current);
+
   return (
     <section css={css({width: '100%', overflow: 'hidden'})}>
       <div className={styles.container} css={css({'.slick-list': {overflow: 'visible'}})}>

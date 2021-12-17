@@ -32,7 +32,16 @@ const ProjectsModule = ({ accentText }: accordionTypes) => {
     <Container id="projects">
       <AccentText top={400}>{accentText}</AccentText>
       <IntroWrapper>
-        <Text variant="Display-Medium" altFont>
+        <Text
+          variant="Display-Medium"
+          altFont
+          css={css({
+            fontSize: 24,
+            [theme.mediaQueries.small]: {
+              fontSize: 42,
+            },
+          })}
+        >
           Complex, random, and swarming with polarity - the hallmarks of any
           great political system. There&apos;s bent and straight, cool and warm,
           light and dark, and with the odd bit of red and green thrown in to
@@ -43,16 +52,44 @@ const ProjectsModule = ({ accentText }: accordionTypes) => {
         <Text variant="Display-Overline">SECTIONS</Text>
         <SectionList>
           <SectionItem>
-            <Text variant="Body-Regular"><a href="#projects" css={css({color: 'inherit', textDecoration: 'none'})}>Products in use</a></Text>
+            <Text variant="Body-Regular">
+              <a
+                href="#projects"
+                css={css({ color: "inherit", textDecoration: "none" })}
+              >
+                Products in use
+              </a>
+            </Text>
           </SectionItem>
           <SectionItem>
-            <Text variant="Body-Regular"><a href="#gallery" css={css({color: 'inherit', textDecoration: 'none'})}>Gallery</a></Text>
+            <Text variant="Body-Regular">
+              <a
+                href="#gallery"
+                css={css({ color: "inherit", textDecoration: "none" })}
+              >
+                Gallery
+              </a>
+            </Text>
           </SectionItem>
           <SectionItem>
-            <Text variant="Body-Regular"><a href="#technical-specifications" css={css({color: 'inherit', textDecoration: 'none'})}>Technical specs</a></Text>
+            <Text variant="Body-Regular">
+              <a
+                href="#technical-specifications"
+                css={css({ color: "inherit", textDecoration: "none" })}
+              >
+                Technical specs
+              </a>
+            </Text>
           </SectionItem>
           <SectionItem>
-            <Text variant="Body-Regular"><a href="#related-products" css={css({color: 'inherit', textDecoration: 'none'})}>Related products</a></Text>
+            <Text variant="Body-Regular">
+              <a
+                href="#related-products"
+                css={css({ color: "inherit", textDecoration: "none" })}
+              >
+                Related products
+              </a>
+            </Text>
           </SectionItem>
         </SectionList>
       </Sections>
@@ -121,7 +158,7 @@ const ProjectsModule = ({ accentText }: accordionTypes) => {
         </Details>
       </Project>
       <Bottom>
-        <Button mode="" title="How to order samples" link="#"/>
+        <Button mode="" title="How to order samples" link="#" />
       </Bottom>
     </Container>
   );
