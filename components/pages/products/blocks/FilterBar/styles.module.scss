@@ -153,9 +153,20 @@
         border-right: none;
         border-top: solid 1px #D4D4D8;
         border-bottom: solid 1px #D4D4D8;
-        
       }
     }
+  }
+}
+.filterInnerMobile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  svg {
+    width: 30px;
+    height: 16px;
+  }
+  .mobileDetails {
+    max-width: 200px;
   }
 }
 .filterContainer {
@@ -196,7 +207,10 @@
   }
 }
 .colorSchemesContainer {
-  
+  &.mobileColorScheme {
+    height: 400px;
+    overflow-y: scroll;
+  }
   @include bp($md) {
     position: relative;
     padding-top: 30px;
@@ -276,4 +290,17 @@
   @include bp-max($md) {
     display: none;
   }
+}
+
+.applyBttn {
+  border: solid 1px #D4D4D8;
+  background: #F6F6F6;
+  margin-top: 30px;
+  display: block;
+  color: #141414;
+  font-size: 16px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 0;
+  width: 96%;
 }

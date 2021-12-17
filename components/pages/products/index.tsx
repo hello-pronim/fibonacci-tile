@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import ProductsHeader from "./Header";
 import ProductFilterBar from "./blocks/FilterBar";
 import CTAPanel from "./blocks/CTAPanel";
@@ -29,8 +29,14 @@ const ProductsPage = ({ products }) => {
   }, [ref]);
 
   useEffect(() => {
-    console.log("Filter state changed fetching filtered products....");
+    if(!state.isMobileFilterActive) {
+      applyFilter()
+    }
   },[state.filter]);
+
+  const applyFilter = useCallback(()=> {
+    console.log("Filter Data", state.filter);
+  }, [])
 
   return (
     <div className={styles.container}>
@@ -38,7 +44,8 @@ const ProductsPage = ({ products }) => {
       <Slider/>
       <SectionTitle title="40 unique creations. Thoughtfully designed. Sustainably made. Purpose-built." />
       <section ref={ref}>
-        <ProductFilterBar show={showFilterBar} />
+        <ProductFilterBar applyFilter={applyFilter} show={showFilterBar} />
+
       </section>
       <ProductLists products={products} />
       <CTAPanel imagePosition="left" />

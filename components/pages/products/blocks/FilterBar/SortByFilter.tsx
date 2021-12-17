@@ -7,6 +7,7 @@ import { useAppContext } from "@contexts/AppContext";
 
 export default function SortByFilter({}) {
   const { state, dispatch } = useAppContext();
+  console.log("stae", state);
   const handleFilter = (value) => {
     dispatch({
       type: "SELECT_PRODUCT_FILTER",
@@ -29,15 +30,20 @@ export default function SortByFilter({}) {
         })}
       >
         <div
-          className={styles.filterInner}
+          className={classnames(styles.filterInner, {[styles.filterInnerMobile]: state.isMobileFilterActive})}
           onClick={() => handleFilter("featured")}
         >
-          <Text as="h3" variant="Body-Small">
-            Featured{" "}
-            {state.filter.sortBy === "featured" && (
-              <CheckMarkIcon color="#141414" />
-            )}
-          </Text>
+          <div className={classnames({[styles.mobileDetails]: state.isMobileFilterActive})}>
+            <Text as="h3" variant="Body-Small">
+              Featured{" "}
+              {!state.isMobileFilterActive && state.filter.sortBy === "featured" && (
+                <CheckMarkIcon color="#141414" />
+              )}
+            </Text>
+          </div>
+          {state.isMobileFilterActive && state.filter.sortBy === "featured" && (
+            <CheckMarkIcon color="#141414" />
+          )}
         </div>
       </div>
       <div
@@ -45,11 +51,17 @@ export default function SortByFilter({}) {
           [styles.activeFilter]: state.filter.sortBy === "asc",
         })}
       >
-        <div className={styles.filterInner} onClick={() => handleFilter("asc")}>
-          <Text as="h3" variant="Body-Small">
-            A -Z{" "}
-            {state.filter.sortBy === "asc" && <CheckMarkIcon color="#141414" />}
-          </Text>
+        <div 
+          className={classnames(styles.filterInner, {[styles.filterInnerMobile]: state.isMobileFilterActive})}
+          onClick={() => handleFilter("asc")}
+        >
+          <div className={classnames({[styles.mobileDetails]: state.isMobileFilterActive})}>
+            <Text as="h3" variant="Body-Small">
+              A -Z{" "}
+              {!state.isMobileFilterActive && state.filter.sortBy === "asc" && <CheckMarkIcon color="#141414" />}
+            </Text>
+          </div>
+          {state.isMobileFilterActive && state.filter.sortBy === "asc" && <CheckMarkIcon color="#141414" />}
         </div>
       </div>
       <div
@@ -58,15 +70,20 @@ export default function SortByFilter({}) {
         })}
       >
         <div
-          className={styles.filterInner}
+          className={classnames(styles.filterInner, {[styles.filterInnerMobile]: state.isMobileFilterActive})}
           onClick={() => handleFilter("desc")}
         >
-          <Text as="h3" variant="Body-Small">
-            Z - A{" "}
-            {state.filter.sortBy === "desc" && (
-              <CheckMarkIcon color="#141414" />
-            )}
-          </Text>
+          <div className={classnames({[styles.mobileDetails]: state.isMobileFilterActive})}>
+            <Text as="h3" variant="Body-Small">
+              Z - A{" "}
+              {!state.isMobileFilterActive && state.filter.sortBy === "desc" && (
+                <CheckMarkIcon color="#141414" />
+              )}
+            </Text>
+          </div>
+          {state.isMobileFilterActive && state.filter.sortBy === "desc" && (
+            <CheckMarkIcon color="#141414" />
+          )}
         </div>
       </div>
       <div
@@ -75,15 +92,20 @@ export default function SortByFilter({}) {
         })}
       >
         <div
-          className={styles.filterInner}
+          className={classnames(styles.filterInner, {[styles.filterInnerMobile]: state.isMobileFilterActive})}
           onClick={() => handleFilter("collections")}
         >
-          <Text as="h3" variant="Body-Small">
-            Collections{" "}
-            {state.filter.sortBy === "collections" && (
-              <CheckMarkIcon color="#141414" />
-            )}
-          </Text>
+          <div className={classnames({[styles.mobileDetails]: state.isMobileFilterActive})}>
+            <Text as="h3" variant="Body-Small">
+              Collections{" "}
+              {!state.isMobileFilterActive && state.filter.sortBy === "collections" && (
+                <CheckMarkIcon color="#141414" />
+              )}
+            </Text>
+          </div>
+          {state.isMobileFilterActive && state.filter.sortBy === "collections" && (
+            <CheckMarkIcon color="#141414" />
+          )}
         </div>
       </div>
       <div onClick={()=> handleFilter('featured')} className={styles.clearFilter}>

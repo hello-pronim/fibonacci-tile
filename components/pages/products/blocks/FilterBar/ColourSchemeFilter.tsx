@@ -5,7 +5,7 @@ import CheckMarkIcon from "@components/icons/checkmark";
 import CloseIcon from "@components/icons/close";
 import { useAppContext } from "@contexts/AppContext";
 
-export default function ColourSchemeFilter({ isMobileFilterActive }) {
+export default function ColourSchemeFilter({}) {
   const { state, dispatch } = useAppContext();
   const handleFilter = (value) => {
     console.log(value)
@@ -30,8 +30,8 @@ export default function ColourSchemeFilter({ isMobileFilterActive }) {
   ];
 
   return (
-    <div className={styles.colorSchemesContainer}>
-      {!isMobileFilterActive && (
+    <div className={classnames(styles.colorSchemesContainer, {[styles.mobileColorScheme] : state.isMobileFilterActive})}>
+      {!state.isMobileFilterActive && (
       <div
         className={classnames(
           styles.productFilterItem,
@@ -47,19 +47,19 @@ export default function ColourSchemeFilter({ isMobileFilterActive }) {
         {schemeArray.map((scheme, index) => (
           <div
             key={`colour-${index}`}
-            className={styles.colourScheme}
+            className={classnames(styles.colourScheme, {[styles.filterInnerMobile]: state.isMobileFilterActive})}
             style={{
               background: scheme.colour,
             }}
             onClick={()=> handleFilter(scheme.value)}
           >
-            {!isMobileFilterActive && state.filter.colourSchemes.indexOf(scheme.value) !== -1 && (
+            {!state.isMobileFilterActive && state.filter.colourSchemes.indexOf(scheme.value) !== -1 && (
               <CheckMarkIcon color={scheme.textColour} />
             )}  
             <Text variant="Body-Small" color={scheme.textColour}>
               {scheme.label}
             </Text>
-            {isMobileFilterActive && state.filter.colourSchemes.indexOf(scheme.value) !== -1 && (
+            {state.isMobileFilterActive && state.filter.colourSchemes.indexOf(scheme.value) !== -1 && (
               <CheckMarkIcon color={scheme.textColour} />
             )}  
           </div>

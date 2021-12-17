@@ -12,6 +12,7 @@ import GridIcon from "@components/icons/grid";
 import ListIcon from "@components/icons/list";
 import CloseIcon from "@componentsicons/close";
 import CollectionIcon from "@components/icons/collection";
+import Button from "@components/common/button";
 import theme from "styles/theme";
 import ProductFilter from "./ProductFilter";
 import SortByFilter from "./SortByFilter";
@@ -20,7 +21,7 @@ import ColourSchemeFilter from "./ColourSchemeFilter";
 import Logo from "public/assets/brandmarks/symbol-primary.svg";
 import styles from "./styles.module.scss";
 
-export default function ProductFilters({ show }) {
+export default function ProductFilters({ show, applyFilter }) {
   const { state, dispatch } = useAppContext();
   const [activeFilter, setActiveFilter] = useState(null);
   const [isMobileFilterActive, setIsMobileFilterActive] = useState(false);
@@ -51,8 +52,11 @@ export default function ProductFilters({ show }) {
       document.body.classList.remove("modal-open");
     }
     setIsMobileFilterActive(!isMobileFilterActive);
+    dispatch({
+      type: "SET_MOBILE_FILTER",
+      value: !isMobileFilterActive,
+    });
   };
-
   return (
     <div
       ref={ref}
@@ -194,7 +198,7 @@ export default function ProductFilters({ show }) {
               </Text>
               <ArrowDownIcon />
             </div>
-            {activeFilter === "colour-schemes" && <ColourSchemeFilter isMobileFilterActive="isMobileFilterActive" />}
+            {activeFilter === "colour-schemes" && <ColourSchemeFilter />}
             <div
               className={classnames(styles.filterItem, styles.sortByItem, {
                 [styles.activeFilter]: activeFilter === "sort-by",
@@ -218,16 +222,19 @@ export default function ProductFilters({ show }) {
               </Text>
               <SearchIcon />
             </div>
-            {activeFilter === "search" && <SearchFilter isMobileFilterActive="isMobileFilterActive" />}
+            {activeFilter === "search" && <SearchFilter />}
           </div>
+          {isMobileFilterActive && (
+            <button onClick={() => applyFilter()} className={styles.applyBttn}>Apply</button>
+          )}
         </div>
       )}
       {!isMobileFilterActive && activeFilter && (
         <div className={styles.filterContainer}>
-          {activeFilter === "search" && <SearchFilter isMobileFilterActive="isMobileFilterActive" />}
+          {activeFilter === "search" && <SearchFilter />}
           {activeFilter === "products" && <ProductFilter />}
           {activeFilter === "sort-by" && <SortByFilter />}
-          {activeFilter === "colour-schemes" && <ColourSchemeFilter isMobileFilterActive="isMobileFilterActive" />}
+          {activeFilter === "colour-schemes" && <ColourSchemeFilter />}
         </div>
       )}
     </div>

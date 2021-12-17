@@ -6,7 +6,7 @@ import styles from "./styles.module.scss";
 import { useAppContext } from "@contexts/AppContext";
 
 
-export default function SearchFilter({ isMobileFilterActive }) {
+export default function SearchFilter({}) {
   const { state, dispatch } = useAppContext();
   const handleFilter = (value) => {
     dispatch({
@@ -21,7 +21,7 @@ export default function SearchFilter({ isMobileFilterActive }) {
   return (
     <div className={styles.searchContainer}>
       <div className={styles.searchLabel}>
-      {!isMobileFilterActive && (
+      {!state.isMobileFilterActive && (
         <SearchIcon />
       )}
         <Text variant="Body-Small">Start Typing</Text>
