@@ -66,17 +66,24 @@ export default function ProductFilters({ show, applyFilter }) {
     >
       <div className={styles.topBar}>
         <div className={styles.logoWrapper}>
-          <Link href="/">
-            <a>
-              <Image
-                src={Logo}
-                layout="fixed"
-                width="36px"
-                height="36px"
-                alt="Fibonacci"
-              />
-            </a>
-          </Link>
+          {Logo && (
+            <Link href="/">
+              <a>
+                <Image
+                  src={Logo}
+                  layout="fixed"
+                  width="36px"
+                  height="36px"
+                  alt="Fibonacci"
+                />
+              </a>
+            </Link>
+          )}
+          {!Logo && (
+            <Link href="/">
+              <a> Fibonacci </a>
+            </Link>
+          )}
         </div>
         <div className={styles.mobileFilter} onClick={toggleMobileFilter}>
           <Text variant="Body-Small" mr="10px">
@@ -91,13 +98,13 @@ export default function ProductFilters({ show, applyFilter }) {
             })}
             onClick={handleActiveFilter("search")}
           >
-            <Text variant="Body-Small" mr="10px">
+            <Text variant="Display-Overline" mr="10px">
               Search
             </Text>
             <SearchIcon />
           </div>
           <div
-            className={classnames(styles.filterItem, styles.productItem, {
+            className={classnames(styles.productSelection, {
               [styles.activeFilter]: activeFilter === "products",
             })}
             onClick={handleActiveFilter("products")}
@@ -159,7 +166,7 @@ export default function ProductFilters({ show, applyFilter }) {
           </div>
         </div>
         <div className={styles.selections}>
-          <Text variant="Body-Small">Selections</Text> <SelectionCount />
+          <Text variant="Display-Overline">Selections</Text> <SelectionCount />
         </div>
       </div>
       {isMobileFilterActive && (

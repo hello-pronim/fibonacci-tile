@@ -5,6 +5,9 @@ const global = css`
   html {
     box-sizing: border-box;
     font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
   }
 
   *,
@@ -28,6 +31,8 @@ const global = css`
     font-family: "Everett";
     font-style: normal;
     font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   ol,

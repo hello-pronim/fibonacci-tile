@@ -4,6 +4,7 @@ import theme from "styles/theme";
 export interface containerProps {
   navOpen: boolean;
   position: string;
+  mode: string;
 }
 
 export interface navItemProps {
@@ -12,6 +13,7 @@ export interface navItemProps {
 
 export interface NavIconProps {
   isOpen: boolean;
+  mode: string;
 }
 
 const Container = styled("div")(({ ...props }: containerProps) =>
@@ -20,7 +22,7 @@ const Container = styled("div")(({ ...props }: containerProps) =>
     width: "100%",
     display: "flex",
     justifyContent: "center",
-    // backgroundColor: "white",
+    backgroundColor: props.mode === 'dark' && 'white',
     borderBottom: "1px solid",
     transition: "ease all 0.3s",
     borderColor: props.navOpen ? "white" : "stone",
@@ -59,19 +61,19 @@ const NavRight = styled("div")(() =>
     a: {
       display: "none",
       "&:nth-last-child(1)": {
-        display: "block",
+        display: "flex",
       },
     },
     [theme.mediaQueries.small]: {
       a: {
         "&:nth-last-child(2)": {
-          display: "block",
+          display: "flex",
         },
       },
     },
     [theme.mediaQueries.medium]: {
       a: {
-        display: "block !important",
+        display: "flex !important",
       },
     },
   })
@@ -90,23 +92,23 @@ const NavLeft = styled("div")(() =>
       flex: 1,
       a: {
         "&:nth-child(1)": {
-          display: "block",
+          display: "flex",
         },
       },
     },
     [theme.mediaQueries.small]: {
       a: {
         "&:nth-child(1)": {
-          display: "block",
+          display: "flex",
         },
         "&:nth-child(2)": {
-          display: "block",
+          display: "flex",
         },
       },
     },
     [theme.mediaQueries.medium]: {
       a: {
-        display: "block !important",
+        display: "flex !important",
       },
     },
   })
@@ -114,16 +116,19 @@ const NavLeft = styled("div")(() =>
 
 const NavItem = styled("a")(({ mode }: navItemProps) =>
   css({
+    display: 'flex',
     textDecoration: "none",
     fontSize: [1, 1, 1, 1, 1, 3, 3],
     fontFamily: 1,
     color: mode === "light" ? "white" : "charcoal",
     alignSelf: "center",
+    alignItems:'center',
     fontWeight: 300,
+    columnGap: '8px',
   })
 );
 
-const NavIcon = styled("button")(({ isOpen }: NavIconProps) =>
+const NavIcon = styled("button")(({ isOpen, mode }: NavIconProps) =>
   css({
     padding: 0,
     background: "none",
@@ -142,7 +147,7 @@ const NavIcon = styled("button")(({ isOpen }: NavIconProps) =>
     },
     "&:before": {
       position: "relative",
-      backgroundColor: "white",
+      backgroundColor: mode === 'dark' ? 'charcoal' : "white",
       content: "' '",
       display: "block",
       height: "2px",
@@ -153,7 +158,7 @@ const NavIcon = styled("button")(({ isOpen }: NavIconProps) =>
     },
     "&:after": {
       position: "relative",
-      backgroundColor: "white",
+      backgroundColor: mode === 'dark' ? 'charcoal' : "white",
       content: "' '",
       display: "block",
       height: "2px",

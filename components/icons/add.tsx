@@ -1,11 +1,12 @@
-function AddIcon({ color = "white" }) {
+import { css } from "@styled-system/css";
+
+function AddIcon({ color = "white", width = 13 }) {
   return (
     <svg
-      width="13"
-      height="14"
       viewBox="0 0 13 14"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      css={css({width: width})}
     >
       <path
         fillRule="evenodd"

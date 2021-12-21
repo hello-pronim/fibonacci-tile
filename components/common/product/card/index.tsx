@@ -52,11 +52,13 @@ const ProductCard = ({
         <div className={styles.imgCell}>
           <div className={styles.cardImgContainer}>
             <div className={styles.cardImg}>
-              <Link href={product.uri}>
-                <a>
-                  <Image src={ProductImg} alt="Product-1" />
-                </a>
-              </Link>
+              {product?.img1 && (
+                <Link href={product.uri}>
+                  <a>
+                    <Image src={product?.img1} alt="Product-1" />
+                  </a>
+                </Link>
+              )}
             </div>
             <div className={styles.actionBtnContainer}>
               <button
@@ -112,11 +114,13 @@ const ProductCard = ({
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles.cardImgContainer}>
-          <Link href={product.uri}>
-            <a>
-              <Image src={ProductImg} alt="Product-1" />
-            </a>
-          </Link>
+          {product?.img1 && (
+            <Link href={product.uri}>
+              <a>
+                <Image src={product?.img1} alt="Product-1" />
+              </a>
+            </Link>
+          )}
           <div className={styles.actionBtnContainer}>
             <button
               className={classnames(styles.actionBtn, {

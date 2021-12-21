@@ -78,7 +78,7 @@ const BodyXLarge = ({ ...props }) =>
 const BodyLarge = ({ ...props }) =>
   css({
     fontFamily: 1,
-    fontSize: 3,
+  fontSize: 20,
     lineHeight: 4,
     fontWeight: 0,
   });

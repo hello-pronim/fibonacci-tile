@@ -1,7 +1,7 @@
 import { Container, Wrapper, ImageWrapper } from "./styles";
 import Text from "@componentscommon/typography";
 import Image from "next/image";
-import SamplesImage from "public/assets/temp/samples.png";
+import SamplesImage from "public/assets/temp/samples.jpg";
 import Button from "@components/common/button";
 
 const ContentWithImageModule = () => {

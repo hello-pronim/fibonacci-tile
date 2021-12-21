@@ -38,8 +38,8 @@ export default function ColourSchemeFilter({}) {
           styles.productFilterItemTitle
         )}
       >
-        <Text as="h3" variant="Body-Small">
-          Refine your colour schemes
+        <Text as="h3" variant="Body-Regular">
+          Refine your <br/> colour schemes
         </Text>
       </div>
       )}

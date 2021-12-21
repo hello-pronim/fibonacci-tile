@@ -49,6 +49,7 @@
     padding: 2px;
     margin-right: 10px;
     cursor: pointer;
+    text-transform: uppercase;
     &:hover,
     &.activeFilter {
       background: #f6f6f6;
@@ -61,6 +62,7 @@
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
+    text-transform: uppercase;
     &:hover,
     &.activeFilter {
       background: #f6f6f6;
@@ -68,6 +70,22 @@
     @include bp($xl) {
       width: 190px;
     }
+  }
+  .productSelection {
+    display: flex;
+    padding-top: 19.5px;
+    padding-left: 33px;
+    padding-bottom: 19.5px;
+    padding-right: 33px;
+    background-color: #f6f6f6;
+    justify-content: space-between;
+    flex: 1;
+    text-transform: uppercase;
+  }
+  .selection {
+    color: #b1aba6 !important;
+    margin-left: 4px;
+    display: none;
   }
   .displayOptionsContainer {
     border-right: 3px solid #edece8;
@@ -274,13 +292,16 @@
 }
 
 .clearFilter {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
   position: absolute;
   bottom: -20px;
   border: solid 1px #c4c4c4;
   color: #141414;
   font-size: 14px;
   line-height: 24px;
-  padding: 7px 32px 7px 12px;
+  padding: 7px 12px 7px 12px;
   height: 24px;
   border-radius: 24px;
   cursor: pointer;

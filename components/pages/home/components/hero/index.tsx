@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import Image from "next/image";
-import Slide1 from "public/assets/temp/home-slide-1.png";
-import Slide1Mobile from "public/assets/temp/home-slide-1-mobile.png";
+import Slide1 from "public/assets/temp/home-slide-1.jpg";
+import Slide1Mobile from "public/assets/temp/home-slide-1-mobile.jpg";
 import {
   Container,
   SlideItem,
