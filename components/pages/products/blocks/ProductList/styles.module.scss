@@ -35,4 +35,15 @@
       padding: 15px;
     }
   }
+  .displayInnerTable {
+    display: table;
+    border-collapse: collapse;
+    width: 100%;
+    vertical-align: inherit;
+    & > div {
+      display: table-cell;
+      vertical-align: middle;
+      padding: 15px;
+    }
+  }
 }

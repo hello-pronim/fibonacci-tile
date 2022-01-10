@@ -27,14 +27,13 @@ function ProductLists({ products, accentText }:productListProps) {
             <div>
               <Text variant="Display-Overline">Product Name</Text>
             </div>
-            <div>
-              <Text variant="Display-Overline">Available In</Text>
-            </div>
-            <div>
-              <Text variant="Display-Overline">Collection Name</Text>
-            </div>
-            <div>
-              <Text variant="Display-Overline">Description</Text>
+            <div className={styles.displayInnerTable}>
+              <div>
+                <Text variant="Display-Overline">Available In</Text>
+              </div>
+              <div>
+                <Text variant="Display-Overline">Collection Name</Text>
+              </div>
             </div>
             <div>
               <Text variant="Display-Overline">Image</Text>
