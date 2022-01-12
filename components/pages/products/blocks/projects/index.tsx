@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AccentText, { AccentTextMobile } from "@components/common/accentText";
 import Image from "next/image";
-import Button from "@components/common/button";
+import ArrowButton from "@components/common/button/arrowButton";
 import Slide1 from "public/assets/temp/gallery-1.png";
 import Link from "next/link";
 import {
@@ -42,10 +42,18 @@ const ProjectsModule = ({ accentText }: accordionTypes) => {
       <Sections>
         <Text variant="Display-Overline">SECTIONS</Text>
         <SectionList>
-          <SectionItem><Text variant="Body-Regular">Products in use</Text></SectionItem>
-          <SectionItem><Text variant="Body-Regular">Gallery</Text></SectionItem>
-          <SectionItem><Text variant="Body-Regular">Technical specs</Text></SectionItem>
-          <SectionItem><Text variant="Body-Regular">Related products</Text></SectionItem>
+          <SectionItem>
+            <Text variant="Body-Regular">Products in use</Text>
+          </SectionItem>
+          <SectionItem>
+            <Text variant="Body-Regular">Gallery</Text>
+          </SectionItem>
+          <SectionItem>
+            <Text variant="Body-Regular">Technical specs</Text>
+          </SectionItem>
+          <SectionItem>
+            <Text variant="Body-Regular">Related products</Text>
+          </SectionItem>
         </SectionList>
       </Sections>
       <Project css={{ gridColumn: "2 / span 5" }}>
@@ -97,7 +105,7 @@ const ProjectsModule = ({ accentText }: accordionTypes) => {
         </Details>
       </Project>
       <Bottom>
-        <Button mode="" title="How to order samples" link="#" />
+        <ArrowButton mode="" title="How to order samples" link="#" />
       </Bottom>
     </Container>
   );

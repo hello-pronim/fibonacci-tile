@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import AccentText, { AccentTextMobile } from "@components/common/accentText";
 import Image from "next/image";
-import Button from "@components/common/button";
 import collection from "public/assets/temp/collection-temp.png";
 import Link from "next/link";
 import ProductCard from "@components/common/product/xlCard";
@@ -26,13 +25,14 @@ import Arrow from "@components/common/icons/arrow";
 import theme from "@stylestheme";
 
 const product = {
-    id: "1",
-    richText: "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-    slug: "polarity",
-    subHeading: "Complex • Robust • Diverse",
-    title: "Polarity",
-    uri: "products/polarity"
-  };
+  id: "1",
+  richText:
+    "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+  slug: "polarity",
+  subHeading: "Complex • Robust • Diverse",
+  title: "Polarity",
+  uri: "products/polarity",
+};
 
 const SingleHeroModule = () => {
   const { state, dispatch } = useAppContext();
@@ -96,13 +96,13 @@ const SingleHeroModule = () => {
         css={css({
           gridColumn: "5 / span 4",
           display: "flex",
-          flexDirection: 'column',
+          flexDirection: "column",
           justifyContent: "space-between",
           height: "100%",
         })}
       >
         <div>
-        <ProductCard
+          <ProductCard
             displayMode={state?.productDisplayMode}
             product={product}
             isSelected={
@@ -119,7 +119,13 @@ const SingleHeroModule = () => {
             key={`product-${product.id}`}
           />
         </div>
-        <div css={css({ display: "flex", justifyContent: "space-between", flexDirection: 'row' })}>
+        <div
+          css={css({
+            display: "flex",
+            justifyContent: "space-between",
+            flexDirection: "row",
+          })}
+        >
           <LinkWrapper>
             <Arrow type="short" direction="left" />
             <Link href="#">Previous Product</Link>
