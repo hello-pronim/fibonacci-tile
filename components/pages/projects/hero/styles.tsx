@@ -7,9 +7,14 @@ import Cont from "@components/common/layout/container";
 const Container = styled(Cont)(
   css({
     alignItems: "flex-start",
-    px: "0px !important",
     [theme.mediaQueries.small]: {
-      pr: "0px",
+      pr: [
+        "16px !important",
+        "16px !important",
+        "40px !important",
+        "56px !important",
+        "80px !important",
+      ],
       pl: [
         "16px !important",
         "16px !important",
@@ -35,7 +40,7 @@ const LeftCol = styled("div")(
     pb: 104,
     [theme.mediaQueries.small]: {
       px: 0,
-      gridColumn: "1 / span 5",
+      gridColumn: "1 / span 3",
       gridRow: 1,
     },
   })
@@ -51,7 +56,7 @@ const RightCol = styled("div")(
     },
     [theme.mediaQueries.small]: {
       gridRow: 1,
-      gridColumn: "7 / span 12",
+      gridColumn: "7 / span 5",
     },
   })
 );
@@ -79,10 +84,6 @@ const ContentWrapper = styled("div")(
     display: "flex",
     flexDirection: "column",
     rowGap: 24,
-    mt: 80,
-    [theme.mediaQueries.small]: {
-      mt: 53,
-    },
   })
 );
 
