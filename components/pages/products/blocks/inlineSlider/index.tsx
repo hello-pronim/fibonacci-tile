@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import Image from "next/image";
 import Text from "@components/common/typography";
-import Slide1 from "public/assets/temp/gallery-1.png";
-import Slide1Mobile from "public/assets/temp/project-slide-mobile.png";
+import Slide1 from "public/assets/temp/gallery-1.jpg";
+import SlideMobile from "public/assets/temp/gallery-mobile.jpg";
 import AccentText, {AccentTextMobile} from "@components/common/accentText";
 import AddIcon from "@components/icons/add";
 import Link from "next/link";
@@ -18,6 +18,7 @@ import {
   LinkWrapper,
   BottomBar,
   SlideImage,
+  SlideImageMobile
 } from "./styles";
 import { css } from "@styled-system/css";
 import theme from "styles/theme";
@@ -49,6 +50,16 @@ const InlineSlider = () => {
     beforeChange: (current: number, next: number) => {
       setCurrentSlide(next + 1);
     },
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          centerMode: true,
+        },
+      },
+    ],
   };
 
   const gotoNext = () => {
@@ -59,7 +70,7 @@ const InlineSlider = () => {
   };
 
   return (
-    <Container>
+    <Container id="gallery">
       <AccentText top={206}>Gallery</AccentText>
       <Wrapper>
         <AccentTextMobile css={css({pb: 80})}>Gallery</AccentTextMobile>
@@ -74,6 +85,15 @@ const InlineSlider = () => {
                 height="900"
               />
             </SlideImage>
+            <SlideImageMobile>
+              <Image
+                src={SlideMobile}
+                alt="image-1"
+                layout="responsive"
+                width="303"
+                height="384.08"
+              />
+            </SlideImageMobile>
           </SlideItem>
           <SlideItem>
             <SlideImage>
@@ -85,6 +105,15 @@ const InlineSlider = () => {
                 height="900"
               />
             </SlideImage>
+            <SlideImageMobile>
+              <Image
+                src={SlideMobile}
+                alt="image-1"
+                layout="responsive"
+                width="303"
+                height="384.08"
+              />
+            </SlideImageMobile>
           </SlideItem>
           <SlideItem>
             <SlideImage>
@@ -96,6 +125,15 @@ const InlineSlider = () => {
                 height="900"
               />
             </SlideImage>
+            <SlideImageMobile>
+              <Image
+                src={SlideMobile}
+                alt="image-1"
+                layout="responsive"
+                width="303"
+                height="384.08"
+              />
+            </SlideImageMobile>
           </SlideItem>
           <SlideItem>
             <SlideImage>
@@ -107,6 +145,15 @@ const InlineSlider = () => {
                 height="900"
               />
             </SlideImage>
+            <SlideImageMobile>
+              <Image
+                src={SlideMobile}
+                alt="image-1"
+                layout="responsive"
+                width="303"
+                height="384.08"
+              />
+            </SlideImageMobile>
           </SlideItem>
           <SlideItem>
             <SlideImage>
@@ -118,6 +165,15 @@ const InlineSlider = () => {
                 height="900"
               />
             </SlideImage>
+            <SlideImageMobile>
+              <Image
+                src={SlideMobile}
+                alt="image-1"
+                layout="responsive"
+                width="303"
+                height="384.08"
+              />
+            </SlideImageMobile>
           </SlideItem>
         </Slider>
         <BottomBar>

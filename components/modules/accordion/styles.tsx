@@ -11,12 +11,13 @@ const Container = styled(Cntnr)(() =>
 
 const Wrapper = styled('div')(() =>
   css({
-    gridColumn: '2 / span 10'
+    gridColumn: ['1 / span 2', '1 / span 2','1 / span 6', '2 / span 10']
   })
 );
 
 const Item = styled('div')(() =>
   css({
+    
     width: '100%',
   })
 );
@@ -30,6 +31,7 @@ const Top = styled('div')(() =>
     justifyContent: 'space-between',
     py: 40,
     borderBottom: '2px solid white',
+    cursor: 'pointer',
   })
 );
 

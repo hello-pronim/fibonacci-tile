@@ -52,7 +52,7 @@ export default function ProductFilters({ show }) {
         <div className={styles.logoWrapper}>
           <Link href="/">
             <a>
-              <Image src={Logo} width="158" height="40" alt="Fibonacci" />
+              <Image src={Logo} width="22" height="22" alt="Fibonacci" />
             </a>
           </Link>
         </div>
@@ -63,18 +63,20 @@ export default function ProductFilters({ show }) {
             })}
             onClick={handleActiveFilter("search")}
           >
-            <Text variant="Body-Small" mr="10px">
+            <Text variant="Display-Overline" mr="10px">
               Search
             </Text>
             <SearchIcon />
           </div>
           <div
-            className={classnames(styles.filterItem, styles.productItem, {
+            className={classnames(styles.productSelection, {
               [styles.activeFilter]: activeFilter === "products",
             })}
             onClick={handleActiveFilter("products")}
           >
-            <Text variant="Body-Small">Products</Text>
+            <Text variant="Display-Overline">
+              Products <span className={styles.selection}>selection</span>
+            </Text>
             <ArrowDownIcon />
           </div>
           <div
@@ -83,7 +85,9 @@ export default function ProductFilters({ show }) {
             })}
             onClick={handleActiveFilter("colour-schemes")}
           >
-            <Text variant="Body-Small">Colour Schemes</Text>
+            <Text variant="Display-Overline">
+              Colour Schemes <span className={styles.selection}>selection</span>
+            </Text>
             <ArrowDownIcon />
           </div>
           <div
@@ -92,7 +96,7 @@ export default function ProductFilters({ show }) {
             })}
             onClick={handleActiveFilter("sort-by")}
           >
-            <Text variant="Body-Small">Sort by</Text>
+            <Text variant="Display-Overline">Sort by</Text>
             <ArrowDownIcon />
           </div>
         </div>
@@ -125,7 +129,7 @@ export default function ProductFilters({ show }) {
           </div>
         </div>
         <div className={styles.selections}>
-          <Text variant="Body-Small">Selections</Text> <SelectionCount />
+          <Text variant="Display-Overline">Selections</Text> <SelectionCount />
         </div>
       </div>
       {activeFilter && (

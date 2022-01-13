@@ -1,101 +1,57 @@
 import Head from "next/head";
 import Footer from "@components/common/footer";
-import ProductPage from "@components/pages/products";
-// import { useQuery } from "@apollo/client";
-// import { ProductsQuery } from "@gql/productGQL";
-// import NProgress from "nprogress";
+import ProjectsPage from "@components/pages/projects";
 
-const Products = () => {
-  // const {data, error, loading} = useQuery(ProductsQuery);
-  // if(loading) {
-  //   NProgress.start();
-  // }else {
-  //   NProgress.done();
-  // }
-  const products = [
+const Projects = () => {
+  const projects = [
     {
       id: "1",
-      richText:
-        "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-      slug: "polarity",
-      subHeading: "Complex • Robust • Diverse",
-      title: "Polarity",
-      uri: "products/polarity",
+      slug: "project-1",
+      title: "Project Name Goes Here",
+      location: "City, Country",
+      type: "explore",
+      date: "Month, 2021",
+      thumbnail: "/public/assets/temp/project-thumb-1.png",
     },
     {
       id: "2",
-      richText:
-        "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-      slug: "polarity",
-      subHeading: "Complex • Robust • Diverse",
-      title: "Polarity",
-      uri: "products/polarity",
+      slug: "project-2",
+      title: "Project Name Goes Here",
+      location: "City, Country",
+      type: "residential",
+      date: "Month, 2021",
+      thumbnail: "/public/assets/temp/project-thumb-2.png",
     },
     {
       id: "3",
-      richText:
-        "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-      slug: "polarity",
-      subHeading: "Complex • Robust • Diverse",
-      title: "Polarity",
-      uri: "products/polarity",
-    },
-    {
-      id: "4",
-      richText:
-        "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-      slug: "polarity",
-      subHeading: "Complex • Robust • Diverse",
-      title: "Polarity",
-      uri: "products/polarity",
-    },
-    {
-      id: "5",
-      richText:
-        "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-      slug: "polarity",
-      subHeading: "Complex • Robust • Diverse",
-      title: "Polarity",
-      uri: "products/polarity",
-    },
-    {
-      id: "6",
-      richText:
-        "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-      slug: "polarity",
-      subHeading: "Complex • Robust • Diverse",
-      title: "Polarity",
-      uri: "products/polarity",
-    },
-    {
-      id: "7",
-      richText:
-        "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-      slug: "polarity",
-      subHeading: "Complex • Robust • Diverse",
-      title: "Polarity",
-      uri: "products/polarity",
-    },
-    {
-      id: "8",
-      richText:
-        "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-      slug: "polarity",
-      subHeading: "Complex • Robust • Diverse",
-      title: "Polarity",
-      uri: "products/polarity",
+      slug: "project-3",
+      title: "Project Name Goes Here",
+      location: "City, Country",
+      type: "commercial",
+      date: "Month, 2021",
+      thumbnail: "/public/assets/temp/project-thumb-3.png",
     },
   ];
+  const types = [
+    "all",
+    "explore",
+    "residential",
+    "commercial",
+    "workplaces",
+    "recreation",
+    "retails",
+  ];
+
   return (
     <>
       <Head>
-        <title>Products | Fibonacci</title>
-        <meta name="description" content="Fibonacci Products page" />
+        <title>Projects | Fibonacci</title>
+        <meta name="description" content="Fibonacci Projects page" />
       </Head>
-      <ProductPage products={products} />
+      <ProjectsPage projects={projects} types={types} />
       <Footer />
     </>
   );
 };
 
-export default Products;
+export default Projects;

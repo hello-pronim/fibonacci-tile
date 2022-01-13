@@ -10,15 +10,23 @@ const Container = styled(Cntnr)(css({
 const Wrapper = styled("div")(
   css({
     position: "relative",
-    gridColumn: ["1 / span 2", "1 / span 6", "1 / span 6", '2 / span 10'],
-    py: 206,
+    gridColumn: ["1 / span 2", "1 / span 6", '2 / span 10'],
+    pt: 60,
     pb: 40,
     width: "100%",
+    [theme.mediaQueries.small]: {
+      pt: 120,
+  },
     ".slick-slider .slick-list": {
+      paddingLeft: '0 !important',
+      [theme.mediaQueries.small]: {
+        pl: 50,
+    },
       [theme.mediaQueries.medium]: {overflow: "visible"},
       ".slick-track": {
         display:'flex',
         ".slick-slide": {
+          mr: 16,
           [theme.mediaQueries.medium]: {
             mr: 40,
           }

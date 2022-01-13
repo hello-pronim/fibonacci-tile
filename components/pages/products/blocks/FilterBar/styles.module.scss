@@ -1,6 +1,5 @@
 .container {
-  position: fixed;
-  top: 0;
+  position: relative;
   z-index: 99;
   width: 100%;
   opacity: 0;
@@ -14,14 +13,19 @@
   align-items: center;
   background-color: #fff;
   justify-content: space-between;
+  padding-left: 24px;
   padding-right: 80px;
+  padding-top: 12px;
+  padding-bottom: 12px;
   .logoWrapper {
-    width: 100px;
+    padding-right: 33px;
   }
   .filters {
     display: flex;
+    flex: 1;
     justify-content: space-between;
     align-items: center;
+    column-gap: 64px;
   }
   .searchItem {
     display: flex;
@@ -29,6 +33,7 @@
     padding: 2px;
     margin-right: 10px;
     cursor: pointer;
+    text-transform: uppercase;
     &:hover,
     &.activeFilter {
       background: #f6f6f6;
@@ -37,15 +42,32 @@
   .filterItem {
     margin-right: 10px;
     display: flex;
-    width: 190px;
-    padding: 20px;
+    flex: 1;
+    padding: 19.5px 33px;
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
+    text-transform: uppercase;
     &:hover,
     &.activeFilter {
       background: #f6f6f6;
     }
+  }
+  .productSelection {
+    display: flex;
+    padding-top: 19.5px;
+    padding-left: 33px;
+    padding-bottom: 19.5px;
+    padding-right: 33px;
+    background-color: #f6f6f6;
+    justify-content: space-between;
+    flex: 1;
+    text-transform: uppercase;
+  }
+  .selection {
+    color: #b1aba6 !important;
+    margin-left: 4px;
+    display: none;
   }
   .displayOptionsContainer {
     border-right: 3px solid #edece8;
@@ -112,7 +134,7 @@
 .colorSchemesContainer {
   display: flex;
   position: relative;
-  padding-top: 30px;
+  padding-top: 56px;
   justify-content: space-between;
   align-items: center;
   .colorSchemeItemsContainer {
@@ -120,10 +142,12 @@
     .colourScheme {
       display: flex;
       align-items: center;
-      justify-content: space-evenly;
+      justify-content: flex-end;
       text-align: center;
-      width: 75px;
-      padding: 40px 15px;
+      height: 105px;
+      width: 156px;
+      padding: 24px 0px 34px;
+      row-gap: 76px;
       cursor: pointer;
       flex-direction: column;
     }
@@ -164,13 +188,16 @@
 }
 
 .clearFilter {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
   position: absolute;
   bottom: -20px;
   border: solid 1px #c4c4c4;
   color: #141414;
   font-size: 14px;
   line-height: 24px;
-  padding: 7px 32px 7px 12px;
+  padding: 7px 12px 7px 12px;
   height: 24px;
   border-radius: 24px;
   cursor: pointer;

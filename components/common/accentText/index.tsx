@@ -16,6 +16,7 @@ const AccentText = styled("span")(({ top }: { top?: number }) =>
     lineHeight: 2,
     letterSpacing: 0,
     display: "none",
+    height: 'fit-content',
     [theme.mediaQueries.medium]: {
       display: "block",
     },

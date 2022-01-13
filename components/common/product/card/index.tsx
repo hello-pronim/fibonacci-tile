@@ -54,7 +54,7 @@ const ProductCard = ({
             <div className={styles.cardImg}>
               <Link href={product.uri}>
                 <a>
-                  <Image src={ProductImg} alt="Product-1" />
+                  <Image src={product.img1} alt="Product-1" />
                 </a>
               </Link>
             </div>
@@ -114,7 +114,7 @@ const ProductCard = ({
         <div className={styles.cardImgContainer}>
           <Link href={product.uri}>
             <a>
-              <Image src={ProductImg} alt="Product-1" />
+              <Image src={product.img1} alt="Product-1" />
             </a>
           </Link>
           <div className={styles.actionBtnContainer}>

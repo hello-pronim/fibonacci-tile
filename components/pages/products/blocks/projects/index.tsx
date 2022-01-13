@@ -29,10 +29,19 @@ interface accordionTypes {
 
 const ProjectsModule = ({ accentText }: accordionTypes) => {
   return (
-    <Container>
+    <Container id="projects">
       <AccentText top={400}>{accentText}</AccentText>
       <IntroWrapper>
-        <Text variant="Display-Medium" altFont>
+        <Text
+          variant="Display-Medium"
+          altFont
+          css={css({
+            fontSize: 24,
+            [theme.mediaQueries.small]: {
+              fontSize: 42,
+            },
+          })}
+        >
           Complex, random, and swarming with polarity - the hallmarks of any
           great political system. There&apos;s bent and straight, cool and warm,
           light and dark, and with the odd bit of red and green thrown in to
@@ -43,20 +52,55 @@ const ProjectsModule = ({ accentText }: accordionTypes) => {
         <Text variant="Display-Overline">SECTIONS</Text>
         <SectionList>
           <SectionItem>
-            <Text variant="Body-Regular">Products in use</Text>
+            <Text variant="Body-Regular">
+              <a
+                href="#projects"
+                css={css({ color: "inherit", textDecoration: "none" })}
+              >
+                Products in use
+              </a>
+            </Text>
           </SectionItem>
           <SectionItem>
-            <Text variant="Body-Regular">Gallery</Text>
+            <Text variant="Body-Regular">
+              <a
+                href="#gallery"
+                css={css({ color: "inherit", textDecoration: "none" })}
+              >
+                Gallery
+              </a>
+            </Text>
           </SectionItem>
           <SectionItem>
-            <Text variant="Body-Regular">Technical specs</Text>
+            <Text variant="Body-Regular">
+              <a
+                href="#technical-specifications"
+                css={css({ color: "inherit", textDecoration: "none" })}
+              >
+                Technical specs
+              </a>
+            </Text>
           </SectionItem>
           <SectionItem>
-            <Text variant="Body-Regular">Related products</Text>
+            <Text variant="Body-Regular">
+              <a
+                href="#related-products"
+                css={css({ color: "inherit", textDecoration: "none" })}
+              >
+                Related products
+              </a>
+            </Text>
           </SectionItem>
         </SectionList>
       </Sections>
-      <Project css={{ gridColumn: "2 / span 5" }}>
+      <Project
+        css={{
+          gridColumn: "1 / span 2",
+          [theme.mediaQueries.small]: {
+            gridColumn: "2 / span 5",
+          },
+        }}
+      >
         <ImageWrapper>
           <Image
             src={Slide1}
@@ -80,7 +124,16 @@ const ProjectsModule = ({ accentText }: accordionTypes) => {
           </LinkWrapper>
         </Details>
       </Project>
-      <Project css={{ gridColumn: "7 / span 5" }}>
+      <Project
+        css={{
+          gridColumn: "1 / span 2",
+          gridRow: 3,
+          [theme.mediaQueries.small]: {
+            gridColumn: "7 / span 5",
+            gridRow: 2,
+          },
+        }}
+      >
         <ImageWrapper>
           <Image
             src={Slide1}

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import Image from "next/image";
 import Text from "@components/common/typography";
-import Slide1 from "public/assets/temp/project-slide-1.png";
-import Slide1Mobile from "public/assets/temp/project-slide-mobile.png";
+import Slide1 from "public/assets/temp/project-slide-1.jpg";
+import Slide1Mobile from "public/assets/temp/project-slide-mobile.jpg";
 import AccentText, {AccentTextMobile} from "@components/common/accentText";
 import AddIcon from "@components/icons/add";
 import Link from "next/link";
@@ -56,9 +56,9 @@ const InlineSlider = () => {
 
   return (
     <Container>
-      <AccentText top={206}>A superlative selection</AccentText>
+      <AccentText top={206}>An imaginative selection</AccentText>
       <Wrapper>
-        <AccentTextMobile css={css({pb: 80})}>A superlative selection</AccentTextMobile>
+        <AccentTextMobile css={css({pb: 80})}>An imaginative selection</AccentTextMobile>
         <Slider {...settings} ref={slider}>
           <SlideItem>
             <SlideImage>

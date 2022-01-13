@@ -9,15 +9,17 @@ import {
   ContentWrapper,
   DetailsWrapper,
   Detail,
+  Container,
 } from "./styles";
-import AddIcon from "@components/icons/add";
-import Container from "@components/common/layout/container";
 import css from "@styled-system/css";
 
 const Hero = () => {
   return (
     <Container css={css({ pt: 160, pb: 48 })}>
       <LeftCol>
+        {/* <div>
+          Our Projects <span css={css({color: 'concrete'})}>•</span> Nelson Cafe
+        </div> */}
         <ContentWrapper>
           <Text Base="h1" variant="Display-Large">
             Fibonacci Live
