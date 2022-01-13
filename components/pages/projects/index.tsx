@@ -1,19 +1,17 @@
-import QuoteModule from "@components/modules/quote";
-import Hero from "./hero";
-import FeaturedProducts from "./featuredProducts";
 import React from "react";
-import BodyContent from "./bodyContent";
 
-const ProjectPage = () => {
+import Hero from "./hero";
+import ProjectList from "./ProjectList";
+import ProjectsHeader from "./Header";
+import styles from "./styles.module.scss";
+
+const ProjectPage = ({ projects, types }) => {
   return (
-    <>
-    <Hero></Hero>
-    <BodyContent/>
-    <FeaturedProducts/>
-      <QuoteModule source="Rebeka Morgan, Build Her Collective">
-      ‘It certainly helps from a planning and ordering perspective that Fibonacci Stone carry so much stock.’
-      </QuoteModule>
-    </>
+    <div className={styles.container}>
+      <ProjectsHeader mode="dark" />
+      <Hero />
+      <ProjectList projects={projects} types={types} />
+    </div>
   );
 };
 export default ProjectPage;

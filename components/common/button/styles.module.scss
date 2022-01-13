@@ -1,0 +1,77 @@
+@import "@styles/variables";
+
+.button {
+  padding: rem(10) rem(24);
+  background-color: $white;
+  color: $primary;
+  font-weight: 800;
+  font-size: rem(18);
+  line-height: rem(34);
+  letter-spacing: rem(1);
+  font-family: inherit;
+  transition: all 0.3s ease;
+  border-width: 0;
+  cursor: pointer;
+
+  &.active {
+    background-color: $primary;
+    color: $white;
+  }
+
+  &:hover {
+    background-color: $primary;
+    color: $white;
+  }
+
+  &.rounded {
+    border-radius: rem(6);
+  }
+
+  &.small {
+    padding: rem(6) rem(16);
+  }
+
+  &.large {
+    padding: rem(18) rem(36);
+  }
+
+  &.primary {
+    color: $primary;
+    background-color: $white;
+
+    &:hover {
+      color: $white;
+      background-color: $primary;
+    }
+  }
+
+  &.secondary {
+    color: $white;
+    background-color: $primary;
+
+    &:hover {
+      color: $primary;
+      background-color: $white;
+    }
+  }
+
+  &.dark {
+    color: $primary;
+    background-color: $white;
+
+    &:hover {
+      color: $white;
+      background-color: $primary;
+    }
+  }
+
+  &.light {
+    color: $white;
+    background-color: $primary;
+
+    &:hover {
+      color: $primary;
+      background-color: $white;
+    }
+  }
+}
