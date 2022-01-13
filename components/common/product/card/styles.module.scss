@@ -15,7 +15,7 @@
 .tableRow {
   border-top: 1px solid #d4d4d8;
   & > div {
-    padding: 24px 16px;
+    padding: 24px 20px;
   }
   & > div.imgCell {
     padding-right: 0;
@@ -112,11 +112,12 @@
     width: 100%;
     vertical-align: inherit;
     & > div {
-      display: table-cell;
+      display: inline-block;
       vertical-align: middle;
+      width: 50%;
     } 
     .collectionName {
-      padding-left: 44px;
+      padding-left: 0;
     }
   }
 }

@@ -1,21 +1,35 @@
 .footerCTAContainer {
     margin-top: 80px;
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: stretch;
+    .ctaImgBox {
+        width: 50%;
+        div {
+            display: block !important;
+        }
+    }
     .ctaDetails {
+        width: 50%;
         background-color: #2D2D2D;
-        padding: 55px;
-        h2 {
-            font-size: 44px;
-            line-height: 51px;
-            letter-spacing: -0.01em;
-            margin-bottom: 25px;
+        .ctaDetailsBox {
+            padding: 30px 55px 55px 55px;
+            max-width: 400px;
+            h2 {
+                font-size: 44px;
+                line-height: 51px;
+                letter-spacing: -0.01em;
+                margin-bottom: 25px;
+            }
+            p {
+                font-size: 16px;
+                line-height: 22.4px;
+                margin-bottom: 60px;
+            }
+            p:first-of-type + p {
+                padding-top: 20px;
+            }
         }
-        p {
-            font-size: 16px;
-            line-height: 22.4px;
-        }
-        p:first-of-type + p {
-            padding-top: 20px;
-        } 
     }
 }
