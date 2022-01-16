@@ -35,9 +35,13 @@ const ProductsPage = ({ products }) => {
     }
   },[state.filter]);
 
-  const applyFilter = useCallback(()=> {
-    console.log("Filter Data", state.filter);
-  }, [])
+  // const applyFilter = useCallback(()=> {
+  //   console.log("Filter Data", state.filter);
+  // }, [])
+
+  const applyFilter = ()=> {
+    console.log("Filter Query Data", state.filter);
+  }
 
   return (
     <div className={styles.container}>
