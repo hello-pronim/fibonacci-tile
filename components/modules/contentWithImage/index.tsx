@@ -1,8 +1,8 @@
 import { Container, Wrapper, ImageWrapper } from "./styles";
-import Text from "@componentscommon/typography";
 import Image from "next/image";
-import SamplesImage from "public/assets/temp/samples.png";
+import SamplesImage from "public/assets/temp/samples.jpg";
 import ArrowButton from "@components/common/button/arrowButton";
+import Text from "@components/common/typography";
 
 const ContentWithImageModule = () => {
   return (
