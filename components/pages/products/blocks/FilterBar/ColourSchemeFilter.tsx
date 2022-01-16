@@ -30,7 +30,8 @@ export default function ColourSchemeFilter({}) {
   ];
 
   return (
-    <div className={styles.colorSchemesContainer}>
+    <div className={classnames(styles.colorSchemesContainer, {[styles.mobileColorScheme] : state.isMobileFilterActive})}>
+      {!state.isMobileFilterActive && (
       <div
         className={classnames(
           styles.productFilterItem,
@@ -41,22 +42,26 @@ export default function ColourSchemeFilter({}) {
           Refine your <br/> colour schemes
         </Text>
       </div>
+      )}
       <div className={styles.colorSchemeItemsContainer}>
         {schemeArray.map((scheme, index) => (
           <div
             key={`colour-${index}`}
-            className={styles.colourScheme}
+            className={classnames(styles.colourScheme, {[styles.filterInnerMobile]: state.isMobileFilterActive})}
             style={{
               background: scheme.colour,
             }}
             onClick={()=> handleFilter(scheme.value)}
           >
-            {state.filter.colourSchemes.indexOf(scheme.value) !== -1 && (
+            {!state.isMobileFilterActive && state.filter.colourSchemes.indexOf(scheme.value) !== -1 && (
               <CheckMarkIcon color={scheme.textColour} />
             )}  
             <Text variant="Body-Small" color={scheme.textColour}>
               {scheme.label}
             </Text>
+            {state.isMobileFilterActive && state.filter.colourSchemes.indexOf(scheme.value) !== -1 && (
+              <CheckMarkIcon color={scheme.textColour} />
+            )}  
           </div>
         ))}
       </div>

@@ -27,13 +27,19 @@ export default function ProductFilter({}) {
           [styles.activeFilter]: state.filter.products === "all",
         })}
       >
-        <div className={styles.filterInner} onClick={() => handleFilter("all")}>
-          <Text as="h3" variant="Body-Small">
-            All products{" "}
-            {state.filter.products === "all" && (
-              <CheckMarkIcon color="#141414" />
-            )}
-          </Text>
+        <div className={classnames(styles.filterInner, {[styles.filterInnerMobile]: state.isMobileFilterActive})} 
+        onClick={() => handleFilter("all")}>
+          <div className={classnames({[styles.mobileDetails]: state.isMobileFilterActive})}>
+            <Text as="h3" variant="Body-Small">
+              All products{" "}
+              {!state.isMobileFilterActive && state.filter.products === "all" && (
+                <CheckMarkIcon color="#141414" />
+              )}
+            </Text>
+          </div>
+          {state.isMobileFilterActive && state.filter.products === "all" && (
+            <CheckMarkIcon color="#141414" />
+          )}
         </div>
       </div>
       <div
@@ -42,19 +48,24 @@ export default function ProductFilter({}) {
         })}
       >
         <div
-          className={styles.filterInner}
+          className={classnames(styles.filterInner, {[styles.filterInnerMobile]: state.isMobileFilterActive})}
           onClick={() => handleFilter("tiles")}
         >
-          <Text as="h3" variant="Body-Small">
-            Tiles{" "}
-            {state.filter.products === "tiles" && (
-              <CheckMarkIcon color="#141414" />
-            )}
-          </Text>
-          <Text as="p" variant="Body-Small">
-            Amet orci facilisi magna nunc vel, est leo adipiscing. Rhoncus
-            aenean.
-          </Text>
+          <div className={classnames({[styles.mobileDetails]: state.isMobileFilterActive})}>
+            <Text as="h3" variant="Body-Small">
+              Tiles{" "}
+              {!state.isMobileFilterActive && state.filter.products === "tiles" && (
+                <CheckMarkIcon color="#141414" />
+              )}
+            </Text>
+            <Text as="p" variant={state.isMobileFilterActive? "Body-XSmall" : "Body-Small"}>
+              Amet orci facilisi magna nunc vel, est leo adipiscing. Rhoncus
+              aenean.
+            </Text>
+          </div>
+          {state.isMobileFilterActive && state.filter.products === "tiles" && (
+            <CheckMarkIcon color="#141414" />
+          )}
         </div>
       </div>
       <div
@@ -63,19 +74,24 @@ export default function ProductFilter({}) {
         })}
       >
         <div
-          className={styles.filterInner}
+          className={classnames(styles.filterInner, {[styles.filterInnerMobile]: state.isMobileFilterActive})}
           onClick={() => handleFilter("slabs")}
         >
-          <Text as="h3" variant="Body-Small">
-            Slabs{" "}
-            {state.filter.products === "slabs" && (
-              <CheckMarkIcon color="#141414" />
-            )}
-          </Text>
-          <Text as="p" variant="Body-Small">
-            Amet orci facilisi magna nunc vel, est leo adipiscing. Rhoncus
-            aenean.
-          </Text>
+          <div className={classnames({[styles.mobileDetails]: state.isMobileFilterActive})}>
+            <Text as="h3" variant="Body-Small">
+              Slabs{" "}
+              {!state.isMobileFilterActive && state.filter.products === "slabs" && (
+                <CheckMarkIcon color="#141414" />
+              )}
+            </Text>
+            <Text as="p" variant={state.isMobileFilterActive? "Body-XSmall" : "Body-Small"}>
+              Amet orci facilisi magna nunc vel, est leo adipiscing. Rhoncus
+              aenean.
+            </Text>
+          </div>
+          {state.isMobileFilterActive && state.filter.products === "slabs" && (
+            <CheckMarkIcon color="#141414" />
+          )}
         </div>
       </div>
       <div
@@ -84,19 +100,24 @@ export default function ProductFilter({}) {
         })}
       >
         <div
-          className={styles.filterInner}
+          className={classnames(styles.filterInner, {[styles.filterInnerMobile]: state.isMobileFilterActive})}
           onClick={() => handleFilter("releases")}
         >
-          <Text as="h3" variant="Body-Small">
-            Latest Releases{" "}
-            {state.filter.products === "releases" && (
-              <CheckMarkIcon color="#141414" />
-            )}
-          </Text>
-          <Text as="p" variant="Body-Small">
-            Amet orci facilisi magna nunc vel, est leo adipiscing. Rhoncus
-            aenean.
-          </Text>
+          <div className={classnames({[styles.mobileDetails]: state.isMobileFilterActive})}>
+            <Text as="h3" variant="Body-Small">
+              Latest Releases{" "}
+              {!state.isMobileFilterActive && state.filter.products === "releases" && (
+                <CheckMarkIcon color="#141414" />
+              )}
+            </Text>
+            <Text as="p" variant={state.isMobileFilterActive? "Body-XSmall" : "Body-Small"}>
+              Amet orci facilisi magna nunc vel, est leo adipiscing. Rhoncus
+              aenean.
+            </Text>
+          </div>
+          {state.isMobileFilterActive && state.filter.products === "releases" && (
+            <CheckMarkIcon color="#141414" />
+          )}
         </div>
       </div>
       <div onClick={()=> handleFilter('all')} className={styles.clearFilter}>

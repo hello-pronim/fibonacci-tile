@@ -8,6 +8,7 @@ export const initialState = {
   },
   productDisplayMode: "grid",
   loading: true,
+  isMobileFilterActive: false,
 };
 
 export const AppReducer = (state, action) => {
@@ -86,6 +87,13 @@ export const AppReducer = (state, action) => {
           selectedProducts: [...state.selectedProducts, action.product],
         };
       }
+    }
+    case "SET_MOBILE_FILTER": {
+      console.log("value", action.value)
+      return {
+        ...state,
+        isMobileFilterActive: action.value,
+      };
     }
   }
 };

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import ProductsHeader from "./Header";
 import ProductFilterBar from "./blocks/FilterBar";
 import CTAPanel from "./blocks/CTAPanel";
@@ -17,7 +17,7 @@ const ProductsPage = ({ products }) => {
   
   useEffect(() => {
     const handleScroll = () => {
-      if (ref && ref?.current?.offsetTop < window.pageYOffset + 700) {
+      if (ref && ref?.current?.offsetTop < window.pageYOffset + 370) {
         setShowFilterBar(true);
       } else {
         setShowFilterBar(false);
@@ -30,17 +30,22 @@ const ProductsPage = ({ products }) => {
   }, [ref]);
 
   useEffect(() => {
-    console.log("Filter state changed fetching filtered products....");
+    if(!state.isMobileFilterActive) {
+      applyFilter()
+    }
   },[state.filter]);
+
+  const applyFilter = useCallback(()=> {
+    console.log("Filter Data", state.filter);
+  }, [])
 
   return (
     <div className={styles.container}>
       <ProductsHeader />
       <Slider/>
       <SectionTitle show={showFilterBar} title="40 unique creations. Thoughtfully designed. Sustainably made. Purpose-built." />
-      <section ref={ref} css={css({position: 'sticky',zIndex: 99999,
-  top: 0, height: showFilterBar ? 'auto' : 0})}>
-        <ProductFilterBar show={showFilterBar} />
+      <section ref={ref}>
+        <ProductFilterBar applyFilter={applyFilter} show={showFilterBar} />
       </section>
       <ProductLists products={products} accentText="Be inspired"/>
       <CTAPanel imagePosition="left" />

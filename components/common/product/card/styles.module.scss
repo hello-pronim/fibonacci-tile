@@ -15,7 +15,7 @@
 .tableRow {
   border-top: 1px solid #d4d4d8;
   & > div {
-    padding: 24px 16px;
+    padding: 24px 20px;
   }
   & > div.imgCell {
     padding-right: 0;
@@ -40,7 +40,58 @@
     height: 60px;
     overflow: hidden;
   }
+  .details {
+    display: none;
+  }
   &.detailView {
+    background-color: #FFFFF8;
+    .details {
+      display: block;
+      padding-top: 50px;
+      .description {
+        padding: 30px 0;
+      }
+      .listings {
+        & > ul {
+          & > li {
+            color: #B0ABA7;
+            font-size: 16px;
+            border-bottom: solid 1px #F4EEE9;
+            line-height: 22.4px;
+            padding: 15px 0;
+            &:first-child {
+              padding-top: 0px;
+            }
+            .headline {
+              color: #141414;
+              font-size: 12px;
+              padding-bottom: 10px;
+              text-transform: uppercase;
+              line-height: 16.8px;
+            }
+          }
+        }
+      }
+      .technicalSpecification {
+        color: #141414;
+        font-size: 14px;
+        line-height: 18.2px;
+        text-decoration: none;
+        margin-top: 15px;
+        display: inline-block;
+        position: relative;
+        &:after {
+          position: absolute;
+          top: 0px;
+          right: -35px;
+          display: block;
+          width: 24px;
+          height: 40px;
+          content: "";
+          background: url("../../../../public/assets/icons/black-arrow.svg") top right no-repeat;
+        }
+      }
+    }
     & > div {
       padding-top: 30px;
       vertical-align: top;
@@ -55,7 +106,22 @@
       height: initial;
     }
   }
+  .displayInnerTable {
+    display: table;
+    border-collapse: collapse;
+    width: 100%;
+    vertical-align: inherit;
+    & > div {
+      display: inline-block;
+      vertical-align: middle;
+      width: 50%;
+    } 
+    .collectionName {
+      padding-left: 0;
+    }
+  }
 }
+
 a.productListTitle {
   text-decoration: none;
   color: #000;

@@ -21,9 +21,12 @@ export default function SearchFilter({}) {
   return (
     <div className={styles.searchContainer}>
       <div className={styles.searchLabel}>
+      {!state.isMobileFilterActive && (
         <SearchIcon />
+      )}
         <Text variant="Body-Small">Start Typing</Text>
       </div>
+ 
       <DebounceInput
         minLength={1}
         debounceTimeout={300}
