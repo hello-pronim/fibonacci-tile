@@ -7,7 +7,7 @@ export interface containerProps {
   visibleBorder: boolean;
 }
 
-const ButtonWrapper = styled("div")(({ ...props }: containerProps) =>
+const ArrowButtonWrapper = styled("div")(({ ...props }: containerProps) =>
   css({
     a: {
       borderWidth: 1,
@@ -74,4 +74,4 @@ const ButtonWrapper = styled("div")(({ ...props }: containerProps) =>
   })
 );
 
-export { ButtonWrapper };
+export { ArrowButtonWrapper };

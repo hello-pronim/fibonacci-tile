@@ -1,33 +1,25 @@
-import Link from "next/link";
-
 import styles from "./styles.module.scss";
 
-export interface buttonProps {
+export interface chipProps {
   className?: string;
-  type?: "button" | "submit";
-  text: string;
-  href?: string;
-  variant?: string;
   color?: "primary" | "secondary" | "dark" | "light";
   size?: "large" | "medium" | "small";
   rounded?: boolean;
+  active?: boolean;
   onClick?: () => void;
   children?: React.ReactNode;
 }
 
-export default function Button({
-  href,
+export default function Chip({
   className,
-  type = "button",
-  text,
-  variant = "contained",
   color = "primary",
   size = "medium",
   rounded = false,
+  active = false,
   onClick,
   children,
   ...props
-}: buttonProps) {
+}: chipProps) {
   let themeName = styles.primary;
   if (color === "secondary") themeName = styles.secondary;
   else if (color === "dark") themeName = styles.dark;
@@ -35,28 +27,17 @@ export default function Button({
   let roundedClass = rounded ? styles.rounded : "";
   const sizeClass =
     size === "small" ? styles.small : size === "large" ? styles.large : "";
+  const activeClass = active ? styles.active : "";
 
-  return !href ? (
-    <button
-      type={type}
-      className={`${styles.button} ${
+  return (
+    <span
+      className={`${styles.chip} ${
         className ? className : ""
-      } ${themeName} ${roundedClass} ${sizeClass}`}
+      } ${themeName} ${roundedClass} ${sizeClass} ${activeClass}`}
       onClick={onClick}
       {...props}
     >
       {children}
-    </button>
-  ) : (
-    <Link {...{ href }} prefetch={false}>
-      <button
-        className={`${styles.button}${
-          className ? ` ${className}` : ""
-        } ${themeName} ${roundedClass} ${sizeClass}`}
-        {...props}
-      >
-        {children}
-      </button>
-    </Link>
+    </span>
   );
 }

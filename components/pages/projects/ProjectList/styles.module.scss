@@ -1,0 +1,9 @@
+.masonryGrid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  grid-column: 1 / span 12;
+  &Column {
+    padding: 0px 80px;
+  }
+}
