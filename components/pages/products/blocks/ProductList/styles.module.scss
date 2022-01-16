@@ -32,7 +32,24 @@
     background: #e5e5e5;
     text-transform: uppercase;
     & > div {
-      padding: 15px;
+      padding: 20px;
     }
+  }
+  .displayProductName {
+    width: 30%;
+  }
+  .displayInnerTable {
+    width: 45%;
+    & > div {
+      display: inline-block;
+      vertical-align: middle;
+      width: 50%;
+    }
+  }
+  .displayPatternImage {
+    width: 20%;
+  }
+  .tableActionContainer {
+    width: 5%;
   }
 }
