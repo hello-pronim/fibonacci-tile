@@ -26,7 +26,7 @@ const ProductCard = ({
           [styles.detailView]: detailShown,
         })}
       >
-        <div>
+        <div className={styles.displayProductName}>
           <Link href={product.uri}>
             <a className={styles.productListTitle}>
               <Text as="h3" variant="Display-XSmall" altFont={true}>

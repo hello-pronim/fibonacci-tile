@@ -24,7 +24,7 @@ function ProductLists({ products, accentText }:productListProps) {
       {state?.productDisplayMode === "list" && (
         <div className="display-table">
           <div className={styles.tableHeader}>
-            <div>
+            <div className={styles.displayProductName}>
               <Text variant="Display-Overline">Product Name</Text>
             </div>
             <div className={styles.displayInnerTable}>
@@ -35,7 +35,7 @@ function ProductLists({ products, accentText }:productListProps) {
                 <Text variant="Display-Overline">Collection Name</Text>
               </div>
             </div>
-            <div>
+            <div className={styles.displayPatternImage}>
               <Text variant="Display-Overline">Image</Text>
             </div>
             <div className={styles.tableActionContainer}></div>

@@ -32,18 +32,24 @@
     background: #e5e5e5;
     text-transform: uppercase;
     & > div {
-      padding: 15px;
+      padding: 20px;
     }
   }
+  .displayProductName {
+    width: 30%;
+  }
   .displayInnerTable {
-    display: table;
-    border-collapse: collapse;
-    width: 100%;
-    vertical-align: inherit;
+    width: 45%;
     & > div {
-      display: table-cell;
+      display: inline-block;
       vertical-align: middle;
-      padding: 15px;
+      width: 50%;
     }
+  }
+  .displayPatternImage {
+    width: 20%;
+  }
+  .tableActionContainer {
+    width: 5%;
   }
 }
