@@ -1,16 +1,30 @@
+import theme from "styles/theme";
+import { grid } from "styled-system";
 import css from "@styled-system/css";
 import styled from "@emotion/styled";
 import Cntnr from "@components/common/layout/container";
-import { grid } from "styled-system";
 
-const Container = styled(Cntnr)(() =>
+const Container = styled(Cntnr)(
   css({
     alignItems: "flex-start",
-    py: 114,
-    rowGap: 40,
+    [theme.mediaQueries.small]: {
+      pr: [
+        "16px !important",
+        "16px !important",
+        "40px !important",
+        "56px !important",
+        "80px !important",
+      ],
+      pl: [
+        "16px !important",
+        "16px !important",
+        "40px !important",
+        "56px !important",
+        "80px !important",
+      ],
+    },
   })
 );
-
 const Wrapper = styled("div")(() =>
   css({
     gridColumn: "2 / span 10",
@@ -64,6 +78,7 @@ const ProjectWrapper = styled("div")(() =>
 
 const ImageWrapper = styled("div")(() =>
   css({
+    position: "relative",
     gridColumn: "1 / span 2",
     gridRow: 1,
   })
@@ -75,6 +90,7 @@ const Project = styled("div")(() =>
     display: "grid",
     gridTemplateColumns: "1fr 1fr",
     rowGap: 24,
+    padding: "60px 0",
   })
 );
 
@@ -183,6 +199,17 @@ const FilterWrapper = styled("div")(
   })
 );
 
+const LoadMoreWrapper = styled("div")(
+  css({
+    gridColumn: "1 / span 12",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingTop: "32px",
+    paddingBottom: "32px",
+  })
+);
+
 export {
   Bottom,
   Container,
@@ -192,6 +219,7 @@ export {
   Inner,
   IntroWrapper,
   LinkWrapper,
+  LoadMoreWrapper,
   ProjectWrapper,
   Project,
   SectionItem,

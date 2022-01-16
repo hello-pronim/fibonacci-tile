@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Masonry from "react-masonry-css";
 import MasonryInfiniteScroller from "react-masonry-infinite";
 import Image from "next/image";
-import ArrowButton from "@components/common/button/arrowButton";
 import Link from "next/link";
 import {
   Bottom,
@@ -11,14 +10,18 @@ import {
   FilterWrapper,
   ImageWrapper,
   LinkWrapper,
+  LoadMoreWrapper,
   Project,
 } from "./styles";
 import mockData from "./constants";
+import ArrowButton from "@components/common/button/arrowButton";
 import Chip from "@components/common/chip";
+import Arrow from "@components/common/icons/arrow";
 import Text from "@components/common/typography";
 import { css } from "@styled-system/css";
-import Arrow from "@components/common/icons/arrow";
 import theme from "@styles/theme";
+
+import styles from "./styles.module.scss";
 
 interface ProjectListType {
   projects: Array<any>;
@@ -46,50 +49,55 @@ const ProjectList = ({ projects, types }: ProjectListType) => {
           </Chip>
         ))}
       </FilterWrapper>
-      <Container>
+      <Container css={css({ pt: 80, pb: 200 })}>
         <Masonry
           breakpointCols={{
-            default: 4,
+            default: 2,
             1100: 3,
             700: 2,
             500: 1,
           }}
-          className="my-masonry-grid"
-          columnClassName="my-masonry-grid_column"
+          className={styles.masonryGrid}
+          columnClassName={styles.masonryGridColumn}
         >
-          {projects.map((project) => (
-            <Project key={project.id}>
-              <ImageWrapper>
-                <Image
-                  src={project.thumbnail}
-                  alt={project.slug}
-                  layout="responsive"
-                  width="710"
-                  height="900"
-                />
-              </ImageWrapper>
-              <Text
-                variant="Body-Small"
-                css={css({ gridRow: 2, gridColumn: 1 })}
-              >
-                {project.date}
-              </Text>
-              <Details>
-                <Text variant="Display-XSmall">{project.title}</Text>
-                <Text variant="Display-XSmall" color={theme.colors.concrete}>
-                  {project.location}
+          {projects
+            .filter(
+              (project) =>
+                project.type === selectedType || selectedType === "all"
+            )
+            .map((project) => (
+              <Project key={project.id}>
+                <ImageWrapper>
+                  <Image
+                    src={project.thumbnail}
+                    alt={project.slug}
+                    layout="responsive" // required
+                    width="500"
+                    height="300"
+                  />
+                </ImageWrapper>
+                <Text
+                  variant="Body-Small"
+                  css={css({ gridRow: 2, gridColumn: 1 })}
+                >
+                  {project.date}
                 </Text>
-                <LinkWrapper>
-                  <Link href={`/projects/${project.slug}`}>View Project</Link>
-                  <Arrow type="short" />
-                </LinkWrapper>
-              </Details>
-            </Project>
-          ))}
+                <Details>
+                  <Text variant="Display-XSmall">{project.title}</Text>
+                  <Text variant="Display-XSmall" color={theme.colors.concrete}>
+                    {project.location}
+                  </Text>
+                  <LinkWrapper>
+                    <Link href={`/projects/${project.slug}`}>View Project</Link>
+                    <Arrow type="short" />
+                  </LinkWrapper>
+                </Details>
+              </Project>
+            ))}
         </Masonry>
-        <Bottom>
+        <LoadMoreWrapper>
           <ArrowButton mode="" title="Load more" link="#" />
-        </Bottom>
+        </LoadMoreWrapper>
       </Container>
     </>
   );
