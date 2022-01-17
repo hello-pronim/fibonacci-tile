@@ -7,7 +7,10 @@ import Cont from "@components/common/layout/container";
 const Container = styled(Cont)(
   css({
     alignItems: "flex-start",
+    pt: "128px",
+    pb: "48px",
     [theme.mediaQueries.small]: {
+      pt: "160px!important",
       pr: [
         "16px !important",
         "16px !important",
@@ -29,7 +32,6 @@ const Container = styled(Cont)(
 const LeftCol = styled("div")(
   css({
     gridRow: 1,
-    px: 16,
     position: "relative",
     height: "100%",
     gridColumn: "1 / span 2",
@@ -37,9 +39,9 @@ const LeftCol = styled("div")(
     flexDirection: "column",
     // rowGap: 160,
     pt: "8px",
-    pb: 104,
+    pb: "56px",
+    px: 0,
     [theme.mediaQueries.small]: {
-      px: 0,
       gridColumn: "1 / span 3",
       gridRow: 1,
     },

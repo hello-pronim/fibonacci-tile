@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Masonry from "react-masonry-css";
-import MasonryInfiniteScroller from "react-masonry-infinite";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -18,6 +17,7 @@ import mockData from "./constants";
 import ArrowButton from "@components/common/button/arrowButton";
 import Chip from "@components/common/chip";
 import Arrow from "@components/common/icons/arrow";
+import Select from "@components/common/select";
 import Text from "@components/common/typography";
 import { css } from "@styled-system/css";
 import theme from "@styles/theme";
@@ -42,6 +42,16 @@ const ProjectList = ({ projects, types }: ProjectListType) => {
     setSelectedType(type);
   };
 
+  const onProjectTypeChange = (e) => {
+    const { value: type } = e.target;
+    const projectList = projects.filter(
+      (project) => project.type === type || type === "all"
+    );
+
+    setDisplayedProjects(projectList);
+    setSelectedType(type);
+  };
+
   return (
     <>
       <FilterWrapperDesktop>
@@ -56,7 +66,16 @@ const ProjectList = ({ projects, types }: ProjectListType) => {
           </Chip>
         ))}
       </FilterWrapperDesktop>
-      <FilterWrapperMobile>Mobile filter section</FilterWrapperMobile>
+      <FilterWrapperMobile>
+        <Text variant="Body-Small">Filter</Text>
+        <Select onChange={onProjectTypeChange}>
+          {types.map((type) => (
+            <option key={type} value={type} selected={type === selectedType}>
+              {type}
+            </option>
+          ))}
+        </Select>
+      </FilterWrapperMobile>
       <Container css={css({ pt: 80 })}>
         <Masonry
           breakpointCols={{

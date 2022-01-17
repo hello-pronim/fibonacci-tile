@@ -208,6 +208,7 @@ const FilterWrapperMobile = styled("div")(
     justifyContent: "space-between",
     paddingTop: "32px",
     paddingBottom: "32px",
+    px: "16px",
     [theme.mediaQueries.small]: {
       display: "none",
     },
