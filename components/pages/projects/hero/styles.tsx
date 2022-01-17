@@ -28,7 +28,7 @@ const Container = styled(Cont)(
 
 const LeftCol = styled("div")(
   css({
-    gridRow: 2,
+    gridRow: 1,
     px: 16,
     position: "relative",
     height: "100%",
@@ -49,7 +49,7 @@ const LeftCol = styled("div")(
 const RightCol = styled("div")(
   css({
     gridColumn: "1 / span 2",
-    gridRow: 1,
+    gridRow: 2,
     height: "100%",
     div: {
       height: "inherit",

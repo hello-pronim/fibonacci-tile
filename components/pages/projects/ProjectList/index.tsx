@@ -31,7 +31,7 @@ interface ProjectListType {
 
 const ProjectList = ({ projects, types }: ProjectListType) => {
   const [selectedType, setSelectedType] = useState("all");
-  const [displayedProjects, setDisplayedProjects] = useState([]);
+  const [displayedProjects, setDisplayedProjects] = useState(projects);
 
   const onProjectTypeClick = (type) => {
     const projectList = projects.filter(
@@ -70,11 +70,11 @@ const ProjectList = ({ projects, types }: ProjectListType) => {
             <Project key={project.id}>
               <ImageWrapper>
                 <Image
-                  src={project.thumbnail}
+                  src={project.thumbnail.src}
                   alt={project.slug}
                   layout="responsive" // required
-                  width="500"
-                  height="300"
+                  width={project.thumbnail.width}
+                  height={project.thumbnail.height}
                 />
               </ImageWrapper>
               <Text
