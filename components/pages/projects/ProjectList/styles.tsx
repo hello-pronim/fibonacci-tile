@@ -221,8 +221,12 @@ const LoadMoreWrapper = styled("div")(
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    paddingTop: "180px",
-    paddingBottom: "180px",
+    paddingTop: "128px",
+    paddingBottom: "128px",
+    [theme.mediaQueries.small]: {
+      paddingTop: "180px",
+      paddingBottom: "180px",
+    },
   })
 );
 
