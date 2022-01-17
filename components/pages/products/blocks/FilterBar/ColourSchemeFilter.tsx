@@ -8,7 +8,6 @@ import { useAppContext } from "@contexts/AppContext";
 export default function ColourSchemeFilter({}) {
   const { state, dispatch } = useAppContext();
   const handleFilter = (value) => {
-    console.log(value)
     dispatch({
       type: "SELECT_PRODUCT_FILTER",
       filter: {

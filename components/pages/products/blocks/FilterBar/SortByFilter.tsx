@@ -7,7 +7,6 @@ import { useAppContext } from "@contexts/AppContext";
 
 export default function SortByFilter({}) {
   const { state, dispatch } = useAppContext();
-  console.log("stae", state);
   const handleFilter = (value) => {
     dispatch({
       type: "SELECT_PRODUCT_FILTER",

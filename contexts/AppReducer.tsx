@@ -89,7 +89,6 @@ export const AppReducer = (state, action) => {
       }
     }
     case "SET_MOBILE_FILTER": {
-      console.log("value", action.value)
       return {
         ...state,
         isMobileFilterActive: action.value,
