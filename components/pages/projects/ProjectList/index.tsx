@@ -7,7 +7,8 @@ import {
   Bottom,
   Container,
   Details,
-  FilterWrapper,
+  FilterWrapperDesktop,
+  FilterWrapperMobile,
   ImageWrapper,
   LinkWrapper,
   LoadMoreWrapper,
@@ -30,14 +31,20 @@ interface ProjectListType {
 
 const ProjectList = ({ projects, types }: ProjectListType) => {
   const [selectedType, setSelectedType] = useState("all");
+  const [displayedProjects, setDisplayedProjects] = useState([]);
 
   const onProjectTypeClick = (type) => {
+    const projectList = projects.filter(
+      (project) => project.type === type || type === "all"
+    );
+
+    setDisplayedProjects(projectList);
     setSelectedType(type);
   };
 
   return (
     <>
-      <FilterWrapper>
+      <FilterWrapperDesktop>
         {types.map((type) => (
           <Chip
             key={type}
@@ -48,56 +55,54 @@ const ProjectList = ({ projects, types }: ProjectListType) => {
             {type}
           </Chip>
         ))}
-      </FilterWrapper>
-      <Container css={css({ pt: 80, pb: 200 })}>
+      </FilterWrapperDesktop>
+      <FilterWrapperMobile>Mobile filter section</FilterWrapperMobile>
+      <Container css={css({ pt: 80 })}>
         <Masonry
           breakpointCols={{
             default: 2,
-            1100: 3,
-            700: 2,
-            500: 1,
+            768: 1,
           }}
           className={styles.masonryGrid}
           columnClassName={styles.masonryGridColumn}
         >
-          {projects
-            .filter(
-              (project) =>
-                project.type === selectedType || selectedType === "all"
-            )
-            .map((project) => (
-              <Project key={project.id}>
-                <ImageWrapper>
-                  <Image
-                    src={project.thumbnail}
-                    alt={project.slug}
-                    layout="responsive" // required
-                    width="500"
-                    height="300"
-                  />
-                </ImageWrapper>
-                <Text
-                  variant="Body-Small"
-                  css={css({ gridRow: 2, gridColumn: 1 })}
-                >
-                  {project.date}
+          {displayedProjects.map((project) => (
+            <Project key={project.id}>
+              <ImageWrapper>
+                <Image
+                  src={project.thumbnail}
+                  alt={project.slug}
+                  layout="responsive" // required
+                  width="500"
+                  height="300"
+                />
+              </ImageWrapper>
+              <Text
+                variant="Body-Small"
+                css={css({ gridRow: 2, gridColumn: 1 })}
+              >
+                {project.date}
+              </Text>
+              <Details>
+                <Text variant="Display-XSmall">{project.title}</Text>
+                <Text variant="Display-XSmall" color={theme.colors.concrete}>
+                  {project.location}
                 </Text>
-                <Details>
-                  <Text variant="Display-XSmall">{project.title}</Text>
-                  <Text variant="Display-XSmall" color={theme.colors.concrete}>
-                    {project.location}
-                  </Text>
-                  <LinkWrapper>
-                    <Link href={`/projects/${project.slug}`}>View Project</Link>
-                    <Arrow type="short" />
-                  </LinkWrapper>
-                </Details>
-              </Project>
-            ))}
+                <LinkWrapper>
+                  <Link href={`/projects/${project.slug}`}>View Project</Link>
+                  <Arrow type="short" />
+                </LinkWrapper>
+              </Details>
+            </Project>
+          ))}
         </Masonry>
-        <LoadMoreWrapper>
-          <ArrowButton mode="" title="Load more" link="#" />
-        </LoadMoreWrapper>
+        {displayedProjects.length ? (
+          <LoadMoreWrapper>
+            <ArrowButton mode="" title="Load more" link="#" />
+          </LoadMoreWrapper>
+        ) : (
+          <></>
+        )}
       </Container>
     </>
   );
