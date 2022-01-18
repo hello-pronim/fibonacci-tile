@@ -14,26 +14,27 @@
 }
 .tableRow {
   border-top: 1px solid #d4d4d8;
-  & > div {
-    padding: 24px 20px;
-  }
-  & > div.imgCell {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  & .imgCell {
     padding-right: 0;
-    width: 350px;
+    width: 75%;
     .cardImgContainer {
       box-shadow: none;
     }
   }
-  & > div.descCell {
+  & .descCell {
     width: 400px;
   }
-  & > div.rowDetailButton {
+  & .rowDetailButton {
     text-align: center;
-    width: 50px;
+    width: 25%;
     button {
       background: none;
       border: none;
       cursor: pointer;
+      margin-top: 22px;
     }
   }
   .cardImg {
@@ -45,6 +46,9 @@
   }
   &.detailView {
     background-color: #FFFFF8;
+    & .detailsBoxLeft {
+      align-items: flex-start;
+    }
     .details {
       display: block;
       padding-top: 50px;
@@ -103,7 +107,18 @@
       padding-top: 25px;
     }
     .cardImg {
-      height: initial;
+      height: 100%;
+      & a {
+        height: 100%;
+        display: block;
+        & div {
+          height: 100%;
+          & img {
+            object-fit: cover;
+            object-position: 100% 0;
+          }
+        }
+      }
     }
   }
   .displayInnerTable {
@@ -131,6 +146,7 @@ a.productListTitle {
   box-shadow: 0px 24px 38px rgba(20, 20, 20, 0.08), 0px 9px 46px rgba(20, 20, 20, 0.08), 0px 11px 15px rgba(20, 20, 20, 0.16);
   display: flex;
   transition: box-shadow ease 0.3s;
+  height: 100%;
   .actionBtnContainer {
     display: flex;
     align-items: center;
@@ -221,4 +237,89 @@ a.productListTitle {
 }
 .cardSubTitle {
   font-weight: 300 !important;
+}
+.detailsBoxLeft {
+  width: 80%;
+  margin-top: 28px;
+  .productsInfoRow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    .productName {
+      width: 25%;
+      & div {
+        padding: 20px;
+      }
+    }
+    .collectionNameBox {
+      width: 35%;
+      .displayNameBox {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        .AvilableBox {
+          width: 40%;
+          & div {
+            padding: 20px;
+          }
+        }
+        .NameBox {
+          width: 60%;
+          & div {
+            padding: 20px;
+          }
+        }
+      }
+    }
+    .descriptionBox {
+      width: 40%;
+      & div {
+        padding: 20px;
+      }
+    }
+  }
+  .productsInfoDetails {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    .productInfoBox {
+      width: 60%;
+      .details {
+        padding: 20px 60px 40px 20px;
+        .titleText {
+          padding: 5px 12px;
+          background: #000;
+          text-transform: uppercase;
+          font-size: 12px;
+          letter-spacing: 0.1em;
+          border-radius: 30px;
+        }
+        .description {
+          max-width: 450px;
+        }
+      }
+    }
+    .productDescriptionBox {
+      width: 40%;
+      .details {
+        padding: 20px 60px 40px 20px;
+      }
+    }
+  }
+}
+.detailsBoxRight {
+  width: 20%;
+  display: flex;
+  padding: 30px 0px;
+}
+.detailView {
+  .detailsBoxLeft {
+    margin-top: 0;
+    .productsInfoRow {
+      .descriptionBox {
+        display: none;
+      }
+    }
+  }
 }
