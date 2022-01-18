@@ -7,21 +7,9 @@ import Cntnr from "@components/common/layout/container";
 const Container = styled(Cntnr)(
   css({
     alignItems: "flex-start",
+    px: 16,
     [theme.mediaQueries.small]: {
-      pr: [
-        "16px !important",
-        "16px !important",
-        "40px !important",
-        "56px !important",
-        "80px !important",
-      ],
-      pl: [
-        "16px !important",
-        "16px !important",
-        "40px !important",
-        "56px !important",
-        "80px !important",
-      ],
+      px: 80,
     },
   })
 );
@@ -90,7 +78,18 @@ const Project = styled("div")(() =>
     display: "grid",
     gridTemplateColumns: "1fr 1fr",
     rowGap: 24,
-    padding: "60px 0",
+    pt: 40,
+    pb: 40,
+    "&:first-child": {
+      pt: 0,
+    },
+    "&:last-child": {
+      pb: 0,
+    },
+    [theme.mediaQueries.small]: {
+      pt: 100,
+      pb: 100,
+    },
   })
 );
 
@@ -188,14 +187,31 @@ const LinkWrapper = styled("div")(
   })
 );
 
-const FilterWrapper = styled("div")(
+const FilterWrapperDesktop = styled("div")(
+  css({
+    display: "none",
+    [theme.mediaQueries.small]: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: "8px",
+      paddingTop: "32px",
+      paddingBottom: "32px",
+    },
+  })
+);
+
+const FilterWrapperMobile = styled("div")(
   css({
     display: "flex",
     alignItems: "center",
-    justifyContent: "center",
-    gap: "8px",
+    justifyContent: "space-between",
     paddingTop: "32px",
     paddingBottom: "32px",
+    px: "16px",
+    [theme.mediaQueries.small]: {
+      display: "none",
+    },
   })
 );
 
@@ -205,8 +221,12 @@ const LoadMoreWrapper = styled("div")(
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    paddingTop: "32px",
-    paddingBottom: "32px",
+    paddingTop: "128px",
+    paddingBottom: "128px",
+    [theme.mediaQueries.small]: {
+      paddingTop: "180px",
+      paddingBottom: "180px",
+    },
   })
 );
 
@@ -214,7 +234,8 @@ export {
   Bottom,
   Container,
   Details,
-  FilterWrapper,
+  FilterWrapperDesktop,
+  FilterWrapperMobile,
   ImageWrapper,
   Inner,
   IntroWrapper,

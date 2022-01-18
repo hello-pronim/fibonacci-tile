@@ -6,7 +6,11 @@ const projects = [
     location: "City, Country",
     type: "explore",
     date: "Month, 2021",
-    thumbnail: "/assets/temp/project-thumb-1.png",
+    thumbnail: {
+      src: "/assets/temp/project-thumb-1.png",
+      width: 800,
+      height: 400,
+    },
   },
   {
     id: "2",
@@ -15,7 +19,11 @@ const projects = [
     location: "City, Country",
     type: "residential",
     date: "Month, 2021",
-    thumbnail: "/assets/temp/project-thumb-2.png",
+    thumbnail: {
+      src: "/assets/temp/project-thumb-2.png",
+      width: 800,
+      height: 932,
+    },
   },
   {
     id: "3",
@@ -24,7 +32,11 @@ const projects = [
     location: "City, Country",
     type: "residential",
     date: "Month, 2021",
-    thumbnail: "/assets/temp/project-thumb-2.png",
+    thumbnail: {
+      src: "/assets/temp/project-thumb-2.png",
+      width: 800,
+      height: 932,
+    },
   },
   {
     id: "4",
@@ -33,7 +45,11 @@ const projects = [
     location: "City, Country",
     type: "workplaces",
     date: "Month, 2021",
-    thumbnail: "/assets/temp/project-thumb-1.png",
+    thumbnail: {
+      src: "/assets/temp/project-thumb-3.png",
+      width: 560,
+      height: 617,
+    },
   },
 ];
 const types = [

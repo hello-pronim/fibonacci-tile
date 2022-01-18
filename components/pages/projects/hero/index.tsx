@@ -13,21 +13,20 @@ import {
 } from "./styles";
 import css from "@styled-system/css";
 
+import styles from "./styles.module.scss";
+
 const Hero = () => {
   return (
-    <Container css={css({ pt: 160, pb: 48 })}>
+    <Container>
       <LeftCol>
-        {/* <div>
-          Our Projects <span css={css({color: 'concrete'})}>•</span> Nelson Cafe
-        </div> */}
         <ContentWrapper>
-          <Text Base="h1" variant="Display-Large">
+          <Text className={styles.title} Base="h1" variant="Display-Large">
             Fibonacci Live
           </Text>
         </ContentWrapper>
       </LeftCol>
       <RightCol>
-        <Text Base="h4" variant="Display-Medium">
+        <Text className={styles.bodyText} Base="h4" variant="Display-Medium">
           Elementum phasellus ligula adipiscing eu sed. Id id ut volutpat tempus
           viverra vestibulum risus pulvinar mollis. Etiam id congue
         </Text>

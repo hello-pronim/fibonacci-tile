@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import Masonry from "react-masonry-css";
-import MasonryInfiniteScroller from "react-masonry-infinite";
 import Image from "next/image";
 import Link from "next/link";
 import {
   Bottom,
   Container,
   Details,
-  FilterWrapper,
+  FilterWrapperDesktop,
+  FilterWrapperMobile,
   ImageWrapper,
   LinkWrapper,
   LoadMoreWrapper,
@@ -17,6 +17,7 @@ import mockData from "./constants";
 import ArrowButton from "@components/common/button/arrowButton";
 import Chip from "@components/common/chip";
 import Arrow from "@components/common/icons/arrow";
+import Select from "@components/common/select";
 import Text from "@components/common/typography";
 import { css } from "@styled-system/css";
 import theme from "@styles/theme";
@@ -30,14 +31,30 @@ interface ProjectListType {
 
 const ProjectList = ({ projects, types }: ProjectListType) => {
   const [selectedType, setSelectedType] = useState("all");
+  const [displayedProjects, setDisplayedProjects] = useState(projects);
 
   const onProjectTypeClick = (type) => {
+    const projectList = projects.filter(
+      (project) => project.type === type || type === "all"
+    );
+
+    setDisplayedProjects(projectList);
+    setSelectedType(type);
+  };
+
+  const onProjectTypeChange = (e) => {
+    const { value: type } = e.target;
+    const projectList = projects.filter(
+      (project) => project.type === type || type === "all"
+    );
+
+    setDisplayedProjects(projectList);
     setSelectedType(type);
   };
 
   return (
     <>
-      <FilterWrapper>
+      <FilterWrapperDesktop>
         {types.map((type) => (
           <Chip
             key={type}
@@ -48,56 +65,63 @@ const ProjectList = ({ projects, types }: ProjectListType) => {
             {type}
           </Chip>
         ))}
-      </FilterWrapper>
-      <Container css={css({ pt: 80, pb: 200 })}>
+      </FilterWrapperDesktop>
+      <FilterWrapperMobile>
+        <Text variant="Body-Small">Filter</Text>
+        <Select onChange={onProjectTypeChange}>
+          {types.map((type) => (
+            <option key={type} value={type} selected={type === selectedType}>
+              {type}
+            </option>
+          ))}
+        </Select>
+      </FilterWrapperMobile>
+      <Container css={css({ pt: 80 })}>
         <Masonry
           breakpointCols={{
             default: 2,
-            1100: 3,
-            700: 2,
-            500: 1,
+            768: 1,
           }}
           className={styles.masonryGrid}
           columnClassName={styles.masonryGridColumn}
         >
-          {projects
-            .filter(
-              (project) =>
-                project.type === selectedType || selectedType === "all"
-            )
-            .map((project) => (
-              <Project key={project.id}>
-                <ImageWrapper>
-                  <Image
-                    src={project.thumbnail}
-                    alt={project.slug}
-                    layout="responsive" // required
-                    width="500"
-                    height="300"
-                  />
-                </ImageWrapper>
-                <Text
-                  variant="Body-Small"
-                  css={css({ gridRow: 2, gridColumn: 1 })}
-                >
-                  {project.date}
+          {displayedProjects.map((project) => (
+            <Project key={project.id}>
+              <ImageWrapper>
+                <Image
+                  src={project.thumbnail.src}
+                  alt={project.slug}
+                  layout="responsive" // required
+                  width={project.thumbnail.width}
+                  height={project.thumbnail.height}
+                />
+              </ImageWrapper>
+              <Text
+                variant="Body-Small"
+                css={css({ gridRow: 2, gridColumn: 1 })}
+              >
+                {project.date}
+              </Text>
+              <Details>
+                <Text variant="Display-XSmall">{project.title}</Text>
+                <Text variant="Display-XSmall" color={theme.colors.concrete}>
+                  {project.location}
                 </Text>
-                <Details>
-                  <Text variant="Display-XSmall">{project.title}</Text>
-                  <Text variant="Display-XSmall" color={theme.colors.concrete}>
-                    {project.location}
-                  </Text>
-                  <LinkWrapper>
-                    <Link href={`/projects/${project.slug}`}>View Project</Link>
-                    <Arrow type="short" />
-                  </LinkWrapper>
-                </Details>
-              </Project>
-            ))}
+                <LinkWrapper>
+                  <Link href={`/projects/${project.slug}`}>View Project</Link>
+                  <Arrow type="short" />
+                </LinkWrapper>
+              </Details>
+            </Project>
+          ))}
         </Masonry>
-        <LoadMoreWrapper>
-          <ArrowButton mode="" title="Load more" link="#" />
-        </LoadMoreWrapper>
+        {displayedProjects.length ? (
+          <LoadMoreWrapper>
+            <ArrowButton mode="" title="Load more" link="#" />
+          </LoadMoreWrapper>
+        ) : (
+          <></>
+        )}
       </Container>
     </>
   );

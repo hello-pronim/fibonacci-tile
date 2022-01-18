@@ -1,13 +1,13 @@
 @import "@styles/variables";
 
 .button {
-  padding: rem(10) rem(24);
+  padding: 10px 24px;
   background-color: $white;
   color: $primary;
   font-weight: 800;
-  font-size: rem(18);
-  line-height: rem(34);
-  letter-spacing: rem(1);
+  font-size: 18px;
+  line-height: 34px;
+  letter-spacing: 1px;
   font-family: inherit;
   transition: all 0.3s ease;
   border-width: 0;
@@ -24,15 +24,15 @@
   }
 
   &.rounded {
-    border-radius: rem(6);
+    border-radius: 6px;
   }
 
   &.small {
-    padding: rem(6) rem(16);
+    padding: 6px 16px;
   }
 
   &.large {
-    padding: rem(18) rem(36);
+    padding: 18px 36px;
   }
 
   &.primary {
