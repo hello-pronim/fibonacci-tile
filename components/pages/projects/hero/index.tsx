@@ -11,6 +11,8 @@ import {
   DetailsWrapper,
   Detail,
   Container,
+  HeroTitle,
+  HeroBodyText,
 } from "./styles";
 import css from "@styled-system/css";
 
@@ -21,16 +23,16 @@ const Hero = () => {
     <Container>
       <LeftCol>
         <ContentWrapper>
-          <Text className={styles.title} Base="h1" variant="Display-Large">
+          <HeroTitle Base="h1" variant="Display-Large">
             Fibonacci Live
-          </Text>
+          </HeroTitle>
         </ContentWrapper>
       </LeftCol>
       <RightCol>
-        <Text className={styles.bodyText} Base="h4" variant="Display-Medium">
+        <HeroBodyText Base="h4" variant="Display-Medium">
           Elementum phasellus ligula adipiscing eu sed. Id id ut volutpat tempus
           viverra vestibulum risus pulvinar mollis. Etiam id congue
-        </Text>
+        </HeroBodyText>
       </RightCol>
     </Container>
   );

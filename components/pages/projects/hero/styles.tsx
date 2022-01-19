@@ -3,6 +3,7 @@ import css from "@styled-system/css";
 import styled from "@emotion/styled";
 import theme from "styles/theme";
 import Cont from "@components/common/layout/container";
+import Text from "@components/common/typography";
 
 const Container = styled(Cont)(
   css({
@@ -108,6 +109,22 @@ const Detail = styled("li")(
     rowGap: "4px",
   })
 );
+
+const HeroTitle = styled(Text)(
+  css({
+    fontFamily: "Canela",
+    fontSize: "42px",
+    lineHeight: "54.6px",
+  })
+);
+
+const HeroBodyText = styled(Text)(
+  css({
+    fontSize: "26px",
+    lineHeight: "33.8px",
+  })
+);
+
 export {
   LeftCol,
   RightCol,
@@ -116,4 +133,6 @@ export {
   DetailsWrapper,
   Detail,
   Container,
+  HeroTitle,
+  HeroBodyText,
 };
