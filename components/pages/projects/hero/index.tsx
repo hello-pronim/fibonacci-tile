@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "@components/common/button";
 import Text from "@components/common/typography";
 import Image from "next/image";
 import heroImage from "public/assets/temp/project-hero.png";

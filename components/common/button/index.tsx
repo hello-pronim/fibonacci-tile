@@ -1,13 +1,11 @@
 import Link from "next/link";
 
-import styles from "./styles.module.scss";
+import { StyledButton } from "./styles";
 
-export interface buttonProps {
-  className?: string;
-  type?: "button" | "submit";
-  text: string;
+export interface ButtonProps {
   href?: string;
-  variant?: string;
+  type?: "button" | "submit";
+  variant?: "outlined" | "contained";
   color?: "primary" | "secondary" | "dark" | "light";
   size?: "large" | "medium" | "small";
   rounded?: boolean;
@@ -17,46 +15,37 @@ export interface buttonProps {
 
 export default function Button({
   href,
-  className,
   type = "button",
-  text,
-  variant = "contained",
+  variant = "outlined",
   color = "primary",
   size = "medium",
   rounded = false,
   onClick,
   children,
   ...props
-}: buttonProps) {
-  let themeName = styles.primary;
-  if (color === "secondary") themeName = styles.secondary;
-  else if (color === "dark") themeName = styles.dark;
-  else if (color === "light") themeName = styles.light;
-  let roundedClass = rounded ? styles.rounded : "";
-  const sizeClass =
-    size === "small" ? styles.small : size === "large" ? styles.large : "";
-
+}: ButtonProps) {
   return !href ? (
-    <button
+    <StyledButton
       type={type}
-      className={`${styles.button} ${
-        className ? className : ""
-      } ${themeName} ${roundedClass} ${sizeClass}`}
+      variant={variant}
+      color={color}
+      size={size}
       onClick={onClick}
       {...props}
     >
       {children}
-    </button>
+    </StyledButton>
   ) : (
     <Link {...{ href }} prefetch={false}>
-      <button
-        className={`${styles.button}${
-          className ? ` ${className}` : ""
-        } ${themeName} ${roundedClass} ${sizeClass}`}
+      <StyledButton
+        type="button"
+        variant={variant}
+        color={color}
+        size={size}
         {...props}
       >
         {children}
-      </button>
+      </StyledButton>
     </Link>
   );
 }
