@@ -1,11 +1,11 @@
 import { useState } from "react";
 import Image from "next/image";
-import Link from 'next/link'
+import Link from "next/link";
 import classnames from "classnames";
 import Text from "@components/common/typography";
 import Tag from "@components/common/tag";
 import AddIcon from "@components/icons/add";
-import Button from "@components/common/button";
+import ArrowButton from "@components/common/button/arrowButton";
 import CheckMarkIcon from "@components/icons/checkmark";
 import CrossIcon from "@components/icons/cross";
 import ArrowDown from "@components/icons/arrowDown";
@@ -36,16 +36,23 @@ const ProductCard = ({
             </a>
           </Link>
           <div className={styles.details}>
-              <div>
-                <Tag title="NEW RELEASE" />
-              </div>
-              <div className={styles.description}>
-                <Text variant="Body-Regular">
-                Tincidunt amet ullamcorper et consequat male su ada. Integer elit ut varius in at porttitor. Id pu rus amet feugiat non porta. 
-                Commodo integer feugiat nunc, venenatis lobortis eu dictum. Pellentesque sit tortor congue neque, odio ultrices amet.
-                </Text>
-             </div>
-             <Button mode="dark" title="View product details" link="http://localhost:3000/products" />
+            <div>
+              <Tag title="NEW RELEASE" />
+            </div>
+            <div className={styles.description}>
+              <Text variant="Body-Regular">
+                Tincidunt amet ullamcorper et consequat male su ada. Integer
+                elit ut varius in at porttitor. Id pu rus amet feugiat non
+                porta. Commodo integer feugiat nunc, venenatis lobortis eu
+                dictum. Pellentesque sit tortor congue neque, odio ultrices
+                amet.
+              </Text>
+            </div>
+            <ArrowButton
+              mode="dark"
+              title="View product details"
+              link="http://localhost:3000/products"
+            />
           </div>
         </div>
         <div>
@@ -65,8 +72,11 @@ const ProductCard = ({
             <div className={styles.listings}>
               <ul>
                 <li>
-                  <div className={styles.headline}>Material and composition</div>
-                  Cursus velit adipiscing suspendisse semper. Cursus velit adipiscing suspendisse semper
+                  <div className={styles.headline}>
+                    Material and composition
+                  </div>
+                  Cursus velit adipiscing suspendisse semper. Cursus velit
+                  adipiscing suspendisse semper
                 </li>
                 <li>
                   <div className={styles.headline}>Finish and appearance</div>
@@ -74,7 +84,7 @@ const ProductCard = ({
                 </li>
                 <li>
                   <div className={styles.headline}>Sizes</div>
-                  Tiles 400x400x20mm & 600x600x20mm <br/>
+                  Tiles 400x400x20mm & 600x600x20mm <br />
                   Slabs 400x400x20mm
                 </li>
                 <li>
@@ -83,7 +93,9 @@ const ProductCard = ({
                 </li>
               </ul>
             </div>
-            <a className={styles.technicalSpecification} href="#">Click here to copy technical specification </a>
+            <a className={styles.technicalSpecification} href="#">
+              Click here to copy technical specification{" "}
+            </a>
           </div>
         </div>
         <div className={styles.imgCell}>
@@ -202,9 +214,7 @@ const ProductCard = ({
           marginTop="25px"
         >
           <Link href={product.uri}>
-            <a>
-              {product.title}
-            </a>
+            <a>{product.title}</a>
           </Link>
         </Text>
         <Text as="h4" variant="Body-Small" className={styles.cardSubTitle}>
