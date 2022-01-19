@@ -1,7 +1,7 @@
-import styles from "./styles.module.scss";
+import { StyledChip } from "./styles";
 
-export interface chipProps {
-  className?: string;
+export interface ChipProps {
+  variant?: "outlined" | "contained";
   color?: "primary" | "secondary" | "dark" | "light";
   size?: "large" | "medium" | "small";
   rounded?: boolean;
@@ -11,7 +11,7 @@ export interface chipProps {
 }
 
 export default function Chip({
-  className,
+  variant = "outlined",
   color = "primary",
   size = "medium",
   rounded = false,
@@ -19,25 +19,18 @@ export default function Chip({
   onClick,
   children,
   ...props
-}: chipProps) {
-  let themeName = styles.primary;
-  if (color === "secondary") themeName = styles.secondary;
-  else if (color === "dark") themeName = styles.dark;
-  else if (color === "light") themeName = styles.light;
-  let roundedClass = rounded ? styles.rounded : "";
-  const sizeClass =
-    size === "small" ? styles.small : size === "large" ? styles.large : "";
-  const activeClass = active ? styles.active : "";
-
+}: ChipProps) {
   return (
-    <span
-      className={`${styles.chip} ${
-        className ? className : ""
-      } ${themeName} ${roundedClass} ${sizeClass} ${activeClass}`}
+    <StyledChip
+      variant={variant}
+      color={color}
+      size={size}
+      active={active}
       onClick={onClick}
+      rounded={rounded}
       {...props}
     >
       {children}
-    </span>
+    </StyledChip>
   );
 }

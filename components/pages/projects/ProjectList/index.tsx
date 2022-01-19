@@ -59,8 +59,9 @@ const ProjectList = ({ projects, types }: ProjectListType) => {
           <Chip
             key={type}
             onClick={() => onProjectTypeClick(type)}
-            rounded
             active={type === selectedType}
+            size="small"
+            rounded
           >
             {type}
           </Chip>
