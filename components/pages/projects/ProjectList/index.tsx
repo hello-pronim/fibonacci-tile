@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Masonry from "react-masonry-css";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -12,6 +11,7 @@ import {
   LinkWrapper,
   LoadMoreWrapper,
   Project,
+  MasonryGrid,
 } from "./styles";
 import mockData from "./constants";
 import ArrowButton from "@components/common/button/arrowButton";
@@ -78,13 +78,13 @@ const ProjectList = ({ projects, types }: ProjectListType) => {
         </Select>
       </FilterWrapperMobile>
       <Container css={css({ pt: 80 })}>
-        <Masonry
+        <MasonryGrid
           breakpointCols={{
             default: 2,
             768: 1,
           }}
-          className={styles.masonryGrid}
-          columnClassName={styles.masonryGridColumn}
+          className="masonry-grid"
+          columnClassName="masonry-grid-column"
         >
           {displayedProjects.map((project) => (
             <Project key={project.id}>
@@ -115,7 +115,7 @@ const ProjectList = ({ projects, types }: ProjectListType) => {
               </Details>
             </Project>
           ))}
-        </Masonry>
+        </MasonryGrid>
         {displayedProjects.length ? (
           <LoadMoreWrapper>
             <ArrowButton mode="" title="Load more" link="#" />
