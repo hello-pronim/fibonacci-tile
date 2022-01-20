@@ -18,10 +18,10 @@ import {
   LinkWrapper,
 } from "./styles";
 import mockData from "./constants";
-import Text from "@componentscommon/typography";
+import Text from "@components/common/typography";
 import { css } from "@styled-system/css";
 import Arrow from "@components/common/icons/arrow";
-import theme from "@stylestheme";
+import theme from "@styles/theme";
 
 interface accordionTypes {
   accentText: string;

@@ -10,7 +10,7 @@ import SearchIcon from "@components/icons/search";
 import ArrowDownIcon from "@components/icons/arrowDown";
 import GridIcon from "@components/icons/grid";
 import ListIcon from "@components/icons/list";
-import CloseIcon from "@componentsicons/close";
+import CloseIcon from "@components/icons/close";
 import CollectionIcon from "@components/icons/collection";
 import Button from "@components/common/button";
 import theme from "styles/theme";
@@ -174,7 +174,13 @@ export default function ProductFilters({ show, applyFilter }) {
           <button className={styles.closeBtn} onClick={toggleMobileFilter}>
             <CloseIcon />
           </button>
-          <Text variant="Body-Large" as="div" display="block" mt="35px" mb="20px">
+          <Text
+            variant="Body-Large"
+            as="div"
+            display="block"
+            mt="35px"
+            mb="20px"
+          >
             Filter
           </Text>
           <div>
@@ -185,7 +191,13 @@ export default function ProductFilters({ show, applyFilter }) {
               onClick={handleActiveFilter("products")}
             >
               <Text variant="Body-XSmall" mr="10px">
-                Products <Text variant="Body-XSmall" color={theme.colors.concreteTints[5]}>Selection</Text>
+                Products{" "}
+                <Text
+                  variant="Body-XSmall"
+                  color={theme.colors.concreteTints[5]}
+                >
+                  Selection
+                </Text>
               </Text>
               <ArrowDownIcon />
             </div>
@@ -201,7 +213,13 @@ export default function ProductFilters({ show, applyFilter }) {
               onClick={handleActiveFilter("colour-schemes")}
             >
               <Text variant="Body-XSmall" mr="10px">
-                Colour Schemes <Text variant="Body-XSmall" color={theme.colors.concreteTints[5]}>Selection </Text>
+                Colour Schemes{" "}
+                <Text
+                  variant="Body-XSmall"
+                  color={theme.colors.concreteTints[5]}
+                >
+                  Selection{" "}
+                </Text>
               </Text>
               <ArrowDownIcon />
             </div>
@@ -213,7 +231,13 @@ export default function ProductFilters({ show, applyFilter }) {
               onClick={handleActiveFilter("sort-by")}
             >
               <Text variant="Body-XSmall" mr="10px">
-                Sort by <Text variant="Body-XSmall" color={theme.colors.concreteTints[5]}>Selection </Text>
+                Sort by{" "}
+                <Text
+                  variant="Body-XSmall"
+                  color={theme.colors.concreteTints[5]}
+                >
+                  Selection{" "}
+                </Text>
               </Text>
               <ArrowDownIcon />
             </div>
@@ -225,14 +249,22 @@ export default function ProductFilters({ show, applyFilter }) {
               onClick={handleActiveFilter("search")}
             >
               <Text variant="Body-XSmall" mr="10px">
-                Search <Text variant="Body-XSmall" color={theme.colors.concreteTints[5]}>Selection </Text>
+                Search{" "}
+                <Text
+                  variant="Body-XSmall"
+                  color={theme.colors.concreteTints[5]}
+                >
+                  Selection{" "}
+                </Text>
               </Text>
               <SearchIcon />
             </div>
             {activeFilter === "search" && <SearchFilter />}
           </div>
           {isMobileFilterActive && (
-            <button onClick={() => applyFilter()} className={styles.applyBttn}>Apply</button>
+            <button onClick={() => applyFilter()} className={styles.applyBttn}>
+              Apply
+            </button>
           )}
         </div>
       )}

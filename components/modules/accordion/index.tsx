@@ -3,7 +3,7 @@ import AccentText, { AccentTextMobile } from "@components/common/accentText";
 import { Container, Wrapper, Item, Top, Inner, Toggle } from "./styles";
 import mockData from "./constants";
 import theme from "styles/theme";
-import Text from "@componentscommon/typography";
+import Text from "@components/common/typography";
 import { css } from "@styled-system/css";
 import Arrow from "@components/icons/arrowDown";
 

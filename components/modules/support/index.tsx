@@ -6,7 +6,7 @@ import {
   TileInner,
   Icon,
 } from "./styles";
-import Text from "@componentscommon/typography";
+import Text from "@components/common/typography";
 import Image from "next/image";
 import SupportIcon from "public/assets/icons/support-icon.svg";
 import SamplesIcon from "public/assets/icons/sample-icon.svg";

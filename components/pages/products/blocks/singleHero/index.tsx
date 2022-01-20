@@ -21,10 +21,10 @@ import {
   LinkWrapperLeft,
   Pill,
 } from "./styles";
-import Text from "@componentscommon/typography";
+import Text from "@components/common/typography";
 import { css } from "@styled-system/css";
 import Arrow from "@components/common/icons/arrow";
-import theme from "@stylestheme";
+import theme from "@styles/theme";
 
 const product = {
   id: "1",

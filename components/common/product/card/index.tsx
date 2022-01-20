@@ -87,7 +87,7 @@ const ProductCard = ({
                     amet.
                   </Text>
                 </div>
-                <Button
+                <ArrowButton
                   mode="dark"
                   title="View product details"
                   link="http://localhost:3000/products"
