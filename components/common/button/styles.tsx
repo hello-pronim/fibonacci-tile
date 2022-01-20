@@ -14,7 +14,7 @@ const ButtonWrapper = styled("div")(({ ...props }: containerProps) =>
       borderColor: "#B0ABA7",
       borderStyle: props.visibleBorder === false ? "none" : "solid",
       fontSize: 16,
-      padding: "14px 140px 14px 20px",
+      padding: props.visibleArrow === false ? "14px 20px 14px 20px" : "14px 140px 14px 20px",
       display: "inline-block",
       lineHeight: "1",
       color: props.mode === "light" ? "white" : "charcoal",
