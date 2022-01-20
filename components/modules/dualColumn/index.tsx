@@ -9,9 +9,9 @@ import {
 import Text from "@componentscommon/typography";
 import Image from "next/image";
 import AccentText, { AccentTextMobile } from "@components/common/accentText";
-import InspireRight from "public/assets/temp/inspire-right.jpg";
-import InspireLeft from "public/assets/temp/inspire-left.jpg";
-import Button from "@components/common/button";
+import InspireRight from "public/assets/temp/inspire-right.png";
+import InspireLeft from "public/assets/temp/inspire-left.png";
+import ArrowButton from "@components/common/button/arrowButton";
 import { css } from "@styled-system/css";
 import theme from "@styles/theme";
 
@@ -118,7 +118,7 @@ const DualColumnModule = () => {
         <Text as="h3" variant="Display-Medium">
           LIKE NO OTHER
         </Text>
-        <Button mode="" title="Our design process" link="#" />
+        <ArrowButton mode="" title="Our design process" link="#" />
       </BottomRow>
     </Container>
   );

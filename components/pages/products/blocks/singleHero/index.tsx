@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import AccentText, { AccentTextMobile } from "@components/common/accentText";
 import Image from "next/image";
-import Button from "@components/common/button";
 import collection from "public/assets/temp/collection-temp.png";
 import Abstrakt from "public/tmp/prod/abstrakt.jpeg";
 import Link from "next/link";
