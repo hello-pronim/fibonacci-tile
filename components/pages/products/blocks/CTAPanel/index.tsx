@@ -1,22 +1,17 @@
 import Image from "next/image";
+import classNames from "classnames";
 // import Text from "@components/common/typography";
 import ArrowButton from "@components/common/button/arrowButton";
 import CTAImage from "public/tmp/featured.png";
-import styles from "./styles.module.scss";
-import classNames from "classnames";
+import { CTAContainer, ImgContainer, CTADetails } from "./styles";
 
 const CTAPanel = ({ imagePosition = "left" }) => {
   return (
-    <section className={styles.ctaContainer}>
-      <div
-        className={classNames(styles.imgContainer, {
-          [styles.leftImg]: imagePosition === "left",
-          [styles.rightImg]: imagePosition === "right",
-        })}
-      >
+    <CTAContainer>
+      <ImgContainer position={imagePosition}>
         <Image src={CTAImage} alt="CTA-1" />
-      </div>
-      <div className={styles.ctaDetails}>
+      </ImgContainer>
+      <CTADetails>
         <h2>Samples Right now</h2>
         <p>
           Select your samples before 4pm for immediate dispatch and next working
@@ -31,8 +26,8 @@ const CTAPanel = ({ imagePosition = "left" }) => {
           title="How to order samples"
           link="http://localhost:3000/products"
         />
-      </div>
-    </section>
+      </CTADetails>
+    </CTAContainer>
   );
 };
 
