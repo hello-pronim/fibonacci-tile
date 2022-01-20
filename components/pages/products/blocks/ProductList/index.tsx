@@ -22,23 +22,30 @@ function ProductLists({ products, accentText }:productListProps) {
         Be inspired
       </AccentText>}
       {state?.productDisplayMode === "list" && (
-        <div className="display-table">
+        <div className="display-list-table">
           <div className={styles.tableHeader}>
-            <div className={styles.displayProductName}>
-              <Text variant="Display-Overline">Product Name</Text>
-            </div>
-            <div className={styles.displayInnerTable}>
-              <div>
-                <Text variant="Display-Overline">Available In</Text>
+            <div className={styles.tableHeaderLeft}>
+              <div className={styles.displayProductName}>
+                <Text variant="Display-Overline">Product Name</Text>
               </div>
-              <div>
-                <Text variant="Display-Overline">Collection Name</Text>
+              <div className={styles.displayInnerTable}>
+                <div className={styles.divOne}>
+                  <Text variant="Display-Overline">Available In</Text>
+                </div>
+                <div className={styles.divTwo}>
+                  <Text variant="Display-Overline">Collection Name</Text>
+                </div>
+              </div>
+              <div className={styles.displayDescription}>
+                <Text variant="Display-Overline">Description</Text>
               </div>
             </div>
-            <div className={styles.displayPatternImage}>
-              <Text variant="Display-Overline">Image</Text>
+            <div className={styles.tableHeaderRight}>
+              <div className={styles.displayPatternImage}>
+                <Text variant="Display-Overline">Image</Text>
+              </div>
+              <div className={styles.tableActionContainer}></div>
             </div>
-            <div className={styles.tableActionContainer}></div>
           </div>
           {products.map((product: any) => {
             return (

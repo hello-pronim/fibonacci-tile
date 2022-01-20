@@ -29,27 +29,56 @@
     background-color: #e5e5e5;
   }
   .tableHeader {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     background: #e5e5e5;
     text-transform: uppercase;
-    & > div {
+    & > div span {
       padding: 20px;
+      display: block;
     }
   }
   .displayProductName {
-    width: 30%;
+    width: 25%;
   }
   .displayInnerTable {
-    width: 45%;
+    width: 35%;
     & > div {
       display: inline-block;
       vertical-align: middle;
       width: 50%;
     }
+    .divOne {
+      width: 40%;
+    }
+    .divTwo {
+      width: 60%;
+    }
+  }
+  .displayDescription {
+    width: 40%;
   }
   .displayPatternImage {
-    width: 20%;
+    width: 15%;
   }
   .tableActionContainer {
     width: 5%;
+  }
+}
+.tableHeaderLeft {
+  width: 80%;
+  display: flex;
+  align-items: center;
+}
+.tableHeaderRight {
+  width: 20%;
+  display: flex;
+  .displayPatternImage {
+    width: 75%;
+  }
+  .tableActionContainer {
+    text-align: center;
+    width: 25%;
   }
 }
