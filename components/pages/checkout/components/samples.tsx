@@ -10,7 +10,6 @@ import ProductCard from "@components/common/product/card";
 import Abstrakt from 'public/tmp/prod/abstrakt.jpeg';
 import ActThree from 'public/tmp/prod/actThree.jpeg';
 import Assemblage from 'public/tmp/prod/assemblage.jpeg';
-import Bloc from 'public/tmp/prod/bloc.jpeg';
 import Brackish from 'public/tmp/prod/brackish.jpeg';
 import Carmelita from 'public/tmp/prod/carmelita.jpeg';
 import CloudBurst from 'public/tmp/prod/cloudBurst.jpeg';
@@ -136,7 +135,7 @@ const Samples = () => {
           <ProductContainer>
           {products.map((product) => (
             <ProductCard
-              displayMode={state?.productDisplayMode}
+              displayMode={"grid"}
               product={product}
               isSelected={
                 state?.selectedProducts.findIndex(

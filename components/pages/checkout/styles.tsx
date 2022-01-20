@@ -56,11 +56,22 @@ const RightContent = styled("div")(({...props }: containerProps) =>
   })
 );
 
+const SelectionWrapper = styled("div")(() => 
+  css({
+    pt: 45,
+    display: "grid",
+    gridTemplateColumns: "repeat(2, 1fr)",
+    gridColumnGap: "15px",
+    gridRowGap: "15px"
+  })
+);
+
 export {
   CheckoutStepWrapper,
   CheckoutContentWrapper,
   CheckoutContainer,
   CheckoutWrapper,
   LeftContent,
-  RightContent
+  RightContent,
+  SelectionWrapper
 };
