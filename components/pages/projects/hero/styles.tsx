@@ -115,6 +115,10 @@ const HeroTitle = styled(Text)(
     fontFamily: "Canela",
     fontSize: "42px",
     lineHeight: "54.6px",
+    [theme.mediaQueries.small]: {
+      fontSize: "74px",
+      lineHeight: "81.4px",
+    },
   })
 );
 
@@ -122,6 +126,10 @@ const HeroBodyText = styled(Text)(
   css({
     fontSize: "26px",
     lineHeight: "33.8px",
+    [theme.mediaQueries.small]: {
+      fontSize: "44px",
+      lineHeight: "50.6px",
+    },
   })
 );
 
