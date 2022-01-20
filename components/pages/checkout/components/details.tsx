@@ -3,9 +3,7 @@ import Text from "@componentscommon/typography";
 import { css } from "@styled-system/css";
 import DetailsForm from "../form/DetailsForm";
 import {
-    FormWrapper,
-    OneItemRow,
-    TwoItemRow
+    FormWrapper
 } from "./styles";
 
 const Details = () => {

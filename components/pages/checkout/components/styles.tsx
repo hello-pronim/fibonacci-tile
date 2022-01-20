@@ -90,17 +90,6 @@ const FormWrapper = styled("div")(()=>
   })
 );
 
-const OneItemRow = styled("div")(()=> 
-  css({
-    pb: 2
-  })
-);
-
-const TwoItemRow = styled("div")(()=> 
-  css({
-    pb: 2
-  })
-);
 
 
 export {
@@ -110,7 +99,5 @@ export {
     ProductContainer,
     ButtonWrapper,
     BttnLeftPadding,
-    FormWrapper,
-    OneItemRow,
-    TwoItemRow
+    FormWrapper
   };

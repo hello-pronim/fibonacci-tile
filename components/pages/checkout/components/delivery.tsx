@@ -1,5 +1,9 @@
 import Text from "@componentscommon/typography";
 import { css } from "@styled-system/css";
+import DeliveryForm from "../form/DeliveryForm";
+import {
+    FormWrapper
+} from "./styles";
 
 const Delivery = () => {
     return (
@@ -13,6 +17,9 @@ const Delivery = () => {
             >
                 Send my samples to:
             </Text>
+            <FormWrapper>
+                <DeliveryForm/>
+            </FormWrapper>
         </div>
     )
 }
