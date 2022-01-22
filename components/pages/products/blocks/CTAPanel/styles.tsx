@@ -42,7 +42,7 @@ const CTADetails = styled("div")(
 const ImgContainer = styled("div")(({ position }: ImgContainerProps) =>
   css({
     width: "55%",
-    order: position === "left" ? "unset" : 2,
+    order: position === "left" ? 2 : "unset",
   })
 );
 
