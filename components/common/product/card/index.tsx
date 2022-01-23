@@ -1,17 +1,46 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import classnames from "classnames";
 import Text from "@components/common/typography";
-import Tag from "@components/common/tag";
 import AddIcon from "@components/icons/add";
 import ArrowButton from "@components/common/button/arrowButton";
 import CheckMarkIcon from "@components/icons/checkmark";
 import CrossIcon from "@components/icons/cross";
 import ArrowDown from "@components/icons/arrowDown";
 import ArrowUp from "@components/icons/arrowUp";
-import ProductImg from "public/placeholder-product-image.jpg";
-import styles from "./styles.module.scss";
+import {
+  ActionBtn,
+  ActionBtnContainer,
+  AvailableBox,
+  CardImg,
+  CardSubTitle,
+  CardTitle,
+  CollectionNameBox,
+  Container,
+  Description,
+  DescriptionBox,
+  DisplayNameBox,
+  Details,
+  DetailsBoxLeft,
+  DetailsBoxRight,
+  GridCardImgContainer,
+  Headline,
+  ImgCell,
+  ListCardImgContainer,
+  Listings,
+  NameBox,
+  ProductDescriptionBox,
+  ProductListTitle,
+  ProductName,
+  ProductInfoBox,
+  ProductsInfoDetails,
+  ProductsInfoRow,
+  RowDetailButton,
+  TableRow,
+  TechnicalSpecification,
+  TitleText,
+  Wrapper,
+} from "./styles";
 
 const ProductCard = ({
   product,
@@ -22,63 +51,55 @@ const ProductCard = ({
   const [detailShown, setDetailShown] = useState(false);
   if (displayMode === "list") {
     return (
-      <div
-        className={classnames(styles.tableRow, {
-          [styles.detailView]: detailShown,
-        })}
-      >
-        <div className={styles.detailsBoxLeft}>
-          <div className={styles.productsInfoRow}>
-            <div className={styles.productName}>
+      <TableRow detailView={detailShown}>
+        <DetailsBoxLeft detailView={detailShown}>
+          <ProductsInfoRow>
+            <ProductName>
               <div>
                 <Link href={product.uri}>
-                  <a className={styles.productListTitle}>
+                  <ProductListTitle>
                     <Text as="h3" variant="Display-XXSmall" altFont={true}>
                       {product.title}
                     </Text>
-                  </a>
+                  </ProductListTitle>
                 </Link>
               </div>
-            </div>
-            <div className={styles.collectionNameBox}>
-              <div className={styles.displayNameBox}>
-                <div className={styles.AvilableBox}>
+            </ProductName>
+            <CollectionNameBox>
+              <DisplayNameBox>
+                <AvailableBox>
                   <div>
                     <Text as="h4" variant="Body-Small">
                       Tiles &amp; Slabs
                     </Text>
                   </div>
-                </div>
-                <div className={styles.NameBox}>
+                </AvailableBox>
+                <NameBox>
                   <div>
                     <Text as="h4" variant="Body-Small">
                       Collection Name
                     </Text>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div className={styles.descriptionBox}>
+                </NameBox>
+              </DisplayNameBox>
+            </CollectionNameBox>
+            <DescriptionBox detailView={detailShown}>
               <div>
                 <Text as="h4" variant="Body-Small">
                   Description — one line truncated ...
                 </Text>
               </div>
-            </div>
-          </div>
-          <div className={styles.productsInfoDetails}>
-            <div className={styles.productInfoBox}>
-              <div className={styles.details}>
+            </DescriptionBox>
+          </ProductsInfoRow>
+          <ProductsInfoDetails>
+            <ProductInfoBox>
+              <Details detailView={detailShown}>
                 <div>
-                  <Text
-                    color="white"
-                    variant="Body-Regular"
-                    className={styles.titleText}
-                  >
+                  <TitleText color="white" variant="Body-Regular">
                     # New release
-                  </Text>
+                  </TitleText>
                 </div>
-                <div className={styles.description}>
+                <Description detailView={detailShown}>
                   <Text variant="Body-Regular">
                     Tincidunt amet ullamcorper et consequat male su ada. Integer
                     elit ut varius in at porttitor. Id pu rus amet feugiat non
@@ -86,53 +107,49 @@ const ProductCard = ({
                     dictum. Pellentesque sit tortor congue neque, odio ultrices
                     amet.
                   </Text>
-                </div>
+                </Description>
                 <ArrowButton
                   mode="dark"
                   title="View product details"
                   link="http://localhost:3000/products"
                 />
-              </div>
-            </div>
-            <div className={styles.productDescriptionBox}>
-              <div className={styles.details}>
-                <div className={styles.listings}>
+              </Details>
+            </ProductInfoBox>
+            <ProductDescriptionBox>
+              <Details detailView={detailShown}>
+                <Listings>
                   <ul>
                     <li>
-                      <div className={styles.headline}>
-                        Material and composition
-                      </div>
+                      <Headline>Material and composition</Headline>
                       Cursus velit adipiscing suspendisse semper. Cursus velit
                       adipiscing suspendisse semper
                     </li>
                     <li>
-                      <div className={styles.headline}>
-                        Finish and appearance
-                      </div>
+                      <Headline>Finish and appearance</Headline>
                       Cursus velit adipiscing suspendisse semper
                     </li>
                     <li>
-                      <div className={styles.headline}>Sizes</div>
+                      <Headline>Sizes</Headline>
                       Tiles 400x400x20mm & 600x600x20mm <br />
                       Slabs 400x400x20mm
                     </li>
                     <li>
-                      <div className={styles.headline}>Applications</div>
+                      <Headline>Applications</Headline>
                       Cursus velit adipiscing suspendisse semper
                     </li>
                   </ul>
-                </div>
-                <a className={styles.technicalSpecification} href="#">
+                </Listings>
+                <TechnicalSpecification href="#">
                   Click here to copy technical specification{" "}
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className={styles.detailsBoxRight}>
-          <div className={styles.imgCell}>
-            <div className={styles.cardImgContainer}>
-              <div className={styles.cardImg}>
+                </TechnicalSpecification>
+              </Details>
+            </ProductDescriptionBox>
+          </ProductsInfoDetails>
+        </DetailsBoxLeft>
+        <DetailsBoxRight>
+          <ImgCell detailView={detailShown}>
+            <ListCardImgContainer>
+              <CardImg detailView={detailShown}>
                 {product?.img1 && (
                   <Link href={product.uri}>
                     <a>
@@ -140,16 +157,14 @@ const ProductCard = ({
                     </a>
                   </Link>
                 )}
-              </div>
-              <div className={styles.actionBtnContainer}>
-                <button
-                  className={classnames(styles.actionBtn, {
-                    [styles.checkedButton]: isSelected,
-                  })}
+              </CardImg>
+              <ActionBtnContainer>
+                <ActionBtn
+                  checked={isSelected}
                   onClick={() => toggleProductSelect(product)}
                 >
                   {!isSelected && (
-                    <span className={styles.hovered}>
+                    <span className="hovered">
                       <AddIcon color="white" />{" "}
                       <Text color="white" variant="Body-XSmall">
                         Add To Selection
@@ -157,28 +172,28 @@ const ProductCard = ({
                     </span>
                   )}
                   {!isSelected && (
-                    <span className={styles.initial}>
+                    <span className="initial">
                       <AddIcon color="black" />
                     </span>
                   )}
                   {isSelected && (
-                    <span className={styles.initial}>
+                    <span className="initial">
                       <CheckMarkIcon color="white" />
                     </span>
                   )}
                   {isSelected && (
-                    <span className={styles.hovered}>
+                    <span className="hovered">
                       <CrossIcon />{" "}
                       <Text color="white" variant="Body-XSmall">
                         Remove Selection
                       </Text>
                     </span>
                   )}
-                </button>
-              </div>
-            </div>
-          </div>
-          <div className={styles.rowDetailButton}>
+                </ActionBtn>
+              </ActionBtnContainer>
+            </ListCardImgContainer>
+          </ImgCell>
+          <RowDetailButton detailView={detailShown}>
             <button
               onClick={() => {
                 setDetailShown(!detailShown);
@@ -187,15 +202,16 @@ const ProductCard = ({
               {!detailShown && <ArrowDown />}
               {detailShown && <ArrowUp />}
             </button>
-          </div>
-        </div>
-      </div>
+          </RowDetailButton>
+        </DetailsBoxRight>
+      </TableRow>
     );
   }
+
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.container}>
-        <div className={styles.cardImgContainer}>
+    <Wrapper>
+      <Container>
+        <GridCardImgContainer>
           {product?.img1 && (
             <Link href={product.uri}>
               <a>
@@ -203,15 +219,13 @@ const ProductCard = ({
               </a>
             </Link>
           )}
-          <div className={styles.actionBtnContainer}>
-            <button
-              className={classnames(styles.actionBtn, {
-                [styles.checkedButton]: isSelected,
-              })}
+          <ActionBtnContainer>
+            <ActionBtn
+              checked={isSelected}
               onClick={() => toggleProductSelect(product)}
             >
               {!isSelected && (
-                <span className={styles.hovered}>
+                <span className="hovered">
                   <AddIcon color="white" />{" "}
                   <Text color="white" variant="Body-XSmall">
                     Add To Selection
@@ -219,42 +233,41 @@ const ProductCard = ({
                 </span>
               )}
               {!isSelected && (
-                <span className={styles.initial}>
+                <span className="initial">
                   <AddIcon color="black" />
                 </span>
               )}
               {isSelected && (
-                <span className={styles.initial}>
+                <span className="initial">
                   <CheckMarkIcon color="white" />
                 </span>
               )}
               {isSelected && (
-                <span className={styles.hovered}>
+                <span className="hovered">
                   <CrossIcon />{" "}
                   <Text color="white" variant="Body-XSmall">
                     Remove Selection
                   </Text>
                 </span>
               )}
-            </button>
-          </div>
-        </div>
-        <Text
+            </ActionBtn>
+          </ActionBtnContainer>
+        </GridCardImgContainer>
+        <CardTitle
           as="h3"
           variant="Display-XSmall"
           altFont={true}
-          className={styles.cardTitle}
           marginTop="25px"
         >
           <Link href={product.uri}>
             <a>{product.title}</a>
           </Link>
-        </Text>
-        <Text as="h4" variant="Body-Small" className={styles.cardSubTitle}>
+        </CardTitle>
+        <CardSubTitle as="h4" variant="Body-Small">
           {product.subHeading}
-        </Text>
-      </div>
-    </div>
+        </CardSubTitle>
+      </Container>
+    </Wrapper>
   );
 };
 
