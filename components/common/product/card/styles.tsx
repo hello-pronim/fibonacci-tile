@@ -89,7 +89,7 @@ const CardImg = styled("div")(({ detailView }: DetailViewProps) =>
 const ProductListTitle = styled("a")(
   css({
     textDecoration: "none",
-    color: theme.colors.white,
+    color: theme.colors.charcoal,
   })
 );
 
@@ -151,7 +151,7 @@ const ActionBtn = styled("button")(({ checked }: ActionBtnProps) =>
       height: "inherit",
       borderRadius: "32px",
       color: theme.colors.white,
-      backgroundColor: theme.colors.white,
+      backgroundColor: theme.colors.charcoal,
       ".hovered": {
         display: "flex",
         opacity: 1,
