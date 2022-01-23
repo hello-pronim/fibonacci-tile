@@ -1,29 +1,20 @@
-import styles from "./styles.module.scss";
+import { StyledSelect } from "./styles";
 
-export interface selectProps {
-  className?: string;
-  size?: "large" | "medium" | "small";
+interface selectProps {
+  value?: string;
   onChange?: (event) => void;
   children?: React.ReactNode;
 }
 
 export default function Select({
-  className,
-  size = "medium",
+  value,
   onChange,
   children,
   ...props
 }: selectProps) {
-  const sizeClass =
-    size === "small" ? styles.small : size === "large" ? styles.large : "";
-
   return (
-    <select
-      className={`${styles.select} ${className ?? ""} ${sizeClass}`}
-      onChange={onChange}
-      {...props}
-    >
+    <StyledSelect value={value} onChange={onChange} {...props}>
       {children}
-    </select>
+    </StyledSelect>
   );
 }

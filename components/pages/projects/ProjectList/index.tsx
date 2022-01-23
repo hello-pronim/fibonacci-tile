@@ -22,8 +22,6 @@ import Text from "@components/common/typography";
 import { css } from "@styled-system/css";
 import theme from "@styles/theme";
 
-import styles from "./styles.module.scss";
-
 interface ProjectListType {
   projects: Array<any>;
   types: Array<string>;
@@ -69,9 +67,9 @@ const ProjectList = ({ projects, types }: ProjectListType) => {
       </FilterWrapperDesktop>
       <FilterWrapperMobile>
         <Text variant="Body-Small">Filter</Text>
-        <Select onChange={onProjectTypeChange}>
+        <Select onChange={onProjectTypeChange} value={selectedType}>
           {types.map((type) => (
-            <option key={type} value={type} selected={type === selectedType}>
+            <option key={type} value={type}>
               {type}
             </option>
           ))}
