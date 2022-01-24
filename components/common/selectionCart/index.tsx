@@ -385,7 +385,7 @@ const SelectionCart = ({ active, newSelection, tab }) => {
               },
             })}
           >
-            <ArrowButton mode="light" title="Order Samples" link="#" />
+            <ArrowButton mode="light" title="Order Samples" link="/checkout" />
             <a href="#" css={css({ color: "#fff", mt: 24 })}>
               <Text variant="Body-Small">Continue Selections</Text>
             </a>
