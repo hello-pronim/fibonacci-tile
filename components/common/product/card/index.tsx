@@ -1,16 +1,14 @@
 import { useState } from "react";
 import Image from "next/image";
-import Link from 'next/link'
+import Link from "next/link";
 import classnames from "classnames";
 import Text from "@components/common/typography";
-import Tag from "@components/common/tag";
 import AddIcon from "@components/icons/add";
 import Button from "@components/common/button";
 import CheckMarkIcon from "@components/icons/checkmark";
 import CrossIcon from "@components/icons/cross";
 import ArrowDown from "@components/icons/arrowDown";
 import ArrowUp from "@components/icons/arrowUp";
-import ProductImg from "public/placeholder-product-image.jpg";
 import styles from "./styles.module.scss";
 
 const ProductCard = ({
@@ -18,6 +16,7 @@ const ProductCard = ({
   displayMode = "grid",
   isSelected = false,
   toggleProductSelect,
+  compact = false,
 }) => {
   const [detailShown, setDetailShown] = useState(false);
   if (displayMode === "list") {
@@ -70,17 +69,28 @@ const ProductCard = ({
             <div className={styles.productInfoBox}>
               <div className={styles.details}>
                 <div>
-                  <Text color="white" variant="Body-Regular" className={styles.titleText}>
+                  <Text
+                    color="white"
+                    variant="Body-Regular"
+                    className={styles.titleText}
+                  >
                     # New release
                   </Text>
                 </div>
                 <div className={styles.description}>
                   <Text variant="Body-Regular">
-                  Tincidunt amet ullamcorper et consequat male su ada. Integer elit ut varius in at porttitor. Id pu rus amet feugiat non porta. 
-                  Commodo integer feugiat nunc, venenatis lobortis eu dictum. Pellentesque sit tortor congue neque, odio ultrices amet.
+                    Tincidunt amet ullamcorper et consequat male su ada. Integer
+                    elit ut varius in at porttitor. Id pu rus amet feugiat non
+                    porta. Commodo integer feugiat nunc, venenatis lobortis eu
+                    dictum. Pellentesque sit tortor congue neque, odio ultrices
+                    amet.
                   </Text>
                 </div>
-                <Button mode="dark" title="View product details" link="http://localhost:3000/products" />
+                <Button
+                  color="dark"
+                  text="View product details"
+                  href="http://localhost:3000/products"
+                />
               </div>
             </div>
             <div className={styles.productDescriptionBox}>
@@ -88,16 +98,21 @@ const ProductCard = ({
                 <div className={styles.listings}>
                   <ul>
                     <li>
-                      <div className={styles.headline}>Material and composition</div>
-                      Cursus velit adipiscing suspendisse semper. Cursus velit adipiscing suspendisse semper
+                      <div className={styles.headline}>
+                        Material and composition
+                      </div>
+                      Cursus velit adipiscing suspendisse semper. Cursus velit
+                      adipiscing suspendisse semper
                     </li>
                     <li>
-                      <div className={styles.headline}>Finish and appearance</div>
+                      <div className={styles.headline}>
+                        Finish and appearance
+                      </div>
                       Cursus velit adipiscing suspendisse semper
                     </li>
                     <li>
                       <div className={styles.headline}>Sizes</div>
-                      Tiles 400x400x20mm & 600x600x20mm <br/>
+                      Tiles 400x400x20mm & 600x600x20mm <br />
                       Slabs 400x400x20mm
                     </li>
                     <li>
@@ -106,7 +121,9 @@ const ProductCard = ({
                     </li>
                   </ul>
                 </div>
-                <a className={styles.technicalSpecification} href="#">Click here to copy technical specification </a>
+                <a className={styles.technicalSpecification} href="#">
+                  Click here to copy technical specification{" "}
+                </a>
               </div>
             </div>
           </div>
@@ -176,7 +193,12 @@ const ProductCard = ({
   }
   return (
     <div className={styles.wrapper}>
-      <div className={styles.container}>
+      <div
+        className={classnames(
+          styles.container,
+          compact && styles.compactContainer
+        )}
+      >
         <div className={styles.cardImgContainer}>
           {product?.img1 && (
             <Link href={product.uri}>
@@ -229,14 +251,14 @@ const ProductCard = ({
           marginTop="25px"
         >
           <Link href={product.uri}>
-            <a>
-              {product.title}
-            </a>
+            <a>{product.title}</a>
           </Link>
         </Text>
-        <Text as="h4" variant="Body-Small" className={styles.cardSubTitle}>
-          {product.subHeading}
-        </Text>
+        {!compact && (
+          <Text as="h4" variant="Body-Small" className={styles.cardSubTitle}>
+            {product.subHeading}
+          </Text>
+        )}
       </div>
     </div>
   );

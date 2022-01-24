@@ -9,8 +9,8 @@ import {
 import Text from "@componentscommon/typography";
 import Image from "next/image";
 import AccentText, { AccentTextMobile } from "@components/common/accentText";
-import InspireRight from "public/assets/temp/inspire-right.png";
-import InspireLeft from "public/assets/temp/inspire-left.png";
+import InspireRight from "public/assets/temp/inspire-right.jpg";
+import InspireLeft from "public/assets/temp/inspire-left.jpg";
 import ArrowButton from "@components/common/button/arrowButton";
 import { css } from "@styled-system/css";
 import theme from "@styles/theme";

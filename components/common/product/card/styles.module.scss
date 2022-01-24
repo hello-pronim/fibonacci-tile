@@ -12,6 +12,17 @@
     }
   }
 }
+
+.compactContainer {
+  padding: 0 !important;
+  .cardImgContainer {
+    box-shadow: none;
+  }
+  &:hover {
+    background-color: transparent !important;
+  }
+}
+
 .tableRow {
   border-top: 1px solid #d4d4d8;
   display: flex;

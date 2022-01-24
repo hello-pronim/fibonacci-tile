@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { useAppContext } from "@contexts/AppContext";
 import Link from "next/link";
 import Logo from "public/assets/brandmarks/logo-primary.svg";
 import LogoWhite from "public/assets/brandmarks/logo-secondary.svg";
@@ -22,6 +23,7 @@ import { Transition } from "react-transition-group";
 import Text from "@components/common/typography";
 import ProductSelectionCount from "@components/common/product/selectionCount";
 import { css } from "@styled-system/css";
+import SelectionCart from "@componentscommon/selectionCart";
 
 const duration = 400;
 
@@ -38,8 +40,13 @@ const transitionStyles = {
 };
 
 const Header = ({ mode = "light", position = "relative" }) => {
+  const { state } = useAppContext();
   const [navOpen, setNavOpen] = useState(false);
+  const [openSelections, setOpenSelections] = useState(false);
+  const [newSelection, setNewSelection] = useState(false);
+  const [selectionsCount, setSelectionsCount] = useState(0);
   const [alertActive, setAlertActive] = useState(true);
+  const selectionsMounted = useRef(false);
   const activeLogo = mode === "dark" ? Logo : LogoWhite;
 
   useEffect(() => {
@@ -48,6 +55,22 @@ const Header = ({ mode = "light", position = "relative" }) => {
     alertState && setAlertActive(alertToBool);
   }, []);
 
+
+
+  useEffect(() => {
+    if(selectionsMounted.current && state.selectedProducts.length > selectionsCount && openSelections !== true) {
+      setOpenSelections(true);
+      setNewSelection(true);
+      const timerId = setTimeout(() => {
+        setNewSelection(false);
+        setOpenSelections(false);
+      }, 4000);
+      timerId;
+    }
+    else selectionsMounted.current = true;
+    setSelectionsCount(state.selectedProducts.length);
+    console.log(selectionsCount);
+  }, [state.selectedProducts])
   useEffect(() => {
     sessionStorage.setItem("alert-state", alertActive.toString());
   }, [alertActive]);
@@ -100,11 +123,12 @@ const Header = ({ mode = "light", position = "relative" }) => {
             <NavItem href="#" mode={mode}>
               Contact
             </NavItem>
-            <NavItem href="#" mode={mode}>
-              Selections <ProductSelectionCount />
+            <NavItem href="#" mode={mode} onClick={() => setOpenSelections(!openSelections)}>
+              Selections <ProductSelectionCount/>
             </NavItem>
           </NavRight>
         </Wrapper>
+        <SelectionCart active={openSelections} newSelection={newSelection}/>
         <Transition
           in={navOpen}
           timeout={duration}
