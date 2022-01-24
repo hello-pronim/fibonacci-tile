@@ -42,14 +42,18 @@ import {
 import {
   Wrapper,
   Container,
-  ActionBtn
+  ActionBtn,
+  ConfirmActionBtn,
+  ConfirmActionBtnContainer
 } from "./styles";
 
-const ProductCard = ({
+const SelectedProductCard = ({
   product,
   displayMode = "grid",
   isSelected = false,
   toggleProductSelect,
+  totalSelectedProducts = 0,
+  confirmSample = false
 }) => {
   const [detailShown, setDetailShown] = useState(false);
   if (displayMode === "list") {
@@ -214,9 +218,11 @@ const ProductCard = ({
   return (
     <Wrapper>
       <Container>
+        {totalSelectedProducts > 6 && (
         <div className="overlay">
           Choose upto six, samples remove one and the confirm your choosen samples
         </div>
+        )}
         <GridCardImgContainer>
           {product?.img1 && (
             <Link href={product.uri}>
@@ -225,11 +231,13 @@ const ProductCard = ({
               </a>
             </Link>
           )}
+          {!confirmSample && (
           <ActionBtnContainer>
-            <ActionBtn
+           
+              <ActionBtn
               checked={isSelected}
               onClick={() => toggleProductSelect(product)}
-            >
+              >
               {!isSelected && (
                 <span className="hovered">
                   <AddIcon color="white" />{" "}
@@ -256,8 +264,18 @@ const ProductCard = ({
                   </Text>
                 </span>
               )}
-            </ActionBtn>
+              </ActionBtn>
           </ActionBtnContainer>
+          )}
+          {confirmSample && (
+            <ConfirmActionBtnContainer>
+              <ConfirmActionBtn>
+                  <span className="initial">
+                    <CheckMarkIcon color="white" />
+                  </span>
+              </ConfirmActionBtn>
+            </ConfirmActionBtnContainer>
+           )}
         </GridCardImgContainer>
         <CardTitle
           as="h3"
@@ -277,4 +295,4 @@ const ProductCard = ({
   );
 };
 
-export default ProductCard;
+export default SelectedProductCard;

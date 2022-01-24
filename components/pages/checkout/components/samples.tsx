@@ -111,8 +111,9 @@ const products = [
     },
 ]
 const Samples = () => {
-  const { state, dispatch } = useAppContext();
-
+    const { state, dispatch } = useAppContext();
+    const selectedProducts = state.selectedProducts;
+    const confirmedProducts = state.confirmedProducts;
     return (
         <>
           <TopBar>
@@ -133,22 +134,23 @@ const Samples = () => {
             </ButtonWrapper>
           </TopBar>
           <ProductContainer>
-          {products.map((product) => (
+          {selectedProducts && selectedProducts.map((product) => (
             <SelectedProductCard
               displayMode={"grid"}
               product={product}
               isSelected={
-                state?.selectedProducts.findIndex(
+                confirmedProducts && confirmedProducts.findIndex(
                   (sp) => sp.id === product.id
                 ) !== -1
               }
               toggleProductSelect={() =>
                 dispatch({
-                  type: "TOGGLE_PRODUCT_SELECTION",
+                  type: "TOGGLE_CONFIRM_PRODUCT_SELECTION",
                   product,
                 })
               }
               key={`product-${product.id}`}
+              totalSelectedProducts={selectedProducts.length}
             />
           ))}
           </ProductContainer>  

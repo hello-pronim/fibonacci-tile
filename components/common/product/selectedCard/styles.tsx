@@ -22,21 +22,23 @@ const Container = styled("div")(
     ".overlay": {
       visibility: "hidden",
       opacity: 0,
-      // height: "100%",
-      top: "70px",
+      height: "100%",
+      top: "0px",
       left: "0px",
-      // display: "flex",
-      // justifyContent: "center",
-      // alignItems: "center",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
       zIndex: "9999",
       margin: "0 30px",
-      position: "absolute"
+      position: "absolute",
+      transition: "background-color ease 0.3s"
     },
     "&:hover": {
       backgroundColor: theme.colors.cold,
       ".overlay": {
         visibility: "visible",
-        opacity: 1
+        opacity: 0.8,
+        backgroundColor: theme.colors.cold
       }
     },
   })
@@ -89,8 +91,38 @@ const ActionBtn = styled("button")(({ checked }: ActionBtnProps) =>
   })
 );
 
+const ConfirmActionBtn = styled("button")(
+  css({
+    display: "block",
+    textTransform: "uppercase",
+    borderRadius: "50%",
+    width: "35px",
+    height: "35px",
+    cursor: "pointer",
+    backgroundColor: theme.colors.charcoal,
+  })
+);
+
+const ConfirmActionBtnContainer = styled("div")(
+  css({
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    position: "absolute",
+    marginLeft: "auto",
+    marginRight: "auto",
+    left: 0,
+    right: 0,
+    bottom: "-20px",
+    height: "39px",
+    width: "39px"
+  })
+);
+
 export {
   Wrapper,
   Container,
-  ActionBtn
+  ActionBtn,
+  ConfirmActionBtnContainer,
+  ConfirmActionBtn
 };

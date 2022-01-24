@@ -119,7 +119,7 @@ const ActionBtnContainer = styled("div")(
     height: "39px",
     width: "39px",
     "&:hover": {
-      width: "inherit",
+      width: "auto",
     },
   })
 );

@@ -83,7 +83,7 @@ const products = [
 ]
 const CheckoutPage = () => {
     const { state, dispatch } = useAppContext();
-    const { checkoutStep, productDisplayMode } = state;
+    const { checkoutStep, confirmedProducts } = state;
     const crumbs= [
         { path: "/products", name: "Products" },
         { path: "/checkout", name: "Checkout" },
@@ -108,10 +108,10 @@ const CheckoutPage = () => {
                     </CheckoutContentWrapper>
                 </LeftContent>
                 <RightContent displayRight={checkoutStep === 2 || checkoutStep === 3 ? true : false}>
-                    <p>Selections (6)</p>
+                    <p>Selections ({confirmedProducts?.length > 0 ? confirmedProducts?.length : 0})</p>
                    
                     <SelectionWrapper>
-                    {products.map((product) => (
+                    {confirmedProducts && confirmedProducts.map((product) => (
                         <SelectedProductCard
                         displayMode={"grid"}
                         product={product}
@@ -122,11 +122,12 @@ const CheckoutPage = () => {
                         }
                         toggleProductSelect={() =>
                             dispatch({
-                            type: "TOGGLE_PRODUCT_SELECTION",
+                            type: "TOGGLE_CONFIRM_PRODUCT_SELECTION",
                             product,
                             })
                         }
                         key={`product-${product.id}`}
+                        confirmSample={true}
                         />
                     ))}
                     </SelectionWrapper>
