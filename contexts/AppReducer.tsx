@@ -9,6 +9,7 @@ export const initialState = {
   productDisplayMode: "grid",
   loading: true,
   isMobileFilterActive: false,
+  checkoutStep: 1
 };
 
 export const AppReducer = (state, action) => {
@@ -92,6 +93,12 @@ export const AppReducer = (state, action) => {
       return {
         ...state,
         isMobileFilterActive: action.value,
+      };
+    }
+    case "SET_CHECKOUT_STEP": {
+      return {
+        ...state,
+        checkoutStep: action.value,
       };
     }
   }

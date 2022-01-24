@@ -100,7 +100,7 @@ const Header = ({ mode = "light", position = "relative" }) => {
             <NavItem href="#" mode={mode}>
               Contact
             </NavItem>
-            <NavItem href="#" mode={mode}>
+            <NavItem href="/checkout" mode={mode}>
               Selections <ProductSelectionCount />
             </NavItem>
           </NavRight>
