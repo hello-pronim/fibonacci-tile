@@ -1,5 +1,6 @@
 export const initialState = {
   selectedProducts: [],
+  confirmedProducts: [],
   filter: {
     searchText: null,
     products: "all",
@@ -9,6 +10,7 @@ export const initialState = {
   productDisplayMode: "grid",
   loading: true,
   isMobileFilterActive: false,
+  checkoutStep: 1
 };
 
 export const AppReducer = (state, action) => {
@@ -69,10 +71,12 @@ export const AppReducer = (state, action) => {
       return state;
     }
     case "TOGGLE_PRODUCT_SELECTION": {
+      console.log("reducerProduct", action.product)
       // check if product is in selectedProducts
       const checkProductSelected = state.selectedProducts.findIndex(
         (sp) => sp.id === action.product.id
       );
+      console.log("checkProductSelected", checkProductSelected)
       if (checkProductSelected !== -1) {
         const newSelectedProducts = state?.selectedProducts.filter(
           (sp) => sp.id !== action.product.id
@@ -80,6 +84,7 @@ export const AppReducer = (state, action) => {
         return {
           ...state,
           selectedProducts: newSelectedProducts ? newSelectedProducts : [],
+          confirmedProducts: newSelectedProducts ? newSelectedProducts : [],
         };
       } else {
         return {
@@ -88,10 +93,36 @@ export const AppReducer = (state, action) => {
         };
       }
     }
+    case "TOGGLE_CONFIRM_PRODUCT_SELECTION": {
+      // check if product is in confirmedProducts
+      const checkConfirmProductSelected = state.confirmedProducts && state.confirmedProducts.findIndex(
+        (sp) => sp.id === action.product.id
+      );
+      if (checkConfirmProductSelected !== -1) {
+        const newConfirmSelectedProducts = state.confirmedProducts && state?.confirmedProducts.filter(
+          (sp) => sp.id !== action.product.id
+        );
+        return {
+          ...state,
+          confirmedProducts: newConfirmSelectedProducts ? newConfirmSelectedProducts : [],
+        };
+      } else {
+        return {
+          ...state,
+          confirmedProducts: [...state.confirmedProducts, action.product],
+        };
+      }
+    }
     case "SET_MOBILE_FILTER": {
       return {
         ...state,
         isMobileFilterActive: action.value,
+      };
+    }
+    case "SET_CHECKOUT_STEP": {
+      return {
+        ...state,
+        checkoutStep: action.value,
       };
     }
   }

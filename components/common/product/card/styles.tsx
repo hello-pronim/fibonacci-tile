@@ -32,6 +32,7 @@ const GridCardImgContainer = styled("div")(
   css({
     position: 'relative',
     boxShadow: "none",
+    position: "relative"
   })
 );
 
@@ -119,7 +120,7 @@ const ActionBtnContainer = styled("div")(
     height: "39px",
     width: "39px",
     "&:hover": {
-      width: "inherit",
+      width: "auto",
     },
   })
 );

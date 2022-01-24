@@ -1,35 +1,86 @@
 import css from "@styled-system/css";
 import styled from "@emotion/styled";
-import theme from "styles/theme";
-export interface containerProps {
-  navOpen: boolean;
-  position: string;
-}
 
-export interface navItemProps {
-  mode: string;
-}
-
-export interface NavIconProps {
-  isOpen: boolean;
-}
-
-const Wrapper = styled("div")(() =>
+const BreacrumbWrapper = styled("div")(() =>
   css({
-    width: "100%",
-    maxWidth: 2560,
     display: "flex",
     alignItems: "center",
-    justifyContent: "space-between",
-    px: 32,
-    height: 80,
+    px: 35,
+    pb: 35,
+    pt: 100,
     "@media screen and (max-width: 768px)": {
       px: 10,
     },
   })
 );
 
+const BackBttn = styled("div")(() =>
+  css({
+   position: "relative",
+   color: "charcoal",
+   fontSize: 12,
+   cursor: "pointer",
+   "&:after": {
+    content: "' '",
+     display: "block",
+     position: "absolute",
+     top: "2px",
+     left: "-12px",
+     backgroundImage: `url("assets/icons/arrow-icon.svg")`,
+     backgroundRepeat: "no-repeat",
+     width: "10px",
+     height: "9px"
+   }
+  })
+);
+
+const ListItem = styled("a")(() =>
+  css({
+   position: "relative",
+   color: "charcoal",
+   fontSize: 12,
+   cursor: "pointer",
+   ml: 3,
+   textDecoration: "none",
+   "&:after": {
+      content: "''",
+      display: "block",
+      position: "absolute",
+      top: "6px",
+      left: "-9px",
+      width: "5px",
+      height: "5px",
+      backgroundImage: `url("assets/icons/dot.svg")`,
+      backgroundRepeat: "no-repeat",
+   }
+  })
+);
+
+
+const ActiveListItem = styled("span")(() =>
+  css({
+   position: "relative",
+   color: "charcoal",
+   fontSize: 12,
+   ml: 3,
+   textDecoration: "none",
+   "&:after": {
+      content: "''",
+      display: "block",
+      position: "absolute",
+      top: "6px",
+      left: "-9px",
+      width: "5px",
+      height: "5px",
+      backgroundImage: `url("assets/icons/dot.svg")`,
+      backgroundRepeat: "no-repeat",
+   }
+  })
+);
 
 export {
-  Wrapper,
+  BreacrumbWrapper,
+  BackBttn,
+  ListItem,
+  ActiveListItem
 };

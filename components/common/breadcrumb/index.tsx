@@ -1,18 +1,42 @@
-
-import ProductCard from "@components/common/product/card";
-import { useAppContext } from "@contexts/AppContext";
-import Text from "@components/common/typography";
-
-// import {
-//   RelatedProductsContainer,
-//   Heading,
-//   Container
-// } from "./styles";
+import React from "react";
+import Link from "next/link";
+import Router from 'next/router'
 
 
-const Breadcrumb = () => {
+import {
+  BreacrumbWrapper,
+  BackBttn,
+  ListItem,
+  ActiveListItem
+} from "./styles";
+
+const Breadcrumb = ({ crumbs }) => {
+  // Don't render a single breadcrumb.
+  if (crumbs.length <= 1) {
+    return null;
+  }
+
   return (
-    <div>Bread Crumb</div>
+    <BreacrumbWrapper>
+      {/* Link back to any previous steps of the breadcrumb. */}
+      <BackBttn onClick={() => Router.back()}>
+        Back
+      </BackBttn>
+      <ListItem href="/">
+        Home 
+      </ListItem>
+      {crumbs.map(({ name, path }, key) =>
+        key + 1 === crumbs.length ? (
+          <ActiveListItem key={key}>
+            {name}
+          </ActiveListItem>
+        ) : (
+          <ListItem key={key} href={path}>
+            {name}
+          </ListItem>
+        )
+      )}
+    </BreacrumbWrapper>
   );
 };
 
