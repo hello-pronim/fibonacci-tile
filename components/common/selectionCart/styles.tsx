@@ -27,7 +27,6 @@ const Container = styled("div")(({ ...props }: containerProps) =>
     transition: "ease all 0.3s",
     borderColor: props.navOpen ? "white" : "stone",
     zIndex: 1000,
-    overflowX: 'clip',
   })
 );
 

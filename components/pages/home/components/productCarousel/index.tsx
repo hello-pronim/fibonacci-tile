@@ -27,7 +27,7 @@ import CloudBurst from "public/tmp/prod/cloudBurst.jpeg";
 import CoolStream from "public/tmp/prod/coolStream.jpeg";
 
 const ProductCarousel = () => {
-  const { state, dispatch } = useAppContext();
+  const { state,   dispatch } = useAppContext();
   const slider = React.useRef<Slider>(null);
   const [slideCount, setSlideCount] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
