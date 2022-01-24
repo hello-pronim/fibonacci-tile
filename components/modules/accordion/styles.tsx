@@ -1,6 +1,8 @@
 import css from "@styled-system/css";
 import styled from "@emotion/styled";
 import Cntnr from "@components/common/layout/container";
+import { useSpring, animated } from 'react-spring'
+
 
 const Container = styled(Cntnr)(() =>
   css({
@@ -17,7 +19,6 @@ const Wrapper = styled('div')(() =>
 
 const Item = styled('div')(() =>
   css({
-    
     width: '100%',
   })
 );
@@ -35,7 +36,7 @@ const Top = styled('div')(() =>
   })
 );
 
-const Inner = styled('div')(() =>
+const Inner = styled(animated.div)(() =>
   css({
     boxSizing: 'border-box',
     position: 'relative',

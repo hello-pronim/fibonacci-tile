@@ -5,12 +5,14 @@ export interface containerProps {
   mode?: string;
   visibleArrow: boolean;
   visibleBorder: boolean;
+  fullWidth: boolean;
 }
 
 const ArrowButtonWrapper = styled("div")(({ ...props }: containerProps) =>
   css({
     a: {
       borderWidth: 1,
+      width: props.fullWidth && '100%',
       borderColor: "#B0ABA7",
       borderStyle: props.visibleBorder === false ? "none" : "solid",
       fontSize: 16,

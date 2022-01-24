@@ -211,7 +211,7 @@ const ProductCard = ({
 
   return (
     <Wrapper>
-      <Container>
+      <Container compact={compact}>
         <GridCardImgContainer>
           {product?.img1 && (
             <Link href={product.uri}>
@@ -264,9 +264,11 @@ const ProductCard = ({
             <a>{product.title}</a>
           </Link>
         </CardTitle>
-        <CardSubTitle as="h4" variant="Body-Small">
-          {product.subHeading}
-        </CardSubTitle>
+        {!compact && (
+          <CardSubTitle as="h4" variant="Body-Small">
+            {product.subHeading}
+          </CardSubTitle>
+        )}
       </Container>
     </Wrapper>
   );
