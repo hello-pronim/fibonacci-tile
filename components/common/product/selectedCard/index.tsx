@@ -9,14 +9,12 @@ import CrossIcon from "@components/icons/cross";
 import ArrowDown from "@components/icons/arrowDown";
 import ArrowUp from "@components/icons/arrowUp";
 import {
-  ActionBtn,
   ActionBtnContainer,
   AvailableBox,
   CardImg,
   CardSubTitle,
   CardTitle,
   CollectionNameBox,
-  Container,
   Description,
   DescriptionBox,
   DisplayNameBox,
@@ -38,8 +36,13 @@ import {
   RowDetailButton,
   TableRow,
   TechnicalSpecification,
-  TitleText,
+  TitleText
+} from "../card/styles";
+
+import {
   Wrapper,
+  Container,
+  ActionBtn
 } from "./styles";
 
 const ProductCard = ({
@@ -167,7 +170,7 @@ const ProductCard = ({
                     <span className="hovered">
                       <AddIcon color="white" />{" "}
                       <Text color="white" variant="Body-XSmall">
-                        Add To Selection
+                        Confirm Sample
                       </Text>
                     </span>
                   )}
@@ -185,7 +188,7 @@ const ProductCard = ({
                     <span className="hovered">
                       <CrossIcon />{" "}
                       <Text color="white" variant="Body-XSmall">
-                        Remove Selection
+                        Remove Sample
                       </Text>
                     </span>
                   )}
@@ -211,6 +214,9 @@ const ProductCard = ({
   return (
     <Wrapper>
       <Container>
+        <div className="overlay">
+          Choose upto six, samples remove one and the confirm your choosen samples
+        </div>
         <GridCardImgContainer>
           {product?.img1 && (
             <Link href={product.uri}>
@@ -228,7 +234,7 @@ const ProductCard = ({
                 <span className="hovered">
                   <AddIcon color="white" />{" "}
                   <Text color="white" variant="Body-XSmall">
-                    Add To Selection
+                    Confirm Sample
                   </Text>
                 </span>
               )}
@@ -239,14 +245,14 @@ const ProductCard = ({
               )}
               {isSelected && (
                 <span className="initial">
-                  <CheckMarkIcon color="black" />
+                  <CheckMarkIcon color="white" />
                 </span>
               )}
               {isSelected && (
                 <span className="hovered">
                   <CrossIcon />{" "}
                   <Text color="white" variant="Body-XSmall">
-                    Remove Selection
+                    Remove Sample
                   </Text>
                 </span>
               )}

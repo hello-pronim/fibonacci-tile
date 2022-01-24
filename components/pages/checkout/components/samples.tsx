@@ -6,7 +6,7 @@ import {
 } from "./styles";
 import Text from "@components/common/typography";
 import { css } from "@styled-system/css";
-import ProductCard from "@components/common/product/card";
+import SelectedProductCard from "@components/common/product/selectedCard";
 import Abstrakt from 'public/tmp/prod/abstrakt.jpeg';
 import ActThree from 'public/tmp/prod/actThree.jpeg';
 import Assemblage from 'public/tmp/prod/assemblage.jpeg';
@@ -134,7 +134,7 @@ const Samples = () => {
           </TopBar>
           <ProductContainer>
           {products.map((product) => (
-            <ProductCard
+            <SelectedProductCard
               displayMode={"grid"}
               product={product}
               isSelected={

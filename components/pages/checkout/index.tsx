@@ -1,6 +1,6 @@
 import { useAppContext } from "@contexts/AppContext";
 import BreadCrumb from "@components/common/breadcrumb";
-import ProductCard from "@components/common/product/card";
+import SelectedProductCard from "@components/common/product/selectedCard";
 import ProductsHeader from "../products/Header";
 import Samples from "./components/samples";
 import Details from "./components/details";
@@ -112,7 +112,7 @@ const CheckoutPage = () => {
                    
                     <SelectionWrapper>
                     {products.map((product) => (
-                        <ProductCard
+                        <SelectedProductCard
                         displayMode={"grid"}
                         product={product}
                         isSelected={

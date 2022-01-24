@@ -20,7 +20,6 @@ const Wrapper = styled("div")(
 const Container = styled("div")(
   css({
     padding: "38px",
-    position: "relative",
     textAlign: "center",
     transition: "background-color ease 0.3s",
     "&:hover": {
@@ -32,6 +31,7 @@ const Container = styled("div")(
 const GridCardImgContainer = styled("div")(
   css({
     boxShadow: "none",
+    position: "relative"
   })
 );
 
@@ -132,7 +132,8 @@ const ActionBtn = styled("button")(({ checked }: ActionBtnProps) =>
     height: "35px",
     cursor: "pointer",
     backgroundColor: theme.colors.white,
-    border: checked ? "none" : "1px solid #B0ABA7",
+    // border: checked ? "none" : "1px solid #B0ABA7",
+    border: checked ?  "1px solid #B0ABA7" : "1px solid #B0ABA7",
     transition: "ease all 0.3s",
     ".hovered": {
       position: "absolute",
