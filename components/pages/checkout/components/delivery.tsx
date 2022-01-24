@@ -1,4 +1,4 @@
-import Text from "@componentscommon/typography";
+import Text from "@components/common/typography";
 import { css } from "@styled-system/css";
 import { useForm } from 'react-hook-form';
 import {
