@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Masonry from "react-masonry-css";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -12,6 +11,7 @@ import {
   LinkWrapper,
   LoadMoreWrapper,
   Project,
+  MasonryGrid,
 } from "./styles";
 import mockData from "./constants";
 import ArrowButton from "@components/common/button/arrowButton";
@@ -21,8 +21,6 @@ import Select from "@components/common/select";
 import Text from "@components/common/typography";
 import { css } from "@styled-system/css";
 import theme from "@styles/theme";
-
-import styles from "./styles.module.scss";
 
 interface ProjectListType {
   projects: Array<any>;
@@ -59,8 +57,9 @@ const ProjectList = ({ projects, types }: ProjectListType) => {
           <Chip
             key={type}
             onClick={() => onProjectTypeClick(type)}
-            rounded
             active={type === selectedType}
+            size="small"
+            rounded
           >
             {type}
           </Chip>
@@ -68,22 +67,22 @@ const ProjectList = ({ projects, types }: ProjectListType) => {
       </FilterWrapperDesktop>
       <FilterWrapperMobile>
         <Text variant="Body-Small">Filter</Text>
-        <Select onChange={onProjectTypeChange}>
+        <Select onChange={onProjectTypeChange} value={selectedType}>
           {types.map((type) => (
-            <option key={type} value={type} selected={type === selectedType}>
+            <option key={type} value={type}>
               {type}
             </option>
           ))}
         </Select>
       </FilterWrapperMobile>
       <Container css={css({ pt: 80 })}>
-        <Masonry
+        <MasonryGrid
           breakpointCols={{
             default: 2,
             768: 1,
           }}
-          className={styles.masonryGrid}
-          columnClassName={styles.masonryGridColumn}
+          className="masonry-grid"
+          columnClassName="masonry-grid-column"
         >
           {displayedProjects.map((project) => (
             <Project key={project.id}>
@@ -114,7 +113,7 @@ const ProjectList = ({ projects, types }: ProjectListType) => {
               </Details>
             </Project>
           ))}
-        </Masonry>
+        </MasonryGrid>
         {displayedProjects.length ? (
           <LoadMoreWrapper>
             <ArrowButton mode="" title="Load more" link="#" />

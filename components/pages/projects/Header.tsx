@@ -1,11 +1,11 @@
 import Header from "@components/common/header";
-import styles from "./styles.module.scss";
+import { HeaderContainer } from "./styles";
 
 const ProjectsHeader = ({ mode = "light" }) => {
   return (
-    <section className={styles.headerContainer}>
+    <HeaderContainer>
       <Header mode={mode} position="absolute" />
-    </section>
+    </HeaderContainer>
   );
 };
 

@@ -12,29 +12,52 @@ import GridIcon from "@components/icons/grid";
 import ListIcon from "@components/icons/list";
 import CloseIcon from "@components/icons/close";
 import CollectionIcon from "@components/icons/collection";
-import Button from "@components/common/button";
 import theme from "styles/theme";
 import ProductFilter from "./ProductFilter";
 import SortByFilter from "./SortByFilter";
 import SearchFilter from "./SearchFilter";
 import ColourSchemeFilter from "./ColourSchemeFilter";
 import Logo from "public/assets/brandmarks/symbol-primary.svg";
-import styles from "./styles.module.scss";
+import {
+  ApplyButton,
+  ColorSchemeItem, //
+  ColorSchemes, //
+  CloseButton,
+  Container,
+  DisplayIcon,
+  DisplayOptions,
+  DisplayOptionsContainer,
+  FilterContainer,
+  Filters,
+  IconContainer,
+  LogoWrapper,
+  MobileFilter,
+  MobileFilterContainer,
+  ProductItem, //
+  ProductSelection,
+  SearchItem,
+  Selections,
+  SortByItem, //
+  TopBar,
+} from "./styles";
 
 export default function ProductFilters({ show, applyFilter }) {
   const { state, dispatch } = useAppContext();
   const [activeFilter, setActiveFilter] = useState(null);
   const [isMobileFilterActive, setIsMobileFilterActive] = useState(false);
   const ref = useRef(null);
+
   useOnClickOutside(ref, () => {
     setActiveFilter(null);
   });
+
   const changeDisplayMode = (mode) => {
     dispatch({
       type: "PRODUCT_DISPLAY_MODE",
       value: mode,
     });
   };
+
   const handleActiveFilter = (filterType) => {
     return () => {
       if (activeFilter === filterType) {
@@ -57,15 +80,11 @@ export default function ProductFilters({ show, applyFilter }) {
       value: !isMobileFilterActive,
     });
   };
+
   return (
-    <div
-      ref={ref}
-      className={classnames(styles.container, {
-        [styles.active]: show,
-      })}
-    >
-      <div className={styles.topBar}>
-        <div className={styles.logoWrapper}>
+    <Container ref={ref} active={show}>
+      <TopBar>
+        <LogoWrapper>
           {Logo && (
             <Link href="/">
               <a>
@@ -84,96 +103,88 @@ export default function ProductFilters({ show, applyFilter }) {
               <a> Fibonacci </a>
             </Link>
           )}
-        </div>
-        <div className={styles.mobileFilter} onClick={toggleMobileFilter}>
+        </LogoWrapper>
+        <MobileFilter onClick={toggleMobileFilter}>
           <Text variant="Body-Small" mr="10px">
             Filter by
           </Text>
           <ArrowDownIcon />
-        </div>
-        <div className={styles.filters}>
-          <div
-            className={classnames(styles.searchItem, {
-              [styles.activeFilter]: activeFilter === "search",
-            })}
+        </MobileFilter>
+        <Filters>
+          <SearchItem
+            active={activeFilter === "search"}
             onClick={handleActiveFilter("search")}
           >
             <Text variant="Display-Overline" mr="10px">
               Search
             </Text>
             <SearchIcon />
-          </div>
-          <div
-            className={classnames(styles.productSelection, {
-              [styles.activeFilter]: activeFilter === "products",
-            })}
+          </SearchItem>
+          <ProductSelection
+            active={activeFilter === "products"}
             onClick={handleActiveFilter("products")}
           >
             <Text variant="Body-Small" mr="10px">
               Products
             </Text>
             <ArrowDownIcon />
-          </div>
-          <div
-            className={classnames(styles.filterItem, styles.colourSchemeItem, {
-              [styles.activeFilter]: activeFilter === "colour-schemes",
-            })}
+          </ProductSelection>
+          <ColorSchemes
+            active={activeFilter === "colour-schemes"}
             onClick={handleActiveFilter("colour-schemes")}
           >
             <Text variant="Body-Small" mr="10px">
               Colour Schemes
             </Text>
             <ArrowDownIcon />
-          </div>
-          <div
-            className={classnames(styles.filterItem, styles.sortByItem, {
-              [styles.activeFilter]: activeFilter === "sort-by",
-            })}
+          </ColorSchemes>
+          <SortByItem
+            active={activeFilter === "sort-by"}
             onClick={handleActiveFilter("sort-by")}
           >
             <Text variant="Body-Small" mr="10px">
               Sort by
             </Text>
             <ArrowDownIcon />
-          </div>
-        </div>
-        <div className={styles.displayOptionsContainer}>
-          <div className={styles.displayOptions}>
-            <div
-              className={classnames(styles.iconContainer, {
-                [styles.active]: state?.productDisplayMode === "grid",
-              })}
+          </SortByItem>
+        </Filters>
+        <DisplayOptionsContainer>
+          <DisplayOptions>
+            <IconContainer
+              active={state?.productDisplayMode === "grid"}
               onClick={() => changeDisplayMode("grid")}
             >
-              <GridIcon className={styles.displayIcon} />
-            </div>
-            <div
-              className={classnames(styles.iconContainer, {
-                [styles.active]: state?.productDisplayMode === "list",
-              })}
+              <DisplayIcon>
+                <GridIcon />
+              </DisplayIcon>
+            </IconContainer>
+            <IconContainer
+              active={state?.productDisplayMode === "list"}
               onClick={() => changeDisplayMode("list")}
             >
-              <ListIcon className={styles.displayIcon} />
-            </div>
-            <div
-              className={classnames(styles.iconContainer, {
-                [styles.active]: state?.productDisplayMode === "collection",
-              })}
+              <DisplayIcon>
+                <ListIcon />
+              </DisplayIcon>
+            </IconContainer>
+            <IconContainer
+              active={state?.productDisplayMode === "collection"}
               onClick={() => changeDisplayMode("collection")}
             >
-              <CollectionIcon className={styles.displayIcon} />
-            </div>
-          </div>
-        </div>
-        <div className={styles.selections}>
+              <DisplayIcon>
+                <CollectionIcon />
+              </DisplayIcon>
+            </IconContainer>
+          </DisplayOptions>
+        </DisplayOptionsContainer>
+        <Selections>
           <Text variant="Display-Overline">Selections</Text> <SelectionCount />
-        </div>
-      </div>
+        </Selections>
+      </TopBar>
       {isMobileFilterActive && (
-        <div className={styles.mobileFilterContainer}>
-          <button className={styles.closeBtn} onClick={toggleMobileFilter}>
+        <MobileFilterContainer>
+          <CloseButton onClick={toggleMobileFilter}>
             <CloseIcon />
-          </button>
+          </CloseButton>
           <Text
             variant="Body-Large"
             as="div"
@@ -184,10 +195,8 @@ export default function ProductFilters({ show, applyFilter }) {
             Filter
           </Text>
           <div>
-            <div
-              className={classnames(styles.filterItem, styles.productItem, {
-                [styles.activeFilter]: activeFilter === "products",
-              })}
+            <ProductItem
+              active={activeFilter === "products"}
               onClick={handleActiveFilter("products")}
             >
               <Text variant="Body-XSmall" mr="10px">
@@ -200,16 +209,10 @@ export default function ProductFilters({ show, applyFilter }) {
                 </Text>
               </Text>
               <ArrowDownIcon />
-            </div>
+            </ProductItem>
             {activeFilter === "products" && <ProductFilter />}
-            <div
-              className={classnames(
-                styles.filterItem,
-                styles.colourSchemeItem,
-                {
-                  [styles.activeFilter]: activeFilter === "colour-schemes",
-                }
-              )}
+            <ColorSchemeItem
+              active={activeFilter === "colour-schemes"}
               onClick={handleActiveFilter("colour-schemes")}
             >
               <Text variant="Body-XSmall" mr="10px">
@@ -222,12 +225,10 @@ export default function ProductFilters({ show, applyFilter }) {
                 </Text>
               </Text>
               <ArrowDownIcon />
-            </div>
+            </ColorSchemeItem>
             {activeFilter === "colour-schemes" && <ColourSchemeFilter />}
-            <div
-              className={classnames(styles.filterItem, styles.sortByItem, {
-                [styles.activeFilter]: activeFilter === "sort-by",
-              })}
+            <SortByItem
+              active={activeFilter === "sort-by"}
               onClick={handleActiveFilter("sort-by")}
             >
               <Text variant="Body-XSmall" mr="10px">
@@ -240,12 +241,10 @@ export default function ProductFilters({ show, applyFilter }) {
                 </Text>
               </Text>
               <ArrowDownIcon />
-            </div>
+            </SortByItem>
             {activeFilter === "sort-by" && <SortByFilter />}
-            <div
-              className={classnames(styles.searchItem, {
-                [styles.activeFilter]: activeFilter === "search",
-              })}
+            <SearchItem
+              active={activeFilter === "search"}
               onClick={handleActiveFilter("search")}
             >
               <Text variant="Body-XSmall" mr="10px">
@@ -258,24 +257,22 @@ export default function ProductFilters({ show, applyFilter }) {
                 </Text>
               </Text>
               <SearchIcon />
-            </div>
+            </SearchItem>
             {activeFilter === "search" && <SearchFilter />}
           </div>
           {isMobileFilterActive && (
-            <button onClick={() => applyFilter()} className={styles.applyBttn}>
-              Apply
-            </button>
+            <ApplyButton onClick={() => applyFilter()}>Apply</ApplyButton>
           )}
-        </div>
+        </MobileFilterContainer>
       )}
       {!isMobileFilterActive && activeFilter && (
-        <div className={styles.filterContainer}>
+        <FilterContainer>
           {activeFilter === "search" && <SearchFilter />}
           {activeFilter === "products" && <ProductFilter />}
           {activeFilter === "sort-by" && <SortByFilter />}
           {activeFilter === "colour-schemes" && <ColourSchemeFilter />}
-        </div>
+        </FilterContainer>
       )}
-    </div>
+    </Container>
   );
 }

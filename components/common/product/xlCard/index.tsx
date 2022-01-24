@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Image from "next/image";
-import Link from 'next/link'
+import Link from "next/link";
 import classnames from "classnames";
 import Text from "@components/common/typography";
 import AddIcon from "@components/icons/add";
@@ -9,8 +9,20 @@ import CrossIcon from "@components/icons/cross";
 import ArrowDown from "@components/icons/arrowDown";
 import ArrowUp from "@components/icons/arrowUp";
 import ProductImg from "public/placeholder-product-image.jpg";
-import styles from "./styles.module.scss";
-import { css } from "@emotion/react";
+import {
+  ActionBtn,
+  ActionBtnContainer,
+  CardImg,
+  Container,
+  DescCell,
+  GridCardImgContainer,
+  ImgCell,
+  ListCardImgContainer,
+  ProductListTitle,
+  RowDetailButton,
+  TableRow,
+  Wrapper,
+} from "./styles";
 
 const ProductCard = ({
   product,
@@ -21,18 +33,14 @@ const ProductCard = ({
   const [detailShown, setDetailShown] = useState(false);
   if (displayMode === "list") {
     return (
-      <div
-        className={classnames(styles.tableRow, {
-          [styles.detailView]: detailShown,
-        })}
-      >
-        <div className={styles.displayProductName}>
+      <TableRow detailView={detailShown}>
+        <div>
           <Link href={product.uri}>
-            <a className={styles.productListTitle}>
+            <ProductListTitle>
               <Text as="h3" variant="Display-XSmall" altFont={true}>
                 {product.title}
               </Text>
-            </a>
+            </ProductListTitle>
           </Link>
         </div>
         <div>
@@ -45,58 +53,56 @@ const ProductCard = ({
             Collection Name
           </Text>
         </div>
-        <div className={styles.descCell}>
+        <DescCell>
           <Text as="h4" variant="Body-Small">
             {product.subHeading}
           </Text>
-        </div>
-        <div className={styles.imgCell}>
-          <div className={styles.cardImgContainer}>
-            <div className={styles.cardImg}>
+        </DescCell>
+        <ImgCell detailView={detailShown}>
+          <ListCardImgContainer>
+            <CardImg detailView={detailShown}>
               <Link href={product.uri}>
                 <a>
                   <Image src={ProductImg} layout="fill" alt="Product-1" />
                 </a>
               </Link>
-            </div>
-            <div className={styles.actionBtnContainer}>
-              <button
-                className={classnames(styles.actionBtn, {
-                  [styles.checkedButton]: isSelected,
-                })}
+            </CardImg>
+            <ActionBtnContainer>
+              <ActionBtn
+                checked={isSelected}
                 onClick={() => toggleProductSelect(product)}
               >
                 {!isSelected && (
-                  <span className={styles.hovered}>
-                    <AddIcon color="white"/>
+                  <span className="hovered">
+                    <AddIcon color="white" />
                     <Text color="white" variant="Body-XSmall">
                       Add To Selection
                     </Text>
                   </span>
                 )}
                 {!isSelected && (
-                  <span className={styles.initial}>
-                    <AddIcon color="black" width={38}/>
+                  <span className="initial">
+                    <AddIcon color="black" width={38} />
                   </span>
                 )}
                 {isSelected && (
-                  <span className={styles.initial}>
+                  <span className="initial">
                     <CheckMarkIcon color="white" />
                   </span>
                 )}
                 {isSelected && (
-                  <span className={styles.hovered}>
+                  <span className="hovered">
                     <CrossIcon />{" "}
                     <Text color="white" variant="Body-XSmall">
                       Remove Selection
                     </Text>
                   </span>
                 )}
-              </button>
-            </div>
-          </div>
-        </div>
-        <div className={styles.rowDetailButton}>
+              </ActionBtn>
+            </ActionBtnContainer>
+          </ListCardImgContainer>
+        </ImgCell>
+        <RowDetailButton detailView={detailShown}>
           <button
             onClick={() => {
               setDetailShown(!detailShown);
@@ -105,28 +111,26 @@ const ProductCard = ({
             {!detailShown && <ArrowDown />}
             {detailShown && <ArrowUp />}
           </button>
-        </div>
-      </div>
+        </RowDetailButton>
+      </TableRow>
     );
   }
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.container}>
-        <div className={styles.cardImgContainer}>
+    <Wrapper>
+      <Container>
+        <GridCardImgContainer>
           <Link href={product.uri}>
             <a>
               <Image src={product.img1} alt="Product-1" />
             </a>
           </Link>
-          <div className={styles.actionBtnContainer}>
-            <button
-              className={classnames(styles.actionBtn, {
-                [styles.checkedButton]: isSelected,
-              })}
+          <ActionBtnContainer>
+            <ActionBtn
+              checked={isSelected}
               onClick={() => toggleProductSelect(product)}
             >
               {!isSelected && (
-                <span className={styles.hovered}>
+                <span className="hovered">
                   <AddIcon color="white" />
                   <Text color="white" variant="Body-XSmall">
                     Add To Selection
@@ -134,28 +138,28 @@ const ProductCard = ({
                 </span>
               )}
               {!isSelected && (
-                <span className={styles.initial}>
+                <span className="initial">
                   <AddIcon color="black" width={38} />
                 </span>
               )}
               {isSelected && (
-                <span className={styles.initial}>
+                <span className="initial">
                   <CheckMarkIcon color="white" width={38} />
                 </span>
               )}
               {isSelected && (
-                <span className={styles.hovered}>
+                <span className="hovered">
                   <CrossIcon />
                   <Text color="white" variant="Body-XSmall">
                     Remove Selection
                   </Text>
                 </span>
               )}
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+            </ActionBtn>
+          </ActionBtnContainer>
+        </GridCardImgContainer>
+      </Container>
+    </Wrapper>
   );
 };
 

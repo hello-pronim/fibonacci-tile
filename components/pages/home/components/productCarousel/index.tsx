@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useAppContext } from "@contexts/AppContext";
 import Container from "@components/common/layout/container";
 import ProductCard from "@components/common/product/card";
-import AccentText, {AccentTextMobile} from "@components/common/accentText";
+import AccentText, { AccentTextMobile } from "@components/common/accentText";
 import {
   Wrapper,
   ProgBar,
@@ -15,16 +15,16 @@ import {
   NextWrapper,
 } from "./styles";
 import { css } from "@styled-system/css";
-import Arrow from "@componentscommon/icons/arrow";
+import Arrow from "@components/common/icons/arrow";
 import theme from "styles/theme";
-import Abstrakt from 'public/tmp/prod/abstrakt.jpeg';
-import ActThree from 'public/tmp/prod/actThree.jpeg';
-import Assemblage from 'public/tmp/prod/assemblage.jpeg';
-import Bloc from 'public/tmp/prod/bloc.jpeg';
-import Brackish from 'public/tmp/prod/brackish.jpeg';
-import Carmelita from 'public/tmp/prod/carmelita.jpeg';
-import CloudBurst from 'public/tmp/prod/cloudBurst.jpeg';
-import CoolStream from 'public/tmp/prod/coolStream.jpeg';
+import Abstrakt from "public/tmp/prod/abstrakt.jpeg";
+import ActThree from "public/tmp/prod/actThree.jpeg";
+import Assemblage from "public/tmp/prod/assemblage.jpeg";
+import Bloc from "public/tmp/prod/bloc.jpeg";
+import Brackish from "public/tmp/prod/brackish.jpeg";
+import Carmelita from "public/tmp/prod/carmelita.jpeg";
+import CloudBurst from "public/tmp/prod/cloudBurst.jpeg";
+import CoolStream from "public/tmp/prod/coolStream.jpeg";
 
 const ProductCarousel = () => {
   const { state,   dispatch } = useAppContext();
@@ -79,7 +79,8 @@ const ProductCarousel = () => {
   const products = [
     {
       id: "1",
-      richText: "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+      richText:
+        "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
       slug: "abstrakt",
       subHeading: "Complex • Robust • Diverse",
       title: "Abstrakt",
@@ -88,7 +89,8 @@ const ProductCarousel = () => {
     },
     {
       id: "2",
-      richText: "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+      richText:
+        "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
       slug: "act-three",
       subHeading: "Complex • Robust • Diverse",
       title: "Act Three",
@@ -97,7 +99,8 @@ const ProductCarousel = () => {
     },
     {
       id: "3",
-      richText: "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+      richText:
+        "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
       slug: "assemblage",
       subHeading: "Complex • Robust • Diverse",
       title: "Assemblage",
@@ -106,7 +109,8 @@ const ProductCarousel = () => {
     },
     {
       id: "4",
-      richText: "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+      richText:
+        "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
       slug: "bloc",
       subHeading: "Complex • Robust • Diverse",
       title: "Bloc",
@@ -115,7 +119,8 @@ const ProductCarousel = () => {
     },
     {
       id: "5",
-      richText: "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+      richText:
+        "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
       slug: "brackish",
       subHeading: "Complex • Robust • Diverse",
       title: "Brackish",
@@ -124,7 +129,8 @@ const ProductCarousel = () => {
     },
     {
       id: "6",
-      richText: "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+      richText:
+        "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
       slug: "carmelita",
       subHeading: "Complex • Robust • Diverse",
       title: "Carmelita",
@@ -133,7 +139,8 @@ const ProductCarousel = () => {
     },
     {
       id: "7",
-      richText: "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+      richText:
+        "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
       slug: "cloudburst",
       subHeading: "Complex • Robust • Diverse",
       title: "Cloudburst",
@@ -142,7 +149,8 @@ const ProductCarousel = () => {
     },
     {
       id: "8",
-      richText: "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+      richText:
+        "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
       slug: "coolstream",
       subHeading: "Complex • Robust • Diverse",
       title: "CoolStream",
@@ -151,7 +159,8 @@ const ProductCarousel = () => {
     },
     {
       id: "9",
-      richText: "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+      richText:
+        "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
       slug: "abstrakt",
       subHeading: "Complex • Robust • Diverse",
       title: "Abstrakt",
@@ -160,7 +169,8 @@ const ProductCarousel = () => {
     },
     {
       id: "10",
-      richText: "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+      richText:
+        "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
       slug: "act-three",
       subHeading: "Complex • Robust • Diverse",
       title: "Act Three",
@@ -169,7 +179,8 @@ const ProductCarousel = () => {
     },
     {
       id: "11",
-      richText: "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+      richText:
+        "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
       slug: "assemblage",
       subHeading: "Complex • Robust • Diverse",
       title: "Assemblage",
@@ -178,7 +189,8 @@ const ProductCarousel = () => {
     },
     {
       id: "12",
-      richText: "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+      richText:
+        "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
       slug: "bloc",
       subHeading: "Complex • Robust • Diverse",
       title: "Bloc",
@@ -187,7 +199,8 @@ const ProductCarousel = () => {
     },
     {
       id: "13",
-      richText: "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+      richText:
+        "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
       slug: "brackish",
       subHeading: "Complex • Robust • Diverse",
       title: "Brackish",
@@ -196,7 +209,8 @@ const ProductCarousel = () => {
     },
     {
       id: "14",
-      richText: "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+      richText:
+        "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
       slug: "carmelita",
       subHeading: "Complex • Robust • Diverse",
       title: "Carmelita",
@@ -205,14 +219,15 @@ const ProductCarousel = () => {
     },
     {
       id: "15",
-      richText: "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+      richText:
+        "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
       slug: "cloudburst",
       subHeading: "Complex • Robust • Diverse",
       title: "Cloudburst",
       uri: "/products/cloudburst",
       img1: CloudBurst,
     },
-  ]
+  ];
 
   return (
     <Container>
@@ -221,7 +236,9 @@ const ProductCarousel = () => {
         <Arrow color={theme.colors.white} width={40} />
       </NextWrapper>
       <Wrapper>
-      <AccentTextMobile css={css({pb: 24})}>An imaginative selection</AccentTextMobile>
+        <AccentTextMobile css={css({ pb: 24 })}>
+          An imaginative selection
+        </AccentTextMobile>
         <Slider {...settings} ref={slider}>
           {products &&
             products.map((product) => {

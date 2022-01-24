@@ -19,7 +19,7 @@ import Image from "next/image";
 import RotatedTertiary from "public/assets/brandmarks/rotated-tertiary.svg";
 import Tertiary from "public/assets/brandmarks/logo-tertiary.svg";
 import SymbolWhite from "public/assets/brandmarks/symbol-secondary.svg";
-import Arrow from "@componentscommon/icons/arrow";
+import Arrow from "@components/common/icons/arrow";
 import theme from "styles/theme";
 import { css } from "@styled-system/css";
 
@@ -139,7 +139,7 @@ export default function Footer() {
           css={css({
             pt: 45,
             [theme.mediaQueries.small]: {
-              pt: 'initial',
+              pt: "initial",
             },
           })}
         >

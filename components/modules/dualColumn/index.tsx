@@ -6,7 +6,7 @@ import {
   Segment,
   BottomRow,
 } from "./styles";
-import Text from "@componentscommon/typography";
+import Text from "@components/common/typography";
 import Image from "next/image";
 import AccentText, { AccentTextMobile } from "@components/common/accentText";
 import InspireRight from "public/assets/temp/inspire-right.jpg";

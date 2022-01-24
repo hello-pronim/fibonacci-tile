@@ -3,16 +3,21 @@ import Image from "next/image";
 import ArrowButton from "@components/common/button/arrowButton";
 import FooterCTAImage from "public/tmp/footerCTA.jpg";
 import Text from "@components/common/typography";
-import styles from "./styles.module.scss";
+import {
+  FooterCTAContainer,
+  CTAImgBox,
+  CTADetails,
+  CTADetailsBox,
+} from "./styles";
 
 const FooterCTAPanel = () => {
   return (
-    <section className={styles.footerCTAContainer}>
-      <div className={styles.ctaImgBox}>
+    <FooterCTAContainer>
+      <CTAImgBox>
         <Image src={FooterCTAImage} alt="Footer-CTA-1" />
-      </div>
-      <div className={styles.ctaDetails}>
-        <div className={styles.ctaDetailsBox}>
+      </CTAImgBox>
+      <CTADetails>
+        <CTADetailsBox>
           <Text as="h3" variant="Body-XSmall" marginTop="25px" color="white">
             Didn't find what you were looking for?
           </Text>
@@ -35,9 +40,9 @@ const FooterCTAPanel = () => {
             title="Contact us today"
             link="http://localhost:3000/products"
           />
-        </div>
-      </div>
-    </section>
+        </CTADetailsBox>
+      </CTADetails>
+    </FooterCTAContainer>
   );
 };
 
