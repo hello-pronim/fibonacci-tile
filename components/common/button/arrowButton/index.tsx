@@ -13,7 +13,7 @@ export default function ArrowButton({
       mode={mode}
       visibleArrow={visibleArrow}
       visibleBorder={true}
-      fullWidth
+      fullWidth={fullWidth}
     >
       <Link href={link} passHref>
         <a>{title}</a>
