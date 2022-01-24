@@ -20,6 +20,7 @@ const Wrapper = styled("div")(
 const Container = styled("div")(
   css({
     padding: "38px",
+    position: "relative",
     textAlign: "center",
     transition: "background-color ease 0.3s",
     "&:hover": {

@@ -1,4 +1,4 @@
-import Text from "@componentscommon/typography";
+import Text from "@components/common/typography";
 import { css } from "@styled-system/css";
 import Button from "@components/common/button";
 
@@ -17,7 +17,7 @@ const Confirm = () => {
             <Text css={css({ paddingTop: "24px", paddingBottom: "24px" })} as="p" variant="Body-Regular">
                 One of our friendly staff will be in contact shortly.
             </Text>
-            <Button mode="dark" visibleArrow={false} title="Continue browsing" link="/products" />
+            <Button color="dark" href="/products">Continue browsing</Button>
         </div>
     )
 }

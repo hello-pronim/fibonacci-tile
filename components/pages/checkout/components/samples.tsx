@@ -4,7 +4,7 @@ import {
     ButtonWrapper,
     BttnLeftPadding
 } from "./styles";
-import Text from "@componentscommon/typography";
+import Text from "@components/common/typography";
 import { css } from "@styled-system/css";
 import ProductCard from "@components/common/product/card";
 import Abstrakt from 'public/tmp/prod/abstrakt.jpeg';
@@ -15,7 +15,7 @@ import Carmelita from 'public/tmp/prod/carmelita.jpeg';
 import CloudBurst from 'public/tmp/prod/cloudBurst.jpeg';
 import CoolStream from 'public/tmp/prod/coolStream.jpeg';
 import { useAppContext } from "@contexts/AppContext";
-import Button from "@componentscommon/button";
+import Button from "@components/common/button/arrowButton";
 
 
 const products = [
