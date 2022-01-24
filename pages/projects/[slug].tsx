@@ -1,5 +1,5 @@
 import Head from "next/head";
-// import ProjectPage from "@components/pages/projects";
+import ProjectPage from "@components/pages/projectIndividual";
 import Header from "@components/common/header";
 import Footer from "@components/common/footer";
 
@@ -12,7 +12,7 @@ const Project = () => {
         <meta name="robots" content="index, follow" />
       </Head>
       <Header mode="dark" position="absolute" />
-      {/* <ProjectPage /> */}
+      <ProjectPage />
       <Footer />
     </>
   );
