@@ -16,11 +16,11 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@components*": ["components/*"],
-      "@utils*": ["utils/*"],
-      "@contexts*": ["contexts/*"],
-      "@gql*": ["gql/*"],
-      "@styles*": ["styles/*"]
+      "@components/*": ["components/*"],
+      "@utils/*": ["utils/*"],
+      "@contexts/*": ["contexts/*"],
+      "@gql/*": ["gql/*"],
+      "@styles/*": ["styles/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

@@ -1,3 +1,4 @@
+import Masonry from "react-masonry-css";
 import theme from "styles/theme";
 import { grid } from "styled-system";
 import css from "@styled-system/css";
@@ -230,6 +231,19 @@ const LoadMoreWrapper = styled("div")(
   })
 );
 
+const MasonryGrid = styled(Masonry)(
+  css({
+    display: "flex",
+    gridColumn: "1 / span 12",
+    "& .masonry-grid-column": {
+      padding: "0px",
+      [theme.mediaQueries.small]: {
+        padding: "0px 80px",
+      },
+    },
+  })
+);
+
 export {
   Bottom,
   Container,
@@ -249,4 +263,5 @@ export {
   Toggle,
   Top,
   Wrapper,
+  MasonryGrid,
 };

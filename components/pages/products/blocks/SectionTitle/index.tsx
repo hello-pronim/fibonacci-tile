@@ -1,22 +1,12 @@
-import Text from "@components/common/typography";
-import style from "./styles.module.scss";
-import classnames from "classnames";
+import { Container, Title } from "./styles";
 
 function SectionTitle({ title, show }) {
   return (
-    <section className={classnames(style.container, {
-      [style.active]: show,
-    })}>
-      <Text
-        as="h2"
-        variant="Display-XSmall"
-        color="secondary"
-        altFont={true}
-        className={style.title}
-      >
+    <Container active={show}>
+      <Title as="h2" variant="Display-XSmall" color="secondary" altFont={true}>
         {title}
-      </Text>
-    </section>
+      </Title>
+    </Container>
   );
 }
 

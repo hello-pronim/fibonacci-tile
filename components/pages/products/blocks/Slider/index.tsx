@@ -1,10 +1,17 @@
-import React from 'react';
+import React from "react";
 import Slider from "react-slick";
 import Image from "next/image";
 import Slide1 from "public/banner1.jpg";
 import Slide2 from "public/banner2.jpg";
-import styles from "./styles.module.scss";
-import { css } from "@styled-system/css";
+import {
+  BannerTextWrapper,
+  BannerDescription,
+  BannerHeading,
+  BannerSubHeading,
+  Container,
+  SliderItem,
+  SliderWrapper,
+} from "./styles";
 
 function TopSlider() {
   const settings = {
@@ -23,34 +30,41 @@ function TopSlider() {
     slider.current !== null && slider.current.slickNext();
   };
 
-
   return (
-    <section css={css({width: '100%', overflow: 'hidden'})}>
-      <div className={styles.container} css={css({'.slick-list': {overflow: 'visible'}})}>
-      <Slider {...settings} ref={slider}>
-        <div className={styles.slideItem} onClick={() => gotoNext()}>
-          <Image src={Slide1} alt="image-1" width={3080} height={1410} layout="responsive" />
-          <div className={styles.bannerTextWrapper}>
-            <h3 className={styles.bannerSubHeading}>VIEW OUR</h3>
-            <h2 className={styles.bannerHeading}>Terrazzo</h2>
-            <p className={styles.bannerDescription}>
-              40 unique creations. Thoughtfully designed. <br/> Sustainably made. Purpose-built.
-            </p>
-          </div>
-        </div>
-        <div className={styles.slideItem} onClick={() => gotoNext()}>
-          <Image src={Slide2} alt="image-2" />
-          <div className={styles.bannerTextWrapper}>
-            <h3 className={styles.bannerSubHeading}>VIEW OUR</h3>
-            <h2 className={styles.bannerHeading}>Collection</h2>
-            <p className={styles.bannerDescription}>
-              5 unique collections. Thoughtfully designed.<br/> Sustainably made. Purpose-built.
-            </p>
-          </div>
-        </div>
-      </Slider>
-      </div>
-    </section>
+    <Container>
+      <SliderWrapper>
+        <Slider {...settings} ref={slider}>
+          <SliderItem onClick={() => gotoNext()}>
+            <Image
+              src={Slide1}
+              alt="image-1"
+              width={3080}
+              height={1410}
+              layout="responsive"
+            />
+            <BannerTextWrapper>
+              <BannerSubHeading>VIEW OUR</BannerSubHeading>
+              <BannerHeading>Terrazzo</BannerHeading>
+              <BannerDescription>
+                40 unique creations. Thoughtfully designed. <br /> Sustainably
+                made. Purpose-built.
+              </BannerDescription>
+            </BannerTextWrapper>
+          </SliderItem>
+          <SliderItem onClick={() => gotoNext()}>
+            <Image src={Slide2} alt="image-2" />
+            <BannerTextWrapper>
+              <BannerSubHeading>VIEW OUR</BannerSubHeading>
+              <BannerHeading>Collection</BannerHeading>
+              <BannerDescription>
+                5 unique collections. Thoughtfully designed.
+                <br /> Sustainably made. Purpose-built.
+              </BannerDescription>
+            </BannerTextWrapper>
+          </SliderItem>
+        </Slider>
+      </SliderWrapper>
+    </Container>
   );
 }
 
