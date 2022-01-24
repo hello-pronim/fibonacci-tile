@@ -32,7 +32,6 @@ const GridCardImgContainer = styled("div")(
   css({
     position: 'relative',
     boxShadow: "none",
-    position: "relative"
   })
 );
 
