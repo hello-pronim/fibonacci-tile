@@ -12,19 +12,26 @@ const Panel = styled("section")(
 
 const Container = styled("div")(
   css({
-    maxWidth: "960px",
     margin: "auto",
+    maxWidth: "320px",
+    [theme.mediaQueries.small]: {
+      maxWidth: "960px",
+    },
   })
 );
 
 const PanelTitle = styled("div")(
   css({
     fontFamily: "Canela",
-    fontSize: "42px",
-    lineHeight: "54.6px",
+    fontSize: "32px",
+    lineHeight: "43.2px",
     textAlign: "center",
     color: theme.colors.charcoal,
     paddingBottom: "16px",
+    [theme.mediaQueries.small]: {
+      fontSize: "42px",
+      lineHeight: "54.6px",
+    },
   })
 );
 
