@@ -13,13 +13,15 @@ import SamplesIcon from "public/assets/icons/sample-icon.svg";
 import QuoteIcon from "public/assets/icons/quote-icon.svg";
 import EnquiryIcon from "public/assets/icons/enquiry-icon.svg";
 
-const SupportModule = () => {
+const SupportModule = ({ title = "" }) => {
   return (
     <Container>
       <Wrapper>
-        <Text as="h6" variant="Display-Overline">
-          HOW CAN WE HELP?
-        </Text>
+        {title !== "" && (
+          <Text as="h6" variant="Display-Overline">
+            {title}
+          </Text>
+        )}
         <TileWrapper>
           <Tile href="#">
             <TileInner>
