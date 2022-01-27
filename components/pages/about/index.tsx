@@ -4,7 +4,7 @@ import AboutHeader from "./Header";
 import Hero from "./hero";
 import StoryPanel from "./StoryPanel";
 import MainStoryPanel from "./MainStoryPanel";
-import FooterPanel from "./FooterPanel";
+import QuoteModule from "@components/modules/quote";
 import { Container } from "./styles";
 
 import StoryThumbnail from "public/assets/temp/story_thumbnail.png";
@@ -51,7 +51,10 @@ const AboutPage = () => {
         <StoryPanel key={story.id} story={story} />
       ))}
       <MainStoryPanel story={mainStory} />
-      <FooterPanel />
+      <QuoteModule source="Rebeka Morgan, Build Her Collective">
+        ‘It certainly helps from a planning and ordering perspective that
+        Fibonacci carry so much stock.’
+      </QuoteModule>
     </Container>
   );
 };
