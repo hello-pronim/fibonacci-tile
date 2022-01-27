@@ -5,7 +5,10 @@ import theme from "styles/theme";
 
 const Container = styled(Cntnr)(() =>
   css({
-    bg: "background",
+    py: "80px",
+    [theme.mediaQueries.small]: {
+      py: "120px",
+    },
   })
 );
 
@@ -17,7 +20,6 @@ const Wrapper = styled("div")(() =>
     flexDirection: "column",
     justifyContent: "center",
     rowGap: 32,
-    transform: "translateY(116px)",
     zIndex: 999,
   })
 );
@@ -49,15 +51,16 @@ const Tile = styled("a")(
     justifyContent: "center",
     transition: "background ease 0.3s",
     backgroundColor: theme.colors.concreteTints[8],
-    '&:hover': {
-      bg: 'white',
+    "&:hover": {
+      bg: "white",
+      borderBottom: `2px solid ${theme.colors.charcoal}`,
     },
   })
 );
 
 const TileInner = styled("div")(
   css({
-    color: 'charcoal',
+    color: "charcoal",
     [theme.mediaQueries.medium]: {
       position: "absolute",
       flexDirection: "column",
