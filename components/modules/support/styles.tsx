@@ -3,6 +3,9 @@ import styled from "@emotion/styled";
 import Cntnr from "@components/common/layout/container";
 import theme from "styles/theme";
 
+interface TitleProps {
+  active: boolean;
+}
 const Container = styled(Cntnr)(() =>
   css({
     py: "80px",
@@ -37,7 +40,7 @@ const TileWrapper = styled("div")(
   })
 );
 
-const Tile = styled("a")(
+const Tile = styled("a")(({ active }: TitleProps) =>
   css({
     position: "relative",
     display: "inline-flex",
@@ -50,7 +53,8 @@ const Tile = styled("a")(
     py: 40,
     justifyContent: "center",
     transition: "background ease 0.3s",
-    backgroundColor: theme.colors.concreteTints[8],
+    backgroundColor: active ? "white" : theme.colors.concreteTints[8],
+    borderBottom: active && `2px solid ${theme.colors.charcoal}`,
     "&:hover": {
       bg: "white",
       borderBottom: `2px solid ${theme.colors.charcoal}`,
