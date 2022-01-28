@@ -106,7 +106,7 @@ const Header = ({ mode = "light", position = "relative" }) => {
             <NavItem href="#" mode={mode}>
               Our Story
             </NavItem>
-            <NavItem href="#" mode={mode}>
+            <NavItem href="/latest" mode={mode}>
               Latest
             </NavItem>
           </NavLeft>
