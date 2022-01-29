@@ -5,6 +5,8 @@ interface inputProps {
   name?: string;
   placeholder?: string;
   value?: string;
+  fullWidth?: boolean;
+  halfWidth?: boolean;
   onChange?: (event) => void;
   children?: React.ReactNode;
 }
@@ -14,6 +16,8 @@ export default function Input({
   name,
   placeholder,
   value,
+  fullWidth = false,
+  halfWidth = false,
   onChange,
   children,
   ...props
@@ -24,6 +28,8 @@ export default function Input({
       name={name}
       placeholder={placeholder}
       value={value}
+      fullWidth={fullWidth}
+      halfWidth={halfWidth}
       onChange={onChange}
       {...props}
     >
