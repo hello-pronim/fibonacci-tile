@@ -1,0 +1,152 @@
+import css from "@styled-system/css";
+import styled from "@emotion/styled";
+import Cnt from "@components/common/layout/container";
+import theme from "styles/theme";
+
+const Container = styled(Cnt)(() =>
+  css({
+    py: "80px",
+    [theme.mediaQueries.small]: {
+      paddingTop: 0,
+      paddingBottom: "240px",
+    },
+  })
+);
+
+const Wrapper = styled("div")(() =>
+  css({
+    gridColumn: ["1 / span 2", "1 / span 6", "1 / span 6", "2 / span 10"],
+    // gridColumn: ['2 / span 10'],
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    rowGap: 32,
+    zIndex: 999,
+  })
+);
+
+const FormHeader = styled("div")(
+  css({
+    display: "block",
+    width: "100%",
+    paddingBottom: "160px",
+  })
+);
+
+const FormHeaderWrapper = styled("div")(
+  css({
+    display: "grid",
+    gridTemplateColumns: "repeat(12, 1fr)",
+    alignItems: "center",
+  })
+);
+
+const FormHeaderLeft = styled("div")(
+  css({
+    gridColumn: "1/span 4",
+  })
+);
+
+const FormTitle = styled("div")(
+  css({
+    fontFamily: "Canela",
+    fontSize: "42px",
+    lineHeight: "54.6px",
+    color: theme.colors.charcoal,
+  })
+);
+
+const FormHeaderRight = styled("div")(
+  css({
+    gridColumn: "9/span 4",
+  })
+);
+
+const FormDescription = styled("div")(
+  css({
+    fontFamily: "Everett",
+    fontSize: "20px",
+    lineHeight: "28px",
+    color: theme.colors.charcoal,
+  })
+);
+
+const FormBody = styled("div")(
+  css({
+    display: "grid",
+    gridTemplateColumns: "repeat(12, 1fr)",
+  })
+);
+
+const Form = styled("form")(
+  css({
+    gridColumn: "1/span 8",
+  })
+);
+
+const FormGroup = styled("div")(
+  css({
+    width: "100%",
+    paddingTop: "16px",
+    paddingBottom: "80px",
+  })
+);
+
+const FormGroupTitle = styled("div")(
+  css({
+    fontFamily: "Canela",
+    fontSize: "42px",
+    lineHeight: "54.6px",
+    color: theme.colors.charcoal,
+    marginBottom: "40px",
+  })
+);
+
+const Row = styled("div")(
+  css({
+    display: "flex",
+    width: "100%",
+    gap: "16px",
+  })
+);
+
+const Col = styled("div")(
+  css({
+    flex: 1,
+  })
+);
+
+const AddProductButton = styled("div")(
+  css({
+    display: "flex",
+    alignItems: "center",
+    gap: "12px",
+    cursor: "pointer",
+  })
+);
+
+const AddProductButtonText = styled("span")(
+  css({
+    fontSize: "14px",
+    lineHeight: "18.2px",
+  })
+);
+
+export {
+  AddProductButton,
+  AddProductButtonText,
+  Col,
+  Container,
+  Form,
+  FormBody,
+  FormDescription,
+  FormGroup,
+  FormGroupTitle,
+  FormHeader,
+  FormHeaderLeft,
+  FormHeaderRight,
+  FormHeaderWrapper,
+  FormTitle,
+  Row,
+  Wrapper,
+};
