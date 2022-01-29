@@ -7,16 +7,46 @@ import React from "react";
 import Hero from "@components/pages/home/components/hero";
 import ProductCarousel from "./components/productCarousel";
 import InlineSlider from "./components/inlineSlider";
-import { css } from "@styled-system/css";
+
+import SupportIcon from "public/assets/icons/support-icon.svg";
+import SamplesIcon from "public/assets/icons/sample-icon.svg";
+import QuoteIcon from "public/assets/icons/quote-icon.svg";
+import EnquiryIcon from "public/assets/icons/enquiry-icon.svg";
 
 const Homepage = () => {
+  const supports = [
+    {
+      slug: "product-support",
+      title: "Product Support",
+      icon: SupportIcon,
+      href: "/support#product-support",
+    },
+    {
+      slug: "how-to-order-samples",
+      title: "How to order samples",
+      icon: SamplesIcon,
+      href: "/support#how-to-order-samples",
+    },
+    {
+      slug: "quote-request",
+      title: "Request a quote",
+      icon: QuoteIcon,
+      href: "/support#quote-request",
+    },
+    {
+      slug: "general-enquiry",
+      title: "General Enquiry",
+      icon: EnquiryIcon,
+      href: "/support#general-enquiry",
+    },
+  ];
   return (
     <>
       <Hero />
       <ProductCarousel></ProductCarousel>
       <ContentWithImageModule></ContentWithImageModule>
       <DualColumnModule />
-      <SupportModule title="HOW CAN WE HELP?" />
+      <SupportModule title="HOW CAN WE HELP?" supports={supports} />
       <InlineSlider></InlineSlider>
       <SocialModule></SocialModule>
       <QuoteModule source="Rebeka Morgan, Build Her Collective">

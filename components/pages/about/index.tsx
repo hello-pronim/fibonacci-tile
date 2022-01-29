@@ -1,10 +1,10 @@
 import React from "react";
+import QuoteModule from "@components/modules/quote";
 
 import AboutHeader from "./Header";
 import Hero from "./hero";
 import StoryPanel from "./StoryPanel";
 import MainStoryPanel from "./MainStoryPanel";
-import QuoteModule from "@components/modules/quote";
 import { Container } from "./styles";
 
 import StoryThumbnail from "public/assets/temp/story_thumbnail.png";

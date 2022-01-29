@@ -71,7 +71,6 @@ const Header = ({ mode = "light", position = "relative" }) => {
       timerId;
     } else selectionsMounted.current = true;
     setSelectionsCount(state.selectedProducts.length);
-    console.log(selectionsCount);
   }, [state.selectedProducts]);
   useEffect(() => {
     sessionStorage.setItem("alert-state", alertActive.toString());
@@ -127,7 +126,8 @@ const Header = ({ mode = "light", position = "relative" }) => {
               href="#"
               mode={mode}
               onClick={() => (
-                setOpenDrawer(activeTab !== "support" ? true : !openDrawer), setActiveTab("support")
+                setOpenDrawer(activeTab !== "support" ? true : !openDrawer),
+                setActiveTab("support")
               )}
             >
               Support
@@ -135,7 +135,8 @@ const Header = ({ mode = "light", position = "relative" }) => {
             <NavItem
               mode={mode}
               onClick={() => (
-                setOpenDrawer(activeTab !== "contact" ? true : !openDrawer), setActiveTab("contact")
+                setOpenDrawer(activeTab !== "contact" ? true : !openDrawer),
+                setActiveTab("contact")
               )}
             >
               Contact
@@ -143,7 +144,10 @@ const Header = ({ mode = "light", position = "relative" }) => {
             <NavItem
               href="#"
               mode={mode}
-              onClick={() => (setOpenDrawer(activeTab !== "cart" ? true : !openDrawer), setActiveTab("cart"))}
+              onClick={() => (
+                setOpenDrawer(activeTab !== "cart" ? true : !openDrawer),
+                setActiveTab("cart")
+              )}
             >
               Selections <ProductSelectionCount />
             </NavItem>
