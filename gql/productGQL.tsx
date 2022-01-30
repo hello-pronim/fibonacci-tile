@@ -45,7 +45,7 @@ export const ProductsQuery = gql`
 `;
 
 export const ProductQuery = gql`
-  query ProductQuery($slug: String) {
+  query ProductQuery($slug: [String]) {
     entry(slug: $slug) {
       id
       slug

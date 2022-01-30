@@ -25,6 +25,7 @@ import Text from "@components/common/typography";
 import { css } from "@styled-system/css";
 import Arrow from "@components/common/icons/arrow";
 import theme from "@styles/theme";
+import SizeDisplay from "@components/common/product/card/SizeDisplay";
 
 const product = {
   id: "1",
@@ -124,7 +125,6 @@ const SingleHeroModule = ({ product }) => {
       >
         <div>
           <ProductCard
-            displayMode={state?.productDisplayMode}
             product={product}
             isSelected={
               state?.selectedProducts.findIndex(
@@ -189,7 +189,7 @@ const SingleHeroModule = ({ product }) => {
           >
             <Text variant="Display-Overline">MATERIAL AND COMPOSITION</Text>
             <Text variant="Body-Regular" css={{ color: theme.colors.taupe }}>
-              Cursus velit adipiscing suspendisse semper
+              {product.materialsComposition}
             </Text>
           </div>
           <div
@@ -203,7 +203,7 @@ const SingleHeroModule = ({ product }) => {
           >
             <Text variant="Display-Overline">FINISH AND APPEARANCE</Text>
             <Text variant="Body-Regular" css={{ color: theme.colors.taupe }}>
-              Cursus velit adipiscing suspendisse semper
+              {product.finishAppearance}
             </Text>
           </div>
           <div
@@ -217,8 +217,7 @@ const SingleHeroModule = ({ product }) => {
           >
             <Text variant="Display-Overline">SIZES</Text>
             <Text variant="Body-Regular" css={{ color: theme.colors.taupe }}>
-              Tiles 600x600x20mm <br />
-              Slabs 400x400x20mm
+              <SizeDisplay sizes={product.sizes} />
             </Text>
           </div>
           <div
