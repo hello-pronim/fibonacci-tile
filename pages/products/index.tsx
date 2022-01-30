@@ -1,8 +1,8 @@
 import Head from "next/head";
 import Footer from "@components/common/footer";
 import ProductPage from "@components/pages/products";
-// import { useQuery } from "@apollo/client";
-// import { ProductsQuery } from "@gql/productGQL";
+import { useQuery } from "@apollo/client";
+import { ProductsQuery } from "@gql/productGQL";
 // import NProgress from "nprogress";
 import Abstrakt from "public/tmp/prod/abstrakt.jpeg";
 import ActThree from "public/tmp/prod/actThree.jpeg";
@@ -14,12 +14,13 @@ import CloudBurst from "public/tmp/prod/cloudBurst.jpeg";
 import CoolStream from "public/tmp/prod/coolStream.jpeg";
 
 const Products = () => {
-  // const {data, error, loading} = useQuery(ProductsQuery);
+  const {data, error, loading} = useQuery(ProductsQuery);
   // if(loading) {
   //   NProgress.start();
   // }else {
   //   NProgress.done();
   // }
+  console.log("data", data)
   const products = [
     {
       id: "1",

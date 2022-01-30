@@ -47,6 +47,7 @@ const ProductCard = ({
   displayMode = "grid",
   isSelected = false,
   toggleProductSelect,
+  compact = false,
 }) => {
   const [detailShown, setDetailShown] = useState(false);
   if (displayMode === "list") {
@@ -210,7 +211,7 @@ const ProductCard = ({
 
   return (
     <Wrapper>
-      <Container>
+      <Container compact={compact}>
         <GridCardImgContainer>
           {product?.img1 && (
             <Link href={product.uri}>
@@ -239,7 +240,7 @@ const ProductCard = ({
               )}
               {isSelected && (
                 <span className="initial">
-                  <CheckMarkIcon color="black" />
+                  <CheckMarkIcon color="white" />
                 </span>
               )}
               {isSelected && (
@@ -263,9 +264,11 @@ const ProductCard = ({
             <a>{product.title}</a>
           </Link>
         </CardTitle>
-        <CardSubTitle as="h4" variant="Body-Small">
-          {product.subHeading}
-        </CardSubTitle>
+        {!compact && (
+          <CardSubTitle as="h4" variant="Body-Small">
+            {product.subHeading}
+          </CardSubTitle>
+        )}
       </Container>
     </Wrapper>
   );
