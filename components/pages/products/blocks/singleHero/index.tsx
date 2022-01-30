@@ -1,22 +1,11 @@
-import React, { useState } from "react";
-import AccentText, { AccentTextMobile } from "@components/common/accentText";
+import React from "react";
 import Image from "next/image";
 import collection from "public/assets/temp/collection-temp.png";
-import Abstrakt from "public/tmp/prod/abstrakt.jpeg";
 import Link from "next/link";
 import ProductCard from "@components/common/product/xlCard";
 import { useAppContext } from "@contexts/AppContext";
 import {
   Container,
-  IntroWrapper,
-  Sections,
-  ProjectWrapper,
-  Project,
-  Bottom,
-  SectionList,
-  SectionItem,
-  Details,
-  ImageWrapper,
   LinkWrapper,
   LinkWrapperLeft,
   Pill,
@@ -26,17 +15,6 @@ import { css } from "@styled-system/css";
 import Arrow from "@components/common/icons/arrow";
 import theme from "@styles/theme";
 import SizeDisplay from "@components/common/product/card/SizeDisplay";
-
-const product = {
-  id: "1",
-  richText:
-    "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-  slug: "abstrakt",
-  subHeading: "Complex • Robust • Diverse",
-  title: "Abstrakt",
-  uri: "/products/abstrakt",
-  img1: Abstrakt,
-};
 
 const SingleHeroModule = ({ product }) => {
   const { state, dispatch } = useAppContext();
@@ -231,7 +209,7 @@ const SingleHeroModule = ({ product }) => {
           >
             <Text variant="Display-Overline">APPLICATIONS</Text>
             <Text variant="Body-Regular" css={{ color: theme.colors.taupe }}>
-              Cursus velit adipiscing suspendisse semper
+              {product.applications}
             </Text>
           </div>
           <LinkWrapper>
