@@ -12,7 +12,7 @@ export interface containerProps {
 const ArrowButtonWrapper = styled("div")(({ ...props }: containerProps) =>
   css({
     a: {
-      width: "100%",
+      width: props.fullWidth && "100%",
       borderWidth: 1,
       borderColor: "#B0ABA7",
       borderStyle: props.visibleBorder === false ? "none" : "solid",
@@ -72,9 +72,6 @@ const ArrowButtonWrapper = styled("div")(({ ...props }: containerProps) =>
                     : "assets/icons/white-arrow.svg"
                 })`,
         },
-      },
-      [theme.mediaQueries.small]: {
-        width: props.fullWidth && "100%",
       },
     },
   })
