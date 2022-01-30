@@ -10,8 +10,10 @@ import { useAppContext } from "@contexts/AppContext";
 import { Container } from "./styles";
 
 const ProductsPage = ({ products, colourSchemes }) => {
-  const { state, dispatch } = useAppContext();
+  const { state } = useAppContext();
   const [showFilterBar, setShowFilterBar] = useState(false);
+  const firstHalfProducts = products.slice(0, 15);
+  const secondHalfProducts = products.slice(15, 15);
   const ref = useRef(null);
 
   useEffect(() => {
@@ -47,11 +49,15 @@ const ProductsPage = ({ products, colourSchemes }) => {
         title="40 unique creations. Thoughtfully designed. Sustainably made. Purpose-built."
       />
       <section ref={ref}>
-        <ProductFilterBar applyFilter={applyFilter} show={showFilterBar} colourSchemes={colourSchemes} />
+        <ProductFilterBar
+          applyFilter={applyFilter}
+          show={showFilterBar}
+          colourSchemes={colourSchemes}
+        />
       </section>
-      <ProductLists products={products} accentText="Be inspired" />
+      <ProductLists products={firstHalfProducts} accentText="Be inspired" />
       <CTAPanel imagePosition="left" />
-      <ProductLists products={products} />
+      {secondHalfProducts.length > 0 && <ProductLists products={products} />}
       <CTAPanel imagePosition="right" />
       <FooterCTAPanel />
     </Container>

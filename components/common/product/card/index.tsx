@@ -114,7 +114,7 @@ const ProductCard = ({
                 <ArrowButton
                   mode="dark"
                   title="View product details"
-                  link="/products"
+                  link={`/products/${product.slug}`}
                 />
               </Details>
             </ProductInfoBox>
@@ -153,10 +153,15 @@ const ProductCard = ({
           <ImgCell detailView={detailShown}>
             <ListCardImgContainer>
               <CardImg detailView={detailShown}>
-                {product?.thumbImage?.url && (
+                {product?.thumbImage?.[0].url && (
                   <Link href={`/products/${product.slug}`}>
                     <a>
-                      <Image src={product.thumbImage.url} alt="Product-1" />
+                      <Image
+                        src={product.thumbImage[0].url}
+                        alt={product.title}
+                        width="228"
+                        height="228"
+                      />
                     </a>
                   </Link>
                 )}
@@ -215,10 +220,15 @@ const ProductCard = ({
     <Wrapper>
       <Container compact={compact}>
         <GridCardImgContainer>
-          {product?.thumbImage?.url && (
+          {product?.thumbImage?.[0].url && (
             <Link href={`/products/${product.slug}`}>
               <a>
-                <Image src={product.thumbImage.url} alt="Product-1" />
+                <Image
+                  src={product.thumbImage[0].url}
+                  alt="Product-1"
+                  width="228"
+                  height="228"
+                />
               </a>
             </Link>
           )}
@@ -268,7 +278,7 @@ const ProductCard = ({
         </CardTitle>
         {!compact && (
           <CardSubTitle as="h4" variant="Body-Small">
-            {product.subHeading}
+            {product.subline}
           </CardSubTitle>
         )}
       </Container>

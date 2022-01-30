@@ -6,6 +6,7 @@ export const ProductsQuery = gql`
       id
       slug
       ... on products_product_Entry {
+        title
         subline
         collections {
           title
