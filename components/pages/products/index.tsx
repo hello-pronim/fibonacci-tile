@@ -7,10 +7,9 @@ import SectionTitle from "./blocks/SectionTitle";
 import ProductLists from "./blocks/ProductList";
 import Slider from "./blocks/Slider";
 import { useAppContext } from "@contexts/AppContext";
-import { css } from "@styled-system/css";
 import { Container } from "./styles";
 
-const ProductsPage = ({ products }) => {
+const ProductsPage = ({ products, colourSchemes }) => {
   const { state, dispatch } = useAppContext();
   const [showFilterBar, setShowFilterBar] = useState(false);
   const ref = useRef(null);
@@ -29,19 +28,15 @@ const ProductsPage = ({ products }) => {
     };
   }, [ref]);
 
+  const applyFilter = useCallback(() => {
+    console.log("Filter Query Data", state.filter);
+  }, [state.filter]);
+
   useEffect(() => {
     if (!state.isMobileFilterActive) {
       applyFilter();
     }
-  }, [state.filter]);
-
-  // const applyFilter = useCallback(()=> {
-  //   console.log("Filter Data", state.filter);
-  // }, [])
-
-  const applyFilter = () => {
-    console.log("Filter Query Data", state.filter);
-  };
+  }, [applyFilter, state.isMobileFilterActive]);
 
   return (
     <Container>
@@ -52,7 +47,7 @@ const ProductsPage = ({ products }) => {
         title="40 unique creations. Thoughtfully designed. Sustainably made. Purpose-built."
       />
       <section ref={ref}>
-        <ProductFilterBar applyFilter={applyFilter} show={showFilterBar} />
+        <ProductFilterBar applyFilter={applyFilter} show={showFilterBar} colourSchemes={colourSchemes} />
       </section>
       <ProductLists products={products} accentText="Be inspired" />
       <CTAPanel imagePosition="left" />
@@ -62,4 +57,5 @@ const ProductsPage = ({ products }) => {
     </Container>
   );
 };
+
 export default ProductsPage;

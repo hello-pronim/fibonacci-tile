@@ -22,7 +22,6 @@ import {
 import { Transition } from "react-transition-group";
 import Text from "@components/common/typography";
 import ProductSelectionCount from "@components/common/product/selectionCount";
-import { css } from "@styled-system/css";
 import SelectionCart from "@components/common/selectionCart";
 
 const duration = 400;
@@ -71,7 +70,6 @@ const Header = ({ mode = "light", position = "relative" }) => {
       timerId;
     } else selectionsMounted.current = true;
     setSelectionsCount(state.selectedProducts.length);
-    console.log(selectionsCount);
   }, [state.selectedProducts]);
   useEffect(() => {
     sessionStorage.setItem("alert-state", alertActive.toString());
@@ -133,6 +131,7 @@ const Header = ({ mode = "light", position = "relative" }) => {
               Support
             </NavItem>
             <NavItem
+              href="#"
               mode={mode}
               onClick={() => (
                 setOpenDrawer(activeTab !== "contact" ? true : !openDrawer), setActiveTab("contact")

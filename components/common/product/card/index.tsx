@@ -57,12 +57,14 @@ const ProductCard = ({
           <ProductsInfoRow>
             <ProductName>
               <div>
-                <Link href={product.uri}>
-                  <ProductListTitle>
-                    <Text as="h3" variant="Display-XXSmall" altFont={true}>
-                      {product.title}
-                    </Text>
-                  </ProductListTitle>
+                <Link href={`/products/${product.slug}`}>
+                  <a>
+                    <ProductListTitle>
+                      <Text as="h3" variant="Display-XXSmall" altFont={true}>
+                        {product.title}
+                      </Text>
+                    </ProductListTitle>
+                  </a>
                 </Link>
               </div>
             </ProductName>
@@ -112,7 +114,7 @@ const ProductCard = ({
                 <ArrowButton
                   mode="dark"
                   title="View product details"
-                  link="http://localhost:3000/products"
+                  link="/products"
                 />
               </Details>
             </ProductInfoBox>
@@ -151,10 +153,10 @@ const ProductCard = ({
           <ImgCell detailView={detailShown}>
             <ListCardImgContainer>
               <CardImg detailView={detailShown}>
-                {product?.img1 && (
-                  <Link href={product.uri}>
+                {product?.thumbImage?.url && (
+                  <Link href={`/products/${product.slug}`}>
                     <a>
-                      <Image src={product?.img1} alt="Product-1" />
+                      <Image src={product.thumbImage.url} alt="Product-1" />
                     </a>
                   </Link>
                 )}
@@ -213,10 +215,10 @@ const ProductCard = ({
     <Wrapper>
       <Container compact={compact}>
         <GridCardImgContainer>
-          {product?.img1 && (
-            <Link href={product.uri}>
+          {product?.thumbImage?.url && (
+            <Link href={`/products/${product.slug}`}>
               <a>
-                <Image src={product?.img1} alt="Product-1" />
+                <Image src={product.thumbImage.url} alt="Product-1" />
               </a>
             </Link>
           )}
@@ -260,7 +262,7 @@ const ProductCard = ({
           altFont={true}
           marginTop="25px"
         >
-          <Link href={product.uri}>
+          <Link href={`/products/${product.slug}`}>
             <a>{product.title}</a>
           </Link>
         </CardTitle>
