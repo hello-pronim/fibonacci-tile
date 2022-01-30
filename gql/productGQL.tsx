@@ -17,6 +17,20 @@ export const ProductsQuery = gql`
         designStory
         projectIntroduction
         sampleAvailable
+        materialsComposition
+        finishAppearance
+        applications
+        sizes {
+          id
+          title
+          parent {
+            id
+            title
+          }
+        }
+        productCategories {
+          title
+        }
         thumbImage {
           id
           url

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import SizeDisplay from "./SizeDisplay";
 import Text from "@components/common/typography";
 import AddIcon from "@components/icons/add";
 import ArrowButton from "@components/common/button/arrowButton";
@@ -57,14 +58,12 @@ const ProductCard = ({
           <ProductsInfoRow>
             <ProductName>
               <div>
-                <Link href={`/products/${product.slug}`}>
-                  <a>
-                    <ProductListTitle>
-                      <Text as="h3" variant="Display-XXSmall" altFont={true}>
-                        {product.title}
-                      </Text>
-                    </ProductListTitle>
-                  </a>
+                <Link href={`/products/${product.slug}`} passHref>
+                  <ProductListTitle>
+                    <Text as="h3" variant="Display-XXSmall" altFont={true}>
+                      {product.title}
+                    </Text>
+                  </ProductListTitle>
                 </Link>
               </div>
             </ProductName>
@@ -73,14 +72,14 @@ const ProductCard = ({
                 <AvailableBox>
                   <div>
                     <Text as="h4" variant="Body-Small">
-                      Tiles &amp; Slabs
+                      {product.productCategories[0].title}
                     </Text>
                   </div>
                 </AvailableBox>
                 <NameBox>
                   <div>
                     <Text as="h4" variant="Body-Small">
-                      Collection Name
+                      {product.collections[0].title}
                     </Text>
                   </div>
                 </NameBox>
@@ -89,7 +88,7 @@ const ProductCard = ({
             <DescriptionBox detailView={detailShown}>
               <div>
                 <Text as="h4" variant="Body-Small">
-                  Description — one line truncated ...
+                  {product.designStory}
                 </Text>
               </div>
             </DescriptionBox>
@@ -124,21 +123,19 @@ const ProductCard = ({
                   <ul>
                     <li>
                       <Headline>Material and composition</Headline>
-                      Cursus velit adipiscing suspendisse semper. Cursus velit
-                      adipiscing suspendisse semper
+                      {product.materialsComposition}
                     </li>
                     <li>
                       <Headline>Finish and appearance</Headline>
-                      Cursus velit adipiscing suspendisse semper
+                      {product.finishAppearance}
                     </li>
                     <li>
                       <Headline>Sizes</Headline>
-                      Tiles 400x400x20mm & 600x600x20mm <br />
-                      Slabs 400x400x20mm
+                      <SizeDisplay sizes={product.sizes} />
                     </li>
                     <li>
                       <Headline>Applications</Headline>
-                      Cursus velit adipiscing suspendisse semper
+                      {product.applications}
                     </li>
                   </ul>
                 </Listings>
