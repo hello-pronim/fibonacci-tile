@@ -5,6 +5,9 @@ import {
   HiddenProductSelectItemsWrapper,
   ProductSelect,
   ProductSelectDropdown,
+  ProductSelectDropdownBodyWrapper,
+  ProductSelectDropdownHeaderText,
+  ProductSelectDropdownHeaderWrapper,
   ProductSelectDropdownWrapper,
   ProductSelectItemWrapper,
   ProductSelectWrapper,
@@ -73,15 +76,22 @@ export default function Select({
       </HiddenProductSelectItemsWrapper>
       <ProductSelectDropdownWrapper open={isOpened}>
         <ProductSelectDropdown>
-          {products.map((product) => (
-            <ProductSelectItemWrapper key={`product-${product.id}`}>
-              <ProductSelectItem
-                product={product}
-                selected={product.id === selectedProductId}
-                handleProductSelect={handleProductItemSelected}
-              />
-            </ProductSelectItemWrapper>
-          ))}
+          <ProductSelectDropdownHeaderWrapper>
+            <ProductSelectDropdownHeaderText>
+              Choose a product
+            </ProductSelectDropdownHeaderText>
+          </ProductSelectDropdownHeaderWrapper>
+          <ProductSelectDropdownBodyWrapper>
+            {products.map((product) => (
+              <ProductSelectItemWrapper key={`product-${product.id}`}>
+                <ProductSelectItem
+                  product={product}
+                  selected={product.id === selectedProductId}
+                  handleProductSelect={handleProductItemSelected}
+                />
+              </ProductSelectItemWrapper>
+            ))}
+          </ProductSelectDropdownBodyWrapper>
         </ProductSelectDropdown>
       </ProductSelectDropdownWrapper>
     </ProductSelectWrapper>

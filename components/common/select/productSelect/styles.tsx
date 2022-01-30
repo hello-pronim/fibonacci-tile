@@ -66,6 +66,30 @@ const ProductSelectDropdownWrapper = styled("div")(
 
 const ProductSelectDropdown = styled("div")(
   css({
+    display: "block",
+    width: "100%",
+  })
+);
+
+const ProductSelectDropdownHeaderWrapper = styled("div")(
+  css({
+    display: "block",
+    width: "100%",
+    padding: "12px 12px 0 12px",
+  })
+);
+
+const ProductSelectDropdownHeaderText = styled("h5")(
+  css({
+    fontFamily: "Everett",
+    fontSize: "20px",
+    lineHeight: "28px",
+    color: theme.colors.charcoal,
+  })
+);
+
+const ProductSelectDropdownBodyWrapper = styled("div")(
+  css({
     display: "grid",
     gridTemplateColumns: "repeat(2, 1fr)",
     width: "100%",
@@ -87,6 +111,9 @@ export {
   HiddenProductSelectItemsWrapper,
   ProductSelect,
   ProductSelectDropdown,
+  ProductSelectDropdownBodyWrapper,
+  ProductSelectDropdownHeaderText,
+  ProductSelectDropdownHeaderWrapper,
   ProductSelectDropdownWrapper,
   ProductSelectItemWrapper,
   ProductSelectWrapper,
