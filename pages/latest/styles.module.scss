@@ -1,0 +1,8 @@
+@import "@styles/settings";
+
+.container {
+  @media (max-width: 1440px) {
+    padding: 56px 16px 131px !important;
+  }
+  padding: 56px 80px 131px !important;
+}

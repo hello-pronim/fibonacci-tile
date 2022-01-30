@@ -116,7 +116,7 @@ const ProjectList = ({ projects, types }: ProjectListType) => {
         </MasonryGrid>
         {displayedProjects.length ? (
           <LoadMoreWrapper>
-            <ArrowButton mode="" title="Load more" link="#" />
+            <ArrowButton mode="" title="Load more" link="#" size="" />
           </LoadMoreWrapper>
         ) : (
           <></>

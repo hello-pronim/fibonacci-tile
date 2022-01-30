@@ -12,15 +12,16 @@ import { css } from "@styled-system/css";
 const Homepage = () => {
   return (
     <>
-    <Hero />
+      <Hero />
       <ProductCarousel></ProductCarousel>
       <ContentWithImageModule></ContentWithImageModule>
-      <DualColumnModule/>
+      <DualColumnModule />
       <SupportModule />
       <InlineSlider></InlineSlider>
       <SocialModule></SocialModule>
       <QuoteModule source="Rebeka Morgan, Build Her Collective">
-      ‘It certainly helps from a planning and ordering perspective that Fibonacci carry so much stock.’
+        ‘It certainly helps from a planning and ordering perspective that
+        Fibonacci carry so much stock.’
       </QuoteModule>
     </>
   );
