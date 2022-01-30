@@ -10,7 +10,9 @@ export const initialState = {
   productDisplayMode: "grid",
   loading: true,
   isMobileFilterActive: false,
-  checkoutStep: 1
+  checkoutStep: 1,
+  openDrawer: false,
+  activeDrawerTab: "cart"
 };
 
 export const AppReducer = (state, action) => {
@@ -124,6 +126,18 @@ export const AppReducer = (state, action) => {
         ...state,
         checkoutStep: action.value,
       };
+    }
+    case "OPEN_DRAWER": {
+      return {
+        ...state,
+        openDrawer: action.value
+      }
+    }
+    case "SET_ACTIVE_DRAWER_TAB": {
+      return {
+        ...state,
+        activeDrawerTab: action.value
+      }
     }
   }
 };
