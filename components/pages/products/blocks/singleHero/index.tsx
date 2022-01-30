@@ -37,7 +37,7 @@ const product = {
   img1: Abstrakt,
 };
 
-const SingleHeroModule = () => {
+const SingleHeroModule = ({ product }) => {
   const { state, dispatch } = useAppContext();
   return (
     <Container>
@@ -68,7 +68,7 @@ const SingleHeroModule = () => {
               },
             })}
           >
-            Polarity
+            {product.title}
           </Text>
           <span
             css={css({
@@ -77,14 +77,14 @@ const SingleHeroModule = () => {
               pl: 16,
             })}
           >
-            <Text variant="Body-XSmall">No. 31</Text>
+            <Text variant="Body-XSmall">No. {product.productNumber}</Text>
           </span>
           <Pill># New Release</Pill>
           <Text
             variant="Body-Large"
             css={css({ span: { color: theme.colors.taupe } })}
           >
-            Complex <span>•</span> Robust <span>•</span> Diverse
+            {product.subline}
           </Text>
           <Text variant="Body-Large">
             A democratic mix of colours, shapes and sizes, displaying the great
