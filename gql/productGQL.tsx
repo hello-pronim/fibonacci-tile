@@ -1,16 +1,45 @@
 import { gql } from "@apollo/client";
 
-export const ProductsQuery = gql `
-    query {
-        entries(section: "products") {
-        uri
-        ... on products_stories_Entry {
+export const ProductsQuery = gql`
+  query ProductsQuery {
+    entries(section: "products") {
+      id
+      slug
+      ... on products_product_Entry {
+        title
+        subline
+        collections {
+          title
+        }
+        label
+        backgroundColor
+        productNumber
+        designStory
+        projectIntroduction
+        sampleAvailable
+        materialsComposition
+        finishAppearance
+        applications
+        sizes {
+          id
+          title
+          parent {
             id
-            subHeading
             title
-            slug
-            richText
+          }
         }
+        productCategories {
+          title
         }
+        thumbImage {
+          id
+          url
+        }
+        largeImage {
+          id
+          url
+        }
+      }
     }
+  }
 `;

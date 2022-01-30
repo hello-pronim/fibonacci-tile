@@ -22,8 +22,8 @@ import {
 import { Transition } from "react-transition-group";
 import Text from "@components/common/typography";
 import ProductSelectionCount from "@components/common/product/selectionCount";
-import { css } from "@styled-system/css";
 import SelectionCart from "@components/common/selectionCart";
+import css from "@styled-system/css";
 
 const duration = 400;
 
@@ -53,10 +53,8 @@ const Header = ({ mode = "light", position = "relative" }) => {
       window.removeEventListener("scroll", logit);
     };
   });
-  const { state } = useAppContext();
+  const { state, dispatch } = useAppContext();
   const [navOpen, setNavOpen] = useState(false);
-  const [openDrawer, setOpenDrawer] = useState(false);
-  const [activeTab, setActiveTab] = useState("cart");
   const [newSelection, setNewSelection] = useState(false);
   const [selectionsCount, setSelectionsCount] = useState(0);
   const [alertActive, setAlertActive] = useState(true);
@@ -73,13 +71,19 @@ const Header = ({ mode = "light", position = "relative" }) => {
     if (
       selectionsMounted.current &&
       state.selectedProducts.length > selectionsCount &&
-      openDrawer !== true
+      state.openDrawer !== true
     ) {
-      setOpenDrawer(true);
+      dispatch({
+        type: "OPEN_DRAWER",
+        value: true,
+      });
       setNewSelection(true);
       const timerId = setTimeout(() => {
         setNewSelection(false);
-        setOpenDrawer(false);
+        dispatch({
+          type: "OPEN_DRAWER",
+          value: false,
+        });
       }, 4000);
       timerId;
     } else selectionsMounted.current = true;
@@ -148,17 +152,30 @@ const Header = ({ mode = "light", position = "relative" }) => {
             <NavItem
               mode={mode}
               onClick={() => (
-                setOpenDrawer(activeTab !== "support" ? true : !openDrawer),
-                setActiveTab("support")
+                dispatch({
+                  type: "OPEN_DRAWER",
+                  value: state.activeDrawerTab !== "support" ? true : !state.openDrawer,
+                }),
+                dispatch({
+                  type: "SET_ACTIVE_DRAWER_TAB",
+                  value: "support",
+                })
               )}
             >
               Support
             </NavItem>
             <NavItem
+              href="#"
               mode={mode}
               onClick={() => (
-                setOpenDrawer(activeTab !== "contact" ? true : !openDrawer),
-                setActiveTab("contact")
+                dispatch({
+                  type: "OPEN_DRAWER",
+                  value: state.activeDrawerTab !== "contact" ? true : !state.openDrawer,
+                }),
+                dispatch({
+                  type: "SET_ACTIVE_DRAWER_TAB",
+                  value: "contact",
+                })
               )}
             >
               Contact
@@ -166,8 +183,14 @@ const Header = ({ mode = "light", position = "relative" }) => {
             <NavItem
               mode={mode}
               onClick={() => (
-                setOpenDrawer(activeTab !== "cart" ? true : !openDrawer),
-                setActiveTab("cart")
+                dispatch({
+                  type: "OPEN_DRAWER",
+                  value: state.activeDrawerTab !== "cart" ? true : !state.openDrawer,
+                }),
+                dispatch({
+                  type: "SET_ACTIVE_DRAWER_TAB",
+                  value: "cart",
+                })
               )}
             >
               Selections <ProductSelectionCount />
@@ -175,8 +198,8 @@ const Header = ({ mode = "light", position = "relative" }) => {
           </NavRight>
         </Wrapper>
         <SelectionCart
-          tab={activeTab}
-          active={openDrawer}
+          tab={state.activeDrawerTab}
+          active={state.openDrawer}
           newSelection={newSelection}
         />
         <Transition
