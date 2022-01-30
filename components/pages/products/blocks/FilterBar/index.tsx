@@ -21,7 +21,7 @@ import ColourSchemeFilter from "./ColourSchemeFilter";
 import Logo from "public/assets/brandmarks/symbol-primary.svg";
 import styles from "./styles.module.scss";
 
-export default function ProductFilters({ show, applyFilter }) {
+export default function ProductFilters({ show, applyFilter, colourSchemes }) {
   const { state, dispatch } = useAppContext();
   const [activeFilter, setActiveFilter] = useState(null);
   const [isMobileFilterActive, setIsMobileFilterActive] = useState(false);
@@ -273,7 +273,7 @@ export default function ProductFilters({ show, applyFilter }) {
           {activeFilter === "search" && <SearchFilter />}
           {activeFilter === "products" && <ProductFilter />}
           {activeFilter === "sort-by" && <SortByFilter />}
-          {activeFilter === "colour-schemes" && <ColourSchemeFilter />}
+          {activeFilter === "colour-schemes" && <ColourSchemeFilter colourSchemes={colourSchemes} />}
         </div>
       )}
     </div>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import SizeDisplay from "./SizeDisplay";
 import Text from "@components/common/typography";
 import AddIcon from "@components/icons/add";
 import ArrowButton from "@components/common/button/arrowButton";
@@ -57,7 +58,7 @@ const ProductCard = ({
           <ProductsInfoRow>
             <ProductName>
               <div>
-                <Link href={product.uri}>
+                <Link href={`/products/${product.slug}`} passHref>
                   <ProductListTitle>
                     <Text as="h3" variant="Display-XXSmall" altFont={true}>
                       {product.title}
@@ -71,14 +72,14 @@ const ProductCard = ({
                 <AvailableBox>
                   <div>
                     <Text as="h4" variant="Body-Small">
-                      Tiles &amp; Slabs
+                      {product.productCategories[0].title}
                     </Text>
                   </div>
                 </AvailableBox>
                 <NameBox>
                   <div>
                     <Text as="h4" variant="Body-Small">
-                      Collection Name
+                      {product.collections[0].title}
                     </Text>
                   </div>
                 </NameBox>
@@ -87,7 +88,7 @@ const ProductCard = ({
             <DescriptionBox detailView={detailShown}>
               <div>
                 <Text as="h4" variant="Body-Small">
-                  Description — one line truncated ...
+                  {product.designStory}
                 </Text>
               </div>
             </DescriptionBox>
@@ -112,7 +113,7 @@ const ProductCard = ({
                 <ArrowButton
                   mode="dark"
                   title="View product details"
-                  link="http://localhost:3000/products"
+                  link={`/products/${product.slug}`}
                 />
               </Details>
             </ProductInfoBox>
@@ -122,21 +123,19 @@ const ProductCard = ({
                   <ul>
                     <li>
                       <Headline>Material and composition</Headline>
-                      Cursus velit adipiscing suspendisse semper. Cursus velit
-                      adipiscing suspendisse semper
+                      {product.materialsComposition}
                     </li>
                     <li>
                       <Headline>Finish and appearance</Headline>
-                      Cursus velit adipiscing suspendisse semper
+                      {product.finishAppearance}
                     </li>
                     <li>
                       <Headline>Sizes</Headline>
-                      Tiles 400x400x20mm & 600x600x20mm <br />
-                      Slabs 400x400x20mm
+                      <SizeDisplay sizes={product.sizes} />
                     </li>
                     <li>
                       <Headline>Applications</Headline>
-                      Cursus velit adipiscing suspendisse semper
+                      {product.applications}
                     </li>
                   </ul>
                 </Listings>
@@ -151,10 +150,15 @@ const ProductCard = ({
           <ImgCell detailView={detailShown}>
             <ListCardImgContainer>
               <CardImg detailView={detailShown}>
-                {product?.img1 && (
-                  <Link href={product.uri}>
+                {product?.thumbImage?.[0].url && (
+                  <Link href={`/products/${product.slug}`}>
                     <a>
-                      <Image src={product?.img1} alt="Product-1" />
+                      <Image
+                        src={product.thumbImage[0].url}
+                        alt={product.title}
+                        width="228"
+                        height="228"
+                      />
                     </a>
                   </Link>
                 )}
@@ -213,10 +217,15 @@ const ProductCard = ({
     <Wrapper>
       <Container compact={compact}>
         <GridCardImgContainer>
-          {product?.img1 && (
-            <Link href={product.uri}>
+          {product?.thumbImage?.[0].url && (
+            <Link href={`/products/${product.slug}`}>
               <a>
-                <Image src={product?.img1} alt="Product-1" />
+                <Image
+                  src={product.thumbImage[0].url}
+                  alt="Product-1"
+                  width="228"
+                  height="228"
+                />
               </a>
             </Link>
           )}
@@ -260,13 +269,13 @@ const ProductCard = ({
           altFont={true}
           marginTop="25px"
         >
-          <Link href={product.uri}>
+          <Link href={`/products/${product.slug}`}>
             <a>{product.title}</a>
           </Link>
         </CardTitle>
         {!compact && (
           <CardSubTitle as="h4" variant="Body-Small">
-            {product.subHeading}
+            {product.subline}
           </CardSubTitle>
         )}
       </Container>
