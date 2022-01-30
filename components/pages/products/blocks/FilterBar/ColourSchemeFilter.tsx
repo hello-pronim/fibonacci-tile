@@ -5,17 +5,17 @@ import CheckMarkIcon from "@components/icons/checkmark";
 import CloseIcon from "@components/icons/close";
 import { useAppContext } from "@contexts/AppContext";
 
-export default function ColourSchemeFilter({}) {
+export default function ColourSchemeFilter({ colourSchemes }) {
   const { state, dispatch } = useAppContext();
   const handleFilter = (value) => {
     dispatch({
       type: "SELECT_PRODUCT_FILTER",
       filter: {
-        type: 'colourSchemes',
-        value
+        type: "colourSchemes",
+        value,
       },
     });
-  }
+  };
   const schemeArray = [
     { label: "Warm", value: "warm", colour: "#DEDCDC" },
     { label: "Cool", value: "cool", colour: "#DEE2E4" },
@@ -29,43 +29,54 @@ export default function ColourSchemeFilter({}) {
   ];
 
   return (
-    <div className={classnames(styles.colorSchemesContainer, {[styles.mobileColorScheme] : state.isMobileFilterActive})}>
+    <div
+      className={classnames(styles.colorSchemesContainer, {
+        [styles.mobileColorScheme]: state.isMobileFilterActive,
+      })}
+    >
       {!state.isMobileFilterActive && (
-      <div
-        className={classnames(
-          styles.productFilterItem,
-          styles.productFilterItemTitle
-        )}
-      >
-        <Text as="h3" variant="Body-Regular">
-          Refine your <br/> colour schemes
-        </Text>
-      </div>
+        <div
+          className={classnames(
+            styles.productFilterItem,
+            styles.productFilterItemTitle
+          )}
+        >
+          <Text as="h3" variant="Body-Regular">
+            Refine your <br /> colour schemes
+          </Text>
+        </div>
       )}
       <div className={styles.colorSchemeItemsContainer}>
-        {schemeArray.map((scheme, index) => (
-          <div
-            key={`colour-${index}`}
-            className={classnames(styles.colourScheme, {[styles.filterInnerMobile]: state.isMobileFilterActive})}
-            style={{
-              background: scheme.colour,
-            }}
-            onClick={()=> handleFilter(scheme.value)}
-          >
-            {!state.isMobileFilterActive && state.filter.colourSchemes.indexOf(scheme.value) !== -1 && (
-              <CheckMarkIcon color={scheme.textColour} />
-            )}  
-            <Text variant="Body-Small" color={scheme.textColour}>
-              {scheme.label}
-            </Text>
-            {state.isMobileFilterActive && state.filter.colourSchemes.indexOf(scheme.value) !== -1 && (
-              <CheckMarkIcon color={scheme.textColour} />
-            )}  
-          </div>
-        ))}
+        {colourSchemes.map((scheme, index) => {
+          const textColor = scheme.textColor ? scheme.textColor : "#141414";
+          return (
+            <div
+              key={`colour-${index}`}
+              className={classnames(styles.colourScheme, {
+                [styles.filterInnerMobile]: state.isMobileFilterActive,
+              })}
+              style={{
+                background: scheme.colorHex,
+              }}
+              onClick={() => handleFilter(scheme.id)}
+            >
+              {!state.isMobileFilterActive &&
+                state.filter.colourSchemes.indexOf(scheme.id) !== -1 && (
+                  <CheckMarkIcon color={textColor} />
+                )}
+              <Text variant="Body-Small" color={textColor}>
+                {scheme.title}
+              </Text>
+              {state.isMobileFilterActive &&
+                state.filter.colourSchemes.indexOf(scheme.id) !== -1 && (
+                  <CheckMarkIcon color={textColor} />
+                )}
+            </div>
+          );
+        })}
       </div>
-      <div onClick={()=> handleFilter("clear")} className={styles.clearFilter}>
-        Clear Filter <CloseIcon color={"#0D0D0D"}/>
+      <div onClick={() => handleFilter("clear")} className={styles.clearFilter}>
+        Clear Filter <CloseIcon color={"#0D0D0D"} />
       </div>
     </div>
   );

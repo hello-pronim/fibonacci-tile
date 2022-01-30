@@ -9,14 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@apollo/client": "^3.5.5",
+    "@apollo/client": "^3.5.8",
     "@emotion/babel-preset-css-prop": "^11.2.0",
     "@emotion/react": "^11.5.0",
     "@emotion/styled": "^11.3.0",
     "@styled-system/css": "^5.1.5",
     "@types/styled-system": "^5.1.13",
     "classnames": "^2.3.1",
-    "graphql": "^16.0.1",
+    "graphql": "^16.3.0",
     "next": "11.1.2",
     "next-routes": "^1.4.2",
     "nextjs-breadcrumbs": "^1.1.9",
@@ -24,10 +24,10 @@
     "react": "17.0.2",
     "react-debounce-input": "^3.2.5",
     "react-dom": "17.0.2",
+    "react-hook-form": "^7.24.1",
     "react-masonry-css": "^1.0.16",
     "react-masonry-infinite": "^1.2.2",
     "react-responsive-masonry": "^2.1.4",
-    "react-hook-form": "^7.24.1",
     "react-slick": "^0.28.1",
     "react-transition-group": "^4.4.2",
     "sass": "^1.43.4",
@@ -38,7 +38,9 @@
     "use-onclickoutside": "^0.4.0"
   },
   "devDependencies": {
+    "@types/graphql": "^14.5.0",
     "@types/react": "^17.0.32",
+    "apollo": "^2.33.9",
     "eslint": "^8.7.0",
     "eslint-config-next": "11.1.2",
     "typescript": "^4.4.4"
