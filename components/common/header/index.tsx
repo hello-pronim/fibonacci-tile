@@ -40,6 +40,19 @@ const transitionStyles = {
 };
 
 const Header = ({ mode = "light", position = "relative" }) => {
+  const [scrollY, setScrollY] = useState(0);
+  function logit() {
+    setScrollY(window.pageYOffset);
+  }
+  useEffect(() => {
+    function watchScroll() {
+      window.addEventListener("scroll", logit);
+    }
+    watchScroll();
+    return () => {
+      window.removeEventListener("scroll", logit);
+    };
+  });
   const { state } = useAppContext();
   const [navOpen, setNavOpen] = useState(false);
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -49,7 +62,7 @@ const Header = ({ mode = "light", position = "relative" }) => {
   const [alertActive, setAlertActive] = useState(true);
   const selectionsMounted = useRef(false);
   const activeLogo = mode === "dark" ? Logo : LogoWhite;
-
+  
   useEffect(() => {
     const alertState = sessionStorage.getItem("alert-state");
     const alertToBool = alertState === "true";
@@ -71,15 +84,24 @@ const Header = ({ mode = "light", position = "relative" }) => {
       timerId;
     } else selectionsMounted.current = true;
     setSelectionsCount(state.selectedProducts.length);
-    console.log(selectionsCount);
   }, [state.selectedProducts]);
   useEffect(() => {
     sessionStorage.setItem("alert-state", alertActive.toString());
   }, [alertActive]);
 
   return (
-    <div>
-      {/* <div css={css({position: 'sticky', top: 0, zIndex: 999})}> */}
+    <div
+      css={css({
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        mx: 'auto',
+        width: "100%",
+        maxWidth: 2560,
+        zIndex: 9999999,
+      })}
+    >
       {alertActive && (
         <AlertBar>
           <AlertLabel>
@@ -89,7 +111,7 @@ const Header = ({ mode = "light", position = "relative" }) => {
           <AlertClose onClick={() => setAlertActive(false)} />
         </AlertBar>
       )}
-      <Container position={position} navOpen={navOpen} mode={mode}>
+      <Container position={"relative"} navOpen={navOpen} mode={mode} scrollY={scrollY}>
         <Wrapper>
           <NavIcon
             mode={mode}
@@ -124,10 +146,10 @@ const Header = ({ mode = "light", position = "relative" }) => {
           </LogoWrapper>
           <NavRight>
             <NavItem
-              href="#"
               mode={mode}
               onClick={() => (
-                setOpenDrawer(activeTab !== "support" ? true : !openDrawer), setActiveTab("support")
+                setOpenDrawer(activeTab !== "support" ? true : !openDrawer),
+                setActiveTab("support")
               )}
             >
               Support
@@ -135,15 +157,18 @@ const Header = ({ mode = "light", position = "relative" }) => {
             <NavItem
               mode={mode}
               onClick={() => (
-                setOpenDrawer(activeTab !== "contact" ? true : !openDrawer), setActiveTab("contact")
+                setOpenDrawer(activeTab !== "contact" ? true : !openDrawer),
+                setActiveTab("contact")
               )}
             >
               Contact
             </NavItem>
             <NavItem
-              href="#"
               mode={mode}
-              onClick={() => (setOpenDrawer(activeTab !== "cart" ? true : !openDrawer), setActiveTab("cart"))}
+              onClick={() => (
+                setOpenDrawer(activeTab !== "cart" ? true : !openDrawer),
+                setActiveTab("cart")
+              )}
             >
               Selections <ProductSelectionCount />
             </NavItem>

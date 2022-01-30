@@ -46,7 +46,7 @@ const SelectionCart = ({ active, newSelection, tab }) => {
         boxSizing: "border-box",
         position: "absolute",
         top: 80,
-        right: active ? 0 : "-485px",
+        right: active ? 0 : "-550px",
         width: ['100%','100%', 480],
         height: "calc(100vh - 114px)",
         background: tab === "support" ? "#141414" : "#fff",
