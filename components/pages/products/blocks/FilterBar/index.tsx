@@ -165,7 +165,20 @@ export default function ProductFilters({ show, applyFilter, colourSchemes }) {
             </div>
           </div>
         </div>
-        <div className={styles.selections}>
+        <div
+          className={styles.selections}
+          onClick={() => (
+            dispatch({
+              type: "OPEN_DRAWER",
+              value:
+                state.activeDrawerTab !== "cart" ? true : !state.openDrawer,
+            }),
+            dispatch({
+              type: "SET_ACTIVE_DRAWER_TAB",
+              value: "cart",
+            })
+          )}
+        >
           <Text variant="Display-Overline">Selections</Text> <SelectionCount />
         </div>
       </div>
@@ -223,7 +236,9 @@ export default function ProductFilters({ show, applyFilter, colourSchemes }) {
               </Text>
               <ArrowDownIcon />
             </div>
-            {activeFilter === "colour-schemes" && <ColourSchemeFilter />}
+            {activeFilter === "colour-schemes" && (
+              <ColourSchemeFilter colourSchemes={colourSchemes} />
+            )}
             <div
               className={classnames(styles.filterItem, styles.sortByItem, {
                 [styles.activeFilter]: activeFilter === "sort-by",
@@ -273,7 +288,9 @@ export default function ProductFilters({ show, applyFilter, colourSchemes }) {
           {activeFilter === "search" && <SearchFilter />}
           {activeFilter === "products" && <ProductFilter />}
           {activeFilter === "sort-by" && <SortByFilter />}
-          {activeFilter === "colour-schemes" && <ColourSchemeFilter colourSchemes={colourSchemes} />}
+          {activeFilter === "colour-schemes" && (
+            <ColourSchemeFilter colourSchemes={colourSchemes} />
+          )}
         </div>
       )}
     </div>

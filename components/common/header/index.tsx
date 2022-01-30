@@ -39,10 +39,8 @@ const transitionStyles = {
 };
 
 const Header = ({ mode = "light", position = "relative" }) => {
-  const { state } = useAppContext();
+  const { state, dispatch } = useAppContext();
   const [navOpen, setNavOpen] = useState(false);
-  const [openDrawer, setOpenDrawer] = useState(false);
-  const [activeTab, setActiveTab] = useState("cart");
   const [newSelection, setNewSelection] = useState(false);
   const [selectionsCount, setSelectionsCount] = useState(0);
   const [alertActive, setAlertActive] = useState(true);
@@ -59,13 +57,19 @@ const Header = ({ mode = "light", position = "relative" }) => {
     if (
       selectionsMounted.current &&
       state.selectedProducts.length > selectionsCount &&
-      openDrawer !== true
+      state.openDrawer !== true
     ) {
-      setOpenDrawer(true);
+      dispatch({
+        type: "OPEN_DRAWER",
+        value: true,
+      });
       setNewSelection(true);
       const timerId = setTimeout(() => {
         setNewSelection(false);
-        setOpenDrawer(false);
+        dispatch({
+          type: "OPEN_DRAWER",
+          value: false,
+        });
       }, 4000);
       timerId;
     } else selectionsMounted.current = true;
@@ -125,7 +129,14 @@ const Header = ({ mode = "light", position = "relative" }) => {
               href="#"
               mode={mode}
               onClick={() => (
-                setOpenDrawer(activeTab !== "support" ? true : !openDrawer), setActiveTab("support")
+                dispatch({
+                  type: "OPEN_DRAWER",
+                  value: state.activeDrawerTab !== "support" ? true : !state.openDrawer,
+                }),
+                dispatch({
+                  type: "SET_ACTIVE_DRAWER_TAB",
+                  value: "support",
+                })
               )}
             >
               Support
@@ -134,7 +145,14 @@ const Header = ({ mode = "light", position = "relative" }) => {
               href="#"
               mode={mode}
               onClick={() => (
-                setOpenDrawer(activeTab !== "contact" ? true : !openDrawer), setActiveTab("contact")
+                dispatch({
+                  type: "OPEN_DRAWER",
+                  value: state.activeDrawerTab !== "contact" ? true : !state.openDrawer,
+                }),
+                dispatch({
+                  type: "SET_ACTIVE_DRAWER_TAB",
+                  value: "contact",
+                })
               )}
             >
               Contact
@@ -142,15 +160,24 @@ const Header = ({ mode = "light", position = "relative" }) => {
             <NavItem
               href="#"
               mode={mode}
-              onClick={() => (setOpenDrawer(activeTab !== "cart" ? true : !openDrawer), setActiveTab("cart"))}
+              onClick={() => (
+                dispatch({
+                  type: "OPEN_DRAWER",
+                  value: state.activeDrawerTab !== "cart" ? true : !state.openDrawer,
+                }),
+                dispatch({
+                  type: "SET_ACTIVE_DRAWER_TAB",
+                  value: "cart",
+                })
+              )}
             >
               Selections <ProductSelectionCount />
             </NavItem>
           </NavRight>
         </Wrapper>
         <SelectionCart
-          tab={activeTab}
-          active={openDrawer}
+          tab={state.activeDrawerTab}
+          active={state.openDrawer}
           newSelection={newSelection}
         />
         <Transition
