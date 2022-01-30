@@ -52,7 +52,7 @@ const Support = () => {
   return (
     <Container>
       <SupportHeader mode="light" />
-      <Hero />
+      <Hero activeSupport={activeSupport} />
       <HeroOverlayWrapper>
         <SupportModule
           supports={supports}

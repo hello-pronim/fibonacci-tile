@@ -1,5 +1,6 @@
 import css from "@styled-system/css";
 import styled from "@emotion/styled";
+import theme from "styles/theme";
 
 export interface containerProps {
   mode?: string;
@@ -11,8 +12,8 @@ export interface containerProps {
 const ArrowButtonWrapper = styled("div")(({ ...props }: containerProps) =>
   css({
     a: {
+      width: "100%",
       borderWidth: 1,
-      width: props.fullWidth && '100%',
       borderColor: "#B0ABA7",
       borderStyle: props.visibleBorder === false ? "none" : "solid",
       fontSize: 16,
@@ -71,6 +72,9 @@ const ArrowButtonWrapper = styled("div")(({ ...props }: containerProps) =>
                     : "assets/icons/white-arrow.svg"
                 })`,
         },
+      },
+      [theme.mediaQueries.small]: {
+        width: props.fullWidth && "100%",
       },
     },
   })

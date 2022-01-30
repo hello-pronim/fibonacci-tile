@@ -60,7 +60,7 @@ export default function Select({
         open={isOpened}
         onClick={handleProductSelectedDropdownOpen}
       >
-        {selectedProduct != null ? selectedProduct.title : "Choose a product"}
+        {selectedProduct != null ? selectedProduct.title : "Product"}
       </ProductSelect>
       <HiddenProductSelectItemsWrapper>
         {products.map((product) => (

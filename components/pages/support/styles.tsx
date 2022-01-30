@@ -17,7 +17,11 @@ const HeaderContainer = styled("div")(
 
 const HeroOverlayWrapper = styled("div")(
   css({
+    display: "none",
     marginTop: "-320px",
+    [theme.mediaQueries.small]: {
+      display: "block",
+    },
   })
 );
 

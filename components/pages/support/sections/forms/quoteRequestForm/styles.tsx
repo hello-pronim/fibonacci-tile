@@ -5,7 +5,7 @@ import theme from "styles/theme";
 
 const Container = styled(Cnt)(() =>
   css({
-    py: "80px",
+    py: "0px",
     [theme.mediaQueries.small]: {
       paddingTop: 0,
       paddingBottom: "240px",
@@ -20,7 +20,6 @@ const Wrapper = styled("div")(() =>
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    rowGap: 32,
     zIndex: 999,
   })
 );
@@ -29,7 +28,10 @@ const FormHeader = styled("div")(
   css({
     display: "block",
     width: "100%",
-    paddingBottom: "160px",
+    paddingBottom: "80px",
+    [theme.mediaQueries.small]: {
+      paddingBottom: "160px",
+    },
   })
 );
 
@@ -43,30 +45,46 @@ const FormHeaderWrapper = styled("div")(
 
 const FormHeaderLeft = styled("div")(
   css({
-    gridColumn: "1/span 4",
+    gridColumn: "1/span 12",
+    py: "40px",
+    [theme.mediaQueries.small]: {
+      gridColumn: "1/span 4",
+      py: 0,
+    },
   })
 );
 
 const FormTitle = styled("div")(
   css({
     fontFamily: "Canela",
-    fontSize: "42px",
-    lineHeight: "54.6px",
+    fontSize: "24px",
+    lineHeight: "33.6px",
+    [theme.mediaQueries.small]: {
+      fontSize: "42px",
+      lineHeight: "54.6px",
+    },
     color: theme.colors.charcoal,
   })
 );
 
 const FormHeaderRight = styled("div")(
   css({
-    gridColumn: "9/span 4",
+    gridColumn: "1/span 12",
+    [theme.mediaQueries.small]: {
+      gridColumn: "9/span 4",
+    },
   })
 );
 
 const FormDescription = styled("div")(
   css({
     fontFamily: "Everett",
-    fontSize: "20px",
-    lineHeight: "28px",
+    fontSize: "16px",
+    lineHeight: "22.4px",
+    [theme.mediaQueries.small]: {
+      fontSize: "20px",
+      lineHeight: "28px",
+    },
     color: theme.colors.charcoal,
   })
 );
@@ -80,7 +98,10 @@ const FormBody = styled("div")(
 
 const Form = styled("form")(
   css({
-    gridColumn: "1/span 8",
+    gridColumn: "1/span 12",
+    [theme.mediaQueries.small]: {
+      gridColumn: "1/span 8",
+    },
   })
 );
 
@@ -88,15 +109,22 @@ const FormGroup = styled("div")(
   css({
     width: "100%",
     paddingTop: "16px",
-    paddingBottom: "80px",
+    paddingBottom: "40px",
+    [theme.mediaQueries.small]: {
+      paddingBottom: "80px",
+    },
   })
 );
 
 const FormGroupTitle = styled("div")(
   css({
     fontFamily: "Canela",
-    fontSize: "42px",
-    lineHeight: "54.6px",
+    fontSize: "24px",
+    lineHeight: "33.6px",
+    [theme.mediaQueries.small]: {
+      fontSize: "42px",
+      lineHeight: "54.6px",
+    },
     color: theme.colors.charcoal,
     marginBottom: "40px",
   })
