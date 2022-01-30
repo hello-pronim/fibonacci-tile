@@ -17,21 +17,21 @@ const Wrapper = styled("div")(
   })
 );
 
-const Container = styled("div")(
+const Container = styled("div")(({compact}: {compact: boolean}) => 
   css({
-    padding: "38px",
+    padding: compact ? "0" : "38px",
     textAlign: "center",
     transition: "background-color ease 0.3s",
     "&:hover": {
-      backgroundColor: theme.colors.cold,
+      backgroundColor: !compact && theme.colors.cold,
     },
   })
 );
 
 const GridCardImgContainer = styled("div")(
   css({
+    position: 'relative',
     boxShadow: "none",
-    position: "relative"
   })
 );
 
@@ -131,11 +131,11 @@ const ActionBtn = styled("button")(({ checked }: ActionBtnProps) =>
     width: "35px",
     height: "35px",
     cursor: "pointer",
-    backgroundColor: theme.colors.white,
-    // border: checked ? "none" : "1px solid #B0ABA7",
-    border: checked ?  "1px solid #B0ABA7" : "1px solid #B0ABA7",
+    backgroundColor: checked ? theme.colors.charcoal: theme.colors.white,
+    border: checked ? "none" : "1px solid #B0ABA7",
     transition: "ease all 0.3s",
     ".hovered": {
+      alignItems: 'center',
       position: "absolute",
       visibility: "none",
       opacity: 0,

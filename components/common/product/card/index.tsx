@@ -47,6 +47,7 @@ const ProductCard = ({
   displayMode = "grid",
   isSelected = false,
   toggleProductSelect,
+  compact = false,
 }) => {
   const [detailShown, setDetailShown] = useState(false);
   if (displayMode === "list") {
@@ -56,12 +57,14 @@ const ProductCard = ({
           <ProductsInfoRow>
             <ProductName>
               <div>
-                <Link href={product.uri}>
-                  <ProductListTitle>
-                    <Text as="h3" variant="Display-XXSmall" altFont={true}>
-                      {product.title}
-                    </Text>
-                  </ProductListTitle>
+                <Link href={`/products/${product.slug}`}>
+                  <a>
+                    <ProductListTitle>
+                      <Text as="h3" variant="Display-XXSmall" altFont={true}>
+                        {product.title}
+                      </Text>
+                    </ProductListTitle>
+                  </a>
                 </Link>
               </div>
             </ProductName>
@@ -111,7 +114,7 @@ const ProductCard = ({
                 <ArrowButton
                   mode="dark"
                   title="View product details"
-                  link="http://localhost:3000/products"
+                  link={`/products/${product.slug}`}
                 />
               </Details>
             </ProductInfoBox>
@@ -150,10 +153,15 @@ const ProductCard = ({
           <ImgCell detailView={detailShown}>
             <ListCardImgContainer>
               <CardImg detailView={detailShown}>
-                {product?.img1 && (
-                  <Link href={product.uri}>
+                {product?.thumbImage?.[0].url && (
+                  <Link href={`/products/${product.slug}`}>
                     <a>
-                      <Image src={product?.img1} alt="Product-1" />
+                      <Image
+                        src={product.thumbImage[0].url}
+                        alt={product.title}
+                        width="228"
+                        height="228"
+                      />
                     </a>
                   </Link>
                 )}
@@ -210,12 +218,17 @@ const ProductCard = ({
 
   return (
     <Wrapper>
-      <Container>
+      <Container compact={compact}>
         <GridCardImgContainer>
-          {product?.img1 && (
-            <Link href={product.uri}>
+          {product?.thumbImage?.[0].url && (
+            <Link href={`/products/${product.slug}`}>
               <a>
-                <Image src={product?.img1} alt="Product-1" />
+                <Image
+                  src={product.thumbImage[0].url}
+                  alt="Product-1"
+                  width="228"
+                  height="228"
+                />
               </a>
             </Link>
           )}
@@ -239,7 +252,7 @@ const ProductCard = ({
               )}
               {isSelected && (
                 <span className="initial">
-                  <CheckMarkIcon color="black" />
+                  <CheckMarkIcon color="white" />
                 </span>
               )}
               {isSelected && (
@@ -259,13 +272,15 @@ const ProductCard = ({
           altFont={true}
           marginTop="25px"
         >
-          <Link href={product.uri}>
+          <Link href={`/products/${product.slug}`}>
             <a>{product.title}</a>
           </Link>
         </CardTitle>
-        <CardSubTitle as="h4" variant="Body-Small">
-          {product.subHeading}
-        </CardSubTitle>
+        {!compact && (
+          <CardSubTitle as="h4" variant="Body-Small">
+            {product.subline}
+          </CardSubTitle>
+        )}
       </Container>
     </Wrapper>
   );
