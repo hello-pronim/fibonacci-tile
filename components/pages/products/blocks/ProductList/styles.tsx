@@ -46,7 +46,6 @@ const DisplayInnerTable = styled("div")(
     "& > div": {
       display: "inline-block",
       verticalAlign: "middle",
-      width: "50%",
     },
   })
 );
