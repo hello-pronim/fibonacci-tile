@@ -10,7 +10,6 @@ interface ProductPageProps {
 }
 
 const Product: NextPage<ProductPageProps> = ({ product }) => {
-  console.log(product);
   return (
     <>
       <Head>
@@ -37,7 +36,6 @@ export const getStaticProps: GetStaticProps = async function ({ params }) {
     query: ProductQuery,
     variables: { slug: params.slug },
   });
-  console.log(product);
   return {
     props: {
       product,

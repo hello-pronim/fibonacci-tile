@@ -83,6 +83,35 @@ export const ProductQuery = gql`
           id
           url
         }
+        gallery {
+          id
+          title
+          url
+        }
+        project1 {
+          id
+          slug
+          title
+          ... on projects_projectDetails_Entry {
+            heroImage {
+              url
+            }
+            location
+            projectCompleted
+          }
+        }
+        project2 {
+          id
+          slug
+          title
+          ... on projects_projectDetails_Entry {
+            heroImage {
+              url
+            }
+            location
+            projectCompleted
+          }
+        }
       }
     }
   }

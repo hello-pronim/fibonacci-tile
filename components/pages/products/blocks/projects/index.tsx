@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import AccentText, { AccentTextMobile } from "@components/common/accentText";
 import Image from "next/image";
+import moment from 'moment';
 import ArrowButton from "@components/common/button/arrowButton";
 import Slide1 from "public/assets/temp/gallery-1.jpg";
 import Link from "next/link";
@@ -25,9 +26,13 @@ import theme from "@styles/theme";
 
 interface accordionTypes {
   accentText: string;
+  product: any;
 }
 
-const ProjectsModule = ({ accentText }: accordionTypes) => {
+const ProjectsModule = ({ accentText, product }: accordionTypes) => {
+  console.log("product", product)
+  const {project1, project2} = product;
+  console.log("porject1", project1);
   return (
     <Container id="projects">
       <AccentText top={400}>{accentText}</AccentText>
@@ -41,11 +46,8 @@ const ProjectsModule = ({ accentText }: accordionTypes) => {
               fontSize: 42,
             },
           })}
+          dangerouslySetInnerHTML={{__html: product.projectIntroduction}}
         >
-          Complex, random, and swarming with polarity - the hallmarks of any
-          great political system. There&apos;s bent and straight, cool and warm,
-          light and dark, and with the odd bit of red and green thrown in to
-          keep it honest.
         </Text>
       </IntroWrapper>
       <Sections>
@@ -93,72 +95,85 @@ const ProjectsModule = ({ accentText }: accordionTypes) => {
           </SectionItem>
         </SectionList>
       </Sections>
-      <Project
-        css={{
-          gridColumn: "1 / span 2",
-          [theme.mediaQueries.small]: {
-            gridColumn: "2 / span 5",
-          },
-        }}
-      >
-        <ImageWrapper>
-          <Image
-            src={Slide1}
-            alt="image-1"
-            layout="responsive"
-            width="710"
-            height="900"
-          />
-        </ImageWrapper>
-        <Text variant="Body-Small" css={css({ gridRow: 2, gridColumn: 1 })}>
-          Month, 2021
-        </Text>
-        <Details>
-          <Text variant="Display-XSmall">Project Name Goes Here</Text>
-          <Text variant="Display-XSmall" color={theme.colors.concrete}>
-            City, Country
-          </Text>
-          <LinkWrapper>
-            <Link href="#">View Project</Link>
-            <Arrow type="short" />
-          </LinkWrapper>
-        </Details>
-      </Project>
-      <Project
-        css={{
-          gridColumn: "1 / span 2",
-          gridRow: 3,
-          [theme.mediaQueries.small]: {
-            gridColumn: "7 / span 5",
-            gridRow: 2,
-          },
-        }}
-      >
-        <ImageWrapper>
-          <Image
-            src={Slide1}
-            alt="image-1"
-            layout="responsive"
-            width="710"
-            height="900"
-          />
-        </ImageWrapper>
-        <Text variant="Body-Small" css={css({ gridRow: 2, gridColumn: 1 })}>
-          Month, 2021
-        </Text>
-        <Details>
-          <Text variant="Display-XSmall">Project Name Goes Here</Text>
-          <Text variant="Display-XSmall" color={theme.colors.concrete}>
-            City, Country
-          </Text>
-          <LinkWrapper>
-            <Link href="#">View Project</Link>
-            <Arrow type="short" />
-          </LinkWrapper>
-        </Details>
-      </Project>
+      {project1?.length > 0 && (
+        <Project
+          css={{
+            gridColumn: "1 / span 2",
+            [theme.mediaQueries.small]: {
+              gridColumn: "2 / span 5",
+            },
+          }}
+        >
+         { project1[0].heroImage?.length && (
+          <ImageWrapper>
+            <Image
+              src={project1[0].heroImage[0].url}
+              alt="image-1"
+              layout="responsive"
+              width="710"
+              height="900"
+            />
+          </ImageWrapper>
+          )}
+          {project1[0]?.projectCompleted && (
+            <Text variant="Body-Small" css={css({ gridRow: 2, gridColumn: 1 })}>
+              {moment(project1[0]?.projectCompleted).format('MMMM YYYY')}
+            </Text>
+          )}
+          <Details>
+            <Text variant="Display-XSmall">{project1[0].title}</Text>
+            <Text variant="Display-XSmall" color={theme.colors.concrete}>
+              {project1[0].location}
+            </Text>
+            <LinkWrapper>
+              <Link href={project1[0].slug}>View Project</Link>
+              <Arrow type="short" />
+            </LinkWrapper>
+          </Details>
+        </Project>
+      )}
+      
+      {project2?.length > 0 && (
+        <Project
+          css={{
+            gridColumn: "1 / span 2",
+            gridRow: 3,
+            [theme.mediaQueries.small]: {
+              gridColumn: "7 / span 5",
+              gridRow: 2,
+            },
+          }}
+        >
+          { project2[0].heroImage?.length && (
+          <ImageWrapper>
+            <Image
+              src={project2[0].heroImage[0].url}
+              alt="image-1"
+              layout="responsive"
+              width="710"
+              height="900"
+            />
+          </ImageWrapper>
+          )}
+          {project2[0]?.projectCompleted && (
+            <Text variant="Body-Small" css={css({ gridRow: 2, gridColumn: 1 })}>
+               {moment(project2[0]?.projectCompleted).format('MMMM YYYY')}
+            </Text>
+          )}
+          <Details>
+            <Text variant="Display-XSmall">{project2[0].title}</Text>
+            <Text variant="Display-XSmall" color={theme.colors.concrete}>
+              {project2[0].location}
+            </Text>
+            <LinkWrapper>
+              <Link href={project2[0].slug}>View Project</Link>
+              <Arrow type="short" />
+            </LinkWrapper>
+          </Details>
+        </Project>
+      )}
       <Bottom>
-        <ArrowButton mode="" title="How to order samples" link="#" />
+        <ArrowButton mode="" title="How to order samples" link="/how-to-order-samples" />
       </Bottom>
     </Container>
   );

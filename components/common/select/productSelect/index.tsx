@@ -37,7 +37,6 @@ export default function Select({
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   const handleProductItemSelected = (productId) => {
-    console.log(productId);
     const selected = products.find((prod) => prod.id === productId);
 
     setSelectedProductId(productId);
