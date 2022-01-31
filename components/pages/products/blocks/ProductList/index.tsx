@@ -16,17 +16,25 @@ import {
   TableHeaderLeft,
   TableHeaderRight,
 } from "./styles";
+import { Props } from "react";
 
 interface productListProps {
   products: any;
   accentText?: string;
+  loadingProducts?: boolean;
 }
 
-function ProductLists({ products, accentText }: productListProps) {
+function ProductLists({
+  products,
+  accentText,
+  loadingProducts = false,
+}: productListProps) {
   const { state, dispatch } = useAppContext();
   return (
     <Container listView={state?.productDisplayMode === "list"}>
       {accentText && <AccentText top={120}>Be inspired</AccentText>}
+      {loadingProducts && <p>Loading Products...</p>}
+      {products.length === 0 && <p>No products matching criteria</p>}
       {state?.productDisplayMode === "list" && (
         <DisplayListTable>
           <TableHeader>
