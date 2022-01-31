@@ -9,7 +9,7 @@ const DisplayXLarge = ({ ...props }) =>
     letterSpacing: 2,
   });
 
-const DisplayLarge = ({ ...props }) => 
+const DisplayLarge = ({ ...props }) =>
   css({
     fontFamily: props.altFont ? [0] : [1],
     fontSize: props.altFont ? [9] : [10],
@@ -17,45 +17,41 @@ const DisplayLarge = ({ ...props }) =>
     fontWeight: 0,
   });
 
-const DisplayMedium = ({ ...props }) => (
+const DisplayMedium = ({ ...props }) =>
   css({
     fontFamily: props.altFont ? [0] : [1],
     fontSize: props.altFont ? [7] : [8],
     lineHeight: props.altFont ? [2] : [1],
     fontWeight: 0,
     letterSpacing: props.altFont ? 1 : 0,
-  })
-);
+  });
 
-const DisplaySmall = ({ ...props }) => (
+const DisplaySmall = ({ ...props }) =>
   css({
     fontFamily: props.altFont ? [0] : [1],
     fontSize: [6],
     lineHeight: props.altFont ? [1] : [2],
     fontWeight: 0,
     letterSpacing: props.altFont ? 0 : 1,
-  })
-);
+  });
 
-const DisplayXSmall = ({ ...props }) => (
+const DisplayXSmall = ({ ...props }) =>
   css({
     fontFamily: props.altFont ? [0] : [1],
     fontSize: props.altFont ? 4 : 5,
     lineHeight: props.altFont ? 1 : 2,
     fontWeight: 0,
     letterSpacing: 0,
-  })
-);
+  });
 
-const DisplayXXSmall = ({ ...props }) => (
+const DisplayXXSmall = ({ ...props }) =>
   css({
     fontFamily: props.altFont ? [0] : [1],
     fontSize: 3,
     lineHeight: props.altFont ? 4 : 2,
     fontWeight: 0,
     letterSpacing: 0,
-  })
-);
+  });
 
 const DisplayOverline = ({ ...props }) =>
   css({
@@ -78,7 +74,7 @@ const BodyXLarge = ({ ...props }) =>
 const BodyLarge = ({ ...props }) =>
   css({
     fontFamily: 1,
-  fontSize: 20,
+    fontSize: 20,
     lineHeight: 4,
     fontWeight: 0,
   });
@@ -88,7 +84,7 @@ const BodyRegular = ({ ...props }) =>
     fontFamily: 1,
     fontSize: 2,
     lineHeight: 4,
-    fontWeight: 0
+    fontWeight: 0,
   });
 
 const BodySmall = ({ ...props }) =>

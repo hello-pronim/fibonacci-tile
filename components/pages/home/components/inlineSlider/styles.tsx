@@ -1,30 +1,31 @@
 import css from "@styled-system/css";
 import styled from "@emotion/styled";
-import Cntnr from '@components/common/layout/container';
+import Cntnr from "@components/common/layout/container";
 import theme from "styles/theme";
 
-const Container = styled(Cntnr)(css({
-  overflowX: 'hidden',
-}))
+const Container = styled(Cntnr)(
+  css({
+    overflowX: "hidden",
+  })
+);
 
 const Wrapper = styled("div")(
   css({
     position: "relative",
-    gridColumn: ["1 / span 2", "1 / span 6", "1 / span 6", '2 / span 10'],
-    py: 206,
-    pb: 40,
+    gridColumn: ["1 / span 2", "1 / span 6", "1 / span 6", "2 / span 10"],
+    py: 40,
     width: "100%",
     ".slick-slider .slick-list": {
-      [theme.mediaQueries.medium]: {overflow: "visible"},
+      [theme.mediaQueries.medium]: { overflow: "visible" },
       ".slick-track": {
-        display:'flex',
+        display: "flex",
         ".slick-slide": {
           [theme.mediaQueries.medium]: {
             mr: 40,
-          }
+          },
         },
         ".slick-current": {
-          '.slide-content': {
+          ".slide-content": {
             opacity: 1,
           },
         },
@@ -56,10 +57,10 @@ const ContentWrapper = styled("div")(
     width: "100%",
     rowGap: 24,
     [theme.mediaQueries.medium]: {
-      rowGap: 32,  
+      rowGap: 32,
     },
     opacity: 0,
-    transition: 'ease all 0.3s',
+    transition: "ease all 0.3s",
     h6: {
       fontSize: 16,
       [theme.mediaQueries.medium]: {
@@ -149,11 +150,11 @@ const LinkWrapper = styled("div")(
     alignItems: "center",
     columnGap: 20,
     svg: {
-      transition: 'ease all 0.3s',
+      transition: "ease all 0.3s",
     },
-    '&:hover': {
+    "&:hover": {
       svg: {
-        transform: 'translateX(6px)',
+        transform: "translateX(6px)",
       },
     },
     a: {
@@ -161,21 +162,21 @@ const LinkWrapper = styled("div")(
       fontSize: 2,
       lineHeight: 2,
       color: "charcoal",
-      '&:before': {
-        position:'relative',
-        backgroundColor:'charcoal',
+      "&:before": {
+        position: "relative",
+        backgroundColor: "charcoal",
         content: "' '",
-        display: 'block',
-        height: '2px',
-        width: '100%',
-        transform: 'translateY(40px)',
-        transition: 'ease all 0.3s',
-        pointerEvents: 'none',
+        display: "block",
+        height: "2px",
+        width: "100%",
+        transform: "translateY(40px)",
+        transition: "ease all 0.3s",
+        pointerEvents: "none",
         opacity: 0,
       },
-      '&:hover': {
-        '&:before': {
-          transform: 'translateY(28px)',
+      "&:hover": {
+        "&:before": {
+          transform: "translateY(28px)",
           opacity: 1,
         },
       },
@@ -183,23 +184,25 @@ const LinkWrapper = styled("div")(
   })
 );
 
-const Pill = styled('div')(css({
-  display: 'flex',
-  alignItems: 'center',
-  columnGap: '4px',
-  py: '3.5px',
-  px: '12px',
-  bg: 'charcoal',
-  position:'absolute',
-  top: 32,
-  left: 32,
-  zIndex: 99999,
-  textTransform: 'uppercase',
-  color: 'white',
-  borderRadius: 32,
-  fontSize: 0,
-  lineHeight: 2,
-}))
+const Pill = styled("div")(
+  css({
+    display: "flex",
+    alignItems: "center",
+    columnGap: "4px",
+    py: "3.5px",
+    px: "12px",
+    bg: "charcoal",
+    position: "absolute",
+    top: 32,
+    left: 32,
+    zIndex: 99999,
+    textTransform: "uppercase",
+    color: "white",
+    borderRadius: 32,
+    fontSize: 0,
+    lineHeight: 2,
+  })
+);
 
 const SlideImage = styled("div")(
   css({
