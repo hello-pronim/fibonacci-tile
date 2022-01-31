@@ -79,7 +79,7 @@ export default function ProductFilter({ productCategories }) {
                     state.isMobileFilterActive ? "Body-XSmall" : "Body-Small"
                   }
                 >
-                  {cat.description}
+                  <span dangerouslySetInnerHTML={{ __html: cat.description }} />
                 </Text>
               </div>
               {state.isMobileFilterActive &&
