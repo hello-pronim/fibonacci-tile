@@ -8,59 +8,45 @@ import {
 } from "./styles";
 import Text from "@components/common/typography";
 import Image from "next/image";
-import SupportIcon from "public/assets/icons/support-icon.svg";
-import SamplesIcon from "public/assets/icons/sample-icon.svg";
-import QuoteIcon from "public/assets/icons/quote-icon.svg";
-import EnquiryIcon from "public/assets/icons/enquiry-icon.svg";
 
-const SupportModule = () => {
+interface SupportModuleProps {
+  title?: string;
+  supports?: Array<any>;
+  activeSupport?: string;
+  setActiveSupport?: (tab) => void;
+}
+const SupportModule = ({
+  title = "",
+  supports,
+  activeSupport = "",
+  setActiveSupport,
+}: SupportModuleProps) => {
   return (
     <Container>
       <Wrapper>
-        <Text as="h6" variant="Display-Overline">
-          HOW CAN WE HELP?
-        </Text>
+        {title !== "" && (
+          <Text as="h6" variant="Display-Overline">
+            {title}
+          </Text>
+        )}
         <TileWrapper>
-          <Tile href="#">
-            <TileInner>
-              <Icon>
-                <Image alt="" src={SupportIcon} width={48} height={48} />
-              </Icon>
-              <Text as="h5" variant="Display-XSmall" altFont>
-                Product Support
-              </Text>
-            </TileInner>
-          </Tile>
-          <Tile href="#">
-            <TileInner>
-              <Icon>
-                <Image alt="" src={SamplesIcon} width={48} height={48} />
-              </Icon>
-              <Text as="h5" variant="Display-XSmall" altFont>
-                How to order samples
-              </Text>
-            </TileInner>
-          </Tile>
-          <Tile href="#">
-            <TileInner>
-              <Icon>
-                <Image alt="" src={QuoteIcon} width={48} height={48} />
-              </Icon>
-              <Text as="h5" variant="Display-XSmall" altFont>
-                Request a quote
-              </Text>
-            </TileInner>
-          </Tile>
-          <Tile href="#">
-            <TileInner>
-              <Icon>
-                <Image alt="" src={EnquiryIcon} width={48} height={48} />
-              </Icon>
-              <Text as="h5" variant="Display-XSmall" altFont>
-                General Enquiry
-              </Text>
-            </TileInner>
-          </Tile>
+          {supports.map((support) => (
+            <Tile
+              key={support.slug}
+              href={support.href}
+              active={activeSupport === support.slug}
+              onClick={() => setActiveSupport(support.slug)}
+            >
+              <TileInner>
+                <Icon>
+                  <Image alt="" src={support.icon} width={48} height={48} />
+                </Icon>
+                <Text as="h5" variant="Display-XSmall" altFont>
+                  {support.title}
+                </Text>
+              </TileInner>
+            </Tile>
+          ))}
         </TileWrapper>
       </Wrapper>
     </Container>

@@ -1,8 +1,9 @@
-import { StyledSelect } from "./styles";
+import { StyledInput } from "./styles";
 
-interface selectProps {
+interface inputProps {
+  type?: string;
   name?: string;
-  variant?: "outlined" | "default";
+  placeholder?: string;
   value?: string;
   fullWidth?: boolean;
   halfWidth?: boolean;
@@ -10,27 +11,29 @@ interface selectProps {
   children?: React.ReactNode;
 }
 
-export default function Select({
+export default function Input({
+  type = "text",
   name,
-  variant = "outlined",
+  placeholder,
   value,
   fullWidth = false,
   halfWidth = false,
   onChange,
   children,
   ...props
-}: selectProps) {
+}: inputProps) {
   return (
-    <StyledSelect
+    <StyledInput
+      type={type}
       name={name}
-      variant={variant}
+      placeholder={placeholder}
       value={value}
-      onChange={onChange}
-      {...props}
       fullWidth={fullWidth}
       halfWidth={halfWidth}
+      onChange={onChange}
+      {...props}
     >
       {children}
-    </StyledSelect>
+    </StyledInput>
   );
 }
