@@ -12,6 +12,7 @@ interface ProductPageProps {
 }
 
 const Product: NextPage<ProductPageProps> = ({ product, specifications }) => {
+  if (!product) return null;
   const technicalSpecifications = specifications[0]?.technicalSpecifications;
   return (
     <>
@@ -55,7 +56,6 @@ export const getStaticProps: GetStaticProps = async function ({ params }) {
   } = await client.query({
     query: GlobalSpecificationQuery,
   });
-  console.log("asdf", specifications);
   return {
     props: {
       product,

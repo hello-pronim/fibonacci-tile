@@ -53,8 +53,8 @@ const ProductsPage = ({
     if (state.filter.colourSchemes) {
       filterVars.colourSchemes = state.filter.colourSchemes;
     }
-    if (state.filter.sortBy) {
-      switch (state.filter.sortBy) {
+    if (state.filter?.sortBy?.value) {
+      switch (state.filter.sortBy.value) {
         case "asc":
           filterVars.orderBy = "title ASC";
           break;
@@ -105,10 +105,17 @@ const ProductsPage = ({
           productCategories={productCategories}
         />
       </section>
-      <ProductLists loadingProducts={loadingProducts} products={firstHalfProducts} accentText="Be inspired" />
+      <ProductLists
+        loadingProducts={loadingProducts}
+        products={firstHalfProducts}
+        accentText="Be inspired"
+      />
       <CTAPanel imagePosition="left" />
       {secondHalfProducts.length > 0 && (
-        <ProductLists loadingProducts={loadingProducts} products={secondHalfProducts} />
+        <ProductLists
+          loadingProducts={loadingProducts}
+          products={secondHalfProducts}
+        />
       )}
       <CTAPanel imagePosition="right" />
       <FooterCTAPanel />
