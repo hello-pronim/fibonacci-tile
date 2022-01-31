@@ -5,9 +5,13 @@ export const CategoriesQuery: any = gql`
     categories(group: $group) {
       id
       title
+      slug
       ... on colourSchemes_Category {
         colorHex
         textColor
+      }
+      ... on productCategories_Category {
+        description
       }
     }
   }
