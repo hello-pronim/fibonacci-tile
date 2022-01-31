@@ -58,17 +58,14 @@ const SingleHeroModule = ({ product }) => {
           >
             <Text variant="Body-XSmall">No. {product.productNumber}</Text>
           </span>
-          <Pill># New Release</Pill>
+          {product.label && (<Pill># {product.label}</Pill>)}
           <Text
             variant="Body-Large"
             css={css({ span: { color: theme.colors.taupe } })}
           >
             {product.subline}
           </Text>
-          <Text variant="Body-Large">
-            A democratic mix of colours, shapes and sizes, displaying the great
-            egalitarian hallmarks of robustness and diversity.
-          </Text>
+          <Text variant="Body-Large" dangerouslySetInnerHTML={{__html: product.designStory}}></Text>
         </div>
         <div
           css={css({

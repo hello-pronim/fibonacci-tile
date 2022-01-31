@@ -52,14 +52,14 @@ export default function ProductFilter({ productCategories }) {
           <div
             key={`product-cat-${cat.id}`}
             className={classnames(styles.productFilterItem, {
-              [styles.activeFilter]: state.filter.products === cat.slug,
+              [styles.activeFilter]: state.filter.products === cat.id,
             })}
           >
             <div
               className={classnames(styles.filterInner, {
                 [styles.filterInnerMobile]: state.isMobileFilterActive,
               })}
-              onClick={() => handleFilter(cat.slug)}
+              onClick={() => handleFilter(cat.id)}
             >
               <div
                 className={classnames({
@@ -69,7 +69,7 @@ export default function ProductFilter({ productCategories }) {
                 <Text as="h3" variant="Body-Small">
                   {cat.title}{" "}
                   {!state.isMobileFilterActive &&
-                    state.filter.products === cat.slug && (
+                    state.filter.products === cat.id && (
                       <CheckMarkIcon color="#141414" />
                     )}
                 </Text>
@@ -83,7 +83,7 @@ export default function ProductFilter({ productCategories }) {
                 </Text>
               </div>
               {state.isMobileFilterActive &&
-                state.filter.products === cat.slug && (
+                state.filter.products === cat.id && (
                   <CheckMarkIcon color="#141414" />
                 )}
             </div>
