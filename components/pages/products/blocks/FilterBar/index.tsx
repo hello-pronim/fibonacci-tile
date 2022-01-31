@@ -230,7 +230,9 @@ export default function ProductFilters({
               </Text>
               <ArrowDownIcon />
             </div>
-            {activeFilter === "products" && <ProductFilter />}
+            {activeFilter === "products" && (
+              <ProductFilter productCategories={productCategories} />
+            )}
             <div
               className={classnames(
                 styles.filterItem,

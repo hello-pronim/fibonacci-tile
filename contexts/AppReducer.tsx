@@ -53,15 +53,21 @@ export const AppReducer = (state, action) => {
             },
           };
         }
-        if (
-          action?.filter?.type === "searchText" &&
-          action?.filter?.value === "clear"
-        ) {
+        if (action?.filter?.type === "searchText") {
+          if (action?.filter?.value === "clear") {
+            return {
+              ...state,
+              filter: {
+                ...state.filter,
+                [action.filter.type]: "",
+              },
+            };
+          }
           return {
             ...state,
             filter: {
               ...state.filter,
-              [action.filter.type]: null,
+              [action.filter.type]: value,
             },
           };
         }
