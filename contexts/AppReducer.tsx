@@ -73,12 +73,10 @@ export const AppReducer = (state, action) => {
       return state;
     }
     case "TOGGLE_PRODUCT_SELECTION": {
-      console.log("reducerProduct", action.product)
       // check if product is in selectedProducts
       const checkProductSelected = state.selectedProducts.findIndex(
         (sp) => sp.id === action.product.id
       );
-      console.log("checkProductSelected", checkProductSelected)
       if (checkProductSelected !== -1) {
         const newSelectedProducts = state?.selectedProducts.filter(
           (sp) => sp.id !== action.product.id
