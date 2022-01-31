@@ -2,7 +2,7 @@ export const initialState = {
   selectedProducts: [],
   confirmedProducts: [],
   filter: {
-    searchText: null,
+    searchText: "",
     products: "all",
     colourSchemes: [],
     sortBy: "featured",
@@ -12,7 +12,7 @@ export const initialState = {
   isMobileFilterActive: false,
   checkoutStep: 1,
   openDrawer: false,
-  activeDrawerTab: "cart"
+  activeDrawerTab: "cart",
 };
 
 export const AppReducer = (state, action) => {
@@ -34,7 +34,7 @@ export const AppReducer = (state, action) => {
             ? state.filter.colourSchemes
             : [];
           let newColorSchemes;
-          if(value !== "clear") {
+          if (value !== "clear") {
             if (existingColourSchemes.indexOf(value) === -1) {
               newColorSchemes = [...state.filter.colourSchemes, value];
             } else {
@@ -42,8 +42,8 @@ export const AppReducer = (state, action) => {
                 return item !== value;
               });
             }
-          }else {
-            newColorSchemes = []
+          } else {
+            newColorSchemes = [];
           }
           return {
             ...state,
@@ -53,12 +53,21 @@ export const AppReducer = (state, action) => {
             },
           };
         }
-        if(action?.filter?.type === "searchText" && action?.filter?.value ==="clear") {
+        if (action?.filter?.type === "searchText") {
+          if (action?.filter?.value === "clear") {
+            return {
+              ...state,
+              filter: {
+                ...state.filter,
+                [action.filter.type]: "",
+              },
+            };
+          }
           return {
             ...state,
             filter: {
               ...state.filter,
-              [action.filter.type]: null,
+              [action.filter.type]: value,
             },
           };
         }
@@ -66,7 +75,10 @@ export const AppReducer = (state, action) => {
           ...state,
           filter: {
             ...state.filter,
-            [action.filter.type]: value,
+            [action.filter.type]: {
+              value,
+              label: action.filter.label,
+            },
           },
         };
       }
@@ -95,16 +107,18 @@ export const AppReducer = (state, action) => {
     }
     case "TOGGLE_CONFIRM_PRODUCT_SELECTION": {
       // check if product is in confirmedProducts
-      const checkConfirmProductSelected = state.confirmedProducts && state.confirmedProducts.findIndex(
-        (sp) => sp.id === action.product.id
-      );
+      const checkConfirmProductSelected =
+        state.confirmedProducts &&
+        state.confirmedProducts.findIndex((sp) => sp.id === action.product.id);
       if (checkConfirmProductSelected !== -1) {
-        const newConfirmSelectedProducts = state.confirmedProducts && state?.confirmedProducts.filter(
-          (sp) => sp.id !== action.product.id
-        );
+        const newConfirmSelectedProducts =
+          state.confirmedProducts &&
+          state?.confirmedProducts.filter((sp) => sp.id !== action.product.id);
         return {
           ...state,
-          confirmedProducts: newConfirmSelectedProducts ? newConfirmSelectedProducts : [],
+          confirmedProducts: newConfirmSelectedProducts
+            ? newConfirmSelectedProducts
+            : [],
         };
       } else {
         return {
@@ -128,14 +142,14 @@ export const AppReducer = (state, action) => {
     case "OPEN_DRAWER": {
       return {
         ...state,
-        openDrawer: action.value
-      }
+        openDrawer: action.value,
+      };
     }
     case "SET_ACTIVE_DRAWER_TAB": {
       return {
         ...state,
-        activeDrawerTab: action.value
-      }
+        activeDrawerTab: action.value,
+      };
     }
   }
 };

@@ -17,6 +17,7 @@ const ProductsPage = ({
   productCategories,
 }) => {
   const { state } = useAppContext();
+  const [loadingProducts, setLoadingProducts] = useState(false);
   const [firstHalfProducts, setFirstHalfProducts] = useState(
     initialProducts.slice(0, 15)
   );
@@ -44,8 +45,9 @@ const ProductsPage = ({
     const filterVars: any = {
       productCategories: [],
       colourSchemes: [],
+      search: state.filter.searchText ? state.filter.searchText : "",
     };
-    if (state.filter.products != "all") {
+    if (state.filter.products.value !== "all") {
       filterVars.productCategories = state.filter.products;
     }
     if (state.filter.colourSchemes) {
@@ -66,8 +68,8 @@ const ProductsPage = ({
           break;
       }
     }
-    console.log(filterVars);
     async function fetchProducts() {
+      setLoadingProducts(true);
       const {
         data: { entries: products },
       } = await client.query({
@@ -76,6 +78,7 @@ const ProductsPage = ({
       });
       setFirstHalfProducts(products.slice(0, 15));
       setSecondHalfProducts(products.slice(15, 15));
+      setLoadingProducts(false);
     }
     fetchProducts();
   }, [state.filter]);
