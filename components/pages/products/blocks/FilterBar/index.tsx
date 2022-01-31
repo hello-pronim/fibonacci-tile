@@ -21,7 +21,12 @@ import ColourSchemeFilter from "./ColourSchemeFilter";
 import Logo from "public/assets/brandmarks/symbol-primary.svg";
 import styles from "./styles.module.scss";
 
-export default function ProductFilters({ show, applyFilter, colourSchemes }) {
+export default function ProductFilters({
+  show,
+  applyFilter,
+  colourSchemes,
+  productCategories,
+}) {
   const { state, dispatch } = useAppContext();
   const [activeFilter, setActiveFilter] = useState(null);
   const [isMobileFilterActive, setIsMobileFilterActive] = useState(false);
@@ -44,7 +49,6 @@ export default function ProductFilters({ show, applyFilter, colourSchemes }) {
       }
     };
   };
-
   const toggleMobileFilter = () => {
     if (!isMobileFilterActive) {
       document.body.classList.add("modal-open");
@@ -57,6 +61,7 @@ export default function ProductFilters({ show, applyFilter, colourSchemes }) {
       value: !isMobileFilterActive,
     });
   };
+
   return (
     <div
       ref={ref}
@@ -286,7 +291,7 @@ export default function ProductFilters({ show, applyFilter, colourSchemes }) {
       {!isMobileFilterActive && activeFilter && (
         <div className={styles.filterContainer}>
           {activeFilter === "search" && <SearchFilter />}
-          {activeFilter === "products" && <ProductFilter />}
+          {activeFilter === "products" && <ProductFilter productCategories={productCategories} />}
           {activeFilter === "sort-by" && <SortByFilter />}
           {activeFilter === "colour-schemes" && (
             <ColourSchemeFilter colourSchemes={colourSchemes} />
