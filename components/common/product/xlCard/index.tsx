@@ -22,7 +22,7 @@ const ProductCard = ({ product, isSelected = false, toggleProductSelect }) => {
               <a>
                 <Image
                   src={product.thumbImage[0].url}
-                  alt="Product-1"
+                  alt={product.title}
                   width="288"
                   height="288"
                 />
