@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 export const GlobalSpecificationQuery = gql`
-query GlobalSpecificationQuery {
+  query GlobalSpecificationQuery {
     globalSets {
       ... on specifications_GlobalSet {
         technicalSpecifications {
@@ -13,5 +13,5 @@ query GlobalSpecificationQuery {
         }
       }
     }
-}
+  }
 `;

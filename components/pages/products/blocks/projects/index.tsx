@@ -30,9 +30,7 @@ interface accordionTypes {
 }
 
 const ProjectsModule = ({ accentText, product }: accordionTypes) => {
-  console.log("product", product)
   const {project1, project2} = product;
-  console.log("porject1", project1);
   return (
     <Container id="projects">
       <AccentText top={400}>{accentText}</AccentText>
@@ -126,7 +124,7 @@ const ProjectsModule = ({ accentText, product }: accordionTypes) => {
               {project1[0].location}
             </Text>
             <LinkWrapper>
-              <Link href={project1[0].slug}>View Project</Link>
+              <Link href={`/projects/${project1[0].slug}`}>View Project</Link>
               <Arrow type="short" />
             </LinkWrapper>
           </Details>
@@ -166,7 +164,7 @@ const ProjectsModule = ({ accentText, product }: accordionTypes) => {
               {project2[0].location}
             </Text>
             <LinkWrapper>
-              <Link href={project2[0].slug}>View Project</Link>
+              <Link href={`/projects/${project2[0].slug}`}>View Project</Link>
               <Arrow type="short" />
             </LinkWrapper>
           </Details>

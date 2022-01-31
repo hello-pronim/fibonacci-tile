@@ -2,21 +2,24 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import client from "@utils/apolloClient";
 import { ProductQuery } from "@gql/productGQL";
+import { GlobalSpecificationQuery } from "@gql/globalGQL";
 import Footer from "@components/common/footer";
 import ProductSinglePage from "@components/pages/products/single";
 
 interface ProductPageProps {
   product: any;
+  specifications: any;
 }
 
-const Product: NextPage<ProductPageProps> = ({ product }) => {
+const Product: NextPage<ProductPageProps> = ({ product, specifications }) => {
+  const technicalSpecifications = specifications[0]?.technicalSpecifications;
   return (
     <>
       <Head>
         <title>Products | Fibonacci</title>
         <meta name="description" content="Fibonacci Products page" />
       </Head>
-      <ProductSinglePage product={product} />
+      <ProductSinglePage product={product} technicalSpecifications={technicalSpecifications} />
       <Footer />
     </>
   );
@@ -36,9 +39,16 @@ export const getStaticProps: GetStaticProps = async function ({ params }) {
     query: ProductQuery,
     variables: { slug: params.slug },
   });
+  const {
+    data: { globalSets: specifications}
+  } = await client.query({
+    query: GlobalSpecificationQuery
+  });
+  console.log("asdf", specifications)
   return {
     props: {
       product,
+      specifications,
     },
     revalidate: 500,
   };

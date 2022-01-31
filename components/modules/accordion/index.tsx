@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { GetStaticProps } from "next";
 import AccentText, { AccentTextMobile } from "@components/common/accentText";
 import { Container, Wrapper, Item, Top, Inner, Toggle } from "./styles";
 import mockData from "./constants";
@@ -9,11 +10,12 @@ import Arrow from "@components/icons/arrowDown";
 
 interface accordionTypes {
   accentText: string;
+  items: any;
 }
 
-const AccordionModule = ({ accentText }: accordionTypes) => {
+const AccordionModule = ({ accentText, items }: accordionTypes) => {
+  console.log("items", items)
   const [activeIndex, setActiveIndex] = useState(0);
-
   return (
     <Container id="technical-specifications">
       <AccentText top={154}>{accentText}</AccentText>

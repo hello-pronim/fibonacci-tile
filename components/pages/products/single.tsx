@@ -11,7 +11,7 @@ import Assemblage from "public/tmp/prod/assemblage.jpeg";
 import Bloc from "public/tmp/prod/bloc.jpeg";
 import Brackish from "public/tmp/prod/brackish.jpeg";
 
-const ProductPage = ({ product }) => {
+const ProductPage = ({ product, technicalSpecifications }) => {
   const products = [
     {
       id: "1",
@@ -71,7 +71,7 @@ const ProductPage = ({ product }) => {
       <SingleHeroModule product={product} />
       <Projects product={product} accentText="Fibonacci Live" />
       {product?.gallery?.length > 0 && (<InlineSlider images={product.gallery} />)}
-      <AccordionModule accentText="Technical Specifications" />
+      <AccordionModule items={technicalSpecifications} accentText="Technical Specifications" />
       <RelatedProducts title="More in our Terrazzo range" products={products} />
     </>
   );
