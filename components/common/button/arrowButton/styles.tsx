@@ -1,24 +1,32 @@
 import css from "@styled-system/css";
 import styled from "@emotion/styled";
-import theme from "styles/theme";
-
+import theme from "@styles/theme";
 export interface containerProps {
   mode?: string;
   visibleArrow: boolean;
   visibleBorder: boolean;
   fullWidth: boolean;
+  size: string;
 }
 
 const ArrowButtonWrapper = styled("div")(({ ...props }: containerProps) =>
   css({
     a: {
-      width: props.fullWidth && "100%",
       borderWidth: 1,
+      width: props.fullWidth && "100%",
       borderColor: "#B0ABA7",
       borderStyle: props.visibleBorder === false ? "none" : "solid",
       fontSize: 16,
-      padding: "14px 140px 14px 20px",
+      padding: !props.size
+        ? "14px 140px 14px 20px"
+        : "17.82px 336.93px 17.82px 21px",
+      [theme.mediaQueriesMaxWidth.small]: {
+        padding: !props.size
+          ? "17.82px 244.68px 17.82px 21px"
+          : "17.82px 268.93px 17.82px 21px",
+      },
       display: "inline-block",
+      textAlign: props.size ? "left" : "",
       lineHeight: "1",
       color: props.mode === "light" ? "white" : "charcoal",
       textDecoration: "none",
