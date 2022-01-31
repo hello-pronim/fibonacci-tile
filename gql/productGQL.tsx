@@ -6,6 +6,7 @@ export const ProductsQuery = gql`
     $productCategories: [QueryArgument] = []
     $colourSchemes: [QueryArgument] = []
     $orderBy: String = "title ASC"
+    $collections: [QueryArgument] = []
   ) {
     entries(
       section: "products"
@@ -13,6 +14,7 @@ export const ProductsQuery = gql`
       productCategories: $productCategories
       colourSchemes: $colourSchemes
       orderBy: $orderBy
+      collections: $collections
     ) {
       id
       slug
@@ -64,6 +66,7 @@ export const ProductQuery = gql`
         title
         subline
         collections {
+          id,
           title
         }
         label

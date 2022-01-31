@@ -14,13 +14,12 @@ interface accordionTypes {
 }
 
 const AccordionModule = ({ accentText, items }: accordionTypes) => {
-  console.log("items", items)
   const [activeIndex, setActiveIndex] = useState(0);
   return (
     <Container id="technical-specifications">
       <AccentText top={154}>{accentText}</AccentText>
       <Wrapper>
-        {mockData.map((item, index) => {
+        {items.map((item, index) => {
           return (
             <Item key={index}>
               <Top
@@ -37,7 +36,7 @@ const AccordionModule = ({ accentText, items }: accordionTypes) => {
                     },
                   })}
                 >
-                  {item.heading}
+                  {item.specificationsTitle}
                 </Text>
                 <Toggle
                   css={css({
@@ -54,13 +53,13 @@ const AccordionModule = ({ accentText, items }: accordionTypes) => {
                 </Toggle>
               </Top>
               {index === activeIndex && (
-                <Inner>
-                  {item.secondaryHeading && (
+                <Inner dangerouslySetInnerHTML={{__html: item.specifications}}>
+                  {/* {item.secondaryHeading && (
                     <Text variant="Body-Large" css={css({ mb: 16 })}>
                       <strong>{item.secondaryHeading}</strong>
                     </Text>
                   )}
-                  <span>{item.content}</span>
+                  <span>{item.content}</span> */}
                 </Inner>
               )}
             </Item>
