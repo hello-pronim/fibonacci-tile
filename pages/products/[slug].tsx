@@ -71,15 +71,8 @@ export const getStaticProps: GetStaticProps = async function ({ params }) {
   });
 
   let relatedProducts = null;
-<<<<<<< HEAD
   if(products.length > 0) {
     relatedProducts = products.filter(item => parseInt(item.id) !== parseInt(product.id));
-=======
-  if (relatedProductResults.length > 0) {
-    relatedProducts = relatedProductResults.filter(
-      (item) => parseInt(item.id) !== parseInt(product.id)
-    );
->>>>>>> 4cee57f500f37149321de7b79e5f168e9881b2a5
   }
 
   return {
