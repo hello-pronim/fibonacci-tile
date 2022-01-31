@@ -127,9 +127,9 @@ const Samples = () => {
                 Confirm your six Fibonacci samples
             </Text>
             <ButtonWrapper>
-              <Button mode="dark" title="Share my selections" link="http://localhost:3000/products" />
+              <Button mode="dark" title="Share my selections" link="/products" size="" />
               <BttnLeftPadding>
-              <Button mode="dark" title="Need more than six samples " link="http://localhost:3000/products" />
+              <Button mode="dark" title="Need more than six samples " link="/products" size="" />
               </BttnLeftPadding>
             </ButtonWrapper>
           </TopBar>
