@@ -41,7 +41,6 @@ const ProductsPage = ({
   }, [ref]);
 
   const applyFilter = useCallback(() => {
-    console.log("apply filter", state.filter);
     const filterVars: any = {
       productCategories: [],
       colourSchemes: [],
