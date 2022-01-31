@@ -112,6 +112,7 @@ const SelectionCart = ({ active, newSelection, tab }) => {
                 title="Order Samples"
                 link="#"
                 fullWidth
+                size=""
               />
             </form>
           </div>

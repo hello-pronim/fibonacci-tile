@@ -24,7 +24,7 @@ const CTAPanel = ({ imagePosition = "left" }) => {
         <ArrowButton
           mode="dark"
           title="How to order samples"
-          link="http://localhost:3000/products"
+          link="/products"
         />
       </CTADetails>
     </CTAContainer>
