@@ -1,6 +1,7 @@
 import css from "@styled-system/css";
 import styled from "@emotion/styled";
 import theme from "@styles/theme";
+
 export interface containerProps {
   mode?: string;
   visibleArrow: boolean;
