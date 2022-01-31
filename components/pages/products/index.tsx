@@ -105,10 +105,10 @@ const ProductsPage = ({
           productCategories={productCategories}
         />
       </section>
-      <ProductLists products={firstHalfProducts} accentText="Be inspired" />
+      <ProductLists loadingProducts={loadingProducts} products={firstHalfProducts} accentText="Be inspired" />
       <CTAPanel imagePosition="left" />
       {secondHalfProducts.length > 0 && (
-        <ProductLists products={secondHalfProducts} />
+        <ProductLists loadingProducts={loadingProducts} products={secondHalfProducts} />
       )}
       <CTAPanel imagePosition="right" />
       <FooterCTAPanel />

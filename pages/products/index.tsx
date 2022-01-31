@@ -1,3 +1,4 @@
+import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Footer from "@components/common/footer";
 import ProductPage from "@components/pages/products";
@@ -5,7 +6,17 @@ import client from "@utils/apolloClient";
 import { ProductsQuery } from "@gql/productGQL";
 import { CategoriesQuery } from "@gql/categoriesGQL";
 
-const Products = ({ products, colourSchemes, productCategories }) => {
+interface ProductPageProps {
+  products: any;
+  colourSchemes: any;
+  productCategories: any;
+}
+
+const Products: NextPage<ProductPageProps> = ({
+  products,
+  colourSchemes,
+  productCategories,
+}) => {
   return (
     <>
       <Head>
@@ -22,7 +33,7 @@ const Products = ({ products, colourSchemes, productCategories }) => {
   );
 };
 
-export const getStaticProps = async function () {
+export const getStaticProps: GetStaticProps = async function () {
   const {
     data: { entries: products },
   } = await client.query({

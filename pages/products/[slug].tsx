@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import client from "@utils/apolloClient";
-import { ProductQuery } from "@gql/productGQL";
+import { ProductsQuery, ProductQuery } from "@gql/productGQL";
 import { GlobalSpecificationQuery } from "@gql/globalGQL";
 import Footer from "@components/common/footer";
 import ProductSinglePage from "@components/pages/products/single";
@@ -19,16 +19,27 @@ const Product: NextPage<ProductPageProps> = ({ product, specifications }) => {
         <title>Products | Fibonacci</title>
         <meta name="description" content="Fibonacci Products page" />
       </Head>
-      <ProductSinglePage product={product} technicalSpecifications={technicalSpecifications} />
+      <ProductSinglePage
+        product={product}
+        technicalSpecifications={technicalSpecifications}
+      />
       <Footer />
     </>
   );
 };
 
 export const getStaticPaths: GetStaticPaths<{ slug: string }> = async () => {
+  const {
+    data: { entries: products },
+  } = await client.query({
+    query: ProductsQuery,
+  });
+  const paths = products.map((product: any) => ({
+    params: { slug: product.slug },
+  }));
   return {
-    paths: [], //indicates that no page needs be created at build time
-    fallback: "blocking", //indicates the type of fallback
+    paths,
+    fallback: "blocking",
   };
 };
 
@@ -40,11 +51,11 @@ export const getStaticProps: GetStaticProps = async function ({ params }) {
     variables: { slug: params.slug },
   });
   const {
-    data: { globalSets: specifications}
+    data: { globalSets: specifications },
   } = await client.query({
-    query: GlobalSpecificationQuery
+    query: GlobalSpecificationQuery,
   });
-  console.log("asdf", specifications)
+  console.log("asdf", specifications);
   return {
     props: {
       product,
