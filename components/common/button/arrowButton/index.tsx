@@ -7,7 +7,7 @@ export default function ArrowButton({
   mode,
   visibleArrow = true,
   fullWidth = false,
-  size,
+  size = "",
 }) {
   return (
     <ArrowButtonWrapper

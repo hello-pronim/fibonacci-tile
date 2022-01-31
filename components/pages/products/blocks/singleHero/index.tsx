@@ -1,22 +1,11 @@
-import React, { useState } from "react";
-import AccentText, { AccentTextMobile } from "@components/common/accentText";
+import React from "react";
 import Image from "next/image";
 import collection from "public/assets/temp/collection-temp.png";
-import Abstrakt from "public/tmp/prod/abstrakt.jpeg";
 import Link from "next/link";
 import ProductCard from "@components/common/product/xlCard";
 import { useAppContext } from "@contexts/AppContext";
 import {
   Container,
-  IntroWrapper,
-  Sections,
-  ProjectWrapper,
-  Project,
-  Bottom,
-  SectionList,
-  SectionItem,
-  Details,
-  ImageWrapper,
   LinkWrapper,
   LinkWrapperLeft,
   Pill,
@@ -25,19 +14,9 @@ import Text from "@components/common/typography";
 import { css } from "@styled-system/css";
 import Arrow from "@components/common/icons/arrow";
 import theme from "@styles/theme";
+import SizeDisplay from "@components/common/product/card/SizeDisplay";
 
-const product = {
-  id: "1",
-  richText:
-    "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-  slug: "abstrakt",
-  subHeading: "Complex • Robust • Diverse",
-  title: "Abstrakt",
-  uri: "/products/abstrakt",
-  img1: Abstrakt,
-};
-
-const SingleHeroModule = () => {
+const SingleHeroModule = ({ product }) => {
   const { state, dispatch } = useAppContext();
   return (
     <Container>
@@ -68,7 +47,7 @@ const SingleHeroModule = () => {
               },
             })}
           >
-            Polarity
+            {product.title}
           </Text>
           <span
             css={css({
@@ -77,19 +56,16 @@ const SingleHeroModule = () => {
               pl: 16,
             })}
           >
-            <Text variant="Body-XSmall">No. 31</Text>
+            <Text variant="Body-XSmall">No. {product.productNumber}</Text>
           </span>
-          <Pill># New Release</Pill>
+          {product.label && (<Pill># {product.label}</Pill>)}
           <Text
             variant="Body-Large"
             css={css({ span: { color: theme.colors.taupe } })}
           >
-            Complex <span>•</span> Robust <span>•</span> Diverse
+            {product.subline}
           </Text>
-          <Text variant="Body-Large">
-            A democratic mix of colours, shapes and sizes, displaying the great
-            egalitarian hallmarks of robustness and diversity.
-          </Text>
+          <Text variant="Body-Large" dangerouslySetInnerHTML={{__html: product.designStory}}></Text>
         </div>
         <div
           css={css({
@@ -124,7 +100,6 @@ const SingleHeroModule = () => {
       >
         <div>
           <ProductCard
-            displayMode={state?.productDisplayMode}
             product={product}
             isSelected={
               state?.selectedProducts.findIndex(
@@ -189,7 +164,7 @@ const SingleHeroModule = () => {
           >
             <Text variant="Display-Overline">MATERIAL AND COMPOSITION</Text>
             <Text variant="Body-Regular" css={{ color: theme.colors.taupe }}>
-              Cursus velit adipiscing suspendisse semper
+              {product.materialsComposition}
             </Text>
           </div>
           <div
@@ -203,7 +178,7 @@ const SingleHeroModule = () => {
           >
             <Text variant="Display-Overline">FINISH AND APPEARANCE</Text>
             <Text variant="Body-Regular" css={{ color: theme.colors.taupe }}>
-              Cursus velit adipiscing suspendisse semper
+              {product.finishAppearance}
             </Text>
           </div>
           <div
@@ -217,8 +192,7 @@ const SingleHeroModule = () => {
           >
             <Text variant="Display-Overline">SIZES</Text>
             <Text variant="Body-Regular" css={{ color: theme.colors.taupe }}>
-              Tiles 600x600x20mm <br />
-              Slabs 400x400x20mm
+              <SizeDisplay sizes={product.sizes} />
             </Text>
           </div>
           <div
@@ -232,7 +206,7 @@ const SingleHeroModule = () => {
           >
             <Text variant="Display-Overline">APPLICATIONS</Text>
             <Text variant="Body-Regular" css={{ color: theme.colors.taupe }}>
-              Cursus velit adipiscing suspendisse semper
+              {product.applications}
             </Text>
           </div>
           <LinkWrapper>

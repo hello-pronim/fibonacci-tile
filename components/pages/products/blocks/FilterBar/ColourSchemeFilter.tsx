@@ -16,17 +16,6 @@ export default function ColourSchemeFilter({ colourSchemes }) {
       },
     });
   };
-  const schemeArray = [
-    { label: "Warm", value: "warm", colour: "#DEDCDC" },
-    { label: "Cool", value: "cool", colour: "#DEE2E4" },
-    { label: "Blacks", value: "blacks", colour: "#666366", textColour: "#FFF" },
-    { label: "Greys", value: "greys", colour: "#F0EBE7" },
-    { label: "Whites", value: "whites", colour: "#F7F6F5" },
-    { label: "Earthy", value: "earthy", colour: "#E7DBC9" },
-    { label: "Pinks", value: "pinks", colour: "#F1E1DA" },
-    { label: "Blues", value: "blues", colour: "#E2E9EC" },
-    { label: "Oranges", value: "oranges", colour: "#EFCDB4" },
-  ];
 
   return (
     <div
@@ -61,6 +50,7 @@ export default function ColourSchemeFilter({ colourSchemes }) {
               onClick={() => handleFilter(scheme.id)}
             >
               {!state.isMobileFilterActive &&
+                state.filter?.colourSchemes?.length > 0 &&
                 state.filter.colourSchemes.indexOf(scheme.id) !== -1 && (
                   <CheckMarkIcon color={textColor} />
                 )}
@@ -68,7 +58,8 @@ export default function ColourSchemeFilter({ colourSchemes }) {
                 {scheme.title}
               </Text>
               {state.isMobileFilterActive &&
-                state.filter.colourSchemes.indexOf(scheme.id) !== -1 && (
+                state.filter?.colourSchemes?.length > 0 &&
+                state.filter?.colourSchemes?.indexOf(scheme.id) !== -1 && (
                   <CheckMarkIcon color={textColor} />
                 )}
             </div>
