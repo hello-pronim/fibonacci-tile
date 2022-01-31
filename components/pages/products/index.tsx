@@ -44,6 +44,7 @@ const ProductsPage = ({
     const filterVars: any = {
       productCategories: [],
       colourSchemes: [],
+      search: state.filter.searchText ? state.filter.searchText : "",
     };
     if (state.filter.products != "all") {
       filterVars.productCategories = state.filter.products;
@@ -66,7 +67,6 @@ const ProductsPage = ({
           break;
       }
     }
-    console.log(filterVars);
     async function fetchProducts() {
       const {
         data: { entries: products },

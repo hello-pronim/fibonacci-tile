@@ -2,7 +2,7 @@ export const initialState = {
   selectedProducts: [],
   confirmedProducts: [],
   filter: {
-    searchText: null,
+    searchText: "",
     products: "all",
     colourSchemes: [],
     sortBy: "featured",
