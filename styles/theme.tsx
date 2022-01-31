@@ -91,6 +91,15 @@ const theme = {
     xLarge: `@media screen and (min-width: 1660px)`,
     xxLarge: `@media screen and (min-width: 1920px)`,
   },
+  mediaQueriesMaxWidth: {
+    xxSmall: `@media screen and (max-width: 375px)`,
+    xSmall: `@media screen and (max-width: 600px)`,
+    small: `@media screen and (max-width: 768px)`,
+    medium: `@media screen and (max-width: 1024px)`,
+    large: `@media screen and (max-width: 1440px)`,
+    xLarge: `@media screen and (max-width: 1660px)`,
+    xxLarge: `@media screen and (max-width: 1920px)`,
+  },
 };
 
 export default theme;
