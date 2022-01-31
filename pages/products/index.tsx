@@ -12,7 +12,11 @@ const Products = ({ products, colourSchemes, productCategories }) => {
         <title>Products | Fibonacci</title>
         <meta name="description" content="Fibonacci Products page" />
       </Head>
-      <ProductPage products={products} colourSchemes={colourSchemes} productCategories={productCategories} />
+      <ProductPage
+        products={products}
+        colourSchemes={colourSchemes}
+        productCategories={productCategories}
+      />
       <Footer />
     </>
   );
@@ -44,7 +48,7 @@ export const getStaticProps = async function () {
     props: {
       products,
       colourSchemes,
-      productCategories
+      productCategories,
     },
     revalidate: 500,
   };

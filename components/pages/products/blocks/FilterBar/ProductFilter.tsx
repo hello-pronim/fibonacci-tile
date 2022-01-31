@@ -1,9 +1,9 @@
+import classnames from "classnames";
 import Text from "@components/common/typography";
 import CheckMarkIcon from "@components/icons/checkmark";
 import CloseIcon from "@components/icons/close";
-import classnames from "classnames";
-import styles from "./styles.module.scss";
 import { useAppContext } from "@contexts/AppContext";
+import styles from "./styles.module.scss";
 
 export default function ProductFilter({ productCategories }) {
   const { state, dispatch } = useAppContext();
