@@ -9,7 +9,7 @@ import Slider from "./blocks/Slider";
 import { useAppContext } from "@contexts/AppContext";
 import { Container } from "./styles";
 
-const ProductsPage = ({ products, colourSchemes }) => {
+const ProductsPage = ({ products, colourSchemes, productCategories }) => {
   const { state } = useAppContext();
   const [showFilterBar, setShowFilterBar] = useState(false);
   const firstHalfProducts = products.slice(0, 15);
@@ -53,6 +53,7 @@ const ProductsPage = ({ products, colourSchemes }) => {
           applyFilter={applyFilter}
           show={showFilterBar}
           colourSchemes={colourSchemes}
+          productCategories={productCategories}
         />
       </section>
       <ProductLists products={firstHalfProducts} accentText="Be inspired" />
