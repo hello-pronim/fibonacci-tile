@@ -67,7 +67,7 @@ export const getStaticProps: GetStaticProps = async function ({ params }) {
   const {
     data: { entries: products },
   } = await client.query({
-    query: ProductsQuery
+    query: ProductsQuery,
   });
 
   let relatedProducts = null;
