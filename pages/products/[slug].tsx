@@ -47,17 +47,15 @@ export const getStaticProps: GetStaticProps = async function ({ params }) {
     query: GlobalSpecificationQuery
   });
 
-  const catId = product?.collections[0]?.id;
   const {
-    data: { entries: relatedProductResults },
+    data: { entries: products },
   } = await client.query({
-    query: ProductsQuery,
-    variables: { collections: [catId] },
+    query: ProductsQuery
   });
   
   let relatedProducts = null;
-  if(relatedProductResults.length > 0) {
-    relatedProducts = relatedProductResults.filter(item => parseInt(item.id) !== parseInt(product.id));
+  if(products.length > 0) {
+    relatedProducts = products.filter(item => parseInt(item.id) !== parseInt(product.id));
   }
 
   return {
