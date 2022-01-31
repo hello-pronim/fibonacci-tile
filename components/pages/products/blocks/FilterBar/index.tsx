@@ -117,6 +117,9 @@ export default function ProductFilters({
             <Text variant="Body-Small" mr="10px">
               Products
             </Text>
+            {state.filter?.products?.value !== "all" && (
+              <Text variant="Body-XSmall">{state.filter.products.label}</Text>
+            )}
             <ArrowDownIcon />
           </div>
           <div
@@ -128,6 +131,11 @@ export default function ProductFilters({
             <Text variant="Body-Small" mr="10px">
               Colour Schemes
             </Text>
+            {state.filter.colourSchemes.length > 0 && (
+              <Text variant="Body-XSmall">
+                {state.filter.colourSchemes.length} schemes
+              </Text>
+            )}
             <ArrowDownIcon />
           </div>
           <div
@@ -139,6 +147,9 @@ export default function ProductFilters({
             <Text variant="Body-Small" mr="10px">
               Sort by
             </Text>
+            {state.filter?.sortBy?.value !== "featured" && (
+              <Text variant="Body-XSmall">{state.filter.sortBy.label}</Text>
+            )}
             <ArrowDownIcon />
           </div>
         </div>
@@ -291,7 +302,9 @@ export default function ProductFilters({
       {!isMobileFilterActive && activeFilter && (
         <div className={styles.filterContainer}>
           {activeFilter === "search" && <SearchFilter />}
-          {activeFilter === "products" && <ProductFilter productCategories={productCategories} />}
+          {activeFilter === "products" && (
+            <ProductFilter productCategories={productCategories} />
+          )}
           {activeFilter === "sort-by" && <SortByFilter />}
           {activeFilter === "colour-schemes" && (
             <ColourSchemeFilter colourSchemes={colourSchemes} />

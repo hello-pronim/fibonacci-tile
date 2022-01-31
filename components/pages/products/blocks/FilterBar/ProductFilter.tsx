@@ -7,12 +7,13 @@ import styles from "./styles.module.scss";
 
 export default function ProductFilter({ productCategories }) {
   const { state, dispatch } = useAppContext();
-  const handleFilter = (value) => {
+  const handleFilter = (value: String | Number, label: String) => {
     dispatch({
       type: "SELECT_PRODUCT_FILTER",
       filter: {
         type: "products",
         value,
+        label,
       },
     });
   };
@@ -20,14 +21,14 @@ export default function ProductFilter({ productCategories }) {
     <div className={classnames(styles.productsFilterContainer)}>
       <div
         className={classnames(styles.productFilterItem, {
-          [styles.activeFilter]: state.filter.products === "all",
+          [styles.activeFilter]: state.filter.products.value === "all",
         })}
       >
         <div
           className={classnames(styles.filterInner, {
             [styles.filterInnerMobile]: state.isMobileFilterActive,
           })}
-          onClick={() => handleFilter("all")}
+          onClick={() => handleFilter("all", "All")}
         >
           <div
             className={classnames({
@@ -37,14 +38,15 @@ export default function ProductFilter({ productCategories }) {
             <Text as="h3" variant="Body-Small">
               All products{" "}
               {!state.isMobileFilterActive &&
-                state.filter.products === "all" && (
+                state.filter.products.value === "all" && (
                   <CheckMarkIcon color="#141414" />
                 )}
             </Text>
           </div>
-          {state.isMobileFilterActive && state.filter.products === "all" && (
-            <CheckMarkIcon color="#141414" />
-          )}
+          {state.isMobileFilterActive &&
+            state.filter.products.value === "all" && (
+              <CheckMarkIcon color="#141414" />
+            )}
         </div>
       </div>
       {productCategories.map((cat: any) => {
@@ -52,14 +54,14 @@ export default function ProductFilter({ productCategories }) {
           <div
             key={`product-cat-${cat.id}`}
             className={classnames(styles.productFilterItem, {
-              [styles.activeFilter]: state.filter.products === cat.id,
+              [styles.activeFilter]: state.filter.products.value === cat.id,
             })}
           >
             <div
               className={classnames(styles.filterInner, {
                 [styles.filterInnerMobile]: state.isMobileFilterActive,
               })}
-              onClick={() => handleFilter(cat.id)}
+              onClick={() => handleFilter(cat.id, cat.title)}
             >
               <div
                 className={classnames({
@@ -69,7 +71,7 @@ export default function ProductFilter({ productCategories }) {
                 <Text as="h3" variant="Body-Small">
                   {cat.title}{" "}
                   {!state.isMobileFilterActive &&
-                    state.filter.products === cat.id && (
+                    state.filter.products.value === cat.id && (
                       <CheckMarkIcon color="#141414" />
                     )}
                 </Text>
@@ -83,14 +85,17 @@ export default function ProductFilter({ productCategories }) {
                 </Text>
               </div>
               {state.isMobileFilterActive &&
-                state.filter.products === cat.id && (
+                state.filter.products.value === cat.id && (
                   <CheckMarkIcon color="#141414" />
                 )}
             </div>
           </div>
         );
       })}
-      <div onClick={() => handleFilter("all")} className={styles.clearFilter}>
+      <div
+        onClick={() => handleFilter("all", "All")}
+        className={styles.clearFilter}
+      >
         Clear Filter <CloseIcon color={"#0D0D0D"} />
       </div>
     </div>
