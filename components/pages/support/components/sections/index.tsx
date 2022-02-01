@@ -1,36 +1,24 @@
-import React, { useState } from "react";
-import AccentText, { AccentTextMobile } from "@components/common/accentText";
-import Image from "next/image";
-import ArrowButton from "@components/common/button/arrowButton";
-import Slide1 from "public/assets/temp/gallery-1.jpg";
-import Link from "next/link";
+import React from "react";
+import AccentText from "@components/common/accentText";
 import {
   Container,
   IntroWrapper,
   Sections,
-  ProjectWrapper,
-  Project,
-  Bottom,
   SectionList,
   SectionItem,
-  Details,
-  ImageWrapper,
-  LinkWrapper,
 } from "./styles";
-import mockData from "./constants";
 import Text from "@components/common/typography";
 import { css } from "@styled-system/css";
-import Arrow from "@components/common/icons/arrow";
 import theme from "@styles/theme";
 
 interface accordionTypes {
-  accentText: string;
+  accentText?: string;
 }
 
 const ProjectsModule = ({ accentText }: accordionTypes) => {
   return (
     <Container id="projects">
-      <AccentText top={400}>{accentText}</AccentText>
+      {accentText && <AccentText top={400}>{accentText}</AccentText>}
       <IntroWrapper>
         <Text
           variant="Display-Medium"
