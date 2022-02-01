@@ -35,7 +35,7 @@ const ProjectList = ({ projects, types }: ProjectListType) => {
 
   const onProjectTypeClick = (type) => {
     const projectList = projects.filter(
-      (project) => project.sector[0].slug === type || type === "all"
+      (project) => project?.sector[0]?.slug === type || type === "all"
     );
   
     setDisplayedProjects(projectList);
@@ -45,7 +45,7 @@ const ProjectList = ({ projects, types }: ProjectListType) => {
   const onProjectTypeChange = (e) => {
     const { value: type } = e.target;
     const projectList = projects.filter(
-      (project) => project.sector[0].slug === type || type === "all"
+      (project) => project?.sector[0]?.slug === type || type === "all"
     );
 
     setDisplayedProjects(projectList);

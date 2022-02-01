@@ -54,7 +54,7 @@ const ProductCard = ({
   const [detailShown, setDetailShown] = useState(false);
   let collectionSlug = activeCollectionSlug
     ? activeCollectionSlug
-    : product.collections[0].slug;
+    : product?.collections[0]?.slug;
 
   if (displayMode === "list") {
     return (
