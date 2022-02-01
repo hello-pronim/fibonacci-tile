@@ -8,16 +8,22 @@ import CollectionsPage from "@components/pages/products/collectionList";
 
 interface CollectionsPageProps {
   collections: any;
+  collectionProducts: any;
 }
 
-const Collections: NextPage<CollectionsPageProps> = ({ collections }) => {
+const Collections: NextPage<CollectionsPageProps> = ({
+  collections,
+  collectionProducts,
+}) => {
+  console.log(collections);
+  console.log(collectionProducts);
   return (
     <>
       <Head>
         <title>Collections | Fibonacci</title>
         <meta name="description" content="Fibonacci Collections page" />
       </Head>
-      <CollectionsPage collections={collections} />
+      <CollectionsPage collections={collections} collectionProducts={collectionProducts} />
       <Footer />
     </>
   );
@@ -32,9 +38,22 @@ export const getStaticProps: GetStaticProps = async function () {
       group: "collections",
     },
   });
+  const collectionProducts = {};
+  for (const collection of collections) {
+    const {
+      data: { entries: products },
+    } = await client.query({
+      query: ProductsQuery,
+      variables: {
+        collections: [collection.id],
+      },
+    });
+    collectionProducts[collection.slug] = products;
+  }
   return {
     props: {
       collections,
+      collectionProducts,
     },
     revalidate: 500,
   };
