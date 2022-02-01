@@ -47,10 +47,10 @@ const ProductsPage = ({
       colourSchemes: [],
       search: state.filter.searchText ? state.filter.searchText : "",
     };
-    if (state.filter.products.value !== "all") {
+    if (state.filter.products.value && state.filter.products.value !== "all") {
       filterVars.productCategories = [state.filter.products.value];
     }
-    if (state.filter.colourSchemes) {
+    if (state.filter.colourSchemes.length > 0) {
       filterVars.colourSchemes = state.filter.colourSchemes;
     }
     if (state.filter?.sortBy?.value) {
