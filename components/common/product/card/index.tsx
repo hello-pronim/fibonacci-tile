@@ -58,7 +58,7 @@ const ProductCard = ({
           <ProductsInfoRow>
             <ProductName>
               <div>
-                <Link href={`/products/${product.slug}`} passHref>
+                <Link href={`/terrazzo/${product.slug}`} passHref>
                   <ProductListTitle>
                     <Text as="h3" variant="Display-XXSmall" altFont={true}>
                       {product.title}
@@ -113,7 +113,7 @@ const ProductCard = ({
                 <ArrowButton
                   mode="dark"
                   title="View product details"
-                  link={`/products/${product.slug}`}
+                  link={`/terrazzo/${product.slug}`}
                 />
               </Details>
             </ProductInfoBox>
@@ -151,7 +151,7 @@ const ProductCard = ({
             <ListCardImgContainer>
               <CardImg detailView={detailShown}>
                 {product?.thumbImage?.[0].url && (
-                  <Link href={`/products/${product.slug}`}>
+                  <Link href={`/terrazzo/${product.slug}`}>
                     <a>
                       <Image
                         src={product.thumbImage[0].url}
@@ -218,7 +218,7 @@ const ProductCard = ({
       <Container compact={compact}>
         <GridCardImgContainer>
           {product?.thumbImage?.[0].url && (
-            <Link href={`/products/${product.slug}`}>
+            <Link href={`/terrazzo/${product.slug}`}>
               <a>
                 <Image
                   src={product.thumbImage[0].url}
@@ -269,7 +269,7 @@ const ProductCard = ({
           altFont={true}
           marginTop="25px"
         >
-          <Link href={`/products/${product.slug}`}>
+          <Link href={`/terrazzo/${product.slug}`}>
             <a>{product.title}</a>
           </Link>
         </CardTitle>
