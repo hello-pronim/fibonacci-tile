@@ -16,11 +16,13 @@ import {
 import mockData from "./constants";
 import ArrowButton from "@components/common/button/arrowButton";
 import Chip from "@components/common/chip";
+import ProductCard from "@components/common/product/card";
 import Arrow from "@components/common/icons/arrow";
 import Select from "@components/common/select";
 import Text from "@components/common/typography";
 import { css } from "@styled-system/css";
 import theme from "@styles/theme";
+import ProjectCard from "@components/common/project/card";
 
 interface ProjectListType {
   projects: Array<any>;
@@ -90,33 +92,7 @@ const ProjectList = ({ projects, types }: ProjectListType) => {
           columnClassName="masonry-grid-column"
         >
           {displayedProjects.map((project) => (
-            <Project key={project.id}>
-              <ImageWrapper>
-                <Image
-                  src={project.thumbnail.src}
-                  alt={project.slug}
-                  layout="responsive" // required
-                  width={project.thumbnail.width}
-                  height={project.thumbnail.height}
-                />
-              </ImageWrapper>
-              <Text
-                variant="Body-Small"
-                css={css({ gridRow: 2, gridColumn: 1 })}
-              >
-                {project.date}
-              </Text>
-              <Details>
-                <Text variant="Display-XSmall">{project.title}</Text>
-                <Text variant="Display-XSmall" color={theme.colors.concrete}>
-                  {project.location}
-                </Text>
-                <LinkWrapper>
-                  <Link href={`/projects/${project.slug}`}>View Project</Link>
-                  <Arrow type="short" />
-                </LinkWrapper>
-              </Details>
-            </Project>
+            <ProjectCard key={project.id} project={project}/>
           ))}
         </MasonryGrid>
         {displayedProjects.length ? (

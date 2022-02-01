@@ -18,20 +18,19 @@ import css from "@styled-system/css";
 
 import styles from "./styles.module.scss";
 
-const Hero = () => {
+const Hero = ({heroDetails: {pageHeading, pageIntro} }) => {
   return (
     <Container>
       <LeftCol>
         <ContentWrapper>
           <HeroTitle Base="h1" variant="Display-Large">
-            Fibonacci Live
+           {pageHeading}
           </HeroTitle>
         </ContentWrapper>
       </LeftCol>
       <RightCol>
         <HeroBodyText Base="h4" variant="Display-Medium">
-          Elementum phasellus ligula adipiscing eu sed. Id id ut volutpat tempus
-          viverra vestibulum risus pulvinar mollis. Etiam id congue
+          {pageIntro}
         </HeroBodyText>
       </RightCol>
     </Container>
