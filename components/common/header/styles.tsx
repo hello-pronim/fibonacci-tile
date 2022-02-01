@@ -34,13 +34,12 @@ const Container = styled("div")(({ ...props }: containerProps) =>
     width: "100%",
     display: "flex",
     justifyContent: "center",
-    // backgroundColor: props.mode === 'dark' && 'white',
     backgroundColor: props.scrollY >= 5 && bgPicker(props.mode),
     borderBottom: "1px solid",
     transition: "ease all 0.3s",
     borderColor: props.navOpen ? "white" : "stone",
     zIndex: 1000,
-    overflowX: 'clip',
+    overflowX: "clip",
   })
 );
 
@@ -130,15 +129,15 @@ const NavLeft = styled("div")(() =>
 
 const NavItem = styled("a")(({ mode }: navItemProps) =>
   css({
-    display: 'flex',
+    display: "flex",
     textDecoration: "none",
     fontSize: [1, 1, 1, 1, 1, 3, 3],
     fontFamily: 1,
     color: mode === "light" ? "white" : "charcoal",
     alignSelf: "center",
-    alignItems:'center',
+    alignItems: "center",
     fontWeight: 300,
-    columnGap: '8px',
+    columnGap: "8px",
   })
 );
 
@@ -161,7 +160,7 @@ const NavIcon = styled("button")(({ isOpen, mode }: NavIconProps) =>
     },
     "&:before": {
       position: "relative",
-      backgroundColor: mode === 'dark' ? 'charcoal' : "white",
+      backgroundColor: mode === "dark" ? "charcoal" : "white",
       content: "' '",
       display: "block",
       height: "2px",
@@ -172,7 +171,7 @@ const NavIcon = styled("button")(({ isOpen, mode }: NavIconProps) =>
     },
     "&:after": {
       position: "relative",
-      backgroundColor: mode === 'dark' ? 'charcoal' : "white",
+      backgroundColor: mode === "dark" ? "charcoal" : "white",
       content: "' '",
       display: "block",
       height: "2px",
@@ -233,43 +232,48 @@ const DrawerFooter = styled("div")(() =>
   })
 );
 
-const AlertBar = styled('div')(css({
-  boxSizing: 'border-box',
-  width: '100%',
-  bg: 'taupe',
-  position: 'relative',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  py: 10,
-  px: 28,
-}));
+const AlertBar = styled("div")(
+  css({
+    boxSizing: "border-box",
+    width: "100%",
+    bg: "taupe",
+    position: "relative",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "10px 60px 10px 28px",
+  })
+);
 
-const AlertLabel = styled('span')(css({
-  color: 'white',
-  fontSize: 1,
-  lineHeight: 0,
-}));
+const AlertLabel = styled("span")(
+  css({
+    color: "white",
+    fontSize: 1,
+    lineHeight: 0,
+  })
+);
 
-const AlertClose = styled('button')(css({
-  position: 'absolute',
-  right: 28,
-  height: 16,
-  width: 16,
-  background: 'transparent',
-  border: 'none',
-  cursor: 'pointer',
-  '&:before': {
-    position:'relative',
-    bg:'white',
-    content: "' '",
-    display: 'block',
-    height: '2px',
-    transition: 'all .2s ease-in-out',
+const AlertClose = styled("button")(
+  css({
+    position: "absolute",
+    right: 28,
+    height: 16,
     width: 16,
-    borderRadius: 2,
-  },
-}))
+    background: "transparent",
+    border: "none",
+    cursor: "pointer",
+    "&:before": {
+      position: "relative",
+      bg: "white",
+      content: "' '",
+      display: "block",
+      height: "2px",
+      transition: "all .2s ease-in-out",
+      width: 16,
+      borderRadius: 2,
+    },
+  })
+);
 
 export {
   Container,

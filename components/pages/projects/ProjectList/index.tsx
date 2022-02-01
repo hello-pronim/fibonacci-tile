@@ -67,10 +67,15 @@ const ProjectList = ({ projects, types }: ProjectListType) => {
       </FilterWrapperDesktop>
       <FilterWrapperMobile>
         <Text variant="Body-Small">Filter</Text>
-        <Select onChange={onProjectTypeChange} value={selectedType}>
+        <Select
+          variant="default"
+          onChange={onProjectTypeChange}
+          value={selectedType}
+          css={{ margin: 0 }}
+        >
           {types.map((type) => (
             <option key={type} value={type}>
-              {type}
+              {type.toUpperCase()}
             </option>
           ))}
         </Select>
@@ -116,7 +121,7 @@ const ProjectList = ({ projects, types }: ProjectListType) => {
         </MasonryGrid>
         {displayedProjects.length ? (
           <LoadMoreWrapper>
-            <ArrowButton mode="" title="Load more" link="#" />
+            <ArrowButton mode="" title="Load more" link="#" size="" />
           </LoadMoreWrapper>
         ) : (
           <></>

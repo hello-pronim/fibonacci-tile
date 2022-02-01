@@ -36,7 +36,7 @@ import {
   RowDetailButton,
   TableRow,
   TechnicalSpecification,
-  TitleText
+  TitleText,
 } from "../card/styles";
 
 import {
@@ -44,7 +44,7 @@ import {
   Container,
   ActionBtn,
   ConfirmActionBtn,
-  ConfirmActionBtnContainer
+  ConfirmActionBtnContainer,
 } from "./styles";
 
 const SelectedProductCard = ({
@@ -53,7 +53,7 @@ const SelectedProductCard = ({
   isSelected = false,
   toggleProductSelect,
   totalSelectedProducts = 0,
-  confirmSample = false
+  confirmSample = false,
 }) => {
   const [detailShown, setDetailShown] = useState(false);
   if (displayMode === "list") {
@@ -118,7 +118,7 @@ const SelectedProductCard = ({
                 <ArrowButton
                   mode="dark"
                   title="View product details"
-                  link="http://localhost:3000/products"
+                  link={`/products/${product.slug}`}
                 />
               </Details>
             </ProductInfoBox>
@@ -219,9 +219,10 @@ const SelectedProductCard = ({
     <Wrapper>
       <Container>
         {totalSelectedProducts > 6 && (
-        <div className="overlay">
-          Choose upto six, samples remove one and the confirm your choosen samples
-        </div>
+          <div className="overlay">
+            Choose upto six, samples remove one and the confirm your choosen
+            samples
+          </div>
         )}
         <GridCardImgContainer>
           {product?.img1 && (
@@ -232,50 +233,49 @@ const SelectedProductCard = ({
             </Link>
           )}
           {!confirmSample && (
-          <ActionBtnContainer>
-           
+            <ActionBtnContainer>
               <ActionBtn
-              checked={isSelected}
-              onClick={() => toggleProductSelect(product)}
+                checked={isSelected}
+                onClick={() => toggleProductSelect(product)}
               >
-              {!isSelected && (
-                <span className="hovered">
-                  <AddIcon color="white" />{" "}
-                  <Text color="white" variant="Body-XSmall">
-                    Confirm Sample
-                  </Text>
-                </span>
-              )}
-              {!isSelected && (
-                <span className="initial">
-                  <AddIcon color="black" />
-                </span>
-              )}
-              {isSelected && (
-                <span className="initial">
-                  <CheckMarkIcon color="white" />
-                </span>
-              )}
-              {isSelected && (
-                <span className="hovered">
-                  <CrossIcon />{" "}
-                  <Text color="white" variant="Body-XSmall">
-                    Remove Sample
-                  </Text>
-                </span>
-              )}
+                {!isSelected && (
+                  <span className="hovered">
+                    <AddIcon color="white" />{" "}
+                    <Text color="white" variant="Body-XSmall">
+                      Confirm Sample
+                    </Text>
+                  </span>
+                )}
+                {!isSelected && (
+                  <span className="initial">
+                    <AddIcon color="black" />
+                  </span>
+                )}
+                {isSelected && (
+                  <span className="initial">
+                    <CheckMarkIcon color="white" />
+                  </span>
+                )}
+                {isSelected && (
+                  <span className="hovered">
+                    <CrossIcon />{" "}
+                    <Text color="white" variant="Body-XSmall">
+                      Remove Sample
+                    </Text>
+                  </span>
+                )}
               </ActionBtn>
-          </ActionBtnContainer>
+            </ActionBtnContainer>
           )}
           {confirmSample && (
             <ConfirmActionBtnContainer>
               <ConfirmActionBtn>
-                  <span className="initial">
-                    <CheckMarkIcon color="white" />
-                  </span>
+                <span className="initial">
+                  <CheckMarkIcon color="white" />
+                </span>
               </ConfirmActionBtn>
             </ConfirmActionBtnContainer>
-           )}
+          )}
         </GridCardImgContainer>
         <CardTitle
           as="h3"

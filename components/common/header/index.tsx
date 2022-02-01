@@ -132,7 +132,7 @@ const Header = ({ mode = "light", position = "relative" }) => {
             <NavItem href="#" mode={mode}>
               Our Story
             </NavItem>
-            <NavItem href="#" mode={mode}>
+            <NavItem href="/latest" mode={mode}>
               Latest
             </NavItem>
           </NavLeft>
@@ -154,7 +154,10 @@ const Header = ({ mode = "light", position = "relative" }) => {
               onClick={() => (
                 dispatch({
                   type: "OPEN_DRAWER",
-                  value: state.activeDrawerTab !== "support" ? true : !state.openDrawer,
+                  value:
+                    state.activeDrawerTab !== "support"
+                      ? true
+                      : !state.openDrawer,
                 }),
                 dispatch({
                   type: "SET_ACTIVE_DRAWER_TAB",
@@ -170,7 +173,10 @@ const Header = ({ mode = "light", position = "relative" }) => {
               onClick={() => (
                 dispatch({
                   type: "OPEN_DRAWER",
-                  value: state.activeDrawerTab !== "contact" ? true : !state.openDrawer,
+                  value:
+                    state.activeDrawerTab !== "contact"
+                      ? true
+                      : !state.openDrawer,
                 }),
                 dispatch({
                   type: "SET_ACTIVE_DRAWER_TAB",
@@ -185,7 +191,8 @@ const Header = ({ mode = "light", position = "relative" }) => {
               onClick={() => (
                 dispatch({
                   type: "OPEN_DRAWER",
-                  value: state.activeDrawerTab !== "cart" ? true : !state.openDrawer,
+                  value:
+                    state.activeDrawerTab !== "cart" ? true : !state.openDrawer,
                 }),
                 dispatch({
                   type: "SET_ACTIVE_DRAWER_TAB",

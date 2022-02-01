@@ -3,9 +3,15 @@ import styled from "@emotion/styled";
 import Cntnr from "@components/common/layout/container";
 import theme from "styles/theme";
 
+interface TitleProps {
+  active: boolean;
+}
 const Container = styled(Cntnr)(() =>
   css({
-    bg: "background",
+    py: "80px",
+    [theme.mediaQueries.small]: {
+      py: "120px",
+    },
   })
 );
 
@@ -17,7 +23,6 @@ const Wrapper = styled("div")(() =>
     flexDirection: "column",
     justifyContent: "center",
     rowGap: 32,
-    transform: "translateY(116px)",
     zIndex: 999,
   })
 );
@@ -35,7 +40,7 @@ const TileWrapper = styled("div")(
   })
 );
 
-const Tile = styled("a")(
+const Tile = styled("a")(({ active }: TitleProps) =>
   css({
     position: "relative",
     display: "inline-flex",
@@ -48,16 +53,18 @@ const Tile = styled("a")(
     py: 40,
     justifyContent: "center",
     transition: "background ease 0.3s",
-    backgroundColor: theme.colors.concreteTints[8],
-    '&:hover': {
-      bg: 'white',
+    backgroundColor: active ? "white" : theme.colors.concreteTints[8],
+    borderBottom: active && `2px solid ${theme.colors.charcoal}`,
+    "&:hover": {
+      bg: "white",
+      borderBottom: `2px solid ${theme.colors.charcoal}`,
     },
   })
 );
 
 const TileInner = styled("div")(
   css({
-    color: 'charcoal',
+    color: "charcoal",
     [theme.mediaQueries.medium]: {
       position: "absolute",
       flexDirection: "column",
