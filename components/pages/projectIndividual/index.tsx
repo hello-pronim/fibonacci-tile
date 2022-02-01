@@ -5,9 +5,7 @@ import React from "react";
 import BodyContent from "./bodyContent";
 
 const ProjectPage = ({ project }) => {
-  // console.log("project", project)
   const { projectComponents, backgroundColor, featuredProducts } = project;
-  console.log("featuredProducts", featuredProducts)
   return (
     <>
     <Hero project={project} />

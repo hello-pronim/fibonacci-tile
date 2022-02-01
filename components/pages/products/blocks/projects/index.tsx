@@ -28,9 +28,9 @@ interface accordionTypes {
 }
 
 const ProjectsModule = ({ accentText, product }: accordionTypes) => {
-  const {project1, project2} = product;
+  const {project1, project2, backgroundColor} = product;
   return (
-    <Container id="projects">
+    <Container id="projects" css={css({ bg: backgroundColor ? backgroundColor : "#E2E9EC" })}>
       <AccentText top={400}>{accentText}</AccentText>
       <IntroWrapper>
         <Text

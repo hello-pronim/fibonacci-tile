@@ -7,6 +7,7 @@ import AccordionModule from "@components/modules/accordion";
 import SingleHeroModule from "./blocks/singleHero";
 
 const ProductPage = ({ product, relatedProducts, technicalSpecifications }) => {
+  const { backgroundColor } = product;
   return (
     <>
       <ProductsHeader mode="dark" />
@@ -19,6 +20,7 @@ const ProductPage = ({ product, relatedProducts, technicalSpecifications }) => {
         <AccordionModule
           items={technicalSpecifications}
           accentText="Technical Specifications"
+          backgroundColor={backgroundColor}
         />
       )}
       {relatedProducts?.length > 0 && (

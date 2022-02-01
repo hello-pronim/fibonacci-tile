@@ -15,8 +15,6 @@ const Collections: NextPage<CollectionsPageProps> = ({
   collections,
   collectionProducts,
 }) => {
-  console.log(collections);
-  console.log(collectionProducts);
   return (
     <>
       <Head>
