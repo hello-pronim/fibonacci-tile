@@ -91,7 +91,7 @@ const ProductsPage = ({
 
   return (
     <Container>
-      <ProductsHeader />
+      {!showFilterBar &&  <ProductsHeader />}
       <Slider />
       <SectionTitle
         show={showFilterBar}

@@ -8,6 +8,7 @@ import ProjectsPage from "@components/pages/projects";
 import client from "@utils/apolloClient";
 
 const Projects = ({ heroDetails, types, projects }) => {
+  console.log("heroDetails", heroDetails)
   return (
     <>
       <Head>
