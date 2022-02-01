@@ -1,17 +1,21 @@
 import Head from "next/head";
-import Footer from "@components/common/footer";
 import SupportPage from "@components/pages/support";
+import Header from "@components/common/header";
+import Footer from "@components/common/footer";
+import { css } from "@styled-system/css";
 
 const Support = () => {
   return (
-    <>
+    <div css={css({position: 'relative'})}>
       <Head>
-        <title>Support | Fibonacci</title>
-        <meta name="description" content={`Fibonacci Support page`} />
+        <title>Home | Fibonacci</title>
+        <meta name="description" content="Support | Fibonacci" />
+        <meta name="robots" content="index, follow" />
       </Head>
-      <SupportPage />
+      <Header mode="light" position="absolute" />
+      <SupportPage/>
       <Footer />
-    </>
+    </div>
   );
 };
 
