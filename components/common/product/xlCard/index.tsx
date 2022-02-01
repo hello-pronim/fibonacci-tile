@@ -27,7 +27,7 @@ const ProductCard = ({
       <Container>
         <GridCardImgContainer>
           {product.thumbImage?.[0].url && (
-            <Link href={`/terazzo/${collectionSlug}/${product.slug}`}>
+            <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
               <a>
                 <Image
                   src={product.thumbImage[0].url}

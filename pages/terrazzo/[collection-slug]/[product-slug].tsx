@@ -58,9 +58,8 @@ export const getStaticProps: GetStaticProps = async function ({ params }) {
     data: { entry: product },
   } = await client.query({
     query: ProductQuery,
-    variables: { slug: params.slug },
+    variables: { slug: params["product-slug"] },
   });
-
   const {
     data: { globalSets: specifications },
   } = await client.query({
