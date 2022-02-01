@@ -26,7 +26,7 @@ import ProjectCard from "@components/common/project/card";
 
 interface ProjectListType {
   projects: Array<any>;
-  types: Array<string>;
+  types: Array<any>;
 }
 
 const ProjectList = ({ projects, types }: ProjectListType) => {
@@ -35,9 +35,9 @@ const ProjectList = ({ projects, types }: ProjectListType) => {
 
   const onProjectTypeClick = (type) => {
     const projectList = projects.filter(
-      (project) => project.type === type || type === "all"
+      (project) => project.sector[0].slug === type || type === "all"
     );
-
+  
     setDisplayedProjects(projectList);
     setSelectedType(type);
   };
@@ -45,7 +45,7 @@ const ProjectList = ({ projects, types }: ProjectListType) => {
   const onProjectTypeChange = (e) => {
     const { value: type } = e.target;
     const projectList = projects.filter(
-      (project) => project.type === type || type === "all"
+      (project) => project.sector[0].slug === type || type === "all"
     );
 
     setDisplayedProjects(projectList);
@@ -55,15 +55,24 @@ const ProjectList = ({ projects, types }: ProjectListType) => {
   return (
     <>
       <FilterWrapperDesktop>
+        <Chip
+          key={'all'}
+          onClick={() => onProjectTypeClick('all')}
+          active={'all' === selectedType}
+          size="small"
+          rounded
+        >
+          All
+        </Chip>
         {types.map((type) => (
           <Chip
-            key={type}
-            onClick={() => onProjectTypeClick(type)}
-            active={type === selectedType}
+            key={type.slug}
+            onClick={() => onProjectTypeClick(type.slug)}
+            active={type.slug === selectedType}
             size="small"
             rounded
           >
-            {type}
+            {type.title}
           </Chip>
         ))}
       </FilterWrapperDesktop>
@@ -75,9 +84,12 @@ const ProjectList = ({ projects, types }: ProjectListType) => {
           value={selectedType}
           css={{ margin: 0 }}
         >
+          <option key='all' value='all'>
+            All
+          </option>
           {types.map((type) => (
-            <option key={type} value={type}>
-              {type.toUpperCase()}
+            <option key={type.slug} value={type.slug}>
+              {type.title.toUpperCase()}
             </option>
           ))}
         </Select>
@@ -97,7 +109,7 @@ const ProjectList = ({ projects, types }: ProjectListType) => {
         </MasonryGrid>
         {displayedProjects.length ? (
           <LoadMoreWrapper>
-            <ArrowButton mode="" title="Load more" link="#" size="" />
+            {/* <ArrowButton mode="" title="Load more" link="#" size="" /> */}
           </LoadMoreWrapper>
         ) : (
           <></>
