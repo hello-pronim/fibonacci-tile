@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
+import Hero from "@components/pages/support/components/hero";
+import Sections from "@components/pages/support/components/sections";
+import ContentBlock from "@components/pages/support/components/contentBlock";
+import { productGuide, installationGuides, careGuide} from "./components/contentBlock/constants";
+import AccordionSection from "./components/accordionSection";
 import { useRouter } from "next/router";
 import SupportModule from "@components/modules/support";
 
-import SupportHeader from "./Header";
-import Hero from "./sections/hero";
 import QuoteRequestForm from "./sections/forms/quoteRequestForm";
 
 import SupportIcon from "public/assets/icons/support-icon.svg";
 import SamplesIcon from "public/assets/icons/sample-icon.svg";
 import QuoteIcon from "public/assets/icons/quote-icon.svg";
 import EnquiryIcon from "public/assets/icons/enquiry-icon.svg";
-import { Container, HeroOverlayWrapper, FormContainer } from "./styles";
+import { HeroOverlayWrapper, FormContainer } from "./styles";
 
 const Support = () => {
   const router = useRouter();
@@ -48,22 +51,26 @@ const Support = () => {
 
     setActiveSupport(slug);
   }, [asPath]);
-
+  
   return (
-    <Container>
-      <SupportHeader mode="light" />
-      <Hero activeSupport={activeSupport} />
-      <HeroOverlayWrapper>
-        <SupportModule
-          supports={supports}
-          activeSupport={activeSupport}
-          setActiveSupport={setActiveSupport}
-        />
-      </HeroOverlayWrapper>
-      <FormContainer>
-        {activeSupport === "quote-request" && <QuoteRequestForm />}
-      </FormContainer>
-    </Container>
+    <>
+    <Hero />
+    <HeroOverlayWrapper>
+  <SupportModule
+    supports={supports}
+    activeSupport={activeSupport}
+    setActiveSupport={setActiveSupport}
+  />
+</HeroOverlayWrapper>
+<FormContainer>
+  {activeSupport === "quote-request" && <QuoteRequestForm />}
+</FormContainer>
+    <Sections />
+    <ContentBlock content={productGuide}/>
+    <ContentBlock content={installationGuides}/>
+    <ContentBlock content={careGuide}/>
+    <AccordionSection />
+    </>
   );
 };
 export default Support;
