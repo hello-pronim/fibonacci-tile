@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { GetStaticProps } from "next";
 import { PageQuery } from "@gql/pageGQL";
+import { CategoriesQuery } from "@gql/categoriesGQL";
 import Footer from "@components/common/footer";
 import ProjectsPage from "@components/pages/projects";
 import client from "@utils/apolloClient";
@@ -90,6 +91,13 @@ export const getStaticProps: GetStaticProps = async function () {
     query: PageQuery,
     variables: { slug: "in-use" },
   });
+  const {
+    data: { entry: types },
+  } = await client.query({
+    query: CategoriesQuery,
+    variables: { group: "Sector" },
+  });
+  console.log("types", types);
   return {
     props: {
       heroDetails
