@@ -23,6 +23,7 @@ export const ProductsQuery = gql`
         subline
         collections {
           title
+          slug
         }
         label
         backgroundColor
@@ -66,8 +67,9 @@ export const ProductQuery = gql`
         title
         subline
         collections {
-          id,
+          id
           title
+          slug
         }
         label
         backgroundColor

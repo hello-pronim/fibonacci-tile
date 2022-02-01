@@ -48,7 +48,7 @@ const ProductsPage = ({
       search: state.filter.searchText ? state.filter.searchText : "",
     };
     if (state.filter.products.value !== "all") {
-      filterVars.productCategories = state.filter.products;
+      filterVars.productCategories = [state.filter.products.value];
     }
     if (state.filter.colourSchemes) {
       filterVars.colourSchemes = state.filter.colourSchemes;

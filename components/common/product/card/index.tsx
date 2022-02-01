@@ -49,8 +49,13 @@ const ProductCard = ({
   isSelected = false,
   toggleProductSelect,
   compact = false,
+  activeCollectionSlug = null,
 }) => {
   const [detailShown, setDetailShown] = useState(false);
+  let collectionSlug = activeCollectionSlug
+    ? activeCollectionSlug
+    : product.collections[0].slug;
+
   if (displayMode === "list") {
     return (
       <TableRow detailView={detailShown}>
@@ -58,7 +63,10 @@ const ProductCard = ({
           <ProductsInfoRow>
             <ProductName>
               <div>
-                <Link href={`/terrazzo/${product.slug}`} passHref>
+                <Link
+                  href={`/terrazzo/${collectionSlug}/${product.slug}`}
+                  passHref
+                >
                   <ProductListTitle>
                     <Text as="h3" variant="Display-XXSmall" altFont={true}>
                       {product.title}
@@ -113,7 +121,7 @@ const ProductCard = ({
                 <ArrowButton
                   mode="dark"
                   title="View product details"
-                  link={`/terrazzo/${product.slug}`}
+                  link={`/terrazzo/${collectionSlug}/${product.slug}`}
                 />
               </Details>
             </ProductInfoBox>
@@ -151,7 +159,7 @@ const ProductCard = ({
             <ListCardImgContainer>
               <CardImg detailView={detailShown}>
                 {product?.thumbImage?.[0].url && (
-                  <Link href={`/terrazzo/${product.slug}`}>
+                  <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
                     <a>
                       <Image
                         src={product.thumbImage[0].url}
@@ -218,7 +226,7 @@ const ProductCard = ({
       <Container compact={compact}>
         <GridCardImgContainer>
           {product?.thumbImage?.[0].url && (
-            <Link href={`/terrazzo/${product.slug}`}>
+            <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
               <a>
                 <Image
                   src={product.thumbImage[0].url}
@@ -269,7 +277,7 @@ const ProductCard = ({
           altFont={true}
           marginTop="25px"
         >
-          <Link href={`/terrazzo/${product.slug}`}>
+          <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
             <a>{product.title}</a>
           </Link>
         </CardTitle>
