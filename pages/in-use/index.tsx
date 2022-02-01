@@ -2,75 +2,12 @@ import Head from "next/head";
 import { GetStaticProps } from "next";
 import { PageQuery } from "@gql/pageGQL";
 import { CategoriesQuery } from "@gql/categoriesGQL";
+import { ProjectsQuery } from "@gql/projectGQL";
 import Footer from "@components/common/footer";
 import ProjectsPage from "@components/pages/projects";
 import client from "@utils/apolloClient";
 
-const Projects = ({ heroDetails }) => {
-  const projects = [
-    {
-      id: "1",
-      slug: "project-1",
-      title: "Project Name Goes Here",
-      location: "City, Country",
-      type: "explore",
-      date: "Month, 2021",
-      thumbnail: {
-        src: "/assets/temp/project-thumb-1.png",
-        width: 800,
-        height: 400,
-      },
-    },
-    {
-      id: "2",
-      slug: "project-2",
-      title: "Project Name Goes Here",
-      location: "City, Country",
-      type: "residential",
-      date: "Month, 2021",
-      thumbnail: {
-        src: "/assets/temp/project-thumb-2.png",
-        width: 800,
-        height: 932,
-      },
-    },
-    {
-      id: "3",
-      slug: "project-3",
-      title: "Project Name Goes Here",
-      location: "City, Country",
-      type: "residential",
-      date: "Month, 2021",
-      thumbnail: {
-        src: "/assets/temp/project-thumb-2.png",
-        width: 800,
-        height: 932,
-      },
-    },
-    {
-      id: "4",
-      slug: "project-4",
-      title: "Project Name Goes Here",
-      location: "City, Country",
-      type: "workplaces",
-      date: "Month, 2021",
-      thumbnail: {
-        src: "/assets/temp/project-thumb-3.png",
-        width: 560,
-        height: 617,
-      },
-    },
-  ];
-  const types = [
-    "all",
-    "explore",
-    "residential",
-    "commercial",
-    "workplaces",
-    "recreation",
-    "retails",
-  ];
-
+const Projects = ({ heroDetails, types, projects }) => {
   return (
     <>
       <Head>
@@ -92,15 +29,23 @@ export const getStaticProps: GetStaticProps = async function () {
     variables: { slug: "in-use" },
   });
   const {
-    data: { entry: types },
+    data: { categories: types },
   } = await client.query({
     query: CategoriesQuery,
-    variables: { group: "Sector" },
+    variables: { 
+      group: "Sector" 
+    },
   });
-  console.log("types", types);
+  const {
+    data: { entries: projects}
+  } = await client.query({
+    query: ProjectsQuery
+  });
   return {
     props: {
-      heroDetails
+      heroDetails,
+      types,
+      projects
     },
     revalidate: 500,
   };
