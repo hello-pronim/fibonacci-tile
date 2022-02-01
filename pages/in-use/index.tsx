@@ -1,8 +1,11 @@
 import Head from "next/head";
+import { GetStaticProps } from "next";
+import { PageQuery } from "@gql/pageGQL";
 import Footer from "@components/common/footer";
 import ProjectsPage from "@components/pages/projects";
+import client from "@utils/apolloClient";
 
-const Projects = () => {
+const Projects = ({ heroDetails }) => {
   const projects = [
     {
       id: "1",
@@ -73,10 +76,26 @@ const Projects = () => {
         <title>Projects | Fibonacci</title>
         <meta name="description" content="Fibonacci Projects page" />
       </Head>
-      <ProjectsPage projects={projects} types={types} />
+      <ProjectsPage heroDetails={heroDetails} projects={projects} types={types} />
       <Footer />
     </>
   );
 };
+
+
+export const getStaticProps: GetStaticProps = async function () {
+  const {
+    data: { entry: heroDetails },
+  } = await client.query({
+    query: PageQuery,
+    variables: { slug: "in-use" },
+  });
+  return {
+    props: {
+      heroDetails
+    },
+    revalidate: 500,
+  };
+}
 
 export default Projects;
