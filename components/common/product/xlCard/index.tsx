@@ -12,13 +12,22 @@ import {
   Wrapper,
 } from "./styles";
 
-const ProductCard = ({ product, isSelected = false, toggleProductSelect }) => {
+const ProductCard = ({
+  product,
+  isSelected = false,
+  toggleProductSelect,
+  activeCollectionSlug = null,
+}) => {
+  let collectionSlug = activeCollectionSlug
+    ? activeCollectionSlug
+    : product.collections[0].slug;
+
   return (
     <Wrapper>
       <Container>
         <GridCardImgContainer>
           {product.thumbImage?.[0].url && (
-            <Link href={`/products/${product.slug}`}>
+            <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
               <a>
                 <Image
                   src={product.thumbImage[0].url}

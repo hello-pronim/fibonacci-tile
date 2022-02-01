@@ -123,10 +123,10 @@ const Header = ({ mode = "light", position = "relative" }) => {
             onClick={() => setNavOpen(!navOpen)}
           />
           <NavLeft>
-            <NavItem href="/products" mode={mode}>
+            <NavItem href="/terrazzo" mode={mode}>
               Our Products
             </NavItem>
-            <NavItem href="/projects" mode={mode}>
+            <NavItem href="/in-use" mode={mode}>
               In Use
             </NavItem>
             <NavItem href="#" mode={mode}>
@@ -224,10 +224,10 @@ const Header = ({ mode = "light", position = "relative" }) => {
               }}
             >
               <DrawerInner>
-                <NavItem mode={mode} href="/products">
+                <NavItem mode={mode} href="/terrazzo">
                   Our Products
                 </NavItem>
-                <NavItem mode={mode} href="/projects">
+                <NavItem mode={mode} href="/in-use">
                   In Use
                 </NavItem>
                 <NavItem mode={mode} href="#">

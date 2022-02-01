@@ -49,8 +49,13 @@ const ProductCard = ({
   isSelected = false,
   toggleProductSelect,
   compact = false,
+  activeCollectionSlug = null,
 }) => {
   const [detailShown, setDetailShown] = useState(false);
+  let collectionSlug = activeCollectionSlug
+    ? activeCollectionSlug
+    : product?.collections[0]?.slug;
+
   if (displayMode === "list") {
     return (
       <TableRow detailView={detailShown}>
@@ -58,7 +63,10 @@ const ProductCard = ({
           <ProductsInfoRow>
             <ProductName>
               <div>
-                <Link href={`/products/${product.slug}`} passHref>
+                <Link
+                  href={`/terrazzo/${collectionSlug}/${product.slug}`}
+                  passHref
+                >
                   <ProductListTitle>
                     <Text as="h3" variant="Display-XXSmall" altFont={true}>
                       {product.title}
@@ -87,9 +95,11 @@ const ProductCard = ({
             </CollectionNameBox>
             <DescriptionBox detailView={detailShown}>
               <div>
-                <Text as="h4" variant="Body-Small">
-                  {product.designStory}
-                </Text>
+                <Text
+                  as="h4"
+                  variant="Body-Small"
+                  dangerouslySetInnerHTML={{ __html: product.designStory }}
+                />
               </div>
             </DescriptionBox>
           </ProductsInfoRow>
@@ -97,23 +107,22 @@ const ProductCard = ({
             <ProductInfoBox>
               <Details detailView={detailShown}>
                 <div>
-                  <TitleText color="white" variant="Body-Regular">
-                    # New release
-                  </TitleText>
+                  {product.label && (
+                    <TitleText color="white" variant="Body-Regular">
+                      # {product.label}
+                    </TitleText>
+                  )}
                 </div>
                 <Description detailView={detailShown}>
-                  <Text variant="Body-Regular">
-                    Tincidunt amet ullamcorper et consequat male su ada. Integer
-                    elit ut varius in at porttitor. Id pu rus amet feugiat non
-                    porta. Commodo integer feugiat nunc, venenatis lobortis eu
-                    dictum. Pellentesque sit tortor congue neque, odio ultrices
-                    amet.
-                  </Text>
+                  <Text
+                    variant="Body-Regular"
+                    dangerouslySetInnerHTML={{ __html: product.projectIntroduction }}
+                  />
                 </Description>
                 <ArrowButton
                   mode="dark"
                   title="View product details"
-                  link={`/products/${product.slug}`}
+                  link={`/terrazzo/${collectionSlug}/${product.slug}`}
                 />
               </Details>
             </ProductInfoBox>
@@ -151,7 +160,7 @@ const ProductCard = ({
             <ListCardImgContainer>
               <CardImg detailView={detailShown}>
                 {product?.thumbImage?.[0].url && (
-                  <Link href={`/products/${product.slug}`}>
+                  <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
                     <a>
                       <Image
                         src={product.thumbImage[0].url}
@@ -218,7 +227,7 @@ const ProductCard = ({
       <Container compact={compact}>
         <GridCardImgContainer>
           {product?.thumbImage?.[0].url && (
-            <Link href={`/products/${product.slug}`}>
+            <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
               <a>
                 <Image
                   src={product.thumbImage[0].url}
@@ -269,7 +278,7 @@ const ProductCard = ({
           altFont={true}
           marginTop="25px"
         >
-          <Link href={`/products/${product.slug}`}>
+          <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
             <a>{product.title}</a>
           </Link>
         </CardTitle>

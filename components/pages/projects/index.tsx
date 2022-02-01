@@ -5,11 +5,11 @@ import ProjectList from "./ProjectList";
 import ProjectsHeader from "./Header";
 import { Container } from "./styles";
 
-const ProjectPage = ({ projects, types }) => {
+const ProjectPage = ({heroDetails, projects, types }) => {
   return (
     <Container>
       <ProjectsHeader mode="dark" />
-      <Hero />
+      <Hero heroDetails={heroDetails} />
       <ProjectList projects={projects} types={types} />
     </Container>
   );

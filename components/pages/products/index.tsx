@@ -47,14 +47,14 @@ const ProductsPage = ({
       colourSchemes: [],
       search: state.filter.searchText ? state.filter.searchText : "",
     };
-    if (state.filter.products.value !== "all") {
-      filterVars.productCategories = state.filter.products;
+    if (state.filter.products.value && state.filter.products.value !== "all") {
+      filterVars.productCategories = [state.filter.products.value];
     }
-    if (state.filter.colourSchemes) {
+    if (state.filter.colourSchemes.length > 0) {
       filterVars.colourSchemes = state.filter.colourSchemes;
     }
-    if (state.filter.sortBy) {
-      switch (state.filter.sortBy) {
+    if (state.filter?.sortBy?.value) {
+      switch (state.filter.sortBy.value) {
         case "asc":
           filterVars.orderBy = "title ASC";
           break;
@@ -91,7 +91,7 @@ const ProductsPage = ({
 
   return (
     <Container>
-      <ProductsHeader />
+      {!showFilterBar &&  <ProductsHeader />}
       <Slider />
       <SectionTitle
         show={showFilterBar}
@@ -105,10 +105,17 @@ const ProductsPage = ({
           productCategories={productCategories}
         />
       </section>
-      <ProductLists products={firstHalfProducts} accentText="Be inspired" />
+      <ProductLists
+        loadingProducts={loadingProducts}
+        products={firstHalfProducts}
+        accentText="Be inspired"
+      />
       <CTAPanel imagePosition="left" />
       {secondHalfProducts.length > 0 && (
-        <ProductLists products={secondHalfProducts} />
+        <ProductLists
+          loadingProducts={loadingProducts}
+          products={secondHalfProducts}
+        />
       )}
       <CTAPanel imagePosition="right" />
       <FooterCTAPanel />

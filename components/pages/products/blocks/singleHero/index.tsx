@@ -4,12 +4,7 @@ import collection from "public/assets/temp/collection-temp.png";
 import Link from "next/link";
 import ProductCard from "@components/common/product/xlCard";
 import { useAppContext } from "@contexts/AppContext";
-import {
-  Container,
-  LinkWrapper,
-  LinkWrapperLeft,
-  Pill,
-} from "./styles";
+import { Container, LinkWrapper, LinkWrapperLeft, Pill } from "./styles";
 import Text from "@components/common/typography";
 import { css } from "@styled-system/css";
 import Arrow from "@components/common/icons/arrow";
@@ -58,14 +53,17 @@ const SingleHeroModule = ({ product }) => {
           >
             <Text variant="Body-XSmall">No. {product.productNumber}</Text>
           </span>
-          {product.label && (<Pill># {product.label}</Pill>)}
+          {product.label && <Pill># {product.label}</Pill>}
           <Text
             variant="Body-Large"
             css={css({ span: { color: theme.colors.taupe } })}
           >
             {product.subline}
           </Text>
-          <Text variant="Body-Large" dangerouslySetInnerHTML={{__html: product.designStory}}></Text>
+          <Text
+            variant="Body-Large"
+            dangerouslySetInnerHTML={{ __html: product.designStory }}
+          />
         </div>
         <div
           css={css({
@@ -78,7 +76,9 @@ const SingleHeroModule = ({ product }) => {
           <div>
             <Text variant="Display-Overline">EXPLORE</Text>
             <LinkWrapper>
-              <Link href="#">Collection name</Link>
+              <Link href={`/terrazzo/${product.collections[0].slug}`}>
+                {product.collections[0].title}
+              </Link>
               <Arrow type="short" />
             </LinkWrapper>
           </div>

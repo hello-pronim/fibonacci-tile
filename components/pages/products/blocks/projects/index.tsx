@@ -3,7 +3,6 @@ import AccentText, { AccentTextMobile } from "@components/common/accentText";
 import Image from "next/image";
 import moment from 'moment';
 import ArrowButton from "@components/common/button/arrowButton";
-import Slide1 from "public/assets/temp/gallery-1.jpg";
 import Link from "next/link";
 import {
   Container,
@@ -18,7 +17,6 @@ import {
   ImageWrapper,
   LinkWrapper,
 } from "./styles";
-import mockData from "./constants";
 import Text from "@components/common/typography";
 import { css } from "@styled-system/css";
 import Arrow from "@components/common/icons/arrow";
@@ -30,11 +28,9 @@ interface accordionTypes {
 }
 
 const ProjectsModule = ({ accentText, product }: accordionTypes) => {
-  console.log("product", product)
-  const {project1, project2} = product;
-  console.log("porject1", project1);
+  const {project1, project2, backgroundColor} = product;
   return (
-    <Container id="projects">
+    <Container id="projects" css={css({ bg: backgroundColor ? backgroundColor : "#E2E9EC" })}>
       <AccentText top={400}>{accentText}</AccentText>
       <IntroWrapper>
         <Text
@@ -126,7 +122,7 @@ const ProjectsModule = ({ accentText, product }: accordionTypes) => {
               {project1[0].location}
             </Text>
             <LinkWrapper>
-              <Link href={project1[0].slug}>View Project</Link>
+              <Link href={`/projects/${project1[0].slug}`}>View Project</Link>
               <Arrow type="short" />
             </LinkWrapper>
           </Details>
@@ -166,7 +162,7 @@ const ProjectsModule = ({ accentText, product }: accordionTypes) => {
               {project2[0].location}
             </Text>
             <LinkWrapper>
-              <Link href={project2[0].slug}>View Project</Link>
+              <Link href={`/projects/${project2[0].slug}`}>View Project</Link>
               <Arrow type="short" />
             </LinkWrapper>
           </Details>

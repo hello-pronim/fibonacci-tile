@@ -8,7 +8,6 @@ import { Container } from "./styles";
 import { css } from "@emotion/react";
 
 const Hero = () => {
-  console.log(supportHero);
   return (
     <Container
       css={css({ backgroundImage: "url(/assets/temp/support-hero.jpg)" })}
