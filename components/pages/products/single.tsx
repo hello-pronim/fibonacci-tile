@@ -15,13 +15,13 @@ const ProductPage = ({ product, relatedProducts, technicalSpecifications }) => {
       {product?.gallery?.length > 0 && (
         <InlineSlider images={product.gallery} />
       )}
-      {technicalSpecifications && (
+      {technicalSpecifications?.length > 0 && (
         <AccordionModule
           items={technicalSpecifications}
           accentText="Technical Specifications"
         />
       )}
-      {relatedProducts.length > 0 && (
+      {relatedProducts?.length > 0 && (
         <RelatedProducts
           title="More in our Terrazzo range"
           products={relatedProducts}
