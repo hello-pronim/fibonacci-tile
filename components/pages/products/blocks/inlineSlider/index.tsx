@@ -23,7 +23,7 @@ import {
 import { css } from "@styled-system/css";
 import theme from "styles/theme";
 
-const InlineSlider = () => {
+const InlineSlider = ({ images }) => {
   const slider = React.useRef<Slider>(null);
   const [slideCount, setSlideCount] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -35,7 +35,8 @@ const InlineSlider = () => {
       slider.current && slider.current.innerSlider.state.currentSlide + 1
     );
     setSlideCount(
-      slider.current && slider.current.innerSlider.state.slideCount
+      // slider.current && slider.current.innerSlider.state.slideCount
+      images?.length
     );
   }, []);
 
@@ -75,106 +76,30 @@ const InlineSlider = () => {
       <Wrapper>
         <AccentTextMobile css={css({pb: 80})}>Gallery</AccentTextMobile>
         <Slider {...settings} ref={slider}>
-          <SlideItem>
-            <SlideImage>
-              <Image
-                src={Slide1}
-                alt="image-1"
-                layout="responsive"
-                width="710"
-                height="900"
-              />
-            </SlideImage>
-            <SlideImageMobile>
-              <Image
-                src={SlideMobile}
-                alt="image-1"
-                layout="responsive"
-                width="303"
-                height="384.08"
-              />
-            </SlideImageMobile>
-          </SlideItem>
-          <SlideItem>
-            <SlideImage>
-              <Image
-                src={Slide1}
-                alt="image-1"
-                layout="responsive"
-                width="710"
-                height="900"
-              />
-            </SlideImage>
-            <SlideImageMobile>
-              <Image
-                src={SlideMobile}
-                alt="image-1"
-                layout="responsive"
-                width="303"
-                height="384.08"
-              />
-            </SlideImageMobile>
-          </SlideItem>
-          <SlideItem>
-            <SlideImage>
-              <Image
-                src={Slide1}
-                alt="image-1"
-                layout="responsive"
-                width="710"
-                height="900"
-              />
-            </SlideImage>
-            <SlideImageMobile>
-              <Image
-                src={SlideMobile}
-                alt="image-1"
-                layout="responsive"
-                width="303"
-                height="384.08"
-              />
-            </SlideImageMobile>
-          </SlideItem>
-          <SlideItem>
-            <SlideImage>
-              <Image
-                src={Slide1}
-                alt="image-1"
-                layout="responsive"
-                width="710"
-                height="900"
-              />
-            </SlideImage>
-            <SlideImageMobile>
-              <Image
-                src={SlideMobile}
-                alt="image-1"
-                layout="responsive"
-                width="303"
-                height="384.08"
-              />
-            </SlideImageMobile>
-          </SlideItem>
-          <SlideItem>
-            <SlideImage>
-              <Image
-                src={Slide1}
-                alt="image-1"
-                layout="responsive"
-                width="710"
-                height="900"
-              />
-            </SlideImage>
-            <SlideImageMobile>
-              <Image
-                src={SlideMobile}
-                alt="image-1"
-                layout="responsive"
-                width="303"
-                height="384.08"
-              />
-            </SlideImageMobile>
-          </SlideItem>
+          {images.map((image, index) => {
+            return(
+              <SlideItem key={index}>
+                <SlideImage>
+                  <Image
+                    src={image.url}
+                    alt="image-1"
+                    layout="responsive"
+                    width="710"
+                    height="900"
+                  />
+                </SlideImage>
+                <SlideImageMobile>
+                  <Image
+                    src={image.url}
+                    alt="image-1"
+                    layout="responsive"
+                    width="303"
+                    height="384.08"
+                  />
+                </SlideImageMobile>
+              </SlideItem>
+            )
+          })}
         </Slider>
         <BottomBar>
           <ProgBar>

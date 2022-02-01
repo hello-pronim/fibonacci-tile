@@ -69,8 +69,8 @@ const ProductPage = ({ product }) => {
     <>
       <ProductsHeader mode="dark" />
       <SingleHeroModule product={product} />
-      <Projects accentText="Fibonacci Live" />
-      <InlineSlider />
+      <Projects product={product} accentText="Fibonacci Live" />
+      {product?.gallery?.length > 0 && (<InlineSlider images={product.gallery} />)}
       <AccordionModule accentText="Technical Specifications" />
       <RelatedProducts title="More in our Terrazzo range" products={products} />
     </>

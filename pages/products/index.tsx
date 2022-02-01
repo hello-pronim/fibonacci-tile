@@ -5,14 +5,18 @@ import client from "@utils/apolloClient";
 import { ProductsQuery } from "@gql/productGQL";
 import { CategoriesQuery } from "@gql/categoriesGQL";
 
-const Products = ({ products, colourSchemes }) => {
+const Products = ({ products, colourSchemes, productCategories }) => {
   return (
     <>
       <Head>
         <title>Products | Fibonacci</title>
         <meta name="description" content="Fibonacci Products page" />
       </Head>
-      <ProductPage products={products} colourSchemes={colourSchemes} />
+      <ProductPage
+        products={products}
+        colourSchemes={colourSchemes}
+        productCategories={productCategories}
+      />
       <Footer />
     </>
   );
@@ -32,10 +36,19 @@ export const getStaticProps = async function () {
       group: "colourSchemes",
     },
   });
+  const {
+    data: { categories: productCategories },
+  } = await client.query({
+    query: CategoriesQuery,
+    variables: {
+      group: "productCategories",
+    },
+  });
   return {
     props: {
       products,
       colourSchemes,
+      productCategories,
     },
     revalidate: 500,
   };

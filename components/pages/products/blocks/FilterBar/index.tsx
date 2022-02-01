@@ -21,7 +21,12 @@ import ColourSchemeFilter from "./ColourSchemeFilter";
 import Logo from "public/assets/brandmarks/symbol-primary.svg";
 import styles from "./styles.module.scss";
 
-export default function ProductFilters({ show, applyFilter, colourSchemes }) {
+export default function ProductFilters({
+  show,
+  applyFilter,
+  colourSchemes,
+  productCategories,
+}) {
   const { state, dispatch } = useAppContext();
   const [activeFilter, setActiveFilter] = useState(null);
   const [isMobileFilterActive, setIsMobileFilterActive] = useState(false);
@@ -44,7 +49,6 @@ export default function ProductFilters({ show, applyFilter, colourSchemes }) {
       }
     };
   };
-
   const toggleMobileFilter = () => {
     if (!isMobileFilterActive) {
       document.body.classList.add("modal-open");
@@ -57,6 +61,7 @@ export default function ProductFilters({ show, applyFilter, colourSchemes }) {
       value: !isMobileFilterActive,
     });
   };
+
   return (
     <div
       ref={ref}
@@ -112,6 +117,9 @@ export default function ProductFilters({ show, applyFilter, colourSchemes }) {
             <Text variant="Body-Small" mr="10px">
               Products
             </Text>
+            {state.filter?.products?.value !== "all" && (
+              <Text variant="Body-XSmall">{state.filter.products.label}</Text>
+            )}
             <ArrowDownIcon />
           </div>
           <div
@@ -123,6 +131,11 @@ export default function ProductFilters({ show, applyFilter, colourSchemes }) {
             <Text variant="Body-Small" mr="10px">
               Colour Schemes
             </Text>
+            {state.filter.colourSchemes.length > 0 && (
+              <Text variant="Body-XSmall">
+                {state.filter.colourSchemes.length} schemes
+              </Text>
+            )}
             <ArrowDownIcon />
           </div>
           <div
@@ -134,6 +147,9 @@ export default function ProductFilters({ show, applyFilter, colourSchemes }) {
             <Text variant="Body-Small" mr="10px">
               Sort by
             </Text>
+            {state.filter?.sortBy?.value !== "featured" && (
+              <Text variant="Body-XSmall">{state.filter.sortBy.label}</Text>
+            )}
             <ArrowDownIcon />
           </div>
         </div>
@@ -214,7 +230,9 @@ export default function ProductFilters({ show, applyFilter, colourSchemes }) {
               </Text>
               <ArrowDownIcon />
             </div>
-            {activeFilter === "products" && <ProductFilter />}
+            {activeFilter === "products" && (
+              <ProductFilter productCategories={productCategories} />
+            )}
             <div
               className={classnames(
                 styles.filterItem,
@@ -286,7 +304,9 @@ export default function ProductFilters({ show, applyFilter, colourSchemes }) {
       {!isMobileFilterActive && activeFilter && (
         <div className={styles.filterContainer}>
           {activeFilter === "search" && <SearchFilter />}
-          {activeFilter === "products" && <ProductFilter />}
+          {activeFilter === "products" && (
+            <ProductFilter productCategories={productCategories} />
+          )}
           {activeFilter === "sort-by" && <SortByFilter />}
           {activeFilter === "colour-schemes" && (
             <ColourSchemeFilter colourSchemes={colourSchemes} />
