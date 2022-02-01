@@ -22,6 +22,7 @@ export const ProductsQuery = gql`
         title
         subline
         collections {
+          id
           title
           slug
         }

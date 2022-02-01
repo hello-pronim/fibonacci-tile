@@ -42,7 +42,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
     query: ProductsQuery,
   });
   const paths = products.map((product: any) => ({
-    params: { slug: product.slug },
+    params: {
+      "product-slug": product.slug,
+      "collection-slug": product.collections[0].slug,
+    },
   }));
   return {
     paths,
@@ -55,9 +58,8 @@ export const getStaticProps: GetStaticProps = async function ({ params }) {
     data: { entry: product },
   } = await client.query({
     query: ProductQuery,
-    variables: { slug: params.slug },
+    variables: { slug: params["product-slug"] },
   });
-
   const {
     data: { globalSets: specifications },
   } = await client.query({
