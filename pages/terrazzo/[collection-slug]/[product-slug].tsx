@@ -35,7 +35,7 @@ const Product: NextPage<ProductPageProps> = ({
   );
 };
 
-export const getStaticPaths: GetStaticPaths<{ slug: string }> = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
   const {
     data: { entries: products },
   } = await client.query({
@@ -71,8 +71,10 @@ export const getStaticProps: GetStaticProps = async function ({ params }) {
   });
 
   let relatedProducts = null;
-  if(products.length > 0) {
-    relatedProducts = products.filter(item => parseInt(item.id) !== parseInt(product.id));
+  if (products.length > 0) {
+    relatedProducts = products.filter(
+      (item) => parseInt(item.id) !== parseInt(product.id)
+    );
   }
 
   return {

@@ -3,7 +3,6 @@ import AccentText, { AccentTextMobile } from "@components/common/accentText";
 import Image from "next/image";
 import moment from 'moment';
 import ArrowButton from "@components/common/button/arrowButton";
-import Slide1 from "public/assets/temp/gallery-1.jpg";
 import Link from "next/link";
 import {
   Container,
@@ -18,7 +17,6 @@ import {
   ImageWrapper,
   LinkWrapper,
 } from "./styles";
-import mockData from "./constants";
 import Text from "@components/common/typography";
 import { css } from "@styled-system/css";
 import Arrow from "@components/common/icons/arrow";
