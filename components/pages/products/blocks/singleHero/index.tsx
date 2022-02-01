@@ -63,7 +63,7 @@ const SingleHeroModule = ({ product }) => {
           <Text
             variant="Body-Large"
             dangerouslySetInnerHTML={{ __html: product.designStory }}
-          ></Text>
+          />
         </div>
         <div
           css={css({

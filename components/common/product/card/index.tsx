@@ -95,9 +95,11 @@ const ProductCard = ({
             </CollectionNameBox>
             <DescriptionBox detailView={detailShown}>
               <div>
-                <Text as="h4" variant="Body-Small">
-                  {product.designStory}
-                </Text>
+                <Text
+                  as="h4"
+                  variant="Body-Small"
+                  dangerouslySetInnerHTML={{ __html: product.designStory }}
+                />
               </div>
             </DescriptionBox>
           </ProductsInfoRow>
@@ -105,18 +107,17 @@ const ProductCard = ({
             <ProductInfoBox>
               <Details detailView={detailShown}>
                 <div>
-                  <TitleText color="white" variant="Body-Regular">
-                    # New release
-                  </TitleText>
+                  {product.label && (
+                    <TitleText color="white" variant="Body-Regular">
+                      # {product.label}
+                    </TitleText>
+                  )}
                 </div>
                 <Description detailView={detailShown}>
-                  <Text variant="Body-Regular">
-                    Tincidunt amet ullamcorper et consequat male su ada. Integer
-                    elit ut varius in at porttitor. Id pu rus amet feugiat non
-                    porta. Commodo integer feugiat nunc, venenatis lobortis eu
-                    dictum. Pellentesque sit tortor congue neque, odio ultrices
-                    amet.
-                  </Text>
+                  <Text
+                    variant="Body-Regular"
+                    dangerouslySetInnerHTML={{ __html: product.projectIntroduction }}
+                  />
                 </Description>
                 <ArrowButton
                   mode="dark"
