@@ -10,8 +10,10 @@ const CollectionPage = ({ collection, products }) => {
     <>
       <Header mode="dark" />
       <CollectionHero collection={collection} />
-      <CollectionProducts products={products} />
-      <CollectionProjects projects={collection.projects} />
+      {products && <CollectionProducts products={products} />}
+      {collection.projects && (
+        <CollectionProjects projects={collection.projects} />
+      )}
       {collection?.gallery?.length > 0 && (
         <InlineSlider images={collection.gallery} />
       )}

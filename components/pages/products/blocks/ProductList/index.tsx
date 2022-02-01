@@ -16,7 +16,6 @@ import {
   TableHeaderLeft,
   TableHeaderRight,
 } from "./styles";
-import { Props } from "react";
 
 interface productListProps {
   products: any;
