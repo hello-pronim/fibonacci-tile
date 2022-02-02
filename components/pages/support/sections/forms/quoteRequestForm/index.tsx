@@ -4,6 +4,7 @@ import ArrowButton from "@components/common/button/arrowButton";
 import Input from "@components/common/input";
 import Select from "@components/common/select";
 import ProductSelect from "@components/common/select/productSelect";
+import ProductSizeSelect from "@components/common/select/productSizeSelect";
 import TextArea from "@components/common/textarea";
 import AddIcon from "@components/icons/add";
 
@@ -136,6 +137,28 @@ const QuoteRequestForm = () => {
       title: "CoolStream",
       uri: "/products/coolstream",
       img1: CoolStream,
+    },
+  ];
+  const sizes = [
+    {
+      title: "Tile: 400x400x15mm",
+      value: "400x400x15",
+    },
+    {
+      title: "Tile: 400x400x17mm",
+      value: "400x400x17",
+    },
+    {
+      title: "Tile: 400x400x20mm",
+      value: "400x400x20",
+    },
+    {
+      title: "Tile: 600x600x20mm",
+      value: "600x600x17",
+    },
+    {
+      title: "Slab: 1440x3500x30mm",
+      value: "1440x3500x30",
     },
   ];
   const defaultProduct = { id: 0, size: 0, label: "" };
@@ -284,14 +307,7 @@ const QuoteRequestForm = () => {
                     <ProductSelect name="productId" products={products} />
                   </Col>
                   <Col>
-                    <Select name="productSize" fullWidth>
-                      <option>Choose a size</option>
-                      <option>Tile: 400x400x15mm</option>
-                      <option>Tile: 400x400x17mm</option>
-                      <option>Tile: 400x400x20mm</option>
-                      <option>Tile: 600x600x17mm</option>
-                      <option>Tile: 1440x3500x30mm</option>
-                    </Select>
+                    <ProductSizeSelect name="productSize" sizes={sizes} />
                   </Col>
                   <Col>
                     <Input
