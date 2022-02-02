@@ -14,12 +14,15 @@ const Projects = ({ heroDetails, types, projects }) => {
         <title>Projects | Fibonacci</title>
         <meta name="description" content="Fibonacci Projects page" />
       </Head>
-      <ProjectsPage heroDetails={heroDetails} projects={projects} types={types} />
+      <ProjectsPage
+        heroDetails={heroDetails}
+        projects={projects}
+        types={types}
+      />
       <Footer />
     </>
   );
 };
-
 
 export const getStaticProps: GetStaticProps = async function () {
   const {
@@ -32,23 +35,23 @@ export const getStaticProps: GetStaticProps = async function () {
     data: { categories: types },
   } = await client.query({
     query: CategoriesQuery,
-    variables: { 
-      group: "Sector" 
+    variables: {
+      group: "Sector",
     },
   });
   const {
-    data: { entries: projects}
+    data: { entries: projects },
   } = await client.query({
-    query: ProjectsQuery
+    query: ProjectsQuery,
   });
   return {
     props: {
       heroDetails,
       types,
-      projects
+      projects,
     },
     revalidate: 500,
   };
-}
+};
 
 export default Projects;
