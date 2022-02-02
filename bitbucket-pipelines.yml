@@ -13,7 +13,7 @@ pipelines:
             - export NODE_ENV=$DEV_NODE_ENV
             - npm install
             - npm run build
-            - zip -r application.zip . -x bitbucket-pipelines.yml */components/**\* */contexts/**\* */gql/**\* */pages/**\* */styles/**\* */utils/**\* *.git* */node_modules/**\*
+            - zip -r application.zip . -x bitbucket-pipelines.yml -x "**/node_modules/*" -x "*.git*" -x "**/components/*" -x "**/contexts/*" -x "**/gql/*" -x "**/pages/*" -x "**/styles/*" -x "**/utils/*"
           artifacts:
             - application.zip
           
