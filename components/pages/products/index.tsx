@@ -10,6 +10,7 @@ import SectionTitle from "./blocks/SectionTitle";
 import ProductLists from "./blocks/ProductList";
 import Slider from "./blocks/Slider";
 import { Container } from "./styles";
+import Products from "pages/terrazzo";
 
 const ProductsPage = ({
   products: initialProducts,
@@ -24,6 +25,8 @@ const ProductsPage = ({
   const [secondHalfProducts, setSecondHalfProducts] = useState(
     initialProducts.slice(15, 15)
   );
+  console.log(initialProducts.slice(0, 15));
+  console.log(initialProducts.slice(15, 15));
   const [showFilterBar, setShowFilterBar] = useState(false);
   const ref = useRef(null);
 
@@ -91,8 +94,9 @@ const ProductsPage = ({
 
   return (
     <Container>
-      {!showFilterBar &&  <ProductsHeader />}
+      {!showFilterBar && <ProductsHeader />}
       <Slider />
+      {secondHalfProducts.length}
       <SectionTitle
         show={showFilterBar}
         title="40 unique creations. Thoughtfully designed. Sustainably made. Purpose-built."

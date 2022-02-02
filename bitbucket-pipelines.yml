@@ -35,11 +35,11 @@ pipelines:
   #     - step: *Deploy-step
   branches:
     develop:
-      - step: 
-        <<: *Build-step
-        name: Build for Dev
-        deployment: Dev
-      - step: 
-        <<: *Deploy-step
-        name: Deploy to Dev
-        deployment: Dev
+      - step:
+         <<: *Build-step
+         name: Build for Dev
+         deployment: Dev
+      - step:
+         <<: *Deploy-step
+         name: Deploy to Dev
+         deployment: Dev
