@@ -29,10 +29,10 @@ definitions:
               ZIP_FILE: "application.zip"
 
 pipelines:
-  custom:
-    deploy-to-staging:
-      - step: *Build-step
-      - step: *Deploy-step
+  # custom:
+  #   deploy-to-staging:
+  #     - step: *Build-step
+  #     - step: *Deploy-step
   branches:
     develop:
       - step: *Build-step
