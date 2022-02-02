@@ -23,10 +23,8 @@ const ProductsPage = ({
     initialProducts.slice(0, 15)
   );
   const [secondHalfProducts, setSecondHalfProducts] = useState(
-    initialProducts.slice(15, 15)
+    initialProducts.slice(15, initialProducts.length - 1)
   );
-  console.log(initialProducts.slice(0, 15));
-  console.log(initialProducts.slice(15, 15));
   const [showFilterBar, setShowFilterBar] = useState(false);
   const ref = useRef(null);
 
@@ -80,7 +78,7 @@ const ProductsPage = ({
         variables: filterVars,
       });
       setFirstHalfProducts(products.slice(0, 15));
-      setSecondHalfProducts(products.slice(15, 15));
+      setSecondHalfProducts(products.slice(15, products.length - 1));
       setLoadingProducts(false);
     }
     fetchProducts();
@@ -96,7 +94,6 @@ const ProductsPage = ({
     <Container>
       {!showFilterBar && <ProductsHeader />}
       <Slider />
-      {secondHalfProducts.length}
       <SectionTitle
         show={showFilterBar}
         title="40 unique creations. Thoughtfully designed. Sustainably made. Purpose-built."
