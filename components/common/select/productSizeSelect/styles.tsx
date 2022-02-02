@@ -2,26 +2,26 @@ import css from "@styled-system/css";
 import styled from "@emotion/styled";
 import theme from "@styles/theme";
 
-interface ProductSelectProps {
+interface SizeSelectProps {
   variant: string;
   fullWidth?: boolean;
   halfWidth?: boolean;
   open: boolean;
 }
 
-interface ProductSelectDropdownWrapperProps {
+interface SizeSelectDropdownWrapperProps {
   open: boolean;
 }
 
-const ProductSelectWrapper = styled("div")(
+const SizeSelectWrapper = styled("div")(
   css({
     position: "relative",
     width: "100%",
   })
 );
 
-const ProductSelect = styled("div")(
-  ({ variant, fullWidth, halfWidth, open }: ProductSelectProps) =>
+const SizeSelect = styled("div")(
+  ({ variant, fullWidth, halfWidth, open }: SizeSelectProps) =>
     css({
       backgroundImage: `url("assets/icons/arrowDown.svg")`,
       backgroundRepeat: "no-repeat",
@@ -47,8 +47,8 @@ const ProductSelect = styled("div")(
     })
 );
 
-const ProductSelectDropdownWrapper = styled("div")(
-  ({ open }: ProductSelectDropdownWrapperProps) =>
+const SizeSelectDropdownWrapper = styled("div")(
+  ({ open }: SizeSelectDropdownWrapperProps) =>
     css({
       display: open ? "block" : "none",
       width: "100%",
@@ -65,14 +65,14 @@ const ProductSelectDropdownWrapper = styled("div")(
     })
 );
 
-const ProductSelectDropdown = styled("div")(
+const SizeSelectDropdown = styled("div")(
   css({
     display: "block",
     width: "100%",
   })
 );
 
-const ProductSelectDropdownHeaderWrapper = styled("div")(
+const SizeSelectDropdownHeaderWrapper = styled("div")(
   css({
     display: "block",
     width: "100%",
@@ -80,7 +80,7 @@ const ProductSelectDropdownHeaderWrapper = styled("div")(
   })
 );
 
-const ProductSelectDropdownHeaderText = styled("h5")(
+const SizeSelectDropdownHeaderText = styled("h5")(
   css({
     fontFamily: "Everett",
     fontSize: "20px",
@@ -89,33 +89,66 @@ const ProductSelectDropdownHeaderText = styled("h5")(
   })
 );
 
-const ProductSelectDropdownBodyWrapper = styled("div")(
+const SizeSelectDropdownBodyWrapper = styled("div")(
   css({
-    display: "grid",
-    gridTemplateColumns: "repeat(2, 1fr)",
+    display: "flex",
+    flexDirection: "column",
     width: "100%",
+    padding: "12px 12px 0px 12px",
   })
 );
 
-const HiddenProductSelectItemsWrapper = styled("div")(
+const HiddenSizeSelectItemsWrapper = styled("div")(
   css({
     display: "none",
   })
 );
 
-const ProductSelectItemWrapper = styled("div")(
+const SizeSelectItemWrapper = styled("div")(
+  ({ selected }: { selected: boolean }) =>
+    css({
+      position: "relative",
+      padding: "16px 0",
+      borderBottom: "1px solid #D6CEC5",
+      cursor: "pointer",
+    })
+);
+
+const SizeSelectItem = styled("div")(
   css({
-    padding: "4px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
   })
 );
+
+const SizeSelectItemText = styled("div")(
+  css({
+    fontFamily: "Everett",
+    fontSize: "16px",
+    lineHeight: "22.4px",
+    color: theme.colors.charcoal,
+    padding: "8px 32px 8px 8px",
+  })
+);
+
+const SizeSelectItemCheck = styled("div")(
+  css({
+    width: "18px",
+  })
+);
+
 export {
-  HiddenProductSelectItemsWrapper,
-  ProductSelect,
-  ProductSelectDropdown,
-  ProductSelectDropdownBodyWrapper,
-  ProductSelectDropdownHeaderText,
-  ProductSelectDropdownHeaderWrapper,
-  ProductSelectDropdownWrapper,
-  ProductSelectItemWrapper,
-  ProductSelectWrapper,
+  HiddenSizeSelectItemsWrapper,
+  SizeSelect,
+  SizeSelectDropdown,
+  SizeSelectDropdownBodyWrapper,
+  SizeSelectDropdownHeaderText,
+  SizeSelectDropdownHeaderWrapper,
+  SizeSelectDropdownWrapper,
+  SizeSelectItem,
+  SizeSelectItemText,
+  SizeSelectItemCheck,
+  SizeSelectItemWrapper,
+  SizeSelectWrapper,
 };
