@@ -6,12 +6,12 @@ import Projects from "./blocks/projects";
 import AccordionModule from "@components/modules/accordion";
 import SingleHeroModule from "./blocks/singleHero";
 
-const ProductPage = ({ product, relatedProducts, technicalSpecifications }) => {
+const ProductPage = ({ product, relatedProducts, technicalSpecifications, collectionSlug }) => {
   const { backgroundColor } = product;
   return (
     <>
       <ProductsHeader mode="dark" />
-      <SingleHeroModule product={product} />
+      <SingleHeroModule product={product} collectionSlug={collectionSlug} />
       <Projects product={product} accentText="Fibonacci Live" />
       {product?.gallery?.length > 0 && (
         <InlineSlider images={product.gallery} />

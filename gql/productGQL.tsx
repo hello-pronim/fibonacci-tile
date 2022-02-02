@@ -64,6 +64,20 @@ export const ProductQuery = gql`
     entry(slug: $slug) {
       id
       slug
+      prev(section: "products") {
+        id
+        slug
+        collections {
+          slug
+        }
+      }
+      next(section: "products") {
+        id
+        slug
+        collections {
+          slug
+        }
+      }
       ... on products_product_Entry {
         title
         subline
@@ -71,6 +85,13 @@ export const ProductQuery = gql`
           id
           title
           slug
+          ... on collections_Category {
+            heroImage {
+              url
+              width
+              height
+            }
+          }
         }
         label
         backgroundColor
