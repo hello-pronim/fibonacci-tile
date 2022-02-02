@@ -1,15 +1,15 @@
 import css from "@styled-system/css";
 import styled from "@emotion/styled";
-import Cntnr from "@components/common/layout/container";
 
-const Container = styled(Cntnr)(() =>
+const CollectionProjectsContainer = styled("div")(() =>
   css({
-    alignItems: "flex-start",
-    bg: "white",
-    pt: 164,
-    pb: 140,
-    rowGap: 40,
+    pt: 120,
+    pb: 120,
+    pl: 230,
+    pr: 230,
+    position: "relative"
   })
 );
 
-export { Container };
+
+export { CollectionProjectsContainer };
