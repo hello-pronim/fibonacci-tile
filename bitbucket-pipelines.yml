@@ -6,21 +6,14 @@ pipelines:
       - step:
           name: "Install depencies and build"
           script:
+            - apt-get update
+            - apt-get install -y zip
             - export NEXT_PUBLIC_API_URL=$DEV_NEXT_PUBLIC_API_URL
             - export BITBUCKET_COMMIT=$BITBUCKET_COMMIT
             - export NODE_ENV=$DEV_NODE_ENV
             - npm install
             - npm run build
-          artifacts:
-            - .next/**
-            - public/**
-
-      - step:
-          name: "Zip artifacts for EB"
-          script:
-            - apt-get update
-            - apt-get install -y zip
-            - zip -r /application.zip ./.
+            - zip -r application.zip . -x bitbucket-pipelines.yml */components/**\* */contexts/**\* */gql/**\* */pages/**\* */styles/**\* */utils/**\* *.git* */node_modules/**\*
           artifacts:
             - application.zip
           
