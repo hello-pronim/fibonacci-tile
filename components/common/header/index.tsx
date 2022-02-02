@@ -129,7 +129,7 @@ const Header = ({ mode = "light", position = "relative" }) => {
             <NavItem href="/in-use" mode={mode}>
               In Use
             </NavItem>
-            <NavItem href="#" mode={mode}>
+            <NavItem href="/our-story" mode={mode}>
               Our Story
             </NavItem>
             <NavItem href="/latest" mode={mode}>
@@ -230,13 +230,13 @@ const Header = ({ mode = "light", position = "relative" }) => {
                 <NavItem mode={mode} href="/in-use">
                   In Use
                 </NavItem>
-                <NavItem mode={mode} href="#">
+                <NavItem mode={mode} href="/our-story">
                   Our Story
                 </NavItem>
-                <NavItem mode={mode} href="#">
+                <NavItem mode={mode} href="/latest">
                   Latest
                 </NavItem>
-                <NavItem mode={mode} href="#">
+                <NavItem mode={mode} href="/support">
                   Support
                 </NavItem>
                 <NavItem mode={mode} href="#">

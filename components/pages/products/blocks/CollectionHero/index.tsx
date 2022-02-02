@@ -6,7 +6,6 @@ import theme from "@styles/theme";
 import { CollectionHeroContainer, CaptionText, ImageContent } from "./styles";
 
 const CollectionHeroModule = ({ collection }) => {
-  console.log("collectionHere", collection)
   return (
     <CollectionHeroContainer>
       <div
