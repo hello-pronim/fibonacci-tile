@@ -25,4 +25,12 @@ const SingleProductContainer = styled("div")(
   })
 );
 
-export { Container, HeaderContainer, SingleProductContainer };
+ 
+ 
+
+
+export { 
+  Container, 
+  HeaderContainer, 
+  SingleProductContainer
+};

@@ -2,7 +2,9 @@ import React from "react";
 import ProductsHeader from "./Header";
 import Slider from "./blocks/Slider";
 import SectionTitle from "./blocks/SectionTitle";
+import CTAPanel from "./blocks/CTAPanel";
 import { Container } from "./styles";
+import CollectionsItem from "./blocks/CollectionItem";
 
 const CollectionsPage = ({ collections, collectionProducts }) => {
   return (
@@ -13,18 +15,13 @@ const CollectionsPage = ({ collections, collectionProducts }) => {
         show={false}
         title="40 unique creations. Thoughtfully designed. Sustainably made. Purpose-built."
       />
-      {collections.map((collection) => {
-        return (
-          <div key={collection.slug}>
-            <div>{collection.title}</div>
-            <div>
-              {collectionProducts?.[collection.slug].map((product) => {
-                return <>{product.title}</>;
-              })}
-            </div>
-          </div>
-        );
+      {collections.length > 0 && collections.map((collection) => {
+        return(
+          <CollectionsItem key={collection.id} collectionProducts={collectionProducts} collection={collection}/>
+        )
       })}
+      <CTAPanel imagePosition="right" />
+      <CTAPanel imagePosition="left" />
     </Container>
   );
 };
