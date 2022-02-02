@@ -1,24 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Text from "@components/common/typography";
 import { TextCol, Ol, Ul } from "./styles";
 import Container from "@components/common/layout/container";
 import css from "@styled-system/css";
 
 const TextSection = () => {
-  const useWidth = () => {
-    if (process.browser) {
-      const [width, setWidth] = useState(window.innerWidth);
-      const handleResize = () => setWidth(window.innerWidth);
-      useEffect(() => {
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
-      }, [width]);
-      return width;
-    }
-    return 0;
-  };
-  const windowWidth = useWidth();
-
   return (
     <Container css={css({ bg: "#FFFFF8" })}>
       <TextCol>

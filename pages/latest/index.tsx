@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import Footer from "@components/common/footer";
-import SinglePage from "./[slug]";
 import Header from "@components/common/header";
 import Hero from "../../components/pages/latest/hero/index";
 import Arrow from "@components/common/icons/arrow";
