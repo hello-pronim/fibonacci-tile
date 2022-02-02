@@ -1,0 +1,17 @@
+@import "@styles/settings";
+
+.title {
+  @include bp-max($lg) {
+    font-family: "Canela" !important;
+    font-size: 42px !important;
+    line-height: 54.6px !important;
+  }
+  width: 368px;
+}
+
+.bodyText {
+  @include bp-max($md) {
+    font-size: 20px !important;
+    line-height: 33.8px !important;
+  }
+}

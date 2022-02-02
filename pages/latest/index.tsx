@@ -47,6 +47,7 @@ export default function LatestNews() {
         "Description two to three lines, sed in sit semper in non nec potenti urna. Eget arcu a malesuada aliquet. Augue venenatis.",
       category: "CAtegory",
       CardImg: CardImg1,
+      slug: "latest-news-1",
     },
     {
       title:
@@ -55,6 +56,7 @@ export default function LatestNews() {
         "Description two to three lines, sed in sit semper in non nec potenti urna. Eget arcu a malesuada aliquet. Augue venenatis.",
       category: "Product Release",
       CardImg: CardImg,
+      slug: "latest-news-2",
     },
     {
       title:
@@ -63,6 +65,7 @@ export default function LatestNews() {
         "Description two to three lines, sed in sit semper in non nec potenti urna. Eget arcu a malesuada aliquet. Augue venenatis.",
       category: "Press",
       CardImg: CardImg2,
+      slug: "latest-news-3",
     },
     {
       title:
@@ -71,6 +74,7 @@ export default function LatestNews() {
         "Description two to three lines, sed in sit semper in non nec potenti urna. Eget arcu a malesuada aliquet. Augue venenatis.",
       category: "Product Release",
       CardImg: CardImg,
+      slug: "latest-news-4",
     },
     {
       title:
@@ -79,6 +83,7 @@ export default function LatestNews() {
         "Description two to three lines, sed in sit semper in non nec potenti urna. Eget arcu a malesuada aliquet. Augue venenatis.",
       category: "Awards",
       CardImg: CardImg,
+      slug: "latest-news-5",
     },
     {
       title:
@@ -87,6 +92,7 @@ export default function LatestNews() {
         "Description two to three lines, sed in sit semper in non nec potenti urna. Eget arcu a malesuada aliquet. Augue venenatis.",
       category: "Colaborations",
       CardImg: CardImg2,
+      slug: "latest-news-6",
     },
     {
       title:
@@ -95,6 +101,7 @@ export default function LatestNews() {
         "Description two to three lines, sed in sit semper in non nec potenti urna. Eget arcu a malesuada aliquet. Augue venenatis.",
       category: "collaborations",
       CardImg: CardImg1,
+      slug: "latest-news-7",
     },
     {
       title:
@@ -103,6 +110,7 @@ export default function LatestNews() {
         "Description two to three lines, sed in sit semper in non nec potenti urna. Eget arcu a malesuada aliquet. Augue venenatis.",
       category: "inspiration",
       CardImg: CardImg,
+      slug: "latest-news-8",
     },
     {
       title:
@@ -111,6 +119,7 @@ export default function LatestNews() {
         "Description two to three lines, sed in sit semper in non nec potenti urna. Eget arcu a malesuada aliquet. Augue venenatis.",
       category: "collaborations",
       CardImg: CardImg2,
+      slug: "latest-news-9",
     },
     {
       title:
@@ -119,6 +128,7 @@ export default function LatestNews() {
         "Description two to three lines, sed in sit semper in non nec potenti urna. Eget arcu a malesuada aliquet. Augue venenatis.",
       category: "awards",
       CardImg: CardImg,
+      slug: "latest-news-10",
     },
     {
       title:
@@ -127,6 +137,7 @@ export default function LatestNews() {
         "Description two to three lines, sed in sit semper in non nec potenti urna. Eget arcu a malesuada aliquet. Augue venenatis.",
       category: "tips + tricks",
       CardImg: CardImg2,
+      slug: "latest-news-11",
     },
     {
       title:
@@ -135,6 +146,7 @@ export default function LatestNews() {
         "Description two to three lines, sed in sit semper in non nec potenti urna. Eget arcu a malesuada aliquet. Augue venenatis.",
       category: "inspiration",
       CardImg: CardImg2,
+      slug: "latest-news-12",
     },
   ];
   const [selectedType, setSelectedType] = useState("all");
@@ -158,6 +170,7 @@ export default function LatestNews() {
         description={item.description}
         category={"# " + item.category}
         cardImg={item.CardImg}
+        slug={item.slug}
       />
     );
   });

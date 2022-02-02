@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 import css from "@styled-system/css";
 import Image from "next/image";
 
-export const Card = ({ cardImg, category, title, description }): any => {
+export const Card = ({ cardImg, category, title, description, slug }): any => {
   const StyledPhoto = styled.img`
     width: 100%;
     height: 100%;
@@ -65,7 +65,9 @@ export const Card = ({ cardImg, category, title, description }): any => {
   );
   return (
     <StyledContainer>
-      <Image src={cardImg} />
+      <a href={`/latest/${slug}`}>
+        <Image src={cardImg} />
+      </a>
       <CardPill>{category}</CardPill>
       <Title>{title}</Title>
       <Description>{description}</Description>
