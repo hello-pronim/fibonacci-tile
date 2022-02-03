@@ -10,6 +10,7 @@ import SectionTitle from "./blocks/SectionTitle";
 import ProductLists from "./blocks/ProductList";
 import Slider from "./blocks/Slider";
 import { Container } from "./styles";
+import Products from "pages/terrazzo";
 
 const ProductsPage = ({
   products: initialProducts,
@@ -22,7 +23,7 @@ const ProductsPage = ({
     initialProducts.slice(0, 15)
   );
   const [secondHalfProducts, setSecondHalfProducts] = useState(
-    initialProducts.slice(15, 15)
+    initialProducts.slice(15, initialProducts.length - 1)
   );
   const [showFilterBar, setShowFilterBar] = useState(false);
   const ref = useRef(null);
@@ -47,10 +48,10 @@ const ProductsPage = ({
       colourSchemes: [],
       search: state.filter.searchText ? state.filter.searchText : "",
     };
-    if (state.filter.products.value !== "all") {
+    if (state.filter.products.value && state.filter.products.value !== "all") {
       filterVars.productCategories = [state.filter.products.value];
     }
-    if (state.filter.colourSchemes) {
+    if (state.filter.colourSchemes.length > 0) {
       filterVars.colourSchemes = state.filter.colourSchemes;
     }
     if (state.filter?.sortBy?.value) {
@@ -77,7 +78,7 @@ const ProductsPage = ({
         variables: filterVars,
       });
       setFirstHalfProducts(products.slice(0, 15));
-      setSecondHalfProducts(products.slice(15, 15));
+      setSecondHalfProducts(products.slice(15, products.length - 1));
       setLoadingProducts(false);
     }
     fetchProducts();
@@ -91,7 +92,7 @@ const ProductsPage = ({
 
   return (
     <Container>
-      <ProductsHeader />
+      {!showFilterBar && <ProductsHeader />}
       <Slider />
       <SectionTitle
         show={showFilterBar}

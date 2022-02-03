@@ -40,6 +40,7 @@ const ProductSelect = styled("div")(
         : variant === "outlined"
         ? `1px solid ${theme.colors.concreteTints[5]}`
         : "none",
+      borderRadius: open && "4px",
       marginBottom: "24px",
       cursor: "default",
       appearance: "none",

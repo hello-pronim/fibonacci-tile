@@ -4,20 +4,18 @@ import collection from "public/assets/temp/collection-temp.png";
 import Link from "next/link";
 import ProductCard from "@components/common/product/xlCard";
 import { useAppContext } from "@contexts/AppContext";
-import {
-  Container,
-  LinkWrapper,
-  LinkWrapperLeft,
-  Pill,
-} from "./styles";
+import { Container, LinkWrapper, LinkWrapperLeft, Pill } from "./styles";
 import Text from "@components/common/typography";
 import { css } from "@styled-system/css";
 import Arrow from "@components/common/icons/arrow";
 import theme from "@styles/theme";
 import SizeDisplay from "@components/common/product/card/SizeDisplay";
 
-const SingleHeroModule = ({ product }) => {
+const SingleHeroModule = ({ product, collectionSlug }) => {
   const { state, dispatch } = useAppContext();
+  const activeCollection = product.collections.find(
+    (collection: any) => collection.slug === collectionSlug
+  );
   return (
     <Container>
       <div
@@ -58,14 +56,17 @@ const SingleHeroModule = ({ product }) => {
           >
             <Text variant="Body-XSmall">No. {product.productNumber}</Text>
           </span>
-          {product.label && (<Pill># {product.label}</Pill>)}
+          {product.label && <Pill># {product.label}</Pill>}
           <Text
             variant="Body-Large"
             css={css({ span: { color: theme.colors.taupe } })}
           >
             {product.subline}
           </Text>
-          <Text variant="Body-Large" dangerouslySetInnerHTML={{__html: product.designStory}}></Text>
+          <Text
+            variant="Body-Large"
+            dangerouslySetInnerHTML={{ __html: product.designStory }}
+          />
         </div>
         <div
           css={css({
@@ -74,11 +75,20 @@ const SingleHeroModule = ({ product }) => {
             alignItems: "flex-end",
           })}
         >
-          <Image alt="" src={collection} width={136} height={72} />
+          {activeCollection.heroImage?.[0].url && (
+            <Image
+              alt={activeCollection.title}
+              src={activeCollection.heroImage?.[0]?.url}
+              width={136}
+              height={72}
+            />
+          )}
           <div>
             <Text variant="Display-Overline">EXPLORE</Text>
             <LinkWrapper>
-              <Link href="#">Collection name</Link>
+              <Link href={`/terrazzo/${activeCollection.slug}`}>
+                {activeCollection.title}
+              </Link>
               <Arrow type="short" />
             </LinkWrapper>
           </div>
@@ -125,14 +135,26 @@ const SingleHeroModule = ({ product }) => {
             },
           })}
         >
-          <LinkWrapperLeft>
-            <Arrow type="short" direction="left" />
-            <Link href="#">Previous Product</Link>
-          </LinkWrapperLeft>
-          <LinkWrapper>
-            <Link href="#">Next Product</Link>
-            <Arrow type="short" />
-          </LinkWrapper>
+          {product?.prev?.collections?.[0]?.slug && (
+            <LinkWrapperLeft>
+              <Arrow type="short" direction="left" />
+              <Link
+                href={`/terrazzo/${product?.prev?.collections?.[0]?.slug}/${product.prev.slug}`}
+              >
+                Previous Product
+              </Link>
+            </LinkWrapperLeft>
+          )}
+          {product.next && (
+            <LinkWrapper>
+              <Link
+                href={`/terrazzo/${product?.next?.collections?.[0]?.slug}/${product.next.slug}`}
+              >
+                Next Product
+              </Link>
+              <Arrow type="short" />
+            </LinkWrapper>
+          )}
         </div>
       </div>
 

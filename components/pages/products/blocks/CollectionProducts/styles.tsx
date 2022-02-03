@@ -1,18 +1,20 @@
 import css from "@styled-system/css";
 import styled from "@emotion/styled";
-import Cntnr from "@components/common/layout/container";
-import { grid } from "styled-system";
 
-const Container = styled(Cntnr)(() =>
+const CollectionProductsContainer = styled('div')(() =>
   css({
     alignItems: "flex-start",
-    bg: "white",
     pt: 164,
     pb: 140,
+    pl: "40%",
     rowGap: 40,
+    gridTemplateColumns: [
+      "repeat(3, 1fr)",
+    ],
+    display: "grid"
   })
 );
 
 export {
-  Container,
+  CollectionProductsContainer,
 };

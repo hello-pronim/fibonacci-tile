@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import moment from 'moment';
 import {
   Details,
   ImageWrapper,
@@ -15,28 +16,32 @@ import theme from "@styles/theme";
 const ProjectCard = ({ project } ) => {
   return (
       <Project key={project.id}>
+        {project?.heroImage?.length > 0 &&     
         <ImageWrapper>
           <Image
-            src={project.thumbnail.src}
+            src={project.heroImage[0].url}
             alt={project.slug}
             layout="responsive" // required
-            width={project.thumbnail.width}
-            height={project.thumbnail.height}
+            width="800"
+            height="800"
           />
         </ImageWrapper>
+        }
+        {project?.projectCompleted &&
         <Text
         variant="Body-Small"
         css={css({ gridRow: 2, gridColumn: 1 })}
         >
-          {project.date}
+          {moment(project.projectCompleted).format('MMMM YYYY')}
         </Text>
+        }
         <Details>
           <Text variant="Display-XSmall">{project.title}</Text>
           <Text variant="Display-XSmall" color={theme.colors.concrete}>
               {project.location}
           </Text>
           <LinkWrapper>
-              <Link href={`/projects/${project.slug}`}>View Project</Link>
+              <Link href={`/in-use/${project.slug}`}>View Project</Link>
               <Arrow type="short" />
           </LinkWrapper>
         </Details>

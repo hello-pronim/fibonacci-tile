@@ -46,7 +46,7 @@ export default function Select({
     if (onChange) onChange(selectedProductId);
   };
 
-  const handleProductSelectedDropdownOpen = () => {
+  const handleProductSelectDropdownOpen = () => {
     setIsOpened(!isOpened);
   };
 
@@ -57,9 +57,9 @@ export default function Select({
         fullWidth={fullWidth}
         halfWidth={halfWidth}
         open={isOpened}
-        onClick={handleProductSelectedDropdownOpen}
+        onClick={handleProductSelectDropdownOpen}
       >
-        {selectedProduct != null ? selectedProduct.title : "Product"}
+        {selectedProduct !== null ? selectedProduct.title : "Product"}
       </ProductSelect>
       <HiddenProductSelectItemsWrapper>
         {products.map((product) => (

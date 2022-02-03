@@ -5,6 +5,7 @@ export interface containerProps {
   navOpen: boolean;
   position: string;
   mode: string;
+  scrollY: number;
 }
 
 export interface navItemProps {
@@ -16,13 +17,24 @@ export interface NavIconProps {
   mode: string;
 }
 
+const bgPicker = (mode) => {
+  if(mode === 'dark') {
+    return "white"
+  }
+  if(mode === 'light') {
+    return 'charcoal'
+  }
+  return 'transparent'
+}
+
 const Container = styled("div")(({ ...props }: containerProps) =>
+  
   css({
     position: props.position ? props.position : "relative",
     width: "100%",
     display: "flex",
     justifyContent: "center",
-    backgroundColor: props.mode === "dark" && "white",
+    backgroundColor: props.scrollY >= 5 && bgPicker(props.mode),
     borderBottom: "1px solid",
     transition: "ease all 0.3s",
     borderColor: props.navOpen ? "white" : "stone",

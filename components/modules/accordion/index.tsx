@@ -11,12 +11,13 @@ import Arrow from "@components/icons/arrowDown";
 interface accordionTypes {
   accentText: string;
   items: any;
+  backgroundColor: string;
 }
 
-const AccordionModule = ({ accentText, items }: accordionTypes) => {
+const AccordionModule = ({ accentText, items, backgroundColor }: accordionTypes) => {
   const [activeIndex, setActiveIndex] = useState(0);
   return (
-    <Container id="technical-specifications">
+    <Container id="technical-specifications" css={css({ bg: backgroundColor ? backgroundColor : "#E2E9EC" })}>
       <AccentText top={154}>{accentText}</AccentText>
       <Wrapper>
         {items.map((item, index) => {

@@ -13,8 +13,8 @@ export interface containerProps {
 const ArrowButtonWrapper = styled("div")(({ ...props }: containerProps) =>
   css({
     a: {
-      width: props.fullWidth && "100%",
       borderWidth: 1,
+      width: props.fullWidth && "100%",
       borderColor: "#B0ABA7",
       borderStyle: props.visibleBorder === false ? "none" : "solid",
       fontSize: 16,
@@ -42,8 +42,8 @@ const ArrowButtonWrapper = styled("div")(({ ...props }: containerProps) =>
         width: 40,
         backgroundImage: `url(${
           props.mode === "light"
-            ? "assets/icons/white-arrow.svg"
-            : "assets/icons/black-arrow.svg"
+            ? "/assets/icons/white-arrow.svg"
+            : "/assets/icons/black-arrow.svg"
         })`,
         backgroundRepeat: "no-repeat",
         top: "50%",
@@ -72,13 +72,13 @@ const ArrowButtonWrapper = styled("div")(({ ...props }: containerProps) =>
             props.visibleBorder === false
               ? `url(${
                   props.mode === "light"
-                    ? "assets/icons/white-arrow.svg"
-                    : "assets/icons/black-arrow.svg"
+                    ? "/assets/icons/white-arrow.svg"
+                    : "/assets/icons/black-arrow.svg"
                 })`
               : `url(${
                   props.mode === "light"
-                    ? "assets/icons/black-arrow.svg"
-                    : "assets/icons/white-arrow.svg"
+                    ? "/assets/icons/black-arrow.svg"
+                    : "/assets/icons/white-arrow.svg"
                 })`,
         },
       },

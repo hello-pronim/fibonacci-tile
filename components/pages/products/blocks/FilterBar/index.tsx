@@ -171,14 +171,15 @@ export default function ProductFilters({
             >
               <ListIcon className={styles.displayIcon} />
             </div>
-            <div
-              className={classnames(styles.iconContainer, {
-                [styles.active]: state?.productDisplayMode === "collection",
-              })}
-              onClick={() => changeDisplayMode("collection")}
-            >
-              <CollectionIcon className={styles.displayIcon} />
-            </div>
+            <Link href="/terrazzo/collections">
+              <a
+                className={classnames(styles.iconContainer, {
+                  [styles.active]: state?.productDisplayMode === "collection",
+                })}
+              >
+                <CollectionIcon className={styles.displayIcon} />
+              </a>
+            </Link>
           </div>
         </div>
         <div

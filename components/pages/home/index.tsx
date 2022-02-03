@@ -13,7 +13,7 @@ import SamplesIcon from "public/assets/icons/sample-icon.svg";
 import QuoteIcon from "public/assets/icons/quote-icon.svg";
 import EnquiryIcon from "public/assets/icons/enquiry-icon.svg";
 
-const Homepage = () => {
+const Homepage = ({ products }) => {
   const supports = [
     {
       slug: "product-support",
@@ -43,7 +43,7 @@ const Homepage = () => {
   return (
     <>
       <Hero />
-      <ProductCarousel></ProductCarousel>
+      <ProductCarousel products={products}></ProductCarousel>
       <ContentWithImageModule></ContentWithImageModule>
       <DualColumnModule />
       <SupportModule title="HOW CAN WE HELP?" supports={supports} />
@@ -56,4 +56,5 @@ const Homepage = () => {
     </>
   );
 };
+
 export default Homepage;

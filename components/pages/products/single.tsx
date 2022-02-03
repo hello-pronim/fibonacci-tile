@@ -6,22 +6,24 @@ import Projects from "./blocks/projects";
 import AccordionModule from "@components/modules/accordion";
 import SingleHeroModule from "./blocks/singleHero";
 
-const ProductPage = ({ product, relatedProducts, technicalSpecifications }) => {
+const ProductPage = ({ product, relatedProducts, technicalSpecifications, collectionSlug }) => {
+  const { backgroundColor } = product;
   return (
     <>
       <ProductsHeader mode="dark" />
-      <SingleHeroModule product={product} />
+      <SingleHeroModule product={product} collectionSlug={collectionSlug} />
       <Projects product={product} accentText="Fibonacci Live" />
       {product?.gallery?.length > 0 && (
         <InlineSlider images={product.gallery} />
       )}
-      {technicalSpecifications && (
+      {technicalSpecifications?.length > 0 && (
         <AccordionModule
           items={technicalSpecifications}
           accentText="Technical Specifications"
+          backgroundColor={backgroundColor}
         />
       )}
-      {relatedProducts.length > 0 && (
+      {relatedProducts?.length > 0 && (
         <RelatedProducts
           title="More in our Terrazzo range"
           products={relatedProducts}

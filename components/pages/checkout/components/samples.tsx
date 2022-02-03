@@ -136,7 +136,6 @@ const Samples = () => {
           <ProductContainer>
           {selectedProducts && selectedProducts.map((product) => (
             <SelectedProductCard
-              displayMode={"grid"}
               product={product}
               isSelected={
                 confirmedProducts && confirmedProducts.findIndex(
