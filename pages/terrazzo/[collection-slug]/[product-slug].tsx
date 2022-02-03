@@ -10,12 +10,14 @@ interface ProductPageProps {
   product: any;
   specifications: any;
   relatedProducts: any;
+  params: any;
 }
 
 const Product: NextPage<ProductPageProps> = ({
   product,
   specifications,
   relatedProducts,
+  params,
 }) => {
   if (!product) return null;
   const technicalSpecifications = specifications[0]?.technicalSpecifications;
@@ -29,6 +31,7 @@ const Product: NextPage<ProductPageProps> = ({
         relatedProducts={relatedProducts}
         product={product}
         technicalSpecifications={technicalSpecifications}
+        collectionSlug={params["collection-slug"]}
       />
       <Footer />
     </>
@@ -75,7 +78,7 @@ export const getStaticProps: GetStaticProps = async function ({ params }) {
   let relatedProducts = null;
   if (products.length > 0) {
     relatedProducts = products.filter(
-      (item) => parseInt(item.id) !== parseInt(product.id)
+      (item: any) => parseInt(item.id) !== parseInt(product.id)
     );
   }
 
@@ -84,8 +87,9 @@ export const getStaticProps: GetStaticProps = async function ({ params }) {
       product,
       specifications,
       relatedProducts,
+      params,
     },
-    revalidate: 500,
+    revalidate: 60,
   };
 };
 
