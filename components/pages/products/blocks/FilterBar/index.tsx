@@ -114,11 +114,11 @@ export default function ProductFilters({
             })}
             onClick={handleActiveFilter("products")}
           >
-            <Text variant="Body-Small" mr="10px">
+            <Text variant="Body-XSmall" mr="10px">
               Products
             </Text>
             {state.filter?.products?.value !== "all" && (
-              <Text variant="Body-XSmall">{state.filter.products.label}</Text>
+              <Text variant="Body-XSmall" color="#B0ABA7">{state.filter.products.label}</Text>
             )}
             <ArrowDownIcon />
           </div>
@@ -132,7 +132,7 @@ export default function ProductFilters({
               Colour Schemes
             </Text>
             {state.filter.colourSchemes.length > 0 && (
-              <Text variant="Body-XSmall">
+              <Text variant="Body-XSmall" color="#B0ABA7">
                 {state.filter.colourSchemes.length} schemes
               </Text>
             )}
@@ -148,7 +148,7 @@ export default function ProductFilters({
               Sort by
             </Text>
             {state.filter?.sortBy?.value !== "featured" && (
-              <Text variant="Body-XSmall">{state.filter.sortBy.label}</Text>
+              <Text variant="Body-XSmall" color="#B0ABA7">{state.filter.sortBy.label}</Text>
             )}
             <ArrowDownIcon />
           </div>
