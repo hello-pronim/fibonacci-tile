@@ -30,6 +30,9 @@ export const getStaticProps: GetStaticProps = async function () {
     data: { entries: products },
   } = await client.query({
     query: ProductsQuery,
+    variables: {
+      limit: 10,
+    },
   });
   return {
     props: {
