@@ -75,10 +75,10 @@ const SingleHeroModule = ({ product, collectionSlug }) => {
             alignItems: "flex-end",
           })}
         >
-          {activeCollection.heroImage?.[0].url && (
+          {activeCollection.heroImage?.[0]?.url && (
             <Image
               alt={activeCollection.title}
-              src={activeCollection.heroImage?.[0]?.url}
+              src={activeCollection.heroImage[0].url}
               width={136}
               height={72}
             />
