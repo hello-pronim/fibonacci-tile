@@ -26,14 +26,14 @@ const ProductCard = ({
     <Wrapper>
       <Container>
         <GridCardImgContainer>
-          {product.thumbImage?.[0].url && (
+          {product?.thumbImageSingle?.[0].url && (
             <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
               <a>
                 <Image
-                  src={product.thumbImage[0].url}
+                  src={product.thumbImageSingle[0].url}
                   alt={product.title}
-                  width="288"
-                  height="288"
+                  width={product.thumbImageSingle[0].width}
+                  height={product.thumbImageSingle[0].height}
                 />
               </a>
             </Link>
