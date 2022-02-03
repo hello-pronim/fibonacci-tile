@@ -23,6 +23,8 @@ import { Transition } from "react-transition-group";
 import Text from "@components/common/typography";
 import ProductSelectionCount from "@components/common/product/selectionCount";
 import SelectionCart from "@components/common/selectionCart";
+import { withGlobalNotification } from "@hoc/withGlobalData";
+
 import css from "@styled-system/css";
 
 const duration = 400;
@@ -39,7 +41,12 @@ const transitionStyles = {
   exited: { opacity: 0 },
 };
 
-const Header = ({ mode = "light", position = "relative" }) => {
+const Header = ({ 
+  mode = "light", 
+  position = "relative", 
+  notifications 
+}) => {
+  console.log("notifications", notifications)
   const [scrollY, setScrollY] = useState(0);
   function logit() {
     setScrollY(window.pageYOffset);

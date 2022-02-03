@@ -98,7 +98,7 @@ const ProductCard = ({
                 <Text
                   as="h4"
                   variant="Body-Small"
-                  dangerouslySetInnerHTML={{ __html: product.designStory }}
+                  dangerouslySetInnerHTML={{ __html: product.subline }}
                 />
               </div>
             </DescriptionBox>
@@ -223,7 +223,7 @@ const ProductCard = ({
       </TableRow>
     );
   }
-
+  console.log(product.thumbImageList[0]);
   return (
     <Wrapper>
       <Container compact={compact}>
