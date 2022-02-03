@@ -223,7 +223,7 @@ const ProductCard = ({
       </TableRow>
     );
   }
-
+  console.log(product.thumbImageList[0]);
   return (
     <Wrapper>
       <Container compact={compact}>
