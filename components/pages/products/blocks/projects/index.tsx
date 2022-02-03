@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AccentText, { AccentTextMobile } from "@components/common/accentText";
 import Image from "next/image";
-import moment from 'moment';
+import moment from "moment";
 import ArrowButton from "@components/common/button/arrowButton";
 import Link from "next/link";
 import {
@@ -28,9 +28,12 @@ interface accordionTypes {
 }
 
 const ProjectsModule = ({ accentText, product }: accordionTypes) => {
-  const {project1, project2, backgroundColor} = product;
+  const { project1, project2, backgroundColor } = product;
   return (
-    <Container id="projects" css={css({ bg: backgroundColor ? backgroundColor : "#E2E9EC" })}>
+    <Container
+      id="projects"
+      css={css({ bg: backgroundColor ? backgroundColor : "#E2E9EC" })}
+    >
       <AccentText top={400}>{accentText}</AccentText>
       <IntroWrapper>
         <Text
@@ -42,9 +45,8 @@ const ProjectsModule = ({ accentText, product }: accordionTypes) => {
               fontSize: 42,
             },
           })}
-          dangerouslySetInnerHTML={{__html: product.projectIntroduction}}
-        >
-        </Text>
+          dangerouslySetInnerHTML={{ __html: product.projectIntroduction }}
+        ></Text>
       </IntroWrapper>
       <Sections>
         <Text variant="Display-Overline">SECTIONS</Text>
@@ -100,20 +102,20 @@ const ProjectsModule = ({ accentText, product }: accordionTypes) => {
             },
           }}
         >
-         { project1[0].heroImage?.length && (
-          <ImageWrapper>
-            <Image
-              src={project1[0].heroImage[0].url}
-              alt="image-1"
-              layout="responsive"
-              width="710"
-              height="900"
-            />
-          </ImageWrapper>
+          {project1[0].heroImage?.[0]?.url && (
+            <ImageWrapper>
+              <Image
+                src={project1[0].heroImage[0].url}
+                alt="image-1"
+                layout="responsive"
+                width="710"
+                height="900"
+              />
+            </ImageWrapper>
           )}
           {project1[0]?.projectCompleted && (
             <Text variant="Body-Small" css={css({ gridRow: 2, gridColumn: 1 })}>
-              {moment(project1[0]?.projectCompleted).format('MMMM YYYY')}
+              {moment(project1[0]?.projectCompleted).format("MMMM YYYY")}
             </Text>
           )}
           <Details>
@@ -128,7 +130,7 @@ const ProjectsModule = ({ accentText, product }: accordionTypes) => {
           </Details>
         </Project>
       )}
-      
+
       {project2?.length > 0 && (
         <Project
           css={{
@@ -140,20 +142,20 @@ const ProjectsModule = ({ accentText, product }: accordionTypes) => {
             },
           }}
         >
-          { project2[0].heroImage?.length && (
-          <ImageWrapper>
-            <Image
-              src={project2[0].heroImage[0].url}
-              alt="image-1"
-              layout="responsive"
-              width="710"
-              height="900"
-            />
-          </ImageWrapper>
+          {project2[0].heroImage?.[0]?.url && (
+            <ImageWrapper>
+              <Image
+                src={project2[0].heroImage[0].url}
+                alt="image-1"
+                layout="responsive"
+                width="710"
+                height="900"
+              />
+            </ImageWrapper>
           )}
           {project2[0]?.projectCompleted && (
             <Text variant="Body-Small" css={css({ gridRow: 2, gridColumn: 1 })}>
-               {moment(project2[0]?.projectCompleted).format('MMMM YYYY')}
+              {moment(project2[0]?.projectCompleted).format("MMMM YYYY")}
             </Text>
           )}
           <Details>
@@ -169,7 +171,11 @@ const ProjectsModule = ({ accentText, product }: accordionTypes) => {
         </Project>
       )}
       <Bottom>
-        <ArrowButton mode="" title="How to order samples" link="/how-to-order-samples" />
+        <ArrowButton
+          mode=""
+          title="How to order samples"
+          link="/how-to-order-samples"
+        />
       </Bottom>
     </Container>
   );

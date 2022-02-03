@@ -4,7 +4,7 @@ import { HeaderContainer } from "./styles";
 const ProjectsHeader = ({ mode = "light" }) => {
   return (
     <HeaderContainer>
-      <Header mode={mode} position="absolute" />
+      <Header mode={mode} position="absolute" notifications={null} />
     </HeaderContainer>
   );
 };

@@ -2,6 +2,11 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { useAppContext } from "@contexts/AppContext";
 import Link from "next/link";
+import { Transition } from "react-transition-group";
+import css from "@styled-system/css";
+import Text from "@components/common/typography";
+import ProductSelectionCount from "@components/common/product/selectionCount";
+import SelectionCart from "@components/common/selectionCart";
 import Logo from "public/assets/brandmarks/logo-primary.svg";
 import LogoWhite from "public/assets/brandmarks/logo-secondary.svg";
 import {
@@ -19,13 +24,6 @@ import {
   AlertLabel,
   AlertClose,
 } from "./styles";
-import { Transition } from "react-transition-group";
-import Text from "@components/common/typography";
-import ProductSelectionCount from "@components/common/product/selectionCount";
-import SelectionCart from "@components/common/selectionCart";
-import { withGlobalNotification } from "@hoc/withGlobalData";
-
-import css from "@styled-system/css";
 
 const duration = 400;
 
@@ -41,12 +39,7 @@ const transitionStyles = {
   exited: { opacity: 0 },
 };
 
-const Header = ({ 
-  mode = "light", 
-  position = "relative", 
-  notifications 
-}) => {
-  console.log("notifications", notifications)
+const Header = ({ mode = "light", position = "relative", notifications = null }) => {
   const [scrollY, setScrollY] = useState(0);
   function logit() {
     setScrollY(window.pageYOffset);
@@ -67,7 +60,7 @@ const Header = ({
   const [alertActive, setAlertActive] = useState(true);
   const selectionsMounted = useRef(false);
   const activeLogo = mode === "dark" ? Logo : LogoWhite;
-  
+
   useEffect(() => {
     const alertState = sessionStorage.getItem("alert-state");
     const alertToBool = alertState === "true";
@@ -107,7 +100,7 @@ const Header = ({
         top: 0,
         left: 0,
         right: 0,
-        mx: 'auto',
+        mx: "auto",
         width: "100%",
         maxWidth: 2560,
         zIndex: 9999999,
@@ -122,7 +115,12 @@ const Header = ({
           <AlertClose onClick={() => setAlertActive(false)} />
         </AlertBar>
       )}
-      <Container position={"relative"} navOpen={navOpen} mode={mode} scrollY={scrollY}>
+      <Container
+        position={"relative"}
+        navOpen={navOpen}
+        mode={mode}
+        scrollY={scrollY}
+      >
         <Wrapper>
           <NavIcon
             mode={mode}
