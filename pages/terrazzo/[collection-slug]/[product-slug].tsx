@@ -89,7 +89,7 @@ export const getStaticProps: GetStaticProps = async function ({ params }) {
       relatedProducts,
       params,
     },
-    revalidate: 500,
+    revalidate: 60,
   };
 };
 
