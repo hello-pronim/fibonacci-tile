@@ -1,13 +1,13 @@
 import { AppProps } from "next/app";
 import Head from "next/head";
 import Router from "next/router";
+import nProgress from "nprogress";
 import { Global, ThemeProvider } from "@emotion/react";
 import { ApolloProvider } from "@apollo/client";
 import { AppWrapper } from "@contexts/AppContext";
 import apolloClient from "@utils/apolloClient";
 import global from "styles/global";
 import theme from "styles/theme";
-import nProgress from "nprogress";
 import "nprogress/nprogress.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
