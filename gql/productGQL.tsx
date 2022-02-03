@@ -67,15 +67,19 @@ export const ProductQuery = gql`
       prev(section: "products") {
         id
         slug
-        collections {
-          slug
+        ... on products_product_Entry {
+          collections {
+            slug
+          }
         }
       }
       next(section: "products") {
         id
         slug
-        collections {
-          slug
+        ... on products_product_Entry {
+          collections {
+            slug
+          }
         }
       }
       ... on products_product_Entry {
