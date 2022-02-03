@@ -10,7 +10,6 @@ import SectionTitle from "./blocks/SectionTitle";
 import ProductLists from "./blocks/ProductList";
 import Slider from "./blocks/Slider";
 import { Container } from "./styles";
-import Products from "pages/terrazzo";
 
 const ProductsPage = ({
   products: initialProducts,

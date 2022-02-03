@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { GetStaticProps } from "next";
 import { useAppContext } from "@contexts/AppContext";
 import Link from "next/link";
 import Logo from "public/assets/brandmarks/logo-primary.svg";
@@ -272,24 +271,5 @@ const Header = ({
     </div>
   );
 };
-
-
-// export const getStaticProps: GetStaticProps = async function () {
-//   // const {
-//   //   data: { globalSet: notifications },
-//   // } = await client.query({
-//   //   query: GlobalNotificationQuery,
-//   // });
-//   // const data =  await client.query({
-//   //   query: GlobalNotificationQuery,
-//   // });
-//   // console.log("data", data)
-//   return {
-//     props: {
-//       notifications: null
-//     },
-//     revalidate: 60,
-//   };
-// };
 
 export default Header;
