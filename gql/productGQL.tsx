@@ -51,8 +51,20 @@ export const ProductsQuery = gql`
           title
         }
         thumbImage {
+          url
+        }
+        thumbImageList: thumbImage @transform(handle: "productThumbnail") {
           id
           url
+          width
+          height
+        }
+        thumbImageSingle: thumbImage
+          @transform(handle: "productDetailThumbnail") {
+          id
+          url
+          width
+          height
         }
         largeImage {
           id
@@ -124,6 +136,13 @@ export const ProductQuery = gql`
         thumbImage {
           id
           url
+        }
+        thumbImageSingle: thumbImage
+          @transform(handle: "productDetailThumbnail") {
+          id
+          url
+          width
+          height
         }
         largeImage {
           id
