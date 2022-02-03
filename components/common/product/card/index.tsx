@@ -116,7 +116,9 @@ const ProductCard = ({
                 <Description detailView={detailShown}>
                   <Text
                     variant="Body-Regular"
-                    dangerouslySetInnerHTML={{ __html: product.projectIntroduction }}
+                    dangerouslySetInnerHTML={{
+                      __html: product.projectIntroduction,
+                    }}
                   />
                 </Description>
                 <ArrowButton
@@ -159,14 +161,14 @@ const ProductCard = ({
           <ImgCell detailView={detailShown}>
             <ListCardImgContainer>
               <CardImg detailView={detailShown}>
-                {product?.thumbImage?.[0].url && (
+                {product?.thumbImageList?.[0].url && (
                   <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
                     <a>
                       <Image
-                        src={product.thumbImage[0].url}
+                        src={product.thumbImageList[0].url}
                         alt={product.title}
-                        width="228"
-                        height="228"
+                        width={product.thumbImageList[0].width}
+                        height={product.thumbImageList[0].height}
                       />
                     </a>
                   </Link>
@@ -226,14 +228,14 @@ const ProductCard = ({
     <Wrapper>
       <Container compact={compact}>
         <GridCardImgContainer>
-          {product?.thumbImage?.[0].url && (
+          {product?.thumbImageList?.[0].url && (
             <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
               <a>
                 <Image
-                  src={product.thumbImage[0].url}
-                  alt="Product-1"
-                  width="228"
-                  height="228"
+                  src={product.thumbImageList[0].url}
+                  alt={product.title}
+                  width={product.thumbImageList[0].width}
+                  height={product.thumbImageList[0].height}
                 />
               </a>
             </Link>
