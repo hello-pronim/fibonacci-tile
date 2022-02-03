@@ -65,7 +65,7 @@ export const getStaticProps: GetStaticProps = async function ({ params }) {
       collection,
       products,
     },
-    revalidate: 500,
+    revalidate: 60,
   };
 };
 
