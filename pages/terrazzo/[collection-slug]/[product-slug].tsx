@@ -20,7 +20,7 @@ const Product: NextPage<ProductPageProps> = ({
   params,
 }) => {
   if (!product) return null;
-  const technicalSpecifications = specifications[0]?.technicalSpecifications;
+  const technicalSpecifications = specifications?.technicalSpecifications.length > 0 ? specifications.technicalSpecifications : [];
   return (
     <>
       <Head>
@@ -63,8 +63,9 @@ export const getStaticProps: GetStaticProps = async function ({ params }) {
     query: ProductQuery,
     variables: { slug: params["product-slug"] },
   });
+
   const {
-    data: { globalSets: specifications },
+    data: { globalSet: specifications },
   } = await client.query({
     query: GlobalSpecificationQuery,
   });

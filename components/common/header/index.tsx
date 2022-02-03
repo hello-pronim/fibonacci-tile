@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { GetStaticProps } from "next";
 import { useAppContext } from "@contexts/AppContext";
 import Link from "next/link";
 import Logo from "public/assets/brandmarks/logo-primary.svg";
@@ -23,6 +24,8 @@ import { Transition } from "react-transition-group";
 import Text from "@components/common/typography";
 import ProductSelectionCount from "@components/common/product/selectionCount";
 import SelectionCart from "@components/common/selectionCart";
+import { withGlobalNotification } from "@hoc/withGlobalData";
+
 import css from "@styled-system/css";
 
 const duration = 400;
@@ -39,7 +42,12 @@ const transitionStyles = {
   exited: { opacity: 0 },
 };
 
-const Header = ({ mode = "light", position = "relative" }) => {
+const Header = ({ 
+  mode = "light", 
+  position = "relative", 
+  notifications 
+}) => {
+  console.log("notifications", notifications)
   const [scrollY, setScrollY] = useState(0);
   function logit() {
     setScrollY(window.pageYOffset);
@@ -264,5 +272,24 @@ const Header = ({ mode = "light", position = "relative" }) => {
     </div>
   );
 };
+
+
+// export const getStaticProps: GetStaticProps = async function () {
+//   // const {
+//   //   data: { globalSet: notifications },
+//   // } = await client.query({
+//   //   query: GlobalNotificationQuery,
+//   // });
+//   // const data =  await client.query({
+//   //   query: GlobalNotificationQuery,
+//   // });
+//   // console.log("data", data)
+//   return {
+//     props: {
+//       notifications: null
+//     },
+//     revalidate: 60,
+//   };
+// };
 
 export default Header;

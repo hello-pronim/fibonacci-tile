@@ -42,7 +42,6 @@ export default function Select({
   const [selectedSize, setSelectedSize] = useState(null);
 
   const handleItemSelected = (sizeValue) => {
-    console.log(sizeValue);
     const selected = sizes.find((size) => size.value === sizeValue);
 
     setSelectedSizeValue(sizeValue);
