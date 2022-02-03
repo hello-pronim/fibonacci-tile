@@ -70,17 +70,14 @@ export const getStaticProps: GetStaticProps = async function ({ params }) {
   });
 
   const {
-    data: { entries: products },
+    data: { entries: relatedProducts },
   } = await client.query({
     query: ProductsQuery,
+    variables: {
+      limit: 5,
+      id: ["not", product.id],
+    },
   });
-
-  let relatedProducts = null;
-  if (products.length > 0) {
-    relatedProducts = products.filter(
-      (item: any) => parseInt(item.id) !== parseInt(product.id)
-    );
-  }
 
   return {
     props: {

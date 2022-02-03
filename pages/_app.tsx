@@ -1,21 +1,21 @@
-import { Global, ThemeProvider } from "@emotion/react";
-import Head from "next/head";
 import { AppProps } from "next/app";
+import Head from "next/head";
+import Router from "next/router";
+import nProgress from "nprogress";
+import { Global, ThemeProvider } from "@emotion/react";
+import { ApolloProvider } from "@apollo/client";
+import { AppWrapper } from "@contexts/AppContext";
+import apolloClient from "@utils/apolloClient";
 import global from "styles/global";
 import theme from "styles/theme";
+import "nprogress/nprogress.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "styles/typefaces.css";
-import { AppWrapper } from "@contexts/AppContext";
-import { ApolloProvider } from "@apollo/client";
-import apolloClient from "@utils/apolloClient";
-import Router from "next/router";
-import "nprogress/nprogress.css";
-import NProgress from "nprogress";
 
-Router.events.on("routeChangeStart", NProgress.start);
-Router.events.on("routeChangeError", NProgress.done);
-Router.events.on("routeChangeComplete", NProgress.done);
+Router.events.on("routeChangeStart", nProgress.start);
+Router.events.on("routeChangeError", nProgress.done);
+Router.events.on("routeChangeComplete", nProgress.done);
 
 function App({ Component, pageProps }: AppProps) {
   return (
