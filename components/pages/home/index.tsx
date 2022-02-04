@@ -4,7 +4,8 @@ import ContentWithImageModule from "@components/modules/contentWithImage";
 import SocialModule from "@components/modules/social";
 import DualColumnModule from "@components/modules/dualColumn";
 import React from "react";
-import Hero from "@components/pages/home/components/hero";
+import FullImageSlider from "@components/common/slider/fullImageSlider";
+import TextSlider from "@components/common/slider/textSlider";
 import ProductCarousel from "./components/productCarousel";
 import InlineSlider from "./components/inlineSlider";
 
@@ -42,7 +43,8 @@ const Homepage = ({ products }) => {
   ];
   return (
     <>
-      <Hero />
+      <FullImageSlider /> {/* full image slider */}
+      {/* <TextSlider /> text slider */}
       <ProductCarousel products={products}></ProductCarousel>
       <ContentWithImageModule></ContentWithImageModule>
       <DualColumnModule />
