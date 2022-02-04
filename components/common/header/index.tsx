@@ -39,7 +39,19 @@ const transitionStyles = {
   exited: { opacity: 0 },
 };
 
-const Header = ({ mode = "light", position = "relative", notifications = null }) => {
+const Header = ({
+  mode = "light",
+  position = "relative",
+  notifications = null,
+}) => {
+  const { state, dispatch } = useAppContext();
+  const [navOpen, setNavOpen] = useState(false);
+  const [newSelection, setNewSelection] = useState(false);
+  const [selectionsCount, setSelectionsCount] = useState(0);
+  const [alertActive, setAlertActive] = useState(true);
+  const selectionsMounted = useRef(false);
+  const activeLogo = mode === "dark" ? Logo : LogoWhite;
+
   const [scrollY, setScrollY] = useState(0);
   function logit() {
     setScrollY(window.pageYOffset);
@@ -53,20 +65,12 @@ const Header = ({ mode = "light", position = "relative", notifications = null })
       window.removeEventListener("scroll", logit);
     };
   });
-  const { state, dispatch } = useAppContext();
-  const [navOpen, setNavOpen] = useState(false);
-  const [newSelection, setNewSelection] = useState(false);
-  const [selectionsCount, setSelectionsCount] = useState(0);
-  const [alertActive, setAlertActive] = useState(true);
-  const selectionsMounted = useRef(false);
-  const activeLogo = mode === "dark" ? Logo : LogoWhite;
 
   useEffect(() => {
     const alertState = sessionStorage.getItem("alert-state");
     const alertToBool = alertState === "true";
     alertState && setAlertActive(alertToBool);
   }, []);
-
   useEffect(() => {
     if (
       selectionsMounted.current &&
