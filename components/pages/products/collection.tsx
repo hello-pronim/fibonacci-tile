@@ -4,18 +4,28 @@ import CollectionHero from "./blocks/CollectionHero";
 import CollectionProducts from "./blocks/CollectionProducts";
 import CollectionProjects from "./blocks/CollectionProjects";
 import InlineSlider from "./blocks/inlineSlider";
+import { css } from "@styled-system/css";
+
 
 const CollectionPage = ({ collection, products }) => {
   return (
     <>
       <Header mode="dark" />
       <CollectionHero collection={collection} />
-      {products && <CollectionProducts products={products} />}
-      {collection.projects && (
-        <CollectionProjects projects={collection.projects} />
+      {products && <CollectionProducts 
+      backgroundColor={collection.backgroundColor ? collection.backgroundColor : "#E6EBEA"} 
+      products={products} />}
+      {collection?.featuredProjects?.length > 0 && (
+        <CollectionProjects projects={collection.featuredProjects} />
       )}
       {collection?.gallery?.length > 0 && (
+        <div
+          css={css({
+            background: collection.backgroundColor ? collection.backgroundColor : "#E6EBEA",
+          })}
+        >
         <InlineSlider images={collection.gallery} />
+        </div>
       )}
     </>
   );

@@ -1,24 +1,22 @@
 import React from "react";
+import Image from "next/image";
 import Text from "@components/common/typography";
 import { css } from "@styled-system/css";
 import theme from "@styles/theme";
-import { Container } from "./styles";
+import { CollectionHeroContainer, CaptionText, ImageContent } from "./styles";
 
 const CollectionHeroModule = ({ collection }) => {
   return (
-    <Container>
+    <CollectionHeroContainer>
       <div
         css={css({
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          gridColumn: "1 / span 2",
-          gridRow: 2,
           height: "100%",
-          [theme.mediaQueries.small]: {
-            gridColumn: "1 / span 3",
-            gridRow: 1,
-          },
+          background: "#8B9B94",
+          padding: "120px 80px 60px 80px",
+          width: "30%"
         })}
       >
         <div
@@ -26,7 +24,6 @@ const CollectionHeroModule = ({ collection }) => {
         >
           <Text
             variant="Display-Large"
-            altFont
             css={css({
               fontSize: 42,
               [theme.mediaQueries.small]: {
@@ -39,26 +36,48 @@ const CollectionHeroModule = ({ collection }) => {
           <Text
             variant="Body-Large"
             dangerouslySetInnerHTML={{ __html: collection.introduction }}
-          ></Text>
+            css={css({
+              fontSize: 20,
+              pt: 140,
+              pb: 140
+            })}
+          />
+          <Text
+            variant="Display-Large"
+            css={css({
+              fontSize: 42,
+              [theme.mediaQueries.small]: {
+                fontSize: 74,
+              },
+            })}
+          >
+            Collection
+          </Text>
         </div>
       </div>
-      <div
-        css={css({
-          display: "flex",
-          flexDirection: "column",
-          rowGap: 60,
-          gridColumn: "1 / span 2",
-          gridRow: 4,
-          justifyContent: "space-between",
-          [theme.mediaQueries.small]: {
-            gridColumn: "10 / span 3",
-            gridRow: 1,
-          },
-        })}
-      >
-        {collection.subline}
-      </div>
-    </Container>
+      
+      <ImageContent>
+        {collection?.heroImage?.length > 0 &&
+        <Image
+         src={collection.heroImage[0].url}
+         alt={collection.slug}
+         layout="responsive" // required
+         width={collection.heroImage[0].width}
+         height={collection.heroImage[0].height}
+        />
+        }
+        <CaptionText>
+          <Text
+          as="h2"
+          variant="Display-Medium"
+          altFont
+          >
+            {collection.subline}
+          </Text>
+        </CaptionText>
+      </ImageContent>
+      
+    </CollectionHeroContainer>
   );
 };
 

@@ -22,7 +22,7 @@ const ProductsPage = ({
     initialProducts.slice(0, 15)
   );
   const [secondHalfProducts, setSecondHalfProducts] = useState(
-    initialProducts.slice(15, 15)
+    initialProducts.slice(15)
   );
   const [showFilterBar, setShowFilterBar] = useState(false);
   const ref = useRef(null);
@@ -77,7 +77,7 @@ const ProductsPage = ({
         variables: filterVars,
       });
       setFirstHalfProducts(products.slice(0, 15));
-      setSecondHalfProducts(products.slice(15, 15));
+      setSecondHalfProducts(products.slice(15));
       setLoadingProducts(false);
     }
     fetchProducts();
@@ -91,7 +91,7 @@ const ProductsPage = ({
 
   return (
     <Container>
-      {!showFilterBar &&  <ProductsHeader />}
+      {!showFilterBar && <ProductsHeader />}
       <Slider />
       <SectionTitle
         show={showFilterBar}

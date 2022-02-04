@@ -4,13 +4,14 @@ import ProductCard from "@components/common/product/card";
 import { useAppContext } from "@contexts/AppContext";
 import { css } from "@styled-system/css";
 import theme from "@styles/theme";
-import { Container } from "./styles";
+import { CollectionProductsContainer } from "./styles";
 
-const CollectionProducts = ({ products }) => {
+const CollectionProducts = ({ products, backgroundColor}) => {
   const { state, dispatch } = useAppContext();
-
   return (
-    <Container>
+    <CollectionProductsContainer css={css({
+      background: backgroundColor ? backgroundColor : "#E6EBEA",
+    })}>
       {products.map((product) => (
         <ProductCard
           product={product}
@@ -27,7 +28,7 @@ const CollectionProducts = ({ products }) => {
           key={`product-${product.id}`}
         />
       ))}
-    </Container>
+    </CollectionProductsContainer>
   );
 };
 

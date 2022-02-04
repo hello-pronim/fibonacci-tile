@@ -43,6 +43,7 @@ export const CategoryQuery: any = gql`
         backgroundColor
         introduction
         projectIntroduction
+        subline
         featuredProjects {
           id
           slug
@@ -50,6 +51,8 @@ export const CategoryQuery: any = gql`
           ... on projects_projectDetails_Entry {
             heroImage {
               url
+              width
+              height
             }
             location
             projectCompleted
@@ -58,6 +61,8 @@ export const CategoryQuery: any = gql`
         heroImage {
           id
           url
+          width
+          height
         }
         gallery {
           id

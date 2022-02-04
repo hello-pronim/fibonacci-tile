@@ -42,8 +42,8 @@ const ArrowButtonWrapper = styled("div")(({ ...props }: containerProps) =>
         width: 40,
         backgroundImage: `url(${
           props.mode === "light"
-            ? "assets/icons/white-arrow.svg"
-            : "assets/icons/black-arrow.svg"
+            ? "/assets/icons/white-arrow.svg"
+            : "/assets/icons/black-arrow.svg"
         })`,
         backgroundRepeat: "no-repeat",
         top: "50%",
@@ -72,13 +72,13 @@ const ArrowButtonWrapper = styled("div")(({ ...props }: containerProps) =>
             props.visibleBorder === false
               ? `url(${
                   props.mode === "light"
-                    ? "assets/icons/white-arrow.svg"
-                    : "assets/icons/black-arrow.svg"
+                    ? "/assets/icons/white-arrow.svg"
+                    : "/assets/icons/black-arrow.svg"
                 })`
               : `url(${
                   props.mode === "light"
-                    ? "assets/icons/black-arrow.svg"
-                    : "assets/icons/white-arrow.svg"
+                    ? "/assets/icons/black-arrow.svg"
+                    : "/assets/icons/white-arrow.svg"
                 })`,
         },
       },

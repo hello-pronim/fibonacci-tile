@@ -23,6 +23,8 @@ import { Transition } from "react-transition-group";
 import Text from "@components/common/typography";
 import ProductSelectionCount from "@components/common/product/selectionCount";
 import SelectionCart from "@components/common/selectionCart";
+import { withGlobalNotification } from "@hoc/withGlobalData";
+
 import css from "@styled-system/css";
 
 const duration = 400;
@@ -39,7 +41,12 @@ const transitionStyles = {
   exited: { opacity: 0 },
 };
 
-const Header = ({ mode = "light", position = "relative" }) => {
+const Header = ({ 
+  mode = "light", 
+  position = "relative", 
+  notifications 
+}) => {
+  console.log("notifications", notifications)
   const [scrollY, setScrollY] = useState(0);
   function logit() {
     setScrollY(window.pageYOffset);
@@ -129,7 +136,7 @@ const Header = ({ mode = "light", position = "relative" }) => {
             <NavItem href="/in-use" mode={mode}>
               In Use
             </NavItem>
-            <NavItem href="#" mode={mode}>
+            <NavItem href="/our-story" mode={mode}>
               Our Story
             </NavItem>
             <NavItem href="/latest" mode={mode}>
@@ -230,13 +237,13 @@ const Header = ({ mode = "light", position = "relative" }) => {
                 <NavItem mode={mode} href="/in-use">
                   In Use
                 </NavItem>
-                <NavItem mode={mode} href="#">
+                <NavItem mode={mode} href="/our-story">
                   Our Story
                 </NavItem>
-                <NavItem mode={mode} href="#">
+                <NavItem mode={mode} href="/latest">
                   Latest
                 </NavItem>
-                <NavItem mode={mode} href="#">
+                <NavItem mode={mode} href="/support">
                   Support
                 </NavItem>
                 <NavItem mode={mode} href="#">

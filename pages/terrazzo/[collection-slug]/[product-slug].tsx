@@ -10,15 +10,17 @@ interface ProductPageProps {
   product: any;
   specifications: any;
   relatedProducts: any;
+  params: any;
 }
 
 const Product: NextPage<ProductPageProps> = ({
   product,
   specifications,
   relatedProducts,
+  params,
 }) => {
   if (!product) return null;
-  const technicalSpecifications = specifications[0]?.technicalSpecifications;
+  const technicalSpecifications = specifications?.technicalSpecifications.length > 0 ? specifications.technicalSpecifications : [];
   return (
     <>
       <Head>
@@ -29,6 +31,7 @@ const Product: NextPage<ProductPageProps> = ({
         relatedProducts={relatedProducts}
         product={product}
         technicalSpecifications={technicalSpecifications}
+        collectionSlug={params["collection-slug"]}
       />
       <Footer />
     </>
@@ -60,32 +63,31 @@ export const getStaticProps: GetStaticProps = async function ({ params }) {
     query: ProductQuery,
     variables: { slug: params["product-slug"] },
   });
+
   const {
-    data: { globalSets: specifications },
+    data: { globalSet: specifications },
   } = await client.query({
     query: GlobalSpecificationQuery,
   });
 
   const {
-    data: { entries: products },
+    data: { entries: relatedProducts },
   } = await client.query({
     query: ProductsQuery,
+    variables: {
+      limit: 5,
+      id: ["not", product.id],
+    },
   });
-
-  let relatedProducts = null;
-  if (products.length > 0) {
-    relatedProducts = products.filter(
-      (item) => parseInt(item.id) !== parseInt(product.id)
-    );
-  }
 
   return {
     props: {
       product,
       specifications,
       relatedProducts,
+      params,
     },
-    revalidate: 500,
+    revalidate: 60,
   };
 };
 

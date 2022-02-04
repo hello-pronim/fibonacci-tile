@@ -22,8 +22,8 @@ const ProjectCard = ({ project } ) => {
             src={project.heroImage[0].url}
             alt={project.slug}
             layout="responsive" // required
-            width={project.heroImage[0].width}
-            height={project.heroImage[0].height}
+            width="800"
+            height="800"
           />
         </ImageWrapper>
         }
