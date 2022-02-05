@@ -8,11 +8,8 @@ interface IsActiveProps {
 
 const FilterItem = styled("div")(
   css({
-    marginRight: "10px",
-    display: "flex",
-    padding: "20px",
-    alignItems: "center",
-    justifyContent: "space-between",
+    borderLeft: "2px solid #edece8",
+    width: "29.33%",
     cursor: "pointer",
     textTransform: "uppercase",
     "&:hover": {
@@ -21,9 +18,18 @@ const FilterItem = styled("div")(
     "&.activeFilter": {
       background: theme.colors.background,
     },
-    [theme.mediaQueries.xLarge]: {
-      width: "190px",
+    "& div": {
+      display: "flex",
+      justifyContent: "space-between",
+      padding: "15px 15px",
+      "& div": {
+        justifyContent: "flex-start",
+        padding: "0px 5px 0px 0px",
+      },
     },
+    // [theme.mediaQueries.xLarge]: {
+    //   width: "190px",
+    // },
   })
 );
 
@@ -156,17 +162,19 @@ const DisplayOptions = styled("div")(
     display: "flex",
     borderRadius: "40px",
     background: theme.colors.background,
-    padding: "5px 0",
+    padding: "5px 5px",
+    margin: "0px 25px",
+    justifyContent: "spaceBetween",
   })
 );
 
 const DisplayOptionsContainer = styled("div")(
   css({
     display: "block",
-    borderRight: "3px solid #edece8",
-    borderLeft: "3px solid #edece8",
-    margin: "0 20px",
-    padding: "0 20px",
+    borderRight: "2px solid #edece8",
+    borderLeft: "2px solid #edece8",
+    // margin: "0 20px",
+    // padding: "0 20px",
     [theme.mediaQueries.small]: {
       display: "none",
     },
@@ -197,8 +205,7 @@ const IconContainer = styled("div")(({ active }: IsActiveProps) =>
     cursor: "pointer",
     display: "flex",
     justifyContent: "center",
-    width: "70px",
-    margin: "0 5px",
+    width: "26%",
     background: active ? "#b0aba7" : "#fff",
     borderRadius: "40px",
     padding: "10px",
@@ -210,10 +217,9 @@ const IconContainer = styled("div")(({ active }: IsActiveProps) =>
 
 const LogoWrapper = styled("div")(
   css({
-    paddingLeft: "20px",
-    minWidth: "100px",
+    width: "4%;",
     [theme.mediaQueries.small]: {
-      minWidth: "60px",
+      width: "4%;",
     },
   })
 );
@@ -243,30 +249,34 @@ const MobileFilterContainer = styled("div")(
 
 const ProductSelection = styled("div")(({ active }: IsActiveProps) =>
   css({
-    display: "flex",
-    paddingTop: "19.5px",
-    paddingLeft: "33px",
-    paddingBottom: "19.5px",
-    paddingRight: "33px",
-    backgroundColor: theme.colors.background,
-    justifyContent: "space-between",
-    flex: "1",
+    borderLeft: "2px solid #edece8",
+    cursor: "pointer",
+    width: "29.33%",
     textTransform: "uppercase",
+    background: active ? theme.colors.background : "none",
+    "&:hover": {
+      background: theme.colors.background,
+    },
+    "& div": {
+      display: "flex",
+      justifyContent: "space-between",
+      padding: "15px 15px",
+      "& div": {
+        justifyContent: "flex-start",
+        padding: "0px 5px 0px 0px",
+      },
+    },
   })
 );
 
 const SearchItem = styled("div")(({ active }: IsActiveProps) =>
   css({
     display: "flex",
-    justifyContent: "center",
-    padding: "2px",
-    marginRight: "10px",
+    justifyContent: "flex-start",
     cursor: "pointer",
     textTransform: "uppercase",
-    background: active ? theme.colors.background : "none",
-    "&:hover": {
-      background: theme.colors.background,
-    },
+    width: "12%",
+    alignItems: "center",
   })
 );
 
@@ -284,9 +294,9 @@ const TopBar = styled("div")(
     alignItems: "center",
     backgroundColor: theme.colors.white,
     justifyContent: "space-between",
-    padding: 0,
+    padding: "10px 20px",
     [theme.mediaQueries.small]: {
-      padding: "10px",
+      padding: "10px 20px",
     },
   })
 );
