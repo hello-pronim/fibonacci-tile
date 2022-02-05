@@ -161,7 +161,7 @@ const ProductCard = ({
           <ImgCell detailView={detailShown}>
             <ListCardImgContainer>
               <CardImg detailView={detailShown}>
-                {product?.thumbImageList?.[0].url && (
+                {product?.thumbImageList?.[0]?.url && (
                   <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
                     <a>
                       <Image
@@ -223,12 +223,11 @@ const ProductCard = ({
       </TableRow>
     );
   }
-  console.log(product.thumbImageList[0]);
   return (
     <Wrapper>
       <Container compact={compact}>
         <GridCardImgContainer>
-          {product?.thumbImageList?.[0].url && (
+          {product?.thumbImageList?.[0]?.url && (
             <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
               <a>
                 <Image

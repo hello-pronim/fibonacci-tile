@@ -15,6 +15,7 @@ const ProductsPage = ({
   products: initialProducts,
   colourSchemes,
   productCategories,
+  notifications,
 }) => {
   const { state } = useAppContext();
   const [loadingProducts, setLoadingProducts] = useState(false);
@@ -91,7 +92,7 @@ const ProductsPage = ({
 
   return (
     <Container>
-      {!showFilterBar && <ProductsHeader />}
+      {!showFilterBar && <ProductsHeader notifications={notifications} />}
       <Slider />
       <SectionTitle
         show={showFilterBar}

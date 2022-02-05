@@ -5,12 +5,13 @@ import { ProductsQuery } from "@gql/productGQL";
 import Homepage from "@components/pages/home";
 import Header from "@components/common/header";
 import Footer from "@components/common/footer";
-
+import { withGlobalData } from "@hoc/withGlobalData";
 interface HomePageProps {
-  products: any;
+  products: Array<any>;
+  notifications: Array<any>;
 }
 
-const Home: NextPage<HomePageProps> = ({ products }) => {
+const Home: NextPage<HomePageProps> = ({ products, notifications }) => {
   return (
     <>
       <Head>
@@ -18,14 +19,14 @@ const Home: NextPage<HomePageProps> = ({ products }) => {
         <meta name="description" content="Fibonacci Homepage" />
         <meta name="robots" content="index, follow" />
       </Head>
-      <Header mode="light" position="absolute" />
+      <Header mode="light" position="absolute" notifications={notifications} />
       <Homepage products={products} />
       <Footer />
     </>
   );
 };
 
-export const getStaticProps: GetStaticProps = async function () {
+export const getStaticProps: GetStaticProps = withGlobalData(async () => {
   const {
     data: { entries: products },
   } = await client.query({
@@ -40,6 +41,6 @@ export const getStaticProps: GetStaticProps = async function () {
     },
     revalidate: 500,
   };
-};
+});
 
 export default Home;

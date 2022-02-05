@@ -2,6 +2,11 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { useAppContext } from "@contexts/AppContext";
 import Link from "next/link";
+import { Transition } from "react-transition-group";
+import css from "@styled-system/css";
+import Text from "@components/common/typography";
+import ProductSelectionCount from "@components/common/product/selectionCount";
+import SelectionCart from "@components/common/selectionCart";
 import Logo from "public/assets/brandmarks/logo-primary.svg";
 import LogoWhite from "public/assets/brandmarks/logo-secondary.svg";
 import {
@@ -19,13 +24,6 @@ import {
   AlertLabel,
   AlertClose,
 } from "./styles";
-import { Transition } from "react-transition-group";
-import Text from "@components/common/typography";
-import ProductSelectionCount from "@components/common/product/selectionCount";
-import SelectionCart from "@components/common/selectionCart";
-import { withGlobalNotification } from "@hoc/withGlobalData";
-
-import css from "@styled-system/css";
 
 const duration = 400;
 
@@ -41,12 +39,19 @@ const transitionStyles = {
   exited: { opacity: 0 },
 };
 
-const Header = ({ 
-  mode = "light", 
-  position = "relative", 
-  notifications 
+const Header = ({
+  mode = "light",
+  position = "relative",
+  notifications = null,
 }) => {
-  console.log("notifications", notifications)
+  const { state, dispatch } = useAppContext();
+  const [navOpen, setNavOpen] = useState(false);
+  const [newSelection, setNewSelection] = useState(false);
+  const [selectionsCount, setSelectionsCount] = useState(0);
+  const [alertActive, setAlertActive] = useState(true);
+  const selectionsMounted = useRef(false);
+  const activeLogo = mode === "dark" ? Logo : LogoWhite;
+
   const [scrollY, setScrollY] = useState(0);
   function logit() {
     setScrollY(window.pageYOffset);
@@ -60,14 +65,7 @@ const Header = ({
       window.removeEventListener("scroll", logit);
     };
   });
-  const { state, dispatch } = useAppContext();
-  const [navOpen, setNavOpen] = useState(false);
-  const [newSelection, setNewSelection] = useState(false);
-  const [selectionsCount, setSelectionsCount] = useState(0);
-  const [alertActive, setAlertActive] = useState(true);
-  const selectionsMounted = useRef(false);
-  const activeLogo = mode === "dark" ? Logo : LogoWhite;
-  
+
   useEffect(() => {
     const alertState = sessionStorage.getItem("alert-state");
     const alertToBool = alertState === "true";
@@ -75,6 +73,7 @@ const Header = ({
   }, []);
 
   useEffect(() => {
+    let timerId: ReturnType<typeof setTimeout>;
     if (
       selectionsMounted.current &&
       state.selectedProducts.length > selectionsCount &&
@@ -85,20 +84,30 @@ const Header = ({
         value: true,
       });
       setNewSelection(true);
-      const timerId = setTimeout(() => {
+      timerId = setTimeout(() => {
         setNewSelection(false);
         dispatch({
           type: "OPEN_DRAWER",
           value: false,
         });
       }, 4000);
-      timerId;
-    } else selectionsMounted.current = true;
+    } else {
+      selectionsMounted.current = true;
+    }
     setSelectionsCount(state.selectedProducts.length);
-  }, [state.selectedProducts]);
+
+    return () => {
+      if (timerId) clearTimeout(timerId);
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   useEffect(() => {
     sessionStorage.setItem("alert-state", alertActive.toString());
   }, [alertActive]);
+
+  // select first notification in array
+  const activeNotification = notifications?.[0];
 
   return (
     <div
@@ -107,22 +116,28 @@ const Header = ({
         top: 0,
         left: 0,
         right: 0,
-        mx: 'auto',
+        mx: "auto",
         width: "100%",
         maxWidth: 2560,
         zIndex: 9999999,
       })}
     >
-      {alertActive && (
+      {activeNotification && activeNotification?.active && alertActive && (
         <AlertBar>
-          <AlertLabel>
-            Join Fibonacci today and save up to 20% on your order using code
-            SPRING at checkout. Promotion valid for new users only.
-          </AlertLabel>
+          <AlertLabel
+            dangerouslySetInnerHTML={{
+              __html: activeNotification.notificationsText,
+            }}
+          />
           <AlertClose onClick={() => setAlertActive(false)} />
         </AlertBar>
       )}
-      <Container position={"relative"} navOpen={navOpen} mode={mode} scrollY={scrollY}>
+      <Container
+        position={"relative"}
+        navOpen={navOpen}
+        mode={mode}
+        scrollY={scrollY}
+      >
         <Wrapper>
           <NavIcon
             mode={mode}

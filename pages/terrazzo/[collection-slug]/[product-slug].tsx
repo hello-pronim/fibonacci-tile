@@ -1,6 +1,7 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import client from "@utils/apolloClient";
+import { withGlobalData } from "@hoc/withGlobalData";
 import { ProductQuery, ProductsQuery } from "@gql/productGQL";
 import { GlobalSpecificationQuery } from "@gql/globalGQL";
 import Footer from "@components/common/footer";
@@ -8,19 +9,20 @@ import ProductSinglePage from "@components/pages/products/single";
 
 interface ProductPageProps {
   product: any;
-  specifications: any;
   relatedProducts: any;
   params: any;
+  specifications: any;
+  notifications: Array<any>;
 }
 
 const Product: NextPage<ProductPageProps> = ({
   product,
-  specifications,
   relatedProducts,
   params,
+  specifications,
+  notifications,
 }) => {
   if (!product) return null;
-  const technicalSpecifications = specifications?.technicalSpecifications.length > 0 ? specifications.technicalSpecifications : [];
   return (
     <>
       <Head>
@@ -30,8 +32,9 @@ const Product: NextPage<ProductPageProps> = ({
       <ProductSinglePage
         relatedProducts={relatedProducts}
         product={product}
-        technicalSpecifications={technicalSpecifications}
+        specifications={specifications}
         collectionSlug={params["collection-slug"]}
+        notifications={notifications}
       />
       <Footer />
     </>
@@ -56,7 +59,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async function ({ params }) {
+export const getStaticProps: GetStaticProps = withGlobalData(async function ({
+  params,
+}) {
   const {
     data: { entry: product },
   } = await client.query({
@@ -89,6 +94,6 @@ export const getStaticProps: GetStaticProps = async function ({ params }) {
     },
     revalidate: 60,
   };
-};
+});
 
 export default Product;

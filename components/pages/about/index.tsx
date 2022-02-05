@@ -1,6 +1,5 @@
 import React from "react";
 import QuoteModule from "@components/modules/quote";
-
 import AboutHeader from "./Header";
 import Hero from "./hero";
 import StoryPanel from "./StoryPanel";
@@ -10,7 +9,7 @@ import { Container } from "./styles";
 import StoryThumbnail from "public/assets/temp/story_thumbnail.png";
 import MainStoryThumbnail from "public/assets/temp/story_thumbnail_main.png";
 
-const AboutPage = () => {
+const AboutPage = ({ notifications }) => {
   const stories = [
     {
       id: 0,
@@ -45,7 +44,7 @@ const AboutPage = () => {
 
   return (
     <Container>
-      <AboutHeader mode="dark" />
+      <AboutHeader mode="dark" notifications={notifications} />
       <Hero />
       {stories.map((story) => (
         <StoryPanel key={story.id} story={story} />
@@ -58,4 +57,5 @@ const AboutPage = () => {
     </Container>
   );
 };
+
 export default AboutPage;
