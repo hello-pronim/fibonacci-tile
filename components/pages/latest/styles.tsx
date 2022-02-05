@@ -7,7 +7,6 @@ const BreadCrumbContainer = styled("div")(
   css({
     alignItems: "flex-start",
     pt: "128px",
-    pb: "48px",
     [theme.mediaQueries.small]: {
       pt: "60px!important",
       pr: [
