@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
+import client from "@utils/apolloClient";
+import { NewsListQuery } from "@gql/newsGQL";
+import { withGlobalData } from "@hoc/withGlobalData";
 import Footer from "@components/common/footer";
 import Header from "@components/common/header";
 import Arrow from "@components/common/icons/arrow";
@@ -24,11 +28,14 @@ import CardImg1 from "public/assets/latest-news/image1.png";
 import CardImg2 from "public/assets/latest-news/image2.png";
 import ArrowButton from "@components/common/button/arrowButton";
 
-interface CardsListType {
-  cards: Array<any>;
+interface LatestPageProps {
+  newsItems: Array<any>;
+  notifications: Array<any>;
 }
-
-export default function LatestNews() {
+const LatestNews: NextPage<LatestPageProps> = ({
+  newsItems,
+  notifications,
+}) => {
   const categorys = [
     "all",
     "product release",
@@ -181,7 +188,7 @@ export default function LatestNews() {
         <title>Latest | Fibonacci</title>
         <meta name="description" content="Fibonacci Latest page" />
       </Head>
-      <Header mode="dark" />
+      <Header mode="dark" notifications={notifications} />
       <BreadCrumbContainer>
         <BottomBarInner>
           <LinkWrapper>
@@ -235,4 +242,22 @@ export default function LatestNews() {
       <Footer />
     </>
   );
-}
+};
+
+export const getStaticProps: GetStaticProps = withGlobalData(
+  async () => {
+    const {
+      data: { entries: newsItems },
+    } = await client.query({
+      query: NewsListQuery,
+    });
+    return {
+      props: {
+        newsItems,
+      },
+      revalidate: 500,
+    };
+  }
+);
+
+export default LatestNews;

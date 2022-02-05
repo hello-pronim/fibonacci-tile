@@ -5,10 +5,10 @@ import { ProductsQuery } from "@gql/productGQL";
 import Homepage from "@components/pages/home";
 import Header from "@components/common/header";
 import Footer from "@components/common/footer";
-import { withGlobalNotification } from "@hoc/withGlobalData";
+import { withGlobalData } from "@hoc/withGlobalData";
 interface HomePageProps {
-  products: any;
-  notifications: any;
+  products: Array<any>;
+  notifications: Array<any>;
 }
 
 const Home: NextPage<HomePageProps> = ({ products, notifications }) => {
@@ -26,23 +26,21 @@ const Home: NextPage<HomePageProps> = ({ products, notifications }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = withGlobalNotification(
-  async () => {
-    const {
-      data: { entries: products },
-    } = await client.query({
-      query: ProductsQuery,
-      variables: {
-        limit: 10,
-      },
-    });
-    return {
-      props: {
-        products,
-      },
-      revalidate: 500,
-    };
-  }
-);
+export const getStaticProps: GetStaticProps = withGlobalData(async () => {
+  const {
+    data: { entries: products },
+  } = await client.query({
+    query: ProductsQuery,
+    variables: {
+      limit: 10,
+    },
+  });
+  return {
+    props: {
+      products,
+    },
+    revalidate: 500,
+  };
+});
 
 export default Home;
