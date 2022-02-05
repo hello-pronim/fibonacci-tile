@@ -34,7 +34,6 @@ export default function SearchFilter({}) {
         placeholder="Search by product name or colour"
         onChange={(e) => handleFilter(e.target.value)}
       />
-
       <div onClick={() => handleFilter("clear")} className={styles.clearFilter}>
         Clear Search <CloseIcon color={"#0D0D0D"}/>
       </div>

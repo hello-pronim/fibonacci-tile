@@ -10,12 +10,12 @@ import SectionTitle from "./blocks/SectionTitle";
 import ProductLists from "./blocks/ProductList";
 import Slider from "./blocks/Slider";
 import { Container } from "./styles";
-import Products from "pages/terrazzo";
 
 const ProductsPage = ({
   products: initialProducts,
   colourSchemes,
   productCategories,
+  notifications,
 }) => {
   const { state } = useAppContext();
   const [loadingProducts, setLoadingProducts] = useState(false);
@@ -23,7 +23,7 @@ const ProductsPage = ({
     initialProducts.slice(0, 15)
   );
   const [secondHalfProducts, setSecondHalfProducts] = useState(
-    initialProducts.slice(15, initialProducts.length - 1)
+    initialProducts.slice(15)
   );
   const [showFilterBar, setShowFilterBar] = useState(false);
   const ref = useRef(null);
@@ -78,7 +78,7 @@ const ProductsPage = ({
         variables: filterVars,
       });
       setFirstHalfProducts(products.slice(0, 15));
-      setSecondHalfProducts(products.slice(15, products.length - 1));
+      setSecondHalfProducts(products.slice(15));
       setLoadingProducts(false);
     }
     fetchProducts();
@@ -92,7 +92,7 @@ const ProductsPage = ({
 
   return (
     <Container>
-      {!showFilterBar && <ProductsHeader />}
+      {!showFilterBar && <ProductsHeader notifications={notifications} />}
       <Slider />
       <SectionTitle
         show={showFilterBar}

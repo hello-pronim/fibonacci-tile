@@ -5,17 +5,20 @@ import ProductPage from "@components/pages/products";
 import client from "@utils/apolloClient";
 import { ProductsQuery } from "@gql/productGQL";
 import { CategoriesQuery } from "@gql/categoriesGQL";
+import { withGlobalData } from "@hoc/withGlobalData";
 
 interface ProductPageProps {
   products: any;
   colourSchemes: any;
   productCategories: any;
+  notifications: Array<any>;
 }
 
 const Products: NextPage<ProductPageProps> = ({
   products,
   colourSchemes,
   productCategories,
+  notifications,
 }) => {
   return (
     <>
@@ -27,13 +30,14 @@ const Products: NextPage<ProductPageProps> = ({
         products={products}
         colourSchemes={colourSchemes}
         productCategories={productCategories}
+        notifications={notifications}
       />
       <Footer />
     </>
   );
 };
 
-export const getStaticProps: GetStaticProps = async function () {
+export const getStaticProps: GetStaticProps = withGlobalData(async function () {
   const {
     data: { entries: products },
   } = await client.query({
@@ -63,6 +67,6 @@ export const getStaticProps: GetStaticProps = async function () {
     },
     revalidate: 500,
   };
-};
+});
 
 export default Products;

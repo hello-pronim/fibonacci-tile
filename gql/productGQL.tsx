@@ -7,6 +7,8 @@ export const ProductsQuery = gql`
     $colourSchemes: [QueryArgument] = []
     $orderBy: String = "title ASC"
     $collections: [QueryArgument] = []
+    $limit: Int = 50
+    $id: [QueryArgument] = null
   ) {
     entries(
       section: "products"
@@ -15,6 +17,8 @@ export const ProductsQuery = gql`
       colourSchemes: $colourSchemes
       orderBy: $orderBy
       collections: $collections
+      limit: $limit
+      id: $id
     ) {
       id
       slug
@@ -47,8 +51,20 @@ export const ProductsQuery = gql`
           title
         }
         thumbImage {
+          url
+        }
+        thumbImageList: thumbImage @transform(handle: "productThumbnail") {
           id
           url
+          width
+          height
+        }
+        thumbImageSingle: thumbImage
+          @transform(handle: "productDetailThumbnail") {
+          id
+          url
+          width
+          height
         }
         largeImage {
           id
@@ -67,15 +83,19 @@ export const ProductQuery = gql`
       prev(section: "products") {
         id
         slug
-        collections {
-          slug
+        ... on products_product_Entry {
+          collections {
+            slug
+          }
         }
       }
       next(section: "products") {
         id
         slug
-        collections {
-          slug
+        ... on products_product_Entry {
+          collections {
+            slug
+          }
         }
       }
       ... on products_product_Entry {
@@ -116,6 +136,13 @@ export const ProductQuery = gql`
         thumbImage {
           id
           url
+        }
+        thumbImageSingle: thumbImage
+          @transform(handle: "productDetailThumbnail") {
+          id
+          url
+          width
+          height
         }
         largeImage {
           id
