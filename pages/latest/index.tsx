@@ -1,29 +1,29 @@
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
-import Footer from "@components/common/footer";
-import SinglePage from "./[slug]";
-import Header from "@components/common/header";
-import Hero from "../../components/pages/latest/hero/index";
-import Arrow from "@components/common/icons/arrow";
+import Link from "next/link";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
-import styles from "./styles.module.scss";
-
+import Footer from "@components/common/footer";
+import Header from "@components/common/header";
+import Arrow from "@components/common/icons/arrow";
+import Hero from "@components/pages/latest/hero/index";
+import BottomHero from "@components/pages/latest/bottom-hero";
+import MobileCategory from "@components/pages/latest/mobileCategory";
+import Category from "@components/pages/latest/categories/Category";
+import { Card } from "@components/pages/latest/cards-container/Card";
 import {
   AllCategory,
   BottomBarInner,
   CategorysBarInner,
   ReadMore,
+  LinkWrapper,
+  BreadCrumbContainer,
 } from "@components/pages/latest/styles";
-import { LinkWrapper } from "@components/pages/latest/styles";
-import Link from "next/link";
-import BottomHero from "@components/pages/latest/bottom-hero";
-import MobileCategory from "@components/pages/latest/mobileCategory";
-import Category from "@components/pages/latest/categories/Category";
-import { Card } from "@components/pages/latest/cards-container/Card";
+import styles from "./styles.module.scss";
 import CardImg from "public/assets/latest-news/cardImg.png";
 import CardImg1 from "public/assets/latest-news/image1.png";
 import CardImg2 from "public/assets/latest-news/image2.png";
 import ArrowButton from "@components/common/button/arrowButton";
+
 interface CardsListType {
   cards: Array<any>;
 }
@@ -178,25 +178,27 @@ export default function LatestNews() {
   return (
     <>
       <Head>
-        <title>Projects | Fibonacci</title>
-        <meta name="description" content="Fibonacci Projects page" />
+        <title>Latest | Fibonacci</title>
+        <meta name="description" content="Fibonacci Latest page" />
       </Head>
       <Header mode="dark" />
-      <BottomBarInner>
-        <LinkWrapper>
-          <Arrow type="short" direction="left" />
-          <Link href="#">Back</Link>
-        </LinkWrapper>
-        <LinkWrapper>
-          <Link href="/">Home</Link>
-        </LinkWrapper>
-        <LinkWrapper>
-          <Link href="#">Page 1</Link>
-        </LinkWrapper>
-        <LinkWrapper>
-          <Link href="#">Page 2</Link>
-        </LinkWrapper>
-      </BottomBarInner>
+      <BreadCrumbContainer>
+        <BottomBarInner>
+          <LinkWrapper>
+            <Arrow type="short" direction="left" />
+            <Link href="#">Back</Link>
+          </LinkWrapper>
+          <LinkWrapper>
+            <Link href="/">Home</Link>
+          </LinkWrapper>
+          <LinkWrapper>
+            <Link href="#">Page 1</Link>
+          </LinkWrapper>
+          <LinkWrapper>
+            <Link href="#">Page 2</Link>
+          </LinkWrapper>
+        </BottomBarInner>
+      </BreadCrumbContainer>
       <Hero />
       {windowWidth >= 769 ? (
         <CategorysBarInner>
