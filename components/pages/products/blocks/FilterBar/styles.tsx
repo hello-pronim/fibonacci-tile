@@ -12,6 +12,7 @@ const FilterItem = styled("div")(
     width: "29.33%",
     cursor: "pointer",
     textTransform: "uppercase",
+    transition: "all .4s ease-in-out",
     "&:hover": {
       background: theme.colors.background,
     },
@@ -21,7 +22,7 @@ const FilterItem = styled("div")(
     "& div": {
       display: "flex",
       justifyContent: "space-between",
-      padding: "15px 15px",
+      padding: "15px 20px",
       "& div": {
         justifyContent: "flex-start",
         padding: "0px 5px 0px 0px",
@@ -205,10 +206,10 @@ const IconContainer = styled("div")(({ active }: IsActiveProps) =>
     cursor: "pointer",
     display: "flex",
     justifyContent: "center",
-    width: "26%",
     background: active ? "#b0aba7" : "#fff",
     borderRadius: "40px",
     padding: "10px",
+    width: "24%",
     "&:hover": {
       background: "#b0aba7",
     },
@@ -254,13 +255,14 @@ const ProductSelection = styled("div")(({ active }: IsActiveProps) =>
     width: "29.33%",
     textTransform: "uppercase",
     background: active ? theme.colors.background : "none",
+    transition: "all .4s ease-in-out",
     "&:hover": {
       background: theme.colors.background,
     },
     "& div": {
       display: "flex",
       justifyContent: "space-between",
-      padding: "15px 15px",
+      padding: "15px 20px",
       "& div": {
         justifyContent: "flex-start",
         padding: "0px 5px 0px 0px",

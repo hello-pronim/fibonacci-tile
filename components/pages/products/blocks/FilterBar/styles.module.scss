@@ -40,7 +40,7 @@
     display: none;
     @include bp($lg) {
       display: flex;
-      width: 62%;
+      width: 65%;
     }
   }
   .searchItem {
@@ -56,6 +56,7 @@
     width: 29.33%;
     cursor: pointer;
     text-transform: uppercase;
+    transition: all .4s ease-in-out;
     &:hover,
     &.activeFilter {
       background: #f6f6f6;
@@ -63,7 +64,7 @@
     & div {
       display: flex;
       justify-content: space-between;
-      padding: 15px 15px;
+      padding: 15px 20px;
       & div {
         padding: 0px 5px 0px 0px;
         justify-content: flex-start;
@@ -75,6 +76,7 @@
     cursor: pointer;
     width: 29.33%;
     text-transform: uppercase;
+    transition: all .4s ease-in-out;
     &:hover,
     &.activeFilter {
       background: #f6f6f6;
@@ -82,7 +84,7 @@
     & div {
       display: flex;
       justify-content: space-between;
-      padding: 15px 15px;
+      padding: 15px 20px;
       & div {
         padding: 0px 5px 0px 0px;
         justify-content: flex-start;
@@ -102,7 +104,7 @@
     display: none;
     @include bp($md) {
       display: block;
-      width: 26%;
+      width: 23%;
     }
   }
   .displayOptions {
@@ -116,10 +118,10 @@
       cursor: pointer;
       display: flex;
       justify-content: center;
-      width: 26%;
       background: #fff;
       border-radius: 40px;
       padding: 10px;
+      width: 24%;
       &:hover,
       &.active {
         background: #b0aba7;
