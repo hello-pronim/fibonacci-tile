@@ -1,6 +1,7 @@
 import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import client from "@utils/apolloClient";
+import { withGlobalData } from "@hoc/withGlobalData";
 import { ProductsQuery } from "@gql/productGQL";
 import { CategoriesQuery } from "@gql/categoriesGQL";
 import Footer from "@components/common/footer";
@@ -9,11 +10,13 @@ import CollectionsPage from "@components/pages/products/collectionList";
 interface CollectionsPageProps {
   collections: any;
   collectionProducts: any;
+  notifications: any;
 }
 
 const Collections: NextPage<CollectionsPageProps> = ({
   collections,
   collectionProducts,
+  notifications,
 }) => {
   return (
     <>
@@ -21,40 +24,46 @@ const Collections: NextPage<CollectionsPageProps> = ({
         <title>Collections | Fibonacci</title>
         <meta name="description" content="Fibonacci Collections page" />
       </Head>
-      <CollectionsPage collections={collections} collectionProducts={collectionProducts} />
+      <CollectionsPage
+        collections={collections}
+        collectionProducts={collectionProducts}
+        notifications={notifications}
+      />
       <Footer />
     </>
   );
 };
 
-export const getStaticProps: GetStaticProps = async function () {
-  const {
-    data: { categories: collections },
-  } = await client.query({
-    query: CategoriesQuery,
-    variables: {
-      group: "collections",
-    },
-  });
-  const collectionProducts = {};
-  for (const collection of collections) {
+export const getStaticProps: GetStaticProps = withGlobalData(
+  async function () {
     const {
-      data: { entries: products },
+      data: { categories: collections },
     } = await client.query({
-      query: ProductsQuery,
+      query: CategoriesQuery,
       variables: {
-        collections: [collection.id],
+        group: "collections",
       },
     });
-    collectionProducts[collection.slug] = products;
+    const collectionProducts = {};
+    for (const collection of collections) {
+      const {
+        data: { entries: products },
+      } = await client.query({
+        query: ProductsQuery,
+        variables: {
+          collections: [collection.id],
+        },
+      });
+      collectionProducts[collection.slug] = products;
+    }
+    return {
+      props: {
+        collections,
+        collectionProducts,
+      },
+      revalidate: 500,
+    };
   }
-  return {
-    props: {
-      collections,
-      collectionProducts,
-    },
-    revalidate: 500,
-  };
-};
+);
 
 export default Collections;

@@ -1,6 +1,7 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import client from "@utils/apolloClient";
+import { withGlobalData } from "@hoc/withGlobalData";
 import { ProductQuery, ProductsQuery } from "@gql/productGQL";
 import { GlobalSpecificationQuery } from "@gql/globalGQL";
 import Footer from "@components/common/footer";
@@ -8,17 +9,20 @@ import ProductSinglePage from "@components/pages/products/single";
 
 interface ProductPageProps {
   product: any;
-  specifications: any;
   relatedProducts: any;
+  params: any;
+  specifications: any;
+  notifications: Array<any>;
 }
 
 const Product: NextPage<ProductPageProps> = ({
   product,
-  specifications,
   relatedProducts,
+  params,
+  specifications,
+  notifications,
 }) => {
   if (!product) return null;
-  const technicalSpecifications = specifications[0]?.technicalSpecifications;
   return (
     <>
       <Head>
@@ -28,7 +32,9 @@ const Product: NextPage<ProductPageProps> = ({
       <ProductSinglePage
         relatedProducts={relatedProducts}
         product={product}
-        technicalSpecifications={technicalSpecifications}
+        specifications={specifications}
+        collectionSlug={params["collection-slug"]}
+        notifications={notifications}
       />
       <Footer />
     </>
@@ -53,40 +59,41 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async function ({ params }) {
+export const getStaticProps: GetStaticProps = withGlobalData(async function ({
+  params,
+}) {
   const {
     data: { entry: product },
   } = await client.query({
     query: ProductQuery,
     variables: { slug: params["product-slug"] },
   });
+
   const {
-    data: { globalSets: specifications },
+    data: { globalSet: specifications },
   } = await client.query({
     query: GlobalSpecificationQuery,
   });
 
   const {
-    data: { entries: products },
+    data: { entries: relatedProducts },
   } = await client.query({
     query: ProductsQuery,
+    variables: {
+      limit: 5,
+      id: ["not", product.id],
+    },
   });
-
-  let relatedProducts = null;
-  if (products.length > 0) {
-    relatedProducts = products.filter(
-      (item) => parseInt(item.id) !== parseInt(product.id)
-    );
-  }
 
   return {
     props: {
       product,
       specifications,
       relatedProducts,
+      params,
     },
-    revalidate: 500,
+    revalidate: 60,
   };
-};
+});
 
 export default Product;
