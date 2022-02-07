@@ -6,7 +6,7 @@ import CTAPanel from "./blocks/CTAPanel";
 import { Container } from "./styles";
 import CollectionsItem from "./blocks/CollectionItem";
 
-const CollectionsPage = ({ collections, collectionProducts, notifications }) => {
+const CollectionsPage = ({ collections, collectionProducts, notifications, cta1, cta2 }) => {
   return (
     <Container>
       <ProductsHeader notifications={notifications} />
@@ -20,8 +20,12 @@ const CollectionsPage = ({ collections, collectionProducts, notifications }) => 
           <CollectionsItem key={collection.id} collectionProducts={collectionProducts} collection={collection}/>
         )
       })}
-      <CTAPanel data={[]} imagePosition="right" />
-      <CTAPanel data={[]} imagePosition="left" />
+      {cta1?.CTAFields?.length > 0 &&
+        <CTAPanel data={cta1.CTAFields[0]} imagePosition="right" />
+      }
+      {cta2?.CTAFields?.length > 0 &&
+        <CTAPanel data={cta2.CTAFields[0]} imagePosition="left" />
+      }
     </Container>
   );
 };
