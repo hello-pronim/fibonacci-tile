@@ -1,3 +1,11 @@
+import Link from "next/link";
+import Image from "next/image";
+import RotatedTertiary from "public/assets/brandmarks/rotated-tertiary.svg";
+import Tertiary from "public/assets/brandmarks/logo-tertiary.svg";
+import SymbolWhite from "public/assets/brandmarks/symbol-secondary.svg";
+import Arrow from "@components/common/icons/arrow";
+import theme from "styles/theme";
+import { css } from "@styled-system/css";
 import {
   Container,
   FooterWrapper,
@@ -14,14 +22,6 @@ import {
   Symbol,
   MobileLogo,
 } from "./styles";
-import Link from "next/link";
-import Image from "next/image";
-import RotatedTertiary from "public/assets/brandmarks/rotated-tertiary.svg";
-import Tertiary from "public/assets/brandmarks/logo-tertiary.svg";
-import SymbolWhite from "public/assets/brandmarks/symbol-secondary.svg";
-import Arrow from "@components/common/icons/arrow";
-import theme from "styles/theme";
-import { css } from "@styled-system/css";
 
 export default function Footer() {
   return (
@@ -42,16 +42,16 @@ export default function Footer() {
           <SegmentTitle>Our products</SegmentTitle>
           <ItemList>
             <Item>
-              <a href="#">Terrazzos</a>
+              <Link href="/terrazzo">Terrazzos</Link>
             </Item>
             <Item>
-              <a href="#">Collections</a>
+              <Link href="/terrazzo/collections">Collections</Link>
             </Item>
             <Item>
-              <a href="#">In use</a>
+              <Link href="/in-use">In use</Link>
             </Item>
             <Item>
-              <a href="#">Latest News</a>
+              <Link href="/latest">Latest News</Link>
             </Item>
           </ItemList>
         </Segment>

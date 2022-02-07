@@ -3,9 +3,15 @@ export const initialState = {
   confirmedProducts: [],
   filter: {
     searchText: "",
-    products: "all",
+    products: {
+      value: "all",
+      label: "all",
+    },
     colourSchemes: [],
-    sortBy: "featured",
+    sortBy: {
+      value: "featured",
+      label: "Featured",
+    },
   },
   productDisplayMode: "grid",
   loading: true,

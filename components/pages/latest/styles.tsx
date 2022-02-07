@@ -1,33 +1,56 @@
-import React from "react";
 import css from "@styled-system/css";
 import styled from "@emotion/styled";
 import theme from "styles/theme";
 import Cont from "@components/common/layout/container";
-import { justifyContent } from "styled-system";
 
-const Container = styled(Cont)();
-css({
-  alignItems: "flex-start",
-  pt: "128px",
-  pb: "48px",
-  [theme.mediaQueries.small]: {
-    pt: "60px!important",
-    pr: [
-      "16px !important",
-      "16px !important",
-      "40px !important",
-      "56px !important",
-      "80px !important",
-    ],
-    pl: [
-      "16px !important",
-      "16px !important",
-      "40px !important",
-      "56px !important",
-      "80px !important",
-    ],
-  },
-});
+const BreadCrumbContainer = styled("div")(
+  css({
+    alignItems: "flex-start",
+    pt: "128px",
+    [theme.mediaQueries.small]: {
+      pt: "90px!important",
+      pr: [
+        "16px !important",
+        "16px !important",
+        "40px !important",
+        "56px !important",
+        "80px !important",
+      ],
+      pl: [
+        "16px !important",
+        "16px !important",
+        "40px !important",
+        "56px !important",
+        "80px !important",
+      ],
+    },
+  })
+);
+
+const Container = styled(Cont)(
+  css({
+    alignItems: "flex-start",
+    pt: "128px",
+    pb: "48px",
+    [theme.mediaQueries.small]: {
+      pt: "60px!important",
+      pr: [
+        "16px !important",
+        "16px !important",
+        "40px !important",
+        "56px !important",
+        "80px !important",
+      ],
+      pl: [
+        "16px !important",
+        "16px !important",
+        "40px !important",
+        "56px !important",
+        "80px !important",
+      ],
+    },
+  })
+);
 
 const ReadMore = styled("div")(
   css({
@@ -308,6 +331,7 @@ export {
   LeftCol,
   RightCol,
   Pill,
+  BreadCrumbContainer,
   ContentWrapper,
   DetailsWrapper,
   Detail,

@@ -40,10 +40,15 @@ const SelectedProductCard = ({
           </div>
         )}
         <GridCardImgContainer>
-          {product?.img1 && (
+          {product?.thumbImageList?.[0]?.url && (
             <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
               <a>
-                <Image src={product?.img1} alt="Product-1" />
+                <Image
+                  src={product?.thumbImageList?.[0].url}
+                  alt={product.title}
+                  width={product?.thumbImageList?.[0].width}
+                  height={product?.thumbImageList?.[0].height}
+                />
               </a>
             </Link>
           )}

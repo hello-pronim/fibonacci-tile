@@ -1,11 +1,9 @@
 import React from "react";
-import Text from "@components/common/typography";
-import Image from "next/image";
-import heroImage from "public/assets/temp/project-hero.png";
-import { LeftCol, RightCol, Pill, ContentWrapper, Container } from "../styles";
 import css from "@styled-system/css";
-import styles from "./styles.module.scss";
+import Text from "@components/common/typography";
 import theme from "@styles/theme";
+import { LeftCol, RightCol, ContentWrapper, Container } from "../styles";
+import styles from "./styles.module.scss";
 
 const Hero = () => {
   return (

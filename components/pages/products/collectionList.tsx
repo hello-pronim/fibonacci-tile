@@ -6,10 +6,10 @@ import CTAPanel from "./blocks/CTAPanel";
 import { Container } from "./styles";
 import CollectionsItem from "./blocks/CollectionItem";
 
-const CollectionsPage = ({ collections, collectionProducts }) => {
+const CollectionsPage = ({ collections, collectionProducts, notifications }) => {
   return (
     <Container>
-      <ProductsHeader />
+      <ProductsHeader notifications={notifications} />
       <Slider />
       <SectionTitle
         show={false}
