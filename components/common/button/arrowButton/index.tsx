@@ -8,6 +8,7 @@ export default function ArrowButton({
   visibleArrow = true,
   fullWidth = false,
   size = "",
+  bgColor = "transparent"
 }) {
   return (
     <ArrowButtonWrapper
@@ -16,6 +17,7 @@ export default function ArrowButton({
       visibleBorder={true}
       fullWidth={fullWidth}
       size={size}
+      bgColor={bgColor}
     >
       <Link href={link} passHref>
         <a>{title}</a>

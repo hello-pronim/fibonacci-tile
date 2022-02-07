@@ -29,7 +29,7 @@ const SelectedProductCard = ({
 }) => {
   let collectionSlug = activeCollectionSlug
     ? activeCollectionSlug
-    : product.collections[0].slug;
+    : product?.collections[0]?.slug;
   return (
     <Wrapper>
       <Container>
@@ -103,7 +103,7 @@ const SelectedProductCard = ({
           altFont={true}
           marginTop="25px"
         >
-          <Link href={product.uri}>
+          <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
             <a>{product.title}</a>
           </Link>
         </CardTitle>

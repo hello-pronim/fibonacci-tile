@@ -7,7 +7,11 @@ export interface containerProps {
   active: boolean
 }
 
-const StepItemWrapper = styled("div")(() =>
+export interface stepItemProps {
+  click: boolean
+}
+
+const StepItemWrapper = styled("div")(({...props }: stepItemProps) =>
   css({
     display: "flex",
     alignItems: "center",
@@ -16,6 +20,7 @@ const StepItemWrapper = styled("div")(() =>
     textTransform: "uppercase",
     position: "relative",
     marginLeft: "40px",
+    cursor: props.click === true ? "pointer" : "not-allowed",
     "&:before": {
       position: "absolute",
       content: "''",

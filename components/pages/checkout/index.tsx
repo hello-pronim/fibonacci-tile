@@ -1,6 +1,7 @@
 import { useAppContext } from "@contexts/AppContext";
 import BreadCrumb from "@components/common/breadcrumb";
 import SelectedProductCard from "@components/common/product/selectedCard";
+import ArrowButton from "@components/common/button/arrowButton";
 import ProductsHeader from "../products/Header";
 import Samples from "./components/samples";
 import Details from "./components/details";
@@ -16,6 +17,8 @@ import {
   LeftContent,
   RightContent,
   SelectionWrapper,
+  NoSamples,
+  CheckoutFooter
 } from "./styles";
 
 import Abstrakt from "public/tmp/prod/abstrakt.jpeg";
@@ -89,7 +92,11 @@ const products = [
 ];
 const CheckoutPage = ({ notifications }) => {
   const { state, dispatch } = useAppContext();
-  const { checkoutStep, confirmedProducts } = state;
+  const { checkoutStep, confirmedProducts, selectedProducts } = state;
+  let click = false;
+  if(confirmedProducts?.length > 0 && confirmedProducts?.length < 7) {
+    click = true
+  }
   const crumbs = [
     { path: "/products", name: "Products" },
     { path: "/checkout", name: "Checkout" },
@@ -99,21 +106,29 @@ const CheckoutPage = ({ notifications }) => {
       <ProductsHeader mode="dark" notifications={notifications} />
       <CheckoutWrapper>
         <LeftContent
-          displayRight={checkoutStep === 1 || checkoutStep === 4 ? false : true}
+          displayRight={ checkoutStep === 1 || checkoutStep === 4 ? false : true }
         >
           <BreadCrumb crumbs={crumbs} />
           <CheckoutStepWrapper>
-            <StepItem step={1} />
-            <StepItem step={2} />
-            <StepItem step={3} />
-            <StepItem step={4} />
+            <StepItem click={true} step={1} />
+            <StepItem click={click} step={2} />
+            <StepItem click={click} step={3} />
+            <StepItem click={click} step={4} />
           </CheckoutStepWrapper>
+          {selectedProducts?.length > 0 && 
           <CheckoutContentWrapper>
             {checkoutStep === 1 && <Samples />}
             {checkoutStep === 2 && <Details />}
             {checkoutStep === 3 && <Delivery />}
             {checkoutStep === 4 && <Confirm />}
           </CheckoutContentWrapper>
+          }
+          {selectedProducts?.length === 0 && 
+            <NoSamples>
+              <p>No selected samples</p>
+              <ArrowButton mode="light" title="Continue Selections" link="/terrazzo" />
+            </NoSamples>
+          }
         </LeftContent>
         <RightContent
           displayRight={checkoutStep === 2 || checkoutStep === 3 ? true : false}
@@ -146,6 +161,10 @@ const CheckoutPage = ({ notifications }) => {
           </SelectionWrapper>
         </RightContent>
       </CheckoutWrapper>
+      <CheckoutFooter contentAlign="right">
+        <p>{`You currently have ${selectedProducts.length} selected, you can choose up 6 samples`}</p>
+        <ArrowButton mode="dark" bgColor="white" title="Continue to Details" link="/" />
+      </CheckoutFooter>
     </CheckoutContainer>
   );
 };

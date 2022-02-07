@@ -40,6 +40,7 @@ const textareaStyles = {
 
 const SelectionCart = ({ active, newSelection, tab }) => {
   const { state, dispatch } = useAppContext();
+  const { selectedProducts } = state;
   return (
     <div
       css={css({
@@ -386,8 +387,8 @@ const SelectionCart = ({ active, newSelection, tab }) => {
               },
             })}
           >
-            <ArrowButton mode="light" title="Order Samples" link="/checkout" />
-            <a href="#" css={css({ color: "#fff", mt: 24 })}>
+            {selectedProducts?.length > 0 && <ArrowButton mode="light" title="Order Samples" link="/checkout" />}
+            <a href="/terrazzo" css={css({ color: "#fff", mt: 24 })}>
               <Text variant="Body-Small">Continue Selections</Text>
             </a>
           </div>

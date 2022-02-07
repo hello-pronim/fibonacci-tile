@@ -8,6 +8,7 @@ export interface containerProps {
   visibleBorder: boolean;
   fullWidth: boolean;
   size: string;
+  bgColor: string;
 }
 
 const ArrowButtonWrapper = styled("div")(({ ...props }: containerProps) =>
@@ -33,6 +34,7 @@ const ArrowButtonWrapper = styled("div")(({ ...props }: containerProps) =>
       textDecoration: "none",
       position: "relative",
       transition: "all .4s ease-in-out",
+      background: props.bgColor,
       // paddingRight: props.visibleArrow === true ? 80 : 0,
       "&:after": {
         position: "absolute",

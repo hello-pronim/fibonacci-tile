@@ -6,6 +6,9 @@ import theme from "styles/theme";
 export interface containerProps {
   displayRight: boolean
 }
+export interface CheckoutFooterProps {
+  contentAlign: string
+}
 
 const CheckoutStepWrapper = styled("div")(() =>
   css({
@@ -67,6 +70,40 @@ const SelectionWrapper = styled("div")(() =>
   })
 );
 
+const NoSamples = styled("div")(() => 
+css({
+  pt: 80,
+  pb: 80,
+  pl: 80,
+  pr: 80,
+  "& p": {
+    fontSize: 18,
+    pb: 30
+  }
+})
+);
+
+const CheckoutFooter = styled("div")(({...props }: CheckoutFooterProps) => 
+  css({
+    pt: 20,
+    pb: 20,
+    pl: "2%",
+    pr: "2%",
+    position: "fixed",
+    bottom: 0,
+    backgroundColor: theme.colors.stoneTints[7],
+    width: "96%",
+    zIndex: "9999999",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: props.contentAlign === "right" ? "flex-end" : "flex-start",
+    "p": {
+      fontSize: 16,
+      mr:30
+    }
+  })
+);
+
 export {
   CheckoutStepWrapper,
   CheckoutContentWrapper,
@@ -74,5 +111,7 @@ export {
   CheckoutWrapper,
   LeftContent,
   RightContent,
-  SelectionWrapper
+  SelectionWrapper,
+  NoSamples,
+  CheckoutFooter
 };
