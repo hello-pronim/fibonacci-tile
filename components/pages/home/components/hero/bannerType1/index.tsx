@@ -1,10 +1,5 @@
 import Image from "next/image";
-import {
-  SlideItem,
-  ContentWrapper,
-  SlideImage,
-  SlideImageMobile,
-} from "../styles";
+import { ContentWrapper, SlideImage, SlideImageMobile } from "../styles";
 
 const BannerType1 = ({ banner }) => {
   return (

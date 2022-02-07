@@ -30,14 +30,15 @@ export const HomePageQuery = gql`
             backgroundImage {
               url
             }
-            sliderImage: backgroundImage @transform(width: 1920, height: 880) {
+            sliderImage: backgroundImage
+              @transform(width: 1920, height: 880, mode: "crop") {
               url
               title
               width
               height
             }
             sliderMobImage: backgroundImage
-              @transform(width: 750, height: 1240) {
+              @transform(width: 750, height: 1240, mode: "crop") {
               url
               title
               width
@@ -94,7 +95,8 @@ export const HomePageQuery = gql`
             left1Image {
               url
             }
-            left1ImageThumb: left1Image @transform(width: 560, height: 560) {
+            left1ImageThumb: left1Image
+              @transform(width: 560, height: 560, mode: "crop") {
               url
               title
               width
@@ -105,7 +107,8 @@ export const HomePageQuery = gql`
             left2Image {
               url
             }
-            left2ImageThumb: left2Image @transform(width: 560, height: 560) {
+            left2ImageThumb: left2Image
+              @transform(width: 560, height: 560, mode: "crop") {
               url
               title
               width
@@ -117,7 +120,7 @@ export const HomePageQuery = gql`
               url
             }
             right1ImageThumb: right1Image
-              @transform(width: 1715, height: 1221) {
+              @transform(width: 1715, height: 1221, mode: "crop") {
               url
               title
               width
@@ -129,7 +132,7 @@ export const HomePageQuery = gql`
               url
             }
             right2ImageThumb: right2Image
-              @transform(width: 1715, height: 1221) {
+              @transform(width: 1715, height: 1221, mode: "crop") {
               url
               title
               width
@@ -146,6 +149,27 @@ export const HomePageQuery = gql`
             projects {
               ... on projects_projectDetails_Entry {
                 id
+                slug
+                title
+                location
+                label
+                heroImage {
+                  url
+                }
+                heroImageThumb: heroImage
+                  @transform(width: 1460, height: 900, mode: "crop") {
+                  id
+                  url
+                  width
+                  height
+                }
+                heroMobImageThumb: heroImage
+                  @transform(width: 343, height: 476) {
+                  id
+                  url
+                  width
+                  height
+                }
               }
             }
           }
@@ -184,6 +208,7 @@ export const OurStoryPageQuery = gql`
     }
   }
 `;
+
 export const NewsletterQuery = gql`
   query NewsletterQuery($slug: [String]) {
     entry(slug: $slug) {

@@ -1,39 +1,36 @@
 import Image from "next/image";
-import {
-  SlideItem,
-  ContentWrapper,
-  SlideImage,
-  SlideImageMobile,
-} from "../styles";
+import { ContentWrapper, SlideImage, SlideImageMobile } from "../styles";
 
 const BannerType1 = ({ banner }) => {
   return (
-    <SlideItem>
+    <>
       <SlideImage>
         <Image
           className="lrg-img"
-          src={banner.url}
-          alt=""
           layout="responsive"
-          width="1920"
-          height="880"
+          src={banner.sliderImage[0].url}
+          alt={banner.sliderImage[0].title}
+          width={banner.sliderImage[0].width}
+          height={banner.sliderImage[0].height}
         />
       </SlideImage>
       <SlideImageMobile>
         <Image
-          src={banner.url}
-          alt=""
           layout="responsive"
-          width="750"
-          height="1240"
+          src={banner.sliderMobImage[0].url}
+          alt={banner.sliderMobImage[0].title}
+          width={banner.sliderMobImage[0].width}
+          height={banner.sliderMobImage[0].height}
         />
       </SlideImageMobile>
-      <ContentWrapper>
-        <span>LIKE</span>
-        <span>NO</span>
-        <span>OTHER</span>
-      </ContentWrapper>
-    </SlideItem>
+      {banner.likeNoOtherText && (
+        <ContentWrapper>
+          <span>LIKE</span>
+          <span>NO</span>
+          <span>OTHER</span>
+        </ContentWrapper>
+      )}
+    </>
   );
 };
 

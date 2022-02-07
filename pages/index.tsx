@@ -10,17 +10,10 @@ import Header from "@components/common/header";
 import Footer from "@components/common/footer";
 interface HomePageProps {
   pageData: any;
-  products: Array<any>;
   notifications: Array<any>;
-  sampleCta: any;
 }
 
-const Home: NextPage<HomePageProps> = ({
-  pageData,
-  products,
-  sampleCta,
-  notifications,
-}) => {
+const Home: NextPage<HomePageProps> = ({ pageData, notifications }) => {
   return (
     <>
       <Head>

@@ -1,8 +1,8 @@
+import React from "react";
 import QuoteModule from "@components/modules/quote";
 import SupportModule from "@components/modules/support";
 import SocialModule from "@components/modules/social";
 import DualColumnModule from "@components/modules/dualColumn";
-import React from "react";
 import Hero from "@components/pages/home/components/hero";
 import ProductCarousel from "./components/productCarousel";
 import InlineSlider from "./components/inlineSlider";
@@ -77,7 +77,6 @@ const Homepage = ({ pageData }) => {
                 />
               );
             case "beInspired":
-              console.log("beInspired", component);
               return (
                 <DualColumnModule
                   key={`component-${component.id}`}
@@ -115,14 +114,15 @@ const Homepage = ({ pageData }) => {
                   }}
                 />
               );
-              break;
             case "featuredProjects":
-              break;
+              return (
+                <React.Fragment key={`component-${component.id}`}>
+                  <SupportModule title="HOW CAN WE HELP?" supports={supports} />
+                  <InlineSlider projects={component.projects}></InlineSlider>
+                </React.Fragment>
+              );
           }
         })}
-
-      <SupportModule title="HOW CAN WE HELP?" supports={supports} />
-      <InlineSlider></InlineSlider>
       <SocialModule></SocialModule>
       <QuoteModule source="Rebeka Morgan, Build Her Collective">
         ‘It certainly helps from a planning and ordering perspective that

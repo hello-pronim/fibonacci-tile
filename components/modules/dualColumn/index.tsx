@@ -1,3 +1,9 @@
+import Image from "next/image";
+import { css } from "@styled-system/css";
+import Text from "@components/common/typography";
+import AccentText, { AccentTextMobile } from "@components/common/accentText";
+import ArrowButton from "@components/common/button/arrowButton";
+import theme from "@styles/theme";
 import {
   Container,
   ImageWrapper,
@@ -6,14 +12,6 @@ import {
   Segment,
   BottomRow,
 } from "./styles";
-import Text from "@components/common/typography";
-import Image from "next/image";
-import AccentText, { AccentTextMobile } from "@components/common/accentText";
-import InspireRight from "public/assets/temp/inspire-right.jpg";
-import InspireLeft from "public/assets/temp/inspire-left.jpg";
-import ArrowButton from "@components/common/button/arrowButton";
-import { css } from "@styled-system/css";
-import theme from "@styles/theme";
 
 const DualColumnModule = ({ data }) => {
   return (
@@ -116,7 +114,7 @@ const DualColumnModule = ({ data }) => {
         <Text as="h3" variant="Display-Medium">
           LIKE NO OTHER
         </Text>
-        <ArrowButton mode="" title="Our design process" link="#" size={""} />
+        <ArrowButton title="Our design process" link="/our-story" />
       </BottomRow>
     </Container>
   );
