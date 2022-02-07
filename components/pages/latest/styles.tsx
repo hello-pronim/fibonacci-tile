@@ -165,7 +165,7 @@ const BottomBarInner = styled("div")(
     // width: "100%",
     display: "flex",
     alignItems: "center",
-    pt: 24,
+    pt: 140,
     pl: 19,
   })
 );
@@ -199,11 +199,6 @@ const LinkWrapper = styled("div")(
     paddingRight: 14,
     svg: {
       transition: "ease all 0.3s",
-    },
-    "&:hover": {
-      svg: {
-        transform: "translateX(6px)",
-      },
     },
     a: {
       textDecoration: "none",
