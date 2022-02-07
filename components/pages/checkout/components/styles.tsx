@@ -7,11 +7,7 @@ export interface containerProps {
   active: boolean
 }
 
-export interface stepItemProps {
-  click: boolean
-}
-
-const StepItemWrapper = styled("div")(({...props }: stepItemProps) =>
+const StepItemWrapper = styled("div")(() =>
   css({
     display: "flex",
     alignItems: "center",
@@ -20,7 +16,6 @@ const StepItemWrapper = styled("div")(({...props }: stepItemProps) =>
     textTransform: "uppercase",
     position: "relative",
     marginLeft: "40px",
-    cursor: props.click === true ? "pointer" : "not-allowed",
     "&:before": {
       position: "absolute",
       content: "''",
@@ -143,7 +138,7 @@ const ThreeItemRow = styled("div")(()=>
   })
 );
 
-const InfoText = styled("p")(()=> 
+const InfoText = styled("div")(()=> 
   css({
     p: {
       fontsSize: 2,

@@ -28,6 +28,7 @@ import Brackish from "public/tmp/prod/brackish.jpeg";
 import Carmelita from "public/tmp/prod/carmelita.jpeg";
 import CloudBurst from "public/tmp/prod/cloudBurst.jpeg";
 
+
 const products = [
   {
     id: "1",
@@ -93,14 +94,32 @@ const products = [
 const CheckoutPage = ({ notifications }) => {
   const { state, dispatch } = useAppContext();
   const { checkoutStep, confirmedProducts, selectedProducts } = state;
-  let click = false;
-  if(confirmedProducts?.length > 0 && confirmedProducts?.length < 7) {
-    click = true
+  let disabled = false;
+  if(confirmedProducts?.length === 0 || confirmedProducts?.length > 6 || selectedProducts?.length > 6) {
+    disabled = true;
   }
   const crumbs = [
     { path: "/products", name: "Products" },
     { path: "/checkout", name: "Checkout" },
   ];
+  const stepChange = (step) => {
+    if(disabled) {
+      return
+    }
+    if(step === 4) {
+      // Reset step to 1
+      dispatch({
+        type: "SET_CHECKOUT_STEP",
+        value: 1,
+      });
+    }
+    if(step !== 4) {
+      dispatch({
+        type: "SET_CHECKOUT_STEP",
+        value: step,
+      });
+    }
+  }
   return (
     <CheckoutContainer>
       <ProductsHeader mode="dark" notifications={notifications} />
@@ -110,10 +129,10 @@ const CheckoutPage = ({ notifications }) => {
         >
           <BreadCrumb crumbs={crumbs} />
           <CheckoutStepWrapper>
-            <StepItem click={true} step={1} />
-            <StepItem click={click} step={2} />
-            <StepItem click={click} step={3} />
-            <StepItem click={click} step={4} />
+            <StepItem step={1} />
+            <StepItem step={2} />
+            <StepItem step={3} />
+            <StepItem step={4} />
           </CheckoutStepWrapper>
           {selectedProducts?.length > 0 && 
           <CheckoutContentWrapper>
@@ -126,7 +145,7 @@ const CheckoutPage = ({ notifications }) => {
           {selectedProducts?.length === 0 && 
             <NoSamples>
               <p>No selected samples</p>
-              <ArrowButton mode="light" title="Continue Selections" link="/terrazzo" />
+              <ArrowButton disabled={disabled} mode="dark" title="Continue Selections" link="/terrazzo" />
             </NoSamples>
           }
         </LeftContent>
@@ -137,7 +156,6 @@ const CheckoutPage = ({ notifications }) => {
             Selections (
             {confirmedProducts?.length > 0 ? confirmedProducts?.length : 0})
           </p>
-
           <SelectionWrapper>
             {confirmedProducts &&
               confirmedProducts.map((product) => (
@@ -161,10 +179,48 @@ const CheckoutPage = ({ notifications }) => {
           </SelectionWrapper>
         </RightContent>
       </CheckoutWrapper>
-      <CheckoutFooter contentAlign="right">
-        <p>{`You currently have ${selectedProducts.length} selected, you can choose up 6 samples`}</p>
-        <ArrowButton mode="dark" bgColor="white" title="Continue to Details" link="/" />
-      </CheckoutFooter>
+
+      {checkoutStep === 1 && selectedProducts?.length > 0 &&
+        <CheckoutFooter contentAlign="right">
+          <span>{`You currently have ${confirmedProducts.length} selected, you can choose up 6 samples`}</span>
+          <ArrowButton 
+          mode="dark" 
+          bgColor="white" 
+          title="Continue to Details" 
+          link=""
+          onClick={() => stepChange(2)} 
+          disabled={disabled} 
+          />
+        </CheckoutFooter>
+      }
+
+      {checkoutStep === 2 &&
+        <CheckoutFooter contentAlign="right">
+          <div className="back" onClick={() => stepChange(1)}>Back</div>
+          <ArrowButton 
+          mode="dark" 
+          bgColor="white" 
+          title="Continue to Delivery" 
+          link=""
+          onClick={() => stepChange(3)}
+          disabled={disabled} 
+          />
+        </CheckoutFooter>
+      }
+
+      {checkoutStep === 3 &&
+        <CheckoutFooter contentAlign="left">
+          <ArrowButton 
+          mode="dark" 
+          bgColor="white" 
+          title="Continue to Confirmation" 
+          link=""
+          onClick={() => stepChange(4)}
+          disabled={disabled} 
+          />
+          <div className="back" onClick={() => stepChange(2)}>Back</div>
+        </CheckoutFooter>
+      }
     </CheckoutContainer>
   );
 };

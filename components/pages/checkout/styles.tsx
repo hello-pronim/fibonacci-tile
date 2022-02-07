@@ -53,10 +53,14 @@ const LeftContent = styled("div")(({...props }: containerProps) =>
 const RightContent = styled("div")(({...props }: containerProps) =>
   css({
     width: "30%",
-    pt: 100,
+    mt: 80,
     border: `solid 1px ${theme.colors.stoneTints[7]}`,
+    borderTop: "none",
     pl: 20,
     display: props.displayRight === true ? "block" : "none",
+    'p': {
+      pt: 20
+    }
   })
 );
 
@@ -97,9 +101,16 @@ const CheckoutFooter = styled("div")(({...props }: CheckoutFooterProps) =>
     display: "flex",
     alignItems: "center",
     justifyContent: props.contentAlign === "right" ? "flex-end" : "flex-start",
-    "p": {
+    "span": {
       fontSize: 16,
-      mr:30
+      mr:30,
+      display: "inline-block"
+    },
+    ".back": {
+      fontSize: 16,
+      pl: 15,
+      pr: 15,
+      cursor: "pointer"
     }
   })
 );
