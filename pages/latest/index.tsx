@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { GetStaticProps, NextPage } from "next";
-import Head from "next/head";
-import Link from "next/link";
-import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
+import { PageQuery, NewsletterQuery } from "@gql/pageGQL";
+import { NewsQuery } from "@gql/newsGQL";
+import { CategoriesQuery } from "@gql/categoriesGQL";
+import BreadCrumb from "@components/common/breadcrumb";
 import client from "@utils/apolloClient";
-import { NewsListQuery } from "@gql/newsGQL";
-import { withGlobalData } from "@hoc/withGlobalData";
+import Head from "next/head";
 import Footer from "@components/common/footer";
 import Header from "@components/common/header";
-import Arrow from "@components/common/icons/arrow";
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
+import { withGlobalData } from "@hoc/withGlobalData";
 import Hero from "@components/pages/latest/hero/index";
 import BottomHero from "@components/pages/latest/bottom-hero";
 import MobileCategory from "@components/pages/latest/mobileCategory";
@@ -16,153 +17,29 @@ import Category from "@components/pages/latest/categories/Category";
 import { Card } from "@components/pages/latest/cards-container/Card";
 import {
   AllCategory,
-  BottomBarInner,
   CategorysBarInner,
-  ReadMore,
-  LinkWrapper,
-  BreadCrumbContainer,
+  ReadMore
 } from "@components/pages/latest/styles";
+
 import styles from "./styles.module.scss";
-import CardImg from "public/assets/latest-news/cardImg.png";
-import CardImg1 from "public/assets/latest-news/image1.png";
-import CardImg2 from "public/assets/latest-news/image2.png";
-import ArrowButton from "@components/common/button/arrowButton";
 
 interface LatestPageProps {
   newsItems: Array<any>;
   notifications: Array<any>;
+  heroDetails: any;
+  categories: any;
+  newsletter: any;
+  news: any
 }
-const LatestNews: NextPage<LatestPageProps> = ({
-  newsItems,
-  notifications,
-}) => {
-  const categorys = [
-    "all",
-    "product release",
-    "press",
-    "awards",
-    "collaborations",
-    "tips + tricks",
-    "inspiration",
-  ];
 
-  const data = [
-    {
-      title:
-        "Feugiat velit neque, est etiam urna eget. Nisi phasellus sollicitudin",
-      description:
-        "Description two to three lines, sed in sit semper in non nec potenti urna. Eget arcu a malesuada aliquet. Augue venenatis.",
-      category: "CAtegory",
-      CardImg: CardImg1,
-      slug: "latest-news-1",
-    },
-    {
-      title:
-        "Feugiat velit neque, est etiam urna eget. Nisi phasellus sollicitudin",
-      description:
-        "Description two to three lines, sed in sit semper in non nec potenti urna. Eget arcu a malesuada aliquet. Augue venenatis.",
-      category: "Product Release",
-      CardImg: CardImg,
-      slug: "latest-news-2",
-    },
-    {
-      title:
-        "Feugiat velit neque, est etiam urna eget. Nisi phasellus sollicitudin",
-      description:
-        "Description two to three lines, sed in sit semper in non nec potenti urna. Eget arcu a malesuada aliquet. Augue venenatis.",
-      category: "Press",
-      CardImg: CardImg2,
-      slug: "latest-news-3",
-    },
-    {
-      title:
-        "Feugiat velit neque, est etiam urna eget. Nisi phasellus sollicitudin",
-      description:
-        "Description two to three lines, sed in sit semper in non nec potenti urna. Eget arcu a malesuada aliquet. Augue venenatis.",
-      category: "Product Release",
-      CardImg: CardImg,
-      slug: "latest-news-4",
-    },
-    {
-      title:
-        "Feugiat velit neque, est etiam urna eget. Nisi phasellus sollicitudin",
-      description:
-        "Description two to three lines, sed in sit semper in non nec potenti urna. Eget arcu a malesuada aliquet. Augue venenatis.",
-      category: "Awards",
-      CardImg: CardImg,
-      slug: "latest-news-5",
-    },
-    {
-      title:
-        "Feugiat velit neque, est etiam urna eget. Nisi phasellus sollicitudin",
-      description:
-        "Description two to three lines, sed in sit semper in non nec potenti urna. Eget arcu a malesuada aliquet. Augue venenatis.",
-      category: "Colaborations",
-      CardImg: CardImg2,
-      slug: "latest-news-6",
-    },
-    {
-      title:
-        "Feugiat velit neque, est etiam urna eget. Nisi phasellus sollicitudin",
-      description:
-        "Description two to three lines, sed in sit semper in non nec potenti urna. Eget arcu a malesuada aliquet. Augue venenatis.",
-      category: "collaborations",
-      CardImg: CardImg1,
-      slug: "latest-news-7",
-    },
-    {
-      title:
-        "Feugiat velit neque, est etiam urna eget. Nisi phasellus sollicitudin",
-      description:
-        "Description two to three lines, sed in sit semper in non nec potenti urna. Eget arcu a malesuada aliquet. Augue venenatis.",
-      category: "inspiration",
-      CardImg: CardImg,
-      slug: "latest-news-8",
-    },
-    {
-      title:
-        "Feugiat velit neque, est etiam urna eget. Nisi phasellus sollicitudin",
-      description:
-        "Description two to three lines, sed in sit semper in non nec potenti urna. Eget arcu a malesuada aliquet. Augue venenatis.",
-      category: "collaborations",
-      CardImg: CardImg2,
-      slug: "latest-news-9",
-    },
-    {
-      title:
-        "Feugiat velit neque, est etiam urna eget. Nisi phasellus sollicitudin",
-      description:
-        "Description two to three lines, sed in sit semper in non nec potenti urna. Eget arcu a malesuada aliquet. Augue venenatis.",
-      category: "awards",
-      CardImg: CardImg,
-      slug: "latest-news-10",
-    },
-    {
-      title:
-        "Feugiat velit neque, est etiam urna eget. Nisi phasellus sollicitudin",
-      description:
-        "Description two to three lines, sed in sit semper in non nec potenti urna. Eget arcu a malesuada aliquet. Augue venenatis.",
-      category: "tips + tricks",
-      CardImg: CardImg2,
-      slug: "latest-news-11",
-    },
-    {
-      title:
-        "Feugiat velit neque, est etiam urna eget. Nisi phasellus sollicitudin",
-      description:
-        "Description two to three lines, sed in sit semper in non nec potenti urna. Eget arcu a malesuada aliquet. Augue venenatis.",
-      category: "inspiration",
-      CardImg: CardImg2,
-      slug: "latest-news-12",
-    },
-  ];
+const LatestNews: NextPage<LatestPageProps> = ({ heroDetails, categories, news, newsletter, notifications }) => {
   const [selectedType, setSelectedType] = useState("all");
-  const [displayedCategory, setDisplayedProjects] = useState(data);
+  const [displayedCategory, setDisplayedProjects] = useState(news);
 
   const onProjectTypeClick = (type) => {
-    const types = type.toLowerCase();
-    const cardsList = data.filter(
-      (item) => item.category.toLowerCase() === types || types === "all"
+    console.log("type", type)
+    const cardsList = news.filter(
+      (item) => item?.newsCategory[0]?.slug === type || type === "all"
     );
 
     setDisplayedProjects(cardsList);
@@ -173,11 +50,7 @@ const LatestNews: NextPage<LatestPageProps> = ({
     return (
       <Card
         key={index}
-        title={item.title}
-        description={item.description}
-        category={"# " + item.category}
-        cardImg={item.CardImg}
-        slug={item.slug}
+        component={item}
       />
     );
   });
@@ -194,7 +67,10 @@ const LatestNews: NextPage<LatestPageProps> = ({
     return 0;
   };
   const windowWidth = useWidth();
-
+  const crumbs = [
+    { path: "/products", name: "Products" },
+    { path: "/latest", name: "Latest" },
+  ];
   return (
     <>
       <Head>
@@ -202,36 +78,29 @@ const LatestNews: NextPage<LatestPageProps> = ({
         <meta name="description" content="Fibonacci Latest page" />
       </Head>
       <Header mode="dark" notifications={notifications} />
-      <BreadCrumbContainer>
-        <BottomBarInner>
-          <LinkWrapper>
-            <Arrow type="short" direction="left" />
-            <Link href="#">Back</Link>
-          </LinkWrapper>
-          <LinkWrapper>
-            <Link href="/">Home</Link>
-          </LinkWrapper>
-          <LinkWrapper>
-            <Link href="#">Page 1</Link>
-          </LinkWrapper>
-          <LinkWrapper>
-            <Link href="#">Page 2</Link>
-          </LinkWrapper>
-        </BottomBarInner>
-      </BreadCrumbContainer>
-      <Hero />
+      <BreadCrumb crumbs={crumbs} />
+      <Hero heroDetails={heroDetails} />
       {windowWidth >= 769 ? (
         <CategorysBarInner>
           <AllCategory>
-            {categorys.map((item) => (
+            <Category
+                key={'all'}
+                onClick={() => onProjectTypeClick('all')}
+                active={'all' === selectedType}
+                size="small"
+                rounded
+            >
+              All
+            </Category>
+            {categories.map((category) => (
               <Category
-                key={item}
-                onClick={() => onProjectTypeClick(item)}
-                active={item === selectedType}
+                key={category.slug}
+                onClick={() => onProjectTypeClick(category.slug)}
+                active={category.slug === selectedType}
                 size="small"
                 rounded
               >
-                {item}
+                {category.title}
               </Category>
             ))}
           </AllCategory>
@@ -243,34 +112,61 @@ const LatestNews: NextPage<LatestPageProps> = ({
         columnsCountBreakPoints={{ 425: 1, 767: 2, 1400: 3, 1660: 4 }}
       >
         <Masonry className={styles.container}>{Cards}</Masonry>
-        {displayedCategory.length > 5 ? (
+        {displayedCategory?.length > 5 ? (
           <ReadMore>
-            <ArrowButton mode="" title="Load more" link="#" size="" />
+            {/* <ArrowButton mode="" title="Load more" link="#" size="" /> */}
           </ReadMore>
         ) : (
           <div></div>
         )}
       </ResponsiveMasonry>
-      <BottomHero />
+      {newsletter?.length > 0 && 
+        <BottomHero heading={newsletter[0].heading} subHeading={newsletter[0].subheading} />
+      }
       <Footer />
     </>
   );
-};
+}
 
-export const getStaticProps: GetStaticProps = withGlobalData(
-  async () => {
-    const {
-      data: { entries: newsItems },
-    } = await client.query({
-      query: NewsListQuery,
-    });
-    return {
-      props: {
-        newsItems,
-      },
-      revalidate: 500,
-    };
-  }
-);
+export const getStaticProps: GetStaticProps = withGlobalData(async function () {
+  const {
+    data: { entry: heroDetails },
+  } = await client.query({
+    query: PageQuery,
+    variables: { slug: "latest-news" },
+  });
+
+  const {
+    data: { entry: newsletter },
+  } = await client.query({
+    query: NewsletterQuery,
+    variables: { slug: "latest-news" },
+  });
+
+  const {
+    data: { categories: categories },
+  } = await client.query({
+    query: CategoriesQuery,
+    variables: {
+      group: "newsCategories",
+    },
+  });
+
+  const {
+    data: { entries: news },
+  } = await client.query({
+    query: NewsQuery,
+  });
+
+  return {
+    props: {
+      heroDetails,
+      categories,
+      news,
+      newsletter: newsletter?.newsletter
+    },
+    revalidate: 500,
+  };
+});
 
 export default LatestNews;

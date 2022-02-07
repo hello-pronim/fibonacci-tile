@@ -165,7 +165,7 @@ const BottomBarInner = styled("div")(
     // width: "100%",
     display: "flex",
     alignItems: "center",
-    pt: 140,
+    pt: 100,
     pl: 19,
   })
 );

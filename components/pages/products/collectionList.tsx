@@ -20,8 +20,8 @@ const CollectionsPage = ({ collections, collectionProducts, notifications }) => 
           <CollectionsItem key={collection.id} collectionProducts={collectionProducts} collection={collection}/>
         )
       })}
-      <CTAPanel imagePosition="right" />
-      <CTAPanel imagePosition="left" />
+      <CTAPanel data={[]} imagePosition="right" />
+      <CTAPanel data={[]} imagePosition="left" />
     </Container>
   );
 };

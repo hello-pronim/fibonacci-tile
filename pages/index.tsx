@@ -2,6 +2,7 @@ import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import client from "@utils/apolloClient";
 import { ProductsQuery } from "@gql/productGQL";
+import { sampleCta2Query } from "@gql/globalGQL";
 import Homepage from "@components/pages/home";
 import Header from "@components/common/header";
 import Footer from "@components/common/footer";
@@ -9,9 +10,10 @@ import { withGlobalData } from "@hoc/withGlobalData";
 interface HomePageProps {
   products: Array<any>;
   notifications: Array<any>;
+  sampleCta: any;
 }
 
-const Home: NextPage<HomePageProps> = ({ products, notifications }) => {
+const Home: NextPage<HomePageProps> = ({ products, sampleCta, notifications }) => {
   return (
     <>
       <Head>
@@ -20,7 +22,7 @@ const Home: NextPage<HomePageProps> = ({ products, notifications }) => {
         <meta name="robots" content="index, follow" />
       </Head>
       <Header mode="light" position="absolute" notifications={notifications} />
-      <Homepage products={products} />
+      <Homepage products={products} cta={sampleCta} />
       <Footer />
     </>
   );
@@ -35,9 +37,17 @@ export const getStaticProps: GetStaticProps = withGlobalData(async () => {
       limit: 10,
     },
   });
+
+  const {
+    data: { globalSet: sampleCta },
+  } = await client.query({
+    query: sampleCta2Query,
+  });
+
   return {
     props: {
       products,
+      sampleCta
     },
     revalidate: 500,
   };

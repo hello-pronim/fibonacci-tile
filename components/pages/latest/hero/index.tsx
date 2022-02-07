@@ -5,7 +5,7 @@ import theme from "@styles/theme";
 import { LeftCol, RightCol, ContentWrapper, Container } from "../styles";
 import styles from "./styles.module.scss";
 
-const Hero = () => {
+const Hero = ({ heroDetails: { pageHeading, pageIntro } }) => {
   return (
     <Container
       css={css({
@@ -23,14 +23,13 @@ const Hero = () => {
             variant="Display-Large"
             altFont={true}
           >
-            Latest News
+            {pageHeading}
           </Text>
         </ContentWrapper>
       </LeftCol>
       <RightCol>
         <Text className={styles.bodyText} Base="h4" variant="Display-Medium">
-          Elementum phasellus ligula adipiscing eu sed. Id id ut volutpat tempus
-          viverra vestibulum risus pulvinar mollis. Etiam id congue
+          {pageIntro}
         </Text>
       </RightCol>
     </Container>

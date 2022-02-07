@@ -1,19 +1,18 @@
 import QuoteModule from "@components/modules/quote";
 import SupportModule from "@components/modules/support";
-import ContentWithImageModule from "@components/modules/contentWithImage";
 import SocialModule from "@components/modules/social";
 import DualColumnModule from "@components/modules/dualColumn";
 import React from "react";
 import Hero from "@components/pages/home/components/hero";
 import ProductCarousel from "./components/productCarousel";
 import InlineSlider from "./components/inlineSlider";
-
+import CTAPanel from "../products/blocks/CTAPanel";
 import SupportIcon from "public/assets/icons/support-icon.svg";
 import SamplesIcon from "public/assets/icons/sample-icon.svg";
 import QuoteIcon from "public/assets/icons/quote-icon.svg";
 import EnquiryIcon from "public/assets/icons/enquiry-icon.svg";
 
-const Homepage = ({ products }) => {
+const Homepage = ({ products, cta }) => {
   const supports = [
     {
       slug: "product-support",
@@ -44,7 +43,9 @@ const Homepage = ({ products }) => {
     <>
       <Hero />
       <ProductCarousel products={products}></ProductCarousel>
-      <ContentWithImageModule></ContentWithImageModule>
+      {cta?.CTAFields?.length > 0 &&
+        <CTAPanel data={cta.CTAFields[0]} imagePosition="left" />
+      }
       <DualColumnModule />
       <SupportModule title="HOW CAN WE HELP?" supports={supports} />
       <InlineSlider></InlineSlider>
