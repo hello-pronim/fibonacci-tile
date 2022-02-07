@@ -8,6 +8,9 @@ export default function ArrowButton({
   visibleArrow = true,
   fullWidth = false,
   size = "",
+  bgColor = "transparent",
+  onClick = null,
+  disabled = false
 }) {
   return (
     <ArrowButtonWrapper
@@ -16,10 +19,17 @@ export default function ArrowButton({
       visibleBorder={true}
       fullWidth={fullWidth}
       size={size}
+      bgColor={bgColor}
+      disabled={disabled}
     >
-      <Link href={link} passHref>
-        <a>{title}</a>
-      </Link>
+      {link && 
+        <Link href={link} passHref>
+          <a>{title}</a>
+        </Link>
+      }
+      {!link && onClick &&
+        <button onClick={onClick} className="bttnArrow">{title}</button>
+      }
     </ArrowButtonWrapper>
   );
 }
