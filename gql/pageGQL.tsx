@@ -155,17 +155,17 @@ export const HomePageQuery = gql`
                 label
                 heroImage {
                   url
+                  width
+                  height
                 }
                 heroImageThumb: heroImage
                   @transform(width: 1460, height: 900, mode: "crop") {
-                  id
                   url
                   width
                   height
                 }
                 heroMobImageThumb: heroImage
-                  @transform(width: 343, height: 476) {
-                  id
+                  @transform(width: 343, height: 476, mode: "crop") {
                   url
                   width
                   height
