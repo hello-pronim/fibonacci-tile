@@ -1,5 +1,5 @@
 import React from "react";
-import CardImg from "../../../../../public/cardImg.png";
+import { excerpt } from "@utils/utility";
 import styled from "@emotion/styled";
 import css from "@styled-system/css";
 import Image from "next/image";
@@ -88,7 +88,7 @@ export const Card = ({ component: {title, newsCategory, newsComponents} }): any 
       }
       <Title>{title}</Title> 
       {descBlock?.contentText && 
-        <Description dangerouslySetInnerHTML={{__html: descBlock.contentText}} />
+        <Description dangerouslySetInnerHTML={{__html: excerpt(descBlock.contentText)}} />
       }
     </StyledContainer>
   );

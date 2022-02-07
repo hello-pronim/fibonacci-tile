@@ -23,7 +23,7 @@ export const NewsQuery: any = gql`
             id
             image {
               id
-              url
+              url(width: 600, height: 600)
             }
           }
         }
