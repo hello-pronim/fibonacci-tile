@@ -12,7 +12,7 @@ import SamplesIcon from "public/assets/icons/sample-icon.svg";
 import QuoteIcon from "public/assets/icons/quote-icon.svg";
 import EnquiryIcon from "public/assets/icons/enquiry-icon.svg";
 
-const Homepage = ({ products, cta }) => {
+const Homepage = ({ pageData }) => {
   const supports = [
     {
       slug: "product-support",
@@ -39,14 +39,88 @@ const Homepage = ({ products, cta }) => {
       href: "/support#general-enquiry",
     },
   ];
+  // populate banners from homePageComponents
+  const banners = [];
+  pageData.homePageComponents.forEach((component: any) => {
+    if (
+      ["bannerType1", "bannerType2", "bannerType3"].indexOf(
+        component.typeHandle
+      ) !== -1
+    ) {
+      banners.push(component);
+    }
+  });
   return (
     <>
-      <Hero />
-      <ProductCarousel products={products}></ProductCarousel>
-      {cta?.CTAFields?.length > 0 &&
-        <CTAPanel data={cta.CTAFields[0]} imagePosition="left" />
-      }
-      <DualColumnModule />
+      {banners.length > 0 && <Hero banners={banners} />}
+      {pageData?.homePageComponents?.length > 0 &&
+        pageData.homePageComponents.map((component: any) => {
+          switch (component.typeHandle) {
+            case "featuredProducts":
+              return (
+                <ProductCarousel
+                  key={`component-${component.id}`}
+                  products={component.products}
+                ></ProductCarousel>
+              );
+            case "samples":
+              return (
+                <CTAPanel
+                  key={`component-${component.id}`}
+                  data={{
+                    samplesImage: component.image,
+                    samplesHeading: component.heading,
+                    samplesIntro: component.intro,
+                    samplesButton: component.button,
+                  }}
+                  imagePosition="left"
+                />
+              );
+            case "beInspired":
+              console.log("beInspired", component);
+              return (
+                <DualColumnModule
+                  key={`component-${component.id}`}
+                  data={{
+                    sideText: component.sideText,
+                    left1Image: {
+                      url: component?.left1ImageThumb?.[0]?.url,
+                      width: component?.left1ImageThumb?.[0]?.width,
+                      height: component?.left1ImageThumb?.[0]?.height,
+                    },
+                    left1Caption: component.left1Caption,
+                    left1Text: component.left1Text,
+                    left2Image: {
+                      url: component?.left2ImageThumb?.[0]?.url,
+                      width: component?.left2ImageThumb?.[0]?.width,
+                      height: component?.left2ImageThumb?.[0]?.height,
+                    },
+                    left2Caption: component.left2Caption,
+                    left2Text: component.left2Text,
+                    right1Image: {
+                      url: component?.right1ImageThumb?.[0]?.url,
+                      width: component?.right1ImageThumb?.[0]?.width,
+                      height: component?.right1ImageThumb?.[0]?.height,
+                    },
+                    right1Caption: component.right1Caption,
+                    right1Text: component.right1Text,
+                    rightText: component.rightText,
+                    right2Image: {
+                      url: component?.right2ImageThumb?.[0]?.url,
+                      width: component?.right2ImageThumb?.[0]?.width,
+                      height: component?.right2ImageThumb?.[0]?.height,
+                    },
+                    right2Caption: component.right2Caption,
+                    right2Text: component.right2Text,
+                  }}
+                />
+              );
+              break;
+            case "featuredProjects":
+              break;
+          }
+        })}
+
       <SupportModule title="HOW CAN WE HELP?" supports={supports} />
       <InlineSlider></InlineSlider>
       <SocialModule></SocialModule>

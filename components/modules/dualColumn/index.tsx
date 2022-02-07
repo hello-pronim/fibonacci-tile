@@ -15,50 +15,50 @@ import ArrowButton from "@components/common/button/arrowButton";
 import { css } from "@styled-system/css";
 import theme from "@styles/theme";
 
-const DualColumnModule = () => {
+const DualColumnModule = ({ data }) => {
   return (
     <Container>
-      <AccentText top={160}>Get inspired</AccentText>
+      <AccentText top={160}>{data.sideText}</AccentText>
       <LeftCol>
         <Segment>
-          <Image
-            alt=""
-            src={InspireLeft}
-            layout="responsive"
-            width={560}
-            height={560}
-          />
+          {data?.left1Image?.url && (
+            <Image
+              alt={data.left1Image.url}
+              src={data.left1Image.url}
+              layout="responsive"
+              width={data.left1Image.width}
+              height={data.left1Image.height}
+            />
+          )}
           <Text as="h6" variant="Display-Overline">
-            INTUITIVE EVOCATIVE CREATIONS
+            {data.left1Caption}
           </Text>
           <Text as="h3" variant="Display-Medium">
-            The Fibonacci design aesthetic creates confident, intuitive and
-            evocative environments across commercial, retail, and residential
-            applications.
+            {data.left1Text}
           </Text>
         </Segment>
         <Segment>
-          <Image
-            alt=""
-            src={InspireLeft}
-            layout="responsive"
-            width={560}
-            height={560}
-          />
+          {data?.left2Image?.url && (
+            <Image
+              alt={data.left2Image.url}
+              src={data.left2Image.url}
+              layout="responsive"
+              width={data.left2Image.width}
+              height={data.left2Image.height}
+            />
+          )}
           <Text as="h6" variant="Display-Overline">
-            FLAWLESS STANDARDS ALWAYS
+            {data.left2Caption}
           </Text>
           <Text as="h3" variant="Display-Medium">
-            Our product design optimises tonal consistency, enhances stability,
-            improves scratch resistance, and eliminates risk of long-term
-            shrinkage.
+            {data.left2Text}
           </Text>
         </Segment>
       </LeftCol>
       <RightCol>
         <div>
           <AccentTextMobile css={css({ pb: 60 })}>
-            Get inspired
+            {data.sideText}
           </AccentTextMobile>
           <Text
             as="h4"
@@ -70,47 +70,45 @@ const DualColumnModule = () => {
               },
             })}
           >
-            From design
-            <br />
-            to delivery.
+            {data.rightText}
           </Text>
         </div>
         <Segment>
           <ImageWrapper>
-            <Image
-              alt=""
-              src={InspireRight}
-              layout="responsive"
-              width={1715}
-              height={1221}
-            />
+            {data?.right1Image?.url && (
+              <Image
+                alt={data.right1Image.url}
+                src={data.right1Image.url}
+                layout="responsive"
+                width={data.right1Image.width}
+                height={data.right1Image.height}
+              />
+            )}
           </ImageWrapper>
           <Text as="h6" variant="Display-Overline">
-            REVOLUTIONARY PRODUCT CALIBER
+            {data.right1Caption}
           </Text>
           <Text as="h3" variant="Display-Medium">
-            Fibonacci controls the chain of custody from design to manufacture,
-            guaranteeing unparalleled product quality and ongoing accessible
-            supply.
+            {data.right1Text}
           </Text>
         </Segment>
         <Segment>
           <ImageWrapper>
-            <Image
-              alt=""
-              src={InspireRight}
-              layout="responsive"
-              width={1715}
-              height={1221}
-            />
+            {data?.right2Image?.url && (
+              <Image
+                alt={data.right2Image.url}
+                src={data.right2Image.url}
+                layout="responsive"
+                width={data.right2Image.width}
+                height={data.right2Image.height}
+              />
+            )}
           </ImageWrapper>
           <Text as="h6" variant="Display-Overline">
-            READY RIGHT NOW
+            {data.right2SubLine}
           </Text>
           <Text as="h3" variant="Display-Medium">
-            You don’t have to wait whilst we ‘make your order’. We continually
-            replenish our inventory, diminishing our lead times. And you can
-            order as many, or as few as you’d like.
+            {data.right2Text}
           </Text>
         </Segment>
       </RightCol>
@@ -118,7 +116,7 @@ const DualColumnModule = () => {
         <Text as="h3" variant="Display-Medium">
           LIKE NO OTHER
         </Text>
-        <ArrowButton mode="" title="Our design process" link="#"  size={""}/>
+        <ArrowButton mode="" title="Our design process" link="#" size={""} />
       </BottomRow>
     </Container>
   );

@@ -1,6 +1,8 @@
 import { gql } from "@apollo/client";
+import { LIST_PRODUCT_FIELDS } from "./fragments";
 
 export const ProductsQuery = gql`
+  ${LIST_PRODUCT_FIELDS}
   query ProductsQuery(
     $search: String = ""
     $productCategories: [QueryArgument] = []
@@ -22,55 +24,7 @@ export const ProductsQuery = gql`
     ) {
       id
       slug
-      ... on products_product_Entry {
-        title
-        subline
-        collections {
-          id
-          title
-          slug
-        }
-        label
-        backgroundColor
-        productNumber
-        designStory
-        projectIntroduction
-        sampleAvailable
-        materialsComposition
-        finishAppearance
-        applications
-        sizes {
-          id
-          title
-          parent {
-            id
-            title
-          }
-        }
-        productCategories {
-          title
-        }
-        thumbImage {
-          url
-        }
-        thumbImageList: thumbImage @transform(handle: "productThumbnail") {
-          id
-          url
-          width
-          height
-        }
-        thumbImageSingle: thumbImage
-          @transform(handle: "productDetailThumbnail") {
-          id
-          url
-          width
-          height
-        }
-        largeImage {
-          id
-          url
-        }
-      }
+      ...ListProductFields
     }
   }
 `;
