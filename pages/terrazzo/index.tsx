@@ -6,6 +6,7 @@ import client from "@utils/apolloClient";
 import { ProductsQuery } from "@gql/productGQL";
 import { CategoriesQuery } from "@gql/categoriesGQL";
 import { sampleCta1Query, sampleCta2Query } from "@gql/globalGQL";
+import { withGlobalData } from "@hoc/withGlobalData";
 
 interface ProductPageProps {
   products: any;
@@ -13,6 +14,7 @@ interface ProductPageProps {
   productCategories: any;
   sampleCta1: any;
   sampleCta2: any
+  notifications: Array<any>;
 }
 
 const Products: NextPage<ProductPageProps> = ({
@@ -20,7 +22,8 @@ const Products: NextPage<ProductPageProps> = ({
   colourSchemes,
   productCategories,
   sampleCta1,
-  sampleCta2
+  sampleCta2,
+  notifications
 }) => {
   return (
     <>
@@ -34,13 +37,14 @@ const Products: NextPage<ProductPageProps> = ({
         productCategories={productCategories}
         cta1={sampleCta1}
         cta2={sampleCta2}
+        notifications={notifications}
       />
       <Footer />
     </>
   );
 };
 
-export const getStaticProps: GetStaticProps = async function () {
+export const getStaticProps: GetStaticProps = withGlobalData(async function () {
   const {
     data: { entries: products },
   } = await client.query({
@@ -86,6 +90,6 @@ export const getStaticProps: GetStaticProps = async function () {
     },
     revalidate: 500,
   };
-};
+});
 
 export default Products;

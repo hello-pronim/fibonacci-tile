@@ -1,10 +1,10 @@
 import Header from "@components/common/header";
 import { HeaderContainer } from "./styles";
 
-const ProjectsHeader = ({ mode = "light" }) => {
+const ProjectsHeader = ({ mode = "light", notifications = null }) => {
   return (
     <HeaderContainer>
-      <Header mode={mode} position="absolute" notifications={null} />
+      <Header mode={mode} position="absolute" notifications={notifications} />
     </HeaderContainer>
   );
 };

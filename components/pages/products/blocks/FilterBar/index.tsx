@@ -77,8 +77,8 @@ export default function ProductFilters({
                 <Image
                   src={Logo}
                   layout="fixed"
-                  width="36px"
-                  height="36px"
+                  width="30px"
+                  height="30px"
                   alt="Fibonacci"
                 />
               </a>
@@ -114,13 +114,17 @@ export default function ProductFilters({
             })}
             onClick={handleActiveFilter("products")}
           >
-            <Text variant="Body-Small" mr="10px">
-              Products
-            </Text>
-            {state.filter?.products?.value !== "all" && (
-              <Text variant="Body-XSmall">{state.filter.products.label}</Text>
-            )}
-            <ArrowDownIcon />
+            <div>
+              <div>
+                <Text variant="Body-XSmall" mr="10px">
+                  Products
+                </Text>
+                {state.filter?.products?.value !== "all" && (
+                  <Text variant="Body-XSmall" color="#B0ABA7">{state.filter.products.label}</Text>
+                )}
+              </div>
+              <ArrowDownIcon />
+            </div>
           </div>
           <div
             className={classnames(styles.filterItem, styles.colourSchemeItem, {
@@ -128,15 +132,19 @@ export default function ProductFilters({
             })}
             onClick={handleActiveFilter("colour-schemes")}
           >
-            <Text variant="Body-Small" mr="10px">
-              Colour Schemes
-            </Text>
-            {state.filter.colourSchemes.length > 0 && (
-              <Text variant="Body-XSmall">
-                {state.filter.colourSchemes.length} schemes
-              </Text>
-            )}
-            <ArrowDownIcon />
+            <div>
+              <div>
+                <Text variant="Body-XSmall" mr="10px">
+                  Colour Schemes
+                </Text>
+                {state.filter.colourSchemes.length > 0 && (
+                  <Text variant="Body-XSmall" color="#B0ABA7">
+                    {state.filter.colourSchemes.length} schemes
+                  </Text>
+                )}
+              </div>
+              <ArrowDownIcon />
+            </div>
           </div>
           <div
             className={classnames(styles.filterItem, styles.sortByItem, {
@@ -144,13 +152,17 @@ export default function ProductFilters({
             })}
             onClick={handleActiveFilter("sort-by")}
           >
-            <Text variant="Body-Small" mr="10px">
-              Sort by
-            </Text>
-            {state.filter?.sortBy?.value !== "featured" && (
-              <Text variant="Body-XSmall">{state.filter.sortBy.label}</Text>
-            )}
-            <ArrowDownIcon />
+            <div>
+              <div>
+                <Text variant="Body-XSmall" mr="10px">
+                  Sort by
+                </Text>
+                {state.filter?.sortBy?.value !== "featured" && (
+                  <Text variant="Body-XSmall" color="#B0ABA7">{state.filter.sortBy.label}</Text>
+                )}
+              </div>
+              <ArrowDownIcon />
+            </div>
           </div>
         </div>
         <div className={styles.displayOptionsContainer}>

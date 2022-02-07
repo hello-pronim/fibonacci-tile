@@ -87,7 +87,7 @@ const products = [
     img1: CloudBurst,
   },
 ];
-const CheckoutPage = () => {
+const CheckoutPage = ({ notifications }) => {
   const { state, dispatch } = useAppContext();
   const { checkoutStep, confirmedProducts } = state;
   const crumbs = [
@@ -96,7 +96,7 @@ const CheckoutPage = () => {
   ];
   return (
     <CheckoutContainer>
-      <ProductsHeader mode="dark" />
+      <ProductsHeader mode="dark" notifications={notifications} />
       <CheckoutWrapper>
         <LeftContent
           displayRight={checkoutStep === 1 || checkoutStep === 4 ? false : true}

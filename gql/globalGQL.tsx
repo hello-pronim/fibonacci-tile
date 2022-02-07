@@ -30,9 +30,8 @@ export const GlobalNotificationQuery = gql`
             active
             notificationsLink {
               id
-              ... on products_product_Entry {
-                id
-              }
+              slug
+              sectionHandle
             }
           }
         }

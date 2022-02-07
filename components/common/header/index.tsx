@@ -71,7 +71,9 @@ const Header = ({
     const alertToBool = alertState === "true";
     alertState && setAlertActive(alertToBool);
   }, []);
+
   useEffect(() => {
+    let timerId: ReturnType<typeof setTimeout>;
     if (
       selectionsMounted.current &&
       state.selectedProducts.length > selectionsCount &&
@@ -82,20 +84,30 @@ const Header = ({
         value: true,
       });
       setNewSelection(true);
-      const timerId = setTimeout(() => {
+      timerId = setTimeout(() => {
         setNewSelection(false);
         dispatch({
           type: "OPEN_DRAWER",
           value: false,
         });
       }, 4000);
-      timerId;
-    } else selectionsMounted.current = true;
+    } else {
+      selectionsMounted.current = true;
+    }
     setSelectionsCount(state.selectedProducts.length);
-  }, [state.selectedProducts]);
+
+    return () => {
+      if (timerId) clearTimeout(timerId);
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   useEffect(() => {
     sessionStorage.setItem("alert-state", alertActive.toString());
   }, [alertActive]);
+
+  // select first notification in array
+  const activeNotification = notifications?.[0];
 
   return (
     <div
@@ -110,12 +122,13 @@ const Header = ({
         zIndex: 9999999,
       })}
     >
-      {alertActive && (
+      {activeNotification && activeNotification?.active && alertActive && (
         <AlertBar>
-          <AlertLabel>
-            Join Fibonacci today and save up to 20% on your order using code
-            SPRING at checkout. Promotion valid for new users only.
-          </AlertLabel>
+          <AlertLabel
+            dangerouslySetInnerHTML={{
+              __html: activeNotification.notificationsText,
+            }}
+          />
           <AlertClose onClick={() => setAlertActive(false)} />
         </AlertBar>
       )}

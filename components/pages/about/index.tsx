@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import QuoteModule from "@components/modules/quote";
-
 import AboutHeader from "./Header";
 import Hero from "./hero";
 import HeroImage from "./hero/heroImage";
@@ -11,7 +10,7 @@ import { Container } from "./styles";
 import StoryThumbnail from "public/assets/temp/story_thumbnail.png";
 import MainStoryThumbnail from "public/assets/temp/story_thumbnail_main.png";
 
-const AboutPage = ({pageData}) => {
+const AboutPage = ({ pageData, notifications }) => {
   const stories = [
     {
       id: 0,
@@ -46,7 +45,7 @@ const AboutPage = ({pageData}) => {
 
   return (
     <Container>
-      <AboutHeader mode="dark" />
+      <AboutHeader mode="dark" notifications={notifications} />
       {pageData?.ourStoryComponents?.length > 0 && pageData.ourStoryComponents.map((component, index) => {
           if(component.__typename === "ourStoryComponents_headingLeftTextRight_BlockType") {
             return (<Hero key={`component-${index}`} component={component} />)

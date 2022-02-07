@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { GetStaticProps } from "next";
+import { GetStaticProps, NextPage } from "next";
 import { PageQuery, NewsletterQuery } from "@gql/pageGQL";
 import { NewsQuery } from "@gql/newsGQL";
 import { CategoriesQuery } from "@gql/categoriesGQL";
@@ -8,22 +8,31 @@ import client from "@utils/apolloClient";
 import Head from "next/head";
 import Footer from "@components/common/footer";
 import Header from "@components/common/header";
-import Hero from "../../components/pages/latest/hero/index";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
-import styles from "./styles.module.scss";
-
-import {
-  AllCategory,
-  CategorysBarInner,
-  ReadMore,
-} from "@components/pages/latest/styles";
+import { withGlobalData } from "@hoc/withGlobalData";
+import Hero from "@components/pages/latest/hero/index";
 import BottomHero from "@components/pages/latest/bottom-hero";
 import MobileCategory from "@components/pages/latest/mobileCategory";
 import Category from "@components/pages/latest/categories/Category";
 import { Card } from "@components/pages/latest/cards-container/Card";
+import {
+  AllCategory,
+  CategorysBarInner,
+  ReadMore
+} from "@components/pages/latest/styles";
 
+import styles from "./styles.module.scss";
 
-const LatestNews = ({ heroDetails, categories, news, newsletter: {newsletter} }) => {
+interface LatestPageProps {
+  newsItems: Array<any>;
+  notifications: Array<any>;
+  heroDetails: any;
+  categories: any;
+  newsletter: any;
+  news: any
+}
+
+const LatestNews: NextPage<LatestPageProps> = ({ heroDetails, categories, news, newsletter, notifications }) => {
   const [selectedType, setSelectedType] = useState("all");
   const [displayedCategory, setDisplayedProjects] = useState(news);
 
@@ -65,10 +74,10 @@ const LatestNews = ({ heroDetails, categories, news, newsletter: {newsletter} })
   return (
     <>
       <Head>
-        <title>Projects | Fibonacci</title>
-        <meta name="description" content="Fibonacci Projects page" />
+        <title>Latest | Fibonacci</title>
+        <meta name="description" content="Fibonacci Latest page" />
       </Head>
-      <Header mode="dark" />
+      <Header mode="dark" notifications={notifications} />
       <BreadCrumb crumbs={crumbs} />
       <Hero heroDetails={heroDetails} />
       {windowWidth >= 769 ? (
@@ -119,7 +128,7 @@ const LatestNews = ({ heroDetails, categories, news, newsletter: {newsletter} })
   );
 }
 
-export const getStaticProps: GetStaticProps = async function () {
+export const getStaticProps: GetStaticProps = withGlobalData(async function () {
   const {
     data: { entry: heroDetails },
   } = await client.query({
@@ -154,10 +163,10 @@ export const getStaticProps: GetStaticProps = async function () {
       heroDetails,
       categories,
       news,
-      newsletter
+      newsletter: newsletter?.newsletter
     },
     revalidate: 500,
   };
-};
+});
 
 export default LatestNews;
