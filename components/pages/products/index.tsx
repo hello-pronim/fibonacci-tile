@@ -15,7 +15,9 @@ const ProductsPage = ({
   products: initialProducts,
   colourSchemes,
   productCategories,
-  notifications,
+  cta1,
+  cta2,
+  notifications
 }) => {
   const { state } = useAppContext();
   const [loadingProducts, setLoadingProducts] = useState(false);
@@ -111,14 +113,18 @@ const ProductsPage = ({
         products={firstHalfProducts}
         accentText="Be inspired"
       />
-      <CTAPanel imagePosition="left" />
+      {cta1?.CTAFields?.length > 0 &&
+        <CTAPanel data={cta1.CTAFields[0]} imagePosition="left" />
+      }
       {secondHalfProducts.length > 0 && (
         <ProductLists
           loadingProducts={loadingProducts}
           products={secondHalfProducts}
         />
       )}
-      <CTAPanel imagePosition="right" />
+      {cta2?.CTAFields?.length > 0 &&
+        <CTAPanel data={cta2.CTAFields[0]} imagePosition="right" />
+      }
       <FooterCTAPanel />
     </Container>
   );

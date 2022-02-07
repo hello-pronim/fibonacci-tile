@@ -1,6 +1,5 @@
 import React from "react";
-import Image from "next/image";
-import HeroImage from "public/assets/temp/banner_about.png";
+
 import {
   LeftCol,
   RightCol,
@@ -8,35 +7,26 @@ import {
   Container,
   HeroWrapper,
   HeroTitle,
-  HeroBodyText,
-  HeroImageContainer,
+  HeroBodyText
 } from "./styles";
 
-const Hero = () => {
+const Hero = ({component}) => {
   return (
     <HeroWrapper>
       <Container>
         <LeftCol>
           <ContentWrapper>
             <HeroTitle Base="h1" variant="Display-Large">
-              Our Story
+             {component?.headingLeft}
             </HeroTitle>
           </ContentWrapper>
         </LeftCol>
         <RightCol>
           <HeroBodyText Base="h4" variant="Display-Medium">
-            Terrazzo, more than the sum of its parts
+            {component?.textRight}
           </HeroBodyText>
         </RightCol>
       </Container>
-      <HeroImageContainer>
-        <Image
-          src={HeroImage}
-          alt="banner_about"
-          layout="responsive"
-          width="1920"
-        />
-      </HeroImageContainer>
     </HeroWrapper>
   );
 };

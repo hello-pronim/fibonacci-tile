@@ -1,13 +1,12 @@
 import React from "react";
 import Link from "next/link";
 import Router from 'next/router'
-
+import Arrow from "@components/common/icons/arrow";
 
 import {
-  BreacrumbWrapper,
   BackBttn,
-  ListItem,
-  ActiveListItem
+  BottomBarInner,
+  LinkWrapper
 } from "./styles";
 
 const Breadcrumb = ({ crumbs }) => {
@@ -17,26 +16,23 @@ const Breadcrumb = ({ crumbs }) => {
   }
 
   return (
-    <BreacrumbWrapper>
-      {/* Link back to any previous steps of the breadcrumb. */}
-      <BackBttn onClick={() => Router.back()}>
-        Back
-      </BackBttn>
-      <ListItem href="/">
-        Home 
-      </ListItem>
+    <BottomBarInner>
+      <LinkWrapper>
+        <Arrow type="short" direction="left" />
+        <BackBttn onClick={() => Router.back()}><span>Back</span></BackBttn>
+      </LinkWrapper>
       {crumbs.map(({ name, path }, key) =>
         key + 1 === crumbs.length ? (
-          <ActiveListItem key={key}>
+          <LinkWrapper key={key}>
             {name}
-          </ActiveListItem>
+          </LinkWrapper>
         ) : (
-          <ListItem key={key} href={path}>
-            {name}
-          </ListItem>
+          <LinkWrapper key={key}>
+            <Link href={path}>Home</Link>
+          </LinkWrapper>
         )
       )}
-    </BreacrumbWrapper>
+    </BottomBarInner>
   );
 };
 

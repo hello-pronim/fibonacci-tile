@@ -1,86 +1,105 @@
 import css from "@styled-system/css";
 import styled from "@emotion/styled";
 
-const BreacrumbWrapper = styled("div")(() =>
+
+const BottomBarInner = styled("div")(
+  css({
+    // width: "100%",
+    display: "flex",
+    alignItems: "center",
+    pt: 130,
+    pl: 19,
+  })
+);
+
+
+const LinkWrapper = styled("div")(
   css({
     display: "flex",
     alignItems: "center",
-    px: 35,
-    pb: 35,
-    pt: 100,
-    "@media screen and (max-width: 768px)": {
-      px: 10,
+    columnGap: 20,
+    mt: 16,
+    paddingRight: 14,
+    svg: {
+      transition: "ease all 0.3s",
+    },
+    "&:hover": {
+      svg: {
+        transform: "translateX(6px)",
+      },
+    },
+    a: {
+      textDecoration: "none",
+      fontSize: 2,
+      lineHeight: 2,
+      color: "charcoal",
+      "&:before": {
+        position: "relative",
+        backgroundColor: "charcoal",
+        content: "' '",
+        display: "block",
+        height: "2px",
+        width: "100%",
+        transform: "translateY(40px)",
+        transition: "ease all 0.3s",
+        pointerEvents: "none",
+        opacity: 0,
+      },
+      "&:hover": {
+        "&:before": {
+          transform: "translateY(28px)",
+          opacity: 1,
+        },
+      },
     },
   })
 );
 
+
 const BackBttn = styled("div")(() =>
   css({
-   position: "relative",
-   color: "charcoal",
-   fontSize: 12,
-   cursor: "pointer",
-   "&:after": {
-    content: "' '",
-     display: "block",
-     position: "absolute",
-     top: "2px",
-     left: "-12px",
-     backgroundImage: `url("assets/icons/arrow-icon.svg")`,
-     backgroundRepeat: "no-repeat",
-     width: "10px",
-     height: "9px"
-   }
-  })
-);
-
-const ListItem = styled("a")(() =>
-  css({
-   position: "relative",
-   color: "charcoal",
-   fontSize: 12,
-   cursor: "pointer",
-   ml: 3,
-   textDecoration: "none",
-   "&:after": {
-      content: "''",
-      display: "block",
-      position: "absolute",
-      top: "6px",
-      left: "-9px",
-      width: "5px",
-      height: "5px",
-      backgroundImage: `url("assets/icons/dot.svg")`,
-      backgroundRepeat: "no-repeat",
-   }
-  })
-);
-
-
-const ActiveListItem = styled("span")(() =>
-  css({
-   position: "relative",
-   color: "charcoal",
-   fontSize: 12,
-   ml: 3,
-   textDecoration: "none",
-   "&:after": {
-      content: "''",
-      display: "block",
-      position: "absolute",
-      top: "6px",
-      left: "-9px",
-      width: "5px",
-      height: "5px",
-      backgroundImage: `url("assets/icons/dot.svg")`,
-      backgroundRepeat: "no-repeat",
-   }
+    display: "flex",
+    alignItems: "center",
+    columnGap: 20,
+    cursor: "pointer",
+    paddingRight: 14,
+    svg: {
+      transition: "ease all 0.3s",
+    },
+    "&:hover": {
+      svg: {
+        transform: "translateX(6px)",
+      },
+    },
+    span: {
+      textDecoration: "none",
+      fontSize: 2,
+      lineHeight: 2,
+      color: "charcoal",
+      "&:before": {
+        position: "relative",
+        backgroundColor: "charcoal",
+        content: "' '",
+        display: "block",
+        height: "2px",
+        width: "100%",
+        transform: "translateY(40px)",
+        transition: "ease all 0.3s",
+        pointerEvents: "none",
+        opacity: 0,
+      },
+      "&:hover": {
+        "&:before": {
+          transform: "translateY(28px)",
+          opacity: 1,
+        },
+      },
+    },
   })
 );
 
 export {
-  BreacrumbWrapper,
   BackBttn,
-  ListItem,
-  ActiveListItem
+  BottomBarInner,
+  LinkWrapper
 };

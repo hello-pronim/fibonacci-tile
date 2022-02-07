@@ -80,9 +80,10 @@ const ProductCarousel = ({ products }) => {
         </AccentTextMobile>
         <Slider {...settings} ref={slider}>
           {products &&
-            products.map((product) => {
+            products.map((product: any) => {
               return (
                 <ProductCard
+                  key={`product-${product.id}`}
                   isSelected={
                     state?.selectedProducts.findIndex(
                       (sp) => sp.id === product.id
@@ -94,7 +95,6 @@ const ProductCarousel = ({ products }) => {
                       product,
                     });
                   }}
-                  key={product.id}
                   product={product}
                 />
               );

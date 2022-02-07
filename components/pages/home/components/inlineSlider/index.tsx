@@ -4,7 +4,7 @@ import Image from "next/image";
 import Text from "@components/common/typography";
 import Slide1 from "public/assets/temp/project-slide-1.jpg";
 import Slide1Mobile from "public/assets/temp/project-slide-mobile.jpg";
-import AccentText, {AccentTextMobile} from "@components/common/accentText";
+import AccentText, { AccentTextMobile } from "@components/common/accentText";
 import AddIcon from "@components/icons/add";
 import Link from "next/link";
 import Arrow from "@components/common/icons/arrow";
@@ -25,7 +25,8 @@ import {
 import { css } from "@styled-system/css";
 import theme from "styles/theme";
 
-const InlineSlider = () => {
+const InlineSlider = ({ projects }) => {
+  console.log(projects);
   const slider = React.useRef<Slider>(null);
   const [slideCount, setSlideCount] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -53,161 +54,57 @@ const InlineSlider = () => {
       setCurrentSlide(next + 1);
     },
   };
-
+  console.log(projects);
   return (
     <Container>
       <AccentText top={206}>An imaginative selection</AccentText>
       <Wrapper>
-        <AccentTextMobile css={css({pb: 80})}>An imaginative selection</AccentTextMobile>
+        <AccentTextMobile css={css({ pb: 80 })}>
+          An imaginative selection
+        </AccentTextMobile>
         <Slider {...settings} ref={slider}>
-          <SlideItem>
-            <SlideImage>
-              <Image
-                src={Slide1}
-                alt="image-1"
-                layout="responsive"
-                width="1460"
-                height="900"
-              />
-            </SlideImage>
-            <SlideImageMobile>
-              <Image
-                src={Slide1Mobile}
-                alt="image-1"
-                layout="responsive"
-                width="343"
-                height="476"
-              />
-            </SlideImageMobile>
-            <ContentWrapper className="slide-content">
-              <Pill>
-                <AddIcon color="white" />
-                New Release
-              </Pill>
-              <Text as="h6" variant="Body-Large" color="stone">
-                City, Country
-              </Text>
-              <Text as="h3" variant="Display-Large" color="white">
-                Project Name <br />
-                Project Name
-              </Text>
-              <LinkWrapper>
-                <Link href="#">View project</Link>
-                <Arrow type="short" color={theme.colors.white} />
-              </LinkWrapper>
-            </ContentWrapper>
-          </SlideItem>
-          <SlideItem>
-            <SlideImage>
-              <Image
-                src={Slide1}
-                alt="image-1"
-                layout="responsive"
-                width="1460"
-                height="900"
-              />
-            </SlideImage>
-            <SlideImageMobile>
-              <Image
-                src={Slide1Mobile}
-                alt="image-1"
-                layout="responsive"
-                width="343"
-                height="476"
-              />
-            </SlideImageMobile>
-            <ContentWrapper className="slide-content">
-              <Pill>
-                <AddIcon color="white" />
-                New Release
-              </Pill>
-              <Text as="h6" variant="Body-Large" color="stone">
-                City, Country
-              </Text>
-              <Text as="h3" variant="Display-Large" color="white">
-                Project Name <br />
-                Project Name
-              </Text>
-              <LinkWrapper>
-                <Link href="#">View project</Link>
-                <Arrow type="short" color={theme.colors.white} />
-              </LinkWrapper>
-            </ContentWrapper>
-          </SlideItem>
-          <SlideItem>
-            <SlideImage>
-              <Image
-                src={Slide1}
-                alt="image-1"
-                layout="responsive"
-                width="1460"
-                height="900"
-              />
-            </SlideImage>
-            <SlideImageMobile>
-              <Image
-                src={Slide1Mobile}
-                alt="image-1"
-                layout="responsive"
-                width="343"
-                height="476"
-              />
-            </SlideImageMobile>
-            <ContentWrapper className="slide-content">
-              <Pill>
-                <AddIcon color="white" />
-                New Release
-              </Pill>
-              <Text as="h6" variant="Body-Large" color="stone">
-                City, Country
-              </Text>
-              <Text as="h3" variant="Display-Large" color="white">
-                Project Name <br />
-                Project Name
-              </Text>
-              <LinkWrapper>
-                <Link href="#">View project</Link>
-                <Arrow type="short" color={theme.colors.white} />
-              </LinkWrapper>
-            </ContentWrapper>
-          </SlideItem>
-          <SlideItem>
-            <SlideImage>
-              <Image
-                src={Slide1}
-                alt="image-1"
-                layout="responsive"
-                width="1460"
-                height="900"
-              />
-            </SlideImage>
-            <SlideImageMobile>
-              <Image
-                src={Slide1Mobile}
-                alt="image-1"
-                layout="responsive"
-                width="343"
-                height="476"
-              />
-            </SlideImageMobile>
-            <ContentWrapper className="slide-content">
-              <Pill>
-                <AddIcon color="white" />
-                New Release
-              </Pill>
-              <Text as="h6" variant="Body-Large" color="stone">
-                City, Country
-              </Text>
-              <Text as="h3" variant="Display-Large" color="white">
-                Project Name <br />
-                Project Name
-              </Text>
-              <LinkWrapper>
-                <Link href="#">View project</Link>
-                <Arrow type="short" color={theme.colors.white} />
-              </LinkWrapper>
-            </ContentWrapper>
-          </SlideItem>
+          {projects.map((project: any) => (
+            <SlideItem key={`project-${project.id}`}>
+              {project?.heroImageThumb?.[0]?.url && (
+                <SlideImage>
+                  <Image
+                    src={project.heroImageThumb[0].url}
+                    alt={project.heroImageThumb[0].title}
+                    layout="responsive"
+                    width={project.heroImageThumb[0].width}
+                    height={project.heroImageThumb[0].height}
+                  />
+                </SlideImage>
+              )}
+              {project?.heroMobImageThumb?.[0]?.url && (
+                <SlideImageMobile>
+                  <Image
+                    src={project.heroMobImageThumb[0].url}
+                    alt={project.heroMobImageThumb[0].title}
+                    layout="responsive"
+                    width={project.heroMobImageThumb[0].width}
+                    height={project.heroMobImageThumb[0].height}
+                  />
+                </SlideImageMobile>
+              )}
+              <ContentWrapper className="slide-content">
+                <Pill>
+                  <AddIcon color="white" />
+                  {project.label}
+                </Pill>
+                <Text as="h6" variant="Body-Large" color="stone">
+                  {project.location}
+                </Text>
+                <Text as="h3" variant="Display-Large" color="white">
+                  {project.title}
+                </Text>
+                <LinkWrapper>
+                  <Link href={`/in-use/${project.slug}`}>View project</Link>
+                  <Arrow type="short" color={theme.colors.white} />
+                </LinkWrapper>
+              </ContentWrapper>
+            </SlideItem>
+          ))}
         </Slider>
         <BottomBar>
           <ProgBar>
@@ -218,7 +115,7 @@ const InlineSlider = () => {
               {currentSlide} of {slideCount}
             </span>
             <LinkWrapper>
-              <Link href="#">Explore all projects</Link>
+              <Link href="/in-use">Explore all projects</Link>
               <Arrow type="short" />
             </LinkWrapper>
           </BottomBarInner>
