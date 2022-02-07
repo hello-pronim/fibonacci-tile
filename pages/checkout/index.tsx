@@ -1,18 +1,34 @@
 import Head from "next/head";
+import { GetStaticProps, NextPage } from "next";
+import { withGlobalData } from "@hoc/withGlobalData";
+import { PageQuery } from "@gql/pageGQL";
 import Footer from "@components/common/footer";
 import CheckoutPage from "@components/pages/checkout";
 
-
-function Checkout () {
-    return (
-        <>
-            <Head>
-                <title>Checkout | Fibonacci</title>
-                <meta name="description" content="Fibonacci Checkout page" />
-            </Head>
-            <CheckoutPage />
-            <Footer />
-        </>
-    )
+interface CheckoutPageProps {
+  notifications: any;
 }
+
+const Checkout: NextPage<CheckoutPageProps> = ({ notifications }) => {
+  return (
+    <>
+      <Head>
+        <title>Checkout | Fibonacci</title>
+        <meta name="description" content="Fibonacci Checkout page" />
+      </Head>
+      <CheckoutPage notifications={notifications} />
+      <Footer />
+    </>
+  );
+};
+
+export const getStaticProps: GetStaticProps = withGlobalData(
+  async function () {
+    return {
+      props: {},
+      revalidate: 500,
+    };
+  }
+);
+
 export default Checkout;

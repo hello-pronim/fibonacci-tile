@@ -16,7 +16,7 @@ const CollectionHeroModule = ({ collection }) => {
           height: "100%",
           background: "#8B9B94",
           padding: "120px 80px 60px 80px",
-          width: "30%"
+          width: "30%",
         })}
       >
         <div
@@ -39,7 +39,7 @@ const CollectionHeroModule = ({ collection }) => {
             css={css({
               fontSize: 20,
               pt: 140,
-              pb: 140
+              pb: 140,
             })}
           />
           <Text
@@ -55,28 +55,23 @@ const CollectionHeroModule = ({ collection }) => {
           </Text>
         </div>
       </div>
-      
+
       <ImageContent>
-        {collection?.heroImage?.length > 0 &&
-        <Image
-         src={collection.heroImage[0].url}
-         alt={collection.slug}
-         layout="responsive" // required
-         width={collection.heroImage[0].width}
-         height={collection.heroImage[0].height}
-        />
-        }
+        {collection?.heroImage?.[0]?.url > 0 && (
+          <Image
+            src={collection.heroImage[0].url}
+            alt={collection.slug}
+            layout="responsive" // required
+            width={collection.heroImage[0].width}
+            height={collection.heroImage[0].height}
+          />
+        )}
         <CaptionText>
-          <Text
-          as="h2"
-          variant="Display-Medium"
-          altFont
-          >
+          <Text as="h2" variant="Display-Medium" altFont>
             {collection.subline}
           </Text>
         </CaptionText>
       </ImageContent>
-      
     </CollectionHeroContainer>
   );
 };

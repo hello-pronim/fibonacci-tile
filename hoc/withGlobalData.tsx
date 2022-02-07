@@ -1,12 +1,31 @@
 import client from "@utils/apolloClient";
-import { GlobalNotificationQuery } from "@gql/globalGQL";
+import {
+  GlobalNotificationQuery,
+  GlobalSpecificationQuery,
+} from "@gql/globalGQL";
 
-export const withGlobalNotification = () => {
-    return async function() {
-        const {
-            data: { globalSet: notifications },
-        } = await client.query({
-            query: GlobalNotificationQuery,
-        });
-    }
-}
+export const withGlobalData = (gssp: any) => {
+  return async function (context: any) {
+    // get serverside data
+    const gsspData = await gssp(context);
+    // get notifications
+    const {
+      data: { globalSet: notifications },
+    } = await client.query({
+      query: GlobalNotificationQuery,
+    });
+    const {
+      data: { globalSet: specifications },
+    } = await client.query({
+      query: GlobalSpecificationQuery,
+    });
+    return {
+      ...gsspData,
+      props: {
+        ...gsspData.props,
+        notifications: notifications?.notifications,
+        specifications: specifications?.technicalSpecifications,
+      },
+    };
+  };
+};

@@ -7,7 +7,7 @@ import {
 } from "react";
 import { AppReducer, initialState } from "./AppReducer";
 
-const AppContext = createContext({ state: null, dispatch: null });
+const AppContext = createContext({ state: initialState, dispatch: null });
 
 export function AppWrapper({ children }) {
   const [state, dispatch] = useReducer(AppReducer, initialState);

@@ -1,12 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const ProjectsQuery: any = gql`
-  query ProjectsQuery(
-      $section: [String] = "projects"
-    ) {
-    entries(
-      section: $section
-    ) {
+  query ProjectsQuery {
+    entries(section: "projects") {
       id
       slug
       title
@@ -21,11 +17,17 @@ export const ProjectsQuery: any = gql`
           height
           width
         }
+        heroImageThumb: heroImage @transform(handle: "projectThumbnail") {
+          id
+          url
+          width
+          height
+        }
         projectCompleted
       }
     }
   }
-`
+`;
 
 export const ProjectQuery: any = gql`
   query ProjectQuery($slug: [String]) {
@@ -117,9 +119,15 @@ export const ProjectQuery: any = gql`
           }
         }
         heroImage {
+          url
+          height
+          width
+        }
+        heroImageThumb: heroImage @transform(handle: "projectThumbnail") {
+          id
+          url
           width
           height
-          url
         }
         projectComponents {
           ... on projectComponents_heroBlock_BlockType {
@@ -170,4 +178,4 @@ export const ProjectQuery: any = gql`
       }
     }
   }
-`
+`;

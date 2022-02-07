@@ -16,15 +16,14 @@
   align-items: center;
   background-color: #fff;
   justify-content: space-between;
-  padding: 10px;
+  padding: 10px 20px;
   @include bp($md) {
-    padding: 0;
+    padding: 10px 20px;
   }
   .logoWrapper {
-    padding-left: 20px;
-    min-width: 60px;
+    width: 4%;
     @include bp($md) {
-      min-width: 100px;
+      width: 4%;
     }
   }
   .mobileFilter {
@@ -41,47 +40,56 @@
     display: none;
     @include bp($lg) {
       display: flex;
+      width: 65%;
     }
   }
   .searchItem {
     display: flex;
-    justify-content: center;
-    padding: 2px;
-    margin-right: 10px;
+    justify-content: flex-start;
     cursor: pointer;
     text-transform: uppercase;
-    &:hover,
-    &.activeFilter {
-      background: #f6f6f6;
-    }
+    width: 12%;
+    align-items: center;
   }
   .filterItem {
-    margin-right: 10px;
-    display: flex;
-    padding: 20px;
-    align-items: center;
-    justify-content: space-between;
+    border-left: 2px solid #edece8;
+    width: 29.33%;
     cursor: pointer;
     text-transform: uppercase;
+    transition: all .4s ease-in-out;
     &:hover,
     &.activeFilter {
       background: #f6f6f6;
     }
-    @include bp($xl) {
-      width: 190px;
+    & div {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 20px;
+      & div {
+        padding: 0px 5px 0px 0px;
+        justify-content: flex-start;
+      }
     }
   }
   .productSelection {
-    display: flex;
-    padding-top: 19.5px;
-    padding-left: 33px;
-    padding-bottom: 19.5px;
-    padding-right: 33px;
+    border-left: 2px solid #edece8;
     cursor: pointer;
-    background-color: #f6f6f6;
-    justify-content: space-between;
-    flex: 1;
+    width: 29.33%;
     text-transform: uppercase;
+    transition: all .4s ease-in-out;
+    &:hover,
+    &.activeFilter {
+      background: #f6f6f6;
+    }
+    & div {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 20px;
+      & div {
+        padding: 0px 5px 0px 0px;
+        justify-content: flex-start;
+      }
+    }
   }
   .selection {
     color: #b1aba6 !important;
@@ -89,29 +97,31 @@
     display: none;
   }
   .displayOptionsContainer {
-    border-right: 3px solid #edece8;
-    border-left: 3px solid #edece8;
-    margin: 0 20px;
-    padding: 0 20px;
+    border-right: 2px solid #edece8;
+    border-left: 2px solid #edece8;
+    // margin: 0 20px;
+    // padding: 0 20px;
     display: none;
     @include bp($md) {
       display: block;
+      width: 23%;
     }
   }
   .displayOptions {
     display: flex;
     border-radius: 40px;
     background: #f6f6f6;
-    padding: 5px 0;
+    padding: 5px 5px;
+    margin: 0px 25px;
+    justify-content: space-between;
     .iconContainer {
       cursor: pointer;
       display: flex;
       justify-content: center;
-      width: 70px;
-      margin: 0 5px;
       background: #fff;
       border-radius: 40px;
       padding: 10px;
+      width: 24%;
       &:hover,
       &.active {
         background: #b0aba7;
@@ -125,8 +135,11 @@
   }
   .selections {
     cursor: pointer;
-    max-width: 120px;
-    padding-right: 20px;
+    // max-width: 120px;
+    // padding-right: 20px;
+    width: 8%;
+    padding-left: 1%;
+
   }
 }
 .mobileFilterContainer {
@@ -301,7 +314,7 @@
   bottom: -20px;
   border: solid 1px #c4c4c4;
   color: #141414;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 24px;
   padding: 7px 12px 7px 12px;
   height: 24px;

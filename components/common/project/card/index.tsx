@@ -1,52 +1,44 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import moment from 'moment';
-import {
-  Details,
-  ImageWrapper,
-  LinkWrapper,
-  Project
-} from "./styles";
+import moment from "moment";
+import { css } from "@styled-system/css";
 import Arrow from "@components/common/icons/arrow";
 import Text from "@components/common/typography";
-import { css } from "@styled-system/css";
 import theme from "@styles/theme";
+import { Details, ImageWrapper, LinkWrapper, Project } from "./styles";
 
-const ProjectCard = ({ project } ) => {
+const ProjectCard = ({ project }) => {
   return (
-      <Project key={project.id}>
-        {project?.heroImage?.length > 0 &&     
+    <Project key={project.id}>
+      {project?.heroImageThumb?.[0]?.url && (
         <ImageWrapper>
           <Image
-            src={project.heroImage[0].url}
+            src={project.heroImageThumb[0].url}
             alt={project.slug}
             layout="responsive" // required
-            width="800"
-            height="800"
+            width={project.heroImageThumb[0].width}
+            height={project.heroImageThumb[0].height}
           />
         </ImageWrapper>
-        }
-        {project?.projectCompleted &&
-        <Text
-        variant="Body-Small"
-        css={css({ gridRow: 2, gridColumn: 1 })}
-        >
-          {moment(project.projectCompleted).format('MMMM YYYY')}
+      )}
+      {project?.projectCompleted && (
+        <Text variant="Body-Small" css={css({ gridRow: 2, gridColumn: 1 })}>
+          {moment(project.projectCompleted).format("MMMM YYYY")}
         </Text>
-        }
-        <Details>
-          <Text variant="Display-XSmall">{project.title}</Text>
-          <Text variant="Display-XSmall" color={theme.colors.concrete}>
-              {project.location}
-          </Text>
-          <LinkWrapper>
-              <Link href={`/in-use/${project.slug}`}>View Project</Link>
-              <Arrow type="short" />
-          </LinkWrapper>
-        </Details>
+      )}
+      <Details>
+        <Text variant="Display-XSmall">{project.title}</Text>
+        <Text variant="Display-XSmall" color={theme.colors.concrete}>
+          {project.location}
+        </Text>
+        <LinkWrapper>
+          <Link href={`/in-use/${project.slug}`}>View Project</Link>
+          <Arrow type="short" />
+        </LinkWrapper>
+      </Details>
     </Project>
-  )
-}
+  );
+};
 
-export default ProjectCard
+export default ProjectCard;
