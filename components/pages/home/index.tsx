@@ -13,7 +13,6 @@ import QuoteIcon from "public/assets/icons/quote-icon.svg";
 import EnquiryIcon from "public/assets/icons/enquiry-icon.svg";
 
 const Homepage = ({ products, cta }) => {
-  console.log("cta", cta)
   const supports = [
     {
       slug: "product-support",

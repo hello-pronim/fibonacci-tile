@@ -4,6 +4,7 @@ import client from "@utils/apolloClient";
 import { withGlobalData } from "@hoc/withGlobalData";
 import { ProductsQuery } from "@gql/productGQL";
 import { CategoriesQuery } from "@gql/categoriesGQL";
+import { sampleCta1Query, sampleCta2Query } from "@gql/globalGQL";
 import Footer from "@components/common/footer";
 import CollectionsPage from "@components/pages/products/collectionList";
 
@@ -11,12 +12,16 @@ interface CollectionsPageProps {
   collections: any;
   collectionProducts: any;
   notifications: any;
+  sampleCta1: any;
+  sampleCta2: any
 }
 
 const Collections: NextPage<CollectionsPageProps> = ({
   collections,
   collectionProducts,
   notifications,
+  sampleCta1,
+  sampleCta2
 }) => {
   return (
     <>
@@ -28,6 +33,8 @@ const Collections: NextPage<CollectionsPageProps> = ({
         collections={collections}
         collectionProducts={collectionProducts}
         notifications={notifications}
+        cta1={sampleCta1}
+        cta2={sampleCta2}
       />
       <Footer />
     </>
@@ -56,10 +63,23 @@ export const getStaticProps: GetStaticProps = withGlobalData(
       });
       collectionProducts[collection.slug] = products;
     }
+    const {
+      data: { globalSet: sampleCta1 },
+    } = await client.query({
+      query: sampleCta1Query,
+    });
+  
+    const {
+      data: { globalSet: sampleCta2 },
+    } = await client.query({
+      query: sampleCta2Query,
+    });
     return {
       props: {
         collections,
         collectionProducts,
+        sampleCta1,
+        sampleCta2
       },
       revalidate: 500,
     };
