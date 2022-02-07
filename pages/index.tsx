@@ -1,19 +1,19 @@
 import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import client from "@utils/apolloClient";
-import { ProductsQuery } from "@gql/productGQL";
-import { sampleCta2Query } from "@gql/globalGQL";
+// import { ProductsQuery } from "@gql/productGQL";
+// import { sampleCta2Query } from "@gql/globalGQL";
+import { HomePageQuery } from "@gql/pageGQL";
+import { withGlobalData } from "@hoc/withGlobalData";
 import Homepage from "@components/pages/home";
 import Header from "@components/common/header";
 import Footer from "@components/common/footer";
-import { withGlobalData } from "@hoc/withGlobalData";
 interface HomePageProps {
-  products: Array<any>;
+  pageData: any;
   notifications: Array<any>;
-  sampleCta: any;
 }
 
-const Home: NextPage<HomePageProps> = ({ products, sampleCta, notifications }) => {
+const Home: NextPage<HomePageProps> = ({ pageData, notifications }) => {
   return (
     <>
       <Head>
@@ -22,7 +22,7 @@ const Home: NextPage<HomePageProps> = ({ products, sampleCta, notifications }) =
         <meta name="robots" content="index, follow" />
       </Head>
       <Header mode="light" position="absolute" notifications={notifications} />
-      <Homepage products={products} cta={sampleCta} />
+      <Homepage pageData={pageData} />
       <Footer />
     </>
   );
@@ -30,24 +30,16 @@ const Home: NextPage<HomePageProps> = ({ products, sampleCta, notifications }) =
 
 export const getStaticProps: GetStaticProps = withGlobalData(async () => {
   const {
-    data: { entries: products },
+    data: { entry: pageData },
   } = await client.query({
-    query: ProductsQuery,
+    query: HomePageQuery,
     variables: {
-      limit: 10,
+      slug: "home-page",
     },
   });
-
-  const {
-    data: { globalSet: sampleCta },
-  } = await client.query({
-    query: sampleCta2Query,
-  });
-
   return {
     props: {
-      products,
-      sampleCta
+      pageData,
     },
     revalidate: 500,
   };

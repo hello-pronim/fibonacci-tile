@@ -1,4 +1,5 @@
 import { gql } from "@apollo/client";
+import { LIST_PRODUCT_FIELDS } from "./fragments";
 
 export const PageQuery = gql`
   query PageQuery($slug: [String]) {
@@ -16,11 +17,171 @@ export const PageQuery = gql`
   }
 `;
 
+export const HomePageQuery = gql`
+  ${LIST_PRODUCT_FIELDS}
+  query HomePageQuery($slug: [String]) {
+    entry(slug: $slug) {
+      id
+      ... on homePage_homePage_Entry {
+        homePageComponents {
+          ... on homePageComponents_bannerType1_BlockType {
+            id
+            typeHandle
+            backgroundImage {
+              url
+            }
+            sliderImage: backgroundImage
+              @transform(width: 1920, height: 880, mode: "crop") {
+              url
+              title
+              width
+              height
+            }
+            sliderMobImage: backgroundImage
+              @transform(width: 750, height: 1240, mode: "crop") {
+              url
+              title
+              width
+              height
+            }
+            likeNoOtherText
+          }
+          ... on homePageComponents_bannerType2_BlockType {
+            id
+            typeHandle
+            backgroundColour
+            backgroundImage {
+              url
+            }
+            text
+          }
+          ... on homePageComponents_bannerType3_BlockType {
+            id
+            typeHandle
+            imageRight {
+              url
+              title
+              width
+              height
+            }
+            subline
+            button
+            heading
+          }
+          ... on homePageComponents_featuredProducts_BlockType {
+            id
+            typeHandle
+            products {
+              ...ListProductFields
+            }
+          }
+          ... on homePageComponents_samples_BlockType {
+            id
+            typeHandle
+            intro
+            subLine
+            heading
+            image {
+              url
+              title
+              width
+              height
+            }
+            button
+          }
+          ... on homePageComponents_beInspired_BlockType {
+            id
+            typeHandle
+            left1Image {
+              url
+            }
+            left1ImageThumb: left1Image
+              @transform(width: 560, height: 560, mode: "crop") {
+              url
+              title
+              width
+              height
+            }
+            left1Caption
+            left1Text
+            left2Image {
+              url
+            }
+            left2ImageThumb: left2Image
+              @transform(width: 560, height: 560, mode: "crop") {
+              url
+              title
+              width
+              height
+            }
+            left2Caption
+            left2Text
+            right1Image {
+              url
+            }
+            right1ImageThumb: right1Image
+              @transform(width: 1715, height: 1221, mode: "crop") {
+              url
+              title
+              width
+              height
+            }
+            right1Caption
+            right1Text
+            right2Image {
+              url
+            }
+            right2ImageThumb: right2Image
+              @transform(width: 1715, height: 1221, mode: "crop") {
+              url
+              title
+              width
+              height
+            }
+            right2SubLine
+            right2Text
+            rightText
+            sideText
+          }
+          ... on homePageComponents_featuredProjects_BlockType {
+            id
+            typeHandle
+            projects {
+              ... on projects_projectDetails_Entry {
+                id
+                slug
+                title
+                location
+                label
+                heroImage {
+                  url
+                }
+                heroImageThumb: heroImage
+                  @transform(width: 1460, height: 900, mode: "crop") {
+                  id
+                  url
+                  width
+                  height
+                }
+                heroMobImageThumb: heroImage
+                  @transform(width: 343, height: 476) {
+                  id
+                  url
+                  width
+                  height
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
 export const OurStoryPageQuery = gql`
-  query OurStoryPageQuery( $slug: [String] ) {
-    entry(
-      slug: $slug
-    ) {
+  query OurStoryPageQuery($slug: [String]) {
+    entry(slug: $slug) {
       ... on ourStoryPage_ourStoryPage_Entry {
         id
         slug
@@ -46,14 +207,11 @@ export const OurStoryPageQuery = gql`
       }
     }
   }
-`
+`;
+
 export const NewsletterQuery = gql`
-  query NewsletterQuery ( 
-    $slug: [String]
-    ) {
-    entry(
-      slug: $slug
-    ) {
+  query NewsletterQuery($slug: [String]) {
+    entry(slug: $slug) {
       ... on latestNews_latestNews_Entry {
         newsletter {
           ... on newsletter_newsletter_BlockType {
@@ -65,5 +223,4 @@ export const NewsletterQuery = gql`
       }
     }
   }
-`
- 
+`;

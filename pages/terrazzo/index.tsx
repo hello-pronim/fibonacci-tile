@@ -13,7 +13,7 @@ interface ProductPageProps {
   colourSchemes: any;
   productCategories: any;
   sampleCta1: any;
-  sampleCta2: any
+  sampleCta2: any;
   notifications: Array<any>;
 }
 
@@ -23,7 +23,7 @@ const Products: NextPage<ProductPageProps> = ({
   productCategories,
   sampleCta1,
   sampleCta2,
-  notifications
+  notifications,
 }) => {
   return (
     <>
@@ -63,7 +63,6 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
     query: sampleCta2Query,
   });
 
-
   const {
     data: { categories: colourSchemes },
   } = await client.query({
@@ -86,7 +85,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
       colourSchemes,
       productCategories,
       sampleCta1,
-      sampleCta2
+      sampleCta2,
     },
     revalidate: 500,
   };
