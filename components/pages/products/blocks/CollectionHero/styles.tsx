@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 
 const CollectionHeroContainer = styled("div")(() =>
   css({
-    pt: 115,
+    pt: 80,
     display: "flex"
   })
 );

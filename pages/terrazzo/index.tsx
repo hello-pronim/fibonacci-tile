@@ -5,17 +5,22 @@ import ProductPage from "@components/pages/products";
 import client from "@utils/apolloClient";
 import { ProductsQuery } from "@gql/productGQL";
 import { CategoriesQuery } from "@gql/categoriesGQL";
+import { sampleCta1Query, sampleCta2Query } from "@gql/globalGQL";
 
 interface ProductPageProps {
   products: any;
   colourSchemes: any;
   productCategories: any;
+  sampleCta1: any;
+  sampleCta2: any
 }
 
 const Products: NextPage<ProductPageProps> = ({
   products,
   colourSchemes,
   productCategories,
+  sampleCta1,
+  sampleCta2
 }) => {
   return (
     <>
@@ -27,6 +32,8 @@ const Products: NextPage<ProductPageProps> = ({
         products={products}
         colourSchemes={colourSchemes}
         productCategories={productCategories}
+        cta1={sampleCta1}
+        cta2={sampleCta2}
       />
       <Footer />
     </>
@@ -39,6 +46,20 @@ export const getStaticProps: GetStaticProps = async function () {
   } = await client.query({
     query: ProductsQuery,
   });
+
+  const {
+    data: { globalSet: sampleCta1 },
+  } = await client.query({
+    query: sampleCta1Query,
+  });
+
+  const {
+    data: { globalSet: sampleCta2 },
+  } = await client.query({
+    query: sampleCta2Query,
+  });
+
+
   const {
     data: { categories: colourSchemes },
   } = await client.query({
@@ -60,6 +81,8 @@ export const getStaticProps: GetStaticProps = async function () {
       products,
       colourSchemes,
       productCategories,
+      sampleCta1,
+      sampleCta2
     },
     revalidate: 500,
   };

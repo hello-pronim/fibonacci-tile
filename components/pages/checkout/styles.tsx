@@ -10,8 +10,9 @@ export interface containerProps {
 const CheckoutStepWrapper = styled("div")(() =>
   css({
     columnGap: "24px",
-    paddingLeft: "80px",
-    paddingRight: "80px",
+    pl: 80,
+    pr: 80,
+    mt: 50,
     display: "flex",
     "@media screen and (max-width: 768px)": {
       px: 10,

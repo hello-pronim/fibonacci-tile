@@ -1,8 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import QuoteModule from "@components/modules/quote";
 
 import AboutHeader from "./Header";
 import Hero from "./hero";
+import HeroImage from "./hero/heroImage";
 import StoryPanel from "./StoryPanel";
 import MainStoryPanel from "./MainStoryPanel";
 import { Container } from "./styles";
@@ -10,7 +11,7 @@ import { Container } from "./styles";
 import StoryThumbnail from "public/assets/temp/story_thumbnail.png";
 import MainStoryThumbnail from "public/assets/temp/story_thumbnail_main.png";
 
-const AboutPage = () => {
+const AboutPage = ({pageData}) => {
   const stories = [
     {
       id: 0,
@@ -46,16 +47,30 @@ const AboutPage = () => {
   return (
     <Container>
       <AboutHeader mode="dark" />
-      <Hero />
+      {pageData?.ourStoryComponents?.length > 0 && pageData.ourStoryComponents.map((component, index) => {
+          if(component.__typename === "ourStoryComponents_headingLeftTextRight_BlockType") {
+            return (<Hero key={`component-${index}`} component={component} />)
+          }
+          if(component.__typename === "ourStoryComponents_heroImage_BlockType") {
+            return (<HeroImage key={`component-${index}`} component={component} />)
+          }
+          if(component.__typename === "ourStoryComponents_quote_BlockType") {
+            return (
+              <QuoteModule key={`component-${index}`} source={component.subLine  }>
+                ‘{component.heading}’
+              </QuoteModule>
+            )
+          }
+      })}
+     
+      {/* <Hero /> */}
       {stories.map((story) => (
         <StoryPanel key={story.id} story={story} />
       ))}
       <MainStoryPanel story={mainStory} />
-      <QuoteModule source="Rebeka Morgan, Build Her Collective">
-        ‘It certainly helps from a planning and ordering perspective that
-        Fibonacci carry so much stock.’
-      </QuoteModule>
+     
     </Container>
   );
 };
+
 export default AboutPage;

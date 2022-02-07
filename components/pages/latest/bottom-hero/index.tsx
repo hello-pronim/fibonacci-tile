@@ -1,31 +1,33 @@
 import React from "react";
-import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import Text from "@components/common/typography";
-import { Container, Left, ReadMore, Right, Row } from "../styles";
-import css from "@styled-system/css";
+import { Left, Right, Row } from "../styles";
 import styles from "./styles.module.scss";
 import ArrowButton from "@components/common/button/arrowButton";
 
-const BottomHero = () => {
+const BottomHero = ({heading, subHeading}) => {
   return (
     <Row>
       <Left>
+        {heading && 
         <Text
           Base="h1"
           variant="Display-Large"
           altFont={true}
           className={styles.title}
         >
-          Want Fibonacci updates sent straight to your inbox?
+          {heading}
         </Text>
+        }
+        {subHeading &&
         <Text
           as="h4"
           variant="Display-XSmall"
           altFont={false}
           className={styles.bodyText}
         >
-          Want Fibonacci updates sent straight to your inbox?
+         {subHeading}
         </Text>
+        }
       </Left>
       <Right>
         <input type="text" placeholder="Enter your email address"></input>

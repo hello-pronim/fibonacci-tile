@@ -1,149 +1,36 @@
 import React, { useEffect, useState } from "react";
+import { GetStaticProps } from "next";
+import { PageQuery, NewsletterQuery } from "@gql/pageGQL";
+import { NewsQuery } from "@gql/newsGQL";
+import { CategoriesQuery } from "@gql/categoriesGQL";
+import BreadCrumb from "@components/common/breadcrumb";
+import client from "@utils/apolloClient";
 import Head from "next/head";
 import Footer from "@components/common/footer";
-import SinglePage from "./[slug]";
 import Header from "@components/common/header";
 import Hero from "../../components/pages/latest/hero/index";
-import Arrow from "@components/common/icons/arrow";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import styles from "./styles.module.scss";
 
 import {
   AllCategory,
-  BottomBarInner,
   CategorysBarInner,
   ReadMore,
 } from "@components/pages/latest/styles";
-import { LinkWrapper } from "@components/pages/latest/styles";
-import Link from "next/link";
 import BottomHero from "@components/pages/latest/bottom-hero";
 import MobileCategory from "@components/pages/latest/mobileCategory";
 import Category from "@components/pages/latest/categories/Category";
 import { Card } from "@components/pages/latest/cards-container/Card";
-import CardImg from "public/assets/latest-news/cardImg.png";
-import CardImg1 from "public/assets/latest-news/image1.png";
-import CardImg2 from "public/assets/latest-news/image2.png";
-import ArrowButton from "@components/common/button/arrowButton";
-interface CardsListType {
-  cards: Array<any>;
-}
 
-export default function LatestNews() {
-  const categorys = [
-    "all",
-    "product release",
-    "press",
-    "awards",
-    "collaborations",
-    "tips + tricks",
-    "inspiration",
-  ];
 
-  const data = [
-    {
-      title:
-        "Feugiat velit neque, est etiam urna eget. Nisi phasellus sollicitudin",
-      description:
-        "Description two to three lines, sed in sit semper in non nec potenti urna. Eget arcu a malesuada aliquet. Augue venenatis.",
-      category: "CAtegory",
-      CardImg: CardImg1,
-    },
-    {
-      title:
-        "Feugiat velit neque, est etiam urna eget. Nisi phasellus sollicitudin",
-      description:
-        "Description two to three lines, sed in sit semper in non nec potenti urna. Eget arcu a malesuada aliquet. Augue venenatis.",
-      category: "Product Release",
-      CardImg: CardImg,
-    },
-    {
-      title:
-        "Feugiat velit neque, est etiam urna eget. Nisi phasellus sollicitudin",
-      description:
-        "Description two to three lines, sed in sit semper in non nec potenti urna. Eget arcu a malesuada aliquet. Augue venenatis.",
-      category: "Press",
-      CardImg: CardImg2,
-    },
-    {
-      title:
-        "Feugiat velit neque, est etiam urna eget. Nisi phasellus sollicitudin",
-      description:
-        "Description two to three lines, sed in sit semper in non nec potenti urna. Eget arcu a malesuada aliquet. Augue venenatis.",
-      category: "Product Release",
-      CardImg: CardImg,
-    },
-    {
-      title:
-        "Feugiat velit neque, est etiam urna eget. Nisi phasellus sollicitudin",
-      description:
-        "Description two to three lines, sed in sit semper in non nec potenti urna. Eget arcu a malesuada aliquet. Augue venenatis.",
-      category: "Awards",
-      CardImg: CardImg,
-    },
-    {
-      title:
-        "Feugiat velit neque, est etiam urna eget. Nisi phasellus sollicitudin",
-      description:
-        "Description two to three lines, sed in sit semper in non nec potenti urna. Eget arcu a malesuada aliquet. Augue venenatis.",
-      category: "Colaborations",
-      CardImg: CardImg2,
-    },
-    {
-      title:
-        "Feugiat velit neque, est etiam urna eget. Nisi phasellus sollicitudin",
-      description:
-        "Description two to three lines, sed in sit semper in non nec potenti urna. Eget arcu a malesuada aliquet. Augue venenatis.",
-      category: "collaborations",
-      CardImg: CardImg1,
-    },
-    {
-      title:
-        "Feugiat velit neque, est etiam urna eget. Nisi phasellus sollicitudin",
-      description:
-        "Description two to three lines, sed in sit semper in non nec potenti urna. Eget arcu a malesuada aliquet. Augue venenatis.",
-      category: "inspiration",
-      CardImg: CardImg,
-    },
-    {
-      title:
-        "Feugiat velit neque, est etiam urna eget. Nisi phasellus sollicitudin",
-      description:
-        "Description two to three lines, sed in sit semper in non nec potenti urna. Eget arcu a malesuada aliquet. Augue venenatis.",
-      category: "collaborations",
-      CardImg: CardImg2,
-    },
-    {
-      title:
-        "Feugiat velit neque, est etiam urna eget. Nisi phasellus sollicitudin",
-      description:
-        "Description two to three lines, sed in sit semper in non nec potenti urna. Eget arcu a malesuada aliquet. Augue venenatis.",
-      category: "awards",
-      CardImg: CardImg,
-    },
-    {
-      title:
-        "Feugiat velit neque, est etiam urna eget. Nisi phasellus sollicitudin",
-      description:
-        "Description two to three lines, sed in sit semper in non nec potenti urna. Eget arcu a malesuada aliquet. Augue venenatis.",
-      category: "tips + tricks",
-      CardImg: CardImg2,
-    },
-    {
-      title:
-        "Feugiat velit neque, est etiam urna eget. Nisi phasellus sollicitudin",
-      description:
-        "Description two to three lines, sed in sit semper in non nec potenti urna. Eget arcu a malesuada aliquet. Augue venenatis.",
-      category: "inspiration",
-      CardImg: CardImg2,
-    },
-  ];
+const LatestNews = ({ heroDetails, categories, news, newsletter: {newsletter} }) => {
   const [selectedType, setSelectedType] = useState("all");
-  const [displayedCategory, setDisplayedProjects] = useState(data);
+  const [displayedCategory, setDisplayedProjects] = useState(news);
 
   const onProjectTypeClick = (type) => {
-    const types = type.toLowerCase();
-    const cardsList = data.filter(
-      (item) => item.category.toLowerCase() === types || types === "all"
+    console.log("type", type)
+    const cardsList = news.filter(
+      (item) => item?.newsCategory[0]?.slug === type || type === "all"
     );
 
     setDisplayedProjects(cardsList);
@@ -154,10 +41,7 @@ export default function LatestNews() {
     return (
       <Card
         key={index}
-        title={item.title}
-        description={item.description}
-        category={"# " + item.category}
-        cardImg={item.CardImg}
+        component={item}
       />
     );
   });
@@ -174,7 +58,10 @@ export default function LatestNews() {
     return 0;
   };
   const windowWidth = useWidth();
-
+  const crumbs = [
+    { path: "/products", name: "Products" },
+    { path: "/latest", name: "Latest" },
+  ];
   return (
     <>
       <Head>
@@ -182,34 +69,29 @@ export default function LatestNews() {
         <meta name="description" content="Fibonacci Projects page" />
       </Head>
       <Header mode="dark" />
-      <BottomBarInner>
-        <LinkWrapper>
-          <Arrow type="short" direction="left" />
-          <Link href="#">Back</Link>
-        </LinkWrapper>
-        <LinkWrapper>
-          <Link href="/">Home</Link>
-        </LinkWrapper>
-        <LinkWrapper>
-          <Link href="#">Page 1</Link>
-        </LinkWrapper>
-        <LinkWrapper>
-          <Link href="#">Page 2</Link>
-        </LinkWrapper>
-      </BottomBarInner>
-      <Hero />
+      <BreadCrumb crumbs={crumbs} />
+      <Hero heroDetails={heroDetails} />
       {windowWidth >= 769 ? (
         <CategorysBarInner>
           <AllCategory>
-            {categorys.map((item) => (
+            <Category
+                key={'all'}
+                onClick={() => onProjectTypeClick('all')}
+                active={'all' === selectedType}
+                size="small"
+                rounded
+            >
+              All
+            </Category>
+            {categories.map((category) => (
               <Category
-                key={item}
-                onClick={() => onProjectTypeClick(item)}
-                active={item === selectedType}
+                key={category.slug}
+                onClick={() => onProjectTypeClick(category.slug)}
+                active={category.slug === selectedType}
                 size="small"
                 rounded
               >
-                {item}
+                {category.title}
               </Category>
             ))}
           </AllCategory>
@@ -221,16 +103,61 @@ export default function LatestNews() {
         columnsCountBreakPoints={{ 425: 1, 767: 2, 1400: 3, 1660: 4 }}
       >
         <Masonry className={styles.container}>{Cards}</Masonry>
-        {displayedCategory.length > 5 ? (
+        {displayedCategory?.length > 5 ? (
           <ReadMore>
-            <ArrowButton mode="" title="Load more" link="#" size="" />
+            {/* <ArrowButton mode="" title="Load more" link="#" size="" /> */}
           </ReadMore>
         ) : (
           <div></div>
         )}
       </ResponsiveMasonry>
-      <BottomHero />
+      {newsletter?.length > 0 && 
+        <BottomHero heading={newsletter[0].heading} subHeading={newsletter[0].subheading} />
+      }
       <Footer />
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps = async function () {
+  const {
+    data: { entry: heroDetails },
+  } = await client.query({
+    query: PageQuery,
+    variables: { slug: "latest-news" },
+  });
+
+  const {
+    data: { entry: newsletter },
+  } = await client.query({
+    query: NewsletterQuery,
+    variables: { slug: "latest-news" },
+  });
+
+  const {
+    data: { categories: categories },
+  } = await client.query({
+    query: CategoriesQuery,
+    variables: {
+      group: "newsCategories",
+    },
+  });
+
+  const {
+    data: { entries: news },
+  } = await client.query({
+    query: NewsQuery,
+  });
+
+  return {
+    props: {
+      heroDetails,
+      categories,
+      news,
+      newsletter
+    },
+    revalidate: 500,
+  };
+};
+
+export default LatestNews;
