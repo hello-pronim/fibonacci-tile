@@ -18,7 +18,7 @@ import { Card } from "@components/pages/latest/cards-container/Card";
 import {
   AllCategory,
   CategorysBarInner,
-  ReadMore
+  ReadMore,
 } from "@components/pages/latest/styles";
 
 import styles from "./styles.module.scss";
@@ -29,17 +29,22 @@ interface LatestPageProps {
   heroDetails: any;
   categories: any;
   newsletter: any;
-  news: any
+  news: any;
 }
 
-const LatestNews: NextPage<LatestPageProps> = ({ heroDetails, categories, news, newsletter, notifications }) => {
+const LatestNews: NextPage<LatestPageProps> = ({
+  heroDetails,
+  categories,
+  news,
+  newsletter,
+  notifications,
+}) => {
   const [selectedType, setSelectedType] = useState("all");
   const [displayedCategory, setDisplayedProjects] = useState(news);
 
-  const onProjectTypeClick = (type) => {
-    console.log("type", type)
+  const onProjectTypeClick = (type: string) => {
     const cardsList = news.filter(
-      (item) => item?.newsCategory[0]?.slug === type || type === "all"
+      (item: any) => item?.newsCategory[0]?.slug === type || type === "all"
     );
 
     setDisplayedProjects(cardsList);
@@ -47,12 +52,7 @@ const LatestNews: NextPage<LatestPageProps> = ({ heroDetails, categories, news, 
   };
 
   const Cards = displayedCategory.map((item, index) => {
-    return (
-      <Card
-        key={index}
-        component={item}
-      />
-    );
+    return <Card key={index} component={item} />;
   });
   const useWidth = () => {
     if (process.browser) {
@@ -84,11 +84,11 @@ const LatestNews: NextPage<LatestPageProps> = ({ heroDetails, categories, news, 
         <CategorysBarInner>
           <AllCategory>
             <Category
-                key={'all'}
-                onClick={() => onProjectTypeClick('all')}
-                active={'all' === selectedType}
-                size="small"
-                rounded
+              key={"all"}
+              onClick={() => onProjectTypeClick("all")}
+              active={"all" === selectedType}
+              size="small"
+              rounded
             >
               All
             </Category>
@@ -120,13 +120,16 @@ const LatestNews: NextPage<LatestPageProps> = ({ heroDetails, categories, news, 
           <div></div>
         )}
       </ResponsiveMasonry>
-      {newsletter?.length > 0 && 
-        <BottomHero heading={newsletter[0].heading} subHeading={newsletter[0].subheading} />
-      }
+      {newsletter?.length > 0 && (
+        <BottomHero
+          heading={newsletter[0].heading}
+          subHeading={newsletter[0].subheading}
+        />
+      )}
       <Footer />
     </>
   );
-}
+};
 
 export const getStaticProps: GetStaticProps = withGlobalData(async function () {
   const {
@@ -163,7 +166,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
       heroDetails,
       categories,
       news,
-      newsletter: newsletter?.newsletter
+      newsletter: newsletter?.newsletter,
     },
     revalidate: 500,
   };
