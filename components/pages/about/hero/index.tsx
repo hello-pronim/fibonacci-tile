@@ -1,5 +1,3 @@
-import React from "react";
-
 import {
   LeftCol,
   RightCol,
@@ -7,27 +5,28 @@ import {
   Container,
   HeroWrapper,
   HeroTitle,
-  HeroBodyText
+  HeroBodyText,
 } from "./styles";
 
-const Hero = ({component}) => {
+const Hero = ({ headingLeft, textRight }) => {
   return (
     <HeroWrapper>
       <Container>
         <LeftCol>
           <ContentWrapper>
             <HeroTitle Base="h1" variant="Display-Large">
-             {component?.headingLeft}
+              {headingLeft}
             </HeroTitle>
           </ContentWrapper>
         </LeftCol>
         <RightCol>
           <HeroBodyText Base="h4" variant="Display-Medium">
-            {component?.textRight}
+            {textRight}
           </HeroBodyText>
         </RightCol>
       </Container>
     </HeroWrapper>
   );
 };
+
 export default Hero;

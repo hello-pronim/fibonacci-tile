@@ -42,32 +42,37 @@ const AboutPage = ({ pageData, notifications }) => {
       "<p>Fibonacci believes in a holistic, sustainable cycle, from go to whoa.<br/><br/>We control our supply chain and ensure our products comprise only up-cycled natural stone, cement and inorganic pigments that can be 100% recycled, usually as crushed rock fill for road and building construction. Our products are free of Volatile Organic Compounds  (VOC’s). Our unique planned inventory ensures that our products are always in stock, with no lead time, but it also saves up to 20% on wastage when compared to a ‘made-to-order’ production model. Our warehouse woodchips our pallets for use in gardens and public spaces. We only send samples on request, rather than cumbersome and frequently outdated full product libraries.<br/><br/>But most importantly… long term, terrazzo wears in, not out. </p>",
     thumbnail: MainStoryThumbnail,
   };
-
+  console.log(pageData);
   return (
     <Container>
       <AboutHeader mode="dark" notifications={notifications} />
-      {pageData?.ourStoryComponents?.length > 0 && pageData.ourStoryComponents.map((component, index) => {
-          if(component.__typename === "ourStoryComponents_headingLeftTextRight_BlockType") {
-            return (<Hero key={`component-${index}`} component={component} />)
+      <Hero
+        headingLeft={pageData.pageHeading}
+        textRight={pageData.rightHeader}
+      />
+      {pageData?.ourStoryComponents?.length > 0 &&
+        pageData.ourStoryComponents.map((component: any, index: number) => {
+          switch (component.typeHandle) {
+            case "heroImage":
+              console.log(component);
+              return (
+                <HeroImage key={`component-${index}`} component={component} />
+              );
+            case "quote":
+              return (
+                <QuoteModule
+                  key={`component-${index}`}
+                  source={component.subLine}
+                >
+                  ‘{component.heading}’
+                </QuoteModule>
+              );
           }
-          if(component.__typename === "ourStoryComponents_heroImage_BlockType") {
-            return (<HeroImage key={`component-${index}`} component={component} />)
-          }
-          if(component.__typename === "ourStoryComponents_quote_BlockType") {
-            return (
-              <QuoteModule key={`component-${index}`} source={component.subLine  }>
-                ‘{component.heading}’
-              </QuoteModule>
-            )
-          }
-      })}
-     
-      {/* <Hero /> */}
+        })}
       {stories.map((story) => (
         <StoryPanel key={story.id} story={story} />
       ))}
       <MainStoryPanel story={mainStory} />
-     
     </Container>
   );
 };

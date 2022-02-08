@@ -224,21 +224,60 @@ export const OurStoryPageQuery = gql`
       ... on ourStoryPage_ourStoryPage_Entry {
         id
         slug
+        pageHeading
+        rightHeader
         ourStoryComponents {
-          ... on ourStoryComponents_headingLeftTextRight_BlockType {
+          ... on ourStoryComponents_heroImage_BlockType {
             id
+            typeHandle
+            image {
+              url
+              title
+              width
+              height
+            }
+          }
+          ... on ourStoryComponents_sideBySideImage_BlockType {
+            id
+            image1 {
+              url
+              width
+              title
+              height
+            }
+            image2 {
+              url
+              width
+              title
+              height
+            }
+          }
+          ... on ourStoryComponents_headingLeftTextRight_BlockType {
+            typeHandle
             headingLeft
             textRight
           }
-          ... on ourStoryComponents_heroImage_BlockType {
-            id
-            image(withTransforms: "ourStoryPageHero") {
-              id
+          ... on ourStoryComponents_headingLeftImageRight_BlockType {
+            typeHandle
+            headingLeft
+            imageRight {
               url
             }
+            sideText
+          }
+          ... on ourStoryComponents_featurePanel_BlockType {
+            typeHandle
+            panelBackgroundColor
+            heading1
+            heading2
+            heroImage
+            heroImageDescription
+            textLeft
+            textRight
+            sideText
           }
           ... on ourStoryComponents_quote_BlockType {
-            id
+            typeHandle
             heading
             subLine
           }
