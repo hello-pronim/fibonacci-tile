@@ -22,7 +22,7 @@ const Support: NextPage<SupportPageProps> = ({ pageData, notifications }) => {
         <meta name="robots" content="index, follow" />
       </Head>
       <Header mode="light" position="absolute" notifications={notifications} />
-      <SupportPage />
+      <SupportPage pageData={pageData} />
       <Footer />
     </div>
   );
