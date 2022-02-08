@@ -14,7 +14,7 @@ const CollectionPage = ({ collection, products, notifications }) => {
       {products && (
         <CollectionProducts
           backgroundColor={
-            collection.backgroundColor ? collection.backgroundColor : "#E6EBEA"
+            collection.backgroundColor ? collection.backgroundColor1 : "#E6EBEA"
           }
           products={products}
         />
@@ -25,8 +25,8 @@ const CollectionPage = ({ collection, products, notifications }) => {
       {collection?.gallery?.length > 0 && (
         <div
           css={css({
-            background: collection.backgroundColor
-              ? collection.backgroundColor
+            background: collection.backgroundColor2
+              ? collection.backgroundColor2
               : "#E6EBEA",
           })}
         >

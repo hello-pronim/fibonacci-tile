@@ -40,7 +40,8 @@ export const CategoryQuery: any = gql`
       }
       ... on collections_Category {
         id
-        backgroundColor
+        backgroundColor1
+        backgroundColor2
         introduction
         projectIntroduction
         subline
