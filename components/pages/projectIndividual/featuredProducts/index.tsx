@@ -15,10 +15,11 @@ const FeaturedProducts = ({ products }) => {
         </Text>
       </LeftCol>
       <RightCol>
-        {products &&
+        {products.length > 0 &&
           products.map((product: any) => {
             return (
               <ProductCard
+                key={`fproduct-${product.slug}`}
                 isSelected={
                   state?.selectedProducts.findIndex(
                     (sp) => sp.id === product.id
@@ -30,7 +31,6 @@ const FeaturedProducts = ({ products }) => {
                     product,
                   });
                 }}
-                key={product.id}
                 product={product}
               />
             );
