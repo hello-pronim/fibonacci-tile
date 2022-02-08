@@ -1,8 +1,6 @@
 import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import client from "@utils/apolloClient";
-// import { ProductsQuery } from "@gql/productGQL";
-// import { sampleCta2Query } from "@gql/globalGQL";
 import { HomePageQuery } from "@gql/pageGQL";
 import { withGlobalData } from "@hoc/withGlobalData";
 import Homepage from "@components/pages/home";

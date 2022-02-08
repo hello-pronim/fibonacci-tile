@@ -3,12 +3,14 @@ import Head from "next/head";
 import Footer from "@components/common/footer";
 import ProductPage from "@components/pages/products";
 import client from "@utils/apolloClient";
+import { PageQuery } from "@gql/pageGQL";
 import { ProductsQuery } from "@gql/productGQL";
 import { CategoriesQuery } from "@gql/categoriesGQL";
 import { sampleCta1Query, sampleCta2Query } from "@gql/globalGQL";
 import { withGlobalData } from "@hoc/withGlobalData";
 
 interface ProductPageProps {
+  pageData: any;
   products: any;
   colourSchemes: any;
   productCategories: any;
@@ -18,6 +20,7 @@ interface ProductPageProps {
 }
 
 const Products: NextPage<ProductPageProps> = ({
+  pageData,
   products,
   colourSchemes,
   productCategories,
@@ -45,6 +48,14 @@ const Products: NextPage<ProductPageProps> = ({
 };
 
 export const getStaticProps: GetStaticProps = withGlobalData(async function () {
+  const {
+    data: { entry: pageData },
+  } = await client.query({
+    query: PageQuery,
+    variables: {
+      slug: "home-page",
+    },
+  });
   const {
     data: { entries: products },
   } = await client.query({
@@ -81,6 +92,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
   });
   return {
     props: {
+      pageData,
       products,
       colourSchemes,
       productCategories,
