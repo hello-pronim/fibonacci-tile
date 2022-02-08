@@ -11,6 +11,7 @@ import { withGlobalData } from "@hoc/withGlobalData";
 
 interface ProductPageProps {
   pageData: any;
+  collectionPageData: any;
   products: any;
   colourSchemes: any;
   productCategories: any;
@@ -21,6 +22,7 @@ interface ProductPageProps {
 
 const Products: NextPage<ProductPageProps> = ({
   pageData,
+  collectionPageData,
   products,
   colourSchemes,
   productCategories,
@@ -35,6 +37,8 @@ const Products: NextPage<ProductPageProps> = ({
         <meta name="description" content="Fibonacci Products page" />
       </Head>
       <ProductPage
+        pageData={pageData}
+        collectionPageData={collectionPageData}
         products={products}
         colourSchemes={colourSchemes}
         productCategories={productCategories}
@@ -53,7 +57,15 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
   } = await client.query({
     query: PageQuery,
     variables: {
-      slug: "home-page",
+      slug: "terrazzo",
+    },
+  });
+  const {
+    data: { entry: collectionPageData },
+  } = await client.query({
+    query: PageQuery,
+    variables: {
+      slug: "collections",
     },
   });
   const {
@@ -93,6 +105,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
   return {
     props: {
       pageData,
+      collectionPageData,
       products,
       colourSchemes,
       productCategories,

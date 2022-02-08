@@ -1,8 +1,9 @@
-import React from "react";
-import Text from "@components/common/typography";
-import moment from "moment";
 import Image from "next/image";
-import heroImage from "public/assets/temp/project-hero.jpg";
+import moment from "moment";
+import css from "@styled-system/css";
+import Text from "@components/common/typography";
+import AddIcon from "@components/icons/add";
+import Container from "@components/common/layout/container";
 import {
   LeftCol,
   RightCol,
@@ -11,9 +12,7 @@ import {
   DetailsWrapper,
   Detail,
 } from "./styles";
-import AddIcon from "@components/icons/add";
-import Container from "@components/common/layout/container";
-import css from "@styled-system/css";
+import React from "react";
 
 const Hero = ({ project }) => {
   return (
@@ -53,8 +52,10 @@ const Hero = ({ project }) => {
             </Text>
             <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
               {project?.sector?.length > 0 &&
-                project?.sector.map((item, index) => {
-                  return `${item.title}${index > 0 ? ", " : ""}`;
+                project?.sector.map((item: any, index: number) => {
+                  return `${item.title}${
+                    index < project.sector.length - 2 ? ", " : ""
+                  }`;
                 })}
             </Text>
           </Detail>
@@ -98,8 +99,13 @@ const Hero = ({ project }) => {
             </Text>
             <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
               {project?.featuredProducts?.length > 0 &&
-                project?.featuredProducts.map((item, index) => {
-                  return `${item.title}${index > 0 ? ", " : ""}`;
+                project?.featuredProducts.map((item: any, index: number) => {
+                  return (
+                    <React.Fragment key={`featured-product-${index}`}>
+                      {item.title}
+                      {index < project.featuredProducts.length - 1 ? ", " : ""}
+                    </React.Fragment>
+                  );
                 })}
             </Text>
           </Detail>

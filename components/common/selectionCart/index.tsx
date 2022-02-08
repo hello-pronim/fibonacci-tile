@@ -1,11 +1,11 @@
-import React from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { css } from "@styled-system/css";
 import { useAppContext } from "@contexts/AppContext";
 import ProductCard from "@components/common/product/card";
 import ArrowButton from "@components/common/button/arrowButton";
 import CheckMarkIcon from "@components/icons/checkmark";
 import Text from "@components/common/typography";
-import { css } from "@styled-system/css";
 import theme from "@styles/theme";
 import Chevron from "public/assets/icons/chevron.svg";
 import SupportIcon from "public/assets/icons/support-icon.svg";
@@ -48,7 +48,7 @@ const SelectionCart = ({ active, newSelection, tab }) => {
         position: "absolute",
         top: 80,
         right: active ? 0 : "-550px",
-        width: ['100%','100%', 480],
+        width: ["100%", "100%", 480],
         height: "calc(100vh - 114px)",
         background: tab === "support" ? "#141414" : "#fff",
         zIndex: 999,
@@ -144,45 +144,47 @@ const SelectionCart = ({ active, newSelection, tab }) => {
               pt: 60,
             })}
           >
-            <div
-              css={css({
-                bg: "#fffff7",
-                px: 24,
-                py: 40,
-                display: "flex",
-                alignItems: "center",
-                columnGap: 38,
-                position: "relative",
-                cursor: 'pointer',
-                '.chevronWrapper': {
-                  opacity: 0,
-                  transition: 'ease all 0.3s',
-                },
-                '&:hover': {
-                  '.chevronWrapper': {
-                    opacity: 1,
-                  },
-                },
-              })}
-            >
-              <Image alt="" src={SupportIcon} width={48} height={48} />
-              <Text variant="Display-XXSmall" altFont>
-                Product Support
-              </Text>
+            <Link href="/support">
               <div
                 css={css({
-                  width: 28,
-                  height: 28,
-                  position: "absolute",
-                  right: 24,
+                  bg: "#fffff7",
+                  px: 24,
+                  py: 40,
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "center",
+                  columnGap: 38,
+                  position: "relative",
+                  cursor: "pointer",
+                  ".chevronWrapper": {
+                    opacity: 0,
+                    transition: "ease all 0.3s",
+                  },
+                  "&:hover": {
+                    ".chevronWrapper": {
+                      opacity: 1,
+                    },
+                  },
                 })}
               >
-                <Image alt="" src={Chevron} width={10} height={16} />
+                <Image alt="support" src={SupportIcon} width={48} height={48} />
+                <Text variant="Display-XXSmall" altFont>
+                  Product Support
+                </Text>
+                <div
+                  css={css({
+                    width: 28,
+                    height: 28,
+                    position: "absolute",
+                    right: 24,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  })}
+                >
+                  <Image alt="more" src={Chevron} width={10} height={16} />
+                </div>
               </div>
-            </div>
+            </Link>
             <div
               css={css({
                 bg: "#ede6de",
@@ -192,19 +194,19 @@ const SelectionCart = ({ active, newSelection, tab }) => {
                 alignItems: "center",
                 columnGap: 38,
                 position: "relative",
-                cursor: 'pointer',
-                '.chevronWrapper': {
+                cursor: "pointer",
+                ".chevronWrapper": {
                   opacity: 0,
-                  transition: 'ease all 0.3s',
+                  transition: "ease all 0.3s",
                 },
-                '&:hover': {
-                  '.chevronWrapper': {
+                "&:hover": {
+                  ".chevronWrapper": {
                     opacity: 1,
                   },
                 },
               })}
             >
-              <Image alt="" src={SamplesIcon} width={48} height={48} />
+              <Image alt="samples" src={SamplesIcon} width={48} height={48} />
               <Text variant="Display-XXSmall" altFont>
                 How to order samples
               </Text>
@@ -219,7 +221,7 @@ const SelectionCart = ({ active, newSelection, tab }) => {
                   justifyContent: "center",
                 })}
               >
-                <Image alt="" src={Chevron} width={10} height={16} />
+                <Image alt="more" src={Chevron} width={10} height={16} />
               </div>
             </div>
             <div
@@ -231,19 +233,19 @@ const SelectionCart = ({ active, newSelection, tab }) => {
                 alignItems: "center",
                 columnGap: 38,
                 position: "relative",
-                cursor: 'pointer',
-                '.chevronWrapper': {
+                cursor: "pointer",
+                ".chevronWrapper": {
                   opacity: 0,
-                  transition: 'ease all 0.3s',
+                  transition: "ease all 0.3s",
                 },
-                '&:hover': {
-                  '.chevronWrapper': {
+                "&:hover": {
+                  ".chevronWrapper": {
                     opacity: 1,
                   },
                 },
               })}
             >
-              <Image alt="" src={QuoteIcon} width={48} height={48} />
+              <Image alt="quote" src={QuoteIcon} width={48} height={48} />
               <Text variant="Display-XXSmall" altFont>
                 Request a quote
               </Text>
@@ -258,7 +260,7 @@ const SelectionCart = ({ active, newSelection, tab }) => {
                   justifyContent: "center",
                 })}
               >
-                <Image alt="" src={Chevron} width={10} height={16} />
+                <Image alt="more" src={Chevron} width={10} height={16} />
               </div>
             </div>
             <div
@@ -270,19 +272,19 @@ const SelectionCart = ({ active, newSelection, tab }) => {
                 alignItems: "center",
                 columnGap: 38,
                 position: "relative",
-                cursor: 'pointer',
-                '.chevronWrapper': {
+                cursor: "pointer",
+                ".chevronWrapper": {
                   opacity: 0,
-                  transition: 'ease all 0.3s',
+                  transition: "ease all 0.3s",
                 },
-                '&:hover': {
-                  '.chevronWrapper': {
+                "&:hover": {
+                  ".chevronWrapper": {
                     opacity: 1,
                   },
                 },
               })}
             >
-              <Image alt="" src={EnquiryIcon} width={48} height={48} />
+              <Image alt="Eqnuiry" src={EnquiryIcon} width={48} height={48} />
               <Text variant="Display-XXSmall" altFont>
                 General Enquiry
               </Text>
@@ -298,13 +300,12 @@ const SelectionCart = ({ active, newSelection, tab }) => {
                   justifyContent: "center",
                 })}
               >
-                <Image alt="" src={Chevron} width={10} height={16} />
+                <Image alt="more" src={Chevron} width={10} height={16} />
               </div>
             </div>
           </div>
         </div>
       )}
-
       {tab === "cart" && (
         <>
           <div
@@ -387,7 +388,13 @@ const SelectionCart = ({ active, newSelection, tab }) => {
               },
             })}
           >
-            {selectedProducts?.length > 0 && <ArrowButton mode="light" title="Order Samples" link="/checkout" />}
+            {selectedProducts?.length > 0 && (
+              <ArrowButton
+                mode="light"
+                title="Order Samples"
+                link="/checkout"
+              />
+            )}
             <a href="/terrazzo" css={css({ color: "#fff", mt: 24 })}>
               <Text variant="Body-Small">Continue Selections</Text>
             </a>

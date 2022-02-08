@@ -12,12 +12,14 @@ import Slider from "./blocks/Slider";
 import { Container } from "./styles";
 
 const ProductsPage = ({
+  pageData,
+  collectionPageData,
   products: initialProducts,
   colourSchemes,
   productCategories,
   cta1,
   cta2,
-  notifications
+  notifications,
 }) => {
   const { state } = useAppContext();
   const [loadingProducts, setLoadingProducts] = useState(false);
@@ -29,6 +31,25 @@ const ProductsPage = ({
   );
   const [showFilterBar, setShowFilterBar] = useState(false);
   const ref = useRef(null);
+  const banners = [];
+  if (pageData?.bannerImage?.length > 0) {
+    banners.push({
+      bannerImage: pageData.bannerImage[0],
+      bannerIntro: pageData.bannerIntro,
+      bannerHeading: pageData.bannerHeading,
+      bannerSubline: pageData.bannerSubline,
+      bannerCTA: pageData.bannerCTA,
+    });
+  }
+  if (collectionPageData?.bannerImage?.length > 0) {
+    banners.push({
+      bannerImage: collectionPageData.bannerImage[0],
+      bannerIntro: collectionPageData.bannerIntro,
+      bannerHeading: collectionPageData.bannerHeading,
+      bannerSubline: collectionPageData.bannerSubline,
+      bannerCTA: collectionPageData.bannerCTA,
+    });
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -95,11 +116,8 @@ const ProductsPage = ({
   return (
     <Container>
       {!showFilterBar && <ProductsHeader notifications={notifications} />}
-      <Slider />
-      <SectionTitle
-        show={showFilterBar}
-        title="40 unique creations. Thoughtfully designed. Sustainably made. Purpose-built."
-      />
+      <Slider items={banners} />
+      <SectionTitle show={showFilterBar} title={pageData.bannerSubline} />
       <section ref={ref}>
         <ProductFilterBar
           applyFilter={applyFilter}
@@ -109,22 +127,24 @@ const ProductsPage = ({
         />
       </section>
       <ProductLists
+        sideText={pageData.productsSideText}
         loadingProducts={loadingProducts}
         products={firstHalfProducts}
         accentText="Be inspired"
       />
-      {cta1?.CTAFields?.length > 0 &&
+      {cta1?.CTAFields?.length > 0 && (
         <CTAPanel data={cta1.CTAFields[0]} imagePosition="left" />
-      }
+      )}
       {secondHalfProducts.length > 0 && (
         <ProductLists
+          sideText=""
           loadingProducts={loadingProducts}
           products={secondHalfProducts}
         />
       )}
-      {cta2?.CTAFields?.length > 0 &&
+      {cta2?.CTAFields?.length > 0 && (
         <CTAPanel data={cta2.CTAFields[0]} imagePosition="right" />
-      }
+      )}
       <FooterCTAPanel />
     </Container>
   );

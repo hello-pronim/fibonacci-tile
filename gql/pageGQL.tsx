@@ -13,6 +13,45 @@ export const PageQuery = gql`
         pageHeading
         pageIntro
       }
+      ... on collections_collections_Entry {
+        id
+        bannerSubline
+        productsSideText
+        bannerImage {
+          url
+          width
+          height
+          title
+        }
+        bannerIntro
+        bannerHeading
+        bannerInnerSubline
+        bannerCTA
+      }
+      ... on terrazzo_terrazzo_Entry {
+        id
+        bannerSubline
+        productsSideText
+        bannerImage {
+          url
+          width
+          height
+          title
+        }
+        bannerIntro
+        bannerHeading
+        bannerInnerSubline
+        bannerCTA
+        singleTerrazzo {
+          ... on singleTerrazzo_customDesignSolutions_BlockType {
+            id
+            typeHandle
+            backgroundColour
+            customCtaButton
+            customCtaLink
+          }
+        }
+      }
     }
   }
 `;
@@ -185,21 +224,67 @@ export const OurStoryPageQuery = gql`
       ... on ourStoryPage_ourStoryPage_Entry {
         id
         slug
+        pageHeading
+        rightHeader
         ourStoryComponents {
-          ... on ourStoryComponents_headingLeftTextRight_BlockType {
+          ... on ourStoryComponents_heroImage_BlockType {
             id
+            typeHandle
+            image {
+              url
+              title
+              width
+              height
+            }
+          }
+          ... on ourStoryComponents_sideBySideImage_BlockType {
+            id
+            image1 {
+              url
+              width
+              title
+              height
+            }
+            image2 {
+              url
+              width
+              title
+              height
+            }
+          }
+          ... on ourStoryComponents_headingLeftTextRight_BlockType {
+            typeHandle
             headingLeft
             textRight
           }
-          ... on ourStoryComponents_heroImage_BlockType {
-            id
-            image(withTransforms: "ourStoryPageHero") {
-              id
+          ... on ourStoryComponents_headingLeftImageRight_BlockType {
+            typeHandle
+            headingLeft
+            imageRight {
               url
+              title
+              width
+              height
             }
+            sideText
+          }
+          ... on ourStoryComponents_featurePanel_BlockType {
+            typeHandle
+            panelBackgroundColor
+            heading1
+            heading2
+            heroImage {
+              url
+              width
+              height
+            }
+            heroImageDescription
+            sideText
+            textLeft
+            textRight
           }
           ... on ourStoryComponents_quote_BlockType {
-            id
+            typeHandle
             heading
             subLine
           }
