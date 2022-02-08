@@ -13,6 +13,7 @@ import { Container } from "./styles";
 
 const ProductsPage = ({
   pageData,
+  collectionPageData,
   products: initialProducts,
   colourSchemes,
   productCategories,
@@ -30,16 +31,26 @@ const ProductsPage = ({
   );
   const [showFilterBar, setShowFilterBar] = useState(false);
   const ref = useRef(null);
-
   const banners = [];
-  pageData?.singleTerrazzo?.forEach((component: any) => {
-    if (
-      ["terrazzoBanner", "collectionsBanner"].indexOf(component.typeHandle) !==
-      -1
-    ) {
-      banners.push(component);
-    }
-  });
+  if (pageData?.bannerImage?.length > 0) {
+    banners.push({
+      bannerImage: pageData.bannerImage[0],
+      bannerIntro: pageData.bannerIntro,
+      bannerHeading: pageData.bannerHeading,
+      bannerSubline: pageData.bannerSubline,
+      bannerCTA: pageData.bannerCTA,
+    });
+  }
+  if (collectionPageData?.bannerImage?.length > 0) {
+    banners.push({
+      bannerImage: collectionPageData.bannerImage[0],
+      bannerIntro: collectionPageData.bannerIntro,
+      bannerHeading: collectionPageData.bannerHeading,
+      bannerSubline: collectionPageData.bannerSubline,
+      bannerCTA: collectionPageData.bannerCTA,
+    });
+  }
+
   useEffect(() => {
     const handleScroll = () => {
       if (ref && ref?.current?.offsetTop < window.pageYOffset + 370) {
@@ -126,6 +137,7 @@ const ProductsPage = ({
       )}
       {secondHalfProducts.length > 0 && (
         <ProductLists
+          sideText=""
           loadingProducts={loadingProducts}
           products={secondHalfProducts}
         />

@@ -3,7 +3,7 @@ import Head from "next/head";
 import Footer from "@components/common/footer";
 import ProductPage from "@components/pages/products";
 import client from "@utils/apolloClient";
-import { TerrazzoPageQuery } from "@gql/pageGQL";
+import { PageQuery } from "@gql/pageGQL";
 import { ProductsQuery } from "@gql/productGQL";
 import { CategoriesQuery } from "@gql/categoriesGQL";
 import { sampleCta1Query, sampleCta2Query } from "@gql/globalGQL";
@@ -11,6 +11,7 @@ import { withGlobalData } from "@hoc/withGlobalData";
 
 interface ProductPageProps {
   pageData: any;
+  collectionPageData: any;
   products: any;
   colourSchemes: any;
   productCategories: any;
@@ -21,6 +22,7 @@ interface ProductPageProps {
 
 const Products: NextPage<ProductPageProps> = ({
   pageData,
+  collectionPageData,
   products,
   colourSchemes,
   productCategories,
@@ -36,6 +38,7 @@ const Products: NextPage<ProductPageProps> = ({
       </Head>
       <ProductPage
         pageData={pageData}
+        collectionPageData={collectionPageData}
         products={products}
         colourSchemes={colourSchemes}
         productCategories={productCategories}
@@ -52,9 +55,17 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
   const {
     data: { entry: pageData },
   } = await client.query({
-    query: TerrazzoPageQuery,
+    query: PageQuery,
     variables: {
       slug: "terrazzo",
+    },
+  });
+  const {
+    data: { entry: collectionPageData },
+  } = await client.query({
+    query: PageQuery,
+    variables: {
+      slug: "collections",
     },
   });
   const {
@@ -94,6 +105,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
   return {
     props: {
       pageData,
+      collectionPageData,
       products,
       colourSchemes,
       productCategories,

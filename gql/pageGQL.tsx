@@ -13,46 +13,42 @@ export const PageQuery = gql`
         pageHeading
         pageIntro
       }
-    }
-  }
-`;
-export const TerrazzoPageQuery = gql`
-  query TerrazzoPageQuerys($slug: [String]) {
-    entry(slug: $slug) {
-      id
+      ... on collections_collections_Entry {
+        id
+        bannerSubline
+        productsSideText
+        bannerImage {
+          url
+          width
+          height
+          title
+        }
+        bannerIntro
+        bannerHeading
+        bannerInnerSubline
+        bannerCTA
+      }
       ... on terrazzo_terrazzo_Entry {
         id
         bannerSubline
         productsSideText
+        bannerImage {
+          url
+          width
+          height
+          title
+        }
+        bannerIntro
+        bannerHeading
+        bannerInnerSubline
+        bannerCTA
         singleTerrazzo {
-          ... on singleTerrazzo_terrazzoBanner_BlockType {
-            id
-            typeHandle
-            terrazoBannerImage {
-              url
-            }
-            terrazzoHeading
-            terrazzoCta
-            terrazzoBannerIntro
-            terrazoSubline
-          }
-          ... on singleTerrazzo_collectionsBanner_BlockType {
-            id
-            typeHandle
-            collectionsCta
-            collectionsBannerIntro
-            collectionsBannerImage {
-              url
-            }
-          }
           ... on singleTerrazzo_customDesignSolutions_BlockType {
             id
             typeHandle
             backgroundColour
             customCtaButton
-            customCtaLink {
-              id
-            }
+            customCtaLink
           }
         }
       }
