@@ -3,7 +3,7 @@ import Head from "next/head";
 import Footer from "@components/common/footer";
 import ProductPage from "@components/pages/products";
 import client from "@utils/apolloClient";
-import { PageQuery } from "@gql/pageGQL";
+import { TerrazzoPageQuery } from "@gql/pageGQL";
 import { ProductsQuery } from "@gql/productGQL";
 import { CategoriesQuery } from "@gql/categoriesGQL";
 import { sampleCta1Query, sampleCta2Query } from "@gql/globalGQL";
@@ -35,6 +35,7 @@ const Products: NextPage<ProductPageProps> = ({
         <meta name="description" content="Fibonacci Products page" />
       </Head>
       <ProductPage
+        pageData={pageData}
         products={products}
         colourSchemes={colourSchemes}
         productCategories={productCategories}
@@ -51,9 +52,9 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
   const {
     data: { entry: pageData },
   } = await client.query({
-    query: PageQuery,
+    query: TerrazzoPageQuery,
     variables: {
-      slug: "home-page",
+      slug: "terrazzo",
     },
   });
   const {
