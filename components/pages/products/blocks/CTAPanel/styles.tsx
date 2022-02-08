@@ -12,8 +12,8 @@ const CTAContainer = styled("section")(
     flexWrap: "wrap",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingTop: "80px",
-    paddingBottom: "60px",
+    paddingTop: "50px",
+    paddingBottom: "50px",
   })
 );
 

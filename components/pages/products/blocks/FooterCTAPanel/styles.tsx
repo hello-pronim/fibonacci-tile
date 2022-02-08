@@ -4,7 +4,7 @@ import theme from "styles/theme";
 
 const FooterCTAContainer = styled("section")(
   css({
-    marginTop: "80px",
+    marginTop: "20px",
     display: "flex",
     flexWrap: "wrap",
     flexDirection: "row",
