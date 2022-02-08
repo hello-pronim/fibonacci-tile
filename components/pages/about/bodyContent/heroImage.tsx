@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { HeroImageContainer } from "./styles";
+import { HeroImageContainer } from "../hero/styles";
 
 const HeroImage = ({ component }) => {
   return (

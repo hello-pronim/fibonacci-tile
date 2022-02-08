@@ -262,6 +262,9 @@ export const OurStoryPageQuery = gql`
             headingLeft
             imageRight {
               url
+              title
+              width
+              height
             }
             sideText
           }
@@ -270,11 +273,15 @@ export const OurStoryPageQuery = gql`
             panelBackgroundColor
             heading1
             heading2
-            heroImage
+            heroImage {
+              url
+              width
+              height
+            }
             heroImageDescription
+            sideText
             textLeft
             textRight
-            sideText
           }
           ... on ourStoryComponents_quote_BlockType {
             typeHandle
