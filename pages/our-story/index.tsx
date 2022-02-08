@@ -18,28 +18,25 @@ const About: NextPage<AboutPageProps> = ({ pageData, notifications }) => {
         <title>Our story | Fibonacci</title>
         <meta name="description" content="Fibonacci About page" />
       </Head>
-      <AboutPage pageData={pageData} notifications={notifications}/>
+      <AboutPage pageData={pageData} notifications={notifications} />
       <Footer />
     </>
   );
 };
 
-
-export const getStaticProps: GetStaticProps = withGlobalData(
-  async () => {
-    const {
-      data: { entry: pageData },
-    } = await client.query({
-      query: OurStoryPageQuery,
-      variables: { slug: "our-story-page" },
-    });
-    return {
-      props: {
-        pageData,
-      },
-      revalidate: 500,
-    };
-  }
-);
+export const getStaticProps: GetStaticProps = withGlobalData(async () => {
+  const {
+    data: { entry: pageData },
+  } = await client.query({
+    query: OurStoryPageQuery,
+    variables: { slug: "our-story-page" },
+  });
+  return {
+    props: {
+      pageData,
+    },
+    revalidate: 500,
+  };
+});
 
 export default About;

@@ -27,11 +27,13 @@ function MainStoryPanel({ story }: mainStoryPanelProps) {
           <StoryTitle>{story.title}</StoryTitle>
           {story.subTitle && <StorySubTitle>{story.subTitle}</StorySubTitle>}
         </StoryTitleWrapper>
-        {story.thumbnail && (
+        {story?.thumbnail?.length > 0 && (
           <StoryImageWrapper>
             <Image
-              src={story.thumbnail}
-              alt="story-thumbnail"
+              src={story.thumbnail[0].url}
+              alt={story.thumbnail[0].title}
+              width={story.thumbnail[0].width}
+              height={story.thumbnail[0].height}
               layout="responsive"
             />
           </StoryImageWrapper>
