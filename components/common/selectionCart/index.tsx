@@ -144,7 +144,7 @@ const SelectionCart = ({ active, newSelection, tab }) => {
               pt: 60,
             })}
           >
-            <Link href="/support">
+            <Link href="/support" passHref>
               <div
                 css={css({
                   bg: "#fffff7",
@@ -185,84 +185,88 @@ const SelectionCart = ({ active, newSelection, tab }) => {
                 </div>
               </div>
             </Link>
-            <div
-              css={css({
-                bg: "#ede6de",
-                px: 24,
-                py: 40,
-                display: "flex",
-                alignItems: "center",
-                columnGap: 38,
-                position: "relative",
-                cursor: "pointer",
-                ".chevronWrapper": {
-                  opacity: 0,
-                  transition: "ease all 0.3s",
-                },
-                "&:hover": {
-                  ".chevronWrapper": {
-                    opacity: 1,
-                  },
-                },
-              })}
-            >
-              <Image alt="samples" src={SamplesIcon} width={48} height={48} />
-              <Text variant="Display-XXSmall" altFont>
-                How to order samples
-              </Text>
+            <Link href="/support" passHref>
               <div
                 css={css({
-                  width: 28,
-                  height: 28,
-                  position: "absolute",
-                  right: 24,
+                  bg: "#ede6de",
+                  px: 24,
+                  py: 40,
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "center",
+                  columnGap: 38,
+                  position: "relative",
+                  cursor: "pointer",
+                  ".chevronWrapper": {
+                    opacity: 0,
+                    transition: "ease all 0.3s",
+                  },
+                  "&:hover": {
+                    ".chevronWrapper": {
+                      opacity: 1,
+                    },
+                  },
                 })}
               >
-                <Image alt="more" src={Chevron} width={10} height={16} />
+                <Image alt="samples" src={SamplesIcon} width={48} height={48} />
+                <Text variant="Display-XXSmall" altFont>
+                  How to order samples
+                </Text>
+                <div
+                  css={css({
+                    width: 28,
+                    height: 28,
+                    position: "absolute",
+                    right: 24,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  })}
+                >
+                  <Image alt="more" src={Chevron} width={10} height={16} />
+                </div>
               </div>
-            </div>
-            <div
-              css={css({
-                bg: "#ebe9e7",
-                px: 24,
-                py: 40,
-                display: "flex",
-                alignItems: "center",
-                columnGap: 38,
-                position: "relative",
-                cursor: "pointer",
-                ".chevronWrapper": {
-                  opacity: 0,
-                  transition: "ease all 0.3s",
-                },
-                "&:hover": {
-                  ".chevronWrapper": {
-                    opacity: 1,
-                  },
-                },
-              })}
-            >
-              <Image alt="quote" src={QuoteIcon} width={48} height={48} />
-              <Text variant="Display-XXSmall" altFont>
-                Request a quote
-              </Text>
+            </Link>
+            <Link href="/support" passHref>
               <div
                 css={css({
-                  width: 28,
-                  height: 28,
-                  position: "absolute",
-                  right: 24,
+                  bg: "#ebe9e7",
+                  px: 24,
+                  py: 40,
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "center",
+                  columnGap: 38,
+                  position: "relative",
+                  cursor: "pointer",
+                  ".chevronWrapper": {
+                    opacity: 0,
+                    transition: "ease all 0.3s",
+                  },
+                  "&:hover": {
+                    ".chevronWrapper": {
+                      opacity: 1,
+                    },
+                  },
                 })}
               >
-                <Image alt="more" src={Chevron} width={10} height={16} />
+                <Image alt="quote" src={QuoteIcon} width={48} height={48} />
+                <Text variant="Display-XXSmall" altFont>
+                  Request a quote
+                </Text>
+                <div
+                  css={css({
+                    width: 28,
+                    height: 28,
+                    position: "absolute",
+                    right: 24,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  })}
+                >
+                  <Image alt="more" src={Chevron} width={10} height={16} />
+                </div>
               </div>
-            </div>
+            </Link>
             <div
               css={css({
                 bg: "#fdfdfd",

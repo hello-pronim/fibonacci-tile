@@ -26,7 +26,6 @@ import { css } from "@styled-system/css";
 import theme from "styles/theme";
 
 const InlineSlider = ({ projects }) => {
-  console.log(projects);
   const slider = React.useRef<Slider>(null);
   const [slideCount, setSlideCount] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -54,7 +53,7 @@ const InlineSlider = ({ projects }) => {
       setCurrentSlide(next + 1);
     },
   };
-  console.log(projects);
+  
   return (
     <Container>
       <AccentText top={206}>An imaginative selection</AccentText>

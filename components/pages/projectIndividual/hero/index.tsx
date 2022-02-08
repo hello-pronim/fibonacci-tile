@@ -42,7 +42,7 @@ const Hero = ({ project }) => {
         <DetailsWrapper>
           <Detail>
             <Text variant="Display-Overline">PROJECT</Text>
-            <Text css={css({ color: "taupe" })} variant="Body-Regular">
+            <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
               {project.title}
             </Text>
           </Detail>
@@ -50,7 +50,7 @@ const Hero = ({ project }) => {
             <Text Base="h6" variant="Display-Overline">
               SECTOR
             </Text>
-            <Text css={css({ color: "taupe" })} variant="Body-Regular">
+            <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
               {project?.sector?.length > 0 &&
                 project?.sector.map((item: any, index: number) => {
                   return `${item.title}${
@@ -63,7 +63,7 @@ const Hero = ({ project }) => {
             <Text Base="h6" variant="Display-Overline">
               ARCHITECT
             </Text>
-            <Text css={css({ color: "taupe" })} variant="Body-Regular">
+            <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
               {project.architect ? project.architect : "- -"}
             </Text>
           </Detail>
@@ -71,7 +71,7 @@ const Hero = ({ project }) => {
             <Text Base="h6" variant="Display-Overline">
               DESIGNER
             </Text>
-            <Text css={css({ color: "taupe" })} variant="Body-Regular">
+            <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
               {project.designer ? project.designer : "- -"}
             </Text>
           </Detail>
@@ -79,7 +79,7 @@ const Hero = ({ project }) => {
             <Text Base="h6" variant="Display-Overline">
               BUILDER
             </Text>
-            <Text css={css({ color: "taupe" })} variant="Body-Regular">
+            <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
               {project.builder ? project.builder : "- -"}
             </Text>
           </Detail>
@@ -87,7 +87,7 @@ const Hero = ({ project }) => {
             <Text Base="h6" variant="Display-Overline">
               PROJECT COMPLETED
             </Text>
-            <Text css={css({ color: "taupe" })} variant="Body-Regular">
+            <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
               {project.projectCompleted
                 ? moment(project.projectCompleted).format("YYYY")
                 : "- -"}
@@ -97,7 +97,7 @@ const Hero = ({ project }) => {
             <Text Base="h6" variant="Display-Overline">
               FEATURED PRODUCTS
             </Text>
-            <Text css={css({ color: "taupe" })} variant="Body-Regular">
+            <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
               {project?.featuredProducts?.length > 0 &&
                 project?.featuredProducts.map((item: any, index: number) => {
                   return (
@@ -113,7 +113,7 @@ const Hero = ({ project }) => {
             <Text Base="h6" variant="Display-Overline">
               PHOTOGRAPHER
             </Text>
-            <Text css={css({ color: "taupe" })} variant="Body-Regular">
+            <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
               {project.photographer ? project.photographer : "- -"}
             </Text>
           </Detail>

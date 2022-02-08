@@ -78,7 +78,14 @@ const SubFooterItems = styled("div")(({mobileOrder}: {mobileOrder: number}) =>
     lineHeight: 0,
     fontFamily: 1,
     color: theme.colors.stoneTints[4],
-    a: { color: "stone", textDecoration: "none" },
+    a: { 
+      color: "stone", 
+      textDecoration: "none",
+      transition: "all 0.4s ease-in-out",
+      "&:hover": {
+        color: "#fff",
+      },
+    },
     order: mobileOrder && mobileOrder,
     [theme.mediaQueries.small]: {
       order: 'initial'
@@ -126,7 +133,15 @@ const Item = styled("li")(() =>
     "&:not(:last-child)": {
       paddingBottom: 16,
     },
-    a: { color: "inherit", textDecoration: "none" },
+    a: { 
+      color: "inherit", 
+      textDecoration: "none", 
+      transition: "all 0.4s ease-in-out",
+      "&:hover": {
+        color: "#b1aba6",
+        paddingLeft: "4px",
+      },
+    },
   })
 );
 
@@ -196,7 +211,11 @@ const Signup = styled("form")(() =>
       fontWeight: 0,
       px: 16,
       py: '9px',
-      
+      transition: "all .4s ease-in-out",
+      cursor: "pointer",
+      "&:hover": {
+        backgroundColor: "#5c5c5c",
+      },
     },
   })
 );
