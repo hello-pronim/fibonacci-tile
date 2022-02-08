@@ -1,8 +1,9 @@
-import React from "react";
-import Text from "@components/common/typography";
-import moment from "moment";
 import Image from "next/image";
-import heroImage from "public/assets/temp/project-hero.jpg";
+import moment from "moment";
+import css from "@styled-system/css";
+import Text from "@components/common/typography";
+import AddIcon from "@components/icons/add";
+import Container from "@components/common/layout/container";
 import {
   LeftCol,
   RightCol,
@@ -11,9 +12,6 @@ import {
   DetailsWrapper,
   Detail,
 } from "./styles";
-import AddIcon from "@components/icons/add";
-import Container from "@components/common/layout/container";
-import css from "@styled-system/css";
 
 const Hero = ({ project }) => {
   return (

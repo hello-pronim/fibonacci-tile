@@ -44,21 +44,21 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = withGlobalData(
-  async function ({ params }) {
-    const {
-      data: { entry: project },
-    } = await client.query({
-      query: ProjectQuery,
-      variables: { slug: params["slug"] },
-    });
-    return {
-      props: {
-        project,
-      },
-      revalidate: 500,
-    };
-  }
-);
+export const getStaticProps: GetStaticProps = withGlobalData(async function ({
+  params,
+}) {
+  const {
+    data: { entry: project },
+  } = await client.query({
+    query: ProjectQuery,
+    variables: { slug: params.slug },
+  });
+  return {
+    props: {
+      project,
+    },
+    revalidate: 60,
+  };
+});
 
 export default Project;

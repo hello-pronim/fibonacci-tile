@@ -13,7 +13,7 @@ import {
   SliderWrapper,
 } from "./styles";
 
-function TopSlider() {
+function TopSlider({ items = [] }) {
   const settings = {
     dots: false,
     infinite: true,

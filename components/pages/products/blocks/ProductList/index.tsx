@@ -18,12 +18,14 @@ import {
 } from "./styles";
 
 interface productListProps {
+  sideText: string;
   products: any;
   accentText?: string;
   loadingProducts?: boolean;
 }
 
 function ProductLists({
+  sideText = "Be inspired",
   products,
   accentText,
   loadingProducts = false,
@@ -31,7 +33,7 @@ function ProductLists({
   const { state, dispatch } = useAppContext();
   return (
     <Container listView={state?.productDisplayMode === "list"}>
-      {accentText && <AccentText top={120}>Be inspired</AccentText>}
+      {accentText && <AccentText top={120}>{sideText}</AccentText>}
       {loadingProducts && <p>Loading Products...</p>}
       {products.length === 0 && <p>No products matching criteria</p>}
       {state?.productDisplayMode === "list" && (
