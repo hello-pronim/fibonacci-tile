@@ -35,7 +35,6 @@ function MainStoryPanel({ story }: mainStoryPanelProps) {
         </StoryTitleWrapper>
         {story?.thumbnail?.[0]?.url && (
           <StoryImageWrapper>
-            here {story?.thumbnail?.[0]?.url}
             <Image
               src={story.thumbnail[0].url}
               alt={story.thumbnail[0].title}
