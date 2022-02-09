@@ -74,7 +74,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function ({
     query: GlobalSpecificationQuery,
   });
   let relatedProducts = [];
-  console.log("here", params["product-slug"], product);
+  console.log("here", params["product-slug"], "here prod", product);
   if (product?.id) {
     const {
       data: { entries: rProducts },
