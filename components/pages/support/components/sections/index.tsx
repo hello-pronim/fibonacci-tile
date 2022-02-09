@@ -41,7 +41,7 @@ const SupportSections = ({ accentText, pageHeading }: SupportSectionTypes) => {
           <SectionItem>
             <Text variant="Body-Regular">
               <a
-                href="#projects"
+                href="#product-guide"
                 css={css({ color: "inherit", textDecoration: "none" })}
               >
                 Product Guide
@@ -51,7 +51,7 @@ const SupportSections = ({ accentText, pageHeading }: SupportSectionTypes) => {
           <SectionItem>
             <Text variant="Body-Regular">
               <a
-                href="#gallery"
+                href="#installation-guide"
                 css={css({ color: "inherit", textDecoration: "none" })}
               >
                 Installation Guides
@@ -61,7 +61,7 @@ const SupportSections = ({ accentText, pageHeading }: SupportSectionTypes) => {
           <SectionItem>
             <Text variant="Body-Regular">
               <a
-                href="#technical-specifications"
+                href="#fibonacci-tiles"
                 css={css({ color: "inherit", textDecoration: "none" })}
               >
                 - Fibonacci Tiles
@@ -71,7 +71,7 @@ const SupportSections = ({ accentText, pageHeading }: SupportSectionTypes) => {
           <SectionItem>
             <Text variant="Body-Regular">
               <a
-                href="#related-products"
+                href="#fibonacci-slabs"
                 css={css({ color: "inherit", textDecoration: "none" })}
               >
                 - Fibonacci Slabs
@@ -81,7 +81,7 @@ const SupportSections = ({ accentText, pageHeading }: SupportSectionTypes) => {
           <SectionItem>
             <Text variant="Body-Regular">
               <a
-                href="#gallery"
+                href="#care-maintenance"
                 css={css({ color: "inherit", textDecoration: "none" })}
               >
                 Care and Maintenance
@@ -91,7 +91,7 @@ const SupportSections = ({ accentText, pageHeading }: SupportSectionTypes) => {
           <SectionItem>
             <Text variant="Body-Regular">
               <a
-                href="#gallery"
+                href="#faqs"
                 css={css({ color: "inherit", textDecoration: "none" })}
               >
                 FAQs

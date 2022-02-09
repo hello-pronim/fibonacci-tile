@@ -4,9 +4,9 @@ import ArrowButton from "@components/common/button/arrowButton";
 import Text from "@components/common/typography";
 import { Container, Wrapper, ImageWrapper, EntryWrapper } from "./styles";
 
-const ContentWithImageModule = ({ content }) => {
+const ContentWithImageModule = ({ id = "", content }) => {
   return (
-    <Container mode={content.mode}>
+    <Container id={id} mode={content.mode}>
       <Wrapper orientation={content.orientation} mode={content.mode}>
         <AccentText top={80}>{content.sectionTitle}</AccentText>
         {content.sectionTitle && (
@@ -18,7 +18,12 @@ const ContentWithImageModule = ({ content }) => {
           const { title, body, emphasisText, button } = entry;
           const entryCount = content.entries.length;
           return (
-            <EntryWrapper key={i} entries={entryCount} mode={content.mode}>
+            <EntryWrapper
+              id={entry.id ? entry.id : `entry-${i}`}
+              key={i}
+              entries={entryCount}
+              mode={content.mode}
+            >
               {title && entryCount > 1 && (
                 <Text as="h4" variant="Display-XSmall">
                   {title}

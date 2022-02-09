@@ -69,6 +69,7 @@ const Support = ({ pageData }) => {
             case "productGuide":
               return (
                 <ContentBlock
+                  id="product-guide"
                   content={{
                     sectionTitle: "Product Guide",
                     image: component?.imageLeftThumb?.[0],
@@ -91,11 +92,13 @@ const Support = ({ pageData }) => {
             case "installation":
               return (
                 <ContentBlock
+                  id="installation-guide"
                   content={{
                     sectionTitle: "Installation Guides",
                     image: component?.imageRightThumb?.[0],
                     entries: [
                       {
+                        id: "fibonacci-tiles",
                         title: component.howToTilesHeading,
                         body: component.howToTilesText,
                         button: {
@@ -104,6 +107,7 @@ const Support = ({ pageData }) => {
                         },
                       },
                       {
+                        id: "fibonacci-slabs",
                         title: component.howToSlabHeading,
                         body: component.howToSlabText,
                         button: {
@@ -120,6 +124,7 @@ const Support = ({ pageData }) => {
             case "imageLeftTextRight":
               return (
                 <ContentBlock
+                  id="care-maintenance"
                   content={{
                     sectionTitle: "Care and Maintenance",
                     image: component?.imageLeftThumb?.[0],
@@ -146,7 +151,11 @@ const Support = ({ pageData }) => {
                 })
               );
               return (
-                <AccordionSection accentText="FAQs" items={accordionItems} />
+                <AccordionSection
+                  id="faqs"
+                  accentText="FAQs"
+                  items={accordionItems}
+                />
               );
           }
         })}
