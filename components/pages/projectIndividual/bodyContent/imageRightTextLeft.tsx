@@ -32,7 +32,7 @@ const ImageRightTextLeft = ({
           />
         </ImageLeft>
       )}
-      {component?.imageThumb?.length > 0 && (
+      {component?.imageThumb?.[0]?.url && (
         <ImageRight>
           <Image
             alt={component.imageThumb[0].title}
@@ -45,4 +45,5 @@ const ImageRightTextLeft = ({
     </Container>
   );
 };
+
 export default ImageRightTextLeft;

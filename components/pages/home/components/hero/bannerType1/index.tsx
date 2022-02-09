@@ -1,6 +1,10 @@
 import Image from "next/image";
 import { ContentWrapper, SlideImage, SlideImageMobile } from "../styles";
 
+// const myLoader = ({ src, width, quality }) => {
+//   return src;
+// };
+
 const BannerType1 = ({ banner }) => {
   return (
     <>
@@ -8,6 +12,7 @@ const BannerType1 = ({ banner }) => {
         <Image
           className="lrg-img"
           layout="responsive"
+          // loader={myLoader}
           src={banner.sliderImage[0].url}
           alt={banner.sliderImage[0].title}
           width={banner.sliderImage[0].width}
@@ -17,6 +22,7 @@ const BannerType1 = ({ banner }) => {
       <SlideImageMobile>
         <Image
           layout="responsive"
+          // loader={myLoader}
           src={banner.sliderMobImage[0].url}
           alt={banner.sliderMobImage[0].title}
           width={banner.sliderMobImage[0].width}

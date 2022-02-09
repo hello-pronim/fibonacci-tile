@@ -34,6 +34,7 @@ export const ProjectQuery: any = gql`
     entry(slug: $slug) {
       id
       title
+      postDate
       ... on projects_projectDetails_Entry {
         id
         location
@@ -56,6 +57,7 @@ export const ProjectQuery: any = gql`
         heroImageThumb: heroImage @transform(handle: "projectThumbnail") {
           id
           url
+          title
           width
           height
         }

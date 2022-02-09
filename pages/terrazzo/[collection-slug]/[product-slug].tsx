@@ -68,22 +68,25 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function ({
     query: ProductQuery,
     variables: { slug: params["product-slug"] },
   });
-
   const {
     data: { globalSet: specifications },
   } = await client.query({
     query: GlobalSpecificationQuery,
   });
-
-  const {
-    data: { entries: relatedProducts },
-  } = await client.query({
-    query: ProductsQuery,
-    variables: {
-      limit: 5,
-      id: ["not", product.id],
-    },
-  });
+  let relatedProducts = [];
+  console.log("here", params["product-slug"], "here prod", product);
+  if (product?.id) {
+    const {
+      data: { entries: rProducts },
+    } = await client.query({
+      query: ProductsQuery,
+      variables: {
+        limit: 5,
+        id: ["not", product.id],
+      },
+    });
+    relatedProducts = rProducts;
+  }
 
   return {
     props: {

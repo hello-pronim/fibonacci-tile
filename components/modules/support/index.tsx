@@ -35,7 +35,7 @@ const SupportModule = ({
               key={support.slug}
               href={support.href}
               active={activeSupport === support.slug}
-              onClick={() => setActiveSupport(support.slug)}
+              onClick={() => setActiveSupport && setActiveSupport(support.slug)}
             >
               <TileInner>
                 <Icon>

@@ -171,11 +171,7 @@ const ProjectsModule = ({ accentText, product }: accordionTypes) => {
         </Project>
       )}
       <Bottom>
-        <ArrowButton
-          mode=""
-          title="How to order samples"
-          link="/how-to-order-samples"
-        />
+        <ArrowButton mode="" title="View all projects" link="/in-use" />
       </Bottom>
     </Container>
   );

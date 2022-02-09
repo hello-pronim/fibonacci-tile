@@ -253,11 +253,13 @@ export const OurStoryPageQuery = gql`
             }
           }
           ... on ourStoryComponents_headingLeftTextRight_BlockType {
+            id
             typeHandle
             headingLeft
             textRight
           }
           ... on ourStoryComponents_headingLeftImageRight_BlockType {
+            id
             typeHandle
             headingLeft
             imageRight {
@@ -269,6 +271,7 @@ export const OurStoryPageQuery = gql`
             sideText
           }
           ... on ourStoryComponents_featurePanel_BlockType {
+            id
             typeHandle
             panelBackgroundColor
             heading1
@@ -284,6 +287,7 @@ export const OurStoryPageQuery = gql`
             textRight
           }
           ... on ourStoryComponents_quote_BlockType {
+            id
             typeHandle
             heading
             subLine

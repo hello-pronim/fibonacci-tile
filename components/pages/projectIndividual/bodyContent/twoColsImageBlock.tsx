@@ -22,7 +22,7 @@ const TwoColsImageBlock = ({
     <Container
       css={css({ py: 120, bg: backgroundColor ? backgroundColor : "#FFFFF8" })}
     >
-      {component?.image1Thumb?.length > 0 && (
+      {component?.image1Thumb?.[0]?.url && (
         <ImageLeft>
           <Image
             alt={component.image1Thumb[0].title}
@@ -32,7 +32,7 @@ const TwoColsImageBlock = ({
           ></Image>
         </ImageLeft>
       )}
-      {component?.image2Thumb?.length > 0 && (
+      {component?.image2Thumb?.[0]?.url && (
         <ImageRight>
           <Image
             alt={component.image2Thumb[0].title}

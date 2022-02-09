@@ -24,10 +24,16 @@ function MainStoryPanel({ story }: mainStoryPanelProps) {
       )}
       <Container>
         <StoryTitleWrapper>
-          <StoryTitle>{story.title}</StoryTitle>
-          {story.subTitle && <StorySubTitle>{story.subTitle}</StorySubTitle>}
+          <StoryTitle>
+            <h4>{story.title}</h4>
+          </StoryTitle>
+          {story.subtitle && (
+            <StorySubTitle>
+              <h4>{story.subtitle}</h4>
+            </StorySubTitle>
+          )}
         </StoryTitleWrapper>
-        {story?.thumbnail?.length > 0 && (
+        {story?.thumbnail?.[0]?.url && (
           <StoryImageWrapper>
             <Image
               src={story.thumbnail[0].url}

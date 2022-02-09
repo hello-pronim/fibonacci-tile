@@ -23,6 +23,7 @@ const Support = ({ pageData }) => {
   const router = useRouter();
   const { asPath } = router;
   const [activeSupport, setActiveSupport] = useState("");
+  
   const supports = [
     {
       slug: "product-support",

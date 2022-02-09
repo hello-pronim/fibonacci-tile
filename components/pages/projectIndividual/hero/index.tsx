@@ -13,6 +13,7 @@ import {
   Detail,
 } from "./styles";
 import React from "react";
+import theme from "@styles/theme";
 
 const Hero = ({ project }) => {
   return (
@@ -20,7 +21,7 @@ const Hero = ({ project }) => {
       <LeftCol>
         <ContentWrapper>
           {project.location && (
-            <Text Base="h6" variant="Body-Large">
+            <Text Base="h6" variant="Body-Large" css={css({color:theme.colors.taupe})}>
               {project.location}
             </Text>
           )}
@@ -29,7 +30,7 @@ const Hero = ({ project }) => {
           </Text>
           {project.projectCompleted && (
             <Text Base="h6" variant="Body-Large">
-              {moment(project.projectCompleted).format("Do MMMM YYYY")}
+              {moment(project.postDate).format("Do MMMM YYYY")}
             </Text>
           )}
           {project.label && (
@@ -46,60 +47,67 @@ const Hero = ({ project }) => {
               {project.title}
             </Text>
           </Detail>
-          <Detail>
-            <Text Base="h6" variant="Display-Overline">
-              SECTOR
-            </Text>
-            <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
-              {project?.sector?.length > 0 &&
-                project?.sector.map((item: any, index: number) => {
+          {project?.sector?.length > 0 && (
+            <Detail>
+              <Text Base="h6" variant="Display-Overline">
+                SECTOR
+              </Text>
+              <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
+                {project?.sector.map((item: any, index: number) => {
                   return `${item.title}${
                     index < project.sector.length - 2 ? ", " : ""
                   }`;
                 })}
-            </Text>
-          </Detail>
-          <Detail>
-            <Text Base="h6" variant="Display-Overline">
-              ARCHITECT
-            </Text>
-            <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
-              {project.architect ? project.architect : "- -"}
-            </Text>
-          </Detail>
-          <Detail>
-            <Text Base="h6" variant="Display-Overline">
-              DESIGNER
-            </Text>
-            <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
-              {project.designer ? project.designer : "- -"}
-            </Text>
-          </Detail>
-          <Detail>
-            <Text Base="h6" variant="Display-Overline">
-              BUILDER
-            </Text>
-            <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
-              {project.builder ? project.builder : "- -"}
-            </Text>
-          </Detail>
+              </Text>
+            </Detail>
+          )}
+          {project.architect && (
+            <Detail>
+              <Text Base="h6" variant="Display-Overline">
+                ARCHITECT
+              </Text>
+              <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
+                {project.architect}
+              </Text>
+            </Detail>
+          )}
+          {project.designer && (
+            <Detail>
+              <Text Base="h6" variant="Display-Overline">
+                DESIGNER
+              </Text>
+              <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
+                {project.designer}
+              </Text>
+            </Detail>
+          )}
+          {project.builder && (
+            <Detail>
+              <Text Base="h6" variant="Display-Overline">
+                BUILDER
+              </Text>
+              <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
+                {project.builder}
+              </Text>
+            </Detail>
+          )}
+          {project.projectCompleted && 
           <Detail>
             <Text Base="h6" variant="Display-Overline">
               PROJECT COMPLETED
             </Text>
             <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
-              {project.projectCompleted
-                ? moment(project.projectCompleted).format("YYYY")
-                : "- -"}
+              {moment(project.projectCompleted).format("YYYY")}
             </Text>
           </Detail>
+          }
+          {project?.featuredProducts?.length > 0 &&
           <Detail>
             <Text Base="h6" variant="Display-Overline">
               FEATURED PRODUCTS
             </Text>
             <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
-              {project?.featuredProducts?.length > 0 &&
-                project?.featuredProducts.map((item: any, index: number) => {
+              {project?.featuredProducts.map((item: any, index: number) => {
                   return (
                     <React.Fragment key={`featured-product-${index}`}>
                       {item.title}
@@ -109,25 +117,21 @@ const Hero = ({ project }) => {
                 })}
             </Text>
           </Detail>
+          }
+          {project.photographer &&
           <Detail>
             <Text Base="h6" variant="Display-Overline">
               PHOTOGRAPHER
             </Text>
             <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
-              {project.photographer ? project.photographer : "- -"}
+              {project.photographer}
             </Text>
           </Detail>
+}
         </DetailsWrapper>
       </LeftCol>
       {project?.heroImage?.[0]?.url && (
-        <RightCol>
-          <Image
-            src={project.heroImage[0].url}
-            alt=""
-            objectFit="cover"
-            width={project.heroImage[0].width}
-            height={project.heroImage[0].height}
-          />
+        <RightCol bgImage={project.heroImage[0].url}>
         </RightCol>
       )}
     </Container>

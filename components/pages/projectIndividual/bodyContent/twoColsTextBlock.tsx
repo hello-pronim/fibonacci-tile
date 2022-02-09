@@ -35,6 +35,7 @@ const TwoColsTextBlock = ({
           <Text
             variant="Body-Regular"
             dangerouslySetInnerHTML={{ __html: component.text }}
+            css={css({p: {pb: 24,}})}
           />
         </RightCol>
       )}

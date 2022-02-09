@@ -27,7 +27,7 @@ const Hero = ({ banners }) => {
     slidesToScroll: 1,
     arrows: false,
     pauseOnHover: false,
-    autoplay: slideTimer && false,
+    autoplay: true,
     autoplaySpeed: 10000,
     beforeChange: (current: number, next: number) => {
       setCurrentSlide(next + 1);
