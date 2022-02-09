@@ -48,7 +48,7 @@ const ContentWrapper = styled("div")(
     px: 16,
     [theme.mediaQueries.small]: {
       alignItems: "center",
-      flexDirection: 'row',
+      flexDirection: "row",
       display: "flex",
       px: 40,
     },
@@ -68,7 +68,7 @@ const ContentWrapper = styled("div")(
       display: "flex",
       justifyContent: "flex-end",
       [theme.mediaQueries.small]: {
-        width: 'initial',
+        width: "initial",
       },
       [theme.mediaQueries.medium]: {
         fontSize: 120,
@@ -93,7 +93,7 @@ const ContentWrapper = styled("div")(
 const CounterWrapper = styled("div")(
   css({
     position: "absolute",
-    display: 'none',
+    display: "none",
     alignItems: "center",
     columnGap: 16,
     right: 40,

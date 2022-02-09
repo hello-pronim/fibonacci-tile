@@ -34,6 +34,7 @@ export const ProjectQuery: any = gql`
     entry(slug: $slug) {
       id
       title
+      postDate
       ... on projects_projectDetails_Entry {
         id
         location
@@ -48,6 +49,18 @@ export const ProjectQuery: any = gql`
           slug
           title
         }
+        heroImage {
+          url
+          height
+          width
+        }
+        heroImageThumb: heroImage @transform(handle: "projectThumbnail") {
+          id
+          url
+          title
+          width
+          height
+        }
         featuredProducts {
           title
           slug
@@ -60,115 +73,91 @@ export const ProjectQuery: any = gql`
               slug
             }
             label
-            backgroundColor
-            productNumber
-            designStory
-            projectIntroduction
-            sampleAvailable
-            materialsComposition
-            finishAppearance
-            applications
-            sizes {
-              id
-              title
-              parent {
-                id
-                title
-              }
-            }
-            productCategories {
-              title
-            }
             thumbImage {
               id
               url
             }
-            largeImage {
+            thumbImageList: thumbImage @transform(handle: "productThumbnail") {
               id
               url
-            }
-            gallery {
-              id
               title
-              url
-            }
-            project1 {
-              id
-              slug
-              title
-              ... on projects_projectDetails_Entry {
-                heroImage {
-                  url
-                }
-                location
-                projectCompleted
-              }
-            }
-            project2 {
-              id
-              slug
-              title
-              ... on projects_projectDetails_Entry {
-                heroImage {
-                  url
-                }
-                location
-                projectCompleted
-              }
+              width
+              height
             }
           }
         }
-        heroImage {
-          url
-          height
-          width
-        }
-        heroImageThumb: heroImage @transform(handle: "projectThumbnail") {
-          id
-          url
-          width
-          height
-        }
         projectComponents {
           ... on projectComponents_heroBlock_BlockType {
+            typeHandle
             sideText
             imageCaption
             heading
             image {
               url
-              height
+            }
+            imageThumb: image
+              @transform(width: 1460, height: 820, mode: "crop") {
+              url
+              title
               width
+              height
             }
           }
+          ... on projectComponents_fullImage_BlockType {
+            typeHandle
+            image {
+              url
+            }
+            imageThumb: image
+              @transform(width: 1460, height: 820, mode: "crop") {
+              url
+              title
+              width
+              height
+            }
+            imageCaption
+          }
           ... on projectComponents_twoColsText_BlockType {
+            typeHandle
             headline
             text
           }
           ... on projectComponents_twoImages_BlockType {
+            typeHandle
             image1 {
               url
+              width
+              height
+            }
+            image1Thumb: image1
+              @transform(width: 710, height: 820, mode: "crop") {
+              url
+              title
               width
               height
             }
             image1Caption
             image2 {
               url
+            }
+            image2Thumb: image2
+              @transform(width: 710, height: 820, mode: "crop") {
+              url
+              title
               width
               height
             }
             image2Caption
           }
-          ... on projectComponents_fullImage_BlockType {
-            image {
-              url
-              width
-              height
-            }
-            imageCaption
-          }
           ... on projectComponents_twoColsImage_BlockType {
+            typeHandle
             image {
               url
+            }
+            imageThumb: image
+              @transform(width: 710, height: 820, mode: "crop") {
+              url
+              title
               width
               height
             }

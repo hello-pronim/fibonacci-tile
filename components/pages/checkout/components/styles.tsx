@@ -138,7 +138,7 @@ const ThreeItemRow = styled("div")(()=>
   })
 );
 
-const InfoText = styled("p")(()=> 
+const InfoText = styled("div")(()=> 
   css({
     p: {
       fontsSize: 2,

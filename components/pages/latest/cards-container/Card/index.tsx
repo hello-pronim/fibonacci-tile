@@ -1,10 +1,20 @@
 import React from "react";
-import CardImg from "../../../../../public/cardImg.png";
+import { excerpt } from "@utils/utility";
 import styled from "@emotion/styled";
 import css from "@styled-system/css";
 import Image from "next/image";
 
-export const Card = ({ cardImg, category, title, description }): any => {
+export const Card = ({ component: {title, newsCategory, newsComponents} }): any => {
+  let imageBlock = null
+  let descBlock = null
+  newsComponents?.length > 0 && newsComponents.forEach(component => {
+    if(component.__typename === "newsComponents_contentFullWidth_BlockType") {
+      descBlock = component;
+    }
+    if(component.__typename === "newsComponents_heroImageFullWidth_BlockType") { 
+      imageBlock = component;
+    }
+  });
   const StyledPhoto = styled.img`
     width: 100%;
     height: 100%;
@@ -63,12 +73,23 @@ export const Card = ({ cardImg, category, title, description }): any => {
       lineHeight: "2px",
     })
   );
+
   return (
     <StyledContainer>
-      <Image src={cardImg} />
-      <CardPill>{category}</CardPill>
-      <Title>{title}</Title>
-      <Description>{description}</Description>
+      {imageBlock?.image?.length > 0 && 
+        <Image 
+        width={600}
+        height={600}
+        src={imageBlock.image[0]?.url} alt={imageBlock.image[0]?.id} 
+        />
+      }
+      {newsCategory?.length > 0 && 
+        <CardPill>{"# " + newsCategory[0].slug}</CardPill>
+      }
+      <Title>{title}</Title> 
+      {descBlock?.contentText && 
+        <Description dangerouslySetInnerHTML={{__html: excerpt(descBlock.contentText)}} />
+      }
     </StyledContainer>
   );
 };

@@ -6,30 +6,70 @@ import FullImageBlock from "./fullImageBlock";
 import ImageRightTextLeft from "./imageRightTextLeft";
 
 const BodyContent = ({ projectComponents, backgroundColor }) => {
+  let hasPadding = false;
+  let hasBottomPadding = false;
   return (
     <>
-      {projectComponents.map((component, index) => {
-        switch (component.__typename) {
-          case "projectComponents_heroBlock_BlockType":
+      {projectComponents.map((component: any, index: number) => {
+        if (!hasPadding) {
+          hasPadding = true;
+        } else {
+          hasPadding = false;
+        }
+        if (index === projectComponents.length - 1) {
+          hasBottomPadding = true;
+        }
+        switch (component.typeHandle) {
+          case "heroBlock":
             return (
-              <HeroBlock key={`component${index}`} component={component} backgroundColor={backgroundColor}/>
-            )
-          case "projectComponents_twoColsText_BlockType":
+              <HeroBlock
+                key={`component${index}`}
+                component={component}
+                backgroundColor={backgroundColor}
+                hasPadding={hasPadding}
+                hasBottomPadding={hasBottomPadding}
+              />
+            );
+          case "fullImage":
             return (
-              <TwoColsTextBlock key={`component${index}`} component={component} backgroundColor={backgroundColor}/>
-            )
-          case "projectComponents_twoImages_BlockType":
+              <FullImageBlock
+                key={`component${index}`}
+                component={component}
+                backgroundColor={backgroundColor}
+                hasPadding={hasPadding}
+                hasBottomPadding={hasBottomPadding}
+              />
+            );
+          case "twoColsText":
             return (
-              <TwoColsImageBlock key={`component${index}`} component={component} backgroundColor={backgroundColor}/>
-            )
-          case "projectComponents_fullImage_BlockType":
+              <TwoColsTextBlock
+                key={`component${index}`}
+                component={component}
+                backgroundColor={backgroundColor}
+                hasPadding={hasPadding}
+                hasBottomPadding={hasBottomPadding}
+              />
+            );
+          case "twoImages":
             return (
-              <FullImageBlock key={`component${index}`} component={component} backgroundColor={backgroundColor}/>
-            )
-          case "projectComponents_twoColsImage_BlockType":
+              <TwoColsImageBlock
+                key={`component${index}`}
+                component={component}
+                backgroundColor={backgroundColor}
+                hasPadding={hasPadding}
+                hasBottomPadding={hasBottomPadding}
+              />
+            );
+          case "twoColsImage":
             return (
-              <ImageRightTextLeft key={`component${index}`} component={component} backgroundColor={backgroundColor}/>
-            )
+              <ImageRightTextLeft
+                key={`component${index}`}
+                component={component}
+                backgroundColor={backgroundColor}
+                hasPadding={hasPadding}
+                hasBottomPadding={hasBottomPadding}
+              />
+            );
         }
       })}
     </>

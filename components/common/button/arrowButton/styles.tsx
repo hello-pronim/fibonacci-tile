@@ -8,11 +8,13 @@ export interface containerProps {
   visibleBorder: boolean;
   fullWidth: boolean;
   size: string;
+  bgColor: string;
+  disabled: boolean;
 }
 
 const ArrowButtonWrapper = styled("div")(({ ...props }: containerProps) =>
   css({
-    a: {
+    "a, .bttnArrow": {
       borderWidth: 1,
       width: props.fullWidth && "100%",
       borderColor: "#B0ABA7",
@@ -33,6 +35,7 @@ const ArrowButtonWrapper = styled("div")(({ ...props }: containerProps) =>
       textDecoration: "none",
       position: "relative",
       transition: "all .4s ease-in-out",
+      background: props.bgColor,
       // paddingRight: props.visibleArrow === true ? 80 : 0,
       "&:after": {
         position: "absolute",
@@ -83,6 +86,9 @@ const ArrowButtonWrapper = styled("div")(({ ...props }: containerProps) =>
         },
       },
     },
+    ".bttnArrow": {
+      cursor: props.disabled ? "not-allowed" : "pointer"
+    }
   })
 );
 

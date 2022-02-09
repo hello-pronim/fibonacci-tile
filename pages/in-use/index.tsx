@@ -65,7 +65,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(
         types,
         projects,
       },
-      revalidate: 500,
+      revalidate: 1,
     };
   }
 );

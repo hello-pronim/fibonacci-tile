@@ -2,7 +2,7 @@ import ProductCard from "@components/common/product/card";
 import { useAppContext } from "@contexts/AppContext";
 import Text from "@components/common/typography";
 import Slider from "react-slick";
-import theme from 'styles/theme';
+import theme from "styles/theme";
 
 import {
   RelatedProductsContainer,
@@ -58,7 +58,7 @@ const RelatedProducts = ({ products, title }) => {
         </Text>
       </Heading>
       <Container>
-        {products?.map((product) => {
+        {products?.map((product: any) => {
           return (
             <ProductCard
               isSelected={

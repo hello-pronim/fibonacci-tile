@@ -13,8 +13,13 @@ const LeftCol = styled('div')(css({
     pb: 104,
 }))
 
-const RightCol = styled('div')(css({
+const RightCol = styled('div')(({bgImage}: {bgImage: string}) => css({
     gridColumn: '7 / span 12',
+    backgroundRepeat: 'none',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center center',
+    backgroundImage: `url(${bgImage})`,
+    height: '100%',
 }))
 
 const Pill = styled('div')(css({

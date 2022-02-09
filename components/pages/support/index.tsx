@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import Hero from "@components/pages/support/components/hero";
 import Sections from "@components/pages/support/components/sections";
 import ContentBlock from "@components/pages/support/components/contentBlock";
-import { productGuide, installationGuides, careGuide} from "./components/contentBlock/constants";
+import {
+  productGuide,
+  installationGuides,
+  careGuide,
+} from "./components/contentBlock/constants";
 import AccordionSection from "./components/accordionSection";
 import { useRouter } from "next/router";
 import SupportModule from "@components/modules/support";
@@ -15,10 +19,11 @@ import QuoteIcon from "public/assets/icons/quote-icon.svg";
 import EnquiryIcon from "public/assets/icons/enquiry-icon.svg";
 import { HeroOverlayWrapper, FormContainer } from "./styles";
 
-const Support = () => {
+const Support = ({ pageData }) => {
   const router = useRouter();
   const { asPath } = router;
   const [activeSupport, setActiveSupport] = useState("");
+  
   const supports = [
     {
       slug: "product-support",
@@ -51,25 +56,25 @@ const Support = () => {
 
     setActiveSupport(slug);
   }, [asPath]);
-  
+
   return (
     <>
-    <Hero />
-    <HeroOverlayWrapper>
-  <SupportModule
-    supports={supports}
-    activeSupport={activeSupport}
-    setActiveSupport={setActiveSupport}
-  />
-</HeroOverlayWrapper>
-<FormContainer>
-  {activeSupport === "quote-request" && <QuoteRequestForm />}
-</FormContainer>
-    <Sections />
-    <ContentBlock content={productGuide}/>
-    <ContentBlock content={installationGuides}/>
-    <ContentBlock content={careGuide}/>
-    <AccordionSection />
+      <Hero />
+      <HeroOverlayWrapper>
+        <SupportModule
+          supports={supports}
+          activeSupport={activeSupport}
+          setActiveSupport={setActiveSupport}
+        />
+      </HeroOverlayWrapper>
+      <FormContainer>
+        {activeSupport === "quote-request" && <QuoteRequestForm />}
+      </FormContainer>
+      <Sections />
+      <ContentBlock content={productGuide} />
+      <ContentBlock content={installationGuides} />
+      <ContentBlock content={careGuide} />
+      <AccordionSection />
     </>
   );
 };

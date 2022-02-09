@@ -1,11 +1,11 @@
 import QuoteModule from "@components/modules/quote";
 import Hero from "./hero";
-import FeaturedProducts from "./featuredProducts";
-import React from "react";
 import BodyContent from "./bodyContent";
+import FeaturedProducts from "./featuredProducts";
 
 const ProjectPage = ({ project }) => {
   const { projectComponents, backgroundColor, featuredProducts } = project;
+
   return (
     <>
       <Hero project={project} />

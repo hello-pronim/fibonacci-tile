@@ -9,11 +9,11 @@ import Footer from "@components/common/footer";
 import { css } from "@styled-system/css";
 
 interface SupportPageProps {
-  page: any;
+  pageData: any;
   notifications: any;
 }
 
-const Support: NextPage<SupportPageProps> = ({ page, notifications }) => {
+const Support: NextPage<SupportPageProps> = ({ pageData, notifications }) => {
   return (
     <div css={css({ position: "relative" })}>
       <Head>
@@ -22,29 +22,27 @@ const Support: NextPage<SupportPageProps> = ({ page, notifications }) => {
         <meta name="robots" content="index, follow" />
       </Head>
       <Header mode="light" position="absolute" notifications={notifications} />
-      <SupportPage />
+      <SupportPage pageData={pageData} />
       <Footer />
     </div>
   );
 };
 
-export const getStaticProps: GetStaticProps = withGlobalData(
-  async () => {
-    const {
-      data: { entry: page },
-    } = await client.query({
-      query: PageQuery,
-      variables: {
-        slug: "support",
-      },
-    });
-    return {
-      props: {
-        page,
-      },
-      revalidate: 500,
-    };
-  }
-);
+export const getStaticProps: GetStaticProps = withGlobalData(async () => {
+  const {
+    data: { entry: pageData },
+  } = await client.query({
+    query: PageQuery,
+    variables: {
+      slug: "support",
+    },
+  });
+  return {
+    props: {
+      pageData,
+    },
+    revalidate: 1,
+  };
+});
 
 export default Support;
