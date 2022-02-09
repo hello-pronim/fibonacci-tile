@@ -33,7 +33,7 @@ function MainStoryPanel({ story }: mainStoryPanelProps) {
             </StorySubTitle>
           )}
         </StoryTitleWrapper>
-        {story?.thumbnail?.length > 0 && (
+        {story?.thumbnail?.[0]?.url > 0 && (
           <StoryImageWrapper>
             <Image
               src={story.thumbnail[0].url}
