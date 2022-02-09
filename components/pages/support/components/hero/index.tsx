@@ -26,7 +26,12 @@ const Hero = () => {
         <Text variant="Display-Large" altFont>
           Product Support
         </Text>
-        <Text variant="Display-Overline">How can we help?</Text>
+        <Text
+          variant="Display-Overline"
+          css={css({ textTransform: "uppercase" })}
+        >
+          How can we help?
+        </Text>
       </div>
     </Container>
   );

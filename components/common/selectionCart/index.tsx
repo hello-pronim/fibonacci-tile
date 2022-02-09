@@ -5,6 +5,7 @@ import { useAppContext } from "@contexts/AppContext";
 import ProductCard from "@components/common/product/card";
 import ArrowButton from "@components/common/button/arrowButton";
 import CheckMarkIcon from "@components/icons/checkmark";
+import CloseIcon from "@components/icons/close";
 import Text from "@components/common/typography";
 import theme from "@styles/theme";
 import Chevron from "public/assets/icons/chevron.svg";
@@ -59,7 +60,47 @@ const SelectionCart = ({ active, newSelection, tab }) => {
       })}
     >
       {tab === "contact" && (
-        <div css={css({ height: "100%", overflow: "scroll", py: 36, px: 24 })}>
+        <div
+          css={css({
+            height: "100%",
+            overflow: "scroll",
+            pt: 0,
+            pb: 108,
+            px: 24,
+          })}
+        >
+          <div
+            onClick={() =>
+              dispatch({
+                type: "OPEN_DRAWER",
+                value: false,
+              })
+            }
+            css={css({
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-end",
+              gap: 12,
+              py: 16,
+              cursor: "pointer",
+              color: theme.colors.stoneTints[8],
+            })}
+          >
+            <Text
+              variant="Body-XSmall"
+              altFont
+              css={css({ textTransform: "uppercase" })}
+            >
+              Close
+            </Text>
+            <CloseIcon
+              css={css({
+                width: 12,
+                height: 12,
+                color: theme.colors.stoneTints[8],
+              })}
+            />
+          </div>
           <div css={css({ display: "flex", alignItems: "center" })}>
             <Text variant="Display-Small" altFont>
               Need further assistance? <br />
@@ -120,7 +161,47 @@ const SelectionCart = ({ active, newSelection, tab }) => {
         </div>
       )}
       {tab === "support" && (
-        <div css={css({ height: "100%", overflow: "scroll", py: 36, px: 24 })}>
+        <div
+          css={css({
+            height: "100%",
+            overflow: "scroll",
+            pt: 0,
+            pb: 128,
+            px: 24,
+          })}
+        >
+          <div
+            onClick={() =>
+              dispatch({
+                type: "OPEN_DRAWER",
+                value: false,
+              })
+            }
+            css={css({
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-end",
+              gap: 12,
+              py: 16,
+              cursor: "pointer",
+              color: theme.colors.stoneTints[8],
+            })}
+          >
+            <Text
+              variant="Body-XSmall"
+              altFont
+              css={css({ textTransform: "uppercase" })}
+            >
+              Close
+            </Text>
+            <CloseIcon
+              css={css({
+                width: 12,
+                height: 12,
+                stroke: theme.colors.stoneTints[8],
+              })}
+            />
+          </div>
           <div
             css={css({
               display: "flex",
@@ -313,8 +394,46 @@ const SelectionCart = ({ active, newSelection, tab }) => {
       {tab === "cart" && (
         <>
           <div
-            css={css({ height: "100%", overflow: "scroll", py: 36, px: 24 })}
+            css={css({
+              height: "100%",
+              overflow: "scroll",
+              pt: 0,
+              pb: 36,
+              px: 24,
+            })}
           >
+            <div
+              onClick={() =>
+                dispatch({
+                  type: "OPEN_DRAWER",
+                  value: false,
+                })
+              }
+              css={css({
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "flex-end",
+                gap: 12,
+                py: 16,
+                cursor: "pointer",
+                color: theme.colors.stoneTints[8],
+              })}
+            >
+              <Text
+                variant="Body-XSmall"
+                altFont
+                css={css({ textTransform: "uppercase" })}
+              >
+                Close
+              </Text>
+              <CloseIcon
+                css={css({
+                  width: 12,
+                  height: 12,
+                  color: theme.colors.stoneTints[8],
+                })}
+              />
+            </div>
             <div css={css({ display: "flex", alignItems: "center" })}>
               {newSelection ? (
                 <>
