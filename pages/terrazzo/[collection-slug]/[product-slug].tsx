@@ -94,7 +94,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function ({
       relatedProducts,
       params,
     },
-    revalidate: 1,
+    revalidate: 60,
   };
 });
 
