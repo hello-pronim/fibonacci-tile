@@ -46,7 +46,7 @@ const LinkWrapper = styled("div")(
     display: "flex",
     alignItems: "center",
     columnGap: 20,
-    fontWeight: 700,
+    fontWeight: 500,
     mt: 16,
     svg: {
       transition: "ease all 0.3s",
