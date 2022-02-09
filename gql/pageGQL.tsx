@@ -20,9 +20,19 @@ export const PageQuery = gql`
           ... on productSupportComponents_productGuide_BlockType {
             id
             typeHandle
-            rightEmphasisText
+            imageLeft {
+              url
+            }
+            imageLeftThumb: imageLeft
+              @transform(width: 710, height: 710, mode: "crop") {
+              url
+              title
+              width
+              height
+            }
             rightHeading
             rightText
+            rightEmphasisText
             rightEmphasisButton
             rightEmphasisPdf {
               url
@@ -31,31 +41,49 @@ export const PageQuery = gql`
           ... on productSupportComponents_installation_BlockType {
             id
             typeHandle
-            howToSlabButton
-            howToSlabGuide {
-              url
-            }
-            howToSlabHeading
-            howToSlabText
+            howToTilesHeading
+            howToTilesText
             howToTilesButton
             howToTilesGuide {
               url
             }
-            howToTilesHeading
-            howToTilesText
+            howToSlabHeading
+            howToSlabText
+            howToSlabButton
+            howToSlabGuide {
+              url
+            }
             imageRight {
               url
+            }
+            imageRightThumb: imageRight
+              @transform(width: 1065, height: 1216, mode: "crop") {
+              url
+              title
+              width
+              height
             }
           }
           ... on productSupportComponents_imageLeftTextRight_BlockType {
             id
             typeHandle
             rightHeading
+            rightText
+            rightButton
             rightButtonLink {
               id
+              url
             }
-            rightButton
-            rightText
+            imageLeft {
+              url
+            }
+            imageLeftThumb: imageLeft
+              @transform(width: 710, height: 710, mode: "crop") {
+              url
+              title
+              width
+              height
+            }
           }
           ... on productSupportComponents_faqs_BlockType {
             id

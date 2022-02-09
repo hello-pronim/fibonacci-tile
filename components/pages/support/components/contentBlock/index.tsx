@@ -15,7 +15,7 @@ const ContentWithImageModule = ({ content }) => {
           </Text>
         )}
         {content.entries.map((entry: any, i: number) => {
-          const { title, body, button } = entry;
+          const { title, body, emphasisText, button } = entry;
           const entryCount = content.entries.length;
           return (
             <EntryWrapper key={i} entries={entryCount} mode={content.mode}>
@@ -31,6 +31,9 @@ const ContentWithImageModule = ({ content }) => {
                   dangerouslySetInnerHTML={{ __html: body }}
                 />
               )}
+              {emphasisText && (
+                <span style={{ color: "#a19082" }}>{emphasisText}</span>
+              )}
               {button.label && (
                 <ArrowButton
                   mode={content.mode === "dark" ? "light" : "dark"}
@@ -43,11 +46,11 @@ const ContentWithImageModule = ({ content }) => {
         })}
       </Wrapper>
       <ImageWrapper orientation={content.orientation}>
-        {content.image && (
+        {content?.image?.url && (
           <Image
-            alt=""
-            src={content.image.src}
             layout="responsive"
+            alt={content?.image?.title}
+            src={content.image.url}
             width={content.image.width}
             height={content.image.height}
           />
