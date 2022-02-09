@@ -17,7 +17,7 @@ const Support: NextPage<SupportPageProps> = ({ pageData, notifications }) => {
   return (
     <div css={css({ position: "relative" })}>
       <Head>
-        <title>Home | Fibonacci</title>
+        <title>Support | Fibonacci</title>
         <meta name="description" content="Support | Fibonacci" />
         <meta name="robots" content="index, follow" />
       </Head>
@@ -35,7 +35,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async () => {
   } = await client.query({
     query: PageQuery,
     variables: {
-      slug: "support",
+      slug: "product-support",
     },
   });
   return {

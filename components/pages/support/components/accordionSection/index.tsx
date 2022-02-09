@@ -9,13 +9,14 @@ import {
 } from "./styles";
 import Text from "@components/common/typography";
 import { css } from "@styled-system/css";
-import Accordion from "@components/modules/accordion/accordion";
+import Accordion from "@components/modules/accordion";
 
 interface accordionTypes {
   accentText?: string;
+  items: Array<any>;
 }
 
-const AccordionSection = ({ accentText }: accordionTypes) => {
+const AccordionSection = ({ accentText, items }: accordionTypes) => {
   return (
     <Container>
       <AccentText top={400}>{accentText}</AccentText>
@@ -85,7 +86,7 @@ const AccordionSection = ({ accentText }: accordionTypes) => {
         </SectionList>
       </Sections>
       <IntroWrapper>
-        <Accordion/>
+        <Accordion items={items} />
       </IntroWrapper>
     </Container>
   );

@@ -13,6 +13,63 @@ export const PageQuery = gql`
         pageHeading
         pageIntro
       }
+      ... on productSupport_productSupport_Entry {
+        id
+        pageHeading
+        productSupportComponents {
+          ... on productSupportComponents_productGuide_BlockType {
+            id
+            typeHandle
+            rightEmphasisText
+            rightHeading
+            rightText
+            rightEmphasisButton
+            rightEmphasisPdf {
+              url
+            }
+          }
+          ... on productSupportComponents_installation_BlockType {
+            id
+            typeHandle
+            howToSlabButton
+            howToSlabGuide {
+              url
+            }
+            howToSlabHeading
+            howToSlabText
+            howToTilesButton
+            howToTilesGuide {
+              url
+            }
+            howToTilesHeading
+            howToTilesText
+            imageRight {
+              url
+            }
+          }
+          ... on productSupportComponents_imageLeftTextRight_BlockType {
+            id
+            typeHandle
+            rightHeading
+            rightButtonLink {
+              id
+            }
+            rightButton
+            rightText
+          }
+          ... on productSupportComponents_faqs_BlockType {
+            id
+            typeHandle
+            faqList {
+              ... on faqList_BlockType {
+                id
+                question
+                text
+              }
+            }
+          }
+        }
+      }
       ... on collections_collections_Entry {
         id
         bannerSubline

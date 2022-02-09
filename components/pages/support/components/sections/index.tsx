@@ -11,28 +11,29 @@ import Text from "@components/common/typography";
 import { css } from "@styled-system/css";
 import theme from "@styles/theme";
 
-interface accordionTypes {
+interface SupportSectionTypes {
   accentText?: string;
+  pageHeading?: string;
 }
 
-const ProjectsModule = ({ accentText }: accordionTypes) => {
+const SupportSections = ({ accentText, pageHeading }: SupportSectionTypes) => {
   return (
     <Container id="projects">
       {accentText && <AccentText top={400}>{accentText}</AccentText>}
       <IntroWrapper>
-        <Text
-          variant="Display-Medium"
-          altFont
-          css={css({
-            fontSize: 24,
-            [theme.mediaQueries.small]: {
-              fontSize: 42,
-            },
-          })}
-        >
-          Completely homogenous, Fibonacci Tiles <br/> and Slabs have a high density
-          and are <br/> exceptionally strong and hard wearing.
-        </Text>
+        {pageHeading && (
+          <Text
+            variant="Display-Medium"
+            altFont
+            css={css({
+              fontSize: 24,
+              [theme.mediaQueries.small]: {
+                fontSize: 42,
+              },
+            })}
+            dangerouslySetInnerHTML={{ __html: pageHeading }}
+          />
+        )}
       </IntroWrapper>
       <Sections>
         <Text variant="Display-Overline">SECTIONS</Text>
@@ -103,4 +104,4 @@ const ProjectsModule = ({ accentText }: accordionTypes) => {
   );
 };
 
-export default ProjectsModule;
+export default SupportSections;

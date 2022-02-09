@@ -22,12 +22,12 @@ import { css } from "@styled-system/css";
 import Arrow from "@components/common/icons/arrow";
 import theme from "@styles/theme";
 
-interface accordionTypes {
+interface ProjectModuleTypes {
   accentText: string;
   product: any;
 }
 
-const ProjectsModule = ({ accentText, product }: accordionTypes) => {
+const ProjectsModule = ({ accentText, product }: ProjectModuleTypes) => {
   const { project1, project2, backgroundColor } = product;
   return (
     <Container

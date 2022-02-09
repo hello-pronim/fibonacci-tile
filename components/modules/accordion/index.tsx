@@ -1,83 +1,56 @@
 import React, { useState } from "react";
-import { GetStaticProps } from "next";
-import AccentText, { AccentTextMobile } from "@components/common/accentText";
-import { Container, Wrapper, Item, Top, Inner, Toggle } from "./styles";
-import mockData from "./constants";
-import theme from "styles/theme";
-import Text from "@components/common/typography";
 import { css } from "@styled-system/css";
+import Text from "@components/common/typography";
 import Arrow from "@components/icons/arrowDown";
+import { Item, Top, Inner, Toggle } from "./styles";
+import theme from "styles/theme";
 
-interface accordionTypes {
-  accentText: string;
-  items: any;
-  backgroundColor: string;
-}
-
-const AccordionModule = ({
-  accentText,
-  items,
-  backgroundColor,
-}: accordionTypes) => {
+const Accordion = ({ items }) => {
   const [activeIndex, setActiveIndex] = useState(0);
+
   return (
-    <Container
-      id="technical-specifications"
-      css={css({ bg: backgroundColor ? backgroundColor : "#E2E9EC" })}
-    >
-      <AccentText top={154}>{accentText}</AccentText>
-      <Wrapper>
-        {items.map((item: any, index: number) => {
-          return (
-            <Item key={`accordian-${index}`}>
-              <Top
+    <>
+      {items.map((item: any, index: number) => {
+        return (
+          <Item key={`accordian-${index}`}>
+            <Top
+              onClick={() =>
+                setActiveIndex(activeIndex === index ? null : index)
+              }
+            >
+              <Text
+                variant="Display-Small"
+                css={css({
+                  fontSize: 26,
+                  [theme.mediaQueries.small]: {
+                    fontSize: 32,
+                  },
+                })}
+              >
+                {item.title}
+              </Text>
+              <Toggle
+                css={css({
+                  svg: {
+                    transition: "ease all 0.3s",
+                    transform: activeIndex === index && "rotate(180deg)",
+                  },
+                })}
                 onClick={() =>
                   setActiveIndex(activeIndex === index ? null : index)
                 }
               >
-                <Text
-                  variant="Display-Small"
-                  css={css({
-                    fontSize: 26,
-                    [theme.mediaQueries.small]: {
-                      fontSize: 32,
-                    },
-                  })}
-                >
-                  {item.specificationsTitle}
-                </Text>
-                <Toggle
-                  css={css({
-                    svg: {
-                      transition: "ease all 0.3s",
-                      transform: activeIndex === index && "rotate(180deg)",
-                    },
-                  })}
-                  onClick={() =>
-                    setActiveIndex(activeIndex === index ? null : index)
-                  }
-                >
-                  <Arrow width={18} />
-                </Toggle>
-              </Top>
-              {index === activeIndex && (
-                <Inner
-                  dangerouslySetInnerHTML={{ __html: item.specifications }}
-                >
-                  {/* {item.secondaryHeading && (
-                    <Text variant="Body-Large" css={css({ mb: 16 })}>
-                      <strong>{item.secondaryHeading}</strong>
-                    </Text>
-                  )}
-                  <span>{item.content}</span> */}
-                </Inner>
-              )}
-            </Item>
-          );
-        })}
-      </Wrapper>
-    </Container>
+                <Arrow width={18} />
+              </Toggle>
+            </Top>
+            {index === activeIndex && (
+              <Inner dangerouslySetInnerHTML={{ __html: item.content }} />
+            )}
+          </Item>
+        );
+      })}
+    </>
   );
 };
 
-export default AccordionModule;
+export default Accordion;

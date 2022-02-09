@@ -1,29 +1,29 @@
 import React, { useEffect, useState } from "react";
-import Hero from "@components/pages/support/components/hero";
-import Sections from "@components/pages/support/components/sections";
-import ContentBlock from "@components/pages/support/components/contentBlock";
+import { useRouter } from "next/router";
 import {
   productGuide,
   installationGuides,
   careGuide,
 } from "./components/contentBlock/constants";
-import AccordionSection from "./components/accordionSection";
-import { useRouter } from "next/router";
+import Hero from "@components/pages/support/components/hero";
+import Sections from "@components/pages/support/components/sections";
+import ContentBlock from "@components/pages/support/components/contentBlock";
 import SupportModule from "@components/modules/support";
-
+import AccordionSection from "./components/accordionSection";
 import QuoteRequestForm from "./sections/forms/quoteRequestForm";
 
 import SupportIcon from "public/assets/icons/support-icon.svg";
 import SamplesIcon from "public/assets/icons/sample-icon.svg";
 import QuoteIcon from "public/assets/icons/quote-icon.svg";
 import EnquiryIcon from "public/assets/icons/enquiry-icon.svg";
+
 import { HeroOverlayWrapper, FormContainer } from "./styles";
 
 const Support = ({ pageData }) => {
   const router = useRouter();
   const { asPath } = router;
   const [activeSupport, setActiveSupport] = useState("");
-  
+
   const supports = [
     {
       slug: "product-support",
@@ -53,7 +53,6 @@ const Support = ({ pageData }) => {
 
   useEffect(() => {
     const slug = asPath.split("#")[1] ?? "";
-
     setActiveSupport(slug);
   }, [asPath]);
 
@@ -70,12 +69,13 @@ const Support = ({ pageData }) => {
       <FormContainer>
         {activeSupport === "quote-request" && <QuoteRequestForm />}
       </FormContainer>
-      <Sections />
+      {pageData?.pageHeading && <Sections pageHeading={pageData.pageHeading} />}
       <ContentBlock content={productGuide} />
       <ContentBlock content={installationGuides} />
       <ContentBlock content={careGuide} />
-      <AccordionSection />
+      <AccordionSection items={[]} />
     </>
   );
 };
+
 export default Support;
