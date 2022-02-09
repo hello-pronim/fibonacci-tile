@@ -13,6 +13,28 @@ export const PageQuery = gql`
         pageHeading
         pageIntro
       }
+      ... on howToOrderSamples_howToOrderSamples_Entry {
+        id
+        orderSamplesComponents {
+          ... on orderSamplesComponents_headingLeftTextRight_BlockType {
+            id
+            typeHandle
+            headingText
+            textRight
+          }
+          ... on orderSamplesComponents_leftImageRightText_BlockType {
+            id
+            typeHandle
+            textHeading
+            text
+          }
+        }
+      }
+      ... on requestAQuote_requestAQuote_Entry {
+        id
+        title
+        pageIntro
+      }
       ... on productSupport_productSupport_Entry {
         id
         pageHeading
