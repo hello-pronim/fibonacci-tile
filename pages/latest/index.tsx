@@ -168,7 +168,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
       news,
       newsletter: newsletter?.newsletter,
     },
-    revalidate: 500,
+    revalidate: 1,
   };
 });
 

@@ -57,7 +57,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function ({
     props: {
       project,
     },
-    revalidate: 60,
+    revalidate: 1,
   };
 });
 

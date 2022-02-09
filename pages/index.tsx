@@ -39,7 +39,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async () => {
     props: {
       pageData,
     },
-    revalidate: 50,
+    revalidate: 1,
   };
 });
 

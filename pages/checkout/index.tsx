@@ -26,7 +26,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(
   async function () {
     return {
       props: {},
-      revalidate: 500,
+      revalidate: 1,
     };
   }
 );
