@@ -18,17 +18,16 @@ export interface NavIconProps {
 }
 
 const bgPicker = (mode) => {
-  if(mode === 'dark') {
-    return "white"
+  if (mode === "dark") {
+    return "white";
   }
-  if(mode === 'light') {
-    return 'charcoal'
+  if (mode === "light") {
+    return "charcoal";
   }
-  return 'transparent'
-}
+  return "transparent";
+};
 
 const Container = styled("div")(({ ...props }: containerProps) =>
-  
   css({
     position: props.position ? props.position : "relative",
     width: "100%",
@@ -73,13 +72,13 @@ const NavRight = styled("div")(() =>
     justifyContent: "flex-end",
     a: {
       display: "none",
-      "&:nth-last-child(1)": {
+      "&:nth-last-of-type(1)": {
         display: "flex",
       },
     },
     [theme.mediaQueries.small]: {
       a: {
-        "&:nth-last-child(2)": {
+        "&:nth-last-of-type(2)": {
           display: "flex",
         },
       },

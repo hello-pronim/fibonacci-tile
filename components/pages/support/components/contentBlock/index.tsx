@@ -20,7 +20,7 @@ const ContentWithImageModule = ({ id = "", content }) => {
           return (
             <EntryWrapper
               id={entry.id ? entry.id : `entry-${i}`}
-              key={i}
+              key={`entry-${id}-${i}`}
               entries={entryCount}
               mode={content.mode}
             >

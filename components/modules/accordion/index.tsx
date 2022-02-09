@@ -12,7 +12,7 @@ const Accordion = ({ items }) => {
     <>
       {items.map((item: any, index: number) => {
         return (
-          <Item key={`accordian-${index}`}>
+          <Item key={`accordion-${index}`}>
             <Top
               onClick={() =>
                 setActiveIndex(activeIndex === index ? null : index)

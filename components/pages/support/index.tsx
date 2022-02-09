@@ -46,6 +46,7 @@ const Support = ({ pageData }) => {
 
   useEffect(() => {
     const slug = asPath.split("#")[1] ?? "";
+    console.log(slug);
     setActiveSupport(slug);
   }, [asPath]);
 
@@ -64,101 +65,107 @@ const Support = ({ pageData }) => {
       </FormContainer>
       {pageData?.pageHeading && <Sections pageHeading={pageData.pageHeading} />}
       {pageData?.productSupportComponents?.length > 0 &&
-        pageData.productSupportComponents.map((component: any) => {
-          switch (component.typeHandle) {
-            case "productGuide":
-              return (
-                <ContentBlock
-                  id="product-guide"
-                  content={{
-                    sectionTitle: "Product Guide",
-                    image: component?.imageLeftThumb?.[0],
-                    entries: [
-                      {
-                        title: component.rightHeading,
-                        body: component.rightText,
-                        emphasisText: component.rightEmphasisText,
-                        button: {
-                          label: component.rightEmphasisButton,
-                          link: component.rightEmphasisPdf?.url,
+        pageData.productSupportComponents.map(
+          (component: any, index: number) => {
+            switch (component.typeHandle) {
+              case "productGuide":
+                return (
+                  <ContentBlock
+                    key={`content-block-${index}`}
+                    id="product-guide"
+                    content={{
+                      sectionTitle: "Product Guide",
+                      image: component?.imageLeftThumb?.[0],
+                      entries: [
+                        {
+                          title: component.rightHeading,
+                          body: component.rightText,
+                          emphasisText: component.rightEmphasisText,
+                          button: {
+                            label: component.rightEmphasisButton,
+                            link: component.rightEmphasisPdf?.url,
+                          },
                         },
-                      },
-                    ],
-                    mode: "light",
-                    orientation: "right",
-                  }}
-                />
-              );
-            case "installation":
-              return (
-                <ContentBlock
-                  id="installation-guide"
-                  content={{
-                    sectionTitle: "Installation Guides",
-                    image: component?.imageRightThumb?.[0],
-                    entries: [
-                      {
-                        id: "fibonacci-tiles",
-                        title: component.howToTilesHeading,
-                        body: component.howToTilesText,
-                        button: {
-                          label: component.howToTilesButton,
-                          link: component.howToTilesGuide?.url,
+                      ],
+                      mode: "light",
+                      orientation: "right",
+                    }}
+                  />
+                );
+              case "installation":
+                return (
+                  <ContentBlock
+                    key={`content-block-${index}`}
+                    id="installation-guide"
+                    content={{
+                      sectionTitle: "Installation Guides",
+                      image: component?.imageRightThumb?.[0],
+                      entries: [
+                        {
+                          id: "fibonacci-tiles",
+                          title: component.howToTilesHeading,
+                          body: component.howToTilesText,
+                          button: {
+                            label: component.howToTilesButton,
+                            link: component.howToTilesGuide?.url,
+                          },
                         },
-                      },
-                      {
-                        id: "fibonacci-slabs",
-                        title: component.howToSlabHeading,
-                        body: component.howToSlabText,
-                        button: {
-                          label: component.howToSlabButton,
-                          link: component.howToSlabGuide?.url,
+                        {
+                          id: "fibonacci-slabs",
+                          title: component.howToSlabHeading,
+                          body: component.howToSlabText,
+                          button: {
+                            label: component.howToSlabButton,
+                            link: component.howToSlabGuide?.url,
+                          },
                         },
-                      },
-                    ],
-                    mode: "dark",
-                    orientation: "left",
-                  }}
-                />
-              );
-            case "imageLeftTextRight":
-              return (
-                <ContentBlock
-                  id="care-maintenance"
-                  content={{
-                    sectionTitle: "Care and Maintenance",
-                    image: component?.imageLeftThumb?.[0],
-                    entries: [
-                      {
-                        title: component.rightHeading,
-                        body: component.rightText,
-                        button: {
-                          label: component.rightButton,
-                          link: component.rightButtonLink?.url,
+                      ],
+                      mode: "dark",
+                      orientation: "left",
+                    }}
+                  />
+                );
+              case "imageLeftTextRight":
+                return (
+                  <ContentBlock
+                    key={`content-block-${index}`}
+                    id="care-maintenance"
+                    content={{
+                      sectionTitle: "Care and Maintenance",
+                      image: component?.imageLeftThumb?.[0],
+                      entries: [
+                        {
+                          title: component.rightHeading,
+                          body: component.rightText,
+                          button: {
+                            label: component.rightButton,
+                            link: component.rightButtonLink?.url,
+                          },
                         },
-                      },
-                    ],
-                    mode: "light",
-                    orientation: "right",
-                  }}
-                />
-              );
-            case "faqs":
-              const accordionItems: Array<any> = component.faqList.map(
-                (item: any) => ({
-                  title: item.question,
-                  content: item.text,
-                })
-              );
-              return (
-                <AccordionSection
-                  id="faqs"
-                  accentText="FAQs"
-                  items={accordionItems}
-                />
-              );
+                      ],
+                      mode: "light",
+                      orientation: "right",
+                    }}
+                  />
+                );
+              case "faqs":
+                const accordionItems: Array<any> = component.faqList.map(
+                  (item: any) => ({
+                    title: item.question,
+                    content: item.text,
+                  })
+                );
+                return (
+                  <AccordionSection
+                    key={`content-block-${index}`}
+                    id="faqs"
+                    accentText="FAQs"
+                    items={accordionItems}
+                  />
+                );
+            }
           }
-        })}
+        )}
     </>
   );
 };
