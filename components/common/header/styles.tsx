@@ -138,6 +138,7 @@ const NavItem = styled("a")(({ mode }: navItemProps) =>
     alignItems: "center",
     fontWeight: 300,
     columnGap: "8px",
+    cursor: "pointer",
   })
 );
 
