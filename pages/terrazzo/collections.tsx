@@ -105,7 +105,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
       sampleCta1,
       sampleCta2,
     },
-    revalidate: 500,
+    revalidate: 1,
   };
 });
 

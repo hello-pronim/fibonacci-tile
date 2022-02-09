@@ -14,15 +14,22 @@ interface accordionTypes {
   backgroundColor: string;
 }
 
-const AccordionModule = ({ accentText, items, backgroundColor }: accordionTypes) => {
+const AccordionModule = ({
+  accentText,
+  items,
+  backgroundColor,
+}: accordionTypes) => {
   const [activeIndex, setActiveIndex] = useState(0);
   return (
-    <Container id="technical-specifications" css={css({ bg: backgroundColor ? backgroundColor : "#E2E9EC" })}>
+    <Container
+      id="technical-specifications"
+      css={css({ bg: backgroundColor ? backgroundColor : "#E2E9EC" })}
+    >
       <AccentText top={154}>{accentText}</AccentText>
       <Wrapper>
-        {items.map((item, index) => {
+        {items.map((item: any, index: number) => {
           return (
-            <Item key={index}>
+            <Item key={`accordian-${index}`}>
               <Top
                 onClick={() =>
                   setActiveIndex(activeIndex === index ? null : index)
@@ -54,7 +61,9 @@ const AccordionModule = ({ accentText, items, backgroundColor }: accordionTypes)
                 </Toggle>
               </Top>
               {index === activeIndex && (
-                <Inner dangerouslySetInnerHTML={{__html: item.specifications}}>
+                <Inner
+                  dangerouslySetInnerHTML={{ __html: item.specifications }}
+                >
                   {/* {item.secondaryHeading && (
                     <Text variant="Body-Large" css={css({ mb: 16 })}>
                       <strong>{item.secondaryHeading}</strong>

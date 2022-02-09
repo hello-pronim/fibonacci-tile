@@ -74,7 +74,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function ({
       collection,
       products,
     },
-    revalidate: 60,
+    revalidate: 1,
   };
 });
 
