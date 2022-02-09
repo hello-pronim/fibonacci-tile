@@ -22,9 +22,6 @@ const HeroBlock = ({
   }
   return (
     <Container css={css(cssProps)}>
-      {component?.sideText && (
-        <AccentText top={300}>{component.sideText}</AccentText>
-      )}
       <FwWrapper>
         {component.heading && (
           <Text
@@ -35,6 +32,10 @@ const HeroBlock = ({
           />
         )}
         {component?.imageThumb?.length > 0 && (
+          <div css={css({position: 'relative'})}>
+            {component?.sideText && (
+            <AccentText top={0} css={css({left:'-260px'})}>{component.sideText}</AccentText>
+            )}
           <Image
             layout="responsive"
             alt={component.imageThumb[0].title}
@@ -42,6 +43,7 @@ const HeroBlock = ({
             width={component.imageThumb[0].width}
             height={component.imageThumb[0].height}
           ></Image>
+          </div>
         )}
         {component?.imageCaption && (
           <Text
