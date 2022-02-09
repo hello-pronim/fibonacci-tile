@@ -21,7 +21,7 @@ function StoryPanel({ story }: storyPanelProps) {
         {story.accentText && (
           <AccentText top={120}>{story.accentText}</AccentText>
         )}
-        <StoryTitleWrapper>{story.title}</StoryTitleWrapper>
+        <StoryTitleWrapper><h4>{story.title}</h4></StoryTitleWrapper>
       </PanelLeft>
       <PanelRight>
         <StoryContentWrapper
