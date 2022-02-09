@@ -30,7 +30,6 @@ const Support: NextPage<SupportPageProps> = ({ pageData, notifications }) => {
 
 export const getStaticProps: GetStaticProps = withGlobalData(async () => {
   const client = initializeApollo();
-
   const {
     data: { entry: pageData },
   } = await client.query({

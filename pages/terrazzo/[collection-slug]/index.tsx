@@ -36,6 +36,7 @@ const Collection: NextPage<CollectionPageProps> = ({
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const client = initializeApollo();
   const {
     data: { categories: collections },
   } = await client.query({
