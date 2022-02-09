@@ -29,7 +29,7 @@ function StoryPanel({ story }: storyPanelProps) {
         <StoryContentWrapper
           dangerouslySetInnerHTML={{ __html: story.content }}
         />
-        {story?.thumbnail?.[0]?.url > 0 && (
+        {story?.thumbnail?.[0]?.url && (
           <StoryImageWrapper>
             <Image
               src={story.thumbnail[0].url}

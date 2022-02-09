@@ -27,13 +27,13 @@ function MainStoryPanel({ story }: mainStoryPanelProps) {
           <StoryTitle>
             <h4>{story.title}</h4>
           </StoryTitle>
-          {story.subTitle && (
+          {story.subtitle && (
             <StorySubTitle>
-              <h4>{story.subTitle}</h4>
+              <h4>{story.subtitle}</h4>
             </StorySubTitle>
           )}
         </StoryTitleWrapper>
-        {story?.thumbnail?.[0]?.url > 0 && (
+        {story?.thumbnail?.[0]?.url && (
           <StoryImageWrapper>
             <Image
               src={story.thumbnail[0].url}
