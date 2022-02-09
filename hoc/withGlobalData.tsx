@@ -26,6 +26,7 @@ export const withGlobalData = (gssp: any) => {
         notifications: notifications?.notifications,
         specifications: specifications?.technicalSpecifications,
       },
+      revalidate: 1,
     };
   };
 };
