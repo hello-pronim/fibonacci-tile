@@ -5,6 +5,7 @@ import FeaturedProducts from "./featuredProducts";
 
 const ProjectPage = ({ project }) => {
   const { projectComponents, backgroundColor, featuredProducts } = project;
+  
   return (
     <>
       <Hero project={project} />

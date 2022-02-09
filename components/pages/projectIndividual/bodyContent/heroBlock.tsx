@@ -31,7 +31,7 @@ const HeroBlock = ({
             dangerouslySetInnerHTML={{ __html: component.heading }}
             variant="Display-Medium"
             altFont
-            css={css({ mb: 65 })}
+            css={css({ mb: 65, maxWidth: '50%' })}
           />
         )}
         {component?.imageThumb?.length > 0 && (
