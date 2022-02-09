@@ -71,7 +71,6 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function ({
       collections: [collection.id],
     },
   });
-  console.log("revalidate on", process.env.NEXT_PAGE_REVALIDATE);
   return {
     props: {
       collection,
