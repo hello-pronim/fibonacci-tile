@@ -22,13 +22,11 @@ const Checkout: NextPage<CheckoutPageProps> = ({ notifications }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = withGlobalData(
-  async function () {
-    return {
-      props: {},
-      revalidate: 1,
-    };
-  }
-);
+export const getStaticProps: GetStaticProps = withGlobalData(async function () {
+  return {
+    props: {},
+    revalidate: parseInt(process.env.NEXT_PAGE_REVALIDATE),
+  };
+});
 
 export default Checkout;

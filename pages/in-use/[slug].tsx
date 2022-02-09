@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { GetStaticProps, GetStaticPaths, NextPage } from "next";
-import client from "@utils/apolloClient";
+import { initializeApollo } from "@utils/apolloClient";
 import { withGlobalData } from "@hoc/withGlobalData";
 import { ProjectQuery, ProjectsQuery } from "@gql/projectGQL";
 import ProjectPage from "@components/pages/projectIndividual";
@@ -28,6 +28,7 @@ const Project: NextPage<ProjectPageProps> = ({ project, notifications }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const client = initializeApollo();
   const {
     data: { entries: projects },
   } = await client.query({
@@ -47,6 +48,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = withGlobalData(async function ({
   params,
 }) {
+  const client = initializeApollo();
   const {
     data: { entry: project },
   } = await client.query({
@@ -57,7 +59,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function ({
     props: {
       project,
     },
-    revalidate: 1,
+    revalidate: parseInt(process.env.NEXT_PAGE_REVALIDATE),
   };
 });
 

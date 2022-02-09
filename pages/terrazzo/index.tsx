@@ -2,7 +2,7 @@ import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Footer from "@components/common/footer";
 import ProductPage from "@components/pages/products";
-import client from "@utils/apolloClient";
+import { initializeApollo } from "@utils/apolloClient";
 import { PageQuery } from "@gql/pageGQL";
 import { ProductsQuery } from "@gql/productGQL";
 import { CategoriesQuery } from "@gql/categoriesGQL";
@@ -52,6 +52,8 @@ const Products: NextPage<ProductPageProps> = ({
 };
 
 export const getStaticProps: GetStaticProps = withGlobalData(async function () {
+  const client = initializeApollo();
+
   const {
     data: { entry: pageData },
   } = await client.query({
@@ -112,7 +114,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
       sampleCta1,
       sampleCta2,
     },
-    revalidate: 1,
+    revalidate: parseInt(process.env.NEXT_PAGE_REVALIDATE),
   };
 });
 

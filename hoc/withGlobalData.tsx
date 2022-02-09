@@ -1,10 +1,11 @@
-import client from "@utils/apolloClient";
+import { initializeApollo } from "@utils/apolloClient";
 import {
   GlobalNotificationQuery,
   GlobalSpecificationQuery,
 } from "@gql/globalGQL";
 
 export const withGlobalData = (gssp: any) => {
+  const client = initializeApollo();
   return async function (context: any) {
     // get serverside data
     const gsspData = await gssp(context);
@@ -26,7 +27,6 @@ export const withGlobalData = (gssp: any) => {
         notifications: notifications?.notifications,
         specifications: specifications?.technicalSpecifications,
       },
-      revalidate: 1,
     };
   };
 };

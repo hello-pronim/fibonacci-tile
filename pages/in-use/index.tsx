@@ -6,7 +6,7 @@ import { CategoriesQuery } from "@gql/categoriesGQL";
 import { ProjectsQuery } from "@gql/projectGQL";
 import Footer from "@components/common/footer";
 import ProjectsPage from "@components/pages/projects";
-import client from "@utils/apolloClient";
+import { initializeApollo } from "@utils/apolloClient";
 
 interface ProjectPageProps {
   heroDetails: any;
@@ -38,36 +38,35 @@ const Projects: NextPage<ProjectPageProps> = ({
   );
 };
 
-export const getStaticProps: GetStaticProps = withGlobalData(
-  async function () {
-    const {
-      data: { entry: heroDetails },
-    } = await client.query({
-      query: PageQuery,
-      variables: { slug: "in-use" },
-    });
-    const {
-      data: { categories: types },
-    } = await client.query({
-      query: CategoriesQuery,
-      variables: {
-        group: "Sector",
-      },
-    });
-    const {
-      data: { entries: projects },
-    } = await client.query({
-      query: ProjectsQuery,
-    });
-    return {
-      props: {
-        heroDetails,
-        types,
-        projects,
-      },
-      revalidate: 1,
-    };
-  }
-);
+export const getStaticProps: GetStaticProps = withGlobalData(async function () {
+  const client = initializeApollo();
+  const {
+    data: { entry: heroDetails },
+  } = await client.query({
+    query: PageQuery,
+    variables: { slug: "in-use" },
+  });
+  const {
+    data: { categories: types },
+  } = await client.query({
+    query: CategoriesQuery,
+    variables: {
+      group: "Sector",
+    },
+  });
+  const {
+    data: { entries: projects },
+  } = await client.query({
+    query: ProjectsQuery,
+  });
+  return {
+    props: {
+      heroDetails,
+      types,
+      projects,
+    },
+    revalidate: parseInt(process.env.NEXT_PAGE_REVALIDATE),
+  };
+});
 
 export default Projects;
