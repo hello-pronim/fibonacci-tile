@@ -84,6 +84,7 @@ const InlineSlider = ({ images }) => {
                     src={image.url}
                     alt="image-1"
                     layout="responsive"
+                    objectFit="cover"
                     width="710"
                     height="900"
                   />
@@ -93,6 +94,7 @@ const InlineSlider = ({ images }) => {
                     src={image.url}
                     alt="image-1"
                     layout="responsive"
+                    objectFit="cover"
                     width="303"
                     height="384.08"
                   />
