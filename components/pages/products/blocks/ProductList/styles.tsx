@@ -19,11 +19,11 @@ const Container = styled("section")(({ listView }: ContainerProps) =>
     },
     [theme.mediaQueries.medium]: {
       gridTemplateColumns: "repeat(4, 1fr)",
-      padding: "40px",
+      padding: "80px 120px",
     },
     [theme.mediaQueries.large]: {
       gridTemplateColumns: "repeat(5, 1fr)",
-      padding: "80px",
+      padding: "80px 120px",
     },
   })
 );
