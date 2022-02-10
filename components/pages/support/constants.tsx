@@ -26,6 +26,5 @@ export const supports = [
     slug: "general-enquiry",
     title: "General Enquiry",
     icon: EnquiryIcon,
-    href: "/support#general-enquiry",
   },
 ];

@@ -1,5 +1,8 @@
 import React from "react";
 import AccentText, { AccentTextMobile } from "@components/common/accentText";
+import Text from "@components/common/typography";
+import { css } from "@styled-system/css";
+import Accordion from "@components/modules/accordion";
 import {
   Container,
   IntroWrapper,
@@ -7,9 +10,6 @@ import {
   SectionList,
   SectionItem,
 } from "./styles";
-import Text from "@components/common/typography";
-import { css } from "@styled-system/css";
-import Accordion from "@components/modules/accordion";
 
 interface accordionTypes {
   id: string;
