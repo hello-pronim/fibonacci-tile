@@ -8,18 +8,14 @@ import css from "@styled-system/css";
 const ImageRightTextLeft = ({
   component,
   backgroundColor,
-  hasPadding = false,
-  hasBottomPadding = false,
+  pt = 60,
+  pb = 60,
 }) => {
   const cssProps: any = {
     bg: backgroundColor ? backgroundColor : "#FFFFF8",
+    pt,
+    pb,
   };
-  if (hasPadding) {
-    cssProps.py = 120;
-  }
-  if (hasBottomPadding) {
-    cssProps.pb = 120;
-  }
   return (
     <Container css={css(cssProps)}>
       {component?.headline && (

@@ -6,19 +6,9 @@ import FullImageBlock from "./fullImageBlock";
 import ImageRightTextLeft from "./imageRightTextLeft";
 
 const BodyContent = ({ projectComponents, backgroundColor }) => {
-  let hasPadding = false;
-  let hasBottomPadding = false;
   return (
     <>
       {projectComponents.map((component: any, index: number) => {
-        if (!hasPadding) {
-          hasPadding = true;
-        } else {
-          hasPadding = false;
-        }
-        if (index === projectComponents.length - 1) {
-          hasBottomPadding = true;
-        }
         switch (component.typeHandle) {
           case "heroBlock":
             return (
@@ -26,8 +16,8 @@ const BodyContent = ({ projectComponents, backgroundColor }) => {
                 key={`component${index}`}
                 component={component}
                 backgroundColor={backgroundColor}
-                hasPadding={hasPadding}
-                hasBottomPadding={hasBottomPadding}
+                pt={index === 0 ? 120 : 60}
+                pb={index === projectComponents.length - 1 ? 120 : 60}
               />
             );
           case "fullImage":
@@ -36,8 +26,8 @@ const BodyContent = ({ projectComponents, backgroundColor }) => {
                 key={`component${index}`}
                 component={component}
                 backgroundColor={backgroundColor}
-                hasPadding={hasPadding}
-                hasBottomPadding={hasBottomPadding}
+                pt={index === 0 ? 120 : 60}
+                pb={index === projectComponents.length - 1 ? 120 : 60}
               />
             );
           case "twoColsText":
@@ -46,8 +36,8 @@ const BodyContent = ({ projectComponents, backgroundColor }) => {
                 key={`component${index}`}
                 component={component}
                 backgroundColor={backgroundColor}
-                hasPadding={hasPadding}
-                hasBottomPadding={hasBottomPadding}
+                pt={index === 0 ? 120 : 60}
+                pb={index === projectComponents.length - 1 ? 120 : 60}
               />
             );
           case "twoImages":
@@ -56,8 +46,8 @@ const BodyContent = ({ projectComponents, backgroundColor }) => {
                 key={`component${index}`}
                 component={component}
                 backgroundColor={backgroundColor}
-                hasPadding={hasPadding}
-                hasBottomPadding={hasBottomPadding}
+                pt={index === 0 ? 120 : 60}
+                pb={index === projectComponents.length - 1 ? 120 : 60}
               />
             );
           case "twoColsImage":
@@ -66,8 +56,8 @@ const BodyContent = ({ projectComponents, backgroundColor }) => {
                 key={`component${index}`}
                 component={component}
                 backgroundColor={backgroundColor}
-                hasPadding={hasPadding}
-                hasBottomPadding={hasBottomPadding}
+                pt={index === 0 ? 120 : 60}
+                pb={index === projectComponents.length - 1 ? 120 : 60}
               />
             );
         }
