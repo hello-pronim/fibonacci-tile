@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 export const ProjectsQuery: any = gql`
   query ProjectsQuery {
-    entries(section: "projects") {
+    entries(section: "projects", orderBy: "postDate DESC") {
       id
       slug
       title
