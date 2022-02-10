@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import HeadingLeftTextRight from "./components/HeadingLeftTextRight";
+import StoryPanel from "@components/pages/about/StoryPanel";
 import LeftImageRightText from "./components/LeftImageRightText";
 import Hero from "@components/pages/support/components/hero";
 import SupportModule from "@components/modules/support";
 import { supports } from "./constants";
-import { HeroOverlayWrapper, FormContainer } from "./styles";
+import { HeroOverlayWrapper } from "./styles";
 
 const OrderingSamples = ({ pageData }) => {
   const router = useRouter();
@@ -22,9 +22,9 @@ const OrderingSamples = ({ pageData }) => {
           switch (component.typeHandle) {
             case "headingLeftTextRight":
               return (
-                <HeadingLeftTextRight
+                <StoryPanel
                   key={`component-${index}`}
-                  data={{
+                  story={{
                     accentText: component.sideText,
                     title: component.headingText,
                     content: component.textRight,
@@ -36,9 +36,9 @@ const OrderingSamples = ({ pageData }) => {
                 <LeftImageRightText
                   key={`component-${index}`}
                   data={{
-                    accentText: component.sideText,
-                    title: component.headingText,
-                    content: component.textRight,
+                    thumbnail: component.imageThumb,
+                    textHeading: component.textHeading,
+                    text: component.text,
                   }}
                 />
               );

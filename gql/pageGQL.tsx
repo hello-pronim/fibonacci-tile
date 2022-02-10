@@ -28,12 +28,23 @@ export const PageQuery = gql`
             typeHandle
             headingText
             textRight
+            sideText
           }
           ... on orderSamplesComponents_leftImageRightText_BlockType {
             id
             typeHandle
             textHeading
             text
+            image {
+              url
+            }
+            imageThumb: image
+              @transform(width: 710, height: 710, mode: "crop") {
+              url
+              title
+              width
+              height
+            }
           }
         }
       }
@@ -371,6 +382,7 @@ export const OurStoryPageQuery = gql`
             typeHandle
             headingLeft
             textRight
+            sideText
           }
           ... on ourStoryComponents_headingLeftImageRight_BlockType {
             id
