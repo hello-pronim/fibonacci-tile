@@ -7,13 +7,13 @@ const CollectionWrapper = styled("div")(
     maxWidth: "1760px",
     margin: "0 auto",
     display: "flex",
-    borderBottom: "solid 1px #ccc"
+    borderBottom: "solid 1px #ccc",
   })
 );
 
 const CollectionDetailContainer = styled("div")(
   css({
-    width: "40%"
+    width: "40%",
   })
 );
 
@@ -23,39 +23,40 @@ const CollectionProductContainer = styled("div")(
     display: "grid",
     gridColumnGap: "15px",
     gridRowGap: "15px",
-    gridTemplateColumns: "repeat(3, 1fr)"
+    gridTemplateColumns: "repeat(3, 1fr)",
   })
 );
 
 const CollectionDetail = styled("div")(
   css({
-    maxWidth: "320px"
+    maxWidth: "320px",
+    py: 38,
   })
 );
 
-const Title = styled("h2")( 
+const Title = styled("h2")(
   css({
     fontSize: "44px",
     lineHeight: "50.6px",
-    paddingBottom: "20px"
+    paddingBottom: "20px",
   })
 );
 
-const Details = styled("div")( 
+const Details = styled("div")(
   css({
-    "p": {
+    p: {
       fontSize: "18px",
       lineHeight: "26px",
-      paddingBottom: "20px"
-    }
+      paddingBottom: "20px",
+    },
   })
 );
 
-export { 
+export {
   CollectionWrapper,
   CollectionDetailContainer,
   CollectionProductContainer,
   Title,
   Details,
-  CollectionDetail
+  CollectionDetail,
 };
