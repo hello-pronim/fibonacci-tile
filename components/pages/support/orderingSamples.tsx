@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import StoryPanel from "@components/pages/about/StoryPanel";
+import HeadingLeftTextRight from "./components/HeadingLeftTextRight";
 import LeftImageRightText from "./components/LeftImageRightText";
 import Hero from "@components/pages/support/components/hero";
 import SupportModule from "@components/modules/support";
@@ -22,7 +21,7 @@ const OrderingSamples = ({ pageData }) => {
           switch (component.typeHandle) {
             case "headingLeftTextRight":
               return (
-                <StoryPanel
+                <HeadingLeftTextRight
                   key={`component-${index}`}
                   story={{
                     accentText: component.sideText,
