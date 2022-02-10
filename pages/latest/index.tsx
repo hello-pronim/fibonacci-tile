@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import { PageQuery, NewsletterQuery } from "@gql/pageGQL";
 import { NewsQuery } from "@gql/newsGQL";
 import { CategoriesQuery } from "@gql/categoriesGQL";
@@ -8,7 +9,6 @@ import BreadCrumb from "@components/common/breadcrumb";
 import { initializeApollo } from "@utils/apolloClient";
 import Footer from "@components/common/footer";
 import Header from "@components/common/header";
-import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import { withGlobalData } from "@hoc/withGlobalData";
 import Hero from "@components/pages/latest/hero/index";
 import BottomHero from "@components/pages/latest/bottom-hero";
