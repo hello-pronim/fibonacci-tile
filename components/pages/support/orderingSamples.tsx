@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import HeadingLeftTextRight from "./components/HeadingLeftTextRight";
 import LeftImageRightText from "./components/LeftImageRightText";
 import Hero from "@components/pages/support/components/hero";
 import SupportModule from "@components/modules/support";
 import { supports } from "./constants";
-import { HeroOverlayWrapper, FormContainer } from "./styles";
+import { HeroOverlayWrapper } from "./styles";
 
 const OrderingSamples = ({ pageData }) => {
   const router = useRouter();
@@ -13,7 +12,7 @@ const OrderingSamples = ({ pageData }) => {
 
   return (
     <>
-      <Hero pageTitle="How to order samples" />
+      <Hero pageTitle={pageData.pageHeading} />
       <HeroOverlayWrapper>
         <SupportModule activePath={asPath} supports={supports} />
       </HeroOverlayWrapper>
@@ -24,7 +23,7 @@ const OrderingSamples = ({ pageData }) => {
               return (
                 <HeadingLeftTextRight
                   key={`component-${index}`}
-                  data={{
+                  story={{
                     accentText: component.sideText,
                     title: component.headingText,
                     content: component.textRight,
@@ -36,9 +35,9 @@ const OrderingSamples = ({ pageData }) => {
                 <LeftImageRightText
                   key={`component-${index}`}
                   data={{
-                    accentText: component.sideText,
-                    title: component.headingText,
-                    content: component.textRight,
+                    thumbnail: component.imageThumb,
+                    textHeading: component.textHeading,
+                    text: component.text,
                   }}
                 />
               );

@@ -4,21 +4,12 @@ import { LeftCol, RightCol } from "./styles";
 import Container from "@components/common/layout/container";
 import css from "@styled-system/css";
 
-const TwoColsTextBlock = ({
-  component,
-  backgroundColor,
-  hasPadding = false,
-  hasBottomPadding = false,
-}) => {
+const TwoColsTextBlock = ({ component, backgroundColor, pt = 60, pb = 60 }) => {
   const cssProps: any = {
     bg: backgroundColor ? backgroundColor : "#FFFFF8",
+    pt,
+    pb,
   };
-  if (hasPadding) {
-    cssProps.py = 120;
-  }
-  if (hasBottomPadding) {
-    cssProps.pb = 120;
-  }
   return (
     <Container css={css(cssProps)}>
       {component?.headline && (
@@ -35,7 +26,7 @@ const TwoColsTextBlock = ({
           <Text
             variant="Body-Regular"
             dangerouslySetInnerHTML={{ __html: component.text }}
-            css={css({p: {pb: 24,}})}
+            css={css({ p: { pb: 24 } })}
           />
         </RightCol>
       )}

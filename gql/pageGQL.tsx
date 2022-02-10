@@ -5,34 +5,52 @@ export const PageQuery = gql`
   query PageQuery($slug: [String]) {
     entry(slug: $slug) {
       id
+      ... on privacyPolicy_privacyPolicy_Entry {
+        title
+        pageContent
+      }
       ... on inUse_inUse_Entry {
-        pageIntro
+        title
         pageHeading
+        pageIntro
       }
       ... on latestNews_latestNews_Entry {
+        title
         pageHeading
         pageIntro
       }
       ... on howToOrderSamples_howToOrderSamples_Entry {
         id
+        pageHeading
         orderSamplesComponents {
           ... on orderSamplesComponents_headingLeftTextRight_BlockType {
             id
             typeHandle
             headingText
             textRight
+            sideText
           }
           ... on orderSamplesComponents_leftImageRightText_BlockType {
             id
             typeHandle
             textHeading
             text
+            image {
+              url
+            }
+            imageThumb: image
+              @transform(width: 710, height: 710, mode: "crop") {
+              url
+              title
+              width
+              height
+            }
           }
         }
       }
       ... on requestAQuote_requestAQuote_Entry {
         id
-        title
+        pageHeading
         pageIntro
       }
       ... on productSupport_productSupport_Entry {
@@ -364,6 +382,7 @@ export const OurStoryPageQuery = gql`
             typeHandle
             headingLeft
             textRight
+            sideText
           }
           ... on ourStoryComponents_headingLeftImageRight_BlockType {
             id

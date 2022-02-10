@@ -6,6 +6,7 @@ import theme from "@styles/theme";
 import { CollectionHeroContainer, CaptionText, ImageContent } from "./styles";
 
 const CollectionHeroModule = ({ collection }) => {
+  console.log(collection);
   return (
     <CollectionHeroContainer>
       <div
@@ -57,11 +58,11 @@ const CollectionHeroModule = ({ collection }) => {
       </div>
 
       <ImageContent>
-        {collection?.heroImage?.[0]?.url > 0 && (
+        {collection?.heroImage?.[0]?.url && (
           <Image
+            layout="responsive" // required
             src={collection.heroImage[0].url}
             alt={collection.slug}
-            layout="responsive" // required
             width={collection.heroImage[0].width}
             height={collection.heroImage[0].height}
           />

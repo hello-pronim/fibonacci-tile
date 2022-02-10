@@ -18,25 +18,24 @@ const Homepage = ({ pageData }) => {
       slug: "product-support",
       title: "Product Support",
       icon: SupportIcon,
-      href: "/support#product-support",
+      href: "/support",
     },
     {
       slug: "how-to-order-samples",
       title: "How to order samples",
       icon: SamplesIcon,
-      href: "/support#how-to-order-samples",
+      href: "/ordering-samples",
     },
     {
       slug: "quote-request",
       title: "Request a quote",
       icon: QuoteIcon,
-      href: "/support#quote-request",
+      href: "/request-quote",
     },
     {
       slug: "general-enquiry",
       title: "General Enquiry",
       icon: EnquiryIcon,
-      href: "/support#general-enquiry",
     },
   ];
   // populate banners from homePageComponents

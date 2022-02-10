@@ -22,7 +22,7 @@ function StoryPanel({ story }: storyPanelProps) {
           <AccentText top={120}>{story.accentText}</AccentText>
         )}
         <StoryTitleWrapper>
-          <h4>{story.title}</h4>
+          <h4 dangerouslySetInnerHTML={{ __html: story.title }} />
         </StoryTitleWrapper>
       </PanelLeft>
       <PanelRight>

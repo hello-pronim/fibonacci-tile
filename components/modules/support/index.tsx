@@ -1,3 +1,7 @@
+import Image from "next/image";
+import router from "next/router";
+import { useAppContext } from "@contexts/AppContext";
+import Text from "@components/common/typography";
 import {
   Container,
   Wrapper,
@@ -6,20 +10,20 @@ import {
   TileInner,
   Icon,
 } from "./styles";
-import Text from "@components/common/typography";
-import Image from "next/image";
-import router from "next/router";
 
 interface SupportModuleProps {
   title?: string;
   supports?: Array<any>;
   activePath?: string;
 }
+
 const SupportModule = ({
   title = "",
   supports,
   activePath = "/support",
 }: SupportModuleProps) => {
+  const { state, dispatch } = useAppContext();
+
   return (
     <Container>
       <Wrapper>
@@ -35,7 +39,19 @@ const SupportModule = ({
               href={support.href}
               active={activePath === support.href}
               onClick={() => {
-                if (support.url) router.push(support.url);
+                if (support.slug === "general-enquiry") {
+                  dispatch({
+                    type: "OPEN_DRAWER",
+                    value:
+                      state.activeDrawerTab !== "contact"
+                        ? true
+                        : !state.openDrawer,
+                  });
+                  dispatch({
+                    type: "SET_ACTIVE_DRAWER_TAB",
+                    value: "contact",
+                  });
+                }
               }}
             >
               <TileInner>

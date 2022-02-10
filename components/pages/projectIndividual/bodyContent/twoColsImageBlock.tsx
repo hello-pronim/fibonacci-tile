@@ -6,22 +6,16 @@ import Container from "@components/common/layout/container";
 const TwoColsImageBlock = ({
   component,
   backgroundColor,
-  hasPadding = false,
-  hasBottomPadding = false,
+  pt = 60,
+  pb = 60,
 }) => {
   const cssProps: any = {
     bg: backgroundColor ? backgroundColor : "#FFFFF8",
+    pt,
+    pb,
   };
-  if (hasPadding) {
-    cssProps.py = 120;
-  }
-  if (hasBottomPadding) {
-    cssProps.pb = 120;
-  }
   return (
-    <Container
-      css={css({ py: 120, bg: backgroundColor ? backgroundColor : "#FFFFF8" })}
-    >
+    <Container css={css(cssProps)}>
       {component?.image1Thumb?.[0]?.url && (
         <ImageLeft>
           <Image

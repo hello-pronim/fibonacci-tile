@@ -1,6 +1,8 @@
+import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { css } from "@styled-system/css";
+import useOnClickOutside from "use-onclickoutside";
 import { useAppContext } from "@contexts/AppContext";
 import ProductCard from "@components/common/product/card";
 import ArrowButton from "@components/common/button/arrowButton";
@@ -42,8 +44,16 @@ const textareaStyles = {
 const SelectionCart = ({ active, newSelection, tab }) => {
   const { state, dispatch } = useAppContext();
   const { selectedProducts } = state;
+  const ref = useRef(null);
+  useOnClickOutside(ref, () => {
+    dispatch({
+      type: "OPEN_DRAWER",
+      value: false,
+    });
+  });
   return (
     <div
+      ref={ref}
       css={css({
         boxSizing: "border-box",
         position: "absolute",
@@ -266,7 +276,7 @@ const SelectionCart = ({ active, newSelection, tab }) => {
                 </div>
               </div>
             </Link>
-            <Link href="/support" passHref>
+            <Link href="/ordering-samples" passHref>
               <div
                 css={css({
                   bg: "#ede6de",
@@ -307,7 +317,7 @@ const SelectionCart = ({ active, newSelection, tab }) => {
                 </div>
               </div>
             </Link>
-            <Link href="/support" passHref>
+            <Link href="/request-quote" passHref>
               <div
                 css={css({
                   bg: "#ebe9e7",
@@ -350,6 +360,7 @@ const SelectionCart = ({ active, newSelection, tab }) => {
             </Link>
             <div
               css={css({
+                pointer: "cursor",
                 bg: "#fdfdfd",
                 px: 24,
                 py: 40,
@@ -368,6 +379,19 @@ const SelectionCart = ({ active, newSelection, tab }) => {
                   },
                 },
               })}
+              onClick={() => {
+                dispatch({
+                  type: "OPEN_DRAWER",
+                  value:
+                    state.activeDrawerTab !== "contact"
+                      ? true
+                      : !state.openDrawer,
+                });
+                dispatch({
+                  type: "SET_ACTIVE_DRAWER_TAB",
+                  value: "contact",
+                });
+              }}
             >
               <Image alt="Eqnuiry" src={EnquiryIcon} width={48} height={48} />
               <Text variant="Display-XXSmall" altFont>

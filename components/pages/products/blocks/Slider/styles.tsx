@@ -61,6 +61,46 @@ const BannerDescription = styled("p")(
   })
 );
 
+const LinkWrapper = styled("div")(
+  css({
+    display: "flex",
+    alignItems: "center",
+    columnGap: 20,
+    svg: {
+      transition: "ease all 0.3s",
+    },
+    "&:hover": {
+      svg: {
+        transform: "translateX(6px)",
+      },
+    },
+    a: {
+      textDecoration: "none",
+      fontSize: 2,
+      lineHeight: 2,
+      color: "white",
+      "&:before": {
+        position: "relative",
+        backgroundColor: "white",
+        content: "' '",
+        display: "block",
+        height: "2px",
+        width: "100%",
+        transform: "translateY(40px)",
+        transition: "ease all 0.3s",
+        pointerEvents: "none",
+        opacity: 0,
+      },
+      "&:hover": {
+        "&:before": {
+          transform: "translateY(28px)",
+          opacity: 1,
+        },
+      },
+    },
+  })
+);
+
 export {
   BannerTextWrapper,
   BannerDescription,
@@ -69,4 +109,5 @@ export {
   Container,
   SliderItem,
   SliderWrapper,
+  LinkWrapper,
 };
