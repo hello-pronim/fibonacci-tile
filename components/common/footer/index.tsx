@@ -101,7 +101,7 @@ export default function Footer() {
           <SegmentTitle>Samples and contact</SegmentTitle>
           <ItemList>
             <Item>
-              <a href="#">Ordering Samples</a>
+              <a href="/ordering-samples">Ordering Samples</a>
             </Item>
             <Item>
               <a href="#">Call 1300 342 662</a>
@@ -143,16 +143,16 @@ export default function Footer() {
             },
           })}
         >
-          <Link href="#">Site Design by Traffic</Link>
+          <Link href="https://traffic.com.au">Site Design by Traffic</Link>
         </SubFooterItems>
         <SubFooterItems mobileOrder={2}>
-          <Link href="#">Terms & Conditions</Link>
+          <Link href="/terms-conditions">Terms & Conditions</Link>
         </SubFooterItems>
         <SubFooterItems mobileOrder={3}>
-          <Link href="#">Privacy Policy</Link>
+          <Link href="/privacy-policy">Privacy Policy</Link>
         </SubFooterItems>
         <SubFooterItems mobileOrder={4}>
-          <Link href="#">Get Help</Link>
+          <Link href="/support">Get Help</Link>
         </SubFooterItems>
         <Symbol>
           <Image

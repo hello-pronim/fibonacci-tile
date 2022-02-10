@@ -39,7 +39,6 @@ const SupportModule = ({
               href={support.href}
               active={activePath === support.href}
               onClick={() => {
-                console.log(support);
                 if (support.slug === "general-enquiry") {
                   dispatch({
                     type: "OPEN_DRAWER",

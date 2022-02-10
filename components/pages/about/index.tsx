@@ -1,12 +1,12 @@
-import AboutHeader from "./Header";
 import Hero from "./hero";
 import BodyContent from "./bodyContent";
-import { Container } from "./styles";
+import Header from "../generic/Header";
+import { Container } from "../generic/styles";
 
 const AboutPage = ({ pageData, notifications }) => {
   return (
     <Container>
-      <AboutHeader mode="dark" notifications={notifications} />
+      <Header mode="dark" notifications={notifications} />
       <Hero
         headingLeft={pageData.pageHeading}
         textRight={pageData.rightHeader}

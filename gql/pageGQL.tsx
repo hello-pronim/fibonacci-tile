@@ -5,9 +5,13 @@ export const PageQuery = gql`
   query PageQuery($slug: [String]) {
     entry(slug: $slug) {
       id
-      ... on inUse_inUse_Entry {
-        pageIntro
+      ... on privacyPolicy_privacyPolicy_Entry {
         pageHeading
+        pageContent
+      }
+      ... on inUse_inUse_Entry {
+        pageHeading
+        pageIntro
       }
       ... on latestNews_latestNews_Entry {
         pageHeading
