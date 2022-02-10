@@ -4,21 +4,12 @@ import Text from "@components/common/typography";
 import Container from "@components/common/layout/container";
 import { FwWrapper } from "./styles";
 
-const FullImageBlock = ({
-  component,
-  backgroundColor,
-  hasPadding = false,
-  hasBottomPadding = false,
-}) => {
+const FullImageBlock = ({ component, backgroundColor, pt = 60, pb = 60 }) => {
   const cssProps: any = {
     bg: backgroundColor ? backgroundColor : "#FFFFF8",
+    pt,
+    pb,
   };
-  if (hasPadding) {
-    cssProps.py = 120;
-  }
-  if (hasBottomPadding) {
-    cssProps.pb = 120;
-  }
 
   return (
     <Container css={css(cssProps)}>
