@@ -42,6 +42,7 @@ import {
   TitleText,
   Wrapper,
 } from "./styles";
+import { css } from "@emotion/react";
 
 const ProductCard = ({
   product,
@@ -167,8 +168,8 @@ const ProductCard = ({
                       <Image
                         src={product.thumbImageList[0].url}
                         alt={product.title}
-                        width={product.thumbImageList[0].width}
-                        height={product.thumbImageList[0].height}
+                        width="228"
+                        height="228"
                       />
                     </a>
                   </Link>
@@ -230,12 +231,16 @@ const ProductCard = ({
           {product?.thumbImageList?.[0]?.url && (
             <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
               <a>
-                <Image
-                  src={product.thumbImageList[0].url}
-                  alt={product.title}
-                  width={product.thumbImageList[0].width}
-                  height={product.thumbImageList[0].height}
-                />
+                <div css={css({ width: 228, height: 228 })}>
+                  <Image
+                    layout="responsive"
+                    src={product.thumbImageList[0].url}
+                    alt={product.title}
+                    width="228"
+                    height="228"
+                    objectFit="cover"
+                  />
+                </div>
               </a>
             </Link>
           )}
