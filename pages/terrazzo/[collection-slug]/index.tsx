@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
-import client from "@utils/apolloClient";
+import { initializeApollo } from "@utils/apolloClient";
 import { withGlobalData } from "@hoc/withGlobalData";
 import { ProductsQuery } from "@gql/productGQL";
 import { CategoriesQuery, CategoryQuery } from "@gql/categoriesGQL";
@@ -36,6 +36,7 @@ const Collection: NextPage<CollectionPageProps> = ({
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const client = initializeApollo();
   const {
     data: { categories: collections },
   } = await client.query({
@@ -54,6 +55,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = withGlobalData(async function ({
   params,
 }) {
+  const client = initializeApollo();
+
   const {
     data: { category: collection },
   } = await client.query({
@@ -68,13 +71,12 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function ({
       collections: [collection.id],
     },
   });
-
   return {
     props: {
       collection,
       products,
     },
-    revalidate: 60,
+    revalidate: parseInt(process.env.NEXT_PAGE_REVALIDATE),
   };
 });
 

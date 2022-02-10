@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { GetStaticProps, NextPage } from "next";
+import Head from "next/head";
 import { PageQuery, NewsletterQuery } from "@gql/pageGQL";
 import { NewsQuery } from "@gql/newsGQL";
 import { CategoriesQuery } from "@gql/categoriesGQL";
 import BreadCrumb from "@components/common/breadcrumb";
-import client from "@utils/apolloClient";
-import Head from "next/head";
+import { initializeApollo } from "@utils/apolloClient";
 import Footer from "@components/common/footer";
 import Header from "@components/common/header";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
@@ -132,6 +132,8 @@ const LatestNews: NextPage<LatestPageProps> = ({
 };
 
 export const getStaticProps: GetStaticProps = withGlobalData(async function () {
+  const client = initializeApollo();
+
   const {
     data: { entry: heroDetails },
   } = await client.query({
@@ -168,7 +170,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
       news,
       newsletter: newsletter?.newsletter,
     },
-    revalidate: 500,
+    revalidate: parseInt(process.env.NEXT_PAGE_REVALIDATE),
   };
 });
 

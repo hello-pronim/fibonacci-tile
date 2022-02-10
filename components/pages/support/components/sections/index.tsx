@@ -11,28 +11,29 @@ import Text from "@components/common/typography";
 import { css } from "@styled-system/css";
 import theme from "@styles/theme";
 
-interface accordionTypes {
+interface SupportSectionTypes {
   accentText?: string;
+  pageHeading?: string;
 }
 
-const ProjectsModule = ({ accentText }: accordionTypes) => {
+const SupportSections = ({ accentText, pageHeading }: SupportSectionTypes) => {
   return (
     <Container id="projects">
       {accentText && <AccentText top={400}>{accentText}</AccentText>}
       <IntroWrapper>
-        <Text
-          variant="Display-Medium"
-          altFont
-          css={css({
-            fontSize: 24,
-            [theme.mediaQueries.small]: {
-              fontSize: 42,
-            },
-          })}
-        >
-          Completely homogenous, Fibonacci Tiles <br/> and Slabs have a high density
-          and are <br/> exceptionally strong and hard wearing.
-        </Text>
+        {pageHeading && (
+          <Text
+            variant="Display-Medium"
+            altFont
+            css={css({
+              fontSize: 24,
+              [theme.mediaQueries.small]: {
+                fontSize: 42,
+              },
+            })}
+            dangerouslySetInnerHTML={{ __html: pageHeading }}
+          />
+        )}
       </IntroWrapper>
       <Sections>
         <Text variant="Display-Overline">SECTIONS</Text>
@@ -40,7 +41,7 @@ const ProjectsModule = ({ accentText }: accordionTypes) => {
           <SectionItem>
             <Text variant="Body-Regular">
               <a
-                href="#projects"
+                href="#product-guide"
                 css={css({ color: "inherit", textDecoration: "none" })}
               >
                 Product Guide
@@ -50,7 +51,7 @@ const ProjectsModule = ({ accentText }: accordionTypes) => {
           <SectionItem>
             <Text variant="Body-Regular">
               <a
-                href="#gallery"
+                href="#installation-guide"
                 css={css({ color: "inherit", textDecoration: "none" })}
               >
                 Installation Guides
@@ -60,7 +61,7 @@ const ProjectsModule = ({ accentText }: accordionTypes) => {
           <SectionItem>
             <Text variant="Body-Regular">
               <a
-                href="#technical-specifications"
+                href="#fibonacci-tiles"
                 css={css({ color: "inherit", textDecoration: "none" })}
               >
                 - Fibonacci Tiles
@@ -70,7 +71,7 @@ const ProjectsModule = ({ accentText }: accordionTypes) => {
           <SectionItem>
             <Text variant="Body-Regular">
               <a
-                href="#related-products"
+                href="#fibonacci-slabs"
                 css={css({ color: "inherit", textDecoration: "none" })}
               >
                 - Fibonacci Slabs
@@ -80,7 +81,7 @@ const ProjectsModule = ({ accentText }: accordionTypes) => {
           <SectionItem>
             <Text variant="Body-Regular">
               <a
-                href="#gallery"
+                href="#care-maintenance"
                 css={css({ color: "inherit", textDecoration: "none" })}
               >
                 Care and Maintenance
@@ -90,7 +91,7 @@ const ProjectsModule = ({ accentText }: accordionTypes) => {
           <SectionItem>
             <Text variant="Body-Regular">
               <a
-                href="#gallery"
+                href="#faqs"
                 css={css({ color: "inherit", textDecoration: "none" })}
               >
                 FAQs
@@ -103,4 +104,4 @@ const ProjectsModule = ({ accentText }: accordionTypes) => {
   );
 };
 
-export default ProjectsModule;
+export default SupportSections;

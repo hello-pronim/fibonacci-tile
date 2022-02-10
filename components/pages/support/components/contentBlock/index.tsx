@@ -1,16 +1,12 @@
-import { Container, Wrapper, ImageWrapper, EntryWrapper } from "./styles";
 import Image from "next/image";
-import SamplesImage from "public/assets/temp/product-guide.jpg";
 import AccentText from "@components/common/accentText";
 import ArrowButton from "@components/common/button/arrowButton";
 import Text from "@components/common/typography";
-import css from "@styled-system/css";
-import theme from "@styles/theme";
+import { Container, Wrapper, ImageWrapper, EntryWrapper } from "./styles";
 
-const ContentWithImageModule = ({ content }) => {
-
+const ContentWithImageModule = ({ id = "", content }) => {
   return (
-    <Container mode={content.mode}>
+    <Container id={id} mode={content.mode}>
       <Wrapper orientation={content.orientation} mode={content.mode}>
         <AccentText top={80}>{content.sectionTitle}</AccentText>
         {content.sectionTitle && (
@@ -18,32 +14,42 @@ const ContentWithImageModule = ({ content }) => {
             {content.sectionTitle}
           </Text>
         )}
-        {content.entries.map((entry, i) => {
-          const { title, body, button } = entry;
+        {content.entries.map((entry: any, i: number) => {
+          const { title, body, emphasisText, button } = entry;
           const entryCount = content.entries.length;
           return (
-            <EntryWrapper key={i} entries={entryCount} mode={content.mode}>
-              {title && entryCount > 1 && <Text as="h4" variant="Display-XSmall">{title}</Text>}
-              {body && (
-                <Text
-                  as="p"
-                  variant="Body-Regular"
-                  dangerouslySetInnerHTML={{ __html: body }}
-                />
+            <EntryWrapper
+              id={entry.id ? entry.id : `entry-${i}`}
+              key={`entry-${id}-${i}`}
+              entries={entryCount}
+              mode={content.mode}
+            >
+              {title && entryCount > 1 && (
+                <Text as="h4" variant="Display-XSmall">
+                  {title}
+                </Text>
+              )}
+              {body && <div dangerouslySetInnerHTML={{ __html: body }} />}
+              {emphasisText && (
+                <span style={{ color: "#a19082" }}>{emphasisText}</span>
               )}
               {button.label && (
-                <ArrowButton mode={content.mode === "dark" ? "light": "dark" } title={button.label} link={button.link} />
+                <ArrowButton
+                  mode={content.mode === "dark" ? "light" : "dark"}
+                  title={button.label}
+                  link={button.link}
+                />
               )}
             </EntryWrapper>
           );
         })}
       </Wrapper>
       <ImageWrapper orientation={content.orientation}>
-        {content.image && (
+        {content?.image?.url && (
           <Image
-            alt=""
-            src={content.image.src}
             layout="responsive"
+            alt={content?.image?.title}
+            src={content.image.url}
             width={content.image.width}
             height={content.image.height}
           />

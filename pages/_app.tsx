@@ -5,7 +5,7 @@ import nProgress from "nprogress";
 import { Global, ThemeProvider } from "@emotion/react";
 import { ApolloProvider } from "@apollo/client";
 import { AppWrapper } from "@contexts/AppContext";
-import apolloClient from "@utils/apolloClient";
+import { useApollo } from "@utils/apolloClient";
 import global from "styles/global";
 import theme from "styles/theme";
 import "nprogress/nprogress.css";
@@ -18,6 +18,7 @@ Router.events.on("routeChangeError", nProgress.done);
 Router.events.on("routeChangeComplete", nProgress.done);
 
 function App({ Component, pageProps }: AppProps) {
+  const apolloClient = useApollo(pageProps.initialApolloState);
   return (
     <>
       <ApolloProvider client={apolloClient}>

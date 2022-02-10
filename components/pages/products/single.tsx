@@ -3,7 +3,7 @@ import RelatedProducts from "./blocks/relatedProducts";
 import ProductsHeader from "./Header";
 import InlineSlider from "./blocks/inlineSlider";
 import Projects from "./blocks/projects";
-import AccordionModule from "@components/modules/accordion";
+import TechnicalSpecifications from "./blocks/TechnicalSpecifications";
 import SingleHeroModule from "./blocks/singleHero";
 
 const ProductPage = ({
@@ -23,7 +23,7 @@ const ProductPage = ({
         <InlineSlider images={product.gallery} />
       )}
       {specifications?.length > 0 && (
-        <AccordionModule
+        <TechnicalSpecifications
           items={specifications}
           accentText="Technical Specifications"
           backgroundColor={backgroundColor}

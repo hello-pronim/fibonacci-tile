@@ -9,15 +9,17 @@ import {
 } from "./styles";
 import Text from "@components/common/typography";
 import { css } from "@styled-system/css";
-import Accordion from "@components/modules/accordion/accordion";
+import Accordion from "@components/modules/accordion";
 
 interface accordionTypes {
+  id: string;
   accentText?: string;
+  items: Array<any>;
 }
 
-const AccordionSection = ({ accentText }: accordionTypes) => {
+const AccordionSection = ({ id = "", accentText, items }: accordionTypes) => {
   return (
-    <Container>
+    <Container id={id}>
       <AccentText top={400}>{accentText}</AccentText>
       <Sections>
         <Text variant="Display-Overline">SECTIONS</Text>
@@ -25,7 +27,7 @@ const AccordionSection = ({ accentText }: accordionTypes) => {
           <SectionItem>
             <Text variant="Body-Regular">
               <a
-                href="#projects"
+                href="#product-guide"
                 css={css({ color: "inherit", textDecoration: "none" })}
               >
                 Product Guide
@@ -35,7 +37,7 @@ const AccordionSection = ({ accentText }: accordionTypes) => {
           <SectionItem>
             <Text variant="Body-Regular">
               <a
-                href="#gallery"
+                href="#installation-guides"
                 css={css({ color: "inherit", textDecoration: "none" })}
               >
                 Installation Guides
@@ -45,7 +47,7 @@ const AccordionSection = ({ accentText }: accordionTypes) => {
           <SectionItem>
             <Text variant="Body-Regular">
               <a
-                href="#technical-specifications"
+                href="#fibonacci-tiles"
                 css={css({ color: "inherit", textDecoration: "none" })}
               >
                 - Fibonacci Tiles
@@ -55,7 +57,7 @@ const AccordionSection = ({ accentText }: accordionTypes) => {
           <SectionItem>
             <Text variant="Body-Regular">
               <a
-                href="#related-products"
+                href="#fibonacci-slabs"
                 css={css({ color: "inherit", textDecoration: "none" })}
               >
                 - Fibonacci Slabs
@@ -65,7 +67,7 @@ const AccordionSection = ({ accentText }: accordionTypes) => {
           <SectionItem>
             <Text variant="Body-Regular">
               <a
-                href="#gallery"
+                href="#care-maintenance"
                 css={css({ color: "inherit", textDecoration: "none" })}
               >
                 Care and Maintenance
@@ -75,7 +77,7 @@ const AccordionSection = ({ accentText }: accordionTypes) => {
           <SectionItem>
             <Text variant="Body-Regular">
               <a
-                href="#gallery"
+                href="#faqs"
                 css={css({ color: "inherit", textDecoration: "none" })}
               >
                 FAQs
@@ -85,7 +87,7 @@ const AccordionSection = ({ accentText }: accordionTypes) => {
         </SectionList>
       </Sections>
       <IntroWrapper>
-        <Accordion/>
+        <Accordion items={items} />
       </IntroWrapper>
     </Container>
   );

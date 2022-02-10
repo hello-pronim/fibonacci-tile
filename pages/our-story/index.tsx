@@ -1,7 +1,7 @@
 import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import { OurStoryPageQuery } from "@gql/pageGQL";
-import client from "@utils/apolloClient";
+import { initializeApollo } from "@utils/apolloClient";
 import { withGlobalData } from "@hoc/withGlobalData";
 import Footer from "@components/common/footer";
 import AboutPage from "@components/pages/about";
@@ -25,6 +25,8 @@ const About: NextPage<AboutPageProps> = ({ pageData, notifications }) => {
 };
 
 export const getStaticProps: GetStaticProps = withGlobalData(async () => {
+  const client = initializeApollo();
+
   const {
     data: { entry: pageData },
   } = await client.query({
@@ -35,7 +37,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async () => {
     props: {
       pageData,
     },
-    revalidate: 500,
+    revalidate: parseInt(process.env.NEXT_PAGE_REVALIDATE),
   };
 });
 

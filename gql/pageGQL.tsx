@@ -13,6 +13,113 @@ export const PageQuery = gql`
         pageHeading
         pageIntro
       }
+      ... on howToOrderSamples_howToOrderSamples_Entry {
+        id
+        orderSamplesComponents {
+          ... on orderSamplesComponents_headingLeftTextRight_BlockType {
+            id
+            typeHandle
+            headingText
+            textRight
+          }
+          ... on orderSamplesComponents_leftImageRightText_BlockType {
+            id
+            typeHandle
+            textHeading
+            text
+          }
+        }
+      }
+      ... on requestAQuote_requestAQuote_Entry {
+        id
+        title
+        pageIntro
+      }
+      ... on productSupport_productSupport_Entry {
+        id
+        pageHeading
+        productSupportComponents {
+          ... on productSupportComponents_productGuide_BlockType {
+            id
+            typeHandle
+            imageLeft {
+              url
+            }
+            imageLeftThumb: imageLeft
+              @transform(width: 710, height: 710, mode: "crop") {
+              url
+              title
+              width
+              height
+            }
+            rightHeading
+            rightText
+            rightEmphasisText
+            rightEmphasisButton
+            rightEmphasisPdf {
+              url
+            }
+          }
+          ... on productSupportComponents_installation_BlockType {
+            id
+            typeHandle
+            howToTilesHeading
+            howToTilesText
+            howToTilesButton
+            howToTilesGuide {
+              url
+            }
+            howToSlabHeading
+            howToSlabText
+            howToSlabButton
+            howToSlabGuide {
+              url
+            }
+            imageRight {
+              url
+            }
+            imageRightThumb: imageRight
+              @transform(width: 1065, height: 1216, mode: "crop") {
+              url
+              title
+              width
+              height
+            }
+          }
+          ... on productSupportComponents_imageLeftTextRight_BlockType {
+            id
+            typeHandle
+            rightHeading
+            rightText
+            rightButton
+            rightButtonLink {
+              id
+              url
+            }
+            imageLeft {
+              url
+            }
+            imageLeftThumb: imageLeft
+              @transform(width: 710, height: 710, mode: "crop") {
+              url
+              title
+              width
+              height
+            }
+          }
+          ... on productSupportComponents_faqs_BlockType {
+            id
+            typeHandle
+            faqList {
+              ... on faqList_BlockType {
+                id
+                question
+                text
+              }
+            }
+          }
+        }
+      }
       ... on collections_collections_Entry {
         id
         bannerSubline
@@ -253,11 +360,13 @@ export const OurStoryPageQuery = gql`
             }
           }
           ... on ourStoryComponents_headingLeftTextRight_BlockType {
+            id
             typeHandle
             headingLeft
             textRight
           }
           ... on ourStoryComponents_headingLeftImageRight_BlockType {
+            id
             typeHandle
             headingLeft
             imageRight {
@@ -269,6 +378,7 @@ export const OurStoryPageQuery = gql`
             sideText
           }
           ... on ourStoryComponents_featurePanel_BlockType {
+            id
             typeHandle
             panelBackgroundColor
             heading1
@@ -284,6 +394,7 @@ export const OurStoryPageQuery = gql`
             textRight
           }
           ... on ourStoryComponents_quote_BlockType {
+            id
             typeHandle
             heading
             subLine

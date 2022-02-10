@@ -1,33 +1,33 @@
 import { gql } from "@apollo/client";
 
 export const ProjectsQuery: any = gql`
-query ProjectsQuery {
-  entries(section: "projects") {
-    id
-    slug
-    title
-    ... on projects_projectDetails_Entry {
+  query ProjectsQuery {
+    entries(section: "projects") {
       id
-      location
+      slug
+      title
       postDate
-      sector {
-        slug
-      }
-      heroImage {
-        url
-        height
-        width
-      }
-      heroImageThumb: heroImage @transform(handle: "projectThumbnail") {
+      ... on projects_projectDetails_Entry {
         id
-        url
-        width
-        height
+        location
+        sector {
+          slug
+        }
+        heroImage {
+          url
+          height
+          width
+        }
+        heroImageThumb: heroImage @transform(handle: "projectThumbnail") {
+          id
+          url
+          width
+          height
+        }
+        projectCompleted
       }
-      projectCompleted
     }
   }
-}
 `;
 
 export const ProjectQuery: any = gql`
@@ -58,6 +58,7 @@ export const ProjectQuery: any = gql`
         heroImageThumb: heroImage @transform(handle: "projectThumbnail") {
           id
           url
+          title
           width
           height
         }

@@ -22,12 +22,12 @@ import { css } from "@styled-system/css";
 import Arrow from "@components/common/icons/arrow";
 import theme from "@styles/theme";
 
-interface accordionTypes {
+interface ProjectModuleTypes {
   accentText: string;
   product: any;
 }
 
-const ProjectsModule = ({ accentText, product }: accordionTypes) => {
+const ProjectsModule = ({ accentText, product }: ProjectModuleTypes) => {
   const { project1, project2, backgroundColor } = product;
   return (
     <Container
@@ -171,11 +171,7 @@ const ProjectsModule = ({ accentText, product }: accordionTypes) => {
         </Project>
       )}
       <Bottom>
-        <ArrowButton
-          mode=""
-          title="How to order samples"
-          link="/how-to-order-samples"
-        />
+        <ArrowButton mode="" title="View all projects" link="/in-use" />
       </Bottom>
     </Container>
   );

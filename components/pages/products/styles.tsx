@@ -25,10 +25,6 @@ const SingleProductContainer = styled("div")(
   })
 );
 
- 
- 
-
-
 export { 
   Container, 
   HeaderContainer, 

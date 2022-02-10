@@ -3,17 +3,20 @@ import Head from "next/head";
 import { initializeApollo } from "@utils/apolloClient";
 import { PageQuery } from "@gql/pageGQL";
 import { withGlobalData } from "@hoc/withGlobalData";
-import SupportPage from "@components/pages/support";
+import OrderingSamples from "@components/pages/support/orderingSamples";
 import Header from "@components/common/header";
 import Footer from "@components/common/footer";
 import { css } from "@styled-system/css";
 
-interface SupportPageProps {
+interface OrderingSamplesPageProps {
   pageData: any;
   notifications: any;
 }
 
-const Support: NextPage<SupportPageProps> = ({ pageData, notifications }) => {
+const Support: NextPage<OrderingSamplesPageProps> = ({
+  pageData,
+  notifications,
+}) => {
   return (
     <div css={css({ position: "relative" })}>
       <Head>
@@ -22,7 +25,7 @@ const Support: NextPage<SupportPageProps> = ({ pageData, notifications }) => {
         <meta name="robots" content="index, follow" />
       </Head>
       <Header mode="light" position="absolute" notifications={notifications} />
-      <SupportPage pageData={pageData} />
+      <OrderingSamples pageData={pageData} />
       <Footer />
     </div>
   );
@@ -35,7 +38,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async () => {
   } = await client.query({
     query: PageQuery,
     variables: {
-      slug: "product-support",
+      slug: "how-to-order-samples",
     },
   });
   return {

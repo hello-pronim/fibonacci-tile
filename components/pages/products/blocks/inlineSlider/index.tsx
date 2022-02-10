@@ -4,7 +4,7 @@ import Image from "next/image";
 import Text from "@components/common/typography";
 import Slide1 from "public/assets/temp/gallery-1.jpg";
 import SlideMobile from "public/assets/temp/gallery-mobile.jpg";
-import AccentText, {AccentTextMobile} from "@components/common/accentText";
+import AccentText, { AccentTextMobile } from "@components/common/accentText";
 import AddIcon from "@components/icons/add";
 import Link from "next/link";
 import BoldArrow from "@components/common/icons/boldArrow";
@@ -18,7 +18,7 @@ import {
   LinkWrapper,
   BottomBar,
   SlideImage,
-  SlideImageMobile
+  SlideImageMobile,
 } from "./styles";
 import { css } from "@styled-system/css";
 import theme from "styles/theme";
@@ -74,16 +74,17 @@ const InlineSlider = ({ images }) => {
     <Container id="gallery">
       <AccentText top={206}>Gallery</AccentText>
       <Wrapper>
-        <AccentTextMobile css={css({pb: 80})}>Gallery</AccentTextMobile>
+        <AccentTextMobile css={css({ pb: 80 })}>Gallery</AccentTextMobile>
         <Slider {...settings} ref={slider}>
-          {images.map((image, index) => {
-            return(
-              <SlideItem key={index}>
+          {images.map((image: any, index: number) => {
+            return (
+              <SlideItem key={`slide-${index}`}>
                 <SlideImage>
                   <Image
                     src={image.url}
                     alt="image-1"
                     layout="responsive"
+                    objectFit="cover"
                     width="710"
                     height="900"
                   />
@@ -93,12 +94,13 @@ const InlineSlider = ({ images }) => {
                     src={image.url}
                     alt="image-1"
                     layout="responsive"
+                    objectFit="cover"
                     width="303"
                     height="384.08"
                   />
                 </SlideImageMobile>
               </SlideItem>
-            )
+            );
           })}
         </Slider>
         <BottomBar>
@@ -110,8 +112,8 @@ const InlineSlider = ({ images }) => {
               {currentSlide} of {slideCount}
             </span>
             <LinkWrapper>
-              <BoldArrow direction="left" onClick={() => gotoPrev()}/>
-              <BoldArrow direction="right" onClick={() => gotoNext()}/>
+              <BoldArrow direction="left" onClick={() => gotoPrev()} />
+              <BoldArrow direction="right" onClick={() => gotoNext()} />
             </LinkWrapper>
           </BottomBarInner>
         </BottomBar>

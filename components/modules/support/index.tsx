@@ -8,18 +8,17 @@ import {
 } from "./styles";
 import Text from "@components/common/typography";
 import Image from "next/image";
+import router from "next/router";
 
 interface SupportModuleProps {
   title?: string;
   supports?: Array<any>;
-  activeSupport?: string;
-  setActiveSupport?: (tab) => void;
+  activePath?: string;
 }
 const SupportModule = ({
   title = "",
   supports,
-  activeSupport = "",
-  setActiveSupport,
+  activePath = "/support",
 }: SupportModuleProps) => {
   return (
     <Container>
@@ -34,12 +33,19 @@ const SupportModule = ({
             <Tile
               key={support.slug}
               href={support.href}
-              active={activeSupport === support.slug}
-              onClick={() => setActiveSupport && setActiveSupport(support.slug)}
+              active={activePath === support.href}
+              onClick={() => {
+                if (support.url) router.push(support.url);
+              }}
             >
               <TileInner>
                 <Icon>
-                  <Image alt="" src={support.icon} width={48} height={48} />
+                  <Image
+                    alt={support.title}
+                    src={support.icon}
+                    width={48}
+                    height={48}
+                  />
                 </Icon>
                 <Text as="h5" variant="Display-XSmall" altFont>
                   {support.title}

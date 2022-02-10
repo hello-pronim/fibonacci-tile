@@ -1,13 +1,8 @@
-import React, { useState, useEffect } from "react";
-import Text from "@components/common/typography";
-import Slider from "react-slick";
-import Image from "next/image";
-import supportHero from "public/assets/temp/support-hero.jpg";
-import Slide1Mobile from "public/assets/temp/home-slide-1-mobile.jpg";
-import { Container } from "./styles";
 import { css } from "@emotion/react";
+import Text from "@components/common/typography";
+import { Container } from "./styles";
 
-const Hero = () => {
+const Hero = ({ pageTitle }) => {
   return (
     <Container
       css={css({ backgroundImage: "url(/assets/temp/support-hero.jpg)" })}
@@ -24,9 +19,14 @@ const Hero = () => {
         })}
       >
         <Text variant="Display-Large" altFont>
-          Product Support
+          {pageTitle}
         </Text>
-        <Text variant="Display-Overline">How can we help?</Text>
+        <Text
+          variant="Display-Overline"
+          css={css({ textTransform: "uppercase" })}
+        >
+          How can we help?
+        </Text>
       </div>
     </Container>
   );

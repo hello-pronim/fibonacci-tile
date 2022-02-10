@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
-import client from "@utils/apolloClient";
+import { initializeApollo} from "@utils/apolloClient";
 import { useAppContext } from "@contexts/AppContext";
 import { ProductsQuery } from "@gql/productGQL";
 import ProductsHeader from "./Header";
@@ -21,6 +21,7 @@ const ProductsPage = ({
   cta2,
   notifications,
 }) => {
+  const client = initializeApollo();
   const { state } = useAppContext();
   const [loadingProducts, setLoadingProducts] = useState(false);
   const [firstHalfProducts, setFirstHalfProducts] = useState(

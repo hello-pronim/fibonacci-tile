@@ -1,6 +1,7 @@
 import css from "@styled-system/css";
 import styled from "@emotion/styled";
 import Cntnr from "@components/common/layout/container";
+import theme from "styles/theme";
 
 
 const Container = styled(Cntnr)(() =>
@@ -43,6 +44,15 @@ const Inner = styled('div')(() =>
     flexDirection: 'column',
     width: '100%',
     padding: 40,
+    [theme.mediaQueries.xMedium]: {
+      paddingRight: '30%',
+    },
+    "& p": {
+      paddingBottom: "20px",
+      "&:last-child": {
+        paddingBottom: "0px",
+      },
+    },
     '&:before': {
       position:'absolute',
       backgroundColor:'white',

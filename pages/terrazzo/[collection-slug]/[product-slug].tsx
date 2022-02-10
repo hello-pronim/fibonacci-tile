@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
-import client from "@utils/apolloClient";
+import { initializeApollo } from "@utils/apolloClient";
 import { withGlobalData } from "@hoc/withGlobalData";
 import { ProductQuery, ProductsQuery } from "@gql/productGQL";
 import { GlobalSpecificationQuery } from "@gql/globalGQL";
@@ -42,6 +42,7 @@ const Product: NextPage<ProductPageProps> = ({
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const client = initializeApollo();
   const {
     data: { entries: products },
   } = await client.query({
@@ -62,28 +63,32 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = withGlobalData(async function ({
   params,
 }) {
+  const client = initializeApollo();
+
   const {
     data: { entry: product },
   } = await client.query({
     query: ProductQuery,
     variables: { slug: params["product-slug"] },
   });
-
   const {
     data: { globalSet: specifications },
   } = await client.query({
     query: GlobalSpecificationQuery,
   });
-
-  const {
-    data: { entries: relatedProducts },
-  } = await client.query({
-    query: ProductsQuery,
-    variables: {
-      limit: 5,
-      id: ["not", product.id],
-    },
-  });
+  let relatedProducts = [];
+  if (product?.id) {
+    const {
+      data: { entries: rProducts },
+    } = await client.query({
+      query: ProductsQuery,
+      variables: {
+        limit: 5,
+        id: ["not", product.id],
+      },
+    });
+    relatedProducts = rProducts;
+  }
 
   return {
     props: {
@@ -92,7 +97,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function ({
       relatedProducts,
       params,
     },
-    revalidate: 60,
+    revalidate: parseInt(process.env.NEXT_PAGE_REVALIDATE),
   };
 });
 

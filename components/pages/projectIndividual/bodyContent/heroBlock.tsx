@@ -28,21 +28,23 @@ const HeroBlock = ({
             dangerouslySetInnerHTML={{ __html: component.heading }}
             variant="Display-Medium"
             altFont
-            css={css({ mb: 65, maxWidth: '50%' })}
+            css={css({ mb: 65, maxWidth: "50%" })}
           />
         )}
-        {component?.imageThumb?.length > 0 && (
-          <div css={css({position: 'relative'})}>
+        {component?.imageThumb?.[0]?.url && (
+          <div css={css({ position: "relative" })}>
             {component?.sideText && (
-            <AccentText top={0} css={css({left:'-260px'})}>{component.sideText}</AccentText>
+              <AccentText top={0} css={css({ left: "-260px" })}>
+                {component.sideText}
+              </AccentText>
             )}
-          <Image
-            layout="responsive"
-            alt={component.imageThumb[0].title}
-            src={component.imageThumb[0].url}
-            width={component.imageThumb[0].width}
-            height={component.imageThumb[0].height}
-          ></Image>
+            <Image
+              layout="responsive"
+              alt={component.imageThumb[0].title}
+              src={component.imageThumb[0].url}
+              width={component.imageThumb[0].width}
+              height={component.imageThumb[0].height}
+            ></Image>
           </div>
         )}
         {component?.imageCaption && (
