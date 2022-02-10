@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import collection from "public/assets/temp/collection-temp.png";
 import Link from "next/link";
 import ProductCard from "@components/common/product/xlCard";
 import { useAppContext } from "@contexts/AppContext";

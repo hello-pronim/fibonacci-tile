@@ -31,6 +31,7 @@ const CollectionsPage = ({
       bannerHeading: terrazzoPageData.bannerHeading,
       bannerSubline: terrazzoPageData.bannerSubline,
       bannerCTA: terrazzoPageData.bannerCTA,
+      bannerLinkTo: "/terrazzo",
     });
   }
   return (
