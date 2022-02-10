@@ -1,6 +1,9 @@
 import { useRef } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import Slider from "react-slick";
 import Image from "next/image";
+import Arrow from "@components/common/icons/arrow";
 import {
   BannerTextWrapper,
   BannerDescription,
@@ -9,9 +12,11 @@ import {
   Container,
   SliderItem,
   SliderWrapper,
+  LinkWrapper,
 } from "./styles";
 
 function TopSlider({ items = [] }) {
+  const router = useRouter();
   const settings = {
     dots: false,
     infinite: true,
@@ -33,7 +38,15 @@ function TopSlider({ items = [] }) {
       <SliderWrapper>
         <Slider {...settings} ref={slider}>
           {items.map((item, index) => (
-            <SliderItem key={`slide-item-${index}`} onClick={() => gotoNext()}>
+            <SliderItem
+              key={`slide-item-${index}`}
+              onClick={() => {
+                gotoNext();
+                if (item.bannerLinkTo) {
+                  router.push(item.bannerLinkTo);
+                }
+              }}
+            >
               <Image
                 src={item.bannerImage.url}
                 alt={item.bannerImage.title}
@@ -48,6 +61,13 @@ function TopSlider({ items = [] }) {
                   <span
                     dangerouslySetInnerHTML={{ __html: item.bannerSubline }}
                   />
+                  <br />
+                  {item.bannerCTA && item.bannerLinkTo && (
+                    <LinkWrapper>
+                      <Link href={item.bannerLinkTo}>{item.bannerCTA}</Link>
+                      <Arrow type="short" color="white" />
+                    </LinkWrapper>
+                  )}
                 </BannerDescription>
               </BannerTextWrapper>
             </SliderItem>

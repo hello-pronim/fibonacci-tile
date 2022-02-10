@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
-import { initializeApollo} from "@utils/apolloClient";
+import { initializeApollo } from "@utils/apolloClient";
 import { useAppContext } from "@contexts/AppContext";
 import { ProductsQuery } from "@gql/productGQL";
 import ProductsHeader from "./Header";
@@ -49,6 +49,7 @@ const ProductsPage = ({
       bannerHeading: collectionPageData.bannerHeading,
       bannerSubline: collectionPageData.bannerSubline,
       bannerCTA: collectionPageData.bannerCTA,
+      bannerLinkTo: "/terrazzo/collections",
     });
   }
 
