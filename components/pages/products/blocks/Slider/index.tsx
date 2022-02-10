@@ -58,10 +58,11 @@ function TopSlider({ items = [] }) {
                 <BannerSubHeading>{item.bannerIntro}</BannerSubHeading>
                 <BannerHeading>{item.bannerHeading}</BannerHeading>
                 <BannerDescription>
-                  <span
-                    dangerouslySetInnerHTML={{ __html: item.bannerSubline }}
-                  />
-                  <br />
+                  {!item.bannerLinkTo && (
+                    <span
+                      dangerouslySetInnerHTML={{ __html: item.bannerSubline }}
+                    />
+                  )}
                   {item.bannerCTA && item.bannerLinkTo && (
                     <LinkWrapper>
                       <Link href={item.bannerLinkTo}>{item.bannerCTA}</Link>

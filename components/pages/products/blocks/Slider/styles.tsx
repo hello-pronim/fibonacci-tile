@@ -63,7 +63,6 @@ const BannerDescription = styled("p")(
 
 const LinkWrapper = styled("div")(
   css({
-    pt: 20,
     display: "flex",
     alignItems: "center",
     columnGap: 20,
