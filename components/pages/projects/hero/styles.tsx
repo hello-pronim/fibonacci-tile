@@ -38,7 +38,6 @@ const LeftCol = styled("div")(
     gridColumn: "1 / span 2",
     display: "flex",
     flexDirection: "column",
-    // rowGap: 160,
     pt: "8px",
     pb: "56px",
     px: 0,
@@ -115,6 +114,7 @@ const HeroTitle = styled(Text)(
     fontFamily: "Canela",
     fontSize: "42px",
     lineHeight: "54.6px",
+    maxWidth: 200,
     [theme.mediaQueries.small]: {
       fontSize: "74px",
       lineHeight: "81.4px",

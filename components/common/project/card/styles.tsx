@@ -12,8 +12,9 @@ const Details = styled("div")(() =>
   })
 );
 
-const ImageWrapper = styled("div")(() =>
+const ImageWrapper = styled("a")(() =>
   css({
+    display: 'block',
     position: "relative",
     gridColumn: "1 / span 2",
     gridRow: 1,

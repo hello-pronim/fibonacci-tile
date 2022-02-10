@@ -12,7 +12,7 @@ const ProjectCard = ({ project }) => {
   return (
     <Project key={project.id}>
       {project?.heroImageThumb?.[0]?.url && (
-        <ImageWrapper>
+        <ImageWrapper href={`/in-use/${project.slug}`}>
           <Image
             src={project.heroImageThumb[0].url}
             alt={project.slug}
@@ -24,7 +24,7 @@ const ProjectCard = ({ project }) => {
       )}
       {project?.projectCompleted && (
         <Text variant="Body-Small" css={css({ gridRow: 2, gridColumn: 1 })}>
-          {moment(project.projectCompleted).format("MMMM YYYY")}
+          {moment(project.postDate).format("MMMM YYYY")}
         </Text>
       )}
       <Details>

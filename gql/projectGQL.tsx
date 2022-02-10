@@ -9,6 +9,7 @@ query ProjectsQuery {
     ... on projects_projectDetails_Entry {
       id
       location
+      postDate
       sector {
         slug
       }
