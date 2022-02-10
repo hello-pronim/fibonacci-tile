@@ -1,6 +1,8 @@
+import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { css } from "@styled-system/css";
+import useOnClickOutside from "use-onclickoutside";
 import { useAppContext } from "@contexts/AppContext";
 import ProductCard from "@components/common/product/card";
 import ArrowButton from "@components/common/button/arrowButton";
@@ -42,8 +44,16 @@ const textareaStyles = {
 const SelectionCart = ({ active, newSelection, tab }) => {
   const { state, dispatch } = useAppContext();
   const { selectedProducts } = state;
+  const ref = useRef(null);
+  useOnClickOutside(ref, () => {
+    dispatch({
+      type: "OPEN_DRAWER",
+      value: false,
+    });
+  });
   return (
     <div
+      ref={ref}
       css={css({
         boxSizing: "border-box",
         position: "absolute",
