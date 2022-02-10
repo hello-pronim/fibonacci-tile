@@ -1,6 +1,6 @@
+import { useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState, useRef } from "react";
 import classnames from "classnames";
 import useOnClickOutside from "use-onclickoutside";
 import { useAppContext } from "@contexts/AppContext";
@@ -12,7 +12,6 @@ import GridIcon from "@components/icons/grid";
 import ListIcon from "@components/icons/list";
 import CloseIcon from "@components/icons/close";
 import CollectionIcon from "@components/icons/collection";
-import Button from "@components/common/button";
 import theme from "styles/theme";
 import ProductFilter from "./ProductFilter";
 import SortByFilter from "./SortByFilter";
@@ -120,7 +119,9 @@ export default function ProductFilters({
                   Products
                 </Text>
                 {state.filter?.products?.value !== "all" && (
-                  <Text variant="Body-XSmall" color="#B0ABA7">{state.filter.products.label}</Text>
+                  <Text variant="Body-XSmall" color="#B0ABA7">
+                    {state.filter.products.label}
+                  </Text>
                 )}
               </div>
               <ArrowDownIcon />
@@ -158,7 +159,9 @@ export default function ProductFilters({
                   Sort by
                 </Text>
                 {state.filter?.sortBy?.value !== "featured" && (
-                  <Text variant="Body-XSmall" color="#B0ABA7">{state.filter.sortBy.label}</Text>
+                  <Text variant="Body-XSmall" color="#B0ABA7">
+                    {state.filter.sortBy.label}
+                  </Text>
                 )}
               </div>
               <ArrowDownIcon />
