@@ -13,7 +13,7 @@ const OrderingSamples = ({ pageData }) => {
 
   return (
     <>
-      <Hero pageTitle="How to order samples" />
+      <Hero pageTitle={pageData.pageHeading} />
       <HeroOverlayWrapper>
         <SupportModule activePath={asPath} supports={supports} />
       </HeroOverlayWrapper>

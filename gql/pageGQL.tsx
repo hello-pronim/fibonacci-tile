@@ -6,19 +6,22 @@ export const PageQuery = gql`
     entry(slug: $slug) {
       id
       ... on privacyPolicy_privacyPolicy_Entry {
-        pageHeading
+        title
         pageContent
       }
       ... on inUse_inUse_Entry {
+        title
         pageHeading
         pageIntro
       }
       ... on latestNews_latestNews_Entry {
+        title
         pageHeading
         pageIntro
       }
       ... on howToOrderSamples_howToOrderSamples_Entry {
         id
+        pageHeading
         orderSamplesComponents {
           ... on orderSamplesComponents_headingLeftTextRight_BlockType {
             id
@@ -36,7 +39,7 @@ export const PageQuery = gql`
       }
       ... on requestAQuote_requestAQuote_Entry {
         id
-        title
+        pageHeading
         pageIntro
       }
       ... on productSupport_productSupport_Entry {
