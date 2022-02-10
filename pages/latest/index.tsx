@@ -26,14 +26,14 @@ import styles from "./styles.module.scss";
 interface LatestPageProps {
   newsItems: Array<any>;
   notifications: Array<any>;
-  heroDetails: any;
+  pageData: any;
   categories: any;
   newsletter: any;
   news: any;
 }
 
 const LatestNews: NextPage<LatestPageProps> = ({
-  heroDetails,
+  pageData,
   categories,
   news,
   newsletter,
@@ -68,7 +68,7 @@ const LatestNews: NextPage<LatestPageProps> = ({
   };
   const windowWidth = useWidth();
   const crumbs = [
-    { path: "/products", name: "Products" },
+    { path: "/", name: "Home" },
     { path: "/latest", name: "Latest" },
   ];
   return (
@@ -79,7 +79,7 @@ const LatestNews: NextPage<LatestPageProps> = ({
       </Head>
       <Header mode="dark" notifications={notifications} />
       <BreadCrumb crumbs={crumbs} />
-      <Hero heroDetails={heroDetails} />
+      <Hero pageData={pageData} />
       {windowWidth >= 769 ? (
         <CategorysBarInner>
           <AllCategory>
@@ -135,7 +135,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
   const client = initializeApollo();
 
   const {
-    data: { entry: heroDetails },
+    data: { entry: pageData },
   } = await client.query({
     query: PageQuery,
     variables: { slug: "latest-news" },
@@ -165,7 +165,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
 
   return {
     props: {
-      heroDetails,
+      pageData,
       categories,
       news,
       newsletter: newsletter?.newsletter,

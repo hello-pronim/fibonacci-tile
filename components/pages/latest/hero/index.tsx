@@ -5,7 +5,7 @@ import theme from "@styles/theme";
 import { LeftCol, RightCol, ContentWrapper, Container } from "../styles";
 import styles from "./styles.module.scss";
 
-const Hero = ({ heroDetails: { pageHeading, pageIntro } }) => {
+const Hero = ({ pageData: { pageHeading, pageIntro } }) => {
   return (
     <Container
       css={css({
