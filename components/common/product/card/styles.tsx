@@ -33,6 +33,7 @@ const GridCardImgContainer = styled("div")(
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    position: "relative",
   })
 );
 
