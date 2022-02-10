@@ -14,7 +14,7 @@ const FullImageBlock = ({ component, backgroundColor, pt = 60, pb = 60 }) => {
   return (
     <Container css={css(cssProps)}>
       <FwWrapper>
-        {component?.imageThumb?.[0]?.url > 0 && (
+        {component?.imageThumb?.[0]?.url && (
           <Image
             layout="responsive"
             alt={component.imageThumb[0].title}
