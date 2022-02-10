@@ -5,23 +5,23 @@ import Container from "@components/common/layout/container";
 import AccentText from "@components/common/accentText";
 import { FwWrapper } from "./styles";
 
-const HeroBlock = ({
-  component,
-  backgroundColor,
-  hasPadding = false,
-  hasBottomPadding = false,
-}) => {
+const HeroBlock = ({ component, backgroundColor, pt = 60, pb = 60 }) => {
   const cssProps: any = {
+    position: "relative",
     bg: backgroundColor ? backgroundColor : "#FFFFF8",
+    pt,
+    pb,
   };
-  if (hasPadding) {
-    cssProps.py = 120;
-  }
-  if (hasBottomPadding) {
-    cssProps.pb = 120;
-  }
   return (
     <Container css={css(cssProps)}>
+      {component?.sideText && (
+        <AccentText
+          top={0}
+          css={css({ top: pt + (component.heading ? 174 : 0) })}
+        >
+          {component.sideText}
+        </AccentText>
+      )}
       <FwWrapper>
         {component.heading && (
           <Text
@@ -32,20 +32,13 @@ const HeroBlock = ({
           />
         )}
         {component?.imageThumb?.[0]?.url && (
-          <div css={css({ position: "relative" })}>
-            {component?.sideText && (
-              <AccentText top={0} css={css({ left: "-260px" })}>
-                {component.sideText}
-              </AccentText>
-            )}
-            <Image
-              layout="responsive"
-              alt={component.imageThumb[0].title}
-              src={component.imageThumb[0].url}
-              width={component.imageThumb[0].width}
-              height={component.imageThumb[0].height}
-            ></Image>
-          </div>
+          <Image
+            layout="responsive"
+            alt={component.imageThumb[0].title}
+            src={component.imageThumb[0].url}
+            width={component.imageThumb[0].width}
+            height={component.imageThumb[0].height}
+          />
         )}
         {component?.imageCaption && (
           <Text
