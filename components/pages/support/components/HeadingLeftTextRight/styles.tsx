@@ -1,23 +1,40 @@
 import css from "@styled-system/css";
 import styled from "@emotion/styled";
+import Cntnr from "@components/common/layout/container";
 import theme from "styles/theme";
+
+const Wrapper = styled("div")(() =>
+  css({
+    gridColumn: ["1 / span 2", "1 / span 6", "1 / span 6", "2 / span 10"],
+    // gridColumn: ['2 / span 10'],
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    rowGap: 32,
+    zIndex: 999,
+    alignItems: "flex-start",
+  })
+);
+
+const Container = styled(Cntnr)(() =>
+  css({
+    py: "40px",
+    marginBottom: "20px",
+    [theme.mediaQueries.small]: {
+      py: "40px",
+      marginBottom: "70px",
+    },
+  })
+);
 
 const Panel = styled("section")(
   css({
-    display: "flex",
-    flexDirection: "column",
-    [theme.mediaQueries.small]: {
-      width: "100%",
-      flexDirection: "row",
-      padding: "0",
-    },
+    display: "block",
   })
 );
 
 const PanelLeft = styled("div")(
   css({
-    position: "relative",
-    padding: "80px 16px 16px 16px",
     [theme.mediaQueries.small]: {
       width: "50%",
       padding: 0,
@@ -25,18 +42,17 @@ const PanelLeft = styled("div")(
     ">span": {
       display: "block",
       position: "relative",
-      left: 0,
-      top: 0,
+      left: "20px",
+      top: "50px",
       fontSize: "18px",
-      lineHeight: "23.4px",
+      lineHeight: "1.4",
       writingMode: "unset",
       color: "black",
+      letterSpacing: "-0.01em",
+      height: "max-content",
       [theme.mediaQueries.small]: {
         position: "absolute",
-        left: "24px",
-        top: "120px",
         fontSize: "26px",
-        lineHeight: "33.8px",
         writingMode: "vertical-rl",
       },
     },
@@ -47,26 +63,21 @@ const PanelRight = styled("div")(
   css({
     width: "100%",
     [theme.mediaQueries.small]: {
-      width: "50%",
+      width: "40%",
     },
   })
 );
 
 const StoryTitleWrapper = styled("div")(
   css({
-    [theme.mediaQueries.small]: {
-      paddingLeft: "240px",
-    },
     h4: {
       color: theme.colors.charcoal,
       fontFamily: "Canela",
       fontSize: "32px",
-      lineHeight: "43.2px",
-      paddingTop: "56px",
+      lineHeight: "140%",
+      marginBottom: "30px",
       [theme.mediaQueries.small]: {
         fontSize: "42px",
-        lineHeight: "54.6px",
-        paddingTop: "120px",
       },
     },
   })
@@ -76,19 +87,15 @@ const StoryContentWrapper = styled("div")(
   css({
     display: "grid",
     gridTemplateColumns: "repeat(12, 1fr)",
-    padding: "80px 16px",
     [theme.mediaQueries.small]: {
-      paddingTop: "120px",
       px: 0,
     },
     p: {
       color: theme.colors.charcoal,
       fontSize: "20px",
-      lineHeight: "28px",
+      lineHeight: "1.4",
       gridColumn: "1/span 12",
-      [theme.mediaQueries.small]: {
-        gridColumn: "1/span 9",
-      },
+      marginBottom: "20px",
     },
   })
 );
@@ -100,6 +107,8 @@ const StoryImageWrapper = styled("div")(
 );
 
 export {
+  Container,
+  Wrapper,
   Panel,
   PanelLeft,
   PanelRight,

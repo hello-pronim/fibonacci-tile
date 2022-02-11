@@ -2,6 +2,8 @@ import ProductCard from "@components/common/product/card";
 import Text from "@components/common/typography";
 import { useAppContext } from "@contexts/AppContext";
 import AccentText from "@components/common/accentText";
+import Loading from "@components/icons/loading";
+import Arrow from "@components/common/icons/arrow";
 import {
   Container,
   DisplayDescription,
@@ -15,6 +17,7 @@ import {
   TableHeader,
   TableHeaderLeft,
   TableHeaderRight,
+  LinkWrapper,
 } from "./styles";
 
 interface productListProps {
@@ -34,8 +37,30 @@ function ProductLists({
   return (
     <Container listView={state?.productDisplayMode === "list"}>
       {accentText && <AccentText top={120}>{sideText}</AccentText>}
-      {loadingProducts && <p>Loading Products...</p>}
-      {products.length === 0 && <p>No products matching criteria</p>}
+      {loadingProducts && <Loading />}
+      {products.length === 0 && (
+        <div
+          style={{
+            display: "block",
+          }}
+        >
+          <Text variant="Display-Large">
+            We couldn’t find any products you were looking for at this time.{" "}
+          </Text>
+          <p>
+            Try resetting your filters to find what products you are looking
+            for.
+          </p>
+          <LinkWrapper
+            onClick={() => {
+              dispatch({ type: "RESET_PRODUCT_FILTER" });
+            }}
+          >
+            Reset your filters
+            <Arrow type="short" />
+          </LinkWrapper>
+        </div>
+      )}
       {state?.productDisplayMode === "list" && (
         <DisplayListTable>
           <TableHeader>

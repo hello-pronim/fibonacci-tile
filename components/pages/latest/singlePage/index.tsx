@@ -3,7 +3,7 @@ import React from "react";
 import BodyContent from "../bodyContent";
 import SingleHero from "./single-hero";
 
-const SinglePage = () => {
+const SinglePage = ({ pageData }) => {
   return (
     <>
       <SingleHero />

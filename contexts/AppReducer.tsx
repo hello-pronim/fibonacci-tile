@@ -32,6 +32,12 @@ export const AppReducer = (state, action) => {
         productDisplayMode: action.value,
       };
     }
+    case "RESET_PRODUCT_FILTER": {
+      return {
+        ...state,
+        filter: initialState.filter
+      };
+    }
     case "SELECT_PRODUCT_FILTER": {
       if (action?.filter?.type && action?.filter?.value) {
         let value = action.filter.value;
