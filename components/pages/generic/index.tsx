@@ -6,14 +6,18 @@ const GenericPage = ({ pageData, notifications }) => {
     <Container>
       <GenericHeader mode="dark" notifications={notifications} />
       <InnerContainer>
-        {pageData?.pageHeading && (
-          <PageTitle Base="h2" variant="Display-Large">
-            {pageData.pageHeading}
-          </PageTitle>
-        )}
-        {pageData?.pageContent && (
-          <div dangerouslySetInnerHTML={{ __html: pageData.pageContent }}></div>
-        )}
+        <div className="titleContentBlock">
+          {pageData?.title && (
+            <PageTitle Base="h2" variant="Display-Large">
+              {pageData.title}
+            </PageTitle>
+          )}
+        </div>
+        <div className="detailsContentBlock">
+          {pageData?.pageContent && (
+            <div dangerouslySetInnerHTML={{ __html: pageData.pageContent }}></div>
+          )}
+        </div>
       </InnerContainer>
     </Container>
   );
