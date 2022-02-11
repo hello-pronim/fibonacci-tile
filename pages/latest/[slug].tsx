@@ -1,37 +1,71 @@
+import { GetStaticProps, GetStaticPaths, NextPage } from "next";
+import Head from "next/head";
+import { initializeApollo } from "@utils/apolloClient";
+import Breadcrumb from "@components/common/breadcrumb";
 import Footer from "@components/common/footer";
 import Header from "@components/common/header";
-import Arrow from "@components/common/icons/arrow";
 import SinglePage from "@components/pages/latest/singlePage";
-import { BottomBarInner, LinkWrapper } from "@components/pages/latest/styles";
-import Head from "next/head";
-import Link from "next/link";
-import React from "react";
+import { withGlobalData } from "@hoc/withGlobalData";
+import { NewsQuery, NewsItemQuery } from "@gql/newsGQL";
 
-export default function LatestSlug() {
+interface SingleLatestProps {
+  pageData: any;
+}
+
+const SingleLatest: NextPage<SingleLatestProps> = ({ pageData }) => {
+  const crumbs = [
+    { path: "/latest", name: "Latest" },
+    { path: "", name: pageData.title },
+  ];
+
   return (
     <>
       <Head>
-        <title>Projects | Fibonacci</title>
-        <meta name="description" content="Fibonacci Projects page" />
+        <title>{pageData.title} | Fibonacci</title>
       </Head>
       <Header mode="dark" />
-      <BottomBarInner>
-        <LinkWrapper>
-          <Arrow type="short" direction="left" />
-          <Link href="#">Back</Link>
-        </LinkWrapper>
-        <LinkWrapper>
-          <Link href="/">Home</Link>
-        </LinkWrapper>
-        <LinkWrapper>
-          <Link href="#">Page 1</Link>
-        </LinkWrapper>
-        <LinkWrapper>
-          <Link href="#">Page 2</Link>
-        </LinkWrapper>
-      </BottomBarInner>
-      <SinglePage />
+      <Breadcrumb crumbs={crumbs} />
+      <SinglePage pageData={pageData} />
       <Footer />
     </>
   );
-}
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const client = initializeApollo();
+  const {
+    data: { entries: newsItems },
+  } = await client.query({
+    query: NewsQuery,
+  });
+  const paths = newsItems.map((item: any) => ({
+    params: {
+      slug: item.slug,
+    },
+  }));
+  return {
+    paths,
+    fallback: "blocking",
+  };
+};
+
+export const getStaticProps: GetStaticProps = withGlobalData(async function ({
+  params,
+}) {
+  const client = initializeApollo();
+
+  const {
+    data: { entry: pageData },
+  } = await client.query({
+    query: NewsItemQuery,
+    variables: { slug: params["slug"] },
+  });
+  return {
+    props: {
+      pageData,
+    },
+    revalidate: parseInt(process.env.NEXT_PAGE_REVALIDATE),
+  };
+});
+
+export default SingleLatest;
