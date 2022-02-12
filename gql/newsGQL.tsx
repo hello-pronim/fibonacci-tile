@@ -39,6 +39,14 @@ export const NewsItemQuery: any = gql`
       id
       slug
       title
+      prev(section: "news") {
+        id
+        slug
+      }
+      next(section: "news") {
+        id
+        slug
+      }
       ... on news_default_Entry {
         id
         postDate
@@ -99,6 +107,7 @@ export const NewsItemQuery: any = gql`
           }
           ... on newsComponents_largeImage_BlockType {
             id
+            typeHandle
             image {
               url
             }

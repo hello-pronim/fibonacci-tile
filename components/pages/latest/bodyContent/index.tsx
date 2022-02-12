@@ -1,35 +1,18 @@
-import React, { useEffect, useState } from "react";
-import Image from "next/image";
+import React from "react";
 import Link from "next/link";
 import css from "@styled-system/css";
-import Text from "@components/common/typography";
 import Arrow from "@components/common/icons/arrow";
 import ContentFullWidth from "./ContentFullWidth";
 import HeroImageFullWidth from "./HeroImageFullWidth";
 import LargeImage from "./LargeImage";
 import PullQuote from "./PullQuote";
 import TwoColImage from "./TwoColmages";
-import FollowSection from "./FollowSection";
+import FirstContentSection from "./FirstContentSection";
 import { LinkWrapper } from "../styles";
-import { LeftCol, TextCol, Wrapper, SahreLinkWrapper, Row } from "./styles";
-import ContPic3 from "public/assets/latest-news/single-page/single-page3.png";
-import { CaptionText } from "@components/pages/products/blocks/CollectionHero/styles";
+import { LeftCol, SahreLinkWrapper, Row } from "./styles";
 
 const BodyContent = ({ pageData }) => {
-  const useWidth = () => {
-    if (process.browser) {
-      const [width, setWidth] = useState(window.innerWidth);
-      const handleResize = () => setWidth(window.innerWidth);
-      useEffect(() => {
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
-      }, [width]);
-      return width;
-    }
-    return 0;
-  };
-  const windowWidth = useWidth();
-
+  let fistContentUsed = false;
   return (
     <div style={{ paddingTop: "55px" }}>
       {pageData.newsComponents.map((component: any, index: any) => {
@@ -46,6 +29,15 @@ const BodyContent = ({ pageData }) => {
               </React.Fragment>
             );
           case "contentFullWidth":
+            if (!fistContentUsed) {
+              fistContentUsed = true;
+              return (
+                <FirstContentSection
+                  key={`news-comp-${index}`}
+                  content={component.contentText}
+                />
+              );
+            }
             return (
               <ContentFullWidth
                 key={`news-comp-${index}`}
@@ -79,7 +71,6 @@ const BodyContent = ({ pageData }) => {
             );
         }
       })}
-      <FollowSection />
       <Row
         css={css({
           bg: "#FFFFF8",
@@ -90,15 +81,19 @@ const BodyContent = ({ pageData }) => {
           pt: 239,
         })}
       >
-        <LinkWrapper>
-          <Arrow type="short" direction="left" />
-          <Link href="/">Previous article</Link>
-        </LinkWrapper>
+        {pageData.prev && (
+          <LinkWrapper>
+            <Arrow type="short" direction="left" />
+            <Link href={`/latest/${pageData.prev.slug}`}>Previous article</Link>
+          </LinkWrapper>
+        )}
 
-        <LinkWrapper>
-          <Link href="/">Next article</Link>
-          <Arrow type="short" direction="right" />
-        </LinkWrapper>
+        {pageData.next && (
+          <LinkWrapper>
+            <Link href={`/latest/${pageData.next.slug}`}>Next article</Link>
+            <Arrow type="short" direction="right" />
+          </LinkWrapper>
+        )}
       </Row>
       <LeftCol
         css={css({
