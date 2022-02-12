@@ -6,8 +6,8 @@ import SingleHero from "./single-hero";
 const SinglePage = ({ pageData }) => {
   return (
     <>
-      <SingleHero />
-      <BodyContent />
+      <SingleHero pageData={pageData} />
+      <BodyContent pageData={pageData} />
     </>
   );
 };

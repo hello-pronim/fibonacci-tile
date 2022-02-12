@@ -1,26 +1,21 @@
 import React, { useEffect, useState } from "react";
-import Text from "@components/common/typography";
-import {
-  FwWrapper,
-  LeftCol,
-  TextCol,
-  Wrapper,
-  SahreLinkWrapper,
-  Row,
-} from "./styles";
 import Image from "next/image";
-
-import ContPic1 from "public/assets/latest-news/single-page/single-page1.png";
-import ContPic3 from "public/assets/latest-news/single-page/single-page3.png";
-import css from "@styled-system/css";
 import Link from "next/link";
+import css from "@styled-system/css";
+import Text from "@components/common/typography";
 import Arrow from "@components/common/icons/arrow";
-import { LinkWrapper } from "../styles";
-import TextSection from "./TextSection";
+import ContentFullWidth from "./ContentFullWidth";
+import HeroImageFullWidth from "./HeroImageFullWidth";
+import LargeImage from "./LargeImage";
+import PullQuote from "./PullQuote";
+import TwoColImage from "./TwoColmages";
 import FollowSection from "./FollowSection";
-import TwoImageSection from "./TwoImageSection";
+import { LinkWrapper } from "../styles";
+import { LeftCol, TextCol, Wrapper, SahreLinkWrapper, Row } from "./styles";
+import ContPic3 from "public/assets/latest-news/single-page/single-page3.png";
+import { CaptionText } from "@components/pages/products/blocks/CollectionHero/styles";
 
-const BodyContent = () => {
+const BodyContent = ({ pageData }) => {
   const useWidth = () => {
     if (process.browser) {
       const [width, setWidth] = useState(window.innerWidth);
@@ -37,58 +32,54 @@ const BodyContent = () => {
 
   return (
     <div style={{ paddingTop: "55px" }}>
-      <FwWrapper>
-        <Image
-          alt=""
-          src={ContPic1}
-          layout="responsive"
-          width="1920"
-          height="1080"
-        ></Image>
-      </FwWrapper>
+      {pageData.newsComponents.map((component: any, index: any) => {
+        switch (component.typeHandle) {
+          case "heroImageFullWidth":
+            return (
+              <>
+                {component?.imageThumb?.[0].url && (
+                  <HeroImageFullWidth
+                    key={`news-comp-${index}`}
+                    image={component.imageThumb[0]}
+                  />
+                )}
+              </>
+            );
+          case "contentFullWidth":
+            return (
+              <ContentFullWidth
+                key={`news-comp-${index}`}
+                content={component.contentText}
+              />
+            );
+          case "pullQuote":
+            return (
+              <PullQuote key={`news-comp-${index}`} quote={component.quote} />
+            );
+          case "twoColImages":
+            return (
+              <TwoColImage
+                key={`news-comp-${index}`}
+                image1={component.image1Thumb}
+                image2={component.image2Thumb}
+                caption={component.caption}
+              />
+            );
+          case "largeImage":
+            return (
+              <>
+                {component?.imageThumb?.[0].url && (
+                  <LargeImage
+                    key={`news-comp-${index}`}
+                    image={component?.imageThumb?.[0]}
+                    caption={component.caption}
+                  />
+                )}
+              </>
+            );
+        }
+      })}
       <FollowSection />
-      <TwoImageSection />
-      <TextSection />
-      <Wrapper>
-        <TextCol>
-          <Text as="h1" variant="Display-Medium" altFont>
-            Venenatis sagittis, risus purus vulputate bibendum augue nisi, eget
-            venenatis. Amet, cursus eu, pellentesque vel ut dignissim nunc nunc
-            nunc.
-          </Text>
-        </TextCol>
-        <Image
-          alt=""
-          src={ContPic3}
-          layout="responsive"
-          width="1460"
-          height="820"
-        ></Image>
-        <Text variant="Body-XSmall" css={css({ mt: 16, mr: 40 })}>
-          Photography by Lucia Braham
-        </Text>
-        <Text variant="Body-XSmall" css={css({ mt: 16 })}>
-          Photography by Lucia Braham
-        </Text>
-      </Wrapper>
-      <TextSection />
-      <TwoImageSection />
-      <Wrapper>
-        <Image
-          alt=""
-          src={ContPic3}
-          layout="responsive"
-          width="1460"
-          height="820"
-        ></Image>
-        <Text variant="Body-XSmall" css={css({ mt: 16, mr: 40 })}>
-          Photography by Lucia Braham
-        </Text>
-        <Text variant="Body-XSmall" css={css({ mt: 16 })}>
-          Photography by Lucia Braham
-        </Text>
-      </Wrapper>
-      <TextSection />
       <Row
         css={css({
           bg: "#FFFFF8",
