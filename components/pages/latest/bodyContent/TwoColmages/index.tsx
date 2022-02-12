@@ -7,15 +7,14 @@ import { ImageLeft, ImageRight } from "../styles";
 const TwoColImage = ({ image1, image2, caption }) => {
   const myImage1 = image1?.[0];
   const myImage2 = image2?.[0];
-
   return (
     <div css={css({ py: 120 })}>
       <Container css={css({ bg: "#FFFFF8" })}>
         {myImage1?.url && (
           <ImageLeft>
             <Image
-              alt={image1.title}
-              src={image1.url}
+              alt={myImage1.title}
+              src={myImage1.url}
               objectFit="cover"
               layout="intrinsic"
               width="710"
@@ -26,8 +25,8 @@ const TwoColImage = ({ image1, image2, caption }) => {
         {myImage2?.url && (
           <ImageRight>
             <Image
-              alt={image2.title}
-              src={image2.url}
+              alt={myImage2.title}
+              src={myImage2.url}
               width="710"
               height="820"
             />

@@ -36,14 +36,14 @@ const BodyContent = ({ pageData }) => {
         switch (component.typeHandle) {
           case "heroImageFullWidth":
             return (
-              <>
+              <React.Fragment key={`news-comp-${index}`}>
                 {component?.imageThumb?.[0].url && (
                   <HeroImageFullWidth
                     key={`news-comp-${index}`}
                     image={component.imageThumb[0]}
                   />
                 )}
-              </>
+              </React.Fragment>
             );
           case "contentFullWidth":
             return (
@@ -67,7 +67,7 @@ const BodyContent = ({ pageData }) => {
             );
           case "largeImage":
             return (
-              <>
+              <React.Fragment key={`news-comp-${index}`}>
                 {component?.imageThumb?.[0].url && (
                   <LargeImage
                     key={`news-comp-${index}`}
@@ -75,7 +75,7 @@ const BodyContent = ({ pageData }) => {
                     caption={component.caption}
                   />
                 )}
-              </>
+              </React.Fragment>
             );
         }
       })}
