@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useAppContext } from "@contexts/AppContext";
 import BreadCrumb from "@components/common/breadcrumb";
 import SelectedProductCard from "@components/common/product/selectedCard";
@@ -21,78 +22,19 @@ import {
   CheckoutFooter,
 } from "./styles";
 
-import Abstrakt from "public/tmp/prod/abstrakt.jpeg";
-import ActThree from "public/tmp/prod/actThree.jpeg";
-import Assemblage from "public/tmp/prod/assemblage.jpeg";
-import Brackish from "public/tmp/prod/brackish.jpeg";
-import Carmelita from "public/tmp/prod/carmelita.jpeg";
-import CloudBurst from "public/tmp/prod/cloudBurst.jpeg";
-
-const products = [
-  {
-    id: "1",
-    richText:
-      "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-    slug: "abstrakt",
-    subHeading: "Complex • Robust • Diverse",
-    title: "Abstrakt",
-    uri: "/products/abstrakt",
-    img1: Abstrakt,
-  },
-  {
-    id: "2",
-    richText:
-      "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-    slug: "act-three",
-    subHeading: "Complex • Robust • Diverse",
-    title: "Act Three",
-    uri: "/products/act-three",
-    img1: ActThree,
-  },
-  {
-    id: "3",
-    richText:
-      "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-    slug: "assemblage",
-    subHeading: "Complex • Robust • Diverse",
-    title: "Assemblage",
-    uri: "/products/assemblage",
-    img1: Assemblage,
-  },
-  {
-    id: "5",
-    richText:
-      "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-    slug: "brackish",
-    subHeading: "Complex • Robust • Diverse",
-    title: "Brackish",
-    uri: "/products/brackish",
-    img1: Brackish,
-  },
-  {
-    id: "6",
-    richText:
-      "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-    slug: "carmelita",
-    subHeading: "Complex • Robust • Diverse",
-    title: "Carmelita",
-    uri: "/products/carmelita",
-    img1: Carmelita,
-  },
-  {
-    id: "7",
-    richText:
-      "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-    slug: "cloudburst",
-    subHeading: "Complex • Robust • Diverse",
-    title: "Cloudburst",
-    uri: "/products/cloudburst",
-    img1: CloudBurst,
-  },
-];
 const CheckoutPage = ({ notifications }) => {
+  const [activeCheckoutStep, setActiveCheckoutStep] = useState(1);
   const { state, dispatch } = useAppContext();
-  const { checkoutStep, confirmedProducts, selectedProducts } = state;
+  const { confirmedProducts, selectedProducts } = state;
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch({
+        type: "OPEN_DRAWER",
+        value: false,
+      });
+    }, 100);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   let disabled = false;
   if (
     confirmedProducts?.length === 0 ||
@@ -110,17 +52,10 @@ const CheckoutPage = ({ notifications }) => {
       return;
     }
     if (step === 4) {
-      // Reset step to 1
-      dispatch({
-        type: "SET_CHECKOUT_STEP",
-        value: 1,
-      });
+      setActiveCheckoutStep(1);
     }
     if (step !== 4) {
-      dispatch({
-        type: "SET_CHECKOUT_STEP",
-        value: step,
-      });
+      setActiveCheckoutStep(step);
     }
   };
   return (
@@ -128,21 +63,23 @@ const CheckoutPage = ({ notifications }) => {
       <ProductsHeader mode="dark" notifications={notifications} />
       <CheckoutWrapper>
         <LeftContent
-          displayRight={checkoutStep === 1 || checkoutStep === 4 ? false : true}
+          displayRight={
+            activeCheckoutStep === 1 || activeCheckoutStep === 4 ? false : true
+          }
         >
           <BreadCrumb crumbs={crumbs} />
           <CheckoutStepWrapper>
-            <StepItem step={1} />
-            <StepItem step={2} />
-            <StepItem step={3} />
-            <StepItem step={4} />
+            <StepItem step={1} activeStep={activeCheckoutStep} />
+            <StepItem step={2} activeStep={activeCheckoutStep} />
+            <StepItem step={3} activeStep={activeCheckoutStep} />
+            <StepItem step={4} activeStep={activeCheckoutStep} />
           </CheckoutStepWrapper>
           {selectedProducts?.length > 0 && (
             <CheckoutContentWrapper>
-              {checkoutStep === 1 && <Samples />}
-              {checkoutStep === 2 && <Details />}
-              {checkoutStep === 3 && <Delivery />}
-              {checkoutStep === 4 && <Confirm />}
+              {activeCheckoutStep === 1 && <Samples />}
+              {activeCheckoutStep === 2 && <Details />}
+              {activeCheckoutStep === 3 && <Delivery />}
+              {activeCheckoutStep === 4 && <Confirm />}
             </CheckoutContentWrapper>
           )}
           {selectedProducts?.length === 0 && (
@@ -158,7 +95,9 @@ const CheckoutPage = ({ notifications }) => {
           )}
         </LeftContent>
         <RightContent
-          displayRight={checkoutStep === 2 || checkoutStep === 3 ? true : false}
+          displayRight={
+            activeCheckoutStep === 2 || activeCheckoutStep === 3 ? true : false
+          }
         >
           <p>
             Selections (
@@ -188,7 +127,7 @@ const CheckoutPage = ({ notifications }) => {
         </RightContent>
       </CheckoutWrapper>
 
-      {checkoutStep === 1 && selectedProducts?.length > 0 && (
+      {activeCheckoutStep === 1 && selectedProducts?.length > 0 && (
         <CheckoutFooter contentAlign="right">
           <span>{`You currently have ${confirmedProducts.length} selected, you can choose up 6 samples`}</span>
           <ArrowButton
@@ -202,7 +141,7 @@ const CheckoutPage = ({ notifications }) => {
         </CheckoutFooter>
       )}
 
-      {checkoutStep === 2 && (
+      {activeCheckoutStep === 2 && (
         <CheckoutFooter contentAlign="right">
           <div className="back" onClick={() => stepChange(1)}>
             Back
@@ -218,7 +157,7 @@ const CheckoutPage = ({ notifications }) => {
         </CheckoutFooter>
       )}
 
-      {checkoutStep === 3 && (
+      {activeCheckoutStep === 3 && (
         <CheckoutFooter contentAlign="left">
           <ArrowButton
             mode="dark"

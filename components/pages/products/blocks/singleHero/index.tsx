@@ -219,20 +219,25 @@ const SingleHeroModule = ({ product, collectionSlug }) => {
                 {product.finishAppearance}
               </Text>
             </div>
-            <div
-              css={css({
-                borderBottom: `1px solid ${theme.colors.warm}`,
-                pb: 16,
-                mb: 16,
-                display: "flex",
-                flexDirection: "column",
-              })}
-            >
-              <Text variant="Display-Overline">SIZES</Text>
-              <Text variant="Body-Regular" css={{ color: theme.colors.taupe }}>
-                <SizeDisplay sizes={product.sizes} />
-              </Text>
-            </div>
+            {product?.productVariations && (
+              <div
+                css={css({
+                  borderBottom: `1px solid ${theme.colors.warm}`,
+                  pb: 16,
+                  mb: 16,
+                  display: "flex",
+                  flexDirection: "column",
+                })}
+              >
+                <Text variant="Display-Overline">SIZES</Text>
+                <Text
+                  variant="Body-Regular"
+                  css={{ color: theme.colors.taupe }}
+                >
+                  <SizeDisplay productVariations={product.productVariations} />
+                </Text>
+              </div>
+            )}
             <div
               css={css({
                 borderBottom: `1px solid ${theme.colors.warm}`,
