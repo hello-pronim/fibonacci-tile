@@ -3,6 +3,16 @@ import styled from "@emotion/styled";
 import Text from "@components/common/typography";
 import theme from "styles/theme";
 
+export interface containerProps {
+  mode?: string;
+  visibleArrow: boolean;
+  visibleBorder: boolean;
+  fullWidth: boolean;
+  size: string;
+  bgColor: string;
+  disabled: boolean;
+}
+
 const Container = styled("section")(
   css({
     maxWidth: "2560px",
@@ -86,10 +96,65 @@ const PageTitle = styled(Text)(
     fontFamily: "Canela",
     fontSize: "42px",
     lineHeight: "110%",
+    display: "block",
+    marginBottom: "40px",
     [theme.mediaQueries.small]: {
       fontSize: "74px",
     },
   })
 );
 
-export { Container, HeaderContainer, InnerContainer, PageTitle };
+const PageNotFoundBlock = styled("div")(
+  css({
+    maxWidth: "800px",
+    marginBottom: "20px",
+    "& p": {
+      fontSize: "16px",
+      lineHeight: "140%",
+      color: "#141414",
+      marginBottom: "20px",
+    },
+  })
+);
+
+const LinkWrapper = styled("div")(
+  css({
+    display: "flex",
+    alignItems: "center",
+    columnGap: 20,
+    svg: {
+      transition: "ease all 0.3s",
+    },
+    "&:hover": {
+      svg: {
+        transform: "translateX(6px)",
+      },
+    },
+    a: {
+      textDecoration: "none",
+      fontSize: 2,
+      lineHeight: 2,
+      color: "charcoal",
+      "&:before": {
+        position: "relative",
+        backgroundColor: "charcoal",
+        content: "' '",
+        display: "block",
+        height: "2px",
+        width: "100%",
+        transform: "translateY(40px)",
+        transition: "ease all 0.3s",
+        pointerEvents: "none",
+        opacity: 0,
+      },
+      "&:hover": {
+        "&:before": {
+          transform: "translateY(28px)",
+          opacity: 1,
+        },
+      },
+    },
+  })
+);
+
+export { Container, HeaderContainer, InnerContainer, PageTitle, PageNotFoundBlock, LinkWrapper };
