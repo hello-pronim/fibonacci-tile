@@ -1,94 +1,76 @@
-import React, { useEffect, useState } from "react";
-import Text from "@components/common/typography";
-import {
-  FwWrapper,
-  LeftCol,
-  TextCol,
-  Wrapper,
-  SahreLinkWrapper,
-  Row,
-} from "./styles";
-import Image from "next/image";
-
-import ContPic1 from "public/assets/latest-news/single-page/single-page1.png";
-import ContPic3 from "public/assets/latest-news/single-page/single-page3.png";
-import css from "@styled-system/css";
+import React from "react";
 import Link from "next/link";
+import css from "@styled-system/css";
 import Arrow from "@components/common/icons/arrow";
+import ContentFullWidth from "./ContentFullWidth";
+import HeroImageFullWidth from "./HeroImageFullWidth";
+import LargeImage from "./LargeImage";
+import PullQuote from "./PullQuote";
+import TwoColImage from "./TwoColmages";
+import FirstContentSection from "./FirstContentSection";
 import { LinkWrapper } from "../styles";
-import TextSection from "./TextSection";
-import FollowSection from "./FollowSection";
-import TwoImageSection from "./TwoImageSection";
+import { LeftCol, SahreLinkWrapper, Row } from "./styles";
 
-const BodyContent = () => {
-  const useWidth = () => {
-    if (process.browser) {
-      const [width, setWidth] = useState(window.innerWidth);
-      const handleResize = () => setWidth(window.innerWidth);
-      useEffect(() => {
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
-      }, [width]);
-      return width;
-    }
-    return 0;
-  };
-  const windowWidth = useWidth();
-
+const BodyContent = ({ pageData }) => {
+  let fistContentUsed = false;
   return (
     <div style={{ paddingTop: "55px" }}>
-      <FwWrapper>
-        <Image
-          alt=""
-          src={ContPic1}
-          layout="responsive"
-          width="1920"
-          height="1080"
-        ></Image>
-      </FwWrapper>
-      <FollowSection />
-      <TwoImageSection />
-      <TextSection />
-      <Wrapper>
-        <TextCol>
-          <Text as="h1" variant="Display-Medium" altFont>
-            Venenatis sagittis, risus purus vulputate bibendum augue nisi, eget
-            venenatis. Amet, cursus eu, pellentesque vel ut dignissim nunc nunc
-            nunc.
-          </Text>
-        </TextCol>
-        <Image
-          alt=""
-          src={ContPic3}
-          layout="responsive"
-          width="1460"
-          height="820"
-        ></Image>
-        <Text variant="Body-XSmall" css={css({ mt: 16, mr: 40 })}>
-          Photography by Lucia Braham
-        </Text>
-        <Text variant="Body-XSmall" css={css({ mt: 16 })}>
-          Photography by Lucia Braham
-        </Text>
-      </Wrapper>
-      <TextSection />
-      <TwoImageSection />
-      <Wrapper>
-        <Image
-          alt=""
-          src={ContPic3}
-          layout="responsive"
-          width="1460"
-          height="820"
-        ></Image>
-        <Text variant="Body-XSmall" css={css({ mt: 16, mr: 40 })}>
-          Photography by Lucia Braham
-        </Text>
-        <Text variant="Body-XSmall" css={css({ mt: 16 })}>
-          Photography by Lucia Braham
-        </Text>
-      </Wrapper>
-      <TextSection />
+      {pageData.newsComponents.map((component: any, index: any) => {
+        switch (component.typeHandle) {
+          case "heroImageFullWidth":
+            return (
+              <React.Fragment key={`news-comp-${index}`}>
+                {component?.imageThumb?.[0].url && (
+                  <HeroImageFullWidth
+                    key={`news-comp-${index}`}
+                    image={component.imageThumb[0]}
+                  />
+                )}
+              </React.Fragment>
+            );
+          case "contentFullWidth":
+            if (!fistContentUsed) {
+              fistContentUsed = true;
+              return (
+                <FirstContentSection
+                  key={`news-comp-${index}`}
+                  content={component.contentText}
+                />
+              );
+            }
+            return (
+              <ContentFullWidth
+                key={`news-comp-${index}`}
+                content={component.contentText}
+              />
+            );
+          case "pullQuote":
+            return (
+              <PullQuote key={`news-comp-${index}`} quote={component.quote} />
+            );
+          case "twoColImages":
+            return (
+              <TwoColImage
+                key={`news-comp-${index}`}
+                image1={component.image1Thumb}
+                image2={component.image2Thumb}
+                caption={component.caption}
+              />
+            );
+          case "largeImage":
+            return (
+              <React.Fragment key={`news-comp-${index}`}>
+                {component?.imageThumb?.[0].url && (
+                  <LargeImage
+                    key={`news-comp-${index}`}
+                    image={component?.imageThumb?.[0]}
+                    caption={component.caption}
+                  />
+                )}
+              </React.Fragment>
+            );
+        }
+      })}
       <Row
         css={css({
           bg: "#FFFFF8",
@@ -99,15 +81,19 @@ const BodyContent = () => {
           pt: 239,
         })}
       >
-        <LinkWrapper>
-          <Arrow type="short" direction="left" />
-          <Link href="/">Previous article</Link>
-        </LinkWrapper>
+        {pageData.prev && (
+          <LinkWrapper>
+            <Arrow type="short" direction="left" />
+            <Link href={`/latest/${pageData.prev.slug}`}>Previous article</Link>
+          </LinkWrapper>
+        )}
 
-        <LinkWrapper>
-          <Link href="/">Next article</Link>
-          <Arrow type="short" direction="right" />
-        </LinkWrapper>
+        {pageData.next && (
+          <LinkWrapper>
+            <Link href={`/latest/${pageData.next.slug}`}>Next article</Link>
+            <Arrow type="short" direction="right" />
+          </LinkWrapper>
+        )}
       </Row>
       <LeftCol
         css={css({

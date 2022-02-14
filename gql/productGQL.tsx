@@ -84,6 +84,23 @@ export const ProductQuery = gql`
             title
           }
         }
+        productVariations {
+          ... on productVariations_variations_BlockType {
+            id
+            productSize {
+              id
+              title
+              parent {
+                id
+                title
+              }
+            }
+            productCode
+            productType {
+              title
+            }
+          }
+        }
         productCategories {
           title
         }

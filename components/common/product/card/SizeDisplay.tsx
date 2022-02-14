@@ -1,17 +1,23 @@
-function SizeDisplay({ sizes }) {
+function SizeDisplay({ productVariations }) {
   const sizeArray = [];
-  sizes.forEach((size) => {
-    if (!size.parent) {
-      sizeArray.push({
-        ...size,
-        child: [],
-      });
-    } else {
-      let parentIndex = sizeArray.findIndex(
-        (item) => item.id === size.parent.id
-      );
-      sizeArray[parentIndex].child.push(size);
-    }
+  // TODO: update size options based on variations
+  productVariations.forEach((variant: any) => {
+    variant.productSize.forEach((size: any) => {
+      if (!size.parent) {
+        const checkIndex = sizeArray.findIndex((item) => item.id === size.id);
+        if (checkIndex === -1) {
+          sizeArray.push({
+            ...size,
+            child: [],
+          });
+        }
+      } else {
+        let parentIndex = sizeArray.findIndex(
+          (item) => item.id === size.parent.id
+        );
+        sizeArray[parentIndex].child.push(size);
+      }
+    });
   });
   return (
     <>

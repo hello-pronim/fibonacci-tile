@@ -8,6 +8,7 @@ export const NewsQuery: any = gql`
       title
       ... on news_default_Entry {
         id
+        postDate
         newsCategory {
           slug
           uri
@@ -15,12 +16,12 @@ export const NewsQuery: any = gql`
         newsComponents {
           ... on newsComponents_contentFullWidth_BlockType {
             id
+            typeHandle
             contentText
           }
-        }
-        newsComponents {
           ... on newsComponents_heroImageFullWidth_BlockType {
             id
+            typeHandle
             image {
               id
               url(width: 600, height: 600)
@@ -38,25 +39,87 @@ export const NewsItemQuery: any = gql`
       id
       slug
       title
+      prev(section: "news") {
+        id
+        slug
+      }
+      next(section: "news") {
+        id
+        slug
+      }
       ... on news_default_Entry {
         id
+        postDate
         newsCategory {
           slug
-          uri
+          title
         }
         newsComponents {
           ... on newsComponents_contentFullWidth_BlockType {
             id
+            typeHandle
             contentText
           }
-        }
-        newsComponents {
           ... on newsComponents_heroImageFullWidth_BlockType {
             id
+            typeHandle
             image {
               id
-              url(width: 600, height: 600)
+              url
             }
+            imageThumb: image
+              @transform(width: 1920, height: 1080, mode: "crop") {
+              url
+              title
+              width
+              height
+            }
+          }
+          ... on newsComponents_pullQuote_BlockType {
+            id
+            quote
+            typeHandle
+          }
+          ... on newsComponents_twoColImages_BlockType {
+            id
+            image1 {
+              url
+            }
+            image1Thumb: image1
+              @transform(width: 710, height: 820, mode: "crop") {
+              url
+              title
+              width
+              height
+            }
+            image2 {
+              url
+            }
+            image2Thumb: image2
+              @transform(width: 710, height: 820, mode: "crop") {
+              url
+              title
+              width
+              height
+            }
+            typeHandle
+            caption
+          }
+          ... on newsComponents_largeImage_BlockType {
+            id
+            typeHandle
+            image {
+              url
+            }
+            imageThumb: image
+              @transform(width: 1460, height: 820, mode: "crop") {
+              url
+              title
+              width
+              height
+            }
+            title
+            caption
           }
         }
       }
