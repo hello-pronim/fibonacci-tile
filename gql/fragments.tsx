@@ -18,23 +18,18 @@ export const LIST_PRODUCT_FIELDS = gql`
     materialsComposition
     finishAppearance
     applications
-    sizes {
-      id
-      title
-      parent {
-        id
-        title
-      }
-    }
     productVariations {
-      ... on productVariations_variations_BlockType {
+      ... on productVariations_BlockType {
         id
-        productSize {
-          title
-        }
+        available
         productCode
-        productType {
+        productSize {
+          id
           title
+          parent {
+            id
+            title
+          }
         }
       }
     }
