@@ -143,7 +143,9 @@ const ProductCard = ({
                     </li>
                     <li>
                       <Headline>Sizes</Headline>
-                      <SizeDisplay sizes={product.sizes} />
+                      <SizeDisplay
+                        productVariations={product.productVariations}
+                      />
                     </li>
                     <li>
                       <Headline>Applications</Headline>
