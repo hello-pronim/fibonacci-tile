@@ -51,12 +51,7 @@ const CheckoutPage = ({ notifications }) => {
     if (disabled) {
       return;
     }
-    if (step === 4) {
-      setActiveCheckoutStep(1);
-    }
-    if (step !== 4) {
-      setActiveCheckoutStep(step);
-    }
+    setActiveCheckoutStep(step);
   };
   return (
     <CheckoutContainer>
