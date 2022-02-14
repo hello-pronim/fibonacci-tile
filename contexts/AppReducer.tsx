@@ -16,7 +16,6 @@ export const initialState = {
   productDisplayMode: "grid",
   loading: true,
   isMobileFilterActive: false,
-  checkoutStep: 1,
   openDrawer: false,
   activeDrawerTab: "cart",
 };

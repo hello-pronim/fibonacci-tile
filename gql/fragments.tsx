@@ -26,6 +26,18 @@ export const LIST_PRODUCT_FIELDS = gql`
         title
       }
     }
+    productVariations {
+      ... on productVariations_variations_BlockType {
+        id
+        productSize {
+          title
+        }
+        productCode
+        productType {
+          title
+        }
+      }
+    }
     productCategories {
       title
     }

@@ -38,6 +38,46 @@ const InnerContainer = styled("div")(
         "80px !important",
       ],
     },
+    "& .titleContentBlock": {
+      display: "block",
+      marginBottom: "40px",
+    },
+    "& .detailsContentBlock": {
+      display: "flex",
+      justifyContent: "flex-end",
+      "& p": {
+        fontSize: "20px",
+        lineHeight: "140%",
+        color: "#141414",
+        marginBottom: "20px",
+        "& strong": {
+          fontWeight: "500",
+        },
+      },
+      "& ul": {
+        listStyleType: "disc",
+        marginBottom: "20px",
+        paddingLeft: "30px",
+        "& li": {
+          fontSize: "20px",
+          lineHeight: "140%",
+          color: "#141414",
+          marginBottom: "5px",
+        },
+      },
+      "& div": {
+        maxWidth: "100%",
+        [theme.mediaQueries.xxMedium]: {
+          maxWidth: "65%",
+        },
+        [theme.mediaQueries.mLarge]: {
+          maxWidth: "70%",
+        },
+        [theme.mediaQueries.xLarge]: {
+          maxWidth: "73%",
+        },
+      },
+    },
   })
 );
 
@@ -45,10 +85,9 @@ const PageTitle = styled(Text)(
   css({
     fontFamily: "Canela",
     fontSize: "42px",
-    lineHeight: "54.6px",
+    lineHeight: "110%",
     [theme.mediaQueries.small]: {
       fontSize: "74px",
-      lineHeight: "81.4px",
     },
   })
 );
