@@ -76,17 +76,11 @@ export const ProductQuery = gql`
         materialsComposition
         finishAppearance
         applications
-        sizes {
-          id
-          title
-          parent {
-            id
-            title
-          }
-        }
         productVariations {
-          ... on productVariations_variations_BlockType {
+          ... on productVariations_BlockType {
             id
+            available
+            productCode
             productSize {
               id
               title
@@ -94,10 +88,6 @@ export const ProductQuery = gql`
                 id
                 title
               }
-            }
-            productCode
-            productType {
-              title
             }
           }
         }

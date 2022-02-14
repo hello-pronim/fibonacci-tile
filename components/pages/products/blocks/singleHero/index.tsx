@@ -219,7 +219,7 @@ const SingleHeroModule = ({ product, collectionSlug }) => {
                 {product.finishAppearance}
               </Text>
             </div>
-            {product?.productVariations && (
+            {product?.productVariations?.length > 0 && (
               <div
                 css={css({
                   borderBottom: `1px solid ${theme.colors.warm}`,
