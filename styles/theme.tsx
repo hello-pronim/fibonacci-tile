@@ -76,6 +76,7 @@ const theme = {
   breakpoints: [
     "375px",
     "600px",
+    "700px",
     "768px",
     "1024px",
     "1100px",
@@ -88,6 +89,7 @@ const theme = {
   mediaQueries: {
     xxSmall: `@media screen and (min-width: 375px)`,
     xSmall: `@media screen and (min-width: 600px)`,
+    sSmall: `@media screen and (min-width: 700px)`,
     small: `@media screen and (min-width: 768px)`,
     medium: `@media screen and (min-width: 1024px)`,
     xMedium: `@media screen and (min-width: 1100px)`,
@@ -100,6 +102,7 @@ const theme = {
   mediaQueriesMaxWidth: {
     xxSmall: `@media screen and (max-width: 375px)`,
     xSmall: `@media screen and (max-width: 600px)`,
+    sSmall: `@media screen and (max-width: 700px)`,
     small: `@media screen and (max-width: 768px)`,
     medium: `@media screen and (max-width: 1024px)`,
     xMedium: `@media screen and (max-width: 1100px)`,
