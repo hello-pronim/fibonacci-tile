@@ -548,6 +548,214 @@ const SelectionCart = ({ active, newSelection, tab }) => {
           </div>
         </>
       )}
+      {tab === "share-selection" && (
+        <div
+          css={css({
+            height: "100%",
+            overflow: "scroll",
+            pt: 0,
+            pb: 108,
+            px: 24,
+          })}
+        >
+          <div
+            onClick={() =>
+              dispatch({
+                type: "OPEN_DRAWER",
+                value: false,
+              })
+            }
+            css={css({
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-end",
+              gap: 12,
+              py: 16,
+              cursor: "pointer",
+              color: theme.colors.stoneTints[8],
+            })}
+          >
+            <Text
+              variant="Body-XSmall"
+              altFont
+              css={css({ textTransform: "uppercase" })}
+            >
+              Close
+            </Text>
+            <CloseIcon
+              css={css({
+                width: 12,
+                height: 12,
+                color: theme.colors.stoneTints[8],
+              })}
+            />
+          </div>
+          <div css={css({ display: "flex", alignItems: "center" })}>
+            <Text variant="Display-Small" altFont>
+              Send your list of selections to your inbox or share with someone
+              else.
+            </Text>
+          </div>
+          <div
+            css={css({
+              display: "flex",
+              flexDirection: "column",
+              pt: 60,
+              rowGap: "8px",
+            })}
+          >
+            <form
+              css={css({
+                display: "flex",
+                flexDirection: "column",
+                rowGap: "8px",
+              })}
+            >
+              <span
+                css={css({
+                  fontFamily: 1,
+                  fontSize: 1,
+                  lineHeight: 4,
+                  fontWeight: 0,
+                })}
+              >
+                About you
+              </span>
+              <input css={css(fieldStyles)} placeholder="Name"></input>
+              <input css={css(fieldStyles)} placeholder="Email Address"></input>
+              <label css={css({ mb: 1, mt: 2 })}>
+                <input type="checkbox"></input>
+                <span
+                  css={css({
+                    fontFamily: 1,
+                    fontSize: 1,
+                    lineHeight: 4,
+                    fontWeight: 0,
+                  })}
+                >
+                  {" "}
+                  Same as sender{" "}
+                </span>
+              </label>
+              <input css={css(fieldStyles)} placeholder="Name"></input>
+              <input css={css(fieldStyles)} placeholder="Email Address"></input>
+              <input css={css(fieldStyles)} placeholder="Title"></input>
+              <textarea
+                css={css(textareaStyles)}
+                placeholder="Message"
+              ></textarea>
+              <ArrowButton
+                mode="dark"
+                title="Submit"
+                link="#"
+                fullWidth
+                size=""
+              />
+            </form>
+          </div>
+        </div>
+      )}
+      {tab === "need-more-selection" && (
+        <div
+          css={css({
+            height: "100%",
+            overflow: "scroll",
+            pt: 0,
+            pb: 108,
+            px: 24,
+          })}
+        >
+          <div
+            onClick={() =>
+              dispatch({
+                type: "OPEN_DRAWER",
+                value: false,
+              })
+            }
+            css={css({
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-end",
+              gap: 12,
+              py: 16,
+              cursor: "pointer",
+              color: theme.colors.stoneTints[8],
+            })}
+          >
+            <Text
+              variant="Body-XSmall"
+              altFont
+              css={css({ textTransform: "uppercase" })}
+            >
+              Close
+            </Text>
+            <CloseIcon
+              css={css({
+                width: 12,
+                height: 12,
+                color: theme.colors.stoneTints[8],
+              })}
+            />
+          </div>
+          <div css={css({ display: "flex", alignItems: "center" })}>
+            <Text variant="Display-Small" altFont>
+              Need more than four samples? <br />
+              <br />
+              Call us on 1300 342 662 <br />
+              or fill in the form below.
+            </Text>
+          </div>
+          <div
+            css={css({
+              display: "flex",
+              flexDirection: "column",
+              pt: 60,
+              rowGap: "8px",
+            })}
+          >
+            <form
+              css={css({
+                display: "flex",
+                flexDirection: "column",
+                rowGap: "8px",
+              })}
+            >
+              <input css={css(fieldStyles)} placeholder="First Name"></input>
+              <input css={css(fieldStyles)} placeholder="Last Name"></input>
+              <input
+                css={css(fieldStyles)}
+                placeholder="Contact Number"
+              ></input>
+              <input css={css(fieldStyles)} placeholder="Email Address"></input>
+              <textarea
+                css={css(textareaStyles)}
+                placeholder="Message"
+              ></textarea>
+              <label css={css({ mb: 39 })}>
+                <input type="checkbox"></input>
+                <span
+                  css={css({
+                    fontFamily: 1,
+                    fontSize: 1,
+                    lineHeight: 4,
+                    fontWeight: 0,
+                  })}
+                >
+                  {" "}
+                  I agree to the terms and conditions{" "}
+                </span>
+              </label>
+              <ArrowButton
+                mode="dark"
+                title="Submit"
+                link="#"
+                fullWidth
+                size=""
+              />
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
