@@ -30,15 +30,37 @@ const Samples = () => {
           <Button
             mode="dark"
             title="Share my selections"
-            link="/products"
-            size=""
+            onClick={() => {
+              dispatch({
+                type: "OPEN_DRAWER",
+                value:
+                  state.activeDrawerTab !== "share-selection"
+                    ? true
+                    : !state.openDrawer,
+              }),
+                dispatch({
+                  type: "SET_ACTIVE_DRAWER_TAB",
+                  value: "share-selection",
+                });
+            }}
           />
           <BttnLeftPadding>
             <Button
               mode="dark"
               title="Need more than six samples "
-              link="/products"
-              size=""
+              onClick={() => {
+                dispatch({
+                  type: "OPEN_DRAWER",
+                  value:
+                    state.activeDrawerTab !== "need-more-selection"
+                      ? true
+                      : !state.openDrawer,
+                }),
+                  dispatch({
+                    type: "SET_ACTIVE_DRAWER_TAB",
+                    value: "need-more-selection",
+                  });
+              }}
             />
           </BttnLeftPadding>
         </ButtonWrapper>
