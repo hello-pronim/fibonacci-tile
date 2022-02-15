@@ -1,16 +1,22 @@
+import Text from "@components/common/typography";
+import { css } from "@styled-system/css";
+import ArrowButton from "@components/common/button/arrowButton";
+import SelectedProductCard from "@components/common/product/selectedCard";
+import { useAppContext } from "@contexts/AppContext";
+import Button from "@components/common/button/arrowButton";
+
 import {
   TopBar,
   ProductContainer,
   ButtonWrapper,
   BttnLeftPadding,
 } from "./styles";
-import Text from "@components/common/typography";
-import { css } from "@styled-system/css";
-import SelectedProductCard from "@components/common/product/selectedCard";
-import { useAppContext } from "@contexts/AppContext";
-import Button from "@components/common/button/arrowButton";
 
-const Samples = () => {
+import {
+  CheckoutFooter,
+} from "../styles";
+
+const Samples = ({ activeCheckoutStep, disabled, stepChange }) => {
   const { state, dispatch } = useAppContext();
   const selectedProducts = state.selectedProducts;
   const confirmedProducts = state.confirmedProducts;
@@ -63,6 +69,17 @@ const Samples = () => {
             />
           ))}
       </ProductContainer>
+      <CheckoutFooter contentAlign="right">
+        <span>{`You currently have ${confirmedProducts.length} selected, you can choose up 6 samples`}</span>
+        <ArrowButton
+          mode="dark"
+          bgColor="white"
+          title="Continue to Details"
+          link=""
+          onClick={() => stepChange(2)}
+          disabled={disabled}
+        />
+      </CheckoutFooter>
     </>
   );
 };

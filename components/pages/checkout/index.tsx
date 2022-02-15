@@ -19,7 +19,7 @@ import {
   RightContent,
   SelectionWrapper,
   NoSamples,
-  CheckoutFooter,
+  //CheckoutFooter,
 } from "./styles";
 
 const CheckoutPage = ({ notifications }) => {
@@ -71,10 +71,18 @@ const CheckoutPage = ({ notifications }) => {
           </CheckoutStepWrapper>
           {selectedProducts?.length > 0 && (
             <CheckoutContentWrapper>
-              {activeCheckoutStep === 1 && <Samples />}
-              {activeCheckoutStep === 2 && <Details />}
-              {activeCheckoutStep === 3 && <Delivery />}
-              {activeCheckoutStep === 4 && <Confirm />}
+              {activeCheckoutStep === 1 && (
+                <Samples disabled={disabled} stepChange={stepChange} activeCheckoutStep={activeCheckoutStep} />
+              )}
+              {activeCheckoutStep === 2 && (
+                <Details disabled={disabled} stepChange={stepChange} activeCheckoutStep={activeCheckoutStep} />
+              )}
+              {activeCheckoutStep === 3 && (
+                <Delivery disabled={disabled} stepChange={stepChange} activeCheckoutStep={activeCheckoutStep} />
+              )}
+              {activeCheckoutStep === 4 && (
+                <Confirm />
+              )}
             </CheckoutContentWrapper>
           )}
           {selectedProducts?.length === 0 && (
@@ -122,7 +130,7 @@ const CheckoutPage = ({ notifications }) => {
         </RightContent>
       </CheckoutWrapper>
 
-      {activeCheckoutStep === 1 && selectedProducts?.length > 0 && (
+      {/* {activeCheckoutStep === 1 && selectedProducts?.length > 0 && (
         <CheckoutFooter contentAlign="right">
           <span>{`You currently have ${confirmedProducts.length} selected, you can choose up 6 samples`}</span>
           <ArrowButton
@@ -134,9 +142,9 @@ const CheckoutPage = ({ notifications }) => {
             disabled={disabled}
           />
         </CheckoutFooter>
-      )}
+      )} */}
 
-      {activeCheckoutStep === 2 && (
+      {/* {activeCheckoutStep === 2 && (
         <CheckoutFooter contentAlign="right">
           <div className="back" onClick={() => stepChange(1)}>
             Back
@@ -150,9 +158,9 @@ const CheckoutPage = ({ notifications }) => {
             disabled={disabled}
           />
         </CheckoutFooter>
-      )}
+      )} */}
 
-      {activeCheckoutStep === 3 && (
+      {/* {activeCheckoutStep === 3 && (
         <CheckoutFooter contentAlign="left">
           <ArrowButton
             mode="dark"
@@ -166,7 +174,7 @@ const CheckoutPage = ({ notifications }) => {
             Back
           </div>
         </CheckoutFooter>
-      )}
+      )} */}
     </CheckoutContainer>
   );
 };

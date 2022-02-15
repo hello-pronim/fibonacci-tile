@@ -18,6 +18,7 @@ export const initialState = {
   isMobileFilterActive: false,
   openDrawer: false,
   activeDrawerTab: "cart",
+  checkoutDetails: [],
 };
 
 export const AppReducer = (state, action) => {
@@ -160,6 +161,12 @@ export const AppReducer = (state, action) => {
       return {
         ...state,
         activeDrawerTab: action.value,
+      };
+    }
+    case "SET_CHECKOUT_DETAILS": {
+      return {
+        ...state,
+        checkoutDetails: [{...state?.checkoutDetails?.[0], ...action.value}]
       };
     }
   }
