@@ -30,14 +30,13 @@ function createApolloClient() {
         },
       }),
       new ErrorLink(({ graphQLErrors, networkError, operation }) => {
+        console.log("here", graphQLErrors, networkError, operation);
         if (graphQLErrors) {
           graphQLErrors.forEach((gqlErr) => {
-            // const { message, debugMessage } = gqlErr;
+            const { message } = gqlErr;
+            console.log(message, gqlErr);
             // todo warn error
           });
-        }
-        if (networkError) {
-          //todo: warnError(`[GraphQL network error]: ${networkError}`);
         }
       }),
       new ApolloLink((operation, forward) => {

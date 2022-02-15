@@ -148,7 +148,9 @@ const ProductsPage = ({
       {cta2?.CTAFields?.length > 0 && (
         <CTAPanel data={cta2.CTAFields[0]} imagePosition="right" />
       )}
-      {customSolutionsCta && <CustomSolutionsCTAPanel data={customSolutionsCta} />}
+      {customSolutionsCta?.length > 0 && (
+        <CustomSolutionsCTAPanel data={customSolutionsCta[0]} />
+      )}
     </Container>
   );
 };

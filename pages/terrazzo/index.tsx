@@ -69,6 +69,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
       slug: "terrazzo",
     },
   });
+  
   const {
     data: { entry: collectionPageData },
   } = await client.query({
@@ -77,6 +78,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
       slug: "collections",
     },
   });
+
   const {
     data: { entries: products },
   } = await client.query({
@@ -109,6 +111,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
       group: "colourSchemes",
     },
   });
+
   const {
     data: { categories: productCategories },
   } = await client.query({
@@ -117,6 +120,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
       group: "productCategories",
     },
   });
+
   return {
     props: {
       pageData,
