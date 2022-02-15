@@ -24,10 +24,13 @@ const CTAImgBox = styled("div")(
 );
 
 const CTADetails = styled("div")(
-  css({
-    width: "50%",
-    backgroundColor: theme.colors.greys[1],
-  })
+  ({ backgroundColor }: { backgroundColor?: string }) =>
+    css({
+      width: "50%",
+      backgroundColor: backgroundColor
+        ? backgroundColor
+        : theme.colors.greys[1],
+    })
 );
 
 const CTADetailsBox = styled("div")(

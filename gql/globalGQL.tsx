@@ -101,6 +101,7 @@ export const customSolutionsCtaQuery = gql`
           ... on customSolutionsCTA_customDesignSolutions_BlockType {
             id
             backgroundColour
+            textColour
             customCtaButton
             customCtaLink
             customHeader

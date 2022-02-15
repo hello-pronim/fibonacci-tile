@@ -21,21 +21,31 @@ const CustomSolutionsCTAPanel = ({ data }) => {
           />
         </CTAImgBox>
       )}
-      <CTADetails>
+      <CTADetails backgroundColor={data.backgroundColour}>
         <CTADetailsBox>
-          <Text as="h3" variant="Body-XSmall" marginTop="25px" color="white">
+          <Text
+            as="h3"
+            variant="Body-XSmall"
+            marginTop="25px"
+            color={data.textColour ? data.textColour : "white"}
+          >
             {data.customIntro}
           </Text>
           <Text
             as="h2"
             variant="Display-Large"
             altFont={true}
-            color="white"
+            color={data.textColour ? data.textColour : "white"}
             marginTop="25px"
           >
             {data.customHeader}
           </Text>
-          <Text as="p" variant="Body-Large" marginBottom="80px" color="white">
+          <Text
+            as="p"
+            variant="Body-Large"
+            marginBottom="80px"
+            color={data.textColour ? data.textColour : "white"}
+          >
             {data.customSolutionsText}
           </Text>
           <ArrowButton
