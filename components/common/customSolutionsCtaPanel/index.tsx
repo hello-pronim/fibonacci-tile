@@ -2,15 +2,15 @@ import Image from "next/image";
 import ArrowButton from "@components/common/button/arrowButton";
 import Text from "@components/common/typography";
 import {
-  CustomDesignCTAContainer,
+  CustomSolutionsCTAContainer,
   CTAImgBox,
   CTADetails,
   CTADetailsBox,
 } from "./styles";
 
-const CustomDesignCTAPanel = ({ data }) => {
+const CustomSolutionsCTAPanel = ({ data }) => {
   return (
-    <CustomDesignCTAContainer>
+    <CustomSolutionsCTAContainer>
       <CTAImgBox>
         <Image src={data.customImage.url} alt="Custom Solutions CTA" />
       </CTAImgBox>
@@ -38,8 +38,8 @@ const CustomDesignCTAPanel = ({ data }) => {
           />
         </CTADetailsBox>
       </CTADetails>
-    </CustomDesignCTAContainer>
+    </CustomSolutionsCTAContainer>
   );
 };
 
-export default CustomDesignCTAPanel;
+export default CustomSolutionsCTAPanel;

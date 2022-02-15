@@ -2,7 +2,7 @@ import css from "@styled-system/css";
 import styled from "@emotion/styled";
 import theme from "styles/theme";
 
-const CustomDesignCTAContainer = styled("section")(
+const CustomSolutionsCTAContainer = styled("section")(
   css({
     marginTop: "20px",
     display: "flex",
@@ -51,4 +51,4 @@ const CTADetailsBox = styled("div")(
   })
 );
 
-export { CustomDesignCTAContainer, CTAImgBox, CTADetails, CTADetailsBox };
+export { CustomSolutionsCTAContainer, CTAImgBox, CTADetails, CTADetailsBox };
