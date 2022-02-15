@@ -2,10 +2,10 @@ import React, { useEffect, useState, useRef, useCallback } from "react";
 import { initializeApollo } from "@utils/apolloClient";
 import { useAppContext } from "@contexts/AppContext";
 import { ProductsQuery } from "@gql/productGQL";
+import CustomDesignCTAPanel from "@components/common/CustomDesignCTAPanel";
 import ProductsHeader from "./Header";
 import ProductFilterBar from "./blocks/FilterBar";
 import CTAPanel from "./blocks/CTAPanel";
-import FooterCTAPanel from "./blocks/FooterCTAPanel";
 import SectionTitle from "./blocks/SectionTitle";
 import ProductLists from "./blocks/ProductList";
 import Slider from "./blocks/Slider";
@@ -19,6 +19,7 @@ const ProductsPage = ({
   productCategories,
   cta1,
   cta2,
+  customDesignCta,
   notifications,
 }) => {
   const client = initializeApollo();
@@ -147,7 +148,7 @@ const ProductsPage = ({
       {cta2?.CTAFields?.length > 0 && (
         <CTAPanel data={cta2.CTAFields[0]} imagePosition="right" />
       )}
-      <FooterCTAPanel />
+      {customDesignCta && <CustomDesignCTAPanel data={customDesignCta} />}
     </Container>
   );
 };

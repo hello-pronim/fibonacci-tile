@@ -6,7 +6,11 @@ import { initializeApollo } from "@utils/apolloClient";
 import { PageQuery } from "@gql/pageGQL";
 import { ProductsQuery } from "@gql/productGQL";
 import { CategoriesQuery } from "@gql/categoriesGQL";
-import { sampleCta1Query, sampleCta2Query } from "@gql/globalGQL";
+import {
+  sampleCta1Query,
+  sampleCta2Query,
+  customDesignCTAQuery,
+} from "@gql/globalGQL";
 import { withGlobalData } from "@hoc/withGlobalData";
 
 interface ProductPageProps {
@@ -33,7 +37,7 @@ const Products: NextPage<ProductPageProps> = ({
   return (
     <>
       <Head>
-        <title>Products | Fibonacci</title>
+        <title>Terrazzo | Fibonacci</title>
         <meta name="description" content="Fibonacci Products page" />
       </Head>
       <ProductPage
@@ -89,6 +93,12 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
   });
 
   const {
+    data: { globalSet: customDesignCta },
+  } = await client.query({
+    query: customDesignCTAQuery,
+  });
+
+  const {
     data: { categories: colourSchemes },
   } = await client.query({
     query: CategoriesQuery,
@@ -113,6 +123,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
       productCategories,
       sampleCta1,
       sampleCta2,
+      customDesignCta,
     },
     revalidate: parseInt(process.env.NEXT_PAGE_REVALIDATE),
   };

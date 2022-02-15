@@ -89,3 +89,29 @@ export const sampleCta2Query = gql`
     }
   }
 `;
+
+export const customDesignCTAQuery = gql`
+  query customDesignCtaQuery {
+    globalSet(handle: "customSolutionsCta") {
+      id
+      ... on customSolutionsCta_GlobalSet {
+        id
+        name
+        customSolutionsCTA {
+          ... on customSolutionsCTA_customDesignSolutions_BlockType {
+            id
+            customImage {
+              url
+            }
+            backgroundColour
+            customCtaButton
+            customCtaLink
+            customHeader
+            customIntro
+            customSolutionsText
+          }
+        }
+      }
+    }
+  }
+`;
