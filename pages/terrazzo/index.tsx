@@ -61,23 +61,23 @@ const Products: NextPage<ProductPageProps> = ({
 export const getStaticProps: GetStaticProps = withGlobalData(async function () {
   const client = initializeApollo();
 
-  // const {
-  //   data: { entry: pageData },
-  // } = await client.query({
-  //   query: PageQuery,
-  //   variables: {
-  //     slug: "terrazzo",
-  //   },
-  // });
-
-  // const {
-  //   data: { entry: collectionPageData },
-  // } = await client.query({
-  //   query: PageQuery,
-  //   variables: {
-  //     slug: "collections",
-  //   },
-  // });
+  const {
+    data: { entry: pageData },
+  } = await client.query({
+    query: PageQuery,
+    variables: {
+      slug: "terrazzo",
+    },
+  });
+  
+  const {
+    data: { entry: collectionPageData },
+  } = await client.query({
+    query: PageQuery,
+    variables: {
+      slug: "collections",
+    },
+  });
 
   const {
     data: { entries: products },
@@ -85,52 +85,52 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
     query: ProductsQuery,
   });
 
-  // const {
-  //   data: { globalSet: sampleCta1 },
-  // } = await client.query({
-  //   query: sampleCta1Query,
-  // });
+  const {
+    data: { globalSet: sampleCta1 },
+  } = await client.query({
+    query: sampleCta1Query,
+  });
 
-  // const {
-  //   data: { globalSet: sampleCta2 },
-  // } = await client.query({
-  //   query: sampleCta2Query,
-  // });
+  const {
+    data: { globalSet: sampleCta2 },
+  } = await client.query({
+    query: sampleCta2Query,
+  });
 
-  // const {
-  //   data: { globalSet: customSolutionsCta },
-  // } = await client.query({
-  //   query: customSolutionsCtaQuery,
-  // });
+  const {
+    data: { globalSet: customSolutionsCta },
+  } = await client.query({
+    query: customSolutionsCtaQuery,
+  });
 
-  // const {
-  //   data: { categories: colourSchemes },
-  // } = await client.query({
-  //   query: CategoriesQuery,
-  //   variables: {
-  //     group: "colourSchemes",
-  //   },
-  // });
+  const {
+    data: { categories: colourSchemes },
+  } = await client.query({
+    query: CategoriesQuery,
+    variables: {
+      group: "colourSchemes",
+    },
+  });
 
-  // const {
-  //   data: { categories: productCategories },
-  // } = await client.query({
-  //   query: CategoriesQuery,
-  //   variables: {
-  //     group: "productCategories",
-  //   },
-  // });
+  const {
+    data: { categories: productCategories },
+  } = await client.query({
+    query: CategoriesQuery,
+    variables: {
+      group: "productCategories",
+    },
+  });
 
   return {
     props: {
-      pageData: {},
-      collectionPageData: {},
-      products: [],
-      colourSchemes: [],
-      productCategories: [],
-      sampleCta1: {},
-      sampleCta2: {},
-      customSolutionsCta: {},
+      pageData,
+      collectionPageData,
+      products,
+      colourSchemes,
+      productCategories,
+      sampleCta1,
+      sampleCta2,
+      customSolutionsCta,
     },
     revalidate: parseInt(process.env.NEXT_PAGE_REVALIDATE),
   };
