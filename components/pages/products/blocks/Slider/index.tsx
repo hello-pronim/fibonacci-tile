@@ -29,9 +29,9 @@ function TopSlider({ items = [] }) {
 
   const slider = useRef<Slider>(null);
 
-  const gotoNext = () => {
-    slider.current !== null && slider.current.slickNext();
-  };
+  // const gotoNext = () => {
+  //   slider.current !== null && slider.current.slickNext();
+  // };
 
   return (
     <Container>
@@ -41,7 +41,7 @@ function TopSlider({ items = [] }) {
             <SliderItem
               key={`slide-item-${index}`}
               onClick={() => {
-                gotoNext();
+                // gotoNext();
                 if (item.bannerLinkTo) {
                   router.push(item.bannerLinkTo);
                 }
