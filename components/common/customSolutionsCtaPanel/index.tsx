@@ -11,9 +11,14 @@ import {
 const CustomSolutionsCTAPanel = ({ data }) => {
   return (
     <CustomSolutionsCTAContainer>
-      {data?.customImage?.[0]?.url && (
+      {data?.customImageThumb?.[0]?.url && (
         <CTAImgBox>
-          <Image src={data.customImage[0].url} alt="Custom Solutions CTA" />
+          <Image
+            src={data.customImageThumb[0].url}
+            width={data.customImageThumb[0].width}
+            height={data.customImageThumb[0].height}
+            alt={data.customImageThumb[0].title}
+          />
         </CTAImgBox>
       )}
       <CTADetails>

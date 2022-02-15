@@ -50,7 +50,7 @@ const Products: NextPage<ProductPageProps> = ({
         productCategories={productCategories}
         cta1={sampleCta1}
         cta2={sampleCta2}
-        customSolutionsCta={customSolutionsCta}
+        customSolutionsCta={customSolutionsCta?.customSolutionsCTA}
         notifications={notifications}
       />
       <Footer />
@@ -69,7 +69,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
       slug: "terrazzo",
     },
   });
-  
+
   const {
     data: { entry: collectionPageData },
   } = await client.query({

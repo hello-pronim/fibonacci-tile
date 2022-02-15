@@ -106,6 +106,15 @@ export const customSolutionsCtaQuery = gql`
             customHeader
             customIntro
             customSolutionsText
+            customImage {
+              url
+            }
+            customImageThumb: customImage @transform(width: 960, height: 680) {
+              url
+              title
+              width
+              height
+            }
           }
         }
       }
