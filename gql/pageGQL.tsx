@@ -167,15 +167,6 @@ export const PageQuery = gql`
         bannerHeading
         bannerInnerSubline
         bannerCTA
-        singleTerrazzo {
-          ... on singleTerrazzo_customDesignSolutions_BlockType {
-            id
-            typeHandle
-            backgroundColour
-            customCtaButton
-            customCtaLink
-          }
-        }
       }
     }
   }
