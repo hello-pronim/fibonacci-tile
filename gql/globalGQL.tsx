@@ -90,8 +90,8 @@ export const sampleCta2Query = gql`
   }
 `;
 
-export const customDesignCTAQuery = gql`
-  query customDesignCtaQuery {
+export const customSolutionsCtaQuery = gql`
+  query customSolutionsCtaQuery {
     globalSet(handle: "customSolutionsCta") {
       id
       ... on customSolutionsCta_GlobalSet {
@@ -100,9 +100,6 @@ export const customDesignCTAQuery = gql`
         customSolutionsCTA {
           ... on customSolutionsCTA_customDesignSolutions_BlockType {
             id
-            customImage {
-              url
-            }
             backgroundColour
             customCtaButton
             customCtaLink

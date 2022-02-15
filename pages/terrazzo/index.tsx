@@ -9,7 +9,7 @@ import { CategoriesQuery } from "@gql/categoriesGQL";
 import {
   sampleCta1Query,
   sampleCta2Query,
-  customDesignCTAQuery,
+  customSolutionsCtaQuery,
 } from "@gql/globalGQL";
 import { withGlobalData } from "@hoc/withGlobalData";
 
@@ -21,6 +21,7 @@ interface ProductPageProps {
   productCategories: any;
   sampleCta1: any;
   sampleCta2: any;
+  customSolutionsCta: any;
   notifications: Array<any>;
 }
 
@@ -32,6 +33,7 @@ const Products: NextPage<ProductPageProps> = ({
   productCategories,
   sampleCta1,
   sampleCta2,
+  customSolutionsCta,
   notifications,
 }) => {
   return (
@@ -48,6 +50,7 @@ const Products: NextPage<ProductPageProps> = ({
         productCategories={productCategories}
         cta1={sampleCta1}
         cta2={sampleCta2}
+        customSolutionsCta={customSolutionsCta}
         notifications={notifications}
       />
       <Footer />
@@ -93,9 +96,9 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
   });
 
   const {
-    data: { globalSet: customDesignCta },
+    data: { globalSet: customSolutionsCta },
   } = await client.query({
-    query: customDesignCTAQuery,
+    query: customSolutionsCtaQuery,
   });
 
   const {
@@ -123,7 +126,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
       productCategories,
       sampleCta1,
       sampleCta2,
-      customDesignCta,
+      customSolutionsCta,
     },
     revalidate: parseInt(process.env.NEXT_PAGE_REVALIDATE),
   };
