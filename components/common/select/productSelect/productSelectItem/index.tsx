@@ -19,7 +19,14 @@ const ProductSelectItem = ({
     <Wrapper>
       <Container>
         <GridCardImgContainer>
-          {product?.img1 && <Image src={product?.img1} alt={product.title} />}
+          {product?.thumbImageList?.[0]?.url && (
+            <Image
+              src={product.thumbImageList[0].url}
+              alt={product.title}
+              width="228"
+              height="228"
+            />
+          )}
           <ActionBtnContainer>
             <ActionBtn
               selected={selected}

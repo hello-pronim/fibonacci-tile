@@ -15,7 +15,7 @@ const RequestQuote = ({ pageData, products }) => {
         <SupportModule activePath={asPath} supports={supports} />
       </HeroOverlayWrapper>
       <FormContainer>
-        <QuoteRequestForm />
+        <QuoteRequestForm products={products} />
       </FormContainer>
     </>
   );
