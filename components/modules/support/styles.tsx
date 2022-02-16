@@ -53,7 +53,8 @@ const Tile = styled("a")(({ active }: TitleProps) =>
     py: 40,
     justifyContent: "center",
     transition: "background ease 0.3s",
-    backgroundColor: active ? "white" : theme.colors.concreteTints[8],
+    // backgroundColor: active ? "white" : theme.colors.concreteTints[8],
+    backgroundColor: "#ebebeb",
     borderBottom: active && `2px solid ${theme.colors.charcoal}`,
     "&:hover": {
       bg: "white",
