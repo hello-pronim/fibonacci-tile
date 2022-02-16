@@ -24,7 +24,7 @@ const ProjectCard = ({ project }) => {
       )}
       {project?.projectCompleted && (
         <Text variant="Body-Small" css={css({ gridRow: 2, gridColumn: 1 })}>
-          {moment(project.postDate).format("MMMM YYYY")}
+          {moment(project.projectCompleted).format("MMMM YYYY")}
         </Text>
       )}
       <Details>
