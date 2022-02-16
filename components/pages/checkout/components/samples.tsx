@@ -90,7 +90,6 @@ const Samples = ({ activeCheckoutStep, disabled, stepChange }) => {
                 })
               }
               key={`product-${product.id}`}
-              totalSelectedProducts={selectedProducts.length}
             />
           ))}
       </ProductContainer>
