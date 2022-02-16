@@ -9,7 +9,14 @@ const ProductSelectRow = ({ row, products }) => {
   return (
     <Row key={row.id}>
       <Col>
-        <ProductSelect name="productId" products={products} />
+        <ProductSelect
+          name="productId"
+          products={products}
+          onChange={(selectedProduct) => {
+            console.log(selectedProduct.productVariations);
+            setSizes([]);
+          }}
+        />
       </Col>
       <Col>
         <ProductSizeSelect name="productSize" sizes={sizes} />

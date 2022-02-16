@@ -1,4 +1,5 @@
 import Image from "next/image";
+import css from "@styled-system/css";
 import Text from "@components/common/typography";
 import AccentText from "@components/common/accentText";
 import {
@@ -15,11 +16,16 @@ import {
 
 interface mainStoryPanelProps {
   story: any;
+  bgColor: string;
 }
 
-function MainStoryPanel({ story }: mainStoryPanelProps) {
+function MainStoryPanel({ story, bgColor }: mainStoryPanelProps) {
   return (
-    <Panel>
+    <Panel
+      css={css({
+        backgroundColor: bgColor,
+      })}
+    >
       {story.accentText && (
         <AccentText top={120}>{story.accentText}</AccentText>
       )}
