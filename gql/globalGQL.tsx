@@ -106,7 +106,9 @@ export const customSolutionsCtaQuery = gql`
             backgroundColour
             textColour
             customCtaButton
-            customCtaLink
+            customCtaLink {
+              slug
+            }
             customHeader
             customIntro
             customSolutionsText

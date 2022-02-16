@@ -432,19 +432,3 @@ export const OurStoryPageQuery = gql`
     }
   }
 `;
-
-export const NewsletterQuery = gql`
-  query NewsletterQuery($slug: [String]) {
-    entry(slug: $slug) {
-      ... on latestNews_latestNews_Entry {
-        newsletter {
-          ... on newsletter_newsletter_BlockType {
-            id
-            heading
-            subheading
-          }
-        }
-      }
-    }
-  }
-`;

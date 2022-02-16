@@ -48,11 +48,13 @@ const CustomSolutionsCTAPanel = ({ data }) => {
           >
             {data.customSolutionsText}
           </Text>
-          <ArrowButton
-            mode="light"
-            title={data.customCtaButton}
-            link={data.customCtaLink}
-          />
+          {data?.customCtaLink?.[0]?.url && (
+            <ArrowButton
+              mode="light"
+              title={data.customCtaButton}
+              link={data?.customCtaLink?.[0]?.url}
+            />
+          )}
         </CTADetailsBox>
       </CTADetails>
     </CustomSolutionsCTAContainer>
