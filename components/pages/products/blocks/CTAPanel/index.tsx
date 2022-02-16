@@ -18,7 +18,13 @@ const CTAPanel = ({ imagePosition = "left", data }) => {
       <CTADetails>
         {data?.samplesHeading && <h2>{data.samplesHeading}</h2>}
         <div dangerouslySetInnerHTML={{ __html: data.samplesIntro }} />
-        <ArrowButton mode="dark" title={data.samplesButton} link="/terrazzo" />
+        {data?.samplesButtonLink?.[0]?.slug && (
+          <ArrowButton
+            mode="dark"
+            title={data.samplesButton}
+            link={`/${data?.samplesButtonLink?.[0]?.slug}`}
+          />
+        )}
       </CTADetails>
     </CTAContainer>
   );

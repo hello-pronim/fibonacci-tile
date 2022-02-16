@@ -104,7 +104,7 @@ const DualColumnModule = ({ data }) => {
             )}
           </ImageWrapper>
           <Text css={css({color: theme.colors.charcoal})} as="h6" variant="Display-Overline">
-            {data.right2SubLine}
+            {data.right2Caption}
           </Text>
           <Text css={css({color: theme.colors.charcoal})} as="h3" variant="Display-Medium">
             {data.right2Text}

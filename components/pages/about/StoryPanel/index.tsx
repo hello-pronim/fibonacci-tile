@@ -21,14 +21,18 @@ function StoryPanel({ story }: storyPanelProps) {
         {story.accentText && (
           <AccentText top={120}>{story.accentText}</AccentText>
         )}
-        <StoryTitleWrapper>
-          <h4 dangerouslySetInnerHTML={{ __html: story.title }} />
-        </StoryTitleWrapper>
+        {story.title && (
+          <StoryTitleWrapper>
+            <h4 dangerouslySetInnerHTML={{ __html: story.title }} />
+          </StoryTitleWrapper>
+        )}
       </PanelLeft>
       <PanelRight>
-        <StoryContentWrapper
-          dangerouslySetInnerHTML={{ __html: story.content }}
-        />
+        {story.content && (
+          <StoryContentWrapper
+            dangerouslySetInnerHTML={{ __html: story.content }}
+          />
+        )}
         {story?.thumbnail?.[0]?.url && (
           <StoryImageWrapper>
             <Image

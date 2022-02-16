@@ -39,7 +39,7 @@ const ProductsPage = ({
       bannerImage: pageData.bannerImage[0],
       bannerIntro: pageData.bannerIntro,
       bannerHeading: pageData.bannerHeading,
-      bannerSubline: pageData.bannerSubline,
+      bannerSubline: pageData.bannerInnerSubline,
       bannerCTA: pageData.bannerCTA,
     });
   }
@@ -48,7 +48,7 @@ const ProductsPage = ({
       bannerImage: collectionPageData.bannerImage[0],
       bannerIntro: collectionPageData.bannerIntro,
       bannerHeading: collectionPageData.bannerHeading,
-      bannerSubline: collectionPageData.bannerSubline,
+      bannerSubline: collectionPageData.bannerInnerSubline,
       bannerCTA: collectionPageData.bannerCTA,
       bannerLinkTo: "/terrazzo/collections",
     });

@@ -73,6 +73,7 @@ const Homepage = ({ pageData }) => {
                     samplesHeading: component.heading,
                     samplesIntro: component.intro,
                     samplesButton: component.button,
+                    samplesButtonLink: component.buttonLink,
                   }}
                   imagePosition="left"
                 />
@@ -110,7 +111,7 @@ const Homepage = ({ pageData }) => {
                       width: component?.right2ImageThumb?.[0]?.width,
                       height: component?.right2ImageThumb?.[0]?.height,
                     },
-                    right2Caption: component.right2Caption,
+                    right2Caption: component.right2SubLine,
                     right2Text: component.right2Text,
                   }}
                 />

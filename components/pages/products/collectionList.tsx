@@ -20,7 +20,7 @@ const CollectionsPage = ({
       bannerImage: pageData.bannerImage[0],
       bannerIntro: pageData.bannerIntro,
       bannerHeading: pageData.bannerHeading,
-      bannerSubline: pageData.bannerSubline,
+      bannerSubline: pageData.bannerInnerSubline,
       bannerCTA: pageData.bannerCTA,
     });
   }
@@ -29,7 +29,7 @@ const CollectionsPage = ({
       bannerImage: terrazzoPageData.bannerImage[0],
       bannerIntro: terrazzoPageData.bannerIntro,
       bannerHeading: terrazzoPageData.bannerHeading,
-      bannerSubline: terrazzoPageData.bannerSubline,
+      bannerSubline: terrazzoPageData.bannerInnerSubline,
       bannerCTA: terrazzoPageData.bannerCTA,
       bannerLinkTo: "/terrazzo",
     });
