@@ -42,6 +42,7 @@ const Header = ({
   mode = "light",
   position = "relative",
   notifications = null,
+  hideBorderOnScroll= false
 }) => {
   const { state, dispatch } = useAppContext();
   const [navOpen, setNavOpen] = useState(false);
@@ -103,6 +104,7 @@ const Header = ({
         navOpen={navOpen}
         mode={mode}
         scrollY={scrollY}
+        hideBorderOnScroll={hideBorderOnScroll}
       >
         <Wrapper>
           <NavIcon

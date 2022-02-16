@@ -20,7 +20,7 @@ const Home: NextPage<HomePageProps> = ({ pageData, notifications }) => {
         <meta name="description" content="Fibonacci Homepage" />
         <meta name="robots" content="index, follow" />
       </Head>
-      <Header mode="light" position="absolute" notifications={notifications} />
+      <Header mode="light" position="absolute" notifications={notifications} hideBorderOnScroll={true} />
       <Homepage pageData={pageData} />
       <Footer />
     </>

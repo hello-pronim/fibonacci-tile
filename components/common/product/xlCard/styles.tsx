@@ -144,6 +144,7 @@ const ActionBtn = styled("button")(({ checked }: ActionBtnProps) =>
       position: "absolute",
       visibility: "none",
       opacity: 0,
+      alignItems: "center",
     },
     ".initial": {
       display: "flex",
