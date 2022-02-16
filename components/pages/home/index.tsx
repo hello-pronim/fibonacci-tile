@@ -71,6 +71,7 @@ const Homepage = ({ pageData }) => {
                     samplesHeading: component.heading,
                     samplesIntro: component.intro,
                     samplesButton: component.button,
+                    samplesButtonLink: component.buttonLink,
                   }}
                   imagePosition="left"
                 />
