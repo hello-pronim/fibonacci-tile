@@ -6,9 +6,6 @@ import theme from "styles/theme";
 export interface containerProps {
   displayRight: boolean
 }
-export interface CheckoutFooterProps {
-  contentAlign: string
-}
 
 const CheckoutStepWrapper = styled("div")(() =>
   css({
@@ -87,10 +84,10 @@ css({
 })
 );
 
-const CheckoutFooter = styled("div")(({...props }: CheckoutFooterProps) => 
+const CheckoutFooter = styled("div")(({...props }) => 
   css({
-    pt: 20,
-    pb: 20,
+    pt: 24,
+    pb: 24,
     pl: "2%",
     pr: "2%",
     position: "fixed",
@@ -101,7 +98,7 @@ const CheckoutFooter = styled("div")(({...props }: CheckoutFooterProps) =>
     zIndex: "9999999",
     display: "flex",
     alignItems: "center",
-    justifyContent: props.contentAlign === "right" ? "flex-end" : "flex-start",
+    justifyContent: "flex-start",
     "span": {
       fontSize: 16,
       mr:30,
@@ -109,9 +106,15 @@ const CheckoutFooter = styled("div")(({...props }: CheckoutFooterProps) =>
     },
     ".back": {
       fontSize: 16,
-      pl: 15,
-      pr: 15,
-      cursor: "pointer"
+      ml: 20,
+      cursor: "pointer",
+      textDecoration: "underline",
+      [theme.mediaQueries.small]: {
+        ml: 50,
+      },
+      "&:hover": {
+        textDecoration: "none",
+      },
     }
   })
 );
