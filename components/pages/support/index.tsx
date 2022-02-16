@@ -48,7 +48,7 @@ const Support = ({ pageData }) => {
                           emphasisText: component.rightEmphasisText,
                           button: {
                             label: component.rightEmphasisButton,
-                            link: component.rightEmphasisPdf?.url,
+                            link: component.rightEmphasisPdf?.[0]?.url,
                           },
                         },
                       ],
@@ -72,7 +72,7 @@ const Support = ({ pageData }) => {
                           body: component.howToTilesText,
                           button: {
                             label: component.howToTilesButton,
-                            link: component.howToTilesGuide?.url,
+                            link: component.howToTilesGuide?.[0]?.url,
                           },
                         },
                         {
@@ -81,7 +81,7 @@ const Support = ({ pageData }) => {
                           body: component.howToSlabText,
                           button: {
                             label: component.howToSlabButton,
-                            link: component.howToSlabGuide?.url,
+                            link: component.howToSlabGuide?.[0]?.url,
                           },
                         },
                       ],
