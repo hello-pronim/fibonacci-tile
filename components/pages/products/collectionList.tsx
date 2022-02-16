@@ -34,14 +34,16 @@ const CollectionsPage = ({
       bannerLinkTo: "/terrazzo",
     });
   }
+  console.log(pageData);
   return (
     <Container>
       <ProductsHeader notifications={notifications} />
       <Slider items={banners} disableNext={true} />
-      <SectionTitle
+      {pageData.bannerSubline &&       <SectionTitle
         show={false}
-        title="40 unique creations. Thoughtfully designed. Sustainably made. Purpose-built."
-      />
+        title={pageData.bannerSubline}
+      />}
+
       {collections.length > 0 &&
         collections.map((collection) => {
           return (
