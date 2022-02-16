@@ -6,7 +6,7 @@ import EnquiryIcon from "public/assets/icons/enquiry-icon.svg";
 export const supports = [
   {
     slug: "product-support",
-    title: "Product Support",
+    title: "Product support",
     icon: SupportIcon,
     href: "/support",
   },

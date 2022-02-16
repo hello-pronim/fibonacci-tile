@@ -265,7 +265,7 @@ const SelectionCart = ({ active, newSelection, tab }) => {
               >
                 <Image alt="support" src={SupportIcon} width={48} height={48} />
                 <Text variant="Display-XXSmall" altFont>
-                  Product Support
+                  Product support
                 </Text>
                 <div
                   css={css({
