@@ -261,6 +261,9 @@ export const HomePageQuery = gql`
               height
             }
             button
+            buttonLink {
+              slug
+            }
           }
           ... on homePageComponents_beInspired_BlockType {
             id

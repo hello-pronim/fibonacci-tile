@@ -22,7 +22,7 @@ const CTAPanel = ({ imagePosition = "left", data }) => {
           <ArrowButton
             mode="dark"
             title={data.samplesButton}
-            link={data?.samplesButtonLink?.[0]?.slug}
+            link={`/${data?.samplesButtonLink?.[0]?.slug}`}
           />
         )}
       </CTADetails>
