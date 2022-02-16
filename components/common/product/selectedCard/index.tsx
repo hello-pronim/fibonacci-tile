@@ -33,7 +33,6 @@ const SelectedProductCard = ({
 
   const sampleSelectedCount = Number(process.env.NEXT_PUBLIC_SAMPLE_SELECTION_COUNT);
   const { state: { confirmedProducts } } = useAppContext();
-  console.log("isSelected", isSelected)
   return (
     <Wrapper>
       <Container>
