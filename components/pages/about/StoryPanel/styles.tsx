@@ -61,12 +61,19 @@ const StoryTitleWrapper = styled("div")(
       color: theme.colors.charcoal,
       fontFamily: "Canela",
       fontSize: "32px",
-      lineHeight: "43.2px",
+      lineHeight: "130%",
       paddingTop: "56px",
       [theme.mediaQueries.small]: {
         fontSize: "42px",
-        lineHeight: "54.6px",
         paddingTop: "120px",
+      },
+      "&.story-3": {
+        fontFamily: "Everett",
+        letterSpacing: "-0.01em",
+        lineHeight: "115%",
+        [theme.mediaQueries.small]: {
+          fontSize: "44px",
+        },
       },
     },
   })
