@@ -89,3 +89,36 @@ export const sampleCta2Query = gql`
     }
   }
 `;
+
+export const customSolutionsCtaQuery = gql`
+  query customSolutionsCtaQuery {
+    globalSet(handle: "customSolutionsCta") {
+      id
+      ... on customSolutionsCta_GlobalSet {
+        id
+        name
+        customSolutionsCTA {
+          ... on customSolutionsCTA_customDesignSolutions_BlockType {
+            id
+            backgroundColour
+            textColour
+            customCtaButton
+            customCtaLink
+            customHeader
+            customIntro
+            customSolutionsText
+            customImage {
+              url
+            }
+            customImageThumb: customImage @transform(width: 960, height: 680) {
+              url
+              title
+              width
+              height
+            }
+          }
+        }
+      }
+    }
+  }
+`;

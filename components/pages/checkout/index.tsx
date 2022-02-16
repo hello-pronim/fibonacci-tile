@@ -21,7 +21,7 @@ import {
   NoSamples,
   //CheckoutFooter,
 } from "./styles";
-
+const sampleSelectedCount = Number(process.env.NEXT_PUBLIC_SAMPLE_SELECTION_COUNT);
 const CheckoutPage = ({ notifications }) => {
   const [activeCheckoutStep, setActiveCheckoutStep] = useState(1);
   const { state, dispatch } = useAppContext();
@@ -34,15 +34,29 @@ const CheckoutPage = ({ notifications }) => {
       });
     }, 100);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+
+    if(selectedProducts?.length !== 0 && selectedProducts?.length <= sampleSelectedCount) {
+      dispatch({
+        type: "AUTO_CONFIRM_PRODUCT_SELECTION",
+        products: selectedProducts,
+      })
+      setActiveCheckoutStep(2);
+    }
+    if(selectedProducts?.length === 0 || selectedProducts?.length > sampleSelectedCount) {
+      setActiveCheckoutStep(1);
+    }
+  
+  }, [selectedProducts]);
+
   let disabled = false;
   if (
     confirmedProducts?.length === 0 ||
-    confirmedProducts?.length > 6 ||
-    selectedProducts?.length > 6
+    confirmedProducts?.length > sampleSelectedCount 
+   // || selectedProducts?.length > sampleSelectedCount
   ) {
     disabled = true;
   }
+  
   const crumbs = [
     { path: "/terrazo", name: "Terrazzo" },
     { path: "/checkout", name: "Checkout" },
@@ -107,13 +121,13 @@ const CheckoutPage = ({ notifications }) => {
             {confirmedProducts?.length > 0 ? confirmedProducts?.length : 0})
           </p>
           <SelectionWrapper>
-            {confirmedProducts &&
+            {confirmedProducts?.length > 0 &&
               confirmedProducts.map((product) => (
                 <SelectedProductCard
                   product={product}
                   isSelected={
                     state?.selectedProducts.findIndex(
-                      (sp) => sp.id === product.id
+                      (sp) => sp.id === product?.id
                     ) !== -1
                   }
                   toggleProductSelect={() =>
@@ -122,7 +136,7 @@ const CheckoutPage = ({ notifications }) => {
                       product,
                     })
                   }
-                  key={`product-${product.id}`}
+                  key={`product-${product?.id}`}
                   confirmSample={true}
                 />
               ))}

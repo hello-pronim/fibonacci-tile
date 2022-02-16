@@ -2,7 +2,7 @@ import css from "@styled-system/css";
 import styled from "@emotion/styled";
 import theme from "styles/theme";
 
-const FooterCTAContainer = styled("section")(
+const CustomSolutionsCTAContainer = styled("section")(
   css({
     marginTop: "20px",
     display: "flex",
@@ -24,10 +24,13 @@ const CTAImgBox = styled("div")(
 );
 
 const CTADetails = styled("div")(
-  css({
-    width: "50%",
-    backgroundColor: theme.colors.greys[1],
-  })
+  ({ backgroundColor }: { backgroundColor?: string }) =>
+    css({
+      width: "50%",
+      backgroundColor: backgroundColor
+        ? backgroundColor
+        : theme.colors.greys[1],
+    })
 );
 
 const CTADetailsBox = styled("div")(
@@ -51,4 +54,4 @@ const CTADetailsBox = styled("div")(
   })
 );
 
-export { FooterCTAContainer, CTAImgBox, CTADetails, CTADetailsBox };
+export { CustomSolutionsCTAContainer, CTAImgBox, CTADetails, CTADetailsBox };

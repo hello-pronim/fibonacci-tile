@@ -3,7 +3,7 @@ import { ArrowButtonWrapper } from "./styles";
 
 export default function ArrowButton({
   title,
-  link,
+  link = null,
   mode = "",
   visibleArrow = true,
   fullWidth = false,

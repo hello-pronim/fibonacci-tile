@@ -6,7 +6,11 @@ import { initializeApollo } from "@utils/apolloClient";
 import { PageQuery } from "@gql/pageGQL";
 import { ProductsQuery } from "@gql/productGQL";
 import { CategoriesQuery } from "@gql/categoriesGQL";
-import { sampleCta1Query, sampleCta2Query } from "@gql/globalGQL";
+import {
+  sampleCta1Query,
+  sampleCta2Query,
+  customSolutionsCtaQuery,
+} from "@gql/globalGQL";
 import { withGlobalData } from "@hoc/withGlobalData";
 
 interface ProductPageProps {
@@ -17,6 +21,7 @@ interface ProductPageProps {
   productCategories: any;
   sampleCta1: any;
   sampleCta2: any;
+  customSolutionsCta: any;
   notifications: Array<any>;
 }
 
@@ -28,12 +33,13 @@ const Products: NextPage<ProductPageProps> = ({
   productCategories,
   sampleCta1,
   sampleCta2,
+  customSolutionsCta,
   notifications,
 }) => {
   return (
     <>
       <Head>
-        <title>Products | Fibonacci</title>
+        <title>Terrazzo | Fibonacci</title>
         <meta name="description" content="Fibonacci Products page" />
       </Head>
       <ProductPage
@@ -44,6 +50,7 @@ const Products: NextPage<ProductPageProps> = ({
         productCategories={productCategories}
         cta1={sampleCta1}
         cta2={sampleCta2}
+        customSolutionsCta={customSolutionsCta?.customSolutionsCTA}
         notifications={notifications}
       />
       <Footer />
@@ -62,6 +69,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
       slug: "terrazzo",
     },
   });
+
   const {
     data: { entry: collectionPageData },
   } = await client.query({
@@ -70,6 +78,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
       slug: "collections",
     },
   });
+
   const {
     data: { entries: products },
   } = await client.query({
@@ -89,6 +98,12 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
   });
 
   const {
+    data: { globalSet: customSolutionsCta },
+  } = await client.query({
+    query: customSolutionsCtaQuery,
+  });
+
+  const {
     data: { categories: colourSchemes },
   } = await client.query({
     query: CategoriesQuery,
@@ -96,6 +111,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
       group: "colourSchemes",
     },
   });
+
   const {
     data: { categories: productCategories },
   } = await client.query({
@@ -104,6 +120,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
       group: "productCategories",
     },
   });
+
   return {
     props: {
       pageData,
@@ -113,6 +130,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
       productCategories,
       sampleCta1,
       sampleCta2,
+      customSolutionsCta,
     },
     revalidate: parseInt(process.env.NEXT_PAGE_REVALIDATE),
   };

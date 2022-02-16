@@ -15,11 +15,14 @@ import {
 import {
   CheckoutFooter,
 } from "../styles";
+const numberToWord = ["one", "two", "threee", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"];
 
 const Samples = ({ activeCheckoutStep, disabled, stepChange }) => {
   const { state, dispatch } = useAppContext();
   const selectedProducts = state.selectedProducts;
   const confirmedProducts = state.confirmedProducts;
+  
+  
   return (
     <>
       <TopBar>
@@ -30,33 +33,55 @@ const Samples = ({ activeCheckoutStep, disabled, stepChange }) => {
             fontSize: 32,
           })}
         >
-          Confirm your six Fibonacci samples
+          Confirm your {numberToWord[Number(process.env.NEXT_PUBLIC_SAMPLE_SELECTION_COUNT) - 1]} Fibonacci samples
         </Text>
         <ButtonWrapper>
           <Button
             mode="dark"
             title="Share my selections"
-            link="/products"
-            size=""
+            onClick={() => {
+              dispatch({
+                type: "OPEN_DRAWER",
+                value:
+                  state.activeDrawerTab !== "share-selection"
+                    ? true
+                    : !state.openDrawer,
+              }),
+                dispatch({
+                  type: "SET_ACTIVE_DRAWER_TAB",
+                  value: "share-selection",
+                });
+            }}
           />
           <BttnLeftPadding>
             <Button
               mode="dark"
               title="Need more than six samples "
-              link="/products"
-              size=""
+              onClick={() => {
+                dispatch({
+                  type: "OPEN_DRAWER",
+                  value:
+                    state.activeDrawerTab !== "need-more-selection"
+                      ? true
+                      : !state.openDrawer,
+                }),
+                  dispatch({
+                    type: "SET_ACTIVE_DRAWER_TAB",
+                    value: "need-more-selection",
+                  });
+              }}
             />
           </BttnLeftPadding>
         </ButtonWrapper>
       </TopBar>
       <ProductContainer>
-        {selectedProducts &&
+        {selectedProducts?.length > 0 &&
           selectedProducts.map((product) => (
             <SelectedProductCard
               product={product}
               isSelected={
                 confirmedProducts &&
-                confirmedProducts.findIndex((sp) => sp.id === product.id) !== -1
+                confirmedProducts.findIndex((sp) => sp?.id === product.id) !== -1
               }
               toggleProductSelect={() =>
                 dispatch({
@@ -70,7 +95,8 @@ const Samples = ({ activeCheckoutStep, disabled, stepChange }) => {
           ))}
       </ProductContainer>
       <CheckoutFooter contentAlign="right">
-        <span>{`You currently have ${confirmedProducts.length} selected, you can choose up 6 samples`}</span>
+        <span>{`You currently have ${confirmedProducts.length} selected, you can choose up 
+        ${process.env.NEXT_PUBLIC_SAMPLE_SELECTION_COUNT} samples`}</span>
         <ArrowButton
           mode="dark"
           bgColor="white"
