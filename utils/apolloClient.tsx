@@ -30,7 +30,6 @@ function createApolloClient() {
         },
       }),
       new ErrorLink(({ graphQLErrors, networkError, operation }) => {
-        console.log("here", graphQLErrors, networkError, operation);
         if (graphQLErrors) {
           graphQLErrors.forEach((gqlErr) => {
             const { message } = gqlErr;
