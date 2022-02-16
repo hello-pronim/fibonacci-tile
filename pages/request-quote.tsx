@@ -35,7 +35,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async () => {
   } = await client.query({
     query: PageQuery,
     variables: {
-      slug: "request-a-quote",
+      slug: "request-quote",
     },
   });
   

@@ -38,7 +38,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async () => {
   } = await client.query({
     query: PageQuery,
     variables: {
-      slug: "how-to-order-samples",
+      slug: "ordering-samples",
     },
   });
   return {
