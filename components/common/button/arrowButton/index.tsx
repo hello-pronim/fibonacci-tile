@@ -10,7 +10,8 @@ export default function ArrowButton({
   size = "",
   bgColor = "transparent",
   onClick = null,
-  disabled = false
+  disabled = false,
+  target = "_self",
 }) {
   return (
     <ArrowButtonWrapper
@@ -22,17 +23,21 @@ export default function ArrowButton({
       bgColor={bgColor}
       disabled={disabled}
     >
-      {link && 
+      {link && (
         <Link href={link} passHref>
-          <a>{title}</a>
+          <a target={target}>{title}</a>
         </Link>
-      }
-      {!link && onClick &&
-        <button onClick={onClick} className="bttnArrow">{title}</button>
-      }
-       {!link && !onClick &&
-        <button type="submit" className="bttnArrow">{title}</button>
-      }
+      )}
+      {!link && onClick && (
+        <button onClick={onClick} className="bttnArrow">
+          {title}
+        </button>
+      )}
+      {!link && !onClick && (
+        <button type="submit" className="bttnArrow">
+          {title}
+        </button>
+      )}
     </ArrowButtonWrapper>
   );
 }
