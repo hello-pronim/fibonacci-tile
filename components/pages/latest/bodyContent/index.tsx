@@ -84,13 +84,13 @@ const BodyContent = ({ pageData }) => {
         {pageData.prev && (
           <LinkWrapper>
             <Arrow type="short" direction="left" />
-            <Link href={`/latest/${pageData.prev.slug}`}>Previous article</Link>
+            <Link href={`/the-latest/${pageData.prev.slug}`}>Previous article</Link>
           </LinkWrapper>
         )}
 
         {pageData.next && (
           <LinkWrapper>
-            <Link href={`/latest/${pageData.next.slug}`}>Next article</Link>
+            <Link href={`/the-latest/${pageData.next.slug}`}>Next article</Link>
             <Arrow type="short" direction="right" />
           </LinkWrapper>
         )}

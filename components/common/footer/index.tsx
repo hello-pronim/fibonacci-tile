@@ -90,7 +90,7 @@ export default function Footer() {
                 <Link href="/in-use">In use</Link>
               </Item>
               <Item>
-                <Link href="/latest">Latest News</Link>
+                <Link href="/the-latest">Latest News</Link>
               </Item>
             </ItemList>
           </Segment>

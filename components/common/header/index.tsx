@@ -120,7 +120,7 @@ const Header = ({
             <NavItem href="/our-story" mode={mode}>
               Our Story
             </NavItem>
-            <NavItem href="/latest" mode={mode}>
+            <NavItem href="/the-latest" mode={mode}>
               Latest
             </NavItem>
           </NavLeft>

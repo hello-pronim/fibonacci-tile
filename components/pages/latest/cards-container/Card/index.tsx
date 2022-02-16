@@ -23,7 +23,7 @@ export const Card = ({
     });
   return (
     <StyledContainer>
-      <Link href={`/latest/${slug}`} passHref>
+      <Link href={`/the-latest/${slug}`} passHref>
         <a>
           {imageBlock?.image?.length > 0 && (
             <Image
