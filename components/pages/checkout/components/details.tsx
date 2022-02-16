@@ -63,17 +63,17 @@ const Details = ({ activeCheckoutStep, disabled, stepChange }) => {
                   </SelectFourtyFive>
               </TwoItemRow>
               {activeCheckoutStep === 2 && (
-                <CheckoutFooter contentAlign="right">
-                  <div className="back" onClick={() => stepChange(1)}>
-                    Back
-                  </div>
+                <CheckoutFooter>
                   <ArrowButton
-                    mode="dark"
-                    bgColor="white"
+                    mode="light"
+                    bgColor="#141414"
                     title="Continue to Delivery"
                     link=""
                     disabled={disabled}
                   />
+                  <div className="back" onClick={() => stepChange(1)}>
+                    Back
+                  </div>
                 </CheckoutFooter>
               )}
             </form>
