@@ -19,6 +19,7 @@ const BodyContent = ({ pageComponents }) => {
               return (
                 <StoryPanel
                   key={`component-${index}`}
+                  titleClassName={`story-${index}`}
                   story={{
                     accentText: component.sideText,
                     title: component.headingLeft,

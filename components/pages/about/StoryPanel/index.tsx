@@ -10,11 +10,11 @@ import {
 } from "./styles";
 
 interface storyPanelProps {
+  titleClassName?: string;
   story: any;
-  accentText?: string;
 }
 
-function StoryPanel({ story }: storyPanelProps) {
+function StoryPanel({ story, titleClassName = "" }: storyPanelProps) {
   return (
     <Panel>
       <PanelLeft>
@@ -23,7 +23,10 @@ function StoryPanel({ story }: storyPanelProps) {
         )}
         {story.title && (
           <StoryTitleWrapper>
-            <h4 dangerouslySetInnerHTML={{ __html: story.title }} />
+            <h4
+              className={titleClassName}
+              dangerouslySetInnerHTML={{ __html: story.title }}
+            />
           </StoryTitleWrapper>
         )}
       </PanelLeft>
