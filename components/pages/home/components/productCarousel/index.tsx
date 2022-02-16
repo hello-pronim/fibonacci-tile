@@ -71,7 +71,7 @@ const ProductCarousel = ({ products }) => {
 
   return (
     <Container>
-      <AccentText top={200}>An imaginative selection</AccentText>
+      <AccentText top={160}>An imaginative selection</AccentText>
       <NextWrapper onClick={() => gotoNext()}>
         <Arrow color={theme.colors.white} width={40} />
       </NextWrapper>

@@ -11,6 +11,7 @@ import SupportIcon from "public/assets/icons/support-icon.svg";
 import SamplesIcon from "public/assets/icons/sample-icon.svg";
 import QuoteIcon from "public/assets/icons/quote-icon.svg";
 import EnquiryIcon from "public/assets/icons/enquiry-icon.svg";
+import SectionTitle from "../../pages/products/blocks/SectionTitle";
 import { supports } from "../support/constants";
 
 const Homepage = ({ pageData }) => {
@@ -29,6 +30,10 @@ const Homepage = ({ pageData }) => {
   return (
     <>
       {banners.length > 0 && <Hero banners={banners} />}
+      <SectionTitle
+        show={false}
+        title="Terrazzo tiles and slabs for residential, retail, hospitality, corporate and commercial projects."
+      />
       {pageData?.homePageComponents?.length > 0 &&
         pageData.homePageComponents.map((component: any) => {
           switch (component.typeHandle) {
