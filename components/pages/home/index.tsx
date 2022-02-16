@@ -33,7 +33,6 @@ const Homepage = ({ pageData }) => {
         pageData.homePageComponents.map((component: any) => {
           switch (component.typeHandle) {
             case "featuredProducts":
-              console.log(component.products);
               return (
                 <ProductCarousel
                   key={`component-${component.id}`}

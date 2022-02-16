@@ -12,7 +12,6 @@ interface PrivacyPageProps {
 }
 
 const Privacy: NextPage<PrivacyPageProps> = ({ pageData, notifications }) => {
-  console.log(pageData);
   return (
     <>
       <Head>
@@ -34,7 +33,6 @@ export const getStaticProps: GetStaticProps = withGlobalData(async () => {
       slug: "privacy-policy",
     },
   });
-  console.log(pageData);
   return {
     props: {
       pageData,
