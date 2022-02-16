@@ -13,7 +13,7 @@ const Support = ({ pageData }) => {
 
   return (
     <>
-      <Hero pageTitle="Product Support" />
+      <Hero pageTitle="Product support" />
       <HeroOverlayWrapper>
         <SupportModule activePath={asPath} supports={supports} />
       </HeroOverlayWrapper>
