@@ -53,12 +53,12 @@ const ProductCard = ({
               )}
               {!isSelected && (
                 <span className="initial">
-                  <AddIcon color="black" width={38} />
+                  <AddIcon color="black" width={13} />
                 </span>
               )}
               {isSelected && (
                 <span className="initial">
-                  <CheckMarkIcon color="white" width={38} />
+                  <CheckMarkIcon color="white" width={14} />
                 </span>
               )}
               {isSelected && (
