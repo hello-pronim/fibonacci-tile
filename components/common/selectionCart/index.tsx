@@ -555,6 +555,7 @@ const SelectionCart = ({ active, newSelection, tab }) => {
                 width: "100%",
                 a: {
                   width: "100%",
+                  textDecoration: "none",
                 },
               },
             })}
@@ -566,9 +567,9 @@ const SelectionCart = ({ active, newSelection, tab }) => {
                 link="/checkout"
               />
             )}
-            <Link href="/terrazzo" css={css({ color: "#fff", mt: 24 })}>
-              <a>
-                <Text variant="Body-Small">Continue Selections</Text>
+            <Link href="/terrazzo" passHref>
+              <a css={css({ color: "#fff", marginTop: "20px" })}>
+                <Text variant="Body-Small" css={css({ color: "#fff", })}>Continue Selections</Text>
               </a>
             </Link>
           </div>
