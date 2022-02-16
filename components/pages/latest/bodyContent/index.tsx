@@ -73,12 +73,12 @@ const BodyContent = ({ pageData }) => {
       })}
       <Row
         css={css({
-          bg: "#FFFFF8",
+          bg: "#ffffff",
           display: "flex",
           alignItems: "ceneter",
           justifyContent: "space-around",
-          pb: 28,
-          pt: 239,
+          pb: 25,
+          pt: 9,
         })}
       >
         {pageData.prev && (
