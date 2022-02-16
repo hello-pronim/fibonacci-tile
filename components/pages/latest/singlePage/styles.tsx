@@ -111,7 +111,9 @@ const Row = styled("div")(
 
     padding: "0 56px",
     pt: "64px",
-    pb: "55",
+    maxWidth: "2560px",
+    mr: "auto",
+    ml: "auto",
   })
 );
 

@@ -31,6 +31,8 @@ const SingleLatest: NextPage<SingleLatestProps> = ({ pageData }) => {
           pl: "27px",
           pt: 100,
           pb: 0,
+          ml: "auto",
+          mr: "auto"
         })}
       >
         <Breadcrumb crumbs={crumbs} pt={0} />
