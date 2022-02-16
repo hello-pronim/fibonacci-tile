@@ -36,7 +36,7 @@ import {
   Wrapper,
 } from "./styles";
 
-const QuoteRequestForm = () => {
+const QuoteRequestForm = ({}) => {
   const products = [
     {
       id: "1",

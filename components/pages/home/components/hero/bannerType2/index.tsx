@@ -8,21 +8,20 @@ const BannerType1 = ({ banner }) => {
         <Image
           className="lrg-img"
           layout="responsive"
-          src={banner.sliderImage[0].url}
-          alt={banner.sliderImage[0].title}
-          width={banner.sliderImage[0].width}
-          height={banner.sliderImage[0].height}
+          src={banner.image1[0].url}
+          alt={banner.image1[0].title}
+          width={banner.image1[0].width}
+          height={banner.image1[0].height}
+        />
+        <Image
+          className="lrg-img"
+          layout="responsive"
+          src={banner.image2[0].url}
+          alt={banner.image2[0].title}
+          width={banner.image2[0].width}
+          height={banner.image2[0].height}
         />
       </SlideImage>
-      <SlideImageMobile>
-        <Image
-          layout="responsive"
-          src={banner.sliderMobImage[0].url}
-          alt={banner.sliderMobImage[0].title}
-          width={banner.sliderMobImage[0].width}
-          height={banner.sliderMobImage[0].height}
-        />
-      </SlideImageMobile>
       {banner.likeNoOtherText && (
         <ContentWrapper>
           <span>LIKE</span>
