@@ -214,8 +214,22 @@ export const HomePageQuery = gql`
             image1 {
               url
             }
+            sliderImage1: image1
+              @transform(width: 960, height: 880, mode: "crop") {
+              url
+              title
+              width
+              height
+            }
             image2 {
               url
+            }
+            sliderImage2: image2
+              @transform(width: 960, height: 880, mode: "crop") {
+              url
+              title
+              width
+              height
             }
             likeNoOtherText
           }

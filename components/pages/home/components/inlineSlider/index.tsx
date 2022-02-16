@@ -56,7 +56,7 @@ const InlineSlider = ({ projects }) => {
   
   return (
     <Container>
-      <AccentText top={206}>An imaginative selection</AccentText>
+      <AccentText top={40}>An imaginative selection</AccentText>
       <Wrapper>
         <AccentTextMobile css={css({ pb: 80 })}>
           An imaginative selection

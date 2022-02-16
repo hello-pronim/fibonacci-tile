@@ -1,28 +1,31 @@
 import Image from "next/image";
-import { ContentWrapper, SlideImage, SlideImageMobile } from "../styles";
+import { ContentWrapper, SlideImage2 } from "../styles";
 
 const BannerType1 = ({ banner }) => {
   return (
     <>
-      <SlideImage>
-        <Image
-          className="lrg-img"
-          layout="responsive"
-          src={banner.sliderImage[0].url}
-          alt={banner.sliderImage[0].title}
-          width={banner.sliderImage[0].width}
-          height={banner.sliderImage[0].height}
-        />
-      </SlideImage>
-      <SlideImageMobile>
-        <Image
-          layout="responsive"
-          src={banner.sliderMobImage[0].url}
-          alt={banner.sliderMobImage[0].title}
-          width={banner.sliderMobImage[0].width}
-          height={banner.sliderMobImage[0].height}
-        />
-      </SlideImageMobile>
+      <SlideImage2>
+        <div>
+          <Image
+            className="lrg-img"
+            layout="responsive"
+            src={banner.sliderImage1[0].url}
+            alt={banner.sliderImage1[0].title}
+            width={banner.sliderImage1[0].width}
+            height={banner.sliderImage1[0].height}
+          />
+        </div>
+        <div>
+          <Image
+            className="lrg-img"
+            layout="responsive"
+            src={banner.sliderImage2[0].url}
+            alt={banner.sliderImage2[0].title}
+            width={banner.sliderImage2[0].width}
+            height={banner.sliderImage2[0].height}
+          />
+        </div>
+      </SlideImage2>
       {banner.likeNoOtherText && (
         <ContentWrapper>
           <span>LIKE</span>

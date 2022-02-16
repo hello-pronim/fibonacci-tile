@@ -5,7 +5,7 @@ import QuoteRequestForm from "./sections/forms/quoteRequestForm";
 import { supports } from "./constants";
 import { HeroOverlayWrapper, FormContainer } from "./styles";
 
-const RequestQuote = ({ pageData }) => {
+const RequestQuote = ({ pageData, products }) => {
   const router = useRouter();
   const { asPath } = router;
   return (
