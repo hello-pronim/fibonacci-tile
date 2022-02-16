@@ -161,8 +161,8 @@ const SelectionCart = ({ active, newSelection, tab }) => {
               </label>
               <ArrowButton
                 mode="dark"
-                title="Order Samples"
-                link="#"
+                title="Submit enquiry"
+                onClick={() => {}}
                 fullWidth
                 size=""
               />

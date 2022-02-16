@@ -52,6 +52,10 @@ export const CategoryQuery: any = gql`
           ... on projects_projectDetails_Entry {
             heroImage {
               url
+            }
+            heroImageThumb: heroImage @transform(handle: "projectThumbnail") {
+              id
+              url
               width
               height
             }
