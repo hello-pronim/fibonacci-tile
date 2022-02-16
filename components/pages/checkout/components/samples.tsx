@@ -21,7 +21,7 @@ const Samples = ({ activeCheckoutStep, disabled, stepChange }) => {
   const { state, dispatch } = useAppContext();
   const selectedProducts = state.selectedProducts;
   const confirmedProducts = state.confirmedProducts;
-  
+  const sampleSelectionCount = Number(process.env.NEXT_PUBLIC_SAMPLE_SELECTION_COUNT);
   
   return (
     <>
@@ -33,7 +33,7 @@ const Samples = ({ activeCheckoutStep, disabled, stepChange }) => {
             fontSize: 32,
           })}
         >
-          Confirm your {numberToWord[Number(process.env.NEXT_PUBLIC_SAMPLE_SELECTION_COUNT) - 1]} Fibonacci samples
+          Confirm your {numberToWord[sampleSelectionCount - 1]} Fibonacci samples
         </Text>
         <ButtonWrapper>
           <Button
@@ -95,7 +95,7 @@ const Samples = ({ activeCheckoutStep, disabled, stepChange }) => {
       </ProductContainer>
       <CheckoutFooter contentAlign="right">
         <span>{`You currently have ${confirmedProducts.length} selected, you can choose up 
-        ${process.env.NEXT_PUBLIC_SAMPLE_SELECTION_COUNT} samples`}</span>
+        ${sampleSelectionCount} samples`}</span>
         <ArrowButton
           mode="dark"
           bgColor="white"

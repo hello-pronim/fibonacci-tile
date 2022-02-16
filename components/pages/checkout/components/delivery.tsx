@@ -31,21 +31,28 @@ const Delivery = ({ activeCheckoutStep, disabled, stepChange }) => {
       type: "SET_CHECKOUT_DETAILS",
       value: data,
     });
-		const {checkoutDetails} = state;
+		const {checkoutDetails, confirmedProducts} = state;
 		// console.log("checkoutDetails", checkoutDetails)
+    const confirmedProductIds = [];
+    if(confirmedProducts?.length > 0) {
+      confirmedProducts.forEach(product => {
+        confirmedProductIds.push(product.id)
+      });
+    }
+    checkoutDetails["products"] = confirmedProductIds;
 
 		// TODO: Api call s
 		try { 
-			const rawResponse = await fetch(process.env.NEXT_PUBLIC_SAMPLE_ORDERS_CONTROLLER_URL, {
-				method: 'POST',
-				headers: {
-					'Accept': 'application/json',
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify(checkoutDetails)
-			});
-			const content = await rawResponse.json();
-			console.log("content", content);
+			// const rawResponse = await fetch(process.env.NEXT_PUBLIC_SAMPLE_ORDERS_CONTROLLER_URL, {
+			// 	method: 'POST',
+			// 	headers: {
+			// 		'Accept': 'application/json',
+			// 		'Content-Type': 'application/json'
+			// 	},
+			// 	body: JSON.stringify(checkoutDetails)
+			// });
+			// const content = await rawResponse.json();
+			// console.log("content", content);
 		} catch (e) {
 			console.log(e)
 		}
@@ -70,21 +77,21 @@ const Delivery = ({ activeCheckoutStep, disabled, stepChange }) => {
             <InputSixty
               type="text"
               placeholder="Address"
-              {...register("Address", { required: true, maxLength: 80 })}
+              {...register("address", { required: true, maxLength: 80 })}
             />
             <InputThirty
               type="text"
               placeholder="Suburb"
-              {...register("Suburb", { required: true, maxLength: 100 })}
+              {...register("suburb", { required: true, maxLength: 100 })}
             />
           </TwoItemRow>
           <ThreeItemRow>
             <InputTwentyFour
               type="text"
               placeholder="Postcode"
-              {...register("Postcode", { required: true, maxLength: 80 })}
+              {...register("postcode", { required: true, maxLength: 80 })}
             />
-            <SelectThirty {...register("State", { required: true })}>
+            <SelectThirty {...register("state", { required: true })}>
               <option value="">State</option>
               <option value="interiorDesigner">Interior Designer</option>
               <option value="architect">Architect</option>
@@ -93,7 +100,7 @@ const Delivery = ({ activeCheckoutStep, disabled, stepChange }) => {
               <option value="stonemason">Stonemason</option>
               <option value="other">Other</option>
             </SelectThirty>
-            <SelectThirty {...register("Country", { required: true })}>
+            <SelectThirty {...register("country", { required: true })}>
               <option value="">Country</option>
               <option value="interiorDesigner">Interior Designer</option>
               <option value="architect">Architect</option>
