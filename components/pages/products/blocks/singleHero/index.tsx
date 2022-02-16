@@ -13,24 +13,26 @@ import { Container, LinkWrapper, LinkWrapperLeft, Pill } from "./styles";
 
 const SingleHeroModule = ({ product, collectionSlug }) => {
   const crumbs = [
-    { path: "/terrazzo", name: "Terrazo" },
-    { path: "", name: product.title },
+    { path: "/terrazzo", name: "Our Products" },
+    { name: "Terrazo" },
+    { name: product.title },
   ];
-
   const { state, dispatch } = useAppContext();
   const activeCollection = product.collections.find(
     (collection: any) => collection.slug === collectionSlug
   );
   return (
     <>
-      <Container
+      <div
         css={css({
+          maxWidth: "2560px",
+          pl: "27px",
           pt: 100,
           pb: 0,
         })}
       >
         <BreadCrumb crumbs={crumbs} pt={0} />
-      </Container>
+      </div>
       <Container
         css={css({
           pt: 50,

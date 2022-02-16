@@ -14,7 +14,7 @@ interface SingleLatestProps {
 
 const SingleLatest: NextPage<SingleLatestProps> = ({ pageData }) => {
   const crumbs = [
-    { path: "/the-latest", name: "Latest" },
+    { path: "/the-latest", name: "Then Latest" },
     { path: "", name: pageData.title },
   ];
 
