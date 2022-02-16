@@ -80,7 +80,7 @@ const CheckoutPage = ({ notifications }) => {
             activeCheckoutStep === 1 || activeCheckoutStep === 4 ? false : true
           }
         >
-          <BreadCrumb crumbs={crumbs} />
+          <BreadCrumb crumbs={crumbs} pt={100} />
           <CheckoutStepWrapper>
             <StepItem step={1} activeStep={activeCheckoutStep} />
             <StepItem step={2} activeStep={activeCheckoutStep} />

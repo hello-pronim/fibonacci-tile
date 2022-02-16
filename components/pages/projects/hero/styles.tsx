@@ -8,10 +8,10 @@ import Text from "@components/common/typography";
 const Container = styled(Cont)(
   css({
     alignItems: "flex-start",
-    pt: "128px",
+    pt: "28px",
     pb: "48px",
     [theme.mediaQueries.small]: {
-      pt: "160px!important",
+      pt: "60px!important",
       pr: [
         "16px !important",
         "16px !important",

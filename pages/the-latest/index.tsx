@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
+import { css } from "@styled-system/css";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import { PageQuery } from "@gql/pageGQL";
 import { NewsQuery } from "@gql/newsGQL";
@@ -75,7 +76,16 @@ const LatestNews: NextPage<LatestPageProps> = ({
         <meta name="description" content="Fibonacci Latest page" />
       </Head>
       <Header mode="dark" notifications={notifications} />
-      <BreadCrumb crumbs={crumbs} />
+      <div
+        css={css({
+          maxWidth: "2560px",
+          pl: "27px",
+          pt: 100,
+          pb: 0,
+        })}
+      >
+        <BreadCrumb crumbs={crumbs} pt={0} />
+      </div>
       <Hero pageData={pageData} />
       {windowWidth >= 769 ? (
         <CategorysBarInner>
