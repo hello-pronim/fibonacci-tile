@@ -30,12 +30,14 @@ const SelectedProductCard = ({
   let collectionSlug = activeCollectionSlug
     ? activeCollectionSlug
     : product?.collections[0]?.slug;
+
+  const sampleSelectedCount = Number(process.env.NEXT_PUBLIC_SAMPLE_SELECTION_COUNT);
   return (
     <Wrapper>
       <Container>
-        {totalSelectedProducts > 6 && (
+        {totalSelectedProducts > sampleSelectedCount && (
           <div className="overlay">
-            Choose upto six, samples remove one and the confirm your choosen
+            Choose upto {sampleSelectedCount}, samples remove one and the confirm your choosen
             samples
           </div>
         )}
@@ -103,12 +105,12 @@ const SelectedProductCard = ({
           altFont={true}
           marginTop="25px"
         >
-          <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
-            <a>{product.title}</a>
+          <Link href={`/terrazzo/${collectionSlug}/${product?.slug}`}>
+            <a>{product?.title}</a>
           </Link>
         </CardTitle>
         <CardSubTitle as="h4" variant="Body-Small">
-          {product.subHeading}
+          {product?.subHeading}
         </CardSubTitle>
       </Container>
     </Wrapper>

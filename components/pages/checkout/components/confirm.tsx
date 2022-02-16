@@ -1,7 +1,6 @@
 import Text from "@components/common/typography";
 import { css } from "@styled-system/css";
 import Button from "@components/common/button";
-
 const Confirm = () => {
   return (
     <div>

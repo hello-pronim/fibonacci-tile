@@ -52,9 +52,25 @@ export default function ColourSchemeFilter({ colourSchemes }) {
               {!state.isMobileFilterActive &&
                 state.filter?.colourSchemes?.length > 0 &&
                 state.filter.colourSchemes.indexOf(scheme.id) !== -1 && (
-                  <CheckMarkIcon color={textColor} />
+                  <div
+                    style={
+                      !state.isMobileFilterActive
+                        ? { position: "absolute", paddingBottom: "68px" }
+                        : {}
+                    }
+                  >
+                    <CheckMarkIcon color={textColor} />
+                  </div>
                 )}
-              <Text variant="Body-Small" color={textColor}>
+              <Text
+                variant="Body-Small"
+                color={textColor}
+                style={
+                  !state.isMobileFilterActive
+                    ? { paddingTop: "84px", position: "absolute" }
+                    : {}
+                }
+              >
                 {scheme.title}
               </Text>
               {state.isMobileFilterActive &&

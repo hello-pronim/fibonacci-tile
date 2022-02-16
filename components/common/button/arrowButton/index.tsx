@@ -30,6 +30,9 @@ export default function ArrowButton({
       {!link && onClick &&
         <button onClick={onClick} className="bttnArrow">{title}</button>
       }
+       {!link && !onClick &&
+        <button type="submit" className="bttnArrow">{title}</button>
+      }
     </ArrowButtonWrapper>
   );
 }

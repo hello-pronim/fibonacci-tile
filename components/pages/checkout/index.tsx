@@ -19,9 +19,9 @@ import {
   RightContent,
   SelectionWrapper,
   NoSamples,
-  CheckoutFooter,
+  //CheckoutFooter,
 } from "./styles";
-
+const sampleSelectedCount = Number(process.env.NEXT_PUBLIC_SAMPLE_SELECTION_COUNT);
 const CheckoutPage = ({ notifications }) => {
   const [activeCheckoutStep, setActiveCheckoutStep] = useState(1);
   const { state, dispatch } = useAppContext();
@@ -34,15 +34,29 @@ const CheckoutPage = ({ notifications }) => {
       });
     }, 100);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+
+    if(selectedProducts?.length !== 0 && selectedProducts?.length <= sampleSelectedCount) {
+      dispatch({
+        type: "AUTO_CONFIRM_PRODUCT_SELECTION",
+        products: selectedProducts,
+      })
+      setActiveCheckoutStep(2);
+    }
+    if(selectedProducts?.length === 0 || selectedProducts?.length > sampleSelectedCount) {
+      setActiveCheckoutStep(1);
+    }
+  
+  }, [selectedProducts]);
+
   let disabled = false;
   if (
     confirmedProducts?.length === 0 ||
-    confirmedProducts?.length > 6 ||
-    selectedProducts?.length > 6
+    confirmedProducts?.length > sampleSelectedCount 
+   // || selectedProducts?.length > sampleSelectedCount
   ) {
     disabled = true;
   }
+  
   const crumbs = [
     { path: "/terrazo", name: "Terrazzo" },
     { path: "/checkout", name: "Checkout" },
@@ -71,10 +85,18 @@ const CheckoutPage = ({ notifications }) => {
           </CheckoutStepWrapper>
           {selectedProducts?.length > 0 && (
             <CheckoutContentWrapper>
-              {activeCheckoutStep === 1 && <Samples />}
-              {activeCheckoutStep === 2 && <Details />}
-              {activeCheckoutStep === 3 && <Delivery />}
-              {activeCheckoutStep === 4 && <Confirm />}
+              {activeCheckoutStep === 1 && (
+                <Samples disabled={disabled} stepChange={stepChange} activeCheckoutStep={activeCheckoutStep} />
+              )}
+              {activeCheckoutStep === 2 && (
+                <Details disabled={disabled} stepChange={stepChange} activeCheckoutStep={activeCheckoutStep} />
+              )}
+              {activeCheckoutStep === 3 && (
+                <Delivery disabled={disabled} stepChange={stepChange} activeCheckoutStep={activeCheckoutStep} />
+              )}
+              {activeCheckoutStep === 4 && (
+                <Confirm />
+              )}
             </CheckoutContentWrapper>
           )}
           {selectedProducts?.length === 0 && (
@@ -99,13 +121,13 @@ const CheckoutPage = ({ notifications }) => {
             {confirmedProducts?.length > 0 ? confirmedProducts?.length : 0})
           </p>
           <SelectionWrapper>
-            {confirmedProducts &&
+            {confirmedProducts?.length > 0 &&
               confirmedProducts.map((product) => (
                 <SelectedProductCard
                   product={product}
                   isSelected={
                     state?.selectedProducts.findIndex(
-                      (sp) => sp.id === product.id
+                      (sp) => sp.id === product?.id
                     ) !== -1
                   }
                   toggleProductSelect={() =>
@@ -114,7 +136,7 @@ const CheckoutPage = ({ notifications }) => {
                       product,
                     })
                   }
-                  key={`product-${product.id}`}
+                  key={`product-${product?.id}`}
                   confirmSample={true}
                 />
               ))}
@@ -122,7 +144,7 @@ const CheckoutPage = ({ notifications }) => {
         </RightContent>
       </CheckoutWrapper>
 
-      {activeCheckoutStep === 1 && selectedProducts?.length > 0 && (
+      {/* {activeCheckoutStep === 1 && selectedProducts?.length > 0 && (
         <CheckoutFooter contentAlign="right">
           <span>{`You currently have ${confirmedProducts.length} selected, you can choose up 6 samples`}</span>
           <ArrowButton
@@ -134,9 +156,9 @@ const CheckoutPage = ({ notifications }) => {
             disabled={disabled}
           />
         </CheckoutFooter>
-      )}
+      )} */}
 
-      {activeCheckoutStep === 2 && (
+      {/* {activeCheckoutStep === 2 && (
         <CheckoutFooter contentAlign="right">
           <div className="back" onClick={() => stepChange(1)}>
             Back
@@ -150,9 +172,9 @@ const CheckoutPage = ({ notifications }) => {
             disabled={disabled}
           />
         </CheckoutFooter>
-      )}
+      )} */}
 
-      {activeCheckoutStep === 3 && (
+      {/* {activeCheckoutStep === 3 && (
         <CheckoutFooter contentAlign="left">
           <ArrowButton
             mode="dark"
@@ -166,7 +188,7 @@ const CheckoutPage = ({ notifications }) => {
             Back
           </div>
         </CheckoutFooter>
-      )}
+      )} */}
     </CheckoutContainer>
   );
 };

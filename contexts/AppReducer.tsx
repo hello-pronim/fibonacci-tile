@@ -18,6 +18,7 @@ export const initialState = {
   isMobileFilterActive: false,
   openDrawer: false,
   activeDrawerTab: "cart",
+  checkoutDetails: [],
 };
 
 export const AppReducer = (state, action) => {
@@ -119,12 +120,12 @@ export const AppReducer = (state, action) => {
     case "TOGGLE_CONFIRM_PRODUCT_SELECTION": {
       // check if product is in confirmedProducts
       const checkConfirmProductSelected =
-        state.confirmedProducts &&
-        state.confirmedProducts.findIndex((sp) => sp.id === action.product.id);
+        state?.confirmedProducts &&
+        state?.confirmedProducts?.findIndex((sp) => sp?.id === action?.product?.id);
       if (checkConfirmProductSelected !== -1) {
         const newConfirmSelectedProducts =
           state.confirmedProducts &&
-          state?.confirmedProducts.filter((sp) => sp.id !== action.product.id);
+          state?.confirmedProducts.filter((sp) => sp?.id !== action?.product?.id);
         return {
           ...state,
           confirmedProducts: newConfirmSelectedProducts
@@ -137,6 +138,12 @@ export const AppReducer = (state, action) => {
           confirmedProducts: [...state.confirmedProducts, action.product],
         };
       }
+    }
+    case "AUTO_CONFIRM_PRODUCT_SELECTION": {
+      return {
+        ...state,
+        confirmedProducts: action.products,
+      };
     }
     case "SET_MOBILE_FILTER": {
       return {
@@ -160,6 +167,12 @@ export const AppReducer = (state, action) => {
       return {
         ...state,
         activeDrawerTab: action.value,
+      };
+    }
+    case "SET_CHECKOUT_DETAILS": {
+      return {
+        ...state,
+        checkoutDetails: [{...state?.checkoutDetails?.[0], ...action.value}]
       };
     }
   }
