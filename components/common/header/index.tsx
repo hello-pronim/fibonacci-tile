@@ -139,54 +139,53 @@ const Header = ({
           <NavRight>
             <NavItem
               mode={mode}
-              onClick={() => (
+              onClick={() => {
                 dispatch({
                   type: "OPEN_DRAWER",
                   value:
                     state.activeDrawerTab !== "support"
                       ? true
                       : !state.openDrawer,
-                }),
+                });
                 dispatch({
                   type: "SET_ACTIVE_DRAWER_TAB",
                   value: "support",
-                })
-              )}
+                });
+              }}
             >
               Support
             </NavItem>
             <NavItem
-              href="#"
               mode={mode}
-              onClick={() => (
+              onClick={() => {
                 dispatch({
                   type: "OPEN_DRAWER",
                   value:
                     state.activeDrawerTab !== "contact"
                       ? true
                       : !state.openDrawer,
-                }),
+                });
                 dispatch({
                   type: "SET_ACTIVE_DRAWER_TAB",
                   value: "contact",
-                })
-              )}
+                });
+              }}
             >
               Contact
             </NavItem>
             <NavItem
               mode={mode}
-              onClick={() => (
+              onClick={() => {
                 dispatch({
                   type: "OPEN_DRAWER",
                   value:
                     state.activeDrawerTab !== "cart" ? true : !state.openDrawer,
-                }),
+                });
                 dispatch({
                   type: "SET_ACTIVE_DRAWER_TAB",
                   value: "cart",
-                })
-              )}
+                });
+              }}
             >
               Selections <ProductSelectionCount />
             </NavItem>
@@ -222,7 +221,22 @@ const Header = ({
                 <NavItem mode={mode} href="/support">
                   Support
                 </NavItem>
-                <NavItem mode={mode} href="#">
+                <NavItem
+                  mode={mode}
+                  onClick={() => {
+                    dispatch({
+                      type: "OPEN_DRAWER",
+                      value:
+                        state.activeDrawerTab !== "contact"
+                          ? true
+                          : !state.openDrawer,
+                    });
+                    dispatch({
+                      type: "SET_ACTIVE_DRAWER_TAB",
+                      value: "contact",
+                    });
+                  }}
+                >
                   Contact
                 </NavItem>
               </DrawerInner>
