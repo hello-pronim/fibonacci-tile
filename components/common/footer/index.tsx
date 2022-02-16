@@ -94,45 +94,45 @@ export default function Footer() {
               </Item>
             </ItemList>
           </Segment>
-          <Segment col={2} row={2} mobileRow={5}>
+          {/* <Segment col={2} row={2} mobileRow={5}>
             <SegmentTitle>Tag us</SegmentTitle>
             <TextSegment>
               Use <span>#likenoother</span> and on social to tempus mi nulla
               cursus netus consequat ultrices
             </TextSegment>
-          </Segment>
+          </Segment> */}
 
           <Segment col={3} row={1} mobileRow={3}>
             <SegmentTitle>Resources</SegmentTitle>
             <ItemList>
               <Item>
-                <a href="#">Technical guides</a>
+                <Link href="/support#product-guide">Product Guide</Link>
               </Item>
               <Item>
-                <a href="#">Specifications</a>
+                <Link href="/support#installation-guide">Installation Guides</Link>
               </Item>
               <Item>
-                <a href="#">Maintenance &amp; care guides</a>
+                <Link href="/support#care-maintenance">Care and Maintenance</Link>
               </Item>
-              <Item>
+              {/* <Item>
                 <a href="#">Downloads</a>
               </Item>
               <Item>
                 <a href="#">FAQs</a>
-              </Item>
+              </Item> */}
             </ItemList>
           </Segment>
           <Segment col={3} row={2} mobileRow={6}>
             <SegmentTitle>Follow us</SegmentTitle>
             <ItemList>
               <Item>
-                <a href="#">Instagram</a>
+                <a target="_blank" rel="noreferrer" href="https://www.instagram.com/fibonaccistone/">Instagram</a>
               </Item>
               <Item>
-                <a href="#">Facebook</a>
+                <a target="_blank" rel="noreferrer" href="https://www.facebook.com/FibonacciStone/">Facebook</a>
               </Item>
               <Item>
-                <a href="#">LinkedIn</a>
+                <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/fibonacci-stone/">LinkedIn</a>
               </Item>
             </ItemList>
           </Segment>
@@ -143,10 +143,10 @@ export default function Footer() {
                 <Link href="/ordering-samples">Ordering Samples</Link>
               </Item>
               <Item>
-                <a href="#">Call 1300 342 662</a>
+                <a href="tel:1300342662">Call 1300 342 662</a>
               </Item>
               <Item>
-                <a href="#">Contact us</a>
+                <Link href="/support">Contact us</Link>
               </Item>
             </ItemList>
           </Segment>

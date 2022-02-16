@@ -13,6 +13,7 @@ import {
   LinkWrapper,
   BottomBar,
   NextWrapper,
+  Title
 } from "./styles";
 import { css } from "@styled-system/css";
 import Arrow from "@components/common/icons/arrow";
@@ -70,7 +71,7 @@ const ProductCarousel = ({ products }) => {
 
   return (
     <Container>
-      <AccentText top={176}>An imaginative selection</AccentText>
+      <AccentText top={200}>An imaginative selection</AccentText>
       <NextWrapper onClick={() => gotoNext()}>
         <Arrow color={theme.colors.white} width={40} />
       </NextWrapper>
@@ -78,6 +79,7 @@ const ProductCarousel = ({ products }) => {
         <AccentTextMobile css={css({ pb: 24 })}>
           An imaginative selection
         </AccentTextMobile>
+        <Title>Featured Products</Title>
         <Slider {...settings} ref={slider}>
           {products &&
             products.map((product: any) => {

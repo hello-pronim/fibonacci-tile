@@ -232,8 +232,22 @@ const ProductCard = ({
         <GridCardImgContainer>
           {product?.thumbImageList?.[0]?.url && (
             <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
-              <a>
-                <div css={css({ width: 228, height: 228 })}>
+              <a css={css({width: compact && '100%'})}>
+                <div
+                  css={css({
+                    position:'relative',
+                    width: compact ? "100%" : 228,
+                    height: compact ? "auto" : 228,
+                    "&::after": compact  && {
+                      width: '100%',
+                      content: '" "',
+                      display: "block",
+                      paddingBottom: "100%",
+                      position: 'absolute',
+                      bottom: '0',
+                    },
+                  })}
+                >
                   <Image
                     layout="responsive"
                     src={product.thumbImageList[0].url}
