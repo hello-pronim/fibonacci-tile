@@ -1,9 +1,12 @@
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useAppContext } from "@contexts/AppContext";
 import RotatedTertiary from "public/assets/brandmarks/rotated-tertiary.svg";
 import Tertiary from "public/assets/brandmarks/logo-tertiary.svg";
 import SymbolWhite from "public/assets/brandmarks/symbol-secondary.svg";
 import Arrow from "@components/common/icons/arrow";
+import SelectionCart from "@components/common/selectionCart";
 import theme from "styles/theme";
 import { css } from "@styled-system/css";
 import {
@@ -24,6 +27,40 @@ import {
 } from "./styles";
 
 export default function Footer() {
+  const { state, dispatch } = useAppContext();
+  const [newSelection, setNewSelection] = useState(false);
+  const [selectionsCount, setSelectionsCount] = useState(0);
+  const selectionsMounted = useRef(false);
+
+  useEffect(() => {
+    let timerId: ReturnType<typeof setTimeout>;
+    if (
+      selectionsMounted.current &&
+      state.selectedProducts.length > selectionsCount &&
+      state.openDrawer !== true
+    ) {
+      dispatch({
+        type: "OPEN_DRAWER",
+        value: true,
+      });
+      setNewSelection(true);
+      timerId = setTimeout(() => {
+        setNewSelection(false);
+        dispatch({
+          type: "OPEN_DRAWER",
+          value: false,
+        });
+      }, 4000);
+    } else {
+      selectionsMounted.current = true;
+    }
+    setSelectionsCount(state.selectedProducts.length);
+
+    return () => {
+      if (timerId) clearTimeout(timerId);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <Container>
       <FooterWrapper>
@@ -73,7 +110,7 @@ export default function Footer() {
               <a href="#">Specifications</a>
             </Item>
             <Item>
-              <a href="#">Maintenance & care guides</a>
+              <a href="#">Maintenance &amp; care guides</a>
             </Item>
             <Item>
               <a href="#">Downloads</a>
@@ -101,7 +138,7 @@ export default function Footer() {
           <SegmentTitle>Samples and contact</SegmentTitle>
           <ItemList>
             <Item>
-              <a href="/ordering-samples">Ordering Samples</a>
+              <Link href="/ordering-samples">Ordering Samples</Link>
             </Item>
             <Item>
               <a href="#">Call 1300 342 662</a>
@@ -163,6 +200,11 @@ export default function Footer() {
           />
         </Symbol>
       </SubFooterWrapper>
+      <SelectionCart
+        tab={state.activeDrawerTab}
+        active={state.openDrawer}
+        newSelection={newSelection}
+      />
     </Container>
   );
 }

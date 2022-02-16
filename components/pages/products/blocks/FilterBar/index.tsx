@@ -199,17 +199,17 @@ export default function ProductFilters({
         </div>
         <div
           className={styles.selections}
-          onClick={() => (
+          onClick={() => {
             dispatch({
               type: "OPEN_DRAWER",
               value:
                 state.activeDrawerTab !== "cart" ? true : !state.openDrawer,
-            }),
+            });
             dispatch({
               type: "SET_ACTIVE_DRAWER_TAB",
               value: "cart",
-            })
-          )}
+            });
+          }}
         >
           <Text variant="Display-Overline">Selections</Text> <SelectionCount />
         </div>
