@@ -18,7 +18,7 @@ import {
 } from "../styles";
 
 const Details = ({ activeCheckoutStep, disabled, stepChange }) => {
-    const { dispatch } = useAppContext();
+    const { dispatch, state } = useAppContext();
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
       dispatch({
@@ -64,9 +64,11 @@ const Details = ({ activeCheckoutStep, disabled, stepChange }) => {
               </TwoItemRow>
               {activeCheckoutStep === 2 && (
                 <CheckoutFooter contentAlign="right">
-                  <div className="back" onClick={() => stepChange(1)}>
-                    Back
-                  </div>
+                  {state?.selectedProducts?.length > 4 &&
+                    <div className="back" onClick={() => stepChange(1)}>
+                      Back
+                    </div>
+                  }
                   <ArrowButton
                     mode="dark"
                     bgColor="white"
