@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Text from "@components/common/typography";
 import AccentText from "@components/common/accentText";
 import {
   Panel,
@@ -42,6 +43,9 @@ function MainStoryPanel({ story }: mainStoryPanelProps) {
               height={story.thumbnail[0].height}
               layout="responsive"
             />
+            <Text variant="Body-Small" as="p" mt={10}>
+              {story.caption}
+            </Text>
           </StoryImageWrapper>
         )}
         <StoryContentWrapper>
