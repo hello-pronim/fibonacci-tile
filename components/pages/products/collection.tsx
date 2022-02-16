@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useLayoutEffect, useState } from "react";
 import Header from "@components/common/header";
 import { css } from "@styled-system/css";
 import CollectionHero from "./blocks/CollectionHero";
@@ -7,14 +7,45 @@ import CollectionProjects from "./blocks/CollectionProjects";
 import InlineSlider from "./blocks/inlineSlider";
 
 const CollectionPage = ({ collection, products, notifications }) => {
+  const [scrollPosition, setPosition] = useState(0);
+
+  useLayoutEffect(() => {
+    function updatePosition() {
+      setPosition(window.pageYOffset);
+    }
+    window.addEventListener("scroll", updatePosition);
+    updatePosition();
+    return () => window.removeEventListener("scroll", updatePosition);
+  }, []);
+
   return (
     <>
       <Header mode="dark" notifications={notifications} />
-      <CollectionHero collection={collection} />
+
+      {scrollPosition < 1125 ? (
+        <CollectionHero
+          collection={collection}
+          position={"fixed"}
+          width={"21.6%"}
+          zIndex={999}
+          top={80}
+        />
+      ) : (
+        <CollectionHero
+          collection={collection}
+          position={"relative"}
+          width={"21.6%"}
+          zIndex={999}
+          top={1125}
+        />
+      )}
+
       {products && (
         <CollectionProducts
           backgroundColor={
-            collection.backgroundColor2 ? collection.backgroundColor2 : "#E6EBEA"
+            collection.backgroundColor2
+              ? collection.backgroundColor2
+              : "#E6EBEA"
           }
           products={products}
         />

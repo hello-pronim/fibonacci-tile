@@ -1,11 +1,12 @@
 import css from "@styled-system/css";
 import styled from "@emotion/styled";
 
-
 const CollectionHeroContainer = styled("div")(() =>
   css({
     pt: 80,
-    display: "flex"
+    display: "flex",
+    position: "relative",
+    width: "100%",
   })
 );
 
@@ -16,23 +17,21 @@ const CaptionText = styled("div")(() =>
     right: "80px",
     zIndex: "99999",
     textAlign: "right",
-    maxWidth: 350
+    maxWidth: 350,
   })
 );
 
 const ImageContent = styled("div")(() =>
   css({
     position: "relative",
-    width: "60%",
-    "div": {
-      height: "100%"
-    }
+    width: "70%",
+    left: "30%",
+    objectFit: "cover",
+
+    div: {
+      height: "100%",
+    },
   })
 );
 
-
-export {
-  CollectionHeroContainer,
-  CaptionText,
-  ImageContent
-};
+export { CollectionHeroContainer, CaptionText, ImageContent };
