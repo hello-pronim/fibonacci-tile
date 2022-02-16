@@ -8,32 +8,42 @@ import theme from "styles/theme";
 const Accordion = ({ items }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const myRef = useRef({});
-  const executeScroll = (value) => { 
-    myRef.current[value].scrollIntoView({
-      behavior: "smooth", 
-      block: "center",
-      inline: "nearest" 
-    });
-  }  
+  const executeScroll = (value: any) => {
+    setTimeout(() => {
+      const element = myRef.current[value];
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition - 100;
+
+      window.scrollBy({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+      // myRef.current[value].scrollIntoView({
+      //   behavior: "smooth",
+      //   block: "start",
+      //   inline: "nearest",
+      // });
+    }, 10);
+  };
   return (
     <>
       {items.map((item: any, index: number) => {
         return (
-          <Item 
-          ref={el => {
-            if (el) {
-              myRef.current[`accordion-${index}`] = el;
-            } else {
-              delete myRef.current[`accordion-${index}`];
-            }
-          }}
-          key={`accordion-${index}`}>
+          <Item
+            ref={(el) => {
+              if (el) {
+                myRef.current[`accordion-${index}`] = el;
+              } else {
+                delete myRef.current[`accordion-${index}`];
+              }
+            }}
+            key={`accordion-${index}`}
+          >
             <Top
               onClick={() => {
-                  executeScroll(`accordion-${index}`);
-                  setActiveIndex(activeIndex === index ? null : index)
-                }
-              }
+                executeScroll(`accordion-${index}`);
+                setActiveIndex(activeIndex === index ? null : index);
+              }}
             >
               <Text
                 variant="Display-Small"
@@ -55,9 +65,8 @@ const Accordion = ({ items }) => {
                 })}
                 onClick={() => {
                   executeScroll(`accordion-${index}`);
-                  setActiveIndex(activeIndex === index ? null : index)}
-                  
-                }
+                  setActiveIndex(activeIndex === index ? null : index);
+                }}
               >
                 <Arrow width={18} />
               </Toggle>
