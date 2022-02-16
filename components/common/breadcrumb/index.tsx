@@ -11,6 +11,17 @@ const Breadcrumb = ({ crumbs, pt = 130 }) => {
   if (crumbs.length <= 1) {
     return null;
   }
+  const renderCrumbSeperator = (crumbs: any, index: number) => {
+    return (
+      <>
+        {index !== crumbs.length - 1 ? (
+          <span css={css({ color: "#B0ABA7" })}> • </span>
+        ) : (
+          ""
+        )}
+      </>
+    );
+  };
   return (
     <BottomBarInner css={css({ pt })}>
       <LinkWrapper>
@@ -19,15 +30,21 @@ const Breadcrumb = ({ crumbs, pt = 130 }) => {
           <span>Back</span>
         </BackBttn>
       </LinkWrapper>
-      {crumbs.map(({ name, path }, key) =>
-        key + 1 === crumbs.length ? (
-          <LinkWrapper key={key}>{name}</LinkWrapper>
-        ) : (
-          <LinkWrapper key={key}>
-            <Link href={path}>Home</Link>
+      {crumbs.map(({ name, path }, index: number) => {
+        if (path) {
+          return (
+            <LinkWrapper key={`crumb-${index}`}>
+              <Link href={path}>{name}</Link>{" "}
+              {renderCrumbSeperator(crumbs, index)}
+            </LinkWrapper>
+          );
+        }
+        return (
+          <LinkWrapper key={`crumb-${index}`}>
+            {name} {renderCrumbSeperator(crumbs, index)}
           </LinkWrapper>
-        )
-      )}
+        );
+      })}
     </BottomBarInner>
   );
 };

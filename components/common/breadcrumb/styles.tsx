@@ -12,7 +12,6 @@ const BottomBarInner = styled("div")(
   })
 );
 
-
 const LinkWrapper = styled("div")(
   css({
     display: "flex",
