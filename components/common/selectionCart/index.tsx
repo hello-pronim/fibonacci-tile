@@ -256,6 +256,12 @@ const SelectionCart = ({ active, newSelection, tab }) => {
                     },
                   },
                 })}
+                onClick={() =>
+                  dispatch({
+                    type: "OPEN_DRAWER",
+                    value: false,
+                  })
+                }
               >
                 <Image alt="support" src={SupportIcon} width={48} height={48} />
                 <Text variant="Display-XXSmall" altFont>
@@ -297,6 +303,13 @@ const SelectionCart = ({ active, newSelection, tab }) => {
                     },
                   },
                 })}
+
+                onClick={() =>
+                  dispatch({
+                    type: "OPEN_DRAWER",
+                    value: false,
+                  })
+                }
               >
                 <Image alt="samples" src={SamplesIcon} width={48} height={48} />
                 <Text variant="Display-XXSmall" altFont>
@@ -312,6 +325,13 @@ const SelectionCart = ({ active, newSelection, tab }) => {
                     alignItems: "center",
                     justifyContent: "center",
                   })}
+
+                  onClick={() =>
+                    dispatch({
+                      type: "OPEN_DRAWER",
+                      value: false,
+                    })
+                  }
                 >
                   <Image alt="more" src={Chevron} width={10} height={16} />
                 </div>
@@ -338,6 +358,13 @@ const SelectionCart = ({ active, newSelection, tab }) => {
                     },
                   },
                 })}
+
+                onClick={() =>
+                  dispatch({
+                    type: "OPEN_DRAWER",
+                    value: false,
+                  })
+                }
               >
                 <Image alt="quote" src={QuoteIcon} width={48} height={48} />
                 <Text variant="Display-XXSmall" altFont>
@@ -393,7 +420,7 @@ const SelectionCart = ({ active, newSelection, tab }) => {
                 });
               }}
             >
-              <Image alt="Eqnuiry" src={EnquiryIcon} width={48} height={48} />
+              <Image alt="Enquiry" src={EnquiryIcon} width={48} height={48} />
               <Text variant="Display-XXSmall" altFont>
                 General Enquiry
               </Text>
