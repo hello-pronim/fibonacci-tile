@@ -8,7 +8,7 @@ const TwoColImage = ({ image1, image2, caption }) => {
   const myImage1 = image1?.[0];
   const myImage2 = image2?.[0];
   return (
-    <div css={css({ py: 120 })}>
+    <div css={css({ py: 120, bg: "#FFFFF8" })}>
       <Container css={css({ bg: "#FFFFF8" })}>
         {myImage1?.url && (
           <ImageLeft>
