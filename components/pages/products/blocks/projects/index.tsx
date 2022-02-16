@@ -105,6 +105,8 @@ const ProjectsModule = ({ accentText, product }: ProjectModuleTypes) => {
           {project1[0].heroImage?.[0]?.url && (
             <ImageWrapper>
               <Image
+                placeholder="blur"
+                blurDataURL={project1[0].heroImage[0].url}
                 src={project1[0].heroImage[0].url}
                 alt="image-1"
                 layout="responsive"
@@ -145,6 +147,8 @@ const ProjectsModule = ({ accentText, product }: ProjectModuleTypes) => {
           {project2[0].heroImage?.[0]?.url && (
             <ImageWrapper>
               <Image
+                placeholder="blur"
+                blurDataURL={project2[0].heroImage[0].url}
                 src={project2[0].heroImage[0].url}
                 alt="image-1"
                 layout="responsive"

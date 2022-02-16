@@ -8,6 +8,8 @@ const CTAPanel = ({ imagePosition = "left", data }) => {
       {data?.samplesImage?.length > 0 && (
         <ImgContainer position={imagePosition}>
           <Image
+            placeholder="blur"
+            blurDataURL={data.samplesImage[0].url}
             src={data.samplesImage[0].url}
             alt={data.samplesImage[0].title}
             width={data.samplesImage[0].width}

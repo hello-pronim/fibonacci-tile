@@ -97,6 +97,8 @@ const SingleHeroModule = ({ product, collectionSlug }) => {
           >
             {activeCollection.heroImage?.[0]?.url && (
               <Image
+                placeholder="blur"
+                blurDataURL={activeCollection.heroImage[0].url}
                 alt={activeCollection.title}
                 src={activeCollection.heroImage[0].url}
                 width={136}

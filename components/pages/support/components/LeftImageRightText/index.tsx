@@ -9,6 +9,8 @@ const LeftImageRightText = ({ data }) => {
           <PanelLeft>
             {data?.thumbnail?.[0]?.url && (
               <Image
+                placeholder="blur"
+                blurDataURL={data.thumbnail[0].url}
                 src={data.thumbnail[0].url}
                 alt={data.thumbnail[0].title}
                 width={data.thumbnail[0].width}

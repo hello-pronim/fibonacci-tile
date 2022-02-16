@@ -36,6 +36,8 @@ function HeadingLeftTextRight({ story }: storyPanelProps) {
             {story?.thumbnail?.[0]?.url && (
               <StoryImageWrapper>
                 <Image
+                  placeholder="blur"
+                  blurDataURL={story.thumbnail[0].url}
                   src={story.thumbnail[0].url}
                   alt={story.thumbnail[0].title}
                   width={story.thumbnail[0].width}

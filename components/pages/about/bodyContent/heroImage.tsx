@@ -6,6 +6,8 @@ const HeroImage = ({ component }) => {
     <>
       <HeroImageContainer>
         <Image
+          placeholder="blur"
+          blurDataURL={component?.image[0]?.url}
           src={component?.image[0]?.url}
           alt={component?.image[0]?.title}
           width={component?.image[0]?.width}

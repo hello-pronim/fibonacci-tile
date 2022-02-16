@@ -93,6 +93,8 @@ const ProjectList = ({ projects, types }: ProjectListType) => {
             <Project key={project.id}>
               <ImageWrapper>
                 <Image
+                  placeholder="blur"
+                  blurDataURL={project.thumbnail.src}
                   src={project.thumbnail.src}
                   alt={project.slug}
                   layout="responsive" // required

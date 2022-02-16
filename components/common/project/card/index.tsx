@@ -14,6 +14,8 @@ const ProjectCard = ({ project }) => {
       {project?.heroImageThumb?.[0]?.url && (
         <ImageWrapper href={`/in-use/${project.slug}`}>
           <Image
+            placeholder="blur"
+            blurDataURL={project.heroImageThumb[0].url}
             src={project.heroImageThumb[0].url}
             alt={project.slug}
             layout="responsive" // required

@@ -53,7 +53,7 @@ const InlineSlider = ({ projects }) => {
       setCurrentSlide(next + 1);
     },
   };
-  
+
   return (
     <Container>
       <AccentText top={40}>An imaginative selection</AccentText>
@@ -67,6 +67,8 @@ const InlineSlider = ({ projects }) => {
               {project?.heroImageThumb?.[0]?.url && (
                 <SlideImage>
                   <Image
+                    placeholder="blur"
+                    blurDataURL={project.heroImageThumb[0].url}
                     src={project.heroImageThumb[0].url}
                     alt={project.heroImageThumb[0].title}
                     layout="responsive"
@@ -78,6 +80,8 @@ const InlineSlider = ({ projects }) => {
               {project?.heroMobImageThumb?.[0]?.url && (
                 <SlideImageMobile>
                   <Image
+                    placeholder="blur"
+                    blurDataURL={project.heroMobImageThumb[0].url}
                     src={project.heroMobImageThumb[0].url}
                     alt={project.heroMobImageThumb[0].title}
                     layout="responsive"

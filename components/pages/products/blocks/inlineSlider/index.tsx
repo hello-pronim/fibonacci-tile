@@ -81,6 +81,8 @@ const InlineSlider = ({ images }) => {
               <SlideItem key={`slide-${index}`}>
                 <SlideImage>
                   <Image
+                    placeholder="blur"
+                    blurDataURL={image.url}
                     src={image.url}
                     alt="image-1"
                     layout="responsive"
@@ -91,6 +93,8 @@ const InlineSlider = ({ images }) => {
                 </SlideImage>
                 <SlideImageMobile>
                   <Image
+                    placeholder="blur"
+                    blurDataURL={image.url}
                     src={image.url}
                     alt="image-1"
                     layout="responsive"

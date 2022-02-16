@@ -70,6 +70,8 @@ const CollectionHeroModule = ({
           <Image
             className={styles.img}
             layout="responsive" // required
+            placeholder="blur"
+            blurDataURL={collection.heroImage[0].url}
             src={collection.heroImage[0].url}
             alt={collection.slug}
             width={collection.heroImage[0].width}

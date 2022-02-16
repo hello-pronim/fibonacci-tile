@@ -29,6 +29,8 @@ export const Card = ({
             <Image
               width={600}
               height={600}
+              placeholder="blur"
+              blurDataURL={imageBlock.image[0]?.url}
               src={imageBlock.image[0]?.url}
               alt={imageBlock.image[0]?.id}
             />

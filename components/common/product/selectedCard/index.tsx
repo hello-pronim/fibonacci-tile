@@ -36,7 +36,7 @@ const SelectedProductCard = ({
   return (
     <Wrapper>
       <Container>
-        { confirmedProducts?.length > sampleSelectedCount && !isSelected && (
+        {confirmedProducts?.length > sampleSelectedCount && !isSelected && (
           <div className="overlay">
             Choose upto {sampleSelectedCount}, samples remove one and the confirm your choosen
             samples
@@ -47,6 +47,8 @@ const SelectedProductCard = ({
             <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
               <a>
                 <Image
+                  placeholder="blur"
+                  blurDataURL={product?.thumbImageList?.[0].url}
                   src={product?.thumbImageList?.[0].url}
                   alt={product.title}
                   width={product?.thumbImageList?.[0].width}

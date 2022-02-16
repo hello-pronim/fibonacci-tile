@@ -30,6 +30,8 @@ const ProductCard = ({
             <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
               <a>
                 <Image
+                  placeholder="blur"
+                  blurDataURL={product.thumbImageSingle[0].url}
                   src={product.thumbImageSingle[0].url}
                   alt={product.title}
                   width={product.thumbImageSingle[0].width}
