@@ -40,6 +40,10 @@ const global = css`
     list-style: none;
   }
 
+  p {
+    margin-bottom: 20px;
+  }
+
   img {
     max-width: 100%;
     height: auto;
