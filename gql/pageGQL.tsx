@@ -211,13 +211,21 @@ export const HomePageQuery = gql`
           ... on homePageComponents_bannerType2_BlockType {
             id
             typeHandle
-            backgroundColour
-            backgroundImage {
+            image1 {
               url
             }
-            text
+            image2 {
+              url
+            }
+            likeNoOtherText
           }
           ... on homePageComponents_bannerType3_BlockType {
+            id
+            typeHandle
+            backgroundColour
+            text
+          }
+          ... on homePageComponents_bannerType4_BlockType {
             id
             typeHandle
             imageRight {
@@ -226,9 +234,12 @@ export const HomePageQuery = gql`
               width
               height
             }
+            heading
             subline
             button
-            heading
+            buttonUrl {
+              slug
+            }
           }
           ... on homePageComponents_featuredProducts_BlockType {
             id
@@ -415,22 +426,6 @@ export const OurStoryPageQuery = gql`
             typeHandle
             heading
             subLine
-          }
-        }
-      }
-    }
-  }
-`;
-
-export const NewsletterQuery = gql`
-  query NewsletterQuery($slug: [String]) {
-    entry(slug: $slug) {
-      ... on latestNews_latestNews_Entry {
-        newsletter {
-          ... on newsletter_newsletter_BlockType {
-            id
-            heading
-            subheading
           }
         }
       }

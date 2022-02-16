@@ -58,6 +58,9 @@ export const sampleCta1Query = gql`
               width(width: 792)
               height(height: 465)
             }
+            samplesButtonLink {
+              slug
+            }
           }
         }
       }
@@ -103,7 +106,9 @@ export const customSolutionsCtaQuery = gql`
             backgroundColour
             textColour
             customCtaButton
-            customCtaLink
+            customCtaLink {
+              slug
+            }
             customHeader
             customIntro
             customSolutionsText
