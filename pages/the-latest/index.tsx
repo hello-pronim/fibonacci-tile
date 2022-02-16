@@ -67,10 +67,7 @@ const LatestNews: NextPage<LatestPageProps> = ({
     return 0;
   };
   const windowWidth = useWidth();
-  const crumbs = [
-    { path: "/", name: "Home" },
-    { path: "/the-latest", name: "The Latest" },
-  ];
+  const crumbs = [{ path: "/", name: "Home" }, { name: "The Latest" }];
   return (
     <>
       <Head>

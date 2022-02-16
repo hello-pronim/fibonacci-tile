@@ -21,7 +21,9 @@ import {
   NoSamples,
   //CheckoutFooter,
 } from "./styles";
-const sampleSelectedCount = Number(process.env.NEXT_PUBLIC_SAMPLE_SELECTION_COUNT);
+const sampleSelectedCount = Number(
+  process.env.NEXT_PUBLIC_SAMPLE_SELECTION_COUNT
+);
 const CheckoutPage = ({ notifications }) => {
   const [activeCheckoutStep, setActiveCheckoutStep] = useState(1);
   const { state, dispatch } = useAppContext();
@@ -35,32 +37,34 @@ const CheckoutPage = ({ notifications }) => {
     }, 100);
     // eslint-disable-next-line react-hooks/exhaustive-deps
 
-    if(selectedProducts?.length !== 0 && selectedProducts?.length <= sampleSelectedCount) {
+    if (
+      selectedProducts?.length !== 0 &&
+      selectedProducts?.length <= sampleSelectedCount
+    ) {
       dispatch({
         type: "AUTO_CONFIRM_PRODUCT_SELECTION",
         products: selectedProducts,
-      })
+      });
       setActiveCheckoutStep(2);
     }
-    if(selectedProducts?.length === 0 || selectedProducts?.length > sampleSelectedCount) {
+    if (
+      selectedProducts?.length === 0 ||
+      selectedProducts?.length > sampleSelectedCount
+    ) {
       setActiveCheckoutStep(1);
     }
-  
   }, [selectedProducts]);
 
   let disabled = false;
   if (
     confirmedProducts?.length === 0 ||
-    confirmedProducts?.length > sampleSelectedCount 
-   // || selectedProducts?.length > sampleSelectedCount
+    confirmedProducts?.length > sampleSelectedCount
+    // || selectedProducts?.length > sampleSelectedCount
   ) {
     disabled = true;
   }
-  
-  const crumbs = [
-    { path: "/terrazo", name: "Terrazzo" },
-    { path: "/checkout", name: "Checkout" },
-  ];
+
+  const crumbs = [{ path: "/terrazo", name: "Terrazzo" }, { name: "Checkout" }];
   const stepChange = (step) => {
     if (disabled) {
       return;
@@ -86,17 +90,27 @@ const CheckoutPage = ({ notifications }) => {
           {selectedProducts?.length > 0 && (
             <CheckoutContentWrapper>
               {activeCheckoutStep === 1 && (
-                <Samples disabled={disabled} stepChange={stepChange} activeCheckoutStep={activeCheckoutStep} />
+                <Samples
+                  disabled={disabled}
+                  stepChange={stepChange}
+                  activeCheckoutStep={activeCheckoutStep}
+                />
               )}
               {activeCheckoutStep === 2 && (
-                <Details disabled={disabled} stepChange={stepChange} activeCheckoutStep={activeCheckoutStep} />
+                <Details
+                  disabled={disabled}
+                  stepChange={stepChange}
+                  activeCheckoutStep={activeCheckoutStep}
+                />
               )}
               {activeCheckoutStep === 3 && (
-                <Delivery disabled={disabled} stepChange={stepChange} activeCheckoutStep={activeCheckoutStep} />
+                <Delivery
+                  disabled={disabled}
+                  stepChange={stepChange}
+                  activeCheckoutStep={activeCheckoutStep}
+                />
               )}
-              {activeCheckoutStep === 4 && (
-                <Confirm />
-              )}
+              {activeCheckoutStep === 4 && <Confirm />}
             </CheckoutContentWrapper>
           )}
           {selectedProducts?.length === 0 && (
