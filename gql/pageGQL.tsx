@@ -18,6 +18,13 @@ export const PageQuery = gql`
         title
         pageHeading
         pageIntro
+        newsletter {
+          ... on newsletter_newsletter_BlockType {
+            id
+            heading
+            subheading
+          }
+        }
       }
       ... on howToOrderSamples_howToOrderSamples_Entry {
         id
