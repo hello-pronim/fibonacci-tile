@@ -38,6 +38,7 @@ const ContentWithImageModule = ({ id = "", content }) => {
                   mode={content.mode === "dark" ? "light" : "dark"}
                   title={button.label}
                   link={button.link}
+                  target="_blank"
                 />
               )}
             </EntryWrapper>
