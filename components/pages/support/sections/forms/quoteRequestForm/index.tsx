@@ -2,21 +2,9 @@ import React, { useState } from "react";
 import AccentText from "@components/common/accentText";
 import ArrowButton from "@components/common/button/arrowButton";
 import Input from "@components/common/input";
-import Select from "@components/common/select";
-import ProductSelect from "@components/common/select/productSelect";
-import ProductSizeSelect from "@components/common/select/productSizeSelect";
 import TextArea from "@components/common/textarea";
 import AddIcon from "@components/icons/add";
-
-import Abstrakt from "public/tmp/prod/abstrakt.jpeg";
-import ActThree from "public/tmp/prod/actThree.jpeg";
-import Assemblage from "public/tmp/prod/assemblage.jpeg";
-import Bloc from "public/tmp/prod/bloc.jpeg";
-import Brackish from "public/tmp/prod/brackish.jpeg";
-import Carmelita from "public/tmp/prod/carmelita.jpeg";
-import CloudBurst from "public/tmp/prod/cloudBurst.jpeg";
-import CoolStream from "public/tmp/prod/coolStream.jpeg";
-
+import ProductSelectRow from "./ProductSelectRow";
 import {
   AddProductButton,
   AddProductButtonText,
@@ -37,108 +25,6 @@ import {
 } from "./styles";
 
 const QuoteRequestForm = ({ products }) => {
-  // const products = [
-  //   {
-  //     id: "1",
-  //     richText:
-  //       "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-  //     slug: "abstrakt",
-  //     subHeading: "Complex • Robust • Diverse",
-  //     title: "Abstrakt",
-  //     uri: "/products/abstrakt",
-  //     img1: Abstrakt,
-  //   },
-  //   {
-  //     id: "2",
-  //     richText:
-  //       "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-  //     slug: "act-three",
-  //     subHeading: "Complex • Robust • Diverse",
-  //     title: "Act Three",
-  //     uri: "/products/act-three",
-  //     img1: ActThree,
-  //   },
-  //   {
-  //     id: "3",
-  //     richText:
-  //       "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-  //     slug: "assemblage",
-  //     subHeading: "Complex • Robust • Diverse",
-  //     title: "Assemblage",
-  //     uri: "/products/assemblage",
-  //     img1: Assemblage,
-  //   },
-  //   {
-  //     id: "4",
-  //     richText:
-  //       "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-  //     slug: "bloc",
-  //     subHeading: "Complex • Robust • Diverse",
-  //     title: "Bloc",
-  //     uri: "/products/bloc",
-  //     img1: Bloc,
-  //   },
-  //   {
-  //     id: "5",
-  //     richText:
-  //       "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-  //     slug: "brackish",
-  //     subHeading: "Complex • Robust • Diverse",
-  //     title: "Brackish",
-  //     uri: "/products/brackish",
-  //     img1: Brackish,
-  //   },
-  //   {
-  //     id: "6",
-  //     richText:
-  //       "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-  //     slug: "carmelita",
-  //     subHeading: "Complex • Robust • Diverse",
-  //     title: "Carmelita",
-  //     uri: "/products/carmelita",
-  //     img1: Carmelita,
-  //   },
-  //   {
-  //     id: "7",
-  //     richText:
-  //       "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-  //     slug: "cloudburst",
-  //     subHeading: "Complex • Robust • Diverse",
-  //     title: "Cloudburst",
-  //     uri: "/products/cloudburst",
-  //     img1: CloudBurst,
-  //   },
-  //   {
-  //     id: "8",
-  //     richText:
-  //       "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-  //     slug: "coolstream",
-  //     subHeading: "Complex • Robust • Diverse",
-  //     title: "CoolStream",
-  //     uri: "/products/coolstream",
-  //     img1: CoolStream,
-  //   },
-  //   {
-  //     id: "9",
-  //     richText:
-  //       "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-  //     slug: "cloudburst",
-  //     subHeading: "Complex • Robust • Diverse",
-  //     title: "Cloudburst",
-  //     uri: "/products/cloudburst",
-  //     img1: CloudBurst,
-  //   },
-  //   {
-  //     id: "10",
-  //     richText:
-  //       "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-  //     slug: "coolstream",
-  //     subHeading: "Complex • Robust • Diverse",
-  //     title: "CoolStream",
-  //     uri: "/products/coolstream",
-  //     img1: CoolStream,
-  //   },
-  // ];
   const sizes = [
     {
       title: "Tile: 400x400x15mm",
@@ -301,23 +187,8 @@ const QuoteRequestForm = ({ products }) => {
                   <FormGroupTitle>About the product</FormGroupTitle>
                 </Col>
               </Row>
-              {myProducts.map((product) => (
-                <Row key={product.id}>
-                  <Col>
-                    <ProductSelect name="productId" products={products} />
-                  </Col>
-                  <Col>
-                    <ProductSizeSelect name="productSize" sizes={sizes} />
-                  </Col>
-                  <Col>
-                    <Input
-                      type="text"
-                      name="productLabel"
-                      placeholder="Label"
-                      fullWidth
-                    />
-                  </Col>
-                </Row>
+              {myProducts.map((item) => (
+                <ProductSelectRow row={item} products={products} />
               ))}
               <Row>
                 <Col>
@@ -331,7 +202,11 @@ const QuoteRequestForm = ({ products }) => {
               </Row>
             </FormGroup>
             <FormGroup>
-              <ArrowButton mode="dark" title="Submit enquiry" onClick={() => {}} />
+              <ArrowButton
+                mode="dark"
+                title="Submit enquiry"
+                onClick={() => {}}
+              />
             </FormGroup>
           </Form>
         </FormBody>
