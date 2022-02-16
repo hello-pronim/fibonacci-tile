@@ -108,7 +108,7 @@ export const AppReducer = (state, action) => {
         return {
           ...state,
           selectedProducts: newSelectedProducts ? newSelectedProducts : [],
-          confirmedProducts: newSelectedProducts ? newSelectedProducts : [],
+          // confirmedProducts: newSelectedProducts ? newSelectedProducts : [],
         };
       } else {
         return {
