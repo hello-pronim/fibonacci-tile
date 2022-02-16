@@ -6,6 +6,7 @@ import Loading from "@components/icons/loading";
 import Arrow from "@components/common/icons/arrow";
 import {
   Container,
+  PageTitle,
   DisplayDescription,
   DisplayInnerTable,
   DisplayListTable,
@@ -39,17 +40,12 @@ function ProductLists({
       {accentText && <AccentText top={120}>{sideText}</AccentText>}
       {loadingProducts && <Loading />}
       {products.length === 0 && (
-        <div
-          style={{
-            display: "block",
-          }}
-        >
-          <Text variant="Display-Large">
-            We couldn’t find any products you were looking for at this time.{" "}
-          </Text>
+        <div className="zeroStateBlock">
+          <PageTitle Base="h2" variant="Display-Large">
+            We couldn&rsquo;t find any products you were looking for at this time.{" "}
+          </PageTitle>
           <p>
-            Try resetting your filters to find what products you are looking
-            for.
+            Try resetting your filters to find what products you are looking for.
           </p>
           <LinkWrapper
             onClick={() => {
