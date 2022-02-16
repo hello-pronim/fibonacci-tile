@@ -95,6 +95,7 @@ const CheckoutFooter = styled("div")(({...props }: CheckoutFooterProps) =>
     pr: "2%",
     position: "fixed",
     bottom: 0,
+    left: 0,
     backgroundColor: theme.colors.stoneTints[7],
     width: "96%",
     zIndex: "9999999",

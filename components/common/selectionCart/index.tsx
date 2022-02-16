@@ -493,12 +493,12 @@ const SelectionCart = ({ active, newSelection, tab }) => {
                 rowGap: 16,
               })}
             >
-              {state &&
-                state?.selectedProducts.map((product) => {
+              {state?.selectedProducts?.length > 0 &&
+                state.selectedProducts.map((product) => {
                   return (
                     <ProductCard
                       isSelected={
-                        state?.selectedProducts.findIndex(
+                        state.selectedProducts.findIndex(
                           (sp) => sp.id === product.id
                         ) !== -1
                       }
