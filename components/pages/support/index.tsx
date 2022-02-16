@@ -12,12 +12,6 @@ import { HeroOverlayWrapper, FormContainer } from "./styles";
 const Support = ({ pageData }) => {
   const router = useRouter();
   const { asPath } = router;
-  const [activeSupport, setActiveSupport] = useState("");
-
-  useEffect(() => {
-    const slug = asPath.split("#")[1] ?? "";
-    setActiveSupport(slug);
-  }, [asPath]);
 
   return (
     <>
@@ -25,9 +19,6 @@ const Support = ({ pageData }) => {
       <HeroOverlayWrapper>
         <SupportModule activePath={asPath} supports={supports} />
       </HeroOverlayWrapper>
-      <FormContainer>
-        {activeSupport === "quote-request" && <QuoteRequestForm />}
-      </FormContainer>
       {pageData?.pageHeading && <Sections pageHeading={pageData.pageHeading} />}
       {pageData?.productSupportComponents?.length > 0 &&
         pageData.productSupportComponents.map(
