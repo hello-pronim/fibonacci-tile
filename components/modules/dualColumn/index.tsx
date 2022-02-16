@@ -28,10 +28,10 @@ const DualColumnModule = ({ data }) => {
               height={data.left1Image.height}
             />
           )}
-          <Text as="h6" variant="Display-Overline">
+          <Text css={css({color: theme.colors.charcoal})} as="h6" variant="Display-Overline">
             {data.left1Caption}
           </Text>
-          <Text as="h3" variant="Display-Medium">
+          <Text css={css({color: theme.colors.charcoal})} as="h3" variant="Display-Medium">
             {data.left1Text}
           </Text>
         </Segment>
@@ -45,10 +45,10 @@ const DualColumnModule = ({ data }) => {
               height={data.left2Image.height}
             />
           )}
-          <Text as="h6" variant="Display-Overline">
+          <Text css={css({color: theme.colors.charcoal})} as="h6" variant="Display-Overline">
             {data.left2Caption}
           </Text>
-          <Text as="h3" variant="Display-Medium">
+          <Text css={css({color: theme.colors.charcoal})} as="h3" variant="Display-Medium">
             {data.left2Text}
           </Text>
         </Segment>
@@ -63,6 +63,7 @@ const DualColumnModule = ({ data }) => {
             variant="Display-Small"
             altFont
             css={css({
+              color: theme.colors.charcoal,
               [theme.mediaQueries.medium]: {
                 fontSize: 74,
               },
@@ -83,10 +84,10 @@ const DualColumnModule = ({ data }) => {
               />
             )}
           </ImageWrapper>
-          <Text as="h6" variant="Display-Overline">
+          <Text css={css({color: theme.colors.charcoal})} as="h6" variant="Display-Overline">
             {data.right1Caption}
           </Text>
-          <Text as="h3" variant="Display-Medium">
+          <Text css={css({color: theme.colors.charcoal})} as="h3" variant="Display-Medium">
             {data.right1Text}
           </Text>
         </Segment>
@@ -102,16 +103,16 @@ const DualColumnModule = ({ data }) => {
               />
             )}
           </ImageWrapper>
-          <Text as="h6" variant="Display-Overline">
+          <Text css={css({color: theme.colors.charcoal})} as="h6" variant="Display-Overline">
             {data.right2SubLine}
           </Text>
-          <Text as="h3" variant="Display-Medium">
+          <Text css={css({color: theme.colors.charcoal})} as="h3" variant="Display-Medium">
             {data.right2Text}
           </Text>
         </Segment>
       </RightCol>
       <BottomRow>
-        <Text as="h3" variant="Display-Medium">
+        <Text css={css({color: theme.colors.charcoal})} as="h3" variant="Display-Medium">
           LIKE NO OTHER
         </Text>
         <ArrowButton title="Our design process" link="/our-story" />

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import QuoteModule from "@components/modules/quote";
 import SupportModule from "@components/modules/support";
 import SocialModule from "@components/modules/social";
@@ -49,6 +49,7 @@ const Homepage = ({ pageData }) => {
       banners.push(component);
     }
   });
+  
   return (
     <>
       {banners.length > 0 && <Hero banners={banners} />}
@@ -56,6 +57,7 @@ const Homepage = ({ pageData }) => {
         pageData.homePageComponents.map((component: any) => {
           switch (component.typeHandle) {
             case "featuredProducts":
+              console.log(component.products);
               return (
                 <ProductCarousel
                   key={`component-${component.id}`}

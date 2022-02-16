@@ -52,6 +52,11 @@ const ProjectList = ({ projects, types }: ProjectListType) => {
     setSelectedType(type);
   };
 
+  let populatedCategories = [];
+  projects && projects.forEach(project => populatedCategories.push(project.sector[0].slug));
+
+  let categorySet = [...Array.from(new Set(populatedCategories))];
+  
   return (
     <>
       <FilterWrapperDesktop>
@@ -64,15 +69,15 @@ const ProjectList = ({ projects, types }: ProjectListType) => {
         >
           All
         </Chip>
-        {types.map((type) => (
+        {categorySet.map((type) => (
           <Chip
-            key={type.slug}
-            onClick={() => onProjectTypeClick(type.slug)}
-            active={type.slug === selectedType}
+            key={type}
+            onClick={() => onProjectTypeClick(type)}
+            active={type === selectedType}
             size="small"
             rounded
           >
-            {type.title}
+            {type}
           </Chip>
         ))}
       </FilterWrapperDesktop>

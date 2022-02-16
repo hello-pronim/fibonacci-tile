@@ -95,6 +95,7 @@ const BottomRow = styled("div")(css({
 }))
 
 const Segment = styled("div")(css({
+
   h6: {
     pt: 16,
   },

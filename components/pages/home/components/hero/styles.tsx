@@ -1,5 +1,6 @@
 import css from "@styled-system/css";
 import styled from "@emotion/styled";
+import { keyframes } from "@emotion/react";
 import theme from "styles/theme";
 
 const Container = styled("div")(
@@ -109,9 +110,19 @@ const CounterWrapper = styled("div")(
   })
 );
 
+const rotate = keyframes`
+from{
+  -webkit-transform: rotate(0deg);
+}
+to{
+  -webkit-transform: rotate(360deg);
+}
+`
+
 const Loader = styled("div")(({ prog }: { prog: number }) =>
   css({
     width: "auto",
+    animation: `${rotate} 5s linear infinite`,
     svg: {
       width: 30,
       height: 30,
