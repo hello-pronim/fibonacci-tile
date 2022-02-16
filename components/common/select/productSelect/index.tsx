@@ -62,7 +62,7 @@ export default function Select({
         {selectedProduct !== null ? selectedProduct.title : "Product"}
       </ProductSelect>
       <HiddenProductSelectItemsWrapper>
-        {products.map((product) => (
+        {products.map((product: any) => (
           <input
             key={product.id}
             type="radio"
@@ -81,7 +81,7 @@ export default function Select({
             </ProductSelectDropdownHeaderText>
           </ProductSelectDropdownHeaderWrapper>
           <ProductSelectDropdownBodyWrapper>
-            {products.map((product) => (
+            {products.map((product: any) => (
               <ProductSelectItemWrapper key={`product-${product.id}`}>
                 <ProductSelectItem
                   product={product}

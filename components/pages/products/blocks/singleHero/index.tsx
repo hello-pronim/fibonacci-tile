@@ -107,7 +107,8 @@ const SingleHeroModule = ({ product, collectionSlug }) => {
               <Text variant="Display-Overline">EXPLORE</Text>
               <LinkWrapper>
                 <Link href={`/terrazzo/${activeCollection.slug}`}>
-                  {activeCollection.title}
+                  {/* {activeCollection.title} */}
+                  COLLECTION
                 </Link>
                 <Arrow type="short" />
               </LinkWrapper>

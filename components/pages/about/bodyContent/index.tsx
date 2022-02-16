@@ -42,6 +42,7 @@ const BodyContent = ({ pageComponents }) => {
               return (
                 <MainStoryPanel
                   key={`component-${index}`}
+                  bgColor={component.panelBackgroundColor}
                   story={{
                     accentText: component.sideText,
                     title: component.heading1,

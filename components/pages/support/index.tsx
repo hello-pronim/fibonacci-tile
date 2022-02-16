@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Hero from "@components/pages/support/components/hero";
 import Sections from "@components/pages/support/components/sections";
 import ContentBlock from "@components/pages/support/components/contentBlock";
 import SupportModule from "@components/modules/support";
 import AccordionSection from "./components/accordionSection";
-import QuoteRequestForm from "./sections/forms/quoteRequestForm";
 import { supports } from "./constants";
-import { HeroOverlayWrapper, FormContainer } from "./styles";
+import { HeroOverlayWrapper } from "./styles";
 
 const Support = ({ pageData }) => {
   const router = useRouter();

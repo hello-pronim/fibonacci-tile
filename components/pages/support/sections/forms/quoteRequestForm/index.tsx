@@ -188,7 +188,11 @@ const QuoteRequestForm = ({ products }) => {
                 </Col>
               </Row>
               {myProducts.map((item) => (
-                <ProductSelectRow row={item} products={products} />
+                <ProductSelectRow
+                  key={`product-row-${item.id}`}
+                  row={item}
+                  products={products}
+                />
               ))}
               <Row>
                 <Col>
