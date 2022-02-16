@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { css } from "@styled-system/css";
 import Text from "@components/common/typography";
 import Arrow from "@components/icons/arrowDown";
@@ -7,15 +7,32 @@ import theme from "styles/theme";
 
 const Accordion = ({ items }) => {
   const [activeIndex, setActiveIndex] = useState(0);
-
+  const myRef = useRef({});
+  const executeScroll = (value) => { 
+    myRef.current[value].scrollIntoView({
+      behavior: "smooth", 
+      block: "center",
+      inline: "nearest" 
+    });
+  }  
   return (
     <>
       {items.map((item: any, index: number) => {
         return (
-          <Item key={`accordion-${index}`}>
+          <Item 
+          ref={el => {
+            if (el) {
+              myRef.current[`accordion-${index}`] = el;
+            } else {
+              delete myRef.current[`accordion-${index}`];
+            }
+          }}
+          key={`accordion-${index}`}>
             <Top
-              onClick={() =>
-                setActiveIndex(activeIndex === index ? null : index)
+              onClick={() => {
+                  executeScroll(`accordion-${index}`);
+                  setActiveIndex(activeIndex === index ? null : index)
+                }
               }
             >
               <Text
@@ -36,8 +53,10 @@ const Accordion = ({ items }) => {
                     transform: activeIndex === index && "rotate(180deg)",
                   },
                 })}
-                onClick={() =>
-                  setActiveIndex(activeIndex === index ? null : index)
+                onClick={() => {
+                  executeScroll(`accordion-${index}`);
+                  setActiveIndex(activeIndex === index ? null : index)}
+                  
                 }
               >
                 <Arrow width={18} />
