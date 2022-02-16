@@ -213,9 +213,15 @@ export const HomePageQuery = gql`
             typeHandle
             image1 {
               url
+              title
+              width
+              height
             }
             image2 {
               url
+              title
+              width
+              height
             }
             likeNoOtherText
           }

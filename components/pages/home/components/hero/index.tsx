@@ -4,6 +4,7 @@ import { Container, CounterWrapper, Loader, SlideItem } from "./styles";
 import BannerType1 from "./bannerType1";
 import BannerType2 from "./bannerType2";
 import BannerType3 from "./bannerType3";
+import BannerType4 from "./bannerType4";
 
 const Hero = ({ banners }) => {
   const slider = React.useRef<Slider>(null);
@@ -54,6 +55,12 @@ const Hero = ({ banners }) => {
               return (
                 <SlideItem key={`banner-${banner.id}`}>
                   <BannerType3 banner={banner} />
+                </SlideItem>
+              );
+            case "bannerType4":
+              return (
+                <SlideItem key={`banner-${banner.id}`}>
+                  <BannerType4 banner={banner} />
                 </SlideItem>
               );
           }
