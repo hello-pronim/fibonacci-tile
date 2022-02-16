@@ -79,7 +79,6 @@ const ProductCarousel = ({ products }) => {
         <AccentTextMobile css={css({ pb: 24 })}>
           An imaginative selection
         </AccentTextMobile>
-        <Title>Featured Products</Title>
         <Slider {...settings} ref={slider}>
           {products &&
             products.map((product: any) => {
