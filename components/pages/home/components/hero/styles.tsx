@@ -31,6 +31,16 @@ const SlideImage = styled("div")(
   })
 );
 
+const SlideImage2 = styled("div")(
+  css({
+    display: "flex",
+    flexDirection: "row",
+    div: {
+      width: "100%",
+    },
+  })
+);
+
 const SlideImageMobile = styled("div")(
   css({
     display: "block !important",
@@ -158,4 +168,5 @@ export {
   Loader,
   SlideImage,
   SlideImageMobile,
+  SlideImage2,
 };

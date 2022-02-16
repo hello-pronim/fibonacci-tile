@@ -97,7 +97,7 @@ const TableHeader = styled("div")(
     display: "flex",
     flexWrap: "wrap",
     alignItems: "center",
-    background: "#e5e5e5",
+    background: "#f6f6f6",
     textTransform: "uppercase",
     "& > div span": {
       padding: "20px",
