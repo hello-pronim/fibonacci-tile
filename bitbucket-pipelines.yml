@@ -9,6 +9,8 @@ pipelines:
             - apt-get update
             - apt-get install -y zip
             - export NEXT_PUBLIC_API_URL=$DEV_NEXT_PUBLIC_API_URL
+            - export NEXT_PUBLIC_SAMPLE_ORDERS_CONTROLLER_URL=$DEV_NEXT_PUBLIC_SAMPLE_ORDERS_CONTROLLER_URL
+            - export NEXT_PUBLIC_SAMPLE_SELECTION_COUNT=$NEXT_PUBLIC_SAMPLE_SELECTION_COUNT
             - export NEXT_PAGE_REVALIDATE=$NEXT_PAGE_REVALIDATE
             - export BITBUCKET_COMMIT=$BITBUCKET_COMMIT
             - export NODE_ENV=$DEV_NODE_ENV
@@ -38,6 +40,8 @@ pipelines:
             - apt-get update
             - apt-get install -y zip
             - export NEXT_PUBLIC_API_URL=$STG_NEXT_PUBLIC_API_URL
+            - export NEXT_PUBLIC_SAMPLE_ORDERS_CONTROLLER_URL=$STG_NEXT_PUBLIC_SAMPLE_ORDERS_CONTROLLER_URL
+            - export NEXT_PUBLIC_SAMPLE_SELECTION_COUNT=$NEXT_PUBLIC_SAMPLE_SELECTION_COUNT
             - export NEXT_PAGE_REVALIDATE=$NEXT_PAGE_REVALIDATE
             - export BITBUCKET_COMMIT=$BITBUCKET_COMMIT
             - export NODE_ENV=$DEV_NODE_ENV
