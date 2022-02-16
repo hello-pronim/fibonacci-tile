@@ -69,7 +69,7 @@ const LatestNews: NextPage<LatestPageProps> = ({
   const windowWidth = useWidth();
   const crumbs = [
     { path: "/", name: "Home" },
-    { path: "/latest", name: "Latest" },
+    { path: "/the-latest", name: "The Latest" },
   ];
   return (
     <>
@@ -142,13 +142,6 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
   });
 
   const {
-    data: { entry: newsletter },
-  } = await client.query({
-    query: NewsletterQuery,
-    variables: { slug: "latest-news" },
-  });
-
-  const {
     data: { categories: categories },
   } = await client.query({
     query: CategoriesQuery,
@@ -168,7 +161,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
       pageData,
       categories,
       news,
-      newsletter: newsletter?.newsletter,
+      newsletter: pageData?.newsletter,
     },
     revalidate: parseInt(process.env.NEXT_PAGE_REVALIDATE),
   };
