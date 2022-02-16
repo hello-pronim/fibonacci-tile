@@ -15,7 +15,7 @@ const CollectionHeroModule = ({ collection }) => {
           flexDirection: "column",
           justifyContent: "space-between",
           height: "100%",
-          background: "#8B9B94",
+          background: collection.backgroundColor1 ? collection.backgroundColor1 : "#8B9B94",
           padding: "120px 80px 60px 80px",
           width: "30%",
         })}
