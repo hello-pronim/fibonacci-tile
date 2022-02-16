@@ -104,7 +104,7 @@ const Support = ({ pageData }) => {
                           body: component.rightText,
                           button: {
                             label: component.rightButton,
-                            link: component.rightButtonLink?.url,
+                            link: component.rightButtonLink?.[0]?.url,
                           },
                         },
                       ],
