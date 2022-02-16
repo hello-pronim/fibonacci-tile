@@ -72,7 +72,7 @@ const InlineSlider = ({ images }) => {
 
   return (
     <Container id="gallery">
-      <AccentText top={206}>Gallery</AccentText>
+      <AccentText top={120}>Gallery</AccentText>
       <Wrapper>
         <AccentTextMobile css={css({ pb: 80 })}>Gallery</AccentTextMobile>
         <Slider {...settings} ref={slider}>
