@@ -47,12 +47,6 @@ const Inner = styled('div')(() =>
     [theme.mediaQueries.xMedium]: {
       paddingRight: '30%',
     },
-    "& p": {
-      paddingBottom: "20px",
-      "&:last-child": {
-        paddingBottom: "0px",
-      },
-    },
     '&:before': {
       position:'absolute',
       backgroundColor:'white',
