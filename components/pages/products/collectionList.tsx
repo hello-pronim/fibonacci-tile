@@ -37,7 +37,7 @@ const CollectionsPage = ({
   return (
     <Container>
       <ProductsHeader notifications={notifications} />
-      <Slider items={banners} />
+      <Slider items={banners} disableNext={true} />
       <SectionTitle
         show={false}
         title="40 unique creations. Thoughtfully designed. Sustainably made. Purpose-built."
