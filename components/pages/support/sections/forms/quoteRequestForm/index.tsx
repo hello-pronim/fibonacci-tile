@@ -331,11 +331,7 @@ const QuoteRequestForm = () => {
               </Row>
             </FormGroup>
             <FormGroup>
-              <ArrowButton
-                mode="dark"
-                title="View product details"
-                link="http://localhost:3000/products"
-              />
+              <ArrowButton mode="dark" title="Submit" onClick={() => {}} />
             </FormGroup>
           </Form>
         </FormBody>
