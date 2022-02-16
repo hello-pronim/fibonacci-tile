@@ -216,7 +216,7 @@ const Header = ({
                 <NavItem mode={mode} href="/our-story">
                   Our Story
                 </NavItem>
-                <NavItem mode={mode} href="/latest">
+                <NavItem mode={mode} href="/the-latest">
                   Latest
                 </NavItem>
                 <NavItem mode={mode} href="/support">

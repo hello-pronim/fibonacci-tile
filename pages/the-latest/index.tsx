@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
-import { PageQuery, NewsletterQuery } from "@gql/pageGQL";
+import { PageQuery } from "@gql/pageGQL";
 import { NewsQuery } from "@gql/newsGQL";
 import { CategoriesQuery } from "@gql/categoriesGQL";
 import BreadCrumb from "@components/common/breadcrumb";
