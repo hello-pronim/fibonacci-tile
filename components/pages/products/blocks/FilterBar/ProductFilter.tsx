@@ -4,6 +4,7 @@ import CheckMarkIcon from "@components/icons/checkmark";
 import CloseIcon from "@components/icons/close";
 import { useAppContext } from "@contexts/AppContext";
 import styles from "./styles.module.scss";
+import SelectionCount from "@components/common/product/selectionCount";
 
 export default function ProductFilter({ productCategories }) {
   const { state, dispatch } = useAppContext();
@@ -36,11 +37,7 @@ export default function ProductFilter({ productCategories }) {
             })}
           >
             <Text as="h3" variant="Body-Small">
-              All products{" "}
-              {!state.isMobileFilterActive &&
-                state.filter.products.value === "all" && (
-                  <CheckMarkIcon color="#141414" />
-                )}
+              All products <SelectionCount />
             </Text>
           </div>
           {state.isMobileFilterActive &&
@@ -69,11 +66,11 @@ export default function ProductFilter({ productCategories }) {
                 })}
               >
                 <Text as="h3" variant="Body-Small">
-                  {cat.title}{" "}
-                  {!state.isMobileFilterActive &&
-                    state.filter.products.value === cat.id && (
-                      <CheckMarkIcon color="#141414" />
-                    )}
+                  {cat.title} <SelectionCount />
+                </Text>
+                <Text style={{ paddingTop: 8 }} as="h4" variant="Body-XSmall">
+                  Amet orci facilisi magna nunc vel, <br /> est leo adipiscing.
+                  Rhoncus aenean.
                 </Text>
                 <Text
                   as="p"
