@@ -119,7 +119,7 @@ const ProductsPage = ({
   return (
     <Container>
       {!showFilterBar && <ProductsHeader notifications={notifications} />}
-      <Slider items={banners} />
+      <Slider items={banners} disableNext={true} />
       <SectionTitle show={showFilterBar} title={pageData.bannerSubline} />
       <section ref={ref}>
         <ProductFilterBar

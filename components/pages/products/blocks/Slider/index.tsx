@@ -15,7 +15,7 @@ import {
   LinkWrapper,
 } from "./styles";
 
-function TopSlider({ items = [] }) {
+function TopSlider({ items = [], disableNext = false }) {
   const router = useRouter();
   const settings = {
     dots: false,
@@ -41,7 +41,7 @@ function TopSlider({ items = [] }) {
             <SliderItem
               key={`slide-item-${index}`}
               onClick={() => {
-                gotoNext();
+                if (!disableNext) gotoNext();
                 if (item.bannerLinkTo) {
                   router.push(item.bannerLinkTo);
                 }
