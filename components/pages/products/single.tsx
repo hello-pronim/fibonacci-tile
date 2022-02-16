@@ -18,7 +18,7 @@ const ProductPage = ({
     <>
       <ProductsHeader mode="dark" notifications={notifications} />
       <SingleHeroModule product={product} collectionSlug={collectionSlug} />
-      <Projects product={product} accentText="Fibonacci Live" />
+      <Projects product={product} accentText="Fibonacci In Use" />
       {product?.gallery?.length > 0 && (
         <InlineSlider images={product.gallery} />
       )}
