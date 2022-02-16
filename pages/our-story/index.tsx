@@ -31,7 +31,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async () => {
     data: { entry: pageData },
   } = await client.query({
     query: OurStoryPageQuery,
-    variables: { slug: "our-story-page" },
+    variables: { slug: "our-story" },
   });
   return {
     props: {

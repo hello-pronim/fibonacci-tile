@@ -56,7 +56,7 @@ const SelectionCart = ({ active, newSelection, tab }) => {
       ref={ref}
       css={css({
         boxSizing: "border-box",
-        position: "absolute",
+        position: "fixed",
         top: 80,
         right: active ? 0 : "-550px",
         width: ["100%", "100%", 480],

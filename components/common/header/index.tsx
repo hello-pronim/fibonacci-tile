@@ -6,7 +6,6 @@ import { Transition } from "react-transition-group";
 import css from "@styled-system/css";
 import Text from "@components/common/typography";
 import ProductSelectionCount from "@components/common/product/selectionCount";
-import SelectionCart from "@components/common/selectionCart";
 import Logo from "public/assets/brandmarks/logo-primary.svg";
 import LogoWhite from "public/assets/brandmarks/logo-secondary.svg";
 import {
@@ -46,10 +45,7 @@ const Header = ({
 }) => {
   const { state, dispatch } = useAppContext();
   const [navOpen, setNavOpen] = useState(false);
-  const [newSelection, setNewSelection] = useState(false);
-  const [selectionsCount, setSelectionsCount] = useState(0);
   const [alertActive, setAlertActive] = useState(true);
-  const selectionsMounted = useRef(false);
   const activeLogo = mode === "dark" ? Logo : LogoWhite;
 
   const [scrollY, setScrollY] = useState(0);
@@ -70,36 +66,6 @@ const Header = ({
     const alertState = sessionStorage.getItem("alert-state");
     const alertToBool = alertState === "true";
     alertState && setAlertActive(alertToBool);
-  }, []);
-
-  useEffect(() => {
-    let timerId: ReturnType<typeof setTimeout>;
-    if (
-      selectionsMounted.current &&
-      state.selectedProducts.length > selectionsCount &&
-      state.openDrawer !== true
-    ) {
-      dispatch({
-        type: "OPEN_DRAWER",
-        value: true,
-      });
-      setNewSelection(true);
-      timerId = setTimeout(() => {
-        setNewSelection(false);
-        dispatch({
-          type: "OPEN_DRAWER",
-          value: false,
-        });
-      }, 4000);
-    } else {
-      selectionsMounted.current = true;
-    }
-    setSelectionsCount(state.selectedProducts.length);
-
-    return () => {
-      if (timerId) clearTimeout(timerId);
-    };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -226,11 +192,6 @@ const Header = ({
             </NavItem>
           </NavRight>
         </Wrapper>
-        <SelectionCart
-          tab={state.activeDrawerTab}
-          active={state.openDrawer}
-          newSelection={newSelection}
-        />
         <Transition
           in={navOpen}
           timeout={duration}

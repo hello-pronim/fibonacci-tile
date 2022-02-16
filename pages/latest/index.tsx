@@ -138,7 +138,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
     data: { entry: pageData },
   } = await client.query({
     query: PageQuery,
-    variables: { slug: "latest-news" },
+    variables: { slug: "the-latest" },
   });
 
   const {

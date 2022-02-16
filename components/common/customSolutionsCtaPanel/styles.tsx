@@ -43,6 +43,10 @@ const CTADetailsBox = styled("div")(
       letterSpacing: "0.01em",
       marginBottom: "25px",
     },
+    h3: {
+      textTransform: "uppercase",
+      letterSpacing: "0.1em",
+    },
     p: {
       fontSize: "16px",
       lineHeight: "22.4px",
