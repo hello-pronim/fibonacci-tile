@@ -1,22 +1,31 @@
-import React from "react";
+import React, { useLayoutEffect, useState } from "react";
 import Image from "next/image";
 import Text from "@components/common/typography";
 import { css } from "@styled-system/css";
 import theme from "@styles/theme";
 import { CollectionHeroContainer, CaptionText, ImageContent } from "./styles";
+import styles from "./styles.module.scss";
 
-const CollectionHeroModule = ({ collection }) => {
+const CollectionHeroModule = ({
+  collection,
+  position,
+  width = "30%",
+  zIndex = 0,
+  top,
+}) => {
   return (
     <CollectionHeroContainer>
       <div
         css={css({
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          height: "100%",
-          background: "#8B9B94",
-          padding: "120px 80px 60px 80px",
-          width: "30%",
+          height: "auto",
+          background: collection.backgroundColor1
+            ? collection.backgroundColor1
+            : "#8B9B94",
+          padding: "104px 80px 50px 80px",
+          width: width,
+          position: position,
+          zIndex: zIndex,
+          top: top,
         })}
       >
         <div
@@ -59,6 +68,7 @@ const CollectionHeroModule = ({ collection }) => {
       <ImageContent>
         {collection?.heroImage?.[0]?.url && (
           <Image
+            className={styles.img}
             layout="responsive" // required
             src={collection.heroImage[0].url}
             alt={collection.slug}

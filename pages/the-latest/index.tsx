@@ -82,6 +82,8 @@ const LatestNews: NextPage<LatestPageProps> = ({
           pl: "27px",
           pt: 100,
           pb: 0,
+          ml: "auto",
+          mr: "auto"
         })}
       >
         <BreadCrumb crumbs={crumbs} pt={0} />
@@ -116,6 +118,11 @@ const LatestNews: NextPage<LatestPageProps> = ({
         <MobileCategory />
       )}
       <ResponsiveMasonry
+        css={css({
+          maxWidth: "2560px",
+          ml: "auto",
+          mr: "auto"
+        })}
         columnsCountBreakPoints={{ 425: 1, 767: 2, 1400: 3, 1660: 4 }}
       >
         <Masonry className={styles.container}>{Cards}</Masonry>

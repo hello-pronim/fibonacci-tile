@@ -25,12 +25,12 @@ const SocialModule = () => {
         <Image alt="" src={Ig1} width={292} height={292} layout="fixed" />
         <Image alt="" src={Ig2} width={292} height={292} layout="fixed" />
       </ImageWrapper>
-      <TextWrapper>
+      {/* <TextWrapper>
         <Text as="p" variant="Body-Small">
           Tag <a href="#">#fibonacci</a> or <a href="#">#likenoother</a> in your
           post for your chance to be featured
         </Text>
-      </TextWrapper>
+      </TextWrapper> */}
     </Container>
   );
 };

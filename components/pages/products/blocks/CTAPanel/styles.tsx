@@ -14,6 +14,11 @@ const CTAContainer = styled("section")(
     justifyContent: "space-between",
     paddingTop: "50px",
     paddingBottom: "50px",
+    marginLeft: "auto",
+    marginRight: "auto",
+    maxWidth: "2560px",
+    position: "relative",
+    width: "100%"
   })
 );
 

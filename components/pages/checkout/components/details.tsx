@@ -1,4 +1,3 @@
-
 import { useAppContext } from "@contexts/AppContext";
 import Text from "@components/common/typography";
 import { css } from "@styled-system/css";
@@ -18,9 +17,10 @@ import {
 } from "../styles";
 
 const Details = ({ activeCheckoutStep, disabled, stepChange }) => {
-    const { dispatch } = useAppContext();
+    const { dispatch, state } = useAppContext();
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => {
+    const sampleSelectionCount = Number(process.env.NEXT_PUBLIC_SAMPLE_SELECTION_COUNT);
+    const onSubmit = (data: any) => {
       dispatch({
         type: "SET_CHECKOUT_DETAILS",
         value: data,
@@ -41,15 +41,15 @@ const Details = ({ activeCheckoutStep, disabled, stepChange }) => {
           <FormWrapper>
             <form onSubmit={handleSubmit(onSubmit)}>
               <OneItemRow>
-                  <InputFullwidth type="text" placeholder="Email" {...register("Email", {required: true, pattern: /^\S+@\S+$/i})} />
+                  <InputFullwidth type="text" placeholder="Email" {...register("email", {required: true, pattern: /^\S+@\S+$/i})} />
               </OneItemRow>
               <TwoItemRow>
-                  <InputFourtyFive type="text" placeholder="First name" {...register("First name", {required: true, maxLength: 80})} />
-                  <InputFourtyFive type="text" placeholder="Last name" {...register("Last name", {required: true, maxLength: 100})} />
+                  <InputFourtyFive type="text" placeholder="First name" {...register("firstName", {required: true, maxLength: 80})} />
+                  <InputFourtyFive type="text" placeholder="Last name" {...register("lastName", {required: true, maxLength: 100})} />
               </TwoItemRow>
               <TwoItemRow>
-                  <InputFourtyFive type="text" placeholder="Company" {...register("Company", {required: true, maxLength: 80})} />
-                  <InputFourtyFive type="tel" placeholder="Contact number" {...register("Contact number", {required: true, minLength: 6, maxLength: 12})} />
+                  <InputFourtyFive type="text" placeholder="Company" {...register("company", {required: true, maxLength: 80})} />
+                  <InputFourtyFive type="tel" placeholder="Contact number" {...register("contactNumber", {required: true, minLength: 6, maxLength: 12})} />
               </TwoItemRow>
               <TwoItemRow>
                   <SelectFourtyFive {...register("job", { required: true })}>

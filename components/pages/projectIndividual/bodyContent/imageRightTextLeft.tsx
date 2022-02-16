@@ -31,6 +31,8 @@ const ImageRightTextLeft = ({
       {component?.imageThumb?.[0]?.url && (
         <ImageRight>
           <Image
+            placeholder="blur"
+            blurDataURL={component.imageThumb[0].url}
             alt={component.imageThumb[0].title}
             src={component.imageThumb[0].url}
             width={component.imageThumb[0].width}

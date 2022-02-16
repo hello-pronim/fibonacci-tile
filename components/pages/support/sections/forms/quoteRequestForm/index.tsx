@@ -331,7 +331,7 @@ const QuoteRequestForm = ({ products }) => {
               </Row>
             </FormGroup>
             <FormGroup>
-              <ArrowButton mode="dark" title="Submit" onClick={() => {}} />
+              <ArrowButton mode="dark" title="Submit enquiry" onClick={() => {}} />
             </FormGroup>
           </Form>
         </FormBody>

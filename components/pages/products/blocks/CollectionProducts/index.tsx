@@ -6,12 +6,14 @@ import { css } from "@styled-system/css";
 import theme from "@styles/theme";
 import { CollectionProductsContainer } from "./styles";
 
-const CollectionProducts = ({ products, backgroundColor}) => {
+const CollectionProducts = ({ products, backgroundColor }) => {
   const { state, dispatch } = useAppContext();
   return (
-    <CollectionProductsContainer css={css({
-      background: backgroundColor ? backgroundColor : "#E6EBEA",
-    })}>
+    <CollectionProductsContainer
+      css={css({
+        background: backgroundColor ? backgroundColor : "#E6EBEA",
+      })}
+    >
       {products.map((product) => (
         <ProductCard
           product={product}

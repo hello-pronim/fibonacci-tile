@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useAppContext } from "@contexts/AppContext";
 import Text from "@components/common/typography";
 import AddIcon from "@components/icons/add";
 import CheckMarkIcon from "@components/icons/checkmark";
@@ -23,7 +24,6 @@ const SelectedProductCard = ({
   product,
   isSelected = false,
   toggleProductSelect,
-  totalSelectedProducts = 0,
   confirmSample = false,
   activeCollectionSlug = null,
 }) => {
@@ -32,10 +32,11 @@ const SelectedProductCard = ({
     : product?.collections[0]?.slug;
 
   const sampleSelectedCount = Number(process.env.NEXT_PUBLIC_SAMPLE_SELECTION_COUNT);
+  const { state: { confirmedProducts } } = useAppContext();
   return (
     <Wrapper>
       <Container>
-        {totalSelectedProducts > sampleSelectedCount && (
+        { confirmedProducts?.length > sampleSelectedCount && !isSelected && (
           <div className="overlay">
             Choose upto {sampleSelectedCount}, samples remove one and the confirm your choosen
             samples

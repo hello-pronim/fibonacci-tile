@@ -14,7 +14,7 @@ import { LeftCol, SahreLinkWrapper, Row } from "./styles";
 const BodyContent = ({ pageData }) => {
   let fistContentUsed = false;
   return (
-    <div style={{ paddingTop: "55px" }}>
+    <div>
       {pageData.newsComponents.map((component: any, index: any) => {
         switch (component.typeHandle) {
           case "heroImageFullWidth":

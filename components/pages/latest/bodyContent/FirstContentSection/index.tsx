@@ -19,7 +19,6 @@ const FirstContentSection = ({ content }) => {
     return 0;
   };
   const windowWidth = useWidth();
-  console.log(windowWidth);
   return (
     <Container css={css({ bg: "#FFFFF8", pt: 120 })}>
       <LeftCol>

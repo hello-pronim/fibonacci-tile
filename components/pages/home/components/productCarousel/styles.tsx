@@ -174,6 +174,14 @@ const NextWrapper = styled("button")(
   })
 );
 
+const Title = styled("h2")(
+  css({
+    fontSize: "44px",
+    lineHeight: "50.6px",
+    paddingBottom: "32px",
+  })
+);
+
 export {
   Wrapper,
   SlideItem,
@@ -185,4 +193,5 @@ export {
   BottomBarInner,
   LinkWrapper,
   NextWrapper,
+  Title,
 };

@@ -23,13 +23,15 @@ const Hero = ({ banners }) => {
 
   const settings = {
     dots: false,
+    fade: true,
+    speed: 1500,
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
     pauseOnHover: false,
     autoplay: true,
-    autoplaySpeed: 10000,
+    autoplaySpeed: 5000,
     beforeChange: (current: number, next: number) => {
       setCurrentSlide(next + 1);
     },

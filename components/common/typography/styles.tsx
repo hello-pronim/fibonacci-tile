@@ -59,7 +59,6 @@ const DisplayOverline = ({ ...props }) =>
     fontSize: 0,
     lineHeight: 4,
     fontWeight: 0,
-    color: "nero",
     letterSpacing: 3,
   });
 

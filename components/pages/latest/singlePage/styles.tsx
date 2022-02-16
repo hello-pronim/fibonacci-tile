@@ -40,6 +40,8 @@ const Right = styled("div")(
     padding: "10px",
     gridColumnGap: "10px",
     gridRowGap: "11px",
+    float: "right",
+
     [theme.mediaQueriesMaxWidth.xxLarge]: {
       float: "right",
       paddingTop: "78px",
@@ -111,7 +113,9 @@ const Row = styled("div")(
 
     padding: "0 56px",
     pt: "64px",
-    pb: "55",
+    maxWidth: "2560px",
+    mr: "auto",
+    ml: "auto",
   })
 );
 
