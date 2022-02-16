@@ -93,12 +93,12 @@ const Samples = ({ activeCheckoutStep, disabled, stepChange }) => {
             />
           ))}
       </ProductContainer>
-      <CheckoutFooter contentAlign="right">
+      <CheckoutFooter>
         <span>{`You currently have ${confirmedProducts.length} selected, you can choose up 
         ${sampleSelectionCount} samples`}</span>
         <ArrowButton
-          mode="dark"
-          bgColor="white"
+          mode="light"
+          bgColor="#141414"
           title="Continue to Details"
           link=""
           onClick={() => stepChange(2)}

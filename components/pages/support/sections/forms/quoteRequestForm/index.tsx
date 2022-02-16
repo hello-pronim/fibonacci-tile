@@ -36,109 +36,109 @@ import {
   Wrapper,
 } from "./styles";
 
-const QuoteRequestForm = ({}) => {
-  const products = [
-    {
-      id: "1",
-      richText:
-        "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-      slug: "abstrakt",
-      subHeading: "Complex • Robust • Diverse",
-      title: "Abstrakt",
-      uri: "/products/abstrakt",
-      img1: Abstrakt,
-    },
-    {
-      id: "2",
-      richText:
-        "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-      slug: "act-three",
-      subHeading: "Complex • Robust • Diverse",
-      title: "Act Three",
-      uri: "/products/act-three",
-      img1: ActThree,
-    },
-    {
-      id: "3",
-      richText:
-        "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-      slug: "assemblage",
-      subHeading: "Complex • Robust • Diverse",
-      title: "Assemblage",
-      uri: "/products/assemblage",
-      img1: Assemblage,
-    },
-    {
-      id: "4",
-      richText:
-        "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-      slug: "bloc",
-      subHeading: "Complex • Robust • Diverse",
-      title: "Bloc",
-      uri: "/products/bloc",
-      img1: Bloc,
-    },
-    {
-      id: "5",
-      richText:
-        "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-      slug: "brackish",
-      subHeading: "Complex • Robust • Diverse",
-      title: "Brackish",
-      uri: "/products/brackish",
-      img1: Brackish,
-    },
-    {
-      id: "6",
-      richText:
-        "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-      slug: "carmelita",
-      subHeading: "Complex • Robust • Diverse",
-      title: "Carmelita",
-      uri: "/products/carmelita",
-      img1: Carmelita,
-    },
-    {
-      id: "7",
-      richText:
-        "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-      slug: "cloudburst",
-      subHeading: "Complex • Robust • Diverse",
-      title: "Cloudburst",
-      uri: "/products/cloudburst",
-      img1: CloudBurst,
-    },
-    {
-      id: "8",
-      richText:
-        "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-      slug: "coolstream",
-      subHeading: "Complex • Robust • Diverse",
-      title: "CoolStream",
-      uri: "/products/coolstream",
-      img1: CoolStream,
-    },
-    {
-      id: "9",
-      richText:
-        "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-      slug: "cloudburst",
-      subHeading: "Complex • Robust • Diverse",
-      title: "Cloudburst",
-      uri: "/products/cloudburst",
-      img1: CloudBurst,
-    },
-    {
-      id: "10",
-      richText:
-        "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
-      slug: "coolstream",
-      subHeading: "Complex • Robust • Diverse",
-      title: "CoolStream",
-      uri: "/products/coolstream",
-      img1: CoolStream,
-    },
-  ];
+const QuoteRequestForm = ({ products }) => {
+  // const products = [
+  //   {
+  //     id: "1",
+  //     richText:
+  //       "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+  //     slug: "abstrakt",
+  //     subHeading: "Complex • Robust • Diverse",
+  //     title: "Abstrakt",
+  //     uri: "/products/abstrakt",
+  //     img1: Abstrakt,
+  //   },
+  //   {
+  //     id: "2",
+  //     richText:
+  //       "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+  //     slug: "act-three",
+  //     subHeading: "Complex • Robust • Diverse",
+  //     title: "Act Three",
+  //     uri: "/products/act-three",
+  //     img1: ActThree,
+  //   },
+  //   {
+  //     id: "3",
+  //     richText:
+  //       "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+  //     slug: "assemblage",
+  //     subHeading: "Complex • Robust • Diverse",
+  //     title: "Assemblage",
+  //     uri: "/products/assemblage",
+  //     img1: Assemblage,
+  //   },
+  //   {
+  //     id: "4",
+  //     richText:
+  //       "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+  //     slug: "bloc",
+  //     subHeading: "Complex • Robust • Diverse",
+  //     title: "Bloc",
+  //     uri: "/products/bloc",
+  //     img1: Bloc,
+  //   },
+  //   {
+  //     id: "5",
+  //     richText:
+  //       "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+  //     slug: "brackish",
+  //     subHeading: "Complex • Robust • Diverse",
+  //     title: "Brackish",
+  //     uri: "/products/brackish",
+  //     img1: Brackish,
+  //   },
+  //   {
+  //     id: "6",
+  //     richText:
+  //       "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+  //     slug: "carmelita",
+  //     subHeading: "Complex • Robust • Diverse",
+  //     title: "Carmelita",
+  //     uri: "/products/carmelita",
+  //     img1: Carmelita,
+  //   },
+  //   {
+  //     id: "7",
+  //     richText:
+  //       "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+  //     slug: "cloudburst",
+  //     subHeading: "Complex • Robust • Diverse",
+  //     title: "Cloudburst",
+  //     uri: "/products/cloudburst",
+  //     img1: CloudBurst,
+  //   },
+  //   {
+  //     id: "8",
+  //     richText:
+  //       "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+  //     slug: "coolstream",
+  //     subHeading: "Complex • Robust • Diverse",
+  //     title: "CoolStream",
+  //     uri: "/products/coolstream",
+  //     img1: CoolStream,
+  //   },
+  //   {
+  //     id: "9",
+  //     richText:
+  //       "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+  //     slug: "cloudburst",
+  //     subHeading: "Complex • Robust • Diverse",
+  //     title: "Cloudburst",
+  //     uri: "/products/cloudburst",
+  //     img1: CloudBurst,
+  //   },
+  //   {
+  //     id: "10",
+  //     richText:
+  //       "<p>A democratic mix of colours, shapes and sizes, displaying the great egalitarian hallmarks of robustness and diversity.</p>",
+  //     slug: "coolstream",
+  //     subHeading: "Complex • Robust • Diverse",
+  //     title: "CoolStream",
+  //     uri: "/products/coolstream",
+  //     img1: CoolStream,
+  //   },
+  // ];
   const sizes = [
     {
       title: "Tile: 400x400x15mm",

@@ -138,10 +138,10 @@ const Delivery = ({ activeCheckoutStep, disabled, stepChange }) => {
             </p>
           </Details>
           {activeCheckoutStep === 3 && (
-            <CheckoutFooter contentAlign="left">
+            <CheckoutFooter>
               <ArrowButton
-                mode="dark"
-                bgColor="white"
+                mode="light"
+                bgColor="#141414"
                 title="Continue to Confirmation"
                 link=""
                 disabled={disabled}

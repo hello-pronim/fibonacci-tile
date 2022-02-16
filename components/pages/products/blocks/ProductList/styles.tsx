@@ -86,7 +86,7 @@ const DivTwo = styled("div")(
 
 const TableActionContainer = styled("div")(
   css({
-    backgroundColor: theme.colors.charcoalTints[8],
+    backgroundColor: "#f6f6f6",
     textAlign: "center",
     width: "25%",
   })

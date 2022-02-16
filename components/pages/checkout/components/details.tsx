@@ -1,4 +1,3 @@
-
 import { useAppContext } from "@contexts/AppContext";
 import Text from "@components/common/typography";
 import { css } from "@styled-system/css";
@@ -21,7 +20,7 @@ const Details = ({ activeCheckoutStep, disabled, stepChange }) => {
     const { dispatch, state } = useAppContext();
     const { register, handleSubmit, formState: { errors } } = useForm();
     const sampleSelectionCount = Number(process.env.NEXT_PUBLIC_SAMPLE_SELECTION_COUNT);
-    const onSubmit = data => {
+    const onSubmit = (data: any) => {
       dispatch({
         type: "SET_CHECKOUT_DETAILS",
         value: data,
@@ -64,19 +63,17 @@ const Details = ({ activeCheckoutStep, disabled, stepChange }) => {
                   </SelectFourtyFive>
               </TwoItemRow>
               {activeCheckoutStep === 2 && (
-                <CheckoutFooter contentAlign="right">
-                  {state?.selectedProducts?.length > sampleSelectionCount &&
-                    <div className="back" onClick={() => stepChange(1)}>
-                      Back
-                    </div>
-                  }
+                <CheckoutFooter>
                   <ArrowButton
-                    mode="dark"
-                    bgColor="white"
+                    mode="light"
+                    bgColor="#141414"
                     title="Continue to Delivery"
                     link=""
                     disabled={disabled}
                   />
+                  <div className="back" onClick={() => stepChange(1)}>
+                    Back
+                  </div>
                 </CheckoutFooter>
               )}
             </form>
