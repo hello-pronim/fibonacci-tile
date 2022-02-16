@@ -10,12 +10,20 @@ const Accordion = ({ items }) => {
   const myRef = useRef({});
   const executeScroll = (value: any) => {
     setTimeout(() => {
-      myRef.current[value].scrollIntoView({
+      const element = myRef.current[value];
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition - 100;
+
+      window.scrollBy({
+        top: offsetPosition,
         behavior: "smooth",
-        block: "start",
-        inline: "nearest",
       });
-    }, 100);
+      // myRef.current[value].scrollIntoView({
+      //   behavior: "smooth",
+      //   block: "start",
+      //   inline: "nearest",
+      // });
+    }, 10);
   };
   return (
     <>
