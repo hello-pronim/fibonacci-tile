@@ -47,7 +47,8 @@ const BodyContent = ({ pageComponents }) => {
                     title: component.heading1,
                     subtitle: component.heading2,
                     thumbnail: component.heroImage,
-                    content: component.heroImageDescription,
+                    caption: component.heroImageDescription,
+                    content: component.textRight,
                   }}
                 />
               );

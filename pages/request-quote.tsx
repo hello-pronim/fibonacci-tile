@@ -38,6 +38,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async () => {
       slug: "request-a-quote",
     },
   });
+  
   return {
     props: {
       pageData,
