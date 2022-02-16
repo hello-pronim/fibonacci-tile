@@ -6,6 +6,7 @@ export interface containerProps {
   position: string;
   mode: string;
   scrollY: number;
+  hideBorderOnScroll?: boolean;
 }
 
 export interface navItemProps {
@@ -36,7 +37,7 @@ const Container = styled("div")(({ ...props }: containerProps) =>
     backgroundColor: props.scrollY >= 5 && bgPicker(props.mode),
     borderBottom: "1px solid",
     transition: "ease all 0.3s",
-    borderColor: props.navOpen ? "white" : "stone",
+    borderColor: (props.hideBorderOnScroll && props.scrollY >= 5) ? "transparent" : (props.navOpen ? "white" : "stone"),
     zIndex: 1000,
     overflowX: "clip",
   })
