@@ -4,6 +4,7 @@ export const LIST_PRODUCT_FIELDS = gql`
   fragment ListProductFields on products_product_Entry {
     title
     subline
+    slug
     collections {
       id
       title
