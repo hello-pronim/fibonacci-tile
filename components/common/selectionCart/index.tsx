@@ -99,7 +99,7 @@ const SelectionCart = ({ active, newSelection, tab }) => {
             <Text
               variant="Body-XSmall"
               altFont
-              css={css({ textTransform: "uppercase" })}
+              css={css({ textTransform: "uppercase", color: "#000" })}
             >
               Close
             </Text>
@@ -303,7 +303,6 @@ const SelectionCart = ({ active, newSelection, tab }) => {
                     },
                   },
                 })}
-
                 onClick={() =>
                   dispatch({
                     type: "OPEN_DRAWER",
@@ -325,7 +324,6 @@ const SelectionCart = ({ active, newSelection, tab }) => {
                     alignItems: "center",
                     justifyContent: "center",
                   })}
-
                   onClick={() =>
                     dispatch({
                       type: "OPEN_DRAWER",
@@ -358,7 +356,6 @@ const SelectionCart = ({ active, newSelection, tab }) => {
                     },
                   },
                 })}
-
                 onClick={() =>
                   dispatch({
                     type: "OPEN_DRAWER",
@@ -473,7 +470,7 @@ const SelectionCart = ({ active, newSelection, tab }) => {
               <Text
                 variant="Body-XSmall"
                 altFont
-                css={css({ textTransform: "uppercase" })}
+                css={css({ textTransform: "uppercase", color: "#000" })}
               >
                 Close
               </Text>
@@ -569,9 +566,11 @@ const SelectionCart = ({ active, newSelection, tab }) => {
                 link="/checkout"
               />
             )}
-            <a href="/terrazzo" css={css({ color: "#fff", mt: 24 })}>
-              <Text variant="Body-Small">Continue Selections</Text>
-            </a>
+            <Link href="/terrazzo" css={css({ color: "#fff", mt: 24 })}>
+              <a>
+                <Text variant="Body-Small">Continue Selections</Text>
+              </a>
+            </Link>
           </div>
         </>
       )}
