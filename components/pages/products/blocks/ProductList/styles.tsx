@@ -1,5 +1,6 @@
 import css from "@styled-system/css";
 import styled from "@emotion/styled";
+import Text from "@components/common/typography";
 import theme from "styles/theme";
 
 interface ContainerProps {
@@ -24,6 +25,15 @@ const Container = styled("section")(({ listView }: ContainerProps) =>
     [theme.mediaQueries.large]: {
       gridTemplateColumns: "repeat(5, 1fr)",
       padding: "80px 120px",
+    },
+    "& .zeroStateBlock": {
+      marginTop: "30px",
+      [theme.mediaQueries.small]: {
+        minWidth: "600px",
+      },
+      [theme.mediaQueries.medium]: {
+        minWidth: "800px",
+      },
     },
   })
 );
@@ -154,8 +164,25 @@ const LinkWrapper = styled("div")(
   })
 );
 
+const PageTitle = styled(Text)(
+  css({
+    fontFamily: "Canela",
+    fontSize: "42px",
+    lineHeight: "110%",
+    display: "block",
+    marginBottom: "40px",
+    [theme.mediaQueries.medium]: {
+      fontSize: "48px",
+    },
+    [theme.mediaQueries.xMedium]: {
+      fontSize: "74px",
+    },
+  })
+);
+
 export {
   Container,
+  PageTitle,
   DisplayDescription,
   DisplayInnerTable,
   DisplayListTable,
