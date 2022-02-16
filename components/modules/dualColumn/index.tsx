@@ -103,7 +103,7 @@ const DualColumnModule = ({ data }) => {
             )}
           </ImageWrapper>
           <Text as="h6" variant="Display-Overline">
-            {data.right2SubLine}
+            {data.right2Caption}
           </Text>
           <Text as="h3" variant="Display-Medium">
             {data.right2Text}
