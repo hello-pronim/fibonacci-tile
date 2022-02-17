@@ -30,7 +30,7 @@ const Hero = ({ project }) => {
           </Text>
           {project.projectCompleted && (
             <Text Base="h6" variant="Body-Large">
-              {moment(project.postDate).format("Do MMMM YYYY")}
+              {moment(project.projectCompleted).format("Do MMMM YYYY")}
             </Text>
           )}
           {project.label && (
