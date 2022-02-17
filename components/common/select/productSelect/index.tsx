@@ -24,7 +24,6 @@ interface selectProps {
 }
 
 export default function Select({
-  name,
   variant = "outlined",
   fullWidth = false,
   halfWidth = false,
@@ -38,7 +37,6 @@ export default function Select({
 
   const handleProductItemSelected = (productId) => {
     const selected = products.find((prod: any) => prod.id === productId);
-    // TODO: optimize it to use products field as array for only selected items
     setSelectedProductId(productId);
     if (selected) setSelectedProduct(selected);
     setIsOpened(false);
@@ -61,18 +59,13 @@ export default function Select({
       >
         {selectedProduct !== null ? selectedProduct.title : "Product"}
       </ProductSelect>
-      <HiddenProductSelectItemsWrapper>
-        {products.map((product: any) => (
-          <input
-            key={product.id}
-            type="radio"
-            name={name}
-            title=""
-            checked={product.id === selectedProductId}
-            onChange={() => handleProductItemSelected(product.id)}
-          />
-        ))}
-      </HiddenProductSelectItemsWrapper>
+      {selectedProduct && (
+        <input
+          type="hidden"
+          name="selectedProduct[]['id']"
+          value={selectedProduct.id}
+        />
+      )}
       <ProductSelectDropdownWrapper open={isOpened}>
         <ProductSelectDropdown>
           <ProductSelectDropdownHeaderWrapper>

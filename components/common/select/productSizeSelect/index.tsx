@@ -66,18 +66,13 @@ export default function Select({
       >
         {selectedSizeValue !== "" ? selectedSize.title : "Size"}
       </SizeSelect>
-      <HiddenSizeSelectItemsWrapper>
-        {sizes.map((size) => (
-          <input
-            key={size.value}
-            type="radio"
-            name={name}
-            title=""
-            checked={size.value === selectedSizeValue}
-            onChange={() => handleItemSelected(size.value)}
-          />
-        ))}
-      </HiddenSizeSelectItemsWrapper>
+      {selectedSize && (
+        <input
+          type="hidden"
+          name="selectedProductCode[]['productCode']"
+          value={selectedSize.value}
+        />
+      )}
       <SizeSelectDropdownWrapper open={isOpened}>
         <SizeSelectDropdown>
           <SizeSelectDropdownHeaderWrapper>
