@@ -13,8 +13,14 @@ const ProductSelectRow = ({ row, products }) => {
           name="productId"
           products={products}
           onChange={(selectedProduct) => {
-            console.log(selectedProduct.productVariations);
-            setSizes([]);
+            const pSizes = [];
+            selectedProduct.productVariations.forEach((variant: any) => {
+              pSizes.push({
+                title: `${variant.productSize[1].parent.title} ${variant.productSize[1].title}`,
+                value: `${variant.productCode}`,
+              });
+            });
+            setSizes(pSizes);
           }}
         />
       </Col>

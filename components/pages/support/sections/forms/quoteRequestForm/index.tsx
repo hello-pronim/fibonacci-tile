@@ -25,28 +25,6 @@ import {
 } from "./styles";
 
 const QuoteRequestForm = ({ products }) => {
-  const sizes = [
-    {
-      title: "Tile: 400x400x15mm",
-      value: "400x400x15",
-    },
-    {
-      title: "Tile: 400x400x17mm",
-      value: "400x400x17",
-    },
-    {
-      title: "Tile: 400x400x20mm",
-      value: "400x400x20",
-    },
-    {
-      title: "Tile: 600x600x20mm",
-      value: "600x600x17",
-    },
-    {
-      title: "Slab: 1440x3500x30mm",
-      value: "1440x3500x30",
-    },
-  ];
   const defaultProduct = { id: 0, size: 0, label: "" };
   const [myProducts, setMyProducts] = useState([defaultProduct]);
 

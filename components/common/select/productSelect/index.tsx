@@ -37,13 +37,13 @@ export default function Select({
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   const handleProductItemSelected = (productId) => {
-    const selected = products.find((prod) => prod.id === productId);
-
+    const selected = products.find((prod: any) => prod.id === productId);
+    // TODO: optimize it to use products field as array for only selected items
     setSelectedProductId(productId);
     if (selected) setSelectedProduct(selected);
     setIsOpened(false);
 
-    if (onChange) onChange(selectedProductId);
+    if (onChange) onChange(selected);
   };
 
   const handleProductSelectDropdownOpen = () => {
