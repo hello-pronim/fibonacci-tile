@@ -87,8 +87,8 @@ const InlineSlider = ({ images }) => {
                     alt="image-1"
                     layout="responsive"
                     objectFit="cover"
-                    width="710"
-                    height="900"
+                    width={image.width}
+                    height={image.height}
                   />
                 </SlideImage>
                 <SlideImageMobile>
@@ -99,8 +99,8 @@ const InlineSlider = ({ images }) => {
                     alt="image-1"
                     layout="responsive"
                     objectFit="cover"
-                    width="303"
-                    height="384.08"
+                    width={image.width}
+                    height={image.height}
                   />
                 </SlideImageMobile>
               </SlideItem>

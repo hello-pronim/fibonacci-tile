@@ -27,6 +27,12 @@ const Wrapper = styled("div")(
         display:'flex',
         ".slick-slide": {
           mr: 16,
+          height: 'auto',
+          maxWidth: 710,
+          maxHeight: 900,
+          div: {
+            height: '100%',
+          },
           [theme.mediaQueries.medium]: {
             mr: 40,
           }
@@ -96,6 +102,7 @@ const LinkWrapper = styled("div")(
 
 const SlideImage = styled("div")(
   css({
+    height: '100%',
     display: "none !important",
     "&: > *": { display: "none !important" },
     [theme.mediaQueries.small]: {
@@ -106,6 +113,7 @@ const SlideImage = styled("div")(
 
 const SlideImageMobile = styled("div")(
   css({
+    height: '100%',
     display: "block !important",
     [theme.mediaQueries.small]: {
       display: "none !important",

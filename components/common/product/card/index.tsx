@@ -58,6 +58,7 @@ const ProductCard = ({
     : product?.collections[0]?.slug;
 
   if (displayMode === "list") {
+
     return (
       <TableRow detailView={detailShown}>
         <DetailsBoxLeft detailView={detailShown}>
@@ -172,8 +173,9 @@ const ProductCard = ({
                         blurDataURL={product.thumbImageList[0].url}
                         src={product.thumbImageList[0].url}
                         alt={product.title}
-                        width="228"
-                        height="228"
+                        width={product.thumbImageList[0].width}
+                        height={product.thumbImageList[0].height}
+                        objectFit="cover"
                       />
                     </a>
                   </Link>
