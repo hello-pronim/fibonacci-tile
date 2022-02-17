@@ -193,7 +193,7 @@ export const HomePageQuery = gql`
               url
             }
             sliderImage: backgroundImage
-              @transform(width: 1920, height: 880, mode: "crop") {
+              @transform(width: 2400, height: 1100, mode: "crop") {
               url
               title
               width
