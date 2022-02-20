@@ -126,7 +126,7 @@ const ProjectsModule = ({ accentText, product }: ProjectModuleTypes) => {
               {project1[0].location}
             </Text>
             <LinkWrapper>
-              <Link href={`/projects/${project1[0].slug}`}>View Project</Link>
+              <Link href={`/in-use/${project1[0].slug}`}>View Project</Link>
               <Arrow type="short" />
             </LinkWrapper>
           </Details>
@@ -168,7 +168,7 @@ const ProjectsModule = ({ accentText, product }: ProjectModuleTypes) => {
               {project2[0].location}
             </Text>
             <LinkWrapper>
-              <Link href={`/projects/${project2[0].slug}`}>View Project</Link>
+              <Link href={`/in-use/${project2[0].slug}`}>View Project</Link>
               <Arrow type="short" />
             </LinkWrapper>
           </Details>
