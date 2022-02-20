@@ -8,7 +8,7 @@ import { LeftCol, RightCol } from "./styles";
 const FeaturedProducts = ({ products }) => {
   const { state, dispatch } = useAppContext();
   return (
-    <Container css={css({ pt: 180, pb: 120 })}>
+    <Container css={css({ pt: 80, pb: 80 })}>
       <LeftCol>
         <Text variant="Display-Medium" altFont>
           Featured Products

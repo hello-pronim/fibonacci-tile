@@ -14,6 +14,10 @@ const RightCol = styled('div')(css({
     gridColumn: '7 / span 5',
     display: 'flex',
     flexDirection: 'column',
+    "& p": {
+        fontSize: "20px",
+        lineHeight: "140%",
+    },
 }))
 
 const ImageLeft = styled('div')(css({
