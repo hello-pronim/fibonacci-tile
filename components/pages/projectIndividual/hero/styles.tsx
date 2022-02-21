@@ -22,6 +22,9 @@ const RightCol = styled("div")(({ bgImage }: { bgImage?: string }) =>
     // backgroundSize: "cover",
     // backgroundPosition: "center center",
     // backgroundImage: bgImage ? `url(${bgImage})` : "",
+    "& div": {
+      height: "100%",
+    },
     "& img": {
       height: "100%",
       objectFit: "cover",

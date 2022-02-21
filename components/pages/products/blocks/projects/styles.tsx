@@ -71,7 +71,7 @@ const ProjectWrapper = styled('div')(() =>
   })
 );
 
-const ImageWrapper = styled('div')(() =>
+const ImageWrapper = styled('a')(() =>
   css({
     gridColumn: '1 / span 2',
     gridRow: 1,
