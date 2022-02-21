@@ -20,7 +20,7 @@ const ProductPage = ({
       <SingleHeroModule product={product} collectionSlug={collectionSlug} />
       <Projects product={product} accentText="Fibonacci In Use" />
       {product?.gallery?.length > 0 && (
-        <InlineSlider images={product.gallery} />
+        <InlineSlider images={product.galleryThumbs} />
       )}
       {specifications?.length > 0 && (
         <TechnicalSpecifications

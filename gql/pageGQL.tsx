@@ -232,6 +232,21 @@ const homeSamplesBlurThumb1 = [
   Math.round(homeSamplesThumb1[0] / 2),
   Math.round(homeSamplesThumb1[1] / 2),
 ];
+const homeProjectThumb = [1460 * 2, 900 * 2];
+const homeProjectBlurThumb = [
+  Math.round(homeProjectThumb[0] / 100),
+  Math.round(homeProjectThumb[1] / 100),
+];
+const homeLeftThumb1 = [560 * 2, 560 * 2];
+const homeLeftBlurThumb1 = [
+  Math.round(homeLeftThumb1[0] / 100),
+  Math.round(homeLeftThumb1[1] / 100),
+];
+const homeRightThumb1 = [790 * 2, 560 * 2];
+const homeRightBlurThumb1 = [
+  Math.round(homeRightThumb1[0] / 100),
+  Math.round(homeRightThumb1[1] / 100),
+];
 
 export const HomePageQuery = gql`
   ${LIST_PRODUCT_FIELDS}
@@ -353,10 +368,10 @@ export const HomePageQuery = gql`
             left1Image {
               url
             }
-            blurThumbLeft1: left1Image @transform(width: 50, height: 50) {
+            blurThumbLeft1: left1Image @transform(width: ${homeLeftBlurThumb1[0]}, height: ${homeLeftBlurThumb1[1]}) {
               url
             }
-            left1ImageThumb: left1Image @transform(width: 1120, height: 1120) {
+            left1ImageThumb: left1Image @transform(width: ${homeLeftThumb1[0]}, height: ${homeLeftThumb1[1]}) {
               url
               title
               width
@@ -367,10 +382,10 @@ export const HomePageQuery = gql`
             left2Image {
               url
             }
-            blurThumbLeft2: left2Image @transform(width: 50, height: 50) {
+            blurThumbLeft2: left2Image @transform(width: ${homeLeftBlurThumb1[0]}, height: ${homeLeftBlurThumb1[1]}) {
               url
             }
-            left2ImageThumb: left2Image @transform(width: 1120, height: 1120) {
+            left2ImageThumb: left2Image @transform(width: ${homeLeftThumb1[0]}, height: ${homeLeftThumb1[1]}) {
               url
               title
               width
@@ -381,11 +396,11 @@ export const HomePageQuery = gql`
             right1Image {
               url
             }
-            blurThumbRight1: right1Image @transform(width: 50, height: 50) {
+            blurThumbRight1: right1Image @transform(width: ${homeRightBlurThumb1[0]}, height: ${homeRightBlurThumb1[1]}) {
               url
             }
             right1ImageThumb: right1Image
-              @transform(width: 1715, height: 1221) {
+              @transform(width: ${homeRightThumb1[0]}, height: ${homeRightThumb1[1]}) {
               url
               title
               width
@@ -396,11 +411,11 @@ export const HomePageQuery = gql`
             right2Image {
               url
             }
-            blurThumbRight2: right1Image @transform(width: 50, height: 50) {
+            blurThumbRight2: right2Image @transform(width: ${homeRightBlurThumb1[0]}, height: ${homeRightBlurThumb1[1]}) {
               url
             }
             right2ImageThumb: right2Image
-              @transform(width: 1715, height: 1221) {
+              @transform(width: ${homeRightThumb1[0]}, height: ${homeRightThumb1[1]}) {
               url
               title
               width
@@ -426,10 +441,10 @@ export const HomePageQuery = gql`
                   width
                   height
                 }
-                blurThumb: heroImage @transform(width: 50, height: 50) {
+                blurThumb: heroImage @transform(width: ${homeProjectBlurThumb[0]}, height: ${homeProjectBlurThumb[1]}) {
                   url
                 }
-                heroImageThumb: heroImage @transform(width: 1460, height: 900) {
+                heroImageThumb: heroImage @transform(width: ${homeProjectThumb[0]}, height: ${homeProjectThumb[1]}) {
                   url
                   width
                   height

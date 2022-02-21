@@ -21,34 +21,56 @@ const DualColumnModule = ({ data }) => {
         <Segment>
           {data?.left1Image?.url && (
             <Image
-              alt={data.left1Image.url}
-              src={data.left1Image.url}
               layout="responsive"
+              placeholder="blur"
+              objectFit="cover"
+              blurDataURL={data.blurThumbLeft1}
+              alt={data.left1Image.title}
+              src={data.left1Image.url}
               width={data.left1Image.width}
               height={data.left1Image.height}
             />
           )}
-          <Text css={css({color: theme.colors.charcoal})} as="h6" variant="Display-Overline">
+          <Text
+            css={css({ color: theme.colors.charcoal })}
+            as="h6"
+            variant="Display-Overline"
+          >
             {data.left1Caption}
           </Text>
-          <Text css={css({color: theme.colors.charcoal})} as="h3" variant="Display-Medium">
+          <Text
+            css={css({ color: theme.colors.charcoal })}
+            as="h3"
+            variant="Display-Medium"
+          >
             {data.left1Text}
           </Text>
         </Segment>
         <Segment>
           {data?.left2Image?.url && (
             <Image
-              alt={data.left2Image.url}
-              src={data.left2Image.url}
               layout="responsive"
+              placeholder="blur"
+              objectFit="cover"
+              blurDataURL={data.blurThumbLeft2}
+              alt={data.left2Image.title}
+              src={data.left2Image.url}
               width={data.left2Image.width}
               height={data.left2Image.height}
             />
           )}
-          <Text css={css({color: theme.colors.charcoal})} as="h6" variant="Display-Overline">
+          <Text
+            css={css({ color: theme.colors.charcoal })}
+            as="h6"
+            variant="Display-Overline"
+          >
             {data.left2Caption}
           </Text>
-          <Text css={css({color: theme.colors.charcoal})} as="h3" variant="Display-Medium">
+          <Text
+            css={css({ color: theme.colors.charcoal })}
+            as="h3"
+            variant="Display-Medium"
+          >
             {data.left2Text}
           </Text>
         </Segment>
@@ -76,18 +98,29 @@ const DualColumnModule = ({ data }) => {
           <ImageWrapper>
             {data?.right1Image?.url && (
               <Image
-                alt={data.right1Image.url}
-                src={data.right1Image.url}
                 layout="responsive"
+                placeholder="blur"
+                objectFit="cover"
+                blurDataURL={data.blurThumbRight1}
+                src={data.right1Image.url}
+                alt={data.right1Image.title}
                 width={data.right1Image.width}
                 height={data.right1Image.height}
               />
             )}
           </ImageWrapper>
-          <Text css={css({color: theme.colors.charcoal})} as="h6" variant="Display-Overline">
+          <Text
+            css={css({ color: theme.colors.charcoal })}
+            as="h6"
+            variant="Display-Overline"
+          >
             {data.right1Caption}
           </Text>
-          <Text css={css({color: theme.colors.charcoal})} as="h3" variant="Display-Medium">
+          <Text
+            css={css({ color: theme.colors.charcoal })}
+            as="h3"
+            variant="Display-Medium"
+          >
             {data.right1Text}
           </Text>
         </Segment>
@@ -95,24 +128,39 @@ const DualColumnModule = ({ data }) => {
           <ImageWrapper>
             {data?.right2Image?.url && (
               <Image
-                alt={data.right2Image.url}
-                src={data.right2Image.url}
                 layout="responsive"
+                placeholder="blur"
+                objectFit="cover"
+                blurDataURL={data.blurThumbRight2}
+                src={data.right2Image.url}
+                alt={data.right2Image.title}
                 width={data.right2Image.width}
                 height={data.right2Image.height}
               />
             )}
           </ImageWrapper>
-          <Text css={css({color: theme.colors.charcoal})} as="h6" variant="Display-Overline">
+          <Text
+            css={css({ color: theme.colors.charcoal })}
+            as="h6"
+            variant="Display-Overline"
+          >
             {data.right2Caption}
           </Text>
-          <Text css={css({color: theme.colors.charcoal})} as="h3" variant="Display-Medium">
+          <Text
+            css={css({ color: theme.colors.charcoal })}
+            as="h3"
+            variant="Display-Medium"
+          >
             {data.right2Text}
           </Text>
         </Segment>
       </RightCol>
       <BottomRow>
-        <Text css={css({color: theme.colors.charcoal})} as="h3" variant="Display-Medium">
+        <Text
+          css={css({ color: theme.colors.charcoal })}
+          as="h3"
+          variant="Display-Medium"
+        >
           LIKE NO OTHER
         </Text>
         <ArrowButton title="Our design process" link="/our-story" />

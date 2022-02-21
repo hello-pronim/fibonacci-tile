@@ -29,6 +29,18 @@ export const ProductsQuery = gql`
   }
 `;
 
+const collecitonHeroImageThumb = [128 * 2, 64 * 2];
+const collecitonHeroImageBlurThumb = [
+  Math.round(collecitonHeroImageThumb[0] / 10),
+  Math.round(collecitonHeroImageThumb[1] / 10),
+];
+
+const projectImageThumb = [710 * 2, 900 * 2];
+const projectImageBlurThumb = [
+  Math.round(projectImageThumb[0] / 100),
+  Math.round(projectImageThumb[1] / 100),
+];
+
 export const ProductQuery = gql`
   query ProductQuery($slug: [String]) {
     entry(slug: $slug) {
@@ -62,6 +74,13 @@ export const ProductQuery = gql`
           ... on collections_Category {
             heroImage {
               url
+            }
+            blurThumb: heroImage @transform(width: ${collecitonHeroImageBlurThumb[0]}, height: ${collecitonHeroImageBlurThumb[1]}) {
+              url
+            }
+            heroImageThumb: heroImage @transform(width: ${collecitonHeroImageThumb[0]}, height: ${collecitonHeroImageThumb[1]}) {
+              url
+              title
               width
               height
             }
@@ -113,9 +132,12 @@ export const ProductQuery = gql`
           url
         }
         gallery {
-          id
-          title
           url
+        }
+        galleryThumbs: gallery @transform(width: ${projectImageThumb[0]}, height:  ${projectImageThumb[1]}) {
+          url
+          blurThumb: url @transform(width: ${projectImageBlurThumb[0]}, height: ${projectImageBlurThumb[1]})
+          title
           width
           height
         }
@@ -127,8 +149,14 @@ export const ProductQuery = gql`
             heroImage {
               url
             }
-            blurThumb: heroImage @transform(width: 50, height: 50) {
+            blurThumb: heroImage @transform(width: ${projectImageBlurThumb[0]}, height: ${projectImageBlurThumb[1]}) {
               url
+            }
+            heroImageThumb: heroImage @transform(width: ${projectImageThumb[0]}, height: ${projectImageThumb[1]}) {
+              url
+              title
+              width
+              height
             }
             location
             projectCompleted
@@ -142,8 +170,14 @@ export const ProductQuery = gql`
             heroImage {
               url
             }
-            blurThumb: heroImage @transform(width: 50, height: 50) {
+            blurThumb: heroImage @transform(width: ${projectImageBlurThumb[0]}, height: ${projectImageBlurThumb[1]}) {
               url
+            }
+            heroImageThumb: heroImage @transform(width: ${projectImageThumb[0]}, height: ${projectImageThumb[1]}) {
+              url
+              title
+              width
+              height
             }
             location
             projectCompleted

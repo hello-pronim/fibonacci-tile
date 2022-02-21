@@ -58,7 +58,6 @@ const ProductCard = ({
     : product?.collections[0]?.slug;
 
   if (displayMode === "list") {
-
     return (
       <TableRow detailView={detailShown}>
         <DetailsBoxLeft detailView={detailShown}>
@@ -236,7 +235,7 @@ const ProductCard = ({
         <GridCardImgContainer>
           {product?.thumbImageList?.[0]?.url && (
             <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
-              <a css={css({ width: compact && "100%" })}>
+              <a css={css({ width: compact && "100%", cursor: "pointer" })}>
                 <div
                   css={css({
                     position: "relative",
