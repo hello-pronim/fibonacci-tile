@@ -35,7 +35,7 @@ const collecitonHeroImageBlurThumb = [
   Math.round(collecitonHeroImageThumb[1] / 10),
 ];
 
-const projectImageThumb = [710 * 2, 890 * 2];
+const projectImageThumb = [710 * 2, 900 * 2];
 const projectImageBlurThumb = [
   Math.round(projectImageThumb[0] / 100),
   Math.round(projectImageThumb[1] / 100),
@@ -132,9 +132,12 @@ export const ProductQuery = gql`
           url
         }
         gallery {
-          id
-          title
           url
+        }
+        galleryThumbs: gallery @transform(width: ${projectImageThumb[0]}, height:  ${projectImageThumb[1]}) {
+          url
+          blurThumb: url @transform(width: ${projectImageBlurThumb[0]}, height: ${projectImageBlurThumb[1]})
+          title
           width
           height
         }

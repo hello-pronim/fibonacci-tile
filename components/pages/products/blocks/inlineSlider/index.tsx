@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
+import Link from "next/link";
+import { css } from "@styled-system/css";
 import Image from "next/image";
 import Text from "@components/common/typography";
 import Slide1 from "public/assets/temp/gallery-1.jpg";
 import SlideMobile from "public/assets/temp/gallery-mobile.jpg";
 import AccentText, { AccentTextMobile } from "@components/common/accentText";
 import AddIcon from "@components/icons/add";
-import Link from "next/link";
 import BoldArrow from "@components/common/icons/boldArrow";
 import {
   Container,
@@ -20,8 +21,6 @@ import {
   SlideImage,
   SlideImageMobile,
 } from "./styles";
-import { css } from "@styled-system/css";
-import theme from "styles/theme";
 
 const InlineSlider = ({ images }) => {
   const slider = React.useRef<Slider>(null);
@@ -81,24 +80,24 @@ const InlineSlider = ({ images }) => {
               <SlideItem key={`slide-${index}`}>
                 <SlideImage>
                   <Image
-                    placeholder="blur"
-                    blurDataURL={image.url}
-                    src={image.url}
-                    alt="image-1"
                     layout="responsive"
                     objectFit="cover"
+                    placeholder="blur"
+                    blurDataURL={image.blurThumb}
+                    src={image.url}
+                    alt={image.title}
                     width={image.width}
                     height={image.height}
                   />
                 </SlideImage>
                 <SlideImageMobile>
                   <Image
-                    placeholder="blur"
-                    blurDataURL={image.url}
-                    src={image.url}
-                    alt="image-1"
                     layout="responsive"
                     objectFit="cover"
+                    placeholder="blur"
+                    blurDataURL={image.blurThumb}
+                    src={image.url}
+                    alt={image.title}
                     width={image.width}
                     height={image.height}
                   />
