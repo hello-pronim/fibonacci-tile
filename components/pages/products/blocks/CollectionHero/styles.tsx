@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 
 const CollectionHeroContainer = styled("div")(() =>
   css({
-    pt: 80,
+    pt: 30,
     display: "flex",
     position: "relative",
     width: "100%",

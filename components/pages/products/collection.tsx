@@ -5,9 +5,15 @@ import CollectionHero from "./blocks/CollectionHero";
 import CollectionProducts from "./blocks/CollectionProducts";
 import CollectionProjects from "./blocks/CollectionProjects";
 import InlineSlider from "./blocks/inlineSlider";
+import BreadCrumb from "@components/common/breadcrumb";
 
 const CollectionPage = ({ collection, products, notifications }) => {
   const [scrollPosition, setPosition] = useState(0);
+  const crumbs = [
+    { path: "/terrazzo", name: "Our Products" },
+    { path: "/terrazzo/collections", name: "Collections" },
+    { name: collection.title },
+  ];
 
   useLayoutEffect(() => {
     function updatePosition() {
@@ -22,13 +28,23 @@ const CollectionPage = ({ collection, products, notifications }) => {
     <>
       <Header mode="dark" notifications={notifications} />
 
+      <div
+        css={css({
+          maxWidth: "2560px",
+          pl: "27px",
+          pt: 100,
+          pb: 0,
+        })}
+      >
+        <BreadCrumb crumbs={crumbs} pt={0} />
+      </div>
       {scrollPosition < 1125 ? (
         <CollectionHero
           collection={collection}
           position={"fixed"}
           width={"21.6%"}
           zIndex={999}
-          top={80}
+          top={168}
         />
       ) : (
         <CollectionHero
