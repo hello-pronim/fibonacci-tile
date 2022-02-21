@@ -36,6 +36,7 @@ const BodyContent = ({ pageComponents }) => {
                     title: component.headingLeft,
                     content: component.textRight,
                     thumbnail: component.imageRight,
+                    blurThumb: component.blurThumb,
                   }}
                 />
               );

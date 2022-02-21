@@ -1,3 +1,4 @@
+import React from "react";
 import Image from "next/image";
 import moment from "moment";
 import css from "@styled-system/css";
@@ -12,7 +13,6 @@ import {
   DetailsWrapper,
   Detail,
 } from "./styles";
-import React from "react";
 import theme from "@styles/theme";
 
 const Hero = ({ project }) => {
@@ -21,7 +21,11 @@ const Hero = ({ project }) => {
       <LeftCol>
         <ContentWrapper>
           {project.location && (
-            <Text Base="h6" variant="Body-Large" css={css({color:theme.colors.taupe})}>
+            <Text
+              Base="h6"
+              variant="Body-Large"
+              css={css({ color: theme.colors.taupe })}
+            >
               {project.location}
             </Text>
           )}
@@ -91,23 +95,23 @@ const Hero = ({ project }) => {
               </Text>
             </Detail>
           )}
-          {project.projectCompleted && 
-          <Detail>
-            <Text Base="h6" variant="Display-Overline">
-              PROJECT COMPLETED
-            </Text>
-            <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
-              {moment(project.projectCompleted).format("YYYY")}
-            </Text>
-          </Detail>
-          }
-          {project?.featuredProducts?.length > 0 &&
-          <Detail>
-            <Text Base="h6" variant="Display-Overline">
-              FEATURED PRODUCTS
-            </Text>
-            <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
-              {project?.featuredProducts.map((item: any, index: number) => {
+          {project.projectCompleted && (
+            <Detail>
+              <Text Base="h6" variant="Display-Overline">
+                PROJECT COMPLETED
+              </Text>
+              <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
+                {moment(project.projectCompleted).format("YYYY")}
+              </Text>
+            </Detail>
+          )}
+          {project?.featuredProducts?.length > 0 && (
+            <Detail>
+              <Text Base="h6" variant="Display-Overline">
+                FEATURED PRODUCTS
+              </Text>
+              <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
+                {project?.featuredProducts.map((item: any, index: number) => {
                   return (
                     <React.Fragment key={`featured-product-${index}`}>
                       {item.title}
@@ -115,25 +119,33 @@ const Hero = ({ project }) => {
                     </React.Fragment>
                   );
                 })}
-            </Text>
-          </Detail>
-          }
-          {project.photographer &&
-          <Detail>
-            <Text Base="h6" variant="Display-Overline">
-              PHOTOGRAPHER
-            </Text>
-            <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
-              {project.photographer}
-            </Text>
-          </Detail>
-}
+              </Text>
+            </Detail>
+          )}
+          {project.photographer && (
+            <Detail>
+              <Text Base="h6" variant="Display-Overline">
+                PHOTOGRAPHER
+              </Text>
+              <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
+                {project.photographer}
+              </Text>
+            </Detail>
+          )}
         </DetailsWrapper>
       </LeftCol>
-      {project?.heroImage?.[0]?.url && (
-        <RightCol bgImage={project.heroImage[0].url}>
-        </RightCol>
-      )}
+      <RightCol>
+        {project?.heroImageThumb?.[0]?.url && (
+          <Image
+            placeholder="blur"
+            blurDataURL={project.blurThumb[0].url}
+            src={project.heroImageThumb[0].url}
+            alt={project.heroImageThumb[0].title}
+            width={project.heroImageThumb[0].width}
+            height={project.heroImageThumb[0].height}
+          />
+        )}
+      </RightCol>
     </Container>
   );
 };

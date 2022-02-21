@@ -58,6 +58,9 @@ export const sampleCta1Query = gql`
               width(width: 792)
               height(height: 465)
             }
+            blurThumb: samplesImage @transform(width: 50, height: 50) {
+              url
+            }
             samplesButtonLink {
               slug
             }
@@ -85,6 +88,9 @@ export const sampleCta2Query = gql`
               url
               width(width: 792)
               height(height: 465)
+            }
+            blurThumb: samplesImage @transform(width: 50, height: 50) {
+              url
             }
           }
         }
@@ -114,6 +120,12 @@ export const customSolutionsCtaQuery = gql`
             customSolutionsText
             customImage {
               url
+            }
+            blurThumb: customImage @transform(width: 50, height: 50) {
+              url
+              title
+              width
+              height
             }
             customImageThumb: customImage @transform(width: 960, height: 680) {
               url

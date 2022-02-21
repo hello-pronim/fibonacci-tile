@@ -20,7 +20,7 @@ const TwoColsImageBlock = ({
         <ImageLeft>
           <Image
             placeholder="blur"
-            blurDataURL={component.image1Thumb[0].url}
+            blurDataURL={component.blurThumb1[0].url}
             alt={component.image1Thumb[0].title}
             src={component.image1Thumb[0].url}
             width={component.image1Thumb[0].width}
@@ -32,7 +32,7 @@ const TwoColsImageBlock = ({
         <ImageRight>
           <Image
             placeholder="blur"
-            blurDataURL={component.image2Thumb[0].url}
+            blurDataURL={component.blurThumb2[0].url}
             alt={component.image2Thumb[0].title}
             src={component.image2Thumb[0].url}
             width={component.image2Thumb[0].width}

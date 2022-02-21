@@ -35,7 +35,7 @@ const HeroBlock = ({ component, backgroundColor, pt = 60, pb = 60 }) => {
           <Image
             layout="responsive"
             placeholder="blur"
-            blurDataURL={component.imageThumb[0].url}
+            blurDataURL={component.blurThumb[0].url}
             alt={component.imageThumb[0].title}
             src={component.imageThumb[0].url}
             width={component.imageThumb[0].width}

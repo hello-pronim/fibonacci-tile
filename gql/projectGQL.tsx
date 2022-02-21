@@ -18,6 +18,9 @@ export const ProjectsQuery: any = gql`
           height
           width
         }
+        blurThumb: heroImage @transform(width: 50, height: 50) {
+          url
+        }
         heroImageThumb: heroImage @transform(handle: "projectThumbnail") {
           id
           url
@@ -55,7 +58,10 @@ export const ProjectQuery: any = gql`
           height
           width
         }
-        heroImageThumb: heroImage @transform(handle: "projectThumbnail") {
+        blurThumb: heroImage @transform(width: 50, height: 50) {
+          url
+        }
+        heroImageThumb: heroImage @transform(width: 1420, height: 1658) {
           id
           url
           title
@@ -78,6 +84,9 @@ export const ProjectQuery: any = gql`
               id
               url
             }
+            blurThumb: thumbImage @transform(width: 50, height: 50) {
+              url
+            }
             thumbImageList: thumbImage @transform(handle: "productThumbnail") {
               id
               url
@@ -96,8 +105,10 @@ export const ProjectQuery: any = gql`
             image {
               url
             }
-            imageThumb: image
-              @transform(width: 1460, height: 820, mode: "crop") {
+            blurThumb: image @transform(width: 50, height: 50) {
+              url
+            }
+            imageThumb: image @transform(width: 2920, height: 1640) {
               url
               title
               width
@@ -109,8 +120,10 @@ export const ProjectQuery: any = gql`
             image {
               url
             }
-            imageThumb: image
-              @transform(width: 1460, height: 820, mode: "crop") {
+            blurThumb: image @transform(width: 50, height: 50) {
+              url
+            }
+            imageThumb: image @transform(width: 2920, height: 1640) {
               url
               title
               width
@@ -130,8 +143,10 @@ export const ProjectQuery: any = gql`
               width
               height
             }
-            image1Thumb: image1
-              @transform(width: 710, height: 820, mode: "crop") {
+            blurThumb1: image1 @transform(width: 50, height: 50) {
+              url
+            }
+            image1Thumb: image1 @transform(width: 1420, height: 1640) {
               url
               title
               width
@@ -141,8 +156,10 @@ export const ProjectQuery: any = gql`
             image2 {
               url
             }
-            image2Thumb: image2
-              @transform(width: 710, height: 820, mode: "crop") {
+            blurThumb2: image2 @transform(width: 50, height: 50) {
+              url
+            }
+            image2Thumb: image2 @transform(width: 1420, height: 1640) {
               url
               title
               width
@@ -155,8 +172,10 @@ export const ProjectQuery: any = gql`
             image {
               url
             }
-            imageThumb: image
-              @transform(width: 710, height: 820, mode: "crop") {
+            blurThumb: image @transform(width: 50, height: 50) {
+              url
+            }
+            imageThumb: image @transform(width: 1420, height: 1640) {
               url
               title
               width

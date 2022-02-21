@@ -67,6 +67,9 @@ export const NewsItemQuery: any = gql`
               id
               url
             }
+            blurThumb: image @transform(width: 50, height: 50) {
+              url
+            }
             imageThumb: image
               @transform(width: 1920, height: 1080, mode: "crop") {
               url
@@ -85,6 +88,9 @@ export const NewsItemQuery: any = gql`
             image1 {
               url
             }
+            blurThumb1: image1 @transform(width: 50, height: 50) {
+              url
+            }
             image1Thumb: image1
               @transform(width: 710, height: 820, mode: "crop") {
               url
@@ -93,6 +99,9 @@ export const NewsItemQuery: any = gql`
               height
             }
             image2 {
+              url
+            }
+            blurThumb2: image2 @transform(width: 50, height: 50) {
               url
             }
             image2Thumb: image2
@@ -111,8 +120,10 @@ export const NewsItemQuery: any = gql`
             image {
               url
             }
-            imageThumb: image
-              @transform(width: 1460, height: 820, mode: "crop") {
+            blurThumb: image @transform(width: 50, height: 50) {
+              url
+            }
+            imageThumb: image @transform(width: 1460, height: 820) {
               url
               title
               width

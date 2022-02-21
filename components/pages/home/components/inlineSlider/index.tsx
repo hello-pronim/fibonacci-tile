@@ -68,7 +68,7 @@ const InlineSlider = ({ projects }) => {
                 <SlideImage>
                   <Image
                     placeholder="blur"
-                    blurDataURL={project.heroImageThumb[0].url}
+                    blurDataURL={project.blurThumb[0].url}
                     src={project.heroImageThumb[0].url}
                     alt={project.heroImageThumb[0].title}
                     layout="responsive"

@@ -15,7 +15,7 @@ const CustomSolutionsCTAPanel = ({ data }) => {
         <CTAImgBox>
           <Image
             placeholder="blur"
-            blurDataURL={data.customImageThumb[0].url}
+            blurDataURL={data.blurThumb[0].url}
             src={data.customImageThumb[0].url}
             width={data.customImageThumb[0].width}
             height={data.customImageThumb[0].height}

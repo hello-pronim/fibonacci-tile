@@ -169,7 +169,7 @@ const ProductCard = ({
                     <a>
                       <Image
                         placeholder="blur"
-                        blurDataURL={product.thumbImageList[0].url}
+                        blurDataURL={product.blurThumb[0].url}
                         src={product.thumbImageList[0].url}
                         alt={product.title}
                         width="228"
@@ -234,26 +234,26 @@ const ProductCard = ({
         <GridCardImgContainer>
           {product?.thumbImageList?.[0]?.url && (
             <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
-              <a css={css({ width: compact && '100%' })}>
+              <a css={css({ width: compact && "100%" })}>
                 <div
                   css={css({
-                    position: 'relative',
+                    position: "relative",
                     width: compact ? "100%" : 228,
                     height: compact ? "auto" : 228,
                     "&::after": compact && {
-                      width: '100%',
+                      width: "100%",
                       content: '" "',
                       display: "block",
                       paddingBottom: "100%",
-                      position: 'absolute',
-                      bottom: '0',
+                      position: "absolute",
+                      bottom: "0",
                     },
                   })}
                 >
                   <Image
                     layout="responsive"
                     placeholder="blur"
-                    blurDataURL={product.thumbImageList[0].url}
+                    blurDataURL={product.blurThumb[0].url}
                     src={product.thumbImageList[0].url}
                     alt={product.title}
                     width="228"

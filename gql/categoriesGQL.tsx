@@ -53,6 +53,9 @@ export const CategoryQuery: any = gql`
             heroImage {
               url
             }
+            blurThumb: heroImage @transform(width: 50, height: 50) {
+              url
+            }
             heroImageThumb: heroImage @transform(handle: "projectThumbnail") {
               id
               url
@@ -68,6 +71,9 @@ export const CategoryQuery: any = gql`
           url
           width
           height
+        }
+        blurThumb: heroImage @transform(width: 50, height: 50) {
+          url
         }
         gallery {
           id

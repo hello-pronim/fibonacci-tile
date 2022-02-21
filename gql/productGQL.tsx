@@ -98,6 +98,9 @@ export const ProductQuery = gql`
           id
           url
         }
+        blurThumb: thumbImage @transform(width: 50, height: 50) {
+          url
+        }
         thumbImageSingle: thumbImage
           @transform(handle: "productDetailThumbnail") {
           id
@@ -122,6 +125,9 @@ export const ProductQuery = gql`
             heroImage {
               url
             }
+            blurThumb: heroImage @transform(width: 50, height: 50) {
+              url
+            }
             location
             projectCompleted
           }
@@ -132,6 +138,9 @@ export const ProductQuery = gql`
           title
           ... on projects_projectDetails_Entry {
             heroImage {
+              url
+            }
+            blurThumb: heroImage @transform(width: 50, height: 50) {
               url
             }
             location

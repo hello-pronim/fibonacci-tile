@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import QuoteModule from "@components/modules/quote";
 import SupportModule from "@components/modules/support";
 import SocialModule from "@components/modules/social";
@@ -7,10 +7,6 @@ import Hero from "@components/pages/home/components/hero";
 import ProductCarousel from "./components/productCarousel";
 import InlineSlider from "./components/inlineSlider";
 import CTAPanel from "../products/blocks/CTAPanel";
-import SupportIcon from "public/assets/icons/support-icon.svg";
-import SamplesIcon from "public/assets/icons/sample-icon.svg";
-import QuoteIcon from "public/assets/icons/quote-icon.svg";
-import EnquiryIcon from "public/assets/icons/enquiry-icon.svg";
 import { supports } from "../support/constants";
 
 const Homepage = ({ pageData }) => {
@@ -25,7 +21,7 @@ const Homepage = ({ pageData }) => {
       banners.push(component);
     }
   });
-  
+
   return (
     <>
       {banners.length > 0 && <Hero banners={banners} />}
@@ -45,6 +41,7 @@ const Homepage = ({ pageData }) => {
                   key={`component-${component.id}`}
                   data={{
                     samplesImage: component.image,
+                    blurThumb: component.blurThumb,
                     samplesHeading: component.heading,
                     samplesIntro: component.intro,
                     samplesButton: component.button,
