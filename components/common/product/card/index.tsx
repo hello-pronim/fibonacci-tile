@@ -232,7 +232,7 @@ const ProductCard = ({
   return (
     <Wrapper>
       <Container compact={compact}>
-        <GridCardImgContainer>
+        <GridCardImgContainer compact={compact}>
           {product?.thumbImageList?.[0]?.url && (
             <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
               <a css={css({ width: compact && "100%", cursor: "pointer" })}>
