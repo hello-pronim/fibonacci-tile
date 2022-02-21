@@ -24,7 +24,7 @@ const LinkWrapper = styled("div")(
     },
     "&:hover": {
       svg: {
-        transform: "translateX(6px)",
+        transform: "rotate(-180deg) translateX(6px)",
       },
     },
     a: {
