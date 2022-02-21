@@ -23,7 +23,7 @@ const Container = styled("div")(({ compact }: { compact: boolean }) =>
     textAlign: "center",
     transition: "background-color ease 0.3s",
     "&:hover": {
-      backgroundColor: !compact && theme.colors.cold,
+      backgroundColor: !compact && theme.colors.white,
     },
   })
 );
