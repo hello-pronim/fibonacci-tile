@@ -9,7 +9,7 @@ interface PrivacyPageProps {
   notifications: Array<any>;
 }
 
-const Privacy: NextPage<PrivacyPageProps> = ({ pageData, notifications }) => {
+const Terms: NextPage<PrivacyPageProps> = ({ pageData, notifications }) => {
   return (
     <>
       <Head>
@@ -28,4 +28,4 @@ export const getStaticProps: GetStaticProps = withGlobalData(async () => {
   };
 });
 
-export default Privacy;
+export default Terms;
