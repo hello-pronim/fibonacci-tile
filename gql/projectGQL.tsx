@@ -1,5 +1,11 @@
 import { gql } from "@apollo/client";
 
+const projectListThumb = [800 * 2, 932 * 2];
+const projectListBlurThumb = [
+  Math.round(projectListThumb[0] / 100),
+  Math.round(projectListThumb[1] / 100),
+];
+
 export const ProjectsQuery: any = gql`
   query ProjectsQuery {
     entries(section: "projects", orderBy: "postDate DESC") {
@@ -18,10 +24,10 @@ export const ProjectsQuery: any = gql`
           height
           width
         }
-        blurThumb: heroImage @transform(width: 50, height: 50) {
+        blurThumb: heroImage @transform(width: ${projectListBlurThumb[0]}, height: ${projectListBlurThumb[1]}) {
           url
         }
-        heroImageThumb: heroImage @transform(handle: "projectThumbnail") {
+        heroImageThumb: heroImage @transform(width: ${projectListThumb[0]}, height: ${projectListThumb[1]}) {
           id
           url
           width
@@ -32,6 +38,24 @@ export const ProjectsQuery: any = gql`
     }
   }
 `;
+
+const projectHeroThumb = [961 * 2, 1097 * 2];
+const projectHeroBlurThumb = [
+  Math.round(projectHeroThumb[0] / 100),
+  Math.round(projectHeroThumb[1] / 100),
+];
+
+const projectHeroBlockThumb = [1460 * 2, 820 * 2];
+const projectHeroBlockBlurThumb = [
+  Math.round(projectHeroBlockThumb[0] / 100),
+  Math.round(projectHeroBlockThumb[1] / 100),
+];
+
+const projectTwoImageBlockThumb = [710 * 2, 820 * 2];
+const projectTwoImageBlockBlurThumb = [
+  Math.round(projectTwoImageBlockThumb[0] / 100),
+  Math.round(projectTwoImageBlockThumb[1] / 100),
+];
 
 export const ProjectQuery: any = gql`
   query ProjectQuery($slug: [String]) {
@@ -58,10 +82,10 @@ export const ProjectQuery: any = gql`
           height
           width
         }
-        blurThumb: heroImage @transform(width: 50, height: 50) {
+        blurThumb: heroImage @transform(width: ${projectHeroBlurThumb[0]}, height: ${projectHeroBlurThumb[1]}) {
           url
         }
-        heroImageThumb: heroImage @transform(width: 1420, height: 1658) {
+        heroImageThumb: heroImage @transform(width: ${projectHeroThumb[0]}, height: ${projectHeroThumb[1]}) {
           id
           url
           title
@@ -105,10 +129,10 @@ export const ProjectQuery: any = gql`
             image {
               url
             }
-            blurThumb: image @transform(width: 50, height: 50) {
+            blurThumb: image @transform(width: ${projectHeroBlockBlurThumb[0]}, height: ${projectHeroBlockBlurThumb[1]}) {
               url
             }
-            imageThumb: image @transform(width: 2920, height: 1640) {
+            imageThumb: image @transform(width: ${projectHeroBlockThumb[0]}, height: ${projectHeroBlockThumb[1]}) {
               url
               title
               width
@@ -120,10 +144,10 @@ export const ProjectQuery: any = gql`
             image {
               url
             }
-            blurThumb: image @transform(width: 50, height: 50) {
+            blurThumb: image @transform(width: ${projectHeroBlockBlurThumb[0]}, height: ${projectHeroBlockBlurThumb[1]}) {
               url
             }
-            imageThumb: image @transform(width: 2920, height: 1640) {
+            imageThumb: image @transform(width: ${projectHeroBlockThumb[0]}, height: ${projectHeroBlockThumb[1]}) {
               url
               title
               width
@@ -143,10 +167,10 @@ export const ProjectQuery: any = gql`
               width
               height
             }
-            blurThumb1: image1 @transform(width: 50, height: 50) {
+            blurThumb1: image1 @transform(width: ${projectTwoImageBlockBlurThumb[0]}, height: ${projectTwoImageBlockBlurThumb[1]}) {
               url
             }
-            image1Thumb: image1 @transform(width: 1420, height: 1640) {
+            image1Thumb: image1 @transform(width: ${projectTwoImageBlockThumb[0]}, height: ${projectTwoImageBlockThumb[1]}) {
               url
               title
               width
@@ -156,10 +180,10 @@ export const ProjectQuery: any = gql`
             image2 {
               url
             }
-            blurThumb2: image2 @transform(width: 50, height: 50) {
+            blurThumb2: image2 @transform(width: ${projectTwoImageBlockBlurThumb[0]}, height: ${projectTwoImageBlockBlurThumb[1]}) {
               url
             }
-            image2Thumb: image2 @transform(width: 1420, height: 1640) {
+            image2Thumb: image2 @transform(width: ${projectTwoImageBlockThumb[0]}, height: ${projectTwoImageBlockThumb[1]}) {
               url
               title
               width
@@ -172,10 +196,10 @@ export const ProjectQuery: any = gql`
             image {
               url
             }
-            blurThumb: image @transform(width: 50, height: 50) {
+            blurThumb: image @transform(width: ${projectTwoImageBlockBlurThumb[0]}, height: ${projectTwoImageBlockBlurThumb[1]}) {
               url
             }
-            imageThumb: image @transform(width: 1420, height: 1640) {
+            imageThumb: image @transform(width: ${projectTwoImageBlockThumb[0]}, height: ${projectTwoImageBlockThumb[1]}) {
               url
               title
               width
