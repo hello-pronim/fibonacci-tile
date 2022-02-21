@@ -102,13 +102,13 @@ const ProjectsModule = ({ accentText, product }: ProjectModuleTypes) => {
             },
           }}
         >
-          {project1[0].heroImage?.[0]?.url && (
+          {project1[0].heroImageThumb?.[0]?.url && (
             <ImageWrapper href={`/in-use/${project1[0].slug}`}>
               <Image
                 placeholder="blur"
-                blurDataURL={project1[0].heroImage[0].url}
-                src={project1[0].heroImage[0].url}
-                alt="image-1"
+                blurDataURL={project1[0].blurThumb[0].url}
+                src={project1[0].heroImageThumb[0].url}
+                alt={project1[0].heroImageThumb[0].title}
                 layout="responsive"
                 width="710"
                 height="900"
@@ -144,13 +144,13 @@ const ProjectsModule = ({ accentText, product }: ProjectModuleTypes) => {
             },
           }}
         >
-          {project2[0].heroImage?.[0]?.url && (
+          {project2[0].heroImageThumb?.[0]?.url && (
             <ImageWrapper href={`/in-use/${project2[0].slug}`}>
               <Image
                 placeholder="blur"
-                blurDataURL={project2[0].heroImage[0].url}
-                src={project2[0].heroImage[0].url}
-                alt="image-1"
+                blurDataURL={project2[0].blurThumb[0].url}
+                src={project2[0].heroImageThumb[0].url}
+                alt={project2[0].heroImageThumb[0].title}
                 layout="responsive"
                 width="710"
                 height="900"

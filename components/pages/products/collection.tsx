@@ -27,7 +27,6 @@ const CollectionPage = ({ collection, products, notifications }) => {
   return (
     <>
       <Header mode="dark" notifications={notifications} />
-
       <div
         css={css({
           maxWidth: "2560px",

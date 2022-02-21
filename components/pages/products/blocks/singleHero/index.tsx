@@ -95,12 +95,12 @@ const SingleHeroModule = ({ product, collectionSlug }) => {
               alignItems: "flex-end",
             })}
           >
-            {activeCollection.heroImage?.[0]?.url && (
+            {activeCollection.heroImageThumb?.[0]?.url && (
               <Image
                 placeholder="blur"
-                blurDataURL={activeCollection.heroImage[0].url}
+                blurDataURL={activeCollection.blurThumb[0].url}
                 alt={activeCollection.title}
-                src={activeCollection.heroImage[0].url}
+                src={activeCollection.heroImageThumb[0].url}
                 width={136}
                 height={72}
               />
