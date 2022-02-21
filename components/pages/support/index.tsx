@@ -13,7 +13,7 @@ const Support = ({ pageData }) => {
 
   return (
     <>
-      <Hero pageTitle="Product Support" />
+      <Hero pageTitle="Product support" />
       <HeroOverlayWrapper>
         <SupportModule activePath={asPath} supports={supports} />
       </HeroOverlayWrapper>
@@ -30,6 +30,7 @@ const Support = ({ pageData }) => {
                     content={{
                       sectionTitle: "Product Guide",
                       image: component?.imageLeftThumb?.[0],
+                      blurThumb: component?.blurThumb?.[0],
                       entries: [
                         {
                           title: component.rightHeading,
@@ -87,6 +88,7 @@ const Support = ({ pageData }) => {
                     content={{
                       sectionTitle: "Care and Maintenance",
                       image: component?.imageLeftThumb?.[0],
+                      blurThumb: component?.blurThumb?.[0],
                       entries: [
                         {
                           title: component.rightHeading,

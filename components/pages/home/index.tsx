@@ -7,6 +7,7 @@ import Hero from "@components/pages/home/components/hero";
 import ProductCarousel from "./components/productCarousel";
 import InlineSlider from "./components/inlineSlider";
 import CTAPanel from "../products/blocks/CTAPanel";
+import SectionTitle from "../products/blocks/SectionTitle";
 import { supports } from "../support/constants";
 
 const Homepage = ({ pageData }) => {
@@ -25,6 +26,10 @@ const Homepage = ({ pageData }) => {
   return (
     <>
       {banners.length > 0 && <Hero banners={banners} />}
+      <SectionTitle
+        show={false}
+        title="Terrazzo tiles and slabs for residential, retail, hospitality, corporate and commercial projects."
+      />
       {pageData?.homePageComponents?.length > 0 &&
         pageData.homePageComponents.map((component: any) => {
           switch (component.typeHandle) {

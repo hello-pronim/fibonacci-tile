@@ -79,6 +79,8 @@ export const CategoryQuery: any = gql`
           id
           title
           url
+          width
+          height
         }
       }
     }

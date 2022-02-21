@@ -106,11 +106,10 @@ const SingleHeroModule = ({ product, collectionSlug }) => {
               />
             )}
             <div>
-              <Text variant="Display-Overline">EXPLORE</Text>
+              <Text variant="Display-Overline">EXPLORE COLLECTION</Text>
               <LinkWrapper>
                 <Link href={`/terrazzo/${activeCollection.slug}`}>
-                  {/* {activeCollection.title} */}
-                  COLLECTION
+                  {activeCollection?.title}
                 </Link>
                 <Arrow type="short" />
               </LinkWrapper>

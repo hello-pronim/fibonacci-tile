@@ -1,7 +1,7 @@
 import Image from "next/image";
 import css from "@styled-system/css";
-import { ImageLeft, ImageRight } from "./styles";
 import Container from "@components/common/layout/container";
+import { ImageLeft, ImageRight } from "./styles";
 
 const TwoColsImageBlock = ({
   component,
@@ -21,6 +21,8 @@ const TwoColsImageBlock = ({
           <Image
             placeholder="blur"
             blurDataURL={component.blurThumb1[0].url}
+            objectFit="cover"
+            objectPosition="100% 0"
             alt={component.image1Thumb[0].title}
             src={component.image1Thumb[0].url}
             width={component.image1Thumb[0].width}
@@ -33,6 +35,8 @@ const TwoColsImageBlock = ({
           <Image
             placeholder="blur"
             blurDataURL={component.blurThumb2[0].url}
+            objectFit="cover"
+            objectPosition="100% 0"
             alt={component.image2Thumb[0].title}
             src={component.image2Thumb[0].url}
             width={component.image2Thumb[0].width}

@@ -1,6 +1,24 @@
 import { gql } from "@apollo/client";
 import { LIST_PRODUCT_FIELDS } from "./fragments";
 
+const orderSamplesThumb = [710 * 2, 710 * 2];
+const orderSamplesBlurThumb = [
+  Math.round(orderSamplesThumb[0] / 100),
+  Math.round(orderSamplesThumb[1] / 100),
+];
+
+const installationBlockThumb = [1065 * 2, 1216 * 2];
+const installationBlockBlurThumb = [
+  Math.round(installationBlockThumb[0] / 100),
+  Math.round(installationBlockThumb[1] / 100),
+];
+
+const sliderImageThumb = [1540 * 2, 705 * 2];
+const sliderImageBlurThumb = [
+  Math.round(sliderImageThumb[0] / 100),
+  Math.round(sliderImageThumb[1] / 100),
+];
+
 export const PageQuery = gql`
   query PageQuery($slug: [String]) {
     entry(slug: $slug) {
@@ -45,8 +63,10 @@ export const PageQuery = gql`
             image {
               url
             }
-            imageThumb: image
-              @transform(width: 710, height: 710, mode: "crop") {
+            blurThumb: image @transform(width: ${orderSamplesBlurThumb[0]}, height:${orderSamplesBlurThumb[1]}) {
+              url
+            }
+            imageThumb: image @transform(width: ${orderSamplesThumb[0]}, height: ${orderSamplesThumb[1]}) {
               url
               title
               width
@@ -70,8 +90,10 @@ export const PageQuery = gql`
             imageLeft {
               url
             }
-            imageLeftThumb: imageLeft
-              @transform(width: 710, height: 710, mode: "crop") {
+            blurThumb: image @transform(width: ${orderSamplesBlurThumb[0]}, height:${orderSamplesBlurThumb[1]}) {
+              url
+            }
+            imageLeftThumb: imageLeft @transform(width: ${orderSamplesThumb[0]}, height: ${orderSamplesThumb[1]}) {
               url
               title
               width
@@ -103,8 +125,10 @@ export const PageQuery = gql`
             imageRight {
               url
             }
-            imageRightThumb: imageRight
-              @transform(width: 1065, height: 1216, mode: "crop") {
+            blurThumb: imageRight @transform(width: ${installationBlockBlurThumb[0]}, height: ${installationBlockBlurThumb[1]}) {
+              url
+            }
+            imageRightThumb: imageRight @transform(width: ${installationBlockThumb[0]}, height: ${installationBlockThumb[1]}) {
               url
               title
               width
@@ -124,8 +148,10 @@ export const PageQuery = gql`
             imageLeft {
               url
             }
-            imageLeftThumb: imageLeft
-              @transform(width: 710, height: 710, mode: "crop") {
+            blurThumb: imageLeft @transform(width: ${orderSamplesBlurThumb[0]}, height: ${orderSamplesBlurThumb[1]}) {
+              url
+            }
+            imageLeftThumb: imageLeft @transform(width: ${orderSamplesThumb[0]}, height: ${orderSamplesThumb[1]}) {
               url
               title
               width
@@ -151,6 +177,12 @@ export const PageQuery = gql`
         productsSideText
         bannerImage {
           url
+        }
+        blurThumb: bannerImage @transform(width: ${sliderImageBlurThumb[0]}, height: ${sliderImageBlurThumb[1]}) {
+          url
+        }
+        bannerImageThumb: bannerImage @transform(width: ${sliderImageThumb[0]}, height: ${sliderImageThumb[1]}) {
+          url
           width
           height
           title
@@ -165,6 +197,12 @@ export const PageQuery = gql`
         bannerSubline
         productsSideText
         bannerImage {
+          url
+        }
+        blurThumb: bannerImage @transform(width: ${sliderImageBlurThumb[0]}, height: ${sliderImageBlurThumb[1]}) {
+          url
+        }
+        bannerImageThumb: bannerImage @transform(width: ${sliderImageThumb[0]}, height: ${sliderImageThumb[1]}) {
           url
           width
           height
@@ -192,7 +230,7 @@ export const HomePageQuery = gql`
             backgroundImage {
               url
             }
-            sliderImage: backgroundImage @transform(width: 1920, height: 880) {
+            sliderImage: backgroundImage @transform(width: 2400, height: 1100) {
               url
               title
               width

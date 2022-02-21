@@ -18,8 +18,6 @@ const Support: NextPage<SupportPageProps> = ({ pageData, notifications }) => {
     <div css={css({ position: "relative" })}>
       <Head>
         <title>Support | Fibonacci</title>
-        <meta name="description" content="Support | Fibonacci" />
-        <meta name="robots" content="index, follow" />
       </Head>
       <Header mode="light" position="absolute" notifications={notifications} />
       <SupportPage pageData={pageData} />

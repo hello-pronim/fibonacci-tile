@@ -116,6 +116,8 @@ export const ProductQuery = gql`
           id
           title
           url
+          width
+          height
         }
         project1 {
           id

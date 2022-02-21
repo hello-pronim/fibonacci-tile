@@ -83,7 +83,7 @@ const FwWrapper = styled("div")(
     pt: "200px",
     mr: "auto",
     ml: "auto",
-    maxWidth: "2560px"
+    maxWidth: "2560px",
   })
 );
 const TextCol = styled("div")(
@@ -128,11 +128,13 @@ const Ol = styled("div")(
 const Wrapper = styled("div")(
   css({
     position: "relative",
+    boxSizing: "border-box",
+    width: "100%",
+    maxWidth: "2560px",
     pb: 120,
     px: 230,
     ml: "auto",
     mr: "auto",
-    maxWidth: "2560px",
     bg: "#FFFFF8",
     h1: {
       pb: "120px",

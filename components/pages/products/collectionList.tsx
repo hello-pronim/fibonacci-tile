@@ -17,7 +17,8 @@ const CollectionsPage = ({
   const banners = [];
   if (pageData?.bannerImage?.length > 0) {
     banners.push({
-      bannerImage: pageData.bannerImage[0],
+      blurThumb: pageData.blurThumb[0],
+      bannerImage: pageData.bannerImageThumb[0],
       bannerIntro: pageData.bannerIntro,
       bannerHeading: pageData.bannerHeading,
       bannerSubline: pageData.bannerInnerSubline,
@@ -26,7 +27,8 @@ const CollectionsPage = ({
   }
   if (terrazzoPageData?.bannerImage?.length > 0) {
     banners.push({
-      bannerImage: terrazzoPageData.bannerImage[0],
+      blurThumb: terrazzoPageData.blurThumb[0],
+      bannerImage: terrazzoPageData.bannerImageThumb[0],
       bannerIntro: terrazzoPageData.bannerIntro,
       bannerHeading: terrazzoPageData.bannerHeading,
       bannerSubline: terrazzoPageData.bannerInnerSubline,
@@ -38,10 +40,10 @@ const CollectionsPage = ({
     <Container>
       <ProductsHeader notifications={notifications} />
       <Slider items={banners} disableNext={true} />
-      <SectionTitle
-        show={false}
-        title="40 unique creations. Thoughtfully designed. Sustainably made. Purpose-built."
-      />
+      {pageData.bannerSubline && (
+        <SectionTitle show={false} title={pageData.bannerSubline} />
+      )}
+
       {collections.length > 0 &&
         collections.map((collection) => {
           return (

@@ -1,12 +1,12 @@
 import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
+import { css } from "@styled-system/css";
 import { initializeApollo } from "@utils/apolloClient";
 import { PageQuery } from "@gql/pageGQL";
 import { withGlobalData } from "@hoc/withGlobalData";
 import OrderingSamples from "@components/pages/support/orderingSamples";
 import Header from "@components/common/header";
 import Footer from "@components/common/footer";
-import { css } from "@styled-system/css";
 
 interface OrderingSamplesPageProps {
   pageData: any;

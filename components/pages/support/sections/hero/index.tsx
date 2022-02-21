@@ -21,8 +21,8 @@ const Hero = ({ activeSupport }) => {
     else if (activeSupport === "quote-request")
       setHeroPrimaryText("Request a quote");
     else if (activeSupport === "general-enquiry")
-      setHeroPrimaryText("General Enquiry");
-    else setHeroPrimaryText("Product Support");
+      setHeroPrimaryText("General enquiry");
+    else setHeroPrimaryText("Product support");
   }, [activeSupport]);
 
   return (

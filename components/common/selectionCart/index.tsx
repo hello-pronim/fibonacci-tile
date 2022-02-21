@@ -419,7 +419,7 @@ const SelectionCart = ({ active, newSelection, tab }) => {
             >
               <Image alt="Enquiry" src={EnquiryIcon} width={48} height={48} />
               <Text variant="Display-XXSmall" altFont>
-                General Enquiry
+                General enquiry
               </Text>
               <div
                 className="chevronWrapper"

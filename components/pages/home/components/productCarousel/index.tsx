@@ -71,7 +71,7 @@ const ProductCarousel = ({ products }) => {
 
   return (
     <Container>
-      <AccentText top={200}>An imaginative selection</AccentText>
+      <AccentText top={160}>An imaginative selection</AccentText>
       <NextWrapper onClick={() => gotoNext()}>
         <Arrow color={theme.colors.white} width={40} />
       </NextWrapper>
@@ -79,7 +79,6 @@ const ProductCarousel = ({ products }) => {
         <AccentTextMobile css={css({ pb: 24 })}>
           An imaginative selection
         </AccentTextMobile>
-        <Title>Featured Products</Title>
         <Slider {...settings} ref={slider}>
           {products &&
             products.map((product: any) => {
