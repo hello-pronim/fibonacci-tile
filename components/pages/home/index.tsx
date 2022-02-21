@@ -63,31 +63,39 @@ const Homepage = ({ pageData }) => {
                     sideText: component.sideText,
                     left1Image: {
                       url: component?.left1ImageThumb?.[0]?.url,
+                      title: component?.left1ImageThumb?.[0]?.title,
                       width: component?.left1ImageThumb?.[0]?.width,
                       height: component?.left1ImageThumb?.[0]?.height,
                     },
+                    blurThumbLeft1: component?.blurThumbLeft1?.[0]?.url,
                     left1Caption: component.left1Caption,
                     left1Text: component.left1Text,
                     left2Image: {
                       url: component?.left2ImageThumb?.[0]?.url,
+                      title: component?.left2ImageThumb?.[0]?.title,
                       width: component?.left2ImageThumb?.[0]?.width,
                       height: component?.left2ImageThumb?.[0]?.height,
                     },
+                    blurThumbLeft2: component?.blurThumbLeft2?.[0]?.url,
                     left2Caption: component.left2Caption,
                     left2Text: component.left2Text,
                     right1Image: {
                       url: component?.right1ImageThumb?.[0]?.url,
+                      title: component?.right1ImageThumb?.[0]?.title,
                       width: component?.right1ImageThumb?.[0]?.width,
                       height: component?.right1ImageThumb?.[0]?.height,
                     },
+                    blurThumbRight1: component?.blurThumbRight1?.[0]?.url,
                     right1Caption: component.right1Caption,
                     right1Text: component.right1Text,
                     rightText: component.rightText,
                     right2Image: {
                       url: component?.right2ImageThumb?.[0]?.url,
+                      title: component?.right2ImageThumb?.[0]?.title,
                       width: component?.right2ImageThumb?.[0]?.width,
                       height: component?.right2ImageThumb?.[0]?.height,
                     },
+                    blurThumbRight2: component?.blurThumbRight2?.[0]?.url,
                     right2Caption: component.right2SubLine,
                     right2Text: component.right2Text,
                   }}
@@ -97,7 +105,7 @@ const Homepage = ({ pageData }) => {
               return (
                 <React.Fragment key={`component-${component.id}`}>
                   <SupportModule title="HOW CAN WE HELP?" supports={supports} />
-                  <InlineSlider projects={component.projects}></InlineSlider>
+                  <InlineSlider projects={component.projects} />
                 </React.Fragment>
               );
           }
