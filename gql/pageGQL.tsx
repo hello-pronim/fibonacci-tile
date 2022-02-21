@@ -1,6 +1,24 @@
 import { gql } from "@apollo/client";
 import { LIST_PRODUCT_FIELDS } from "./fragments";
 
+const orderSamplesThumb = [710 * 2, 710 * 2];
+const orderSamplesBlurThumb = [
+  Math.round(orderSamplesThumb[0] / 100),
+  Math.round(orderSamplesThumb[1] / 100),
+];
+
+const installationBlockThumb = [1065 * 2, 1216 * 2];
+const installationBlockBlurThumb = [
+  Math.round(installationBlockThumb[0] / 100),
+  Math.round(installationBlockThumb[1] / 100),
+];
+
+const sliderImageThumb = [1540 * 2, 705 * 2];
+const sliderImageBlurThumb = [
+  Math.round(sliderImageThumb[0] / 100),
+  Math.round(sliderImageThumb[1] / 100),
+];
+
 export const PageQuery = gql`
   query PageQuery($slug: [String]) {
     entry(slug: $slug) {
@@ -45,8 +63,10 @@ export const PageQuery = gql`
             image {
               url
             }
-            imageThumb: image
-              @transform(width: 710, height: 710, mode: "crop") {
+            blurThumb: image @transform(width: ${orderSamplesBlurThumb[0]}, height:${orderSamplesBlurThumb[1]}) {
+              url
+            }
+            imageThumb: image @transform(width: ${orderSamplesThumb[0]}, height: ${orderSamplesThumb[1]}) {
               url
               title
               width
@@ -70,8 +90,10 @@ export const PageQuery = gql`
             imageLeft {
               url
             }
-            imageLeftThumb: imageLeft
-              @transform(width: 710, height: 710, mode: "crop") {
+            blurThumb: imageLeft @transform(width: ${orderSamplesBlurThumb[0]}, height:${orderSamplesBlurThumb[1]}) {
+              url
+            }
+            imageLeftThumb: imageLeft @transform(width: ${orderSamplesThumb[0]}, height: ${orderSamplesThumb[1]}) {
               url
               title
               width
@@ -103,8 +125,10 @@ export const PageQuery = gql`
             imageRight {
               url
             }
-            imageRightThumb: imageRight
-              @transform(width: 1065, height: 1216, mode: "crop") {
+            blurThumb: imageRight @transform(width: ${installationBlockBlurThumb[0]}, height: ${installationBlockBlurThumb[1]}) {
+              url
+            }
+            imageRightThumb: imageRight @transform(width: ${installationBlockThumb[0]}, height: ${installationBlockThumb[1]}) {
               url
               title
               width
@@ -124,8 +148,10 @@ export const PageQuery = gql`
             imageLeft {
               url
             }
-            imageLeftThumb: imageLeft
-              @transform(width: 710, height: 710, mode: "crop") {
+            blurThumb: imageLeft @transform(width: ${orderSamplesBlurThumb[0]}, height: ${orderSamplesBlurThumb[1]}) {
+              url
+            }
+            imageLeftThumb: imageLeft @transform(width: ${orderSamplesThumb[0]}, height: ${orderSamplesThumb[1]}) {
               url
               title
               width
@@ -151,6 +177,12 @@ export const PageQuery = gql`
         productsSideText
         bannerImage {
           url
+        }
+        blurThumb: bannerImage @transform(width: ${sliderImageBlurThumb[0]}, height: ${sliderImageBlurThumb[1]}) {
+          url
+        }
+        bannerImageThumb: bannerImage @transform(width: ${sliderImageThumb[0]}, height: ${sliderImageThumb[1]}) {
+          url
           width
           height
           title
@@ -166,6 +198,12 @@ export const PageQuery = gql`
         productsSideText
         bannerImage {
           url
+        }
+        blurThumb: bannerImage @transform(width: ${sliderImageBlurThumb[0]}, height: ${sliderImageBlurThumb[1]}) {
+          url
+        }
+        bannerImageThumb: bannerImage @transform(width: ${sliderImageThumb[0]}, height: ${sliderImageThumb[1]}) {
+          url
           width
           height
           title
@@ -178,6 +216,22 @@ export const PageQuery = gql`
     }
   }
 `;
+
+const homeSliderImageThumb = [2400, 1100];
+const homeSliderImageBlurThumb = [
+  Math.round(homeSliderImageThumb[0] / 100),
+  Math.round(homeSliderImageThumb[1] / 100),
+];
+const homeSamplesThumb = [1074 * 2, 630 * 2];
+const homeSamplesBlurThumb = [
+  Math.round(homeSamplesThumb[0] / 2),
+  Math.round(homeSamplesThumb[1] / 2),
+];
+const homeSamplesThumb1 = [960 * 2, 880 * 2];
+const homeSamplesBlurThumb1 = [
+  Math.round(homeSamplesThumb1[0] / 2),
+  Math.round(homeSamplesThumb1[1] / 2),
+];
 
 export const HomePageQuery = gql`
   ${LIST_PRODUCT_FIELDS}
@@ -192,15 +246,17 @@ export const HomePageQuery = gql`
             backgroundImage {
               url
             }
-            sliderImage: backgroundImage
-              @transform(width: 2400, height: 1100, mode: "crop") {
+            sliderImage: backgroundImage @transform(width: ${homeSliderImageThumb[0]}, height: ${homeSliderImageThumb[1]}) {
               url
               title
               width
               height
             }
+            blurThumb: backgroundImage @transform(width: ${homeSliderImageBlurThumb[0]}, height:${homeSliderImageBlurThumb[1]}) {
+              url
+            }
             sliderMobImage: backgroundImage
-              @transform(width: 750, height: 1240, mode: "crop") {
+              @transform(width: 750, height: 1240) {
               url
               title
               width
@@ -214,8 +270,11 @@ export const HomePageQuery = gql`
             image1 {
               url
             }
+            blurThumb1: image1 @transform(width: ${homeSamplesBlurThumb1[0]}, height: ${homeSamplesBlurThumb1[1]}) {
+              url
+            }
             sliderImage1: image1
-              @transform(width: 960, height: 880, mode: "crop") {
+              @transform(width: ${homeSamplesThumb1[0]}, height: ${homeSamplesThumb1[1]}) {
               url
               title
               width
@@ -224,8 +283,11 @@ export const HomePageQuery = gql`
             image2 {
               url
             }
+            blurThumb2: image2 @transform(width: ${homeSamplesBlurThumb1[0]}, height: ${homeSamplesBlurThumb1[1]}) {
+              url
+            }
             sliderImage2: image2
-              @transform(width: 960, height: 880, mode: "crop") {
+              @transform(width: ${homeSamplesThumb1[0]}, height: ${homeSamplesThumb1[1]}) {
               url
               title
               width
@@ -270,6 +332,12 @@ export const HomePageQuery = gql`
             heading
             image {
               url
+            }
+            blurThumb: image @transform(width: ${homeSamplesBlurThumb[0]}, height: ${homeSamplesBlurThumb[1]}) {
+              url
+            }
+            imageThumb: image @transform(width: ${homeSamplesThumb[0]}, height: ${homeSamplesThumb[1]}) {
+              url
               title
               width
               height
@@ -285,8 +353,10 @@ export const HomePageQuery = gql`
             left1Image {
               url
             }
-            left1ImageThumb: left1Image
-              @transform(width: 560, height: 560, mode: "crop") {
+            blurThumbLeft1: left1Image @transform(width: 50, height: 50) {
+              url
+            }
+            left1ImageThumb: left1Image @transform(width: 1120, height: 1120) {
               url
               title
               width
@@ -297,8 +367,10 @@ export const HomePageQuery = gql`
             left2Image {
               url
             }
-            left2ImageThumb: left2Image
-              @transform(width: 560, height: 560, mode: "crop") {
+            blurThumbLeft2: left2Image @transform(width: 50, height: 50) {
+              url
+            }
+            left2ImageThumb: left2Image @transform(width: 1120, height: 1120) {
               url
               title
               width
@@ -309,8 +381,11 @@ export const HomePageQuery = gql`
             right1Image {
               url
             }
+            blurThumbRight1: right1Image @transform(width: 50, height: 50) {
+              url
+            }
             right1ImageThumb: right1Image
-              @transform(width: 1715, height: 1221, mode: "crop") {
+              @transform(width: 1715, height: 1221) {
               url
               title
               width
@@ -321,8 +396,11 @@ export const HomePageQuery = gql`
             right2Image {
               url
             }
+            blurThumbRight2: right1Image @transform(width: 50, height: 50) {
+              url
+            }
             right2ImageThumb: right2Image
-              @transform(width: 1715, height: 1221, mode: "crop") {
+              @transform(width: 1715, height: 1221) {
               url
               title
               width
@@ -348,14 +426,16 @@ export const HomePageQuery = gql`
                   width
                   height
                 }
-                heroImageThumb: heroImage
-                  @transform(width: 1460, height: 900, mode: "crop") {
+                blurThumb: heroImage @transform(width: 50, height: 50) {
+                  url
+                }
+                heroImageThumb: heroImage @transform(width: 1460, height: 900) {
                   url
                   width
                   height
                 }
                 heroMobImageThumb: heroImage
-                  @transform(width: 343, height: 476, mode: "crop") {
+                  @transform(width: 686, height: 952) {
                   url
                   width
                   height
@@ -387,6 +467,9 @@ export const OurStoryPageQuery = gql`
               width
               height
             }
+            blurThumb: image @transform(width: 50, height: 50) {
+              url
+            }
           }
           ... on ourStoryComponents_sideBySideImage_BlockType {
             id
@@ -396,11 +479,17 @@ export const OurStoryPageQuery = gql`
               title
               height
             }
+            blurThumb1: image1 @transform(width: 50, height: 50) {
+              url
+            }
             image2 {
               url
               width
               title
               height
+            }
+            blurThumb2: image2 @transform(width: 50, height: 50) {
+              url
             }
           }
           ... on ourStoryComponents_headingLeftTextRight_BlockType {
@@ -420,6 +509,9 @@ export const OurStoryPageQuery = gql`
               width
               height
             }
+            blurThumb: imageRight @transform(width: 50, height: 50) {
+              url
+            }
             sideText
           }
           ... on ourStoryComponents_featurePanel_BlockType {
@@ -432,6 +524,9 @@ export const OurStoryPageQuery = gql`
               url
               width
               height
+            }
+            blurThumb: heroImage @transform(width: 50, height: 50) {
+              url
             }
             heroImageDescription
             sideText

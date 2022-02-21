@@ -36,6 +36,7 @@ const BodyContent = ({ pageComponents }) => {
                     title: component.headingLeft,
                     content: component.textRight,
                     thumbnail: component.imageRight,
+                    blurThumb: component.blurThumb,
                   }}
                 />
               );
@@ -49,6 +50,7 @@ const BodyContent = ({ pageComponents }) => {
                     title: component.heading1,
                     subtitle: component.heading2,
                     thumbnail: component.heroImage,
+                    blurThumb: component.blurThumb,
                     caption: component.heroImageDescription,
                     content: component.textRight,
                   }}

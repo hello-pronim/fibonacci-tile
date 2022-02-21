@@ -5,15 +5,15 @@ import { CTAContainer, ImgContainer, CTADetails } from "./styles";
 const CTAPanel = ({ imagePosition = "left", data }) => {
   return (
     <CTAContainer>
-      {data?.samplesImage?.length > 0 && (
+      {data?.samplesImageThumb?.[0]?.url && (
         <ImgContainer position={imagePosition}>
           <Image
             placeholder="blur"
-            blurDataURL={data.samplesImage[0].url}
-            src={data.samplesImage[0].url}
-            alt={data.samplesImage[0].title}
-            width={data.samplesImage[0].width}
-            height={data.samplesImage[0].height}
+            blurDataURL={data.blurThumb[0].url}
+            src={data.samplesImageThumb[0].url}
+            alt={data.samplesImageThumb[0].title}
+            width={data.samplesImageThumb[0].width}
+            height={data.samplesImageThumb[0].height}
           />
         </ImgContainer>
       )}

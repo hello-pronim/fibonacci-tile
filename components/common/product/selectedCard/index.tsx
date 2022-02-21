@@ -48,7 +48,7 @@ const SelectedProductCard = ({
               <a>
                 <Image
                   placeholder="blur"
-                  blurDataURL={product?.thumbImageList?.[0].url}
+                  blurDataURL={product?.blurThumbUrl?.[0].url}
                   src={product?.thumbImageList?.[0].url}
                   alt={product.title}
                   width={product?.thumbImageList?.[0].width}

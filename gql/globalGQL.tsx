@@ -40,6 +40,12 @@ export const GlobalNotificationQuery = gql`
   }
 `;
 
+const samplesThumb = [792 * 2, 465 * 2];
+const samplesBlurThumb = [
+  Math.round(samplesThumb[0] / 100),
+  Math.round(samplesThumb[1] / 100),
+];
+
 export const sampleCta1Query = gql`
   query sampleCta1Query {
     globalSet(handle: "sampleCta1") {
@@ -55,8 +61,15 @@ export const sampleCta1Query = gql`
             samplesButton
             samplesImage {
               url
-              width(width: 792)
-              height(height: 465)
+            }
+            blurThumb: samplesImage @transform(width: ${samplesBlurThumb[0]}, height: ${samplesBlurThumb[1]}) {
+              url
+            }
+            samplesImageThumb: samplesImage @transform(width: ${samplesThumb[0]}, height: ${samplesThumb[1]}) {
+              url 
+              title
+              width
+              height
             }
             samplesButtonLink {
               slug
@@ -83,8 +96,15 @@ export const sampleCta2Query = gql`
             samplesButton
             samplesImage {
               url
-              width(width: 792)
-              height(height: 465)
+            }
+            blurThumb: samplesImage @transform(width: ${samplesBlurThumb[0]}, height: ${samplesBlurThumb[1]}) {
+              url
+            }
+            samplesImageThumb: samplesImage @transform(width: ${samplesThumb[0]}, height: ${samplesThumb[1]}) {
+              url 
+              title
+              width
+              height
             }
           }
         }
@@ -114,6 +134,12 @@ export const customSolutionsCtaQuery = gql`
             customSolutionsText
             customImage {
               url
+            }
+            blurThumb: customImage @transform(width: 50, height: 50) {
+              url
+              title
+              width
+              height
             }
             customImageThumb: customImage @transform(width: 960, height: 680) {
               url

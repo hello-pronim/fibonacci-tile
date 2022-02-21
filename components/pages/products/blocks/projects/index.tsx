@@ -103,7 +103,7 @@ const ProjectsModule = ({ accentText, product }: ProjectModuleTypes) => {
           }}
         >
           {project1[0].heroImage?.[0]?.url && (
-            <ImageWrapper>
+            <ImageWrapper href={`/in-use/${project1[0].slug}`}>
               <Image
                 placeholder="blur"
                 blurDataURL={project1[0].heroImage[0].url}
@@ -145,7 +145,7 @@ const ProjectsModule = ({ accentText, product }: ProjectModuleTypes) => {
           }}
         >
           {project2[0].heroImage?.[0]?.url && (
-            <ImageWrapper>
+            <ImageWrapper href={`/in-use/${project2[0].slug}`}>
               <Image
                 placeholder="blur"
                 blurDataURL={project2[0].heroImage[0].url}

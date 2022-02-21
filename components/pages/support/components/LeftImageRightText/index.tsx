@@ -1,5 +1,5 @@
 import Image from "next/image";
-import {Container, Wrapper, Panel, PanelLeft, PanelRight } from "./styles";
+import { Container, Wrapper, Panel, PanelLeft, PanelRight } from "./styles";
 
 const LeftImageRightText = ({ data }) => {
   return (
@@ -10,7 +10,7 @@ const LeftImageRightText = ({ data }) => {
             {data?.thumbnail?.[0]?.url && (
               <Image
                 placeholder="blur"
-                blurDataURL={data.thumbnail[0].url}
+                blurDataURL={data.blurThumb[0].url}
                 src={data.thumbnail[0].url}
                 alt={data.thumbnail[0].title}
                 width={data.thumbnail[0].width}

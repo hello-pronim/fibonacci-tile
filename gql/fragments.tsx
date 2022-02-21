@@ -41,6 +41,9 @@ export const LIST_PRODUCT_FIELDS = gql`
     thumbImage {
       url
     }
+    blurThumb: thumbImage @transform(width: 50, height: 50) {
+      url
+    }
     thumbImageList: thumbImage @transform(handle: "productThumbnail") {
       id
       url

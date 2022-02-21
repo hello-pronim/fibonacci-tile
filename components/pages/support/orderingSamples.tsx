@@ -36,6 +36,7 @@ const OrderingSamples = ({ pageData }) => {
                   key={`component-${index}`}
                   data={{
                     thumbnail: component.imageThumb,
+                    blurThumb: component.blurThumb,
                     textHeading: component.textHeading,
                     text: component.text,
                   }}

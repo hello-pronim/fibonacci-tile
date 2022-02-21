@@ -36,7 +36,8 @@ const ProductsPage = ({
   const banners = [];
   if (pageData?.bannerImage?.length > 0) {
     banners.push({
-      bannerImage: pageData.bannerImage[0],
+      blurThumb: pageData.blurThumb[0],
+      bannerImage: pageData.bannerImageThumb[0],
       bannerIntro: pageData.bannerIntro,
       bannerHeading: pageData.bannerHeading,
       bannerSubline: pageData.bannerInnerSubline,
@@ -45,7 +46,8 @@ const ProductsPage = ({
   }
   if (collectionPageData?.bannerImage?.length > 0) {
     banners.push({
-      bannerImage: collectionPageData.bannerImage[0],
+      blurThumb: collectionPageData.blurThumb[0],
+      bannerImage: collectionPageData.bannerImageThumb[0],
       bannerIntro: collectionPageData.bannerIntro,
       bannerHeading: collectionPageData.bannerHeading,
       bannerSubline: collectionPageData.bannerInnerSubline,
