@@ -15,7 +15,7 @@ interface SupportPageProps {
   notifications: any;
 }
 
-const Support: NextPage<SupportPageProps> = ({
+const QuoteRequest: NextPage<SupportPageProps> = ({
   pageData,
   products,
   notifications,
@@ -59,4 +59,4 @@ export const getStaticProps: GetStaticProps = withGlobalData(async () => {
   };
 });
 
-export default Support;
+export default QuoteRequest;

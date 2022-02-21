@@ -13,7 +13,7 @@ interface OrderingSamplesPageProps {
   notifications: any;
 }
 
-const Support: NextPage<OrderingSamplesPageProps> = ({
+const SampleOrder: NextPage<OrderingSamplesPageProps> = ({
   pageData,
   notifications,
 }) => {
@@ -49,4 +49,4 @@ export const getStaticProps: GetStaticProps = withGlobalData(async () => {
   };
 });
 
-export default Support;
+export default SampleOrder;
