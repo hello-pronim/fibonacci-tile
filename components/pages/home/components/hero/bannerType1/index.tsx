@@ -8,9 +8,8 @@ const BannerType1 = ({ banner }) => {
         <Image
           className="lrg-img"
           layout="responsive"
-          // loader={myLoader}
           placeholder="blur"
-          blurDataURL={banner.sliderImage[0].url}
+          blurDataURL={banner.blurThumb[0].url}
           src={banner.sliderImage[0].url}
           alt={banner.sliderImage[0].title}
           width={banner.sliderImage[0].width}
@@ -20,9 +19,8 @@ const BannerType1 = ({ banner }) => {
       <SlideImageMobile>
         <Image
           layout="responsive"
-          // loader={myLoader}
           placeholder="blur"
-          blurDataURL={banner.sliderMobImage[0].url}
+          blurDataURL={banner.blurThumb[0].url}
           src={banner.sliderMobImage[0].url}
           alt={banner.sliderMobImage[0].title}
           width={banner.sliderMobImage[0].width}

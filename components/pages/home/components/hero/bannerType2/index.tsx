@@ -10,7 +10,7 @@ const BannerType1 = ({ banner }) => {
             className="lrg-img"
             layout="responsive"
             placeholder="blur"
-            blurDataURL={banner.sliderImage1[0].url}
+            blurDataURL={banner.blurThumb1[0].url}
             src={banner.sliderImage1[0].url}
             alt={banner.sliderImage1[0].title}
             width={banner.sliderImage1[0].width}
@@ -22,7 +22,7 @@ const BannerType1 = ({ banner }) => {
             className="lrg-img"
             layout="responsive"
             placeholder="blur"
-            blurDataURL={banner.sliderImage2[0].url}
+            blurDataURL={banner.blurThumb2[0].url}
             src={banner.sliderImage2[0].url}
             alt={banner.sliderImage2[0].title}
             width={banner.sliderImage2[0].width}

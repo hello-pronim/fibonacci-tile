@@ -51,7 +51,7 @@ const ContentWithImageModule = ({ id = "", content }) => {
             layout="responsive"
             placeholder="blur"
             blurDataURL={content.blurThumb.url}
-            alt={content?.image?.title}
+            alt={content.image.title}
             src={content.image.url}
             width={content.image.width}
             height={content.image.height}

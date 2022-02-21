@@ -55,6 +55,7 @@ const Support = ({ pageData }) => {
                     content={{
                       sectionTitle: "Installation Guides",
                       image: component?.imageRightThumb?.[0],
+                      blurThumb: component?.blurThumb?.[0],
                       entries: [
                         {
                           id: "fibonacci-tiles",

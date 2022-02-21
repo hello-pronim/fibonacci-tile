@@ -45,7 +45,7 @@ const Homepage = ({ pageData }) => {
                 <CTAPanel
                   key={`component-${component.id}`}
                   data={{
-                    samplesImage: component.image,
+                    samplesImageThumb: component.imageThumb,
                     blurThumb: component.blurThumb,
                     samplesHeading: component.heading,
                     samplesIntro: component.intro,

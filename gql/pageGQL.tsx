@@ -90,7 +90,7 @@ export const PageQuery = gql`
             imageLeft {
               url
             }
-            blurThumb: image @transform(width: ${orderSamplesBlurThumb[0]}, height:${orderSamplesBlurThumb[1]}) {
+            blurThumb: imageLeft @transform(width: ${orderSamplesBlurThumb[0]}, height:${orderSamplesBlurThumb[1]}) {
               url
             }
             imageLeftThumb: imageLeft @transform(width: ${orderSamplesThumb[0]}, height: ${orderSamplesThumb[1]}) {
@@ -217,6 +217,22 @@ export const PageQuery = gql`
   }
 `;
 
+const homeSliderImageThumb = [2400, 1100];
+const homeSliderImageBlurThumb = [
+  Math.round(homeSliderImageThumb[0] / 100),
+  Math.round(homeSliderImageThumb[1] / 100),
+];
+const homeSamplesThumb = [1074 * 2, 630 * 2];
+const homeSamplesBlurThumb = [
+  Math.round(homeSamplesThumb[0] / 2),
+  Math.round(homeSamplesThumb[1] / 2),
+];
+const homeSamplesThumb1 = [960 * 2, 880 * 2];
+const homeSamplesBlurThumb1 = [
+  Math.round(homeSamplesThumb1[0] / 2),
+  Math.round(homeSamplesThumb1[1] / 2),
+];
+
 export const HomePageQuery = gql`
   ${LIST_PRODUCT_FIELDS}
   query HomePageQuery($slug: [String]) {
@@ -230,11 +246,14 @@ export const HomePageQuery = gql`
             backgroundImage {
               url
             }
-            sliderImage: backgroundImage @transform(width: 2400, height: 1100) {
+            sliderImage: backgroundImage @transform(width: ${homeSliderImageThumb[0]}, height: ${homeSliderImageThumb[1]}) {
               url
               title
               width
               height
+            }
+            blurThumb: backgroundImage @transform(width: ${homeSliderImageBlurThumb[0]}, height:${homeSliderImageBlurThumb[1]}) {
+              url
             }
             sliderMobImage: backgroundImage
               @transform(width: 750, height: 1240) {
@@ -251,8 +270,11 @@ export const HomePageQuery = gql`
             image1 {
               url
             }
+            blurThumb1: image1 @transform(width: ${homeSamplesBlurThumb1[0]}, height: ${homeSamplesBlurThumb1[1]}) {
+              url
+            }
             sliderImage1: image1
-              @transform(width: 960, height: 880, mode: "crop") {
+              @transform(width: ${homeSamplesThumb1[0]}, height: ${homeSamplesThumb1[1]}) {
               url
               title
               width
@@ -261,8 +283,11 @@ export const HomePageQuery = gql`
             image2 {
               url
             }
+            blurThumb2: image2 @transform(width: ${homeSamplesBlurThumb1[0]}, height: ${homeSamplesBlurThumb1[1]}) {
+              url
+            }
             sliderImage2: image2
-              @transform(width: 960, height: 880, mode: "crop") {
+              @transform(width: ${homeSamplesThumb1[0]}, height: ${homeSamplesThumb1[1]}) {
               url
               title
               width
@@ -307,12 +332,15 @@ export const HomePageQuery = gql`
             heading
             image {
               url
+            }
+            blurThumb: image @transform(width: ${homeSamplesBlurThumb[0]}, height: ${homeSamplesBlurThumb[1]}) {
+              url
+            }
+            imageThumb: image @transform(width: ${homeSamplesThumb[0]}, height: ${homeSamplesThumb[1]}) {
+              url
               title
               width
               height
-            }
-            blurThumb: image @transform(width: 50, height: 50) {
-              url
             }
             button
             buttonLink {
@@ -357,7 +385,7 @@ export const HomePageQuery = gql`
               url
             }
             right1ImageThumb: right1Image
-              @transform(width: 1715, height: 1221, mode: "crop") {
+              @transform(width: 1715, height: 1221) {
               url
               title
               width
@@ -372,7 +400,7 @@ export const HomePageQuery = gql`
               url
             }
             right2ImageThumb: right2Image
-              @transform(width: 1715, height: 1221, mode: "crop") {
+              @transform(width: 1715, height: 1221) {
               url
               title
               width
