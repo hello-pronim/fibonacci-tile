@@ -9,7 +9,6 @@ import theme from "@styles/theme";
 import { Details, ImageWrapper, LinkWrapper, Project } from "./styles";
 
 const ProjectCard = ({ project }) => {
-  console.log(project);
   return (
     <Project key={project.id}>
       {project?.heroImageThumb?.[0]?.url && (

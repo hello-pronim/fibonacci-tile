@@ -43,11 +43,11 @@ function createApolloClient() {
         const filteredTrace = traceArray.filter(
           (line) => line.includes("/pages/") || line.includes("/components/")
         );
-        console.log(
-          `GQL op:${operation.operationName} vars:${JSON.stringify(
-            operation.variables
-          )} -${filteredTrace.join("") || " no trace; on server?"}`
-        );
+        // console.log(
+        //   `GQL op:${operation.operationName} vars:${JSON.stringify(
+        //     operation.variables
+        //   )} -${filteredTrace.join("") || " no trace; on server?"}`
+        // );
         return forward(operation);
       }),
       new HttpLink({
