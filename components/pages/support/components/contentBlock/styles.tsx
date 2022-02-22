@@ -51,6 +51,15 @@ const EntryWrapper = styled("div")(({entries, mode}:{mode?: string, entries?: nu
   borderBottom: entries > 1 && 'solid 1px red',
   borderColor: mode === "light" ? 'charcoal': 'stone',
   rowGap: 32,
+  h4: {
+    color: mode === "light" ? 'charcoal': 'white',
+  },
+  p: {
+    color: mode === "light" ? 'charcoal': 'white',
+  },
+  span: {
+    color: mode === "light" ? 'charcoal': 'white',
+  },
   "& p": {
     marginBottom: "20px",
   },

@@ -15,7 +15,7 @@ const LeftCol = styled("div")(
       a: {
         pt: "12px",
         textDecoration: "none",
-        color: "black",
+        color: "charcoal",
       },
     },
   })

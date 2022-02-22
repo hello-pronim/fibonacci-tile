@@ -2,6 +2,7 @@ import React from "react";
 import ArrowButton from "@components/common/button/arrowButton";
 import ProductCard from "@components/common/product/card";
 import { useAppContext } from "@contexts/AppContext";
+import Text from '@components/common/typography';
 import {
   CollectionWrapper,
   CollectionDetailContainer,
@@ -17,8 +18,8 @@ const CollectionsItem = ({ collection, collectionProducts }) => {
     <CollectionWrapper>
       <CollectionDetailContainer>
         <CollectionDetail>
-          <Title>{collection.title}</Title>
-          <Details
+          <Title as="h2" variant="Display-Medium">{collection.title}</Title>
+          <Details variant="Body-Large"
             dangerouslySetInnerHTML={{ __html: collection.introduction }}
           />
           <ArrowButton

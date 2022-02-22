@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import css from "@styled-system/css";
+import theme from "@styles/theme";
 
 const StyledPhoto = styled.img`
   width: 100%;
@@ -35,12 +36,12 @@ const Title = styled.h2`
     line-height: 130%;
     letter-spacing: -0.01em;
     font-feature-settings: "pnum" on, "lnum" on;
-    color: #101820;
+    color: ${theme.colors.charcoal};
   `;
 
 const Description = styled.p`
   padding-top: 12px;
-  color: black;
+  color: ${theme.colors.charcoal};
   font-weight: 300;
   width: 100%;
 `;
@@ -54,7 +55,7 @@ const CardPill = styled("div")(
     pl: "17.5px",
     py: "11px",
     pr: "17.5px",
-    bg: "black",
+    bg: "charcoal",
     mt: "20px",
     textTransform: "uppercase",
     color: "white",

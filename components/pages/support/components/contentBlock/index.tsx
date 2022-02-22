@@ -29,7 +29,7 @@ const ContentWithImageModule = ({ id = "", content }) => {
                   {title}
                 </Text>
               )}
-              {body && <div dangerouslySetInnerHTML={{ __html: body }} />}
+              {body && <Text variant="Body-Regular" dangerouslySetInnerHTML={{ __html: body }} />}
               {emphasisText && (
                 <span style={{ color: "#a19082" }}>{emphasisText}</span>
               )}

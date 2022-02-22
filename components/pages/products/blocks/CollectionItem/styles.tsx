@@ -1,5 +1,6 @@
 import css from "@styled-system/css";
 import styled from "@emotion/styled";
+import Text from "@components/common/typography";
 
 const CollectionWrapper = styled("div")(
   css({
@@ -34,19 +35,15 @@ const CollectionDetail = styled("div")(
   })
 );
 
-const Title = styled("h2")(
+const Title = styled(Text)(
   css({
-    fontSize: "44px",
-    lineHeight: "50.6px",
     paddingBottom: "20px",
   })
 );
 
-const Details = styled("div")(
+const Details = styled(Text)(
   css({
     p: {
-      fontSize: "18px",
-      lineHeight: "26px",
       paddingBottom: "20px",
     },
   })
