@@ -57,12 +57,12 @@ const SelectionCart = ({ active, newSelection, tab }) => {
       css={css({
         boxSizing: "border-box",
         position: "fixed",
-        top: 80,
+        top: 0,
         right: active ? 0 : "-550px",
         width: ["100%", "100%", 480],
-        height: "calc(100vh - 114px)",
+        height: "100vh",
         background: tab === "support" ? "#141414" : "#fff",
-        zIndex: 999,
+        zIndex: 9999999,
         pb: tab === "cart" ? 142 : 0,
         transition: "ease all 0.4s",
         boxShadow:
@@ -200,7 +200,7 @@ const SelectionCart = ({ active, newSelection, tab }) => {
             <Text
               variant="Body-XSmall"
               altFont
-              css={css({ textTransform: "uppercase", color: 'white' })}
+              css={css({ textTransform: "uppercase", color: "white" })}
             >
               Close
             </Text>
@@ -220,10 +220,14 @@ const SelectionCart = ({ active, newSelection, tab }) => {
               color: "#fff",
             })}
           >
-            <Text variant="Display-XSmall" altFont css={css({color: 'white'})}>
+            <Text
+              variant="Display-XSmall"
+              altFont
+              css={css({ color: "white" })}
+            >
               How can we help you
             </Text>
-            <Text variant="Body-Regular" altFont css={css({color: 'white'})}>
+            <Text variant="Body-Regular" altFont css={css({ color: "white" })}>
               We can help answer questions and solve problems. If you can’t find
               what you are looking for give us a call on 1300 345 567.
             </Text>
@@ -569,7 +573,9 @@ const SelectionCart = ({ active, newSelection, tab }) => {
             )}
             <Link href="/terrazzo" passHref>
               <a css={css({ color: "#fff", marginTop: "20px" })}>
-                <Text variant="Body-Small" css={css({ color: "#fff", })}>Continue Selections</Text>
+                <Text variant="Body-Small" css={css({ color: "#fff" })}>
+                  Continue Selections
+                </Text>
               </a>
             </Link>
           </div>
