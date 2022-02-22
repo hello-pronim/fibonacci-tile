@@ -1,5 +1,4 @@
 import Image from "next/image";
-import router from "next/router";
 import { useAppContext } from "@contexts/AppContext";
 import Text from "@components/common/typography";
 import {
@@ -36,7 +35,7 @@ const SupportModule = ({
           {supports.map((support) => (
             <Tile
               key={support.slug}
-              href={support.href}
+              href={support.href ? support.href : "#support-enquiry"}
               active={activePath === support.href}
               onClick={() => {
                 if (support.slug === "general-enquiry") {
