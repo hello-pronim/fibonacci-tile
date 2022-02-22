@@ -34,7 +34,9 @@ const ProjectsModule = ({ accentText, product }: ProjectModuleTypes) => {
       id="projects"
       css={css({ bg: backgroundColor ? backgroundColor : "#E2E9EC" })}
     >
-      <AccentText top={400}>{accentText}</AccentText>
+      <AccentText top={project1?.length > 0 || project1?.length > 0 ? 400 : 80}>
+        {accentText}
+      </AccentText>
       <IntroWrapper>
         <Text
           variant="Display-Medium"
@@ -132,7 +134,6 @@ const ProjectsModule = ({ accentText, product }: ProjectModuleTypes) => {
           </Details>
         </Project>
       )}
-
       {project2?.length > 0 && (
         <Project
           css={{
@@ -174,9 +175,11 @@ const ProjectsModule = ({ accentText, product }: ProjectModuleTypes) => {
           </Details>
         </Project>
       )}
-      <Bottom>
-        <ArrowButton mode="" title="View all projects" link="/in-use" />
-      </Bottom>
+      {(project1?.length > 0 || project1?.length > 0) && (
+        <Bottom>
+          <ArrowButton mode="" title="View all projects" link="/in-use" />
+        </Bottom>
+      )}
     </Container>
   );
 };
