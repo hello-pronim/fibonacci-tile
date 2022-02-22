@@ -160,6 +160,7 @@ const LinkWrapper = styled("div")(
       textDecoration: "none",
       fontSize: 2,
       lineHeight: 2,
+      fontWeight: 500,
       color: "charcoal",
       '&:before': {
         position:'relative',
