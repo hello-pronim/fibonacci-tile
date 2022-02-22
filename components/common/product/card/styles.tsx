@@ -22,27 +22,28 @@ const Container = styled("div")(({ compact }: { compact: boolean }) =>
     padding: compact ? "0" : "38px 18px",
     textAlign: "center",
     transition: "ease all 0.4s",
-    backgroundColor: 'rgba(237, 236, 232, 0)',
+    backgroundColor: "rgba(237, 236, 232, 0)",
     "&:hover": {
-      backgroundColor: !compact && 'rgba(237, 236, 232, 1.000)',
+      backgroundColor: !compact && "rgba(237, 236, 232, 1.000)",
       div: {
-        boxShadow: 'none',
+        boxShadow: "none",
       },
     },
   })
 );
 
-const GridCardImgContainer = styled("div")(({compact}: {compact: boolean}) =>
-  css({
-    width: compact ? '100% !important' : 'max-content',
-    mx: 'auto',
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    position: "relative",
-    transition: 'box-shadow 0.4s',
-    boxShadow: !compact && theme.shadows.default,
-  })
+const GridCardImgContainer = styled("div")(
+  ({ compact }: { compact?: boolean }) =>
+    css({
+      width: compact ? "100% !important" : "max-content",
+      mx: "auto",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      position: "relative",
+      transition: "box-shadow 0.4s",
+      boxShadow: !compact && theme.shadows.default,
+    })
 );
 
 const TableRow = styled("div")(({ detailView }: DetailViewProps) =>
