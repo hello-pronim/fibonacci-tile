@@ -23,7 +23,6 @@ const Custom404: NextPage<Custom404Props> = ({ notifications }) => {
     <>
       <Head>
         <title>Page Not Found | Fibonacci</title>
-        <meta name="description" content="Fibonacci About page" />
       </Head>
       <Container>
         <Header mode="dark" notifications={notifications} />
@@ -32,20 +31,18 @@ const Custom404: NextPage<Custom404Props> = ({ notifications }) => {
             <PageTitle Base="h2" variant="Display-Large">
               Oops, We can&rsquo;t find the page you were looking for.
             </PageTitle>
-            <p>Sorry, it seems the page you&rsquo;re looking dosen&rsquo;t exist. We recommend going to back to the homepage and trying to find it from there.</p>
+            <p>
+              Sorry, it seems the page you&rsquo;re looking dosen&rsquo;t exist.
+              We recommend going to back to the homepage and trying to find it
+              from there.
+            </p>
             <LinkWrapper>
-              <Link href={`/`}>
-                Return home
-              </Link>
+              <Link href={`/`}>Return home</Link>
               <Arrow type="short" />
             </LinkWrapper>
           </PageNotFoundBlock>
         </InnerContainer>
-        <Image
-          layout="responsive"
-          src={img404}
-          alt={"404"}
-        />
+        <Image layout="responsive" src={img404} alt={"404"} />
       </Container>
       <Footer />
     </>

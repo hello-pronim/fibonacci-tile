@@ -26,7 +26,7 @@ import {
   MobileLogo,
 } from "./styles";
 
-export default function Footer() {
+export default function Footer({ disableSelectionCart = false }) {
   const { state, dispatch } = useAppContext();
   const [newSelection, setNewSelection] = useState(false);
   const [selectionsCount, setSelectionsCount] = useState(0);
@@ -109,10 +109,14 @@ export default function Footer() {
                 <Link href="/support#product-guide">Product Guide</Link>
               </Item>
               <Item>
-                <Link href="/support#installation-guide">Installation Guides</Link>
+                <Link href="/support#installation-guide">
+                  Installation Guides
+                </Link>
               </Item>
               <Item>
-                <Link href="/support#care-maintenance">Care and Maintenance</Link>
+                <Link href="/support#care-maintenance">
+                  Care and Maintenance
+                </Link>
               </Item>
               {/* <Item>
                 <a href="#">Downloads</a>
@@ -126,13 +130,31 @@ export default function Footer() {
             <SegmentTitle>Follow us</SegmentTitle>
             <ItemList>
               <Item>
-                <a target="_blank" rel="noreferrer" href="https://www.instagram.com/fibonaccistone/">Instagram</a>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://www.instagram.com/fibonaccistone/"
+                >
+                  Instagram
+                </a>
               </Item>
               <Item>
-                <a target="_blank" rel="noreferrer" href="https://www.facebook.com/FibonacciStone/">Facebook</a>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://www.facebook.com/FibonacciStone/"
+                >
+                  Facebook
+                </a>
               </Item>
               <Item>
-                <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/fibonacci-stone/">LinkedIn</a>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://www.linkedin.com/company/fibonacci-stone/"
+                >
+                  LinkedIn
+                </a>
               </Item>
             </ItemList>
           </Segment>

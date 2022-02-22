@@ -42,7 +42,8 @@ const Header = ({
   mode = "light",
   position = "relative",
   notifications = null,
-  hideBorderOnScroll= false
+  hideBorderOnScroll = false,
+  disableSelectionCart = false,
 }) => {
   const { state, dispatch } = useAppContext();
   const [navOpen, setNavOpen] = useState(false);
@@ -175,22 +176,26 @@ const Header = ({
             >
               Contact
             </NavItem>
-            <NavItem
-              mode={mode}
-              onClick={() => {
-                dispatch({
-                  type: "OPEN_DRAWER",
-                  value:
-                    state.activeDrawerTab !== "cart" ? true : !state.openDrawer,
-                });
-                dispatch({
-                  type: "SET_ACTIVE_DRAWER_TAB",
-                  value: "cart",
-                });
-              }}
-            >
-              Selections <ProductSelectionCount />
-            </NavItem>
+            {!disableSelectionCart && (
+              <NavItem
+                mode={mode}
+                onClick={() => {
+                  dispatch({
+                    type: "OPEN_DRAWER",
+                    value:
+                      state.activeDrawerTab !== "cart"
+                        ? true
+                        : !state.openDrawer,
+                  });
+                  dispatch({
+                    type: "SET_ACTIVE_DRAWER_TAB",
+                    value: "cart",
+                  });
+                }}
+              >
+                Selections <ProductSelectionCount />
+              </NavItem>
+            )}
           </NavRight>
         </Wrapper>
         <Transition
