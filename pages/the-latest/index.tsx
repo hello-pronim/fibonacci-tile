@@ -73,7 +73,6 @@ const LatestNews: NextPage<LatestPageProps> = ({
     <>
       <Head>
         <title>Latest | Fibonacci</title>
-        <meta name="description" content="Fibonacci Latest page" />
       </Head>
       <Header mode="dark" notifications={notifications} />
       <div
@@ -83,7 +82,7 @@ const LatestNews: NextPage<LatestPageProps> = ({
           pt: 100,
           pb: 0,
           ml: "auto",
-          mr: "auto"
+          mr: "auto",
         })}
       >
         <BreadCrumb crumbs={crumbs} pt={0} />
@@ -121,7 +120,7 @@ const LatestNews: NextPage<LatestPageProps> = ({
         css={css({
           maxWidth: "2560px",
           ml: "auto",
-          mr: "auto"
+          mr: "auto",
         })}
         columnsCountBreakPoints={{ 425: 1, 767: 2, 1400: 3, 1660: 4 }}
       >

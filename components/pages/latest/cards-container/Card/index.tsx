@@ -25,14 +25,14 @@ export const Card = ({
     <StyledContainer>
       <Link href={`/the-latest/${slug}`} passHref>
         <a>
-          {imageBlock?.image?.length > 0 && (
+          {imageBlock?.imageThumb?.[0]?.url && (
             <Image
-              width={600}
-              height={600}
               placeholder="blur"
-              blurDataURL={imageBlock.image[0]?.url}
-              src={imageBlock.image[0]?.url}
-              alt={imageBlock.image[0]?.id}
+              blurDataURL={imageBlock.blurThumb[0]?.url}
+              width={imageBlock.imageThumb[0]?.width}
+              height={imageBlock.imageThumb[0]?.height}
+              src={imageBlock.imageThumb[0]?.url}
+              alt={imageBlock.imageThumb[0]?.title}
             />
           )}
           {newsCategory?.length > 0 && (

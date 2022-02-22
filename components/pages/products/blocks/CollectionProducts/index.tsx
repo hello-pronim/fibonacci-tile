@@ -3,7 +3,6 @@ import Text from "@components/common/typography";
 import ProductCard from "@components/common/product/card";
 import { useAppContext } from "@contexts/AppContext";
 import { css } from "@styled-system/css";
-import theme from "@styles/theme";
 import { CollectionProductsContainer } from "./styles";
 
 const CollectionProducts = ({ products, backgroundColor }) => {

@@ -4,7 +4,7 @@ import Container from "@components/common/layout/container";
 import Text from "@components/common/typography";
 import { ImageLeft, ImageRight } from "../styles";
 
-const TwoColImage = ({ image1, image2, caption }) => {
+const TwoColImage = ({ image1, blurThumb1, image2, blurThumb2, caption }) => {
   const myImage1 = image1?.[0];
   const myImage2 = image2?.[0];
   return (
@@ -15,6 +15,8 @@ const TwoColImage = ({ image1, image2, caption }) => {
             <Image
               alt={myImage1.title}
               src={myImage1.url}
+              placeholder="blur"
+              blurDataURL={blurThumb1.url}
               objectFit="cover"
               layout="intrinsic"
               width="710"
@@ -25,6 +27,8 @@ const TwoColImage = ({ image1, image2, caption }) => {
         {myImage2?.url && (
           <ImageRight>
             <Image
+              placeholder="blur"
+              blurDataURL={blurThumb2.url}
               alt={myImage2.title}
               src={myImage2.url}
               width="710"

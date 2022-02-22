@@ -1,5 +1,11 @@
 import { gql } from "@apollo/client";
 
+const newsThumb = [600, 600];
+const newsBlurThumb = [
+  Math.round(newsThumb[0] / 100),
+  Math.round(newsThumb[1] / 100),
+];
+
 export const NewsQuery: any = gql`
   query NewsQuery {
     entries(section: "news") {
@@ -23,8 +29,16 @@ export const NewsQuery: any = gql`
             id
             typeHandle
             image {
-              id
-              url(width: 600, height: 600)
+              url
+            }
+            blurThumb: image @transform(width: ${newsBlurThumb[0]}, height: ${newsBlurThumb[1]}){
+              url
+            }
+            imageThumb: image @transform(width: ${newsThumb[0]}, height: ${newsThumb[1]}){
+              url
+              title
+              width
+              height
             }
           }
         }
@@ -32,6 +46,22 @@ export const NewsQuery: any = gql`
     }
   }
 `;
+
+const newsHeroThumb = [1920 * 2, 1080 * 2];
+const newsHeroBlurThumb = [
+  Math.round(newsThumb[0] / 100),
+  Math.round(newsThumb[1] / 100),
+];
+const newsTwoColThumb = [710 * 2, 820 * 2];
+const newsTwoColBlurThumb = [
+  Math.round(newsTwoColThumb[0] / 100),
+  Math.round(newsTwoColThumb[1] / 100),
+];
+const newsLargeThumb = [1460 * 2, 820 * 2];
+const newsLargeBlurThumb = [
+  Math.round(newsTwoColThumb[0] / 100),
+  Math.round(newsTwoColThumb[1] / 100),
+];
 
 export const NewsItemQuery: any = gql`
   query NewsItemQuery($slug: [String]) {
@@ -64,14 +94,12 @@ export const NewsItemQuery: any = gql`
             id
             typeHandle
             image {
-              id
               url
             }
-            blurThumb: image @transform(width: 50, height: 50) {
+            blurThumb: image @transform(width: ${newsHeroBlurThumb[0]}, height: ${newsHeroBlurThumb[1]}) {
               url
             }
-            imageThumb: image
-              @transform(width: 1920, height: 1080, mode: "crop") {
+            imageThumb: image @transform(width: ${newsHeroThumb[0]}, height: ${newsHeroThumb[1]}) {
               url
               title
               width
@@ -88,11 +116,10 @@ export const NewsItemQuery: any = gql`
             image1 {
               url
             }
-            blurThumb1: image1 @transform(width: 50, height: 50) {
+            blurThumb1: image1 @transform(width: ${newsTwoColBlurThumb[0]}, height: ${newsTwoColBlurThumb[1]}) {
               url
             }
-            image1Thumb: image1
-              @transform(width: 710, height: 820, mode: "crop") {
+            image1Thumb: image1 @transform(width: ${newsTwoColThumb[0]}, height: ${newsTwoColThumb[1]}) {
               url
               title
               width
@@ -101,11 +128,10 @@ export const NewsItemQuery: any = gql`
             image2 {
               url
             }
-            blurThumb2: image2 @transform(width: 50, height: 50) {
+            blurThumb2: image2 @transform(width: ${newsTwoColBlurThumb[0]}, height: ${newsTwoColBlurThumb[1]}) {
               url
             }
-            image2Thumb: image2
-              @transform(width: 710, height: 820, mode: "crop") {
+            image2Thumb: image2 @transform(width: ${newsTwoColThumb[0]}, height: ${newsTwoColThumb[1]}) {
               url
               title
               width
@@ -120,10 +146,10 @@ export const NewsItemQuery: any = gql`
             image {
               url
             }
-            blurThumb: image @transform(width: 50, height: 50) {
+            blurThumb: image @transform(width: ${newsLargeBlurThumb[0]}, height: ${newsLargeBlurThumb[1]}) {
               url
             }
-            imageThumb: image @transform(width: 1460, height: 820) {
+            imageThumb: image @transform(width: ${newsLargeThumb[0]}, height: ${newsLargeThumb[1]}) {
               url
               title
               width
