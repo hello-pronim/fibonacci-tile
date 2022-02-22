@@ -1,5 +1,7 @@
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import css from "@styled-system/css";
 import Text from "@components/common/typography";
 import AddIcon from "@components/icons/add";
 import CheckMarkIcon from "@components/icons/checkmark";
@@ -11,34 +13,85 @@ import {
   GridCardImgContainer,
   Wrapper,
 } from "./styles";
+import { flex } from "styled-system";
 
 const ProductCard = ({
   product,
   isSelected = false,
   toggleProductSelect,
   activeCollectionSlug = null,
+  largeImage = false,
 }) => {
+  const [showModal, setShowModal] = useState(false);
   let collectionSlug = activeCollectionSlug
     ? activeCollectionSlug
     : product.collections[0].slug;
-
+  const largeImageUrl = product?.largeImage.length > 0 ? product?.largeImage[0].url : null;
+  function handleModel () {
+    setShowModal(!showModal);
+  }
+  console.log("product", product)
   return (
     <Wrapper>
+      {showModal && 
+        <div
+        css={css({ 
+          position: "absolute",
+          top: 0,
+          left: 0,
+          zIndex: 9999
+          // right: 'auto',
+          // bottom: 'auto',
+          // marginRight: '-50%',
+          // transform: 'translate(-50%, -50%)',
+        })}
+        >
+          <div 
+          css={css({
+            display: "flex"
+          })}>
+            <span>Close</span>
+            <span
+            onClick={() => handleModel()}
+            css={css({
+              background: "#000000",
+              width: "30px",
+              height: "30px",
+              borderRadius: "50%",
+              textAlign: "center",
+              lineHeight: "30px",
+              cursor: "pointer"
+            })}
+            ><CrossIcon /></span>
+          </div>
+          <Image
+            placeholder="blur"
+            blurDataURL={product.blurThumb[0].url}
+            src={largeImageUrl}
+            alt={product.title}
+            width={product?.largeImage[0].width}
+            height={product?.largeImage[0].height}
+          />
+        </div>
+      }
       <Container>
         <GridCardImgContainer>
           {product?.thumbImageSingle?.[0]?.url && (
-            <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
-              <a>
-                <Image
-                  placeholder="blur"
-                  blurDataURL={product.blurThumb[0].url}
-                  src={product.thumbImageSingle[0].url}
-                  alt={product.title}
-                  width={product.thumbImageSingle[0].width}
-                  height={product.thumbImageSingle[0].height}
-                />
-              </a>
-            </Link>
+            <div
+              onClick={() => handleModel()}
+              css={css({ 
+                cursor: "pointer"
+              })}
+            >
+              <Image
+                placeholder="blur"
+                blurDataURL={product.blurThumb[0].url}
+                src={product.thumbImageSingle[0].url}
+                alt={product.title}
+                width={product.thumbImageSingle[0].width}
+                height={product.thumbImageSingle[0].height}
+              />
+            </div>
           )}
           <ActionBtnContainer>
             <ActionBtn
