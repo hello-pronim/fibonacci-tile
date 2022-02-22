@@ -3,12 +3,14 @@ import css from "@styled-system/css";
 import Text from "@components/common/typography";
 import { Wrapper } from "../styles";
 
-const LargeImage = ({ image, caption }) => {
+const LargeImage = ({ image, blurThumb, caption }) => {
   return (
     <Wrapper>
       <Image
         alt={image.title}
         src={image.url}
+        placeholder="blur"
+        blurDataURL={blurThumb.url}
         width="1460"
         height="820"
         layout="responsive"

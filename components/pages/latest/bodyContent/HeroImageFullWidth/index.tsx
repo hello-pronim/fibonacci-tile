@@ -1,10 +1,12 @@
 import Image from "next/image";
 import { FwWrapper } from "../styles";
 
-const HeroImageFullWidth = ({ image }) => {
+const HeroImageFullWidth = ({ image, blurThumb }) => {
   return (
     <FwWrapper>
       <Image
+        placeholder="blur"
+        blurDataURL={blurThumb.url}
         alt={image.title}
         src={image.url}
         layout="responsive"

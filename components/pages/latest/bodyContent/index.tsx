@@ -24,6 +24,7 @@ const BodyContent = ({ pageData }) => {
                   <HeroImageFullWidth
                     key={`news-comp-${index}`}
                     image={component.imageThumb[0]}
+                    blurThumb={component.blurThumb[0]}
                   />
                 )}
               </React.Fragment>
@@ -53,7 +54,9 @@ const BodyContent = ({ pageData }) => {
               <TwoColImage
                 key={`news-comp-${index}`}
                 image1={component.image1Thumb}
+                blurThumb1={component.blurThumb1?.[0]}
                 image2={component.image2Thumb}
+                blurThumb2={component.blurThumb2?.[0]}
                 caption={component.caption}
               />
             );
@@ -63,7 +66,8 @@ const BodyContent = ({ pageData }) => {
                 {component?.imageThumb?.[0].url && (
                   <LargeImage
                     key={`news-comp-${index}`}
-                    image={component?.imageThumb?.[0]}
+                    image={component.imageThumb[0]}
+                    blurThumb={component.blurThumb[0]}
                     caption={component.caption}
                   />
                 )}
@@ -84,7 +88,9 @@ const BodyContent = ({ pageData }) => {
         {pageData.prev && (
           <LinkWrapper>
             <Arrow type="short" direction="left" />
-            <Link href={`/the-latest/${pageData.prev.slug}`}>Previous article</Link>
+            <Link href={`/the-latest/${pageData.prev.slug}`}>
+              Previous article
+            </Link>
           </LinkWrapper>
         )}
 
