@@ -1,6 +1,7 @@
 import Image from "next/image";
 import ArrowButton from "@components/common/button/arrowButton";
 import { CTAContainer, ImgContainer, CTADetails } from "./styles";
+import Text from '@components/common/typography';
 
 const CTAPanel = ({ imagePosition = "left", data }) => {
   return (
@@ -18,8 +19,8 @@ const CTAPanel = ({ imagePosition = "left", data }) => {
         </ImgContainer>
       )}
       <CTADetails>
-        {data?.samplesHeading && <h2>{data.samplesHeading}</h2>}
-        <div dangerouslySetInnerHTML={{ __html: data.samplesIntro }} />
+        {data?.samplesHeading && <Text as="h2" variant="Display-Large">{data.samplesHeading}</Text>}
+        <Text variant="Body-Regular" dangerouslySetInnerHTML={{ __html: data.samplesIntro }} />
         {data?.samplesButtonLink?.[0]?.slug && (
           <ArrowButton
             mode="dark"
