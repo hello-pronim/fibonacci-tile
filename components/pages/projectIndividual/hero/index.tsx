@@ -32,11 +32,11 @@ const Hero = ({ project }) => {
           <Text Base="h1" variant="Display-Large">
             {project.title}
           </Text>
-          {project.projectCompleted && (
+          {/* {project.projectCompleted && (
             <Text Base="h6" variant="Body-Large">
               {moment(project.projectCompleted).format("Do MMMM YYYY")}
             </Text>
-          )}
+          )} */}
           {project.label && (
             <Pill>
               <AddIcon color="white" />
