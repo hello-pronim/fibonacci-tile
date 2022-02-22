@@ -58,7 +58,7 @@ const ProductsPage = ({
 
   useEffect(() => {
     const handleScroll = () => {
-      if (ref && ref?.current?.offsetTop < window.pageYOffset + 370) {
+      if (ref && ref?.current?.offsetTop < window.pageYOffset + 120) {
         setShowFilterBar(true);
       } else {
         setShowFilterBar(false);

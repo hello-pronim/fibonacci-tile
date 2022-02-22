@@ -205,7 +205,7 @@ const Header = ({
           mountOnEnter
           unmountOnExit
         >
-          {(state) => (
+          {(state: any) => (
             <NavDrawer
               css={{
                 ...defaultStyle,
