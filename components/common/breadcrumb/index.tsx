@@ -5,6 +5,7 @@ import css from "@styled-system/css";
 import Arrow from "@components/common/icons/arrow";
 
 import { BackBttn, BottomBarInner, LinkWrapper } from "./styles";
+import router from "next/router";
 
 const Breadcrumb = ({ crumbs, pt = 130 }) => {
   // Don't render a single breadcrumb.
@@ -26,7 +27,15 @@ const Breadcrumb = ({ crumbs, pt = 130 }) => {
     <BottomBarInner css={css({ pt })}>
       <LinkWrapper>
         <Arrow type="short" direction="left" />
-        <BackBttn onClick={() => Router.back()}>
+        <BackBttn
+          onClick={() => {
+            if (true) {
+              Router.back();
+            } else {
+              // router.pop("/")
+            }
+          }}
+        >
           <span>Back</span>
         </BackBttn>
       </LinkWrapper>
