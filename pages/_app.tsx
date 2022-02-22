@@ -30,6 +30,7 @@ function App({ Component, pageProps }: AppProps) {
               content="width=device-width, initial-scale=1"
             />
             <meta charSet="utf-8" />
+            <meta name="robots" content="noindex" />
           </Head>
           <ThemeProvider theme={theme}>
             <Global styles={global} />
