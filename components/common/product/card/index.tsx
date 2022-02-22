@@ -69,7 +69,7 @@ const ProductCard = ({
                   passHref
                 >
                   <ProductListTitle>
-                    <Text as="h3" variant="Display-XXSmall" altFont={true}>
+                    <Text as="h3" variant="Display-XSmall" altFont={true}>
                       {product.title}
                     </Text>
                   </ProductListTitle>
