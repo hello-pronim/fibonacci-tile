@@ -9,6 +9,7 @@ import theme from "@styles/theme";
 import { Details, ImageWrapper, LinkWrapper, Project } from "./styles";
 
 const ProjectCard = ({ project }) => {
+  console.log(project);
   return (
     <Project key={project.id}>
       {project?.heroImageThumb?.[0]?.url && (
@@ -24,9 +25,9 @@ const ProjectCard = ({ project }) => {
           />
         </ImageWrapper>
       )}
-      {project?.projectCompleted && (
+      {project?.postDate && (
         <Text variant="Body-Small" css={css({ gridRow: 2, gridColumn: 1 })}>
-          {moment(project.projectCompleted).format("MMMM YYYY")}
+          {moment(project.postDate).format("MMMM YYYY")}
         </Text>
       )}
       <Details>
