@@ -18,12 +18,12 @@ const Hero = ({ pageTitle }) => {
           paddingBottom: 120,
         })}
       >
-        <Text variant="Display-Large" altFont>
+        <Text variant="Display-Large" altFont css={css({color: 'white'})}>
           {pageTitle}
         </Text>
         <Text
           variant="Display-Overline"
-          css={css({ textTransform: "uppercase" })}
+          css={css({ textTransform: "uppercase", color: 'white', })}
         >
           How can we help?
         </Text>

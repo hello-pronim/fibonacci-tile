@@ -26,7 +26,24 @@ const TwoColsTextBlock = ({ component, backgroundColor, pt = 60, pb = 60 }) => {
           <Text
             variant="Body-Regular"
             dangerouslySetInnerHTML={{ __html: component.text }}
-            css={css({ p: { pb: 0 } })}
+            css={css({ p: { pb: 0, a: { position: 'relative', display: 'inline-block', color: 'inherit', textDecoration: 'none',       "&:before": {
+              position: "relative",
+              backgroundColor: "charcoal",
+              content: "' '",
+              display: "block",
+              height: "2px",
+              width: "auto",
+              transform: "translateY(28px)",
+              transition: "ease all 0.3s",
+              pointerEvents: "none",
+              opacity: 1,
+            },
+            "&:hover": {
+              "&:before": {
+                transform: "translateY(26px)",
+                opacity: 1,
+              },
+            },} } })}
           />
         </RightCol>
       )}

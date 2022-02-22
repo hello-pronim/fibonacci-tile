@@ -1,4 +1,5 @@
 import css from "@styled-system/css";
+import theme from "@styles/theme";
 
 const DisplayXLarge = ({ ...props }) =>
   css({
@@ -7,6 +8,7 @@ const DisplayXLarge = ({ ...props }) =>
     lineHeight: [0],
     fontWeight: 0,
     letterSpacing: 2,
+    color: "charcoal",
   });
 
 const DisplayLarge = ({ ...props }) =>
@@ -15,6 +17,7 @@ const DisplayLarge = ({ ...props }) =>
     fontSize: props.altFont ? [9] : [10],
     lineHeight: [0],
     fontWeight: 0,
+    color: "charcoal",
   });
 
 const DisplayMedium = ({ ...props }) =>
@@ -24,6 +27,7 @@ const DisplayMedium = ({ ...props }) =>
     lineHeight: props.altFont ? [2] : [1],
     fontWeight: 0,
     letterSpacing: props.altFont ? 1 : 0,
+    color: "charcoal",
   });
 
 const DisplaySmall = ({ ...props }) =>
@@ -33,6 +37,7 @@ const DisplaySmall = ({ ...props }) =>
     lineHeight: props.altFont ? [1] : [2],
     fontWeight: 0,
     letterSpacing: props.altFont ? 0 : 1,
+    color: "charcoal",
   });
 
 const DisplayXSmall = ({ ...props }) =>
@@ -42,6 +47,7 @@ const DisplayXSmall = ({ ...props }) =>
     lineHeight: props.altFont ? 1 : 2,
     fontWeight: 0,
     letterSpacing: 0,
+    color: "charcoal",
   });
 
 const DisplayXXSmall = ({ ...props }) =>
@@ -51,6 +57,7 @@ const DisplayXXSmall = ({ ...props }) =>
     lineHeight: props.altFont ? 4 : 2,
     fontWeight: 0,
     letterSpacing: 0,
+    color: "charcoal",
   });
 
 const DisplayOverline = ({ ...props }) =>
@@ -60,6 +67,7 @@ const DisplayOverline = ({ ...props }) =>
     lineHeight: 4,
     fontWeight: 0,
     letterSpacing: 3,
+    color: "charcoal",
   });
 
 const BodyXLarge = ({ ...props }) =>
@@ -68,6 +76,7 @@ const BodyXLarge = ({ ...props }) =>
     fontSize: 4,
     lineHeight: 4,
     fontWeight: 0,
+    color: "charcoal",
   });
 
 const BodyLarge = ({ ...props }) =>
@@ -76,6 +85,7 @@ const BodyLarge = ({ ...props }) =>
     fontSize: 20,
     lineHeight: 4,
     fontWeight: 0,
+    color: "charcoal",
   });
 
 const BodyRegular = ({ ...props }) =>
@@ -84,6 +94,7 @@ const BodyRegular = ({ ...props }) =>
     fontSize: 2,
     lineHeight: 4,
     fontWeight: 0,
+    color: "charcoal",
   });
 
 const BodySmall = ({ ...props }) =>
@@ -92,6 +103,7 @@ const BodySmall = ({ ...props }) =>
     fontSize: 1,
     lineHeight: 4,
     fontWeight: 0,
+    color: "charcoal",
   });
 
 const BodyXSmall = ({ ...props }) =>
@@ -100,6 +112,7 @@ const BodyXSmall = ({ ...props }) =>
     fontSize: 0,
     lineHeight: 4,
     fontWeight: 0,
+    color: "charcoal",
   });
 
 export {

@@ -200,7 +200,7 @@ const SelectionCart = ({ active, newSelection, tab }) => {
             <Text
               variant="Body-XSmall"
               altFont
-              css={css({ textTransform: "uppercase" })}
+              css={css({ textTransform: "uppercase", color: 'white' })}
             >
               Close
             </Text>
@@ -220,10 +220,10 @@ const SelectionCart = ({ active, newSelection, tab }) => {
               color: "#fff",
             })}
           >
-            <Text variant="Display-XSmall" altFont>
+            <Text variant="Display-XSmall" altFont css={css({color: 'white'})}>
               How can we help you
             </Text>
-            <Text variant="Body-Regular" altFont>
+            <Text variant="Body-Regular" altFont css={css({color: 'white'})}>
               We can help answer questions and solve problems. If you can’t find
               what you are looking for give us a call on 1300 345 567.
             </Text>
