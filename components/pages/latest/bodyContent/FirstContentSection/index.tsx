@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
+import Image from 'next/image';
 import Link from "next/link";
+import Text from "@components/common/typography";
 import css from "@styled-system/css";
 import Container from "@components/common/layout/container";
-import Arrow from "@components/common/icons/arrow";
 import { LeftCol, RightCol, SahreLinkWrapper } from "../styles";
+import Arrow from 'public/assets/icons/right-diag-arrow.svg';
+import theme from "@styles/theme";
 
 const FirstContentSection = ({ content }) => {
   const useWidth = () => {
@@ -18,28 +21,26 @@ const FirstContentSection = ({ content }) => {
     }
     return 0;
   };
-  const windowWidth = useWidth();
+  
   return (
     <Container css={css({ bg: "#FFFFF8", pt: 120 })}>
       <LeftCol>
-        {windowWidth > 768 ? (
-          <div>
+            <Text variant="Body-Regular" css={css({color: theme.colors.concrete})}>Follow Us</Text>
             <SahreLinkWrapper>
-              <Link href="https://www.instagram.com/">Instagram</Link>
-              <Arrow type="short" direction="right" />
+              <Link href="https://www.instagram.com/fibonaccistone/">Instagram</Link>
+              <Image src={Arrow} width={14} height={14} alt="" layout="fixed"/>
             </SahreLinkWrapper>
 
             <SahreLinkWrapper>
               <Link href="https://www.facebook.com/login">Facebook</Link>
-              <Arrow type="short" direction="right" />
+              <Image src={Arrow} width={14} height={14} alt="" layout="fixed"/>
             </SahreLinkWrapper>
 
             <SahreLinkWrapper>
               <Link href="https://www.linkedin.com/">Linkedin</Link>
-              <Arrow type="short" direction="right" />
+              <Image src={Arrow} width={14} height={14} alt="" layout="fixed"/>
             </SahreLinkWrapper>
-          </div>
-        ) : null}
+
       </LeftCol>
       <RightCol>
         <div dangerouslySetInnerHTML={{ __html: content }} />

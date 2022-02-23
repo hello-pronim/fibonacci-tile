@@ -101,7 +101,7 @@ const BodyContent = ({ pageData }) => {
           </LinkWrapper>
         )}
       </Row>
-      <LeftCol
+      {/* <LeftCol
         css={css({
           py: 80,
           bg: "#FFFFF8",
@@ -122,7 +122,7 @@ const BodyContent = ({ pageData }) => {
           <Link href="https://www.linkedin.com/">Linkedin</Link>
           <Arrow type="short" direction="right" />
         </SahreLinkWrapper>
-      </LeftCol>
+      </LeftCol> */}
     </div>
   );
 };

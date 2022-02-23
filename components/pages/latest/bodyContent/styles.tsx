@@ -5,18 +5,17 @@ import theme from "@styles/theme";
 
 const LeftCol = styled("div")(
   css({
-    display: "none",
-    [theme.mediaQueriesMaxWidth.small]: {
-      position: "relative",
-      height: "100%",
-      gridColumn: "2 / span 4",
-      display: "flex",
-      flexDirection: "column",
-      a: {
-        pt: "12px",
-        textDecoration: "none",
-        color: "charcoal",
-      },
+    // display: "none",
+    position: "relative",
+    height: "100%",
+    gridColumn: "1 / span 1",
+    display: "flex",
+    flexDirection: "column",
+    a: {
+      fontSize: 17,
+      lineHeight: '140%',
+      textDecoration: "none",
+      color: "charcoal",
     },
   })
 );
@@ -24,7 +23,7 @@ const LeftCol = styled("div")(
 const RightCol = styled("div")(
   css({
     position: "relative",
-    gridColumn: "6 / span 6",
+    gridColumn: "4 / span 6",
     display: "flex",
     flexDirection: "column",
     h2: {
@@ -150,13 +149,9 @@ const SahreLinkWrapper = styled("div")(
   css({
     display: "flex",
     alignItems: "center",
-    columnGap: 20,
-    mt: 16,
+    columnGap: '7.2px',
+    mt: 12.5,
     paddingRight: 14,
-    svg: {
-      transition: "ease all 0.3s",
-      transform: "rotate(-45deg)",
-    },
     a: {
       textDecoration: "none",
       fontSize: 2,
