@@ -9,6 +9,7 @@ import CheckMarkIcon from "@components/icons/checkmark";
 import CrossIcon from "@components/icons/cross";
 import ArrowDown from "@components/icons/arrowDown";
 import ArrowUp from "@components/icons/arrowUp";
+import theme from "styles/theme";
 import {
   ActionBtn,
   ActionBtnContainer,
@@ -239,8 +240,12 @@ const ProductCard = ({
                 <div
                   css={css({
                     position: "relative",
-                    width: compact ? "100%" : 228,
-                    height: compact ? "auto" : 228,
+                    width: compact ? "100%" : 180,
+                    height: compact ? "auto" : 180,
+                    [theme.mediaQueries.mLarge]: {
+                      width: compact ? "100%" : 228,
+                      height: compact ? "auto" : 228,
+                    },
                     "&::after": compact && {
                       width: "100%",
                       content: '" "',
