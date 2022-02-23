@@ -72,7 +72,7 @@ const Accordion = ({ items }) => {
               </Toggle>
             </Top>
             {index === activeIndex && (
-              <Inner dangerouslySetInnerHTML={{ __html: item.content }} />
+              <Inner variant="Body-Large" dangerouslySetInnerHTML={{ __html: item.content }} />
             )}
           </Item>
         );

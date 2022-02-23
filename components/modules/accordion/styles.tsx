@@ -2,6 +2,7 @@ import css from "@styled-system/css";
 import styled from "@emotion/styled";
 import Cntnr from "@components/common/layout/container";
 import theme from "styles/theme";
+import Text from "@components/common/typography";
 
 
 const Container = styled(Cntnr)(() =>
@@ -36,7 +37,31 @@ const Top = styled('div')(() =>
   })
 );
 
-const Inner = styled('div')(() =>
+const linkStyles = {
+    color: 'inherit',
+    textDecoration: 'none',
+    display: 'inline-block',
+    "&:before": {
+      position: "relative",
+      backgroundColor: "charcoal",
+      content: "' '",
+      display: "block",
+      height: "2px",
+      width: "100%",
+      transform: "translateY(30px)",
+      transition: "ease all 0.3s",
+      pointerEvents: "none",
+      opacity: 1,
+    },
+    "&:hover": {
+      "&:before": {
+        transform: "translateY(28px)",
+        opacity: 1,
+      },
+    },
+};
+
+const Inner = styled(Text)(() =>
   css({
     boxSizing: 'border-box',
     position: 'relative',
@@ -59,6 +84,12 @@ const Inner = styled('div')(() =>
       opacity: 1,
       bottom: 0,
       left: 0,
+    },
+    li: {
+      a: linkStyles,
+    },
+    p: {
+      a: linkStyles,
     },
   })
 );
