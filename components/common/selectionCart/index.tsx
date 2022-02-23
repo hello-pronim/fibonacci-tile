@@ -2,7 +2,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { css } from "@styled-system/css";
-import useOnClickOutside from "use-onclickoutside";
+// import useOnClickOutside from "use-onclickoutside";
 import { useAppContext } from "@contexts/AppContext";
 import ProductCard from "@components/common/product/card";
 import ArrowButton from "@components/common/button/arrowButton";
@@ -45,12 +45,12 @@ const SelectionCart = ({ active, newSelection, tab }) => {
   const { state, dispatch } = useAppContext();
   const { selectedProducts } = state;
   const ref = useRef(null);
-  useOnClickOutside(ref, () => {
-    dispatch({
-      type: "OPEN_DRAWER",
-      value: false,
-    });
-  });
+  // useOnClickOutside(ref, () => {
+  //   dispatch({
+  //     type: "OPEN_DRAWER",
+  //     value: false,
+  //   });
+  // });
   return (
     <div
       ref={ref}
@@ -62,7 +62,8 @@ const SelectionCart = ({ active, newSelection, tab }) => {
         width: ["100%", "100%", 480],
         height: "100vh",
         background: tab === "support" ? "#141414" : "#fff",
-        zIndex: 9999999,
+        zIndex: 9999,
+        pt: 80,
         pb: tab === "cart" ? 142 : 0,
         transition: "ease all 0.4s",
         boxShadow:
