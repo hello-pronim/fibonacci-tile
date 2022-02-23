@@ -3,7 +3,7 @@ import { useAppContext } from "@contexts/AppContext";
 import BreadCrumb from "@components/common/breadcrumb";
 import SelectedProductCard from "@components/common/product/selectedCard";
 import ArrowButton from "@components/common/button/arrowButton";
-import ProductsHeader from "../products/Header";
+import Header from "@components/common/header";
 import Samples from "./components/samples";
 import Details from "./components/details";
 import StepItem from "./components/stepItem";
@@ -73,7 +73,7 @@ const CheckoutPage = ({ notifications }) => {
   };
   return (
     <CheckoutContainer>
-      <ProductsHeader mode="dark" notifications={notifications} />
+      <Header mode="dark" notifications={notifications} />
       <CheckoutWrapper>
         <LeftContent
           displayRight={
