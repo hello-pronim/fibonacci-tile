@@ -43,6 +43,7 @@ import {
   Wrapper,
 } from "./styles";
 import { css } from "@emotion/react";
+import Arrow from "@components/common/icons/arrow";
 
 const ProductCard = ({
   product,
@@ -80,14 +81,14 @@ const ProductCard = ({
               <DisplayNameBox>
                 <AvailableBox>
                   <div>
-                    <Text as="h4" variant="Body-Small">
+                    <Text as="h4" variant="Body-Regular">
                       {product.productCategories[0].title}
                     </Text>
                   </div>
                 </AvailableBox>
                 <NameBox>
                   <div>
-                    <Text as="h4" variant="Body-Small">
+                    <Text as="h4" variant="Body-Regular">
                       {product.collections[0].title}
                     </Text>
                   </div>
@@ -151,11 +152,15 @@ const ProductCard = ({
                       <Headline>Applications</Headline>
                       {product.applications}
                     </li>
+
+                    <TechnicalSpecification href="#">
+                      <span style={{ marginRight: "12px" }}>
+                        Click here to copy technical specification
+                      </span>
+                      <Arrow type="short" direction="right" />
+                    </TechnicalSpecification>
                   </ul>
                 </Listings>
-                <TechnicalSpecification href="#">
-                  Click here to copy technical specification{" "}
-                </TechnicalSpecification>
               </Details>
             </ProductDescriptionBox>
           </ProductsInfoDetails>
