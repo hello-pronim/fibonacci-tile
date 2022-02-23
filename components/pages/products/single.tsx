@@ -1,6 +1,6 @@
 import React from "react";
+import Header from "@components/common/header";
 import RelatedProducts from "./blocks/relatedProducts";
-import ProductsHeader from "./Header";
 import InlineSlider from "./blocks/inlineSlider";
 import Projects from "./blocks/projects";
 import TechnicalSpecifications from "./blocks/TechnicalSpecifications";
@@ -16,7 +16,7 @@ const ProductPage = ({
   const { backgroundColor } = product;
   return (
     <>
-      <ProductsHeader mode="dark" notifications={notifications} />
+      <Header mode="dark" notifications={notifications} />
       <SingleHeroModule product={product} collectionSlug={collectionSlug} />
       <Projects product={product} accentText="Fibonacci In Use" />
       {product?.gallery?.length > 0 && (
