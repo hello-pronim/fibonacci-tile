@@ -27,7 +27,7 @@ const QuoteRequest: NextPage<SupportPageProps> = ({
         <meta name="description" content="Support | Fibonacci" />
         <meta name="robots" content="index, follow" />
       </Head>
-      <Header mode="light" position="absolute" notifications={notifications} />
+      <Header mode="light" notifications={notifications} />
       <RequestQuote pageData={pageData} products={products} />
       <Footer />
     </div>

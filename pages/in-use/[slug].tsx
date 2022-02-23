@@ -20,7 +20,7 @@ const Project: NextPage<ProjectPageProps> = ({ project, notifications }) => {
         <meta name="description" content="Fibonacci project" />
         <meta name="robots" content="index, follow" />
       </Head>
-      <Header mode="dark" position="absolute" notifications={notifications} />
+      <Header mode="dark" notifications={notifications} />
       <ProjectPage project={project} />
       <Footer />
     </>

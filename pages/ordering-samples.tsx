@@ -22,7 +22,7 @@ const SampleOrder: NextPage<OrderingSamplesPageProps> = ({
       <Head>
         <title>Support | Fibonacci</title>
       </Head>
-      <Header mode="light" position="absolute" notifications={notifications} />
+      <Header mode="light" notifications={notifications} />
       <OrderingSamples pageData={pageData} />
       <Footer />
     </div>

@@ -10,7 +10,6 @@ const GenericHeader = ({
     <HeaderContainer>
       <Header
         mode={mode}
-        position="absolute"
         notifications={notifications}
         disableSelectionCart={disableSelectionCart}
       />

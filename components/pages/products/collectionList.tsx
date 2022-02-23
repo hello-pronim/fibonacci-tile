@@ -1,4 +1,4 @@
-import ProductsHeader from "./Header";
+import Header from "@components/common/header";
 import Slider from "./blocks/Slider";
 import SectionTitle from "./blocks/SectionTitle";
 import CTAPanel from "./blocks/CTAPanel";
@@ -38,7 +38,7 @@ const CollectionsPage = ({
   }
   return (
     <Container>
-      <ProductsHeader notifications={notifications} />
+      <Header notifications={notifications} />
       <Slider items={banners} disableNext={true} />
       {pageData.bannerSubline && (
         <SectionTitle show={false} title={pageData.bannerSubline} />
