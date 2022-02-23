@@ -3,7 +3,7 @@ import { initializeApollo } from "@utils/apolloClient";
 import { useAppContext } from "@contexts/AppContext";
 import { ProductsQuery } from "@gql/productGQL";
 import CustomSolutionsCTAPanel from "@components/common/customSolutionsCtaPanel";
-import ProductsHeader from "./Header";
+import Header from "@components/common/header";
 import ProductFilterBar from "./blocks/FilterBar";
 import CTAPanel from "./blocks/CTAPanel";
 import SectionTitle from "./blocks/SectionTitle";
@@ -32,6 +32,7 @@ const ProductsPage = ({
     initialProducts.slice(15)
   );
   const [showFilterBar, setShowFilterBar] = useState(false);
+  const [fixFilterBar, setFixFilterBar] = useState(false);
   const ref = useRef(null);
   const banners = [];
   if (pageData?.bannerImage?.length > 0) {
@@ -58,10 +59,15 @@ const ProductsPage = ({
 
   useEffect(() => {
     const handleScroll = () => {
-      if (ref && ref?.current?.offsetTop < window.pageYOffset + 120) {
+      if (ref && ref?.current?.offsetTop < window.pageYOffset + 400) {
         setShowFilterBar(true);
       } else {
         setShowFilterBar(false);
+      }
+      if (ref && ref?.current?.offsetTop < window.pageYOffset + 80) {
+        setFixFilterBar(true);
+      } else {
+        setFixFilterBar(false);
       }
     };
     window.addEventListener("scroll", handleScroll);
@@ -110,7 +116,7 @@ const ProductsPage = ({
       setLoadingProducts(false);
     }
     fetchProducts();
-  }, [state.filter]);
+  }, [state.filter, client]);
 
   useEffect(() => {
     if (!state.isMobileFilterActive) {
@@ -120,7 +126,7 @@ const ProductsPage = ({
 
   return (
     <Container>
-      {!showFilterBar && <ProductsHeader notifications={notifications} />}
+      {!fixFilterBar && <Header mode="light" notifications={notifications} />}
       <Slider items={banners} disableNext={true} />
       <SectionTitle show={showFilterBar} title={pageData.bannerSubline} />
       <section ref={ref}>
@@ -129,6 +135,7 @@ const ProductsPage = ({
           show={showFilterBar}
           colourSchemes={colourSchemes}
           productCategories={productCategories}
+          fixFilterBar={fixFilterBar}
         />
       </section>
       <ProductLists

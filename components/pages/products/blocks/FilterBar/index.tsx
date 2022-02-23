@@ -25,6 +25,7 @@ export default function ProductFilters({
   applyFilter,
   colourSchemes,
   productCategories,
+  fixFilterBar,
 }) {
   const { state, dispatch } = useAppContext();
   const [activeFilter, setActiveFilter] = useState(null);
@@ -66,6 +67,7 @@ export default function ProductFilters({
       ref={ref}
       className={classnames(styles.container, {
         [styles.active]: show,
+        [styles.fixFilterBar]: fixFilterBar,
       })}
     >
       <div className={styles.topBar}>

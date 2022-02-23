@@ -19,7 +19,7 @@ const Support: NextPage<SupportPageProps> = ({ pageData, notifications }) => {
       <Head>
         <title>Support | Fibonacci</title>
       </Head>
-      <Header mode="light" position="absolute" notifications={notifications} />
+      <Header mode="light" notifications={notifications} />
       <SupportPage pageData={pageData} />
       <Footer />
     </div>

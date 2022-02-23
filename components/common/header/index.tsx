@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { useAppContext } from "@contexts/AppContext";
 import Link from "next/link";
 import { Transition } from "react-transition-group";
 import css from "@styled-system/css";
+import { useAppContext } from "@contexts/AppContext";
 import Text from "@components/common/typography";
 import ProductSelectionCount from "@components/common/product/selectionCount";
 import Logo from "public/assets/brandmarks/logo-primary.svg";
@@ -40,7 +40,6 @@ const transitionStyles = {
 
 const Header = ({
   mode = "light",
-  position = "relative",
   notifications = null,
   hideBorderOnScroll = false,
   disableSelectionCart = false,
@@ -88,7 +87,6 @@ const Header = ({
 
   // select first notification in array
   const activeNotification = notifications?.[0];
-
   return (
     <div
       css={css({

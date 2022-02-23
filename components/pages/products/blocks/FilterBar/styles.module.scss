@@ -1,15 +1,17 @@
 @import "@styles/settings";
 
 .container {
-  position: fixed;
-  top: 0;
-  z-index: 9999;
+  z-index: 9999999;
   width: 100%;
   opacity: 0;
   &.active {
     opacity: 1;
     transition: opacity 0.4s ease-in-out;
   }
+}
+.fixFilterBar {
+  position: fixed;
+  top: 0;
 }
 .topBar {
   display: flex;
