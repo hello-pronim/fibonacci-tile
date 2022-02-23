@@ -130,6 +130,8 @@ export const ProductQuery = gql`
         largeImage {
           id
           url
+          width
+          height
         }
         gallery {
           url
