@@ -5,7 +5,7 @@ export interface containerProps {
   navOpen: boolean;
   position: string;
   mode: string;
-  scrollY: number;
+  scrolledActive: boolean;
   hideBorderOnScroll?: boolean;
 }
 
@@ -34,10 +34,15 @@ const Container = styled("div")(({ ...props }: containerProps) =>
     width: "100%",
     display: "flex",
     justifyContent: "center",
-    backgroundColor: props.scrollY >= 5 && bgPicker(props.mode),
+    backgroundColor: props.scrolledActive && bgPicker(props.mode),
     borderBottom: "1px solid",
     transition: "ease all 0.3s",
-    borderColor: (props.hideBorderOnScroll && props.scrollY >= 5) ? "transparent" : (props.navOpen ? "white" : "stone"),
+    borderColor:
+      props.hideBorderOnScroll && props.scrolledActive
+        ? "transparent"
+        : props.navOpen
+        ? "white"
+        : "stone",
     zIndex: 1000,
     overflowX: "clip",
   })

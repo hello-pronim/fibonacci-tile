@@ -48,19 +48,31 @@ const Header = ({
   const { state, dispatch } = useAppContext();
   const [navOpen, setNavOpen] = useState(false);
   const [alertActive, setAlertActive] = useState(true);
+  const [scrolledActive, setScrolledActive] = useState(false);
   const activeLogo = mode === "dark" ? Logo : LogoWhite;
-
-  const [scrollY, setScrollY] = useState(0);
-  function logit() {
-    setScrollY(window.pageYOffset);
+  let navRightMode = mode;
+  if (state.openDrawer) {
+    if (state.activeDrawerTab === "support" && !scrolledActive) {
+      navRightMode = "light";
+    } else {
+      navRightMode = "dark";
+    }
+    if (scrolledActive && mode !== "dark") {
+      navRightMode = "light";
+    }
   }
+
+  function checkScroll() {
+    setScrolledActive(window.pageYOffset >= 5);
+  }
+
   useEffect(() => {
     function watchScroll() {
-      window.addEventListener("scroll", logit);
+      window.addEventListener("scroll", checkScroll);
     }
     watchScroll();
     return () => {
-      window.removeEventListener("scroll", logit);
+      window.removeEventListener("scroll", checkScroll);
     };
   });
 
@@ -104,7 +116,7 @@ const Header = ({
         position={"relative"}
         navOpen={navOpen}
         mode={mode}
-        scrollY={scrollY}
+        scrolledActive={scrolledActive}
         hideBorderOnScroll={hideBorderOnScroll}
       >
         <Wrapper>
@@ -141,7 +153,7 @@ const Header = ({
           </LogoWrapper>
           <NavRight>
             <NavItem
-              mode={mode}
+              mode={navRightMode}
               onClick={() => {
                 dispatch({
                   type: "OPEN_DRAWER",
@@ -159,7 +171,7 @@ const Header = ({
               Support
             </NavItem>
             <NavItem
-              mode={mode}
+              mode={navRightMode}
               onClick={() => {
                 dispatch({
                   type: "OPEN_DRAWER",
@@ -178,7 +190,7 @@ const Header = ({
             </NavItem>
             {!disableSelectionCart && (
               <NavItem
-                mode={mode}
+                mode={navRightMode}
                 onClick={() => {
                   dispatch({
                     type: "OPEN_DRAWER",
