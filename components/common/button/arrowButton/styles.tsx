@@ -20,13 +20,10 @@ const ArrowButtonWrapper = styled("div")(({ ...props }: containerProps) =>
       borderColor: "#B0ABA7",
       borderStyle: props.visibleBorder === false ? "none" : "solid",
       fontSize: 16,
-      padding: !props.size
-        ? "14px 140px 14px 20px"
-        : "17.82px 336.93px 17.82px 21px",
+      padding: "14px 140px 14px 20px",
       [theme.mediaQueriesMaxWidth.small]: {
-        padding: !props.size
-          ? "17.82px 244.68px 17.82px 21px"
-          : "17.82px 268.93px 17.82px 21px",
+        display: "block",
+        padding: "24px 96px 24px 24px",
       },
       display: "inline-block",
       textAlign: props.size ? "left" : "",
@@ -87,8 +84,8 @@ const ArrowButtonWrapper = styled("div")(({ ...props }: containerProps) =>
       },
     },
     ".bttnArrow": {
-      cursor: props.disabled ? "not-allowed" : "pointer"
-    }
+      cursor: props.disabled ? "not-allowed" : "pointer",
+    },
   })
 );
 

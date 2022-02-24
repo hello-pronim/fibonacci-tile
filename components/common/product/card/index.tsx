@@ -32,6 +32,7 @@ import {
   NameBox,
   ProductDescriptionBox,
   ProductListTitle,
+  ProductTitleLink,
   ProductName,
   ProductInfoBox,
   ProductsInfoDetails,
@@ -310,8 +311,8 @@ const ProductCard = ({
           altFont={true}
           marginTop="25px"
         >
-          <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
-            <a>{product.title}</a>
+          <Link href={`/terrazzo/${collectionSlug}/${product.slug}`} passHref>
+            <ProductTitleLink>{product.title}</ProductTitleLink>
           </Link>
         </CardTitle>
         {!compact && (

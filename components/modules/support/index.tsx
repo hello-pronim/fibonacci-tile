@@ -7,6 +7,7 @@ import {
   TileWrapper,
   Tile,
   TileInner,
+  TileText,
   Icon,
 } from "./styles";
 
@@ -62,9 +63,9 @@ const SupportModule = ({
                     height={48}
                   />
                 </Icon>
-                <Text as="h5" variant="Display-XSmall" altFont>
+                <TileText as="h5" variant="Display-XSmall" altFont>
                   {support.title}
-                </Text>
+                </TileText>
               </TileInner>
             </Tile>
           ))}
