@@ -1,10 +1,9 @@
-import { Container, ImageWrapper, TextWrapper } from "./styles";
-import Text from "@components/common/typography";
+import css from "@styled-system/css";
 import Image from "next/image";
 import Ig1 from "public/assets/temp/ig-1.jpg";
 import Ig2 from "public/assets/temp/ig-2.jpg";
 import AccentText, { AccentTextMobile } from "@components/common/accentText";
-import css from "@styled-system/css";
+import { Container, ImageWrapper } from "./styles";
 
 const SocialModule = () => {
   return (

@@ -2,6 +2,7 @@ import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import { initializeApollo } from "@utils/apolloClient";
 import { HomePageQuery } from "@gql/pageGQL";
+import { getIGUserData } from "@utils/igData";
 import { withGlobalData } from "@hoc/withGlobalData";
 import Homepage from "@components/pages/home";
 import Header from "@components/common/header";
@@ -20,7 +21,11 @@ const Home: NextPage<HomePageProps> = ({ pageData, notifications }) => {
         <meta name="description" content="Fibonacci Homepage" />
         <meta name="robots" content="index, follow" />
       </Head>
-      <Header mode="light" notifications={notifications} hideBorderOnScroll={true} />
+      <Header
+        mode="light"
+        notifications={notifications}
+        hideBorderOnScroll={true}
+      />
       <Homepage pageData={pageData} />
       <Footer />
     </>
@@ -37,9 +42,12 @@ export const getStaticProps: GetStaticProps = withGlobalData(async () => {
       slug: "home-page",
     },
   });
+  const instaFeed = await getIGUserData("fibonaccistone");
+
   return {
     props: {
       pageData,
+      instaFeed,
     },
     revalidate: parseInt(process.env.NEXT_PAGE_REVALIDATE),
   };
