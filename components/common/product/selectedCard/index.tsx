@@ -37,10 +37,11 @@ const SelectedProductCard = ({
   const {
     state: { confirmedProducts },
   } = useAppContext();
+  
   return (
     <Wrapper>
       <Container>
-        {confirmedProducts?.length > sampleSelectedCount && !isSelected && (
+        {confirmedProducts?.length >= sampleSelectedCount && !isSelected && (
           <div className="overlay">
             Choose upto {sampleSelectedCount}, samples remove one and the
             confirm your choosen samples
