@@ -10,17 +10,6 @@ const CollectionHeroContainer = styled("div")(() =>
   })
 );
 
-const CaptionText = styled("div")(() =>
-  css({
-    position: "absolute",
-    top: "120px",
-    right: "80px",
-    zIndex: "99999",
-    textAlign: "right",
-    maxWidth: 350,
-  })
-);
-
 const ImageContent = styled("div")(() =>
   css({
     position: "relative",
@@ -33,4 +22,4 @@ const ImageContent = styled("div")(() =>
   })
 );
 
-export { CollectionHeroContainer, CaptionText, ImageContent };
+export { CollectionHeroContainer, ImageContent };

@@ -16,6 +16,17 @@ const CollectionProductsContainer = styled('div')(() =>
   })
 );
 
+const CaptionText = styled("div")(() =>
+  css({
+    position: "absolute",
+    top: "190px",
+    left: "220px",
+    textAlign: "left",
+    maxWidth: 350,
+  })
+);
+
 export {
   CollectionProductsContainer,
+  CaptionText
 };

@@ -21,7 +21,7 @@ const CollectionPage = ({ collection, products, notifications }) => {
               ? collection.backgroundColor2
               : "#E6EBEA"
           }
-          collection={collection.title}
+          collection={collection}
           products={products}
         />
       )}
