@@ -30,7 +30,7 @@ export default function ColourSchemeFilter({ colourSchemes }) {
             styles.productFilterItemTitle
           )}
         >
-          <Text as="h3" variant="Body-Regular">
+          <Text as="h3" marginTop="30px" variant="Body-Regular">
             Refine your <br /> colour schemes
           </Text>
         </div>
