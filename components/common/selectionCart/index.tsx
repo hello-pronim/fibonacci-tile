@@ -134,6 +134,7 @@ const SelectionCart = ({ active, newSelection, tab }) => {
                 flexDirection: "column",
                 rowGap: "8px",
               })}
+              action="/thank-you"
             >
               <input css={css(fieldStyles)} placeholder="First Name"></input>
               <input css={css(fieldStyles)} placeholder="Last Name"></input>

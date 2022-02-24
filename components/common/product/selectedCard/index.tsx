@@ -37,7 +37,6 @@ const SelectedProductCard = ({
   const {
     state: { confirmedProducts },
   } = useAppContext();
-  debugger;
   return (
     <Wrapper>
       <Container>
@@ -47,7 +46,7 @@ const SelectedProductCard = ({
             confirm your choosen samples
           </div>
         )}
-        <GridCardImgContainer>
+        <GridCardImgContainer compact={true}>
           {product?.thumbImageList?.[0]?.url && (
             <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
               <a>
