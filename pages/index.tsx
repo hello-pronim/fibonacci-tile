@@ -10,23 +10,26 @@ import Footer from "@components/common/footer";
 
 interface HomePageProps {
   pageData: any;
+  instaFeed: Array<any>;
   notifications: Array<any>;
 }
 
-const Home: NextPage<HomePageProps> = ({ pageData, notifications }) => {
+const Home: NextPage<HomePageProps> = ({
+  pageData,
+  notifications,
+  instaFeed,
+}) => {
   return (
     <>
       <Head>
         <title>Home | Fibonacci</title>
-        <meta name="description" content="Fibonacci Homepage" />
-        <meta name="robots" content="index, follow" />
       </Head>
       <Header
         mode="light"
         notifications={notifications}
         hideBorderOnScroll={true}
       />
-      <Homepage pageData={pageData} />
+      <Homepage pageData={pageData} instaFeed={instaFeed} />
       <Footer />
     </>
   );
@@ -42,11 +45,11 @@ export const getStaticProps: GetStaticProps = withGlobalData(async () => {
       slug: "home-page",
     },
   });
-  let instaFeed: any = []
+  let instaFeed: any = [];
   try {
     instaFeed = await getIGUserData("fibonaccistone");
   } catch (e) {
-    console.log(e);
+    console.log("error fetching ig data", e);
   }
   return {
     props: {

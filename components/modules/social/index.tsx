@@ -5,7 +5,7 @@ import Ig2 from "public/assets/temp/ig-2.jpg";
 import AccentText, { AccentTextMobile } from "@components/common/accentText";
 import { Container, ImageWrapper } from "./styles";
 
-const SocialModule = () => {
+const SocialModule = ({ instaFeed }) => {
   return (
     <Container>
       <AccentText top={120}>From our community</AccentText>
@@ -13,16 +13,16 @@ const SocialModule = () => {
         From our community
       </AccentTextMobile>
       <ImageWrapper>
-        <Image alt="" src={Ig1} width={292} height={292} layout="fixed" />
-        <Image alt="" src={Ig2} width={292} height={292} layout="fixed" />
-        <Image alt="" src={Ig1} width={292} height={292} layout="fixed" />
-        <Image alt="" src={Ig2} width={292} height={292} layout="fixed" />
-        <Image alt="" src={Ig1} width={292} height={292} layout="fixed" />
-        <Image alt="" src={Ig2} width={292} height={292} layout="fixed" />
-        <Image alt="" src={Ig1} width={292} height={292} layout="fixed" />
-        <Image alt="" src={Ig2} width={292} height={292} layout="fixed" />
-        <Image alt="" src={Ig1} width={292} height={292} layout="fixed" />
-        <Image alt="" src={Ig2} width={292} height={292} layout="fixed" />
+        {instaFeed.map((ig: any) => (
+          <Image
+            key={`ig-${ig.shortcode}`}
+            alt={ig.description}
+            src={ig.image}
+            width={292}
+            height={292}
+            layout="fixed"
+          />
+        ))}
       </ImageWrapper>
       {/* <TextWrapper>
         <Text as="p" variant="Body-Small">
