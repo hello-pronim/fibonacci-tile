@@ -200,9 +200,23 @@ const CardTitle = styled(Text)(
   })
 );
 
+const ProductTitleLink = styled("a")(
+  css({
+    fontFamily: "Canela",
+    fontWeight: "normal",
+    fontSize: "24px",
+    lineHeight: "33.6px",
+    color: theme.colors.charcoal,
+  })
+);
+
 const CardSubTitle = styled(Text)(
   css({
+    fontFamily: "Everett",
+    fontSize: "14px",
+    lineHeight: "19.6px",
     fontWeight: "300",
+    color: theme.colors.charcoal,
   })
 );
 
@@ -430,6 +444,7 @@ export {
   ProductInfoBox,
   ProductsInfoDetails,
   ProductsInfoRow,
+  ProductTitleLink,
   RowDetailButton,
   TableRow,
   TechnicalSpecification,

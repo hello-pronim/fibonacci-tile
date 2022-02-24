@@ -9,7 +9,7 @@ const SocialModule = ({ instaFeed }) => {
   return (
     <Container>
       <AccentText top={120}>From our community</AccentText>
-      <AccentTextMobile css={css({ pb: 80 })}>
+      <AccentTextMobile css={css({ pb: 80, gridColumn: "1/span 6" })}>
         From our community
       </AccentTextMobile>
       <ImageWrapper>

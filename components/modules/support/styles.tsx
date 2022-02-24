@@ -1,7 +1,8 @@
 import css from "@styled-system/css";
 import styled from "@emotion/styled";
-import Cntnr from "@components/common/layout/container";
 import theme from "styles/theme";
+import Cntnr from "@components/common/layout/container";
+import Text from "@components/common/typography";
 
 interface TitleProps {
   active: boolean;
@@ -46,19 +47,27 @@ const Tile = styled("a")(({ active }: TitleProps) =>
     display: "inline-flex",
     width: "100%",
     textDecoration: "none",
-    [theme.mediaQueries.medium]: {
-      paddingBottom: "25%",
-      width: "25%",
-    },
-    py: 40,
     justifyContent: "center",
     transition: "background ease 0.3s",
+    py: 24,
     // backgroundColor: active ? "white" : theme.colors.concreteTints[8],
     backgroundColor: "#ebebeb",
-    borderBottom: active && `2px solid ${theme.colors.charcoal}`,
+    border: "none",
+    borderLeft: active && `2px solid ${theme.colors.charcoal}`,
+    [theme.mediaQueries.medium]: {
+      width: "25%",
+      py: 32,
+      border: "none",
+      borderBottom: active && `2px solid ${theme.colors.charcoal}`,
+    },
     "&:hover": {
       bg: "white",
-      borderBottom: `2px solid ${theme.colors.charcoal}`,
+      border: "none",
+      borderLeft: `2px solid ${theme.colors.charcoal}`,
+      [theme.mediaQueries.medium]: {
+        border: "none",
+        borderBottom: `2px solid ${theme.colors.charcoal}`,
+      },
     },
   })
 );
@@ -66,28 +75,46 @@ const Tile = styled("a")(({ active }: TitleProps) =>
 const TileInner = styled("div")(
   css({
     color: "charcoal",
+    columnGap: 18,
+    display: "flex",
+    alignItems: "center",
+    width: "100%",
+    px: 24,
     [theme.mediaQueries.medium]: {
-      position: "absolute",
       flexDirection: "column",
       justifyContent: "center",
-      top: 0,
-      bottom: 0,
+      px: 32,
       my: "auto",
     },
-    columnGap: 18,
-    alignItems: "center",
-    display: "flex",
+  })
+);
+
+const TileText = styled(Text)(
+  css({
+    flex: "1 auto",
+    fontSize: "18px",
+    lineHeight: "21.6px",
+    textAlign: "center",
+    [theme.mediaQueries.medium]: {
+      height: "80px",
+    },
   })
 );
 
 const Icon = styled("div")(
   css({
-    width: 48,
-    height: 48,
+    width: "80px",
+    textAlign: "center",
+    // width: 48,
+    // height: 48,
     [theme.mediaQueries.medium]: {
-      mb: 72,
+      width: "100%",
+      height: "126px",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
     },
   })
 );
 
-export { Container, Wrapper, TileWrapper, Tile, TileInner, Icon };
+export { Container, Wrapper, TileWrapper, Tile, TileInner, TileText, Icon };
