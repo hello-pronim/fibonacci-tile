@@ -14,6 +14,19 @@ interface DetailViewProps {
 const Wrapper = styled("div")(
   css({
     width: "100%",
+    ".popupBlock": {
+      "& div": {
+        width: "100%",
+        height: "100%",
+        "& img": {
+          objectFit: "cover",
+        },
+      },
+      ".popupBlockClose": {
+        width: "auto",
+        height: "auto",
+      },
+    },
   })
 );
 
