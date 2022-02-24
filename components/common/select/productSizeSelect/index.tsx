@@ -67,7 +67,7 @@ export default function Select({
         onClick={disabled ? null : handleDropdownOpen}
         disabled={disabled}
       >
-        {selectedSizeValue !== "" ? selectedSize.title : "Size"}
+        {selectedSizeValue !== "" ? selectedSize.title : "Select a size"}
       </SizeSelect>
       {selectedSize && (
         <input
@@ -80,7 +80,7 @@ export default function Select({
         <SizeSelectDropdown>
           <SizeSelectDropdownHeaderWrapper>
             <SizeSelectDropdownHeaderText>
-              Choose a size
+              Select a size
             </SizeSelectDropdownHeaderText>
           </SizeSelectDropdownHeaderWrapper>
           <SizeSelectDropdownBodyWrapper>

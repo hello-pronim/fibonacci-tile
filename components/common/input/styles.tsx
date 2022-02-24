@@ -18,10 +18,13 @@ const StyledInput = styled("input")(
       lineHeight: "22.4px",
       color: theme.colors.charcoal,
       marginBottom: "24px",
+      '&::placeholder': {
+        color: 'charcoal',
+      },
       '&:disabled': {
         bg: 'transparent',
         '&::placeholder': {
-          color: 'stone',
+          color: '#d8cec4',
         },
         borderColor: 'stone',
       },
