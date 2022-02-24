@@ -25,6 +25,12 @@ export const CategoriesQuery: any = gql`
   }
 `;
 
+const galleryImageThumb = [710 * 2, 900 * 2];
+const galleryImageBlurThumb = [
+  Math.round(galleryImageThumb[0] / 100),
+  Math.round(galleryImageThumb[1] / 100),
+];
+
 export const CategoryQuery: any = gql`
   query category($slug: [String] = "") {
     category(slug: $slug) {
@@ -76,9 +82,12 @@ export const CategoryQuery: any = gql`
           url
         }
         gallery {
-          id
-          title
           url
+        }
+        galleryThumbs: gallery @transform(width: ${galleryImageThumb[0]}, height:  ${galleryImageThumb[1]}) {
+          url
+          blurThumb: url @transform(width: ${galleryImageBlurThumb[0]}, height: ${galleryImageBlurThumb[1]})
+          title
           width
           height
         }

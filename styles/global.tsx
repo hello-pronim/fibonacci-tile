@@ -23,7 +23,9 @@ const global = css`
   h4,
   h5,
   h6,
-  p, {
+  p,
+  ol,
+  ul {
     margin: 0;
     padding: 0;
     font-family: "Everett";
@@ -35,15 +37,7 @@ const global = css`
 
   ol,
   ul {
-    font-family: "Everett";
-    font-style: normal;
-    font-weight: normal;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  li {
-    margin-bottom: 12px;
+    list-style: none;
   }
 
   p {

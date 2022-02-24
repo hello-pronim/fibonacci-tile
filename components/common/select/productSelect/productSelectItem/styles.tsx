@@ -76,6 +76,11 @@ const ActionBtn = styled("div")(({ selected }: { selected: boolean }) =>
       borderRadius: "32px",
       color: theme.colors.white,
       backgroundColor: theme.colors.charcoal,
+      svg: {
+        path: {
+          fill: 'white',
+        },
+      },
       ".hovered": {
         display: "flex",
         opacity: 1,
