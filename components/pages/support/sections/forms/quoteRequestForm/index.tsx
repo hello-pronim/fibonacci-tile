@@ -25,15 +25,27 @@ import {
 } from "./styles";
 
 const QuoteRequestForm = ({ products }) => {
-  const defaultProduct = { id: 0, size: 0, label: "" };
-  const [myProducts, setMyProducts] = useState([defaultProduct]);
+  const defaultProduct = { productId: 0, size: 0, qty: "" };
+  const [myProducts, setMyProducts] = useState([
+    defaultProduct,
+    defaultProduct,
+  ]);
 
   const handleSubmit = () => {};
   const handleProductAdd = () => {
     let newProducts = [...myProducts];
-
     newProducts.push(defaultProduct);
     setMyProducts(newProducts);
+  };
+  const onProductUpdate = (index: number) => (product: any) => {
+    if (
+      myProducts.length == index + 1 &&
+      product.productId &&
+      product.size &&
+      product.qty
+    ) {
+      handleProductAdd();
+    }
   };
 
   return (
@@ -165,11 +177,12 @@ const QuoteRequestForm = ({ products }) => {
                   <FormGroupTitle>About the product</FormGroupTitle>
                 </Col>
               </Row>
-              {myProducts.map((item) => (
+              {myProducts.map((item, index) => (
                 <ProductSelectRow
-                  key={`product-row-${item.id}`}
+                  key={`product-row-${index}`}
                   row={item}
                   products={products}
+                  onProductUpdate={onProductUpdate(index)}
                 />
               ))}
               <Row>
