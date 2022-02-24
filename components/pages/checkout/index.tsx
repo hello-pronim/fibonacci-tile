@@ -110,7 +110,7 @@ const CheckoutPage = ({ notifications }) => {
                   activeCheckoutStep={activeCheckoutStep}
                 />
               )}
-              {activeCheckoutStep === 4 && <Confirm />}
+              {activeCheckoutStep === 4 && <Confirm  stepChange={stepChange} />}
             </CheckoutContentWrapper>
           )}
           {selectedProducts?.length === 0 && (

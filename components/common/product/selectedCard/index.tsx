@@ -37,7 +37,7 @@ const SelectedProductCard = ({
   const {
     state: { confirmedProducts },
   } = useAppContext();
-  console.log(confirmedProducts, sampleSelectedCount);
+  
   return (
     <Wrapper>
       <Container>

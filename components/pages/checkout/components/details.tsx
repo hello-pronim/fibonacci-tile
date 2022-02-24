@@ -64,6 +64,9 @@ const Details = ({ activeCheckoutStep, disabled, stepChange }) => {
               </TwoItemRow>
               {activeCheckoutStep === 2 && (
                 <CheckoutFooter>
+                  <div className="back" onClick={() => stepChange(1)}>
+                    Back
+                  </div>
                   <ArrowButton
                     mode="light"
                     bgColor="#141414"
@@ -71,9 +74,6 @@ const Details = ({ activeCheckoutStep, disabled, stepChange }) => {
                     link=""
                     disabled={disabled}
                   />
-                  <div className="back" onClick={() => stepChange(1)}>
-                    Back
-                  </div>
                 </CheckoutFooter>
               )}
             </form>

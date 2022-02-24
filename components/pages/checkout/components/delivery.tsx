@@ -66,10 +66,10 @@ const Delivery = ({ activeCheckoutStep, disabled, stepChange }) => {
         variant="Display-Large"
         altFont
         css={css({
-          fontSize: 32,
+          fontSize: 42,
         })}
       >
-        Send my samples to:
+        Delivery details
       </Text>
       <FormWrapper>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -112,29 +112,16 @@ const Delivery = ({ activeCheckoutStep, disabled, stepChange }) => {
               {...register("information", { required: true })}
             ></TextareaFullwidth>
           </OneItemRow>
-          <InfoText>
+          {/* <InfoText>
             <p>
               <strong>NB:</strong> We can not send samples to PO Boxes.
             </p>
-          </InfoText>
-          <Details>
-            <p>
-              <strong>
-                All Sample Requests will be actioned within 24 hours of
-                receiving all of the required information.
-              </strong>
-            </p>
-            <p>
-              As part of our commitment to the environment and keeping you
-              up-to-date with the latest products and colours in our range we do
-              not provide samples for libraries. Instead we encourage our
-              customers to view our range and request samples as required, per
-              project and take advantage of our same-day dispatch express
-              service.
-            </p>
-          </Details>
+          </InfoText> */}
           {activeCheckoutStep === 3 && (
             <CheckoutFooter>
+              <div className="back" onClick={() => stepChange(2)}>
+                Back
+              </div>
               <ArrowButton
                 mode="light"
                 bgColor="#141414"
@@ -142,11 +129,19 @@ const Delivery = ({ activeCheckoutStep, disabled, stepChange }) => {
                 link=""
                 disabled={disabled}
               />
-              <div className="back" onClick={() => stepChange(2)}>
-                Back
-              </div>
             </CheckoutFooter>
           )}
+          <Details className="detailsBox">
+            <p>
+              <strong>
+               Delivery details
+              </strong>
+            </p>
+            <p>
+              As part of our commitment to the environment and keeping you up-to-date with the latest products and colours in our range we do
+              not provide samples for libraries. Instead we encourage our customers to view our range and request samples as required, per project and take advantage of our same-day dispatch express service.
+            </p>
+          </Details>
         </form>
       </FormWrapper>
     </div>
