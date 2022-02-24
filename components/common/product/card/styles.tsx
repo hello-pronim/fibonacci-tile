@@ -2,6 +2,7 @@ import css from "@styled-system/css";
 import Text from "@components/common/typography";
 import styled from "@emotion/styled";
 import theme from "styles/theme";
+import { height } from "styled-system";
 
 interface ActionBtnProps {
   checked: boolean;
@@ -53,6 +54,9 @@ const TableRow = styled("div")(({ detailView }: DetailViewProps) =>
     alignItems: "stretch",
     borderTop: "1px solid #d4d4d8",
     backgroundColor: detailView ? "#FFFFF8" : "inherit",
+    "&:hover": {
+      backgroundColor: "#FFFFF8",
+    },
   })
 );
 
@@ -60,6 +64,7 @@ const ImgCell = styled("div")(({ detailView }: DetailViewProps) =>
   css({
     paddingRight: 0,
     width: "75%",
+    height: "auto",
     paddingTop: detailView ? "10px" : 0,
   })
 );
@@ -80,7 +85,7 @@ const RowDetailButton = styled("div")(({ detailView }: DetailViewProps) =>
 
 const CardImg = styled("div")(({ detailView }: DetailViewProps) =>
   css({
-    height: detailView ? "100%" : "60px",
+    height: detailView ? "initial" : "60px",
     overflow: "hidden",
     "& a": detailView
       ? {
@@ -105,14 +110,15 @@ const ProductListTitle = styled("a")(
   })
 );
 
-const ListCardImgContainer = styled("div")(
+const ListCardImgContainer = styled("div")(({ detailView }: DetailViewProps) =>
   css({
     position: "relative",
     boxShadow:
       "0px 24px 38px rgba(20, 20, 20, 0.08), 0px 9px 46px rgba(20, 20, 20, 0.08), 0px 11px 15px rgba(20, 20, 20, 0.16)",
     display: "flex",
     transition: "box-shadow ease 0.3s",
-    height: "100%",
+    width: "auto",
+    height: "auto",
   })
 );
 
@@ -194,9 +200,23 @@ const CardTitle = styled(Text)(
   })
 );
 
+const ProductTitleLink = styled("a")(
+  css({
+    fontFamily: "Canela",
+    fontWeight: "normal",
+    fontSize: "24px",
+    lineHeight: "33.6px",
+    color: theme.colors.charcoal,
+  })
+);
+
 const CardSubTitle = styled(Text)(
   css({
+    fontFamily: "Everett",
+    fontSize: "14px",
+    lineHeight: "19.6px",
     fontWeight: "300",
+    color: theme.colors.charcoal,
   })
 );
 
@@ -212,6 +232,8 @@ const ProductsInfoRow = styled("div")(
     display: "flex",
     flexWrap: "wrap",
     alignItems: "center",
+    cursor: "pointer",
+
     width: "100%",
   })
 );
@@ -257,9 +279,9 @@ const NameBox = styled("div")(
   })
 );
 
-const DescriptionBox = styled("div")(({ detailView }: DetailViewProps) =>
+const DescriptionBox = styled("div")(
   css({
-    display: detailView ? "none" : "block",
+    display: "block",
     width: "40%",
     "& div": {
       padding: "20px",
@@ -329,7 +351,6 @@ const Headline = styled("div")(
     color: theme.colors.charcoal,
     fontSize: "16px",
     paddingBottom: "10px",
-    textTransform: "uppercase",
     lineHeight: "140%",
   })
 );
@@ -423,6 +444,7 @@ export {
   ProductInfoBox,
   ProductsInfoDetails,
   ProductsInfoRow,
+  ProductTitleLink,
   RowDetailButton,
   TableRow,
   TechnicalSpecification,

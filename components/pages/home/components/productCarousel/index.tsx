@@ -9,11 +9,13 @@ import {
   Wrapper,
   ProgBar,
   ProgBarInner,
+  ProgBarText,
   BottomBarInner,
   LinkWrapper,
+  LinkText,
   BottomBar,
   NextWrapper,
-  Title
+  Title,
 } from "./styles";
 import { css } from "@styled-system/css";
 import Arrow from "@components/common/icons/arrow";
@@ -76,7 +78,7 @@ const ProductCarousel = ({ products }) => {
         <Arrow color={theme.colors.white} width={40} />
       </NextWrapper>
       <Wrapper>
-        <AccentTextMobile css={css({ pb: 24 })}>
+        <AccentTextMobile css={css({ pb: 42 })}>
           An imaginative selection
         </AccentTextMobile>
         <Slider {...settings} ref={slider}>
@@ -106,11 +108,13 @@ const ProductCarousel = ({ products }) => {
             <ProgBarInner css={css({ width: scrollCompletion + "%" })} />
           </ProgBar>
           <BottomBarInner>
-            <span>
+            <ProgBarText>
               {currentSlide} of {slideCount}
-            </span>
+            </ProgBarText>
             <LinkWrapper>
-              <Link href="/terrazzo">Explore the full range </Link>
+              <Link href="/terrazzo" passHref>
+                <LinkText>Explore the full range</LinkText>
+              </Link>
               <Arrow type="short" />
             </LinkWrapper>
           </BottomBarInner>
