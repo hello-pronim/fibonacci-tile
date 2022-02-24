@@ -28,7 +28,7 @@ const Confirm = ({stepChange}) => {
         <div className="back" onClick={() => stepChange(3)}>
           Back
         </div>
-        <Button color="dark" css={css({ cursor:"pointer", minWidth: "200px", textAlign: "center", })} href="/terrazzo">
+        <Button color="dark" css={css({ cursor:"pointer", minWidth: "210px", textAlign: "center", })} href="/terrazzo">
           Continue browsing
         </Button>
       </CheckoutFooter>
