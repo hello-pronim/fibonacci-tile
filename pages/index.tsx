@@ -42,8 +42,12 @@ export const getStaticProps: GetStaticProps = withGlobalData(async () => {
       slug: "home-page",
     },
   });
-  const instaFeed = await getIGUserData("fibonaccistone");
-
+  let instaFeed: any = []
+  try {
+    instaFeed = await getIGUserData("fibonaccistone");
+  } catch (e) {
+    console.log(e);
+  }
   return {
     props: {
       pageData,

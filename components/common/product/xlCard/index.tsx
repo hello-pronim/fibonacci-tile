@@ -26,59 +26,68 @@ const ProductCard = ({
   let collectionSlug = activeCollectionSlug
     ? activeCollectionSlug
     : product.collections[0].slug;
-  const largeImageUrl = product?.largeImage.length > 0 ? product?.largeImage[0].url : null;
-  function handleModel () {
+  const largeImageUrl =
+    product?.largeImage.length > 0 ? product?.largeImage[0].url : null;
+  function handleModel() {
+    if (!showModal) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
     setShowModal(!showModal);
   }
-  console.log("product", product)
+  console.log("product", product);
   return (
     <Wrapper>
-      {showModal && 
+      {showModal && (
         <div
-        css={css({ 
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          height: "100vh",
-          zIndex: 999999,
-          // right: 'auto',
-          // bottom: 'auto',
-          // marginRight: '-50%',
-          // transform: 'translate(-50%, -50%)',
-        })}
-        >
-          <div 
           css={css({
-            display: "flex",
-            position: "absolute",
-            top: "0",
-            right: "0",
-            zIndex: "9",
-            background: "#D6CEC5",
-            alignItems: "center",
-            padding: "15px 25px",
-            textTransform: "uppercase",
-            fontSize: "12px",
-            letterSpacing: "0.1em",
-            color: "#000",
-            fontWeight: "500",
-          })}>
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            height: "100vh",
+            zIndex: 999999,
+            // right: 'auto',
+            // bottom: 'auto',
+            // marginRight: '-50%',
+            // transform: 'translate(-50%, -50%)',
+          })}
+        >
+          <div
+            css={css({
+              display: "flex",
+              position: "absolute",
+              top: "0",
+              right: "0",
+              zIndex: "9",
+              background: "#D6CEC5",
+              alignItems: "center",
+              padding: "15px 25px",
+              textTransform: "uppercase",
+              fontSize: "12px",
+              letterSpacing: "0.1em",
+              color: "#000",
+              fontWeight: "500",
+            })}
+          >
             <span>Close</span>
             <span
-            onClick={() => handleModel()}
-            css={css({
-              background: "#000000",
-              width: "30px",
-              height: "30px",
-              borderRadius: "50%",
-              textAlign: "center",
-              lineHeight: "33px",
-              cursor: "pointer",
-              marginLeft: "10px",
-            })}
-            ><CrossIcon /></span>
+              onClick={() => handleModel()}
+              css={css({
+                background: "#000000",
+                width: "30px",
+                height: "30px",
+                borderRadius: "50%",
+                textAlign: "center",
+                lineHeight: "33px",
+                cursor: "pointer",
+                marginLeft: "10px",
+              })}
+            >
+              <CrossIcon />
+            </span>
           </div>
           <Image
             placeholder="blur"
@@ -89,14 +98,14 @@ const ProductCard = ({
             height={product?.largeImage[0].height}
           />
         </div>
-      }
+      )}
       <Container>
         <GridCardImgContainer>
           {product?.thumbImageSingle?.[0]?.url && (
             <div
               onClick={() => handleModel()}
-              css={css({ 
-                cursor: "pointer"
+              css={css({
+                cursor: "pointer",
               })}
             >
               <Image
