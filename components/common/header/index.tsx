@@ -97,7 +97,7 @@ const Header = ({
         mx: "auto",
         width: "100%",
         maxWidth: 2560,
-        zIndex: 9999999,
+        zIndex: 99999,
       })}
     >
       {activeNotification && activeNotification?.active && alertActive && (

@@ -36,10 +36,13 @@ const ProductCard = ({
       {showModal && 
         <div
         css={css({ 
-          position: "absolute",
+          position: "fixed",
           top: 0,
           left: 0,
-          zIndex: 9999
+          right: 0,
+          bottom: 0,
+          height: "100vh",
+          zIndex: 999999,
           // right: 'auto',
           // bottom: 'auto',
           // marginRight: '-50%',
@@ -48,7 +51,19 @@ const ProductCard = ({
         >
           <div 
           css={css({
-            display: "flex"
+            display: "flex",
+            position: "absolute",
+            top: "0",
+            right: "0",
+            zIndex: "9",
+            background: "#D6CEC5",
+            alignItems: "center",
+            padding: "15px 25px",
+            textTransform: "uppercase",
+            fontSize: "12px",
+            letterSpacing: "0.1em",
+            color: "#000",
+            fontWeight: "500",
           })}>
             <span>Close</span>
             <span
@@ -59,8 +74,9 @@ const ProductCard = ({
               height: "30px",
               borderRadius: "50%",
               textAlign: "center",
-              lineHeight: "30px",
-              cursor: "pointer"
+              lineHeight: "33px",
+              cursor: "pointer",
+              marginLeft: "10px",
             })}
             ><CrossIcon /></span>
           </div>
