@@ -77,7 +77,11 @@ const ProductCard = ({
                 </Link>
               </div>
             </ProductName>
-            <CollectionNameBox>
+            <CollectionNameBox
+              onClick={() => {
+                setDetailShown(!detailShown);
+              }}
+            >
               <DisplayNameBox>
                 <AvailableBox>
                   <div>
@@ -95,11 +99,15 @@ const ProductCard = ({
                 </NameBox>
               </DisplayNameBox>
             </CollectionNameBox>
-            <DescriptionBox detailView={detailShown}>
+            <DescriptionBox
+              onClick={() => {
+                setDetailShown(!detailShown);
+              }}
+            >
               <div>
                 <Text
                   as="h4"
-                  variant="Body-Small"
+                  variant="Body-Regular"
                   dangerouslySetInnerHTML={{ __html: product.subline }}
                 />
               </div>
@@ -130,6 +138,7 @@ const ProductCard = ({
                 />
               </Details>
             </ProductInfoBox>
+
             <ProductDescriptionBox>
               <Details detailView={detailShown}>
                 <Listings>
@@ -167,7 +176,7 @@ const ProductCard = ({
         </DetailsBoxLeft>
         <DetailsBoxRight>
           <ImgCell detailView={detailShown}>
-            <ListCardImgContainer>
+            <ListCardImgContainer detailView={detailShown}>
               <CardImg detailView={detailShown}>
                 {product?.thumbImageList?.[0]?.url && (
                   <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
