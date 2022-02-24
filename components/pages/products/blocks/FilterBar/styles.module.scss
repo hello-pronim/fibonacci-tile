@@ -19,6 +19,7 @@
   background-color: #fff;
   justify-content: space-between;
   padding: 10px 20px;
+  border-bottom: 1px solid #D4D4D8;
   @include bp($md) {
     padding: 10px 20px;
   }
