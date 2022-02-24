@@ -68,12 +68,9 @@ export default function ProductFilter({ productCategories }) {
                 <Text as="h3" variant="Body-Small">
                   {cat.title} <SelectionCount />
                 </Text>
-                <Text style={{ paddingTop: 8 }} as="h4" variant="Body-XSmall">
-                  Amet orci facilisi magna nunc vel, <br /> est leo adipiscing.
-                  Rhoncus aenean.
-                </Text>
                 <Text
-                  as="p"
+                  style={{ paddingTop: 8 }}
+                  as="h4"
                   variant={
                     state.isMobileFilterActive ? "Body-XSmall" : "Body-Small"
                   }
