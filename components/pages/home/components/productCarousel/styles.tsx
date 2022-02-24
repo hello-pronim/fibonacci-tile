@@ -6,12 +6,15 @@ const Wrapper = styled("div")(
   css({
     position: "relative",
     gridColumn: "1 / span 12",
-    py: 120,
+    py: 80,
     width: "100%",
-    '.slick-slider': {
-      '.slick-list': {
-        padding: '0 !important',
-      }
+    [theme.mediaQueries.medium]: {
+      py: 120,
+    },
+    ".slick-slider": {
+      ".slick-list": {
+        padding: "0 !important",
+      },
     },
   })
 );
@@ -77,6 +80,13 @@ const ProgBarInner = styled("div")(
     transition: "ease all 0.3s",
   })
 );
+const ProgBarText = styled("span")({
+  fontFamily: "Everett",
+  fontWeight: 400,
+  fontSize: "14px",
+  lineHeight: "19.6px",
+  color: theme.colors.charcoal,
+});
 
 const BottomBarInner = styled("div")(
   css({
@@ -124,11 +134,11 @@ const LinkWrapper = styled("div")(
     alignItems: "center",
     columnGap: 20,
     svg: {
-      transition: 'ease all 0.3s',
+      transition: "ease all 0.3s",
     },
-    '&:hover': {
+    "&:hover": {
       svg: {
-        transform: 'translateX(6px)',
+        transform: "translateX(6px)",
       },
     },
     a: {
@@ -136,25 +146,35 @@ const LinkWrapper = styled("div")(
       fontSize: 2,
       lineHeight: 2,
       color: "charcoal",
-      '&:before': {
-        position:'relative',
-        backgroundColor:'charcoal',
+      "&:before": {
+        position: "relative",
+        backgroundColor: "charcoal",
         content: "' '",
-        display: 'block',
-        height: '2px',
-        width: '100%',
-        transform: 'translateY(40px)',
-        transition: 'ease all 0.3s',
-        pointerEvents: 'none',
+        display: "block",
+        height: "2px",
+        width: "100%",
+        transform: "translateY(40px)",
+        transition: "ease all 0.3s",
+        pointerEvents: "none",
         opacity: 0,
       },
-      '&:hover': {
-        '&:before': {
-          transform: 'translateY(28px)',
+      "&:hover": {
+        "&:before": {
+          transform: "translateY(28px)",
           opacity: 1,
         },
       },
     },
+  })
+);
+
+const LinkText = styled("span")(
+  css({
+    fontFamily: "Everett",
+    fontWeight: 400,
+    fontSize: "14px",
+    lineHeight: "19.6px",
+    color: theme.colors.charcoal,
   })
 );
 
@@ -190,8 +210,10 @@ export {
   Loader,
   ProgBar,
   ProgBarInner,
+  ProgBarText,
   BottomBarInner,
   LinkWrapper,
+  LinkText,
   NextWrapper,
   Title,
 };

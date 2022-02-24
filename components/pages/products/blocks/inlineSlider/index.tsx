@@ -82,8 +82,8 @@ const InlineSlider = ({ images }) => {
                   <Image
                     layout="responsive"
                     objectFit="cover"
-                    // placeholder="blur"
-                    // blurDataURL={image?.blurThumb ? image.blurThumb : ""}
+                    placeholder="blur"
+                    blurDataURL={image.blurThumb}
                     src={image.url}
                     alt={image.title}
                     width={image.width}
@@ -94,8 +94,8 @@ const InlineSlider = ({ images }) => {
                   <Image
                     layout="responsive"
                     objectFit="cover"
-                    // placeholder="blur"
-                    // blurDataURL={image?.blurThumb ? image.blurThumb : ""}
+                    placeholder="blur"
+                    blurDataURL={image.blurThumb}
                     src={image.url}
                     alt={image.title}
                     width={image.width}

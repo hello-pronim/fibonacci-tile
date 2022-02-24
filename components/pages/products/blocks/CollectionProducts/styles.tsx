@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 const CollectionProductsContainer = styled('div')(() =>
   css({
     alignItems: "flex-start",
+    position: "relative",
     pt: 164,
     pb: 140,
     pl: "40%",
