@@ -734,7 +734,7 @@ const SelectionCart = ({ active, newSelection, tab }) => {
           </div>
           <div css={css({ display: "flex", alignItems: "center" })}>
             <Text variant="Display-Small" altFont>
-              Need more than four samples? <br />
+              Need more than six samples? <br />
               <br />
               Call us on 1300 342 662 <br />
               or fill in the form below.
