@@ -16,7 +16,7 @@ const ProductSelectItem = ({
   handleProductSelect,
 }) => {
   return (
-    <Wrapper>
+    <Wrapper onClick={() => handleProductSelect(product.id)}>
       <Container>
         <GridCardImgContainer>
           {product?.thumbImageList?.[0]?.url && (
@@ -30,7 +30,6 @@ const ProductSelectItem = ({
           <ActionBtnContainer>
             <ActionBtn
               selected={selected}
-              onClick={() => handleProductSelect(product.id)}
             >
               {!selected && (
                 <span className="initial">

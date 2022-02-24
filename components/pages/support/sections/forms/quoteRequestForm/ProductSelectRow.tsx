@@ -6,6 +6,7 @@ import { Col, Row } from "./styles";
 
 const ProductSelectRow = ({ row, products }) => {
   const [sizes, setSizes] = useState([]);
+  const isDisabled = sizes.length > 0 ? false : true;
   return (
     <Row key={row.id}>
       <Col>
@@ -25,10 +26,10 @@ const ProductSelectRow = ({ row, products }) => {
         />
       </Col>
       <Col>
-        <ProductSizeSelect name="productSize" sizes={sizes} />
+        <ProductSizeSelect name="productSize" sizes={sizes} disabled={isDisabled}/>
       </Col>
       <Col>
-        <Input type="text" name="productLabel" placeholder="Label" fullWidth />
+        <Input type="text" name="productLabel" placeholder="Enter your quantity (m&sup2;)" disabled={isDisabled} fullWidth />
       </Col>
     </Row>
   );
