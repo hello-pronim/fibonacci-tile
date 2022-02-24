@@ -37,7 +37,6 @@ const SelectedProductCard = ({
   const {
     state: { confirmedProducts },
   } = useAppContext();
-  debugger;
   return (
     <Wrapper>
       <Container>
