@@ -59,7 +59,7 @@ export default function ColourSchemeFilter({ colourSchemes }) {
                         : {}
                     }
                   >
-                    <CheckMarkIcon color={textColor} />
+                    <CheckMarkIcon width={20} color={textColor} />
                   </div>
                 )}
               <Text
@@ -76,7 +76,7 @@ export default function ColourSchemeFilter({ colourSchemes }) {
               {state.isMobileFilterActive &&
                 state.filter?.colourSchemes?.length > 0 &&
                 state.filter?.colourSchemes?.indexOf(scheme.id) !== -1 && (
-                  <CheckMarkIcon color={textColor} />
+                  <CheckMarkIcon width={20} color={textColor} />
                 )}
             </div>
           );
