@@ -279,6 +279,10 @@
         text-align: center;
         flex-direction: column;
       }
+      & span {
+        font-size: 16px;
+        font-weight: 500;
+      }
     }
   }
 }
@@ -332,7 +336,8 @@
   bottom: -20px;
   border: solid 1px #c4c4c4;
   color: #141414;
-  font-size: 12px;
+  font-size: 14px;
+  font-weight: 500;
   line-height: 24px;
   padding: 3px 16px 3px 16px;
   height: 24px;
