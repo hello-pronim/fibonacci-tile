@@ -14,7 +14,8 @@ export async function getIGUserData(username: string) {
   try {
     const dataFileStat = await stat(dataFile);
     let seconds = (new Date().getTime() - +dataFileStat.mtime) / 1000;
-    if (seconds < 86400) {
+    if (seconds < 86400 || true) {
+      // for now do not fetch
       console.log("Using existing igfeed cache data");
       const data = await readFile(dataFile, "utf8");
       return JSON.parse(data);
