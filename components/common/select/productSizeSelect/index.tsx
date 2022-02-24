@@ -26,6 +26,7 @@ interface selectProps {
   halfWidth?: boolean;
   onChange?: (event) => void;
   sizes: any;
+  disabled?: boolean;
 }
 
 export default function Select({
@@ -36,6 +37,7 @@ export default function Select({
   value = "",
   onChange,
   sizes,
+  disabled,
 }: selectProps) {
   const [isOpened, setIsOpened] = useState(false);
   const [selectedSizeValue, setSelectedSizeValue] = useState(value);
@@ -62,7 +64,8 @@ export default function Select({
         fullWidth={fullWidth}
         halfWidth={halfWidth}
         open={isOpened}
-        onClick={handleDropdownOpen}
+        onClick={disabled ? null : handleDropdownOpen}
+        disabled={disabled}
       >
         {selectedSizeValue !== "" ? selectedSize.title : "Size"}
       </SizeSelect>

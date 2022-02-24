@@ -291,7 +291,7 @@ const Details = styled("div")(({ detailView }: DetailViewProps) =>
 const TitleText = styled(Text)(
   css({
     padding: "5px 12px",
-    background: theme.colors.white,
+    background: "#141414",
     textTransform: "uppercase",
     fontSize: "12px",
     letterSpacing: "0.1em",
@@ -309,6 +309,7 @@ const Description = styled("div")(({ detailView }: DetailViewProps) =>
 const Listings = styled("div")(
   css({
     "& > ul": {
+      listStyleType: "none",
       "& > li": {
         color: theme.colors.concreteTints[5],
         fontSize: "16px",
@@ -326,10 +327,10 @@ const Listings = styled("div")(
 const Headline = styled("div")(
   css({
     color: theme.colors.charcoal,
-    fontSize: "12px",
+    fontSize: "16px",
     paddingBottom: "10px",
     textTransform: "uppercase",
-    lineHeight: "16.8px",
+    lineHeight: "140%",
   })
 );
 
@@ -340,7 +341,8 @@ const TechnicalSpecification = styled("a")(
     lineHeight: "18.2px",
     textDecoration: "none",
     marginTop: "15px",
-    display: "inline-block",
+    display: "flex",
+    alignItems: "center",
     position: "relative",
     "&:after": {
       position: "absolute",
@@ -352,6 +354,30 @@ const TechnicalSpecification = styled("a")(
       content: '""',
       background:
         'url("../../../../public/assets/icons/black-arrow.svg") top right no-repeat',
+    },
+    span: {
+      textDecoration: "none",
+      fontSize: 2,
+      lineHeight: 2,
+      color: "charcoal",
+      "&:before": {
+        position: "relative",
+        backgroundColor: "charcoal",
+        content: "' '",
+        display: "block",
+        height: "2px",
+        width: "100%",
+        transform: "translateY(40px)",
+        transition: "ease all 0.3s",
+        pointerEvents: "none",
+        opacity: 0,
+      },
+      "&:hover": {
+        "&:before": {
+          transform: "translateY(28px)",
+          opacity: 1,
+        },
+      },
     },
   })
 );

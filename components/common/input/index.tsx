@@ -7,6 +7,7 @@ interface inputProps {
   value?: string;
   fullWidth?: boolean;
   halfWidth?: boolean;
+  disabled?: boolean;
   onChange?: (event) => void;
   children?: React.ReactNode;
 }
@@ -20,6 +21,7 @@ export default function Input({
   halfWidth = false,
   onChange,
   children,
+  disabled,
   ...props
 }: inputProps) {
   return (
@@ -31,6 +33,7 @@ export default function Input({
       fullWidth={fullWidth}
       halfWidth={halfWidth}
       onChange={onChange}
+      disabled={disabled}
       {...props}
     >
       {children}

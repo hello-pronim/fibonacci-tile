@@ -57,7 +57,7 @@ export default function Select({
         open={isOpened}
         onClick={handleProductSelectDropdownOpen}
       >
-        {selectedProduct !== null ? selectedProduct.title : "Product"}
+        {selectedProduct !== null ? selectedProduct.title : "Choose a product"}
       </ProductSelect>
       {selectedProduct && (
         <input

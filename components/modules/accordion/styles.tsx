@@ -85,7 +85,13 @@ const Inner = styled(Text)(() =>
       bottom: 0,
       left: 0,
     },
+    ul: {
+      listStyle: 'initial',
+      margin: 'initial',
+      padding: '0 0 0 40px',
+    },
     li: {
+      mb: '12px',
       a: linkStyles,
     },
     p: {

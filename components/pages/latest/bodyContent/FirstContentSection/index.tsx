@@ -43,7 +43,7 @@ const FirstContentSection = ({ content }) => {
 
       </LeftCol>
       <RightCol>
-        <div dangerouslySetInnerHTML={{ __html: content }} />
+        <Text variant="Body-Large" dangerouslySetInnerHTML={{ __html: content }} />
       </RightCol>
     </Container>
   );

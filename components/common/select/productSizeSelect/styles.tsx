@@ -7,6 +7,7 @@ interface SizeSelectProps {
   fullWidth?: boolean;
   halfWidth?: boolean;
   open: boolean;
+  disabled?: boolean;
 }
 
 interface SizeSelectDropdownWrapperProps {
@@ -21,9 +22,9 @@ const SizeSelectWrapper = styled("div")(
 );
 
 const SizeSelect = styled("div")(
-  ({ variant, fullWidth, halfWidth, open }: SizeSelectProps) =>
+  ({ variant, fullWidth, halfWidth, open, disabled }: SizeSelectProps) =>
     css({
-      backgroundImage: `url("assets/icons/arrowDown.svg")`,
+      backgroundImage: `url("assets/icons/${disabled ? 'arrowDownStone.svg': 'arrowDown.svg'}")`,
       backgroundRepeat: "no-repeat",
       backgroundPosition: "calc(100% - 16px) center",
       backgroundSize: "16px",
@@ -34,13 +35,14 @@ const SizeSelect = styled("div")(
       fontWeight: 400,
       fontSize: "16px",
       lineHeight: "22.4px",
-      color: theme.colors.charcoal,
+      color: disabled ? '#D6CEC5' : theme.colors.charcoal,
       border: open
         ? "2px solid #000010"
         : variant === "outlined"
         ? `1px solid ${theme.colors.concreteTints[5]}`
         : "none",
       borderRadius: open && "4px",
+      borderColor: disabled && '#D6CEC5',
       marginBottom: "24px",
       cursor: "default",
       appearance: "none",

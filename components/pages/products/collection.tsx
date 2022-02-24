@@ -76,7 +76,7 @@ const CollectionPage = ({ collection, products, notifications }) => {
               : "#E6EBEA",
           })}
         >
-          <InlineSlider images={collection.gallery} />
+          <InlineSlider images={collection.galleryThumbs} />
         </div>
       )}
     </>
