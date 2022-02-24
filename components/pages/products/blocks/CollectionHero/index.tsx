@@ -5,16 +5,27 @@ import { css } from "@styled-system/css";
 import theme from "@styles/theme";
 import { CollectionHeroContainer, CaptionText, ImageContent } from "./styles";
 import styles from "./styles.module.scss";
+import BreadCrumb from "@components/common/breadcrumb";
 
-const CollectionHeroModule = ({
-  collection,
-  position,
-  width = "30%",
-  zIndex = 0,
-  top,
-}) => {
+const CollectionHeroModule = ({ collection, width = "30%", top }) => {
+  const crumbs = [
+    { path: "/terrazzo", name: "Our Products" },
+    { path: "/terrazzo/collections", name: "Collections" },
+    { name: collection.title },
+  ];
   return (
     <CollectionHeroContainer>
+      <div
+        css={css({
+          maxWidth: "2560px",
+          ml: "27px",
+          pt: 12,
+          pb: 0,
+          position: "absolute",
+        })}
+      >
+        <BreadCrumb crumbs={crumbs} pt={0} />
+      </div>
       <div
         css={css({
           height: "auto",
@@ -23,8 +34,6 @@ const CollectionHeroModule = ({
             : "#8B9B94",
           padding: "104px 80px 50px 80px",
           width: width,
-          position: position,
-          zIndex: zIndex,
           top: top,
         })}
       >
