@@ -31,33 +31,33 @@ const Delivery = ({ activeCheckoutStep, disabled, stepChange }) => {
       type: "SET_CHECKOUT_DETAILS",
       value: data,
     });
-		const {checkoutDetails, confirmedProducts} = state;
-		// console.log("checkoutDetails", checkoutDetails)
+    const { checkoutDetails, confirmedProducts } = state;
+    // console.log("checkoutDetails", checkoutDetails)
     const confirmedProductIds = [];
-    if(confirmedProducts?.length > 0) {
-      confirmedProducts.forEach(product => {
-        confirmedProductIds.push(product.id)
+    if (confirmedProducts?.length > 0) {
+      confirmedProducts.forEach((product) => {
+        confirmedProductIds.push(product.id);
       });
     }
     checkoutDetails["products"] = confirmedProductIds;
 
-		// TODO: Api call s
-		try { 
-			// const rawResponse = await fetch(process.env.NEXT_PUBLIC_SAMPLE_ORDERS_CONTROLLER_URL, {
-			// 	method: 'POST',
-			// 	headers: {
-			// 		'Accept': 'application/json',
-			// 		'Content-Type': 'application/json'
-			// 	},
-			// 	body: JSON.stringify(checkoutDetails)
-			// });
-			// const content = await rawResponse.json();
-			// console.log("content", content);
-		} catch (e) {
-			console.log(e)
-		}
-	 
-		// TODO: Reset Checkout details & selected products
+    // TODO: Api call s
+    try {
+      // const rawResponse = await fetch(process.env.NEXT_PUBLIC_SAMPLE_ORDERS_CONTROLLER_URL, {
+      // 	method: 'POST',
+      // 	headers: {
+      // 		'Accept': 'application/json',
+      // 		'Content-Type': 'application/json'
+      // 	},
+      // 	body: JSON.stringify(checkoutDetails)
+      // });
+      // const content = await rawResponse.json();
+      // console.log("content", content);
+    } catch (e) {
+      console.log(e);
+    }
+
+    // TODO: Reset Checkout details & selected products
     stepChange(4);
   };
   return (
@@ -93,21 +93,17 @@ const Delivery = ({ activeCheckoutStep, disabled, stepChange }) => {
             />
             <SelectThirty {...register("state", { required: true })}>
               <option value="">State</option>
-              <option value="interiorDesigner">Interior Designer</option>
-              <option value="architect">Architect</option>
-              <option value="builder">Builder</option>
-              <option value="installer">Installer</option>
-              <option value="stonemason">Stonemason</option>
-              <option value="other">Other</option>
+              <option value="NSW">NSW</option>
+              <option value="VIC">QLD</option>
+              <option value="SA">SA</option>
+              <option value="TAS">TAS</option>
+              <option value="VIC">VIC</option>
+              <option value="WA">WA</option>
             </SelectThirty>
             <SelectThirty {...register("country", { required: true })}>
               <option value="">Country</option>
-              <option value="interiorDesigner">Interior Designer</option>
-              <option value="architect">Architect</option>
-              <option value="builder">Builder</option>
-              <option value="installer">Installer</option>
-              <option value="stonemason">Stonemason</option>
-              <option value="other">Other</option>
+              <option value="Australia">Australia</option>
+              <option value="New Zealand">New Zealand</option>
             </SelectThirty>
           </ThreeItemRow>
           <OneItemRow>
