@@ -10,7 +10,7 @@ import CTAPanel from "../products/blocks/CTAPanel";
 import SectionTitle from "../products/blocks/SectionTitle";
 import { supports } from "../support/constants";
 
-const Homepage = ({ pageData }) => {
+const Homepage = ({ pageData, instaFeed }) => {
   // populate banners from homePageComponents
   const banners = [];
   pageData.homePageComponents.forEach((component: any) => {
@@ -110,7 +110,7 @@ const Homepage = ({ pageData }) => {
               );
           }
         })}
-      <SocialModule></SocialModule>
+      {instaFeed.length > 0 && <SocialModule instaFeed={instaFeed} />}
       <QuoteModule source="Rebeka Morgan, Build Her Collective">
         ‘It certainly helps from a planning and ordering perspective that
         Fibonacci carry so much stock.’

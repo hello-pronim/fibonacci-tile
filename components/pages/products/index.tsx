@@ -126,7 +126,7 @@ const ProductsPage = ({
 
   return (
     <Container>
-      {!fixFilterBar && <Header mode="light" notifications={notifications} />}
+      {!fixFilterBar && <Header mode="light" notifications={notifications} hideBorderOnScroll={true} />}
       <Slider items={banners} disableNext={true} />
       <SectionTitle show={showFilterBar} title={pageData.bannerSubline} />
       <section ref={ref}>

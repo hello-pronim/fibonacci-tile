@@ -1,5 +1,7 @@
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import css from "@styled-system/css";
 import Text from "@components/common/typography";
 import AddIcon from "@components/icons/add";
 import CheckMarkIcon from "@components/icons/checkmark";
@@ -11,34 +13,109 @@ import {
   GridCardImgContainer,
   Wrapper,
 } from "./styles";
+import { flex } from "styled-system";
 
 const ProductCard = ({
   product,
   isSelected = false,
   toggleProductSelect,
   activeCollectionSlug = null,
+  largeImage = false,
 }) => {
+  const [showModal, setShowModal] = useState(false);
   let collectionSlug = activeCollectionSlug
     ? activeCollectionSlug
     : product.collections[0].slug;
-
+  const largeImageUrl =
+    product?.largeImage.length > 0 ? product?.largeImage[0].url : null;
+  function handleModel() {
+    if (!showModal) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    setShowModal(!showModal);
+  }
   return (
     <Wrapper>
+      {showModal && (
+        <div className="popupBlock"
+          css={css({
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            height: "100vh",
+            zIndex: 999999,
+            // right: 'auto',
+            // bottom: 'auto',
+            // marginRight: '-50%',
+            // transform: 'translate(-50%, -50%)',
+          })}
+        >
+          <div className="popupBlockClose"
+            css={css({
+              display: "flex",
+              position: "absolute",
+              top: "0",
+              right: "0",
+              zIndex: "9",
+              background: "#D6CEC5",
+              alignItems: "center",
+              padding: "15px 25px",
+              textTransform: "uppercase",
+              fontSize: "12px",
+              letterSpacing: "0.1em",
+              color: "#000",
+              fontWeight: "500",
+            })}
+          >
+            <span>Close</span>
+            <span
+              onClick={() => handleModel()}
+              css={css({
+                background: "#000000",
+                width: "30px",
+                height: "30px",
+                borderRadius: "50%",
+                textAlign: "center",
+                lineHeight: "33px",
+                cursor: "pointer",
+                marginLeft: "10px",
+              })}
+            >
+              <CrossIcon />
+            </span>
+          </div>
+          <Image
+            placeholder="blur"
+            blurDataURL={product.blurThumb[0].url}
+            src={largeImageUrl}
+            alt={product.title}
+            width={product?.largeImage[0].width}
+            height={product?.largeImage[0].height}
+          />
+        </div>
+      )}
       <Container>
         <GridCardImgContainer>
           {product?.thumbImageSingle?.[0]?.url && (
-            <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
-              <a>
-                <Image
-                  placeholder="blur"
-                  blurDataURL={product.blurThumb[0].url}
-                  src={product.thumbImageSingle[0].url}
-                  alt={product.title}
-                  width={product.thumbImageSingle[0].width}
-                  height={product.thumbImageSingle[0].height}
-                />
-              </a>
-            </Link>
+            <div
+              onClick={() => handleModel()}
+              css={css({
+                cursor: "pointer",
+              })}
+            >
+              <Image
+                placeholder="blur"
+                blurDataURL={product.blurThumb[0].url}
+                src={product.thumbImageSingle[0].url}
+                alt={product.title}
+                width={product.thumbImageSingle[0].width}
+                height={product.thumbImageSingle[0].height}
+              />
+            </div>
           )}
           <ActionBtnContainer>
             <ActionBtn

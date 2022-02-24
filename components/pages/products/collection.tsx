@@ -5,55 +5,14 @@ import CollectionHero from "./blocks/CollectionHero";
 import CollectionProducts from "./blocks/CollectionProducts";
 import CollectionProjects from "./blocks/CollectionProjects";
 import InlineSlider from "./blocks/inlineSlider";
-import BreadCrumb from "@components/common/breadcrumb";
 
 const CollectionPage = ({ collection, products, notifications }) => {
   const [scrollPosition, setPosition] = useState(0);
-  const crumbs = [
-    { path: "/terrazzo", name: "Our Products" },
-    { path: "/terrazzo/collections", name: "Collections" },
-    { name: collection.title },
-  ];
-
-  useLayoutEffect(() => {
-    function updatePosition() {
-      setPosition(window.pageYOffset);
-    }
-    window.addEventListener("scroll", updatePosition);
-    updatePosition();
-    return () => window.removeEventListener("scroll", updatePosition);
-  }, []);
-
   return (
     <>
       <Header mode="dark" notifications={notifications} />
-      <div
-        css={css({
-          maxWidth: "2560px",
-          pl: "27px",
-          pt: 100,
-          pb: 0,
-        })}
-      >
-        <BreadCrumb crumbs={crumbs} pt={0} />
-      </div>
-      {scrollPosition < 1125 ? (
-        <CollectionHero
-          collection={collection}
-          position={"fixed"}
-          width={"21.6%"}
-          zIndex={999}
-          top={168}
-        />
-      ) : (
-        <CollectionHero
-          collection={collection}
-          position={"relative"}
-          width={"21.6%"}
-          zIndex={999}
-          top={1125}
-        />
-      )}
+
+      <CollectionHero collection={collection} width={"21.6%"} top={0} />
 
       {products && (
         <CollectionProducts
@@ -62,6 +21,7 @@ const CollectionPage = ({ collection, products, notifications }) => {
               ? collection.backgroundColor2
               : "#E6EBEA"
           }
+          collection={collection.title}
           products={products}
         />
       )}
