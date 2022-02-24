@@ -9,10 +9,9 @@ import { CollectionProjectsContainer } from "./styles";
 const CollectionProjects = ({ projects }) => {
   return (
     <CollectionProjectsContainer>
-      <AccentText top={206}>Fibonacci live</AccentText>
+      <AccentText top={275}>Fibonacci in use</AccentText>
       <Text variant="Display-Small" altFont={true}>
-        Exercise your democratic right with this one - <br />
-        you know you can trust it.
+        Exercise your democratic right with this one - <br /> you know you can trust it.
       </Text>
       <div
         css={css({
