@@ -13,14 +13,15 @@ import { LeftCol, SahreLinkWrapper, Row } from "./styles";
 
 const BodyContent = ({ pageData }) => {
   let fistContentUsed = false;
+
   return (
     <div>
-      {pageData.newsComponents.map((component: any, index: any) => {
+      {pageData?.newsComponents?.map((component: any, index: any) => {
         switch (component.typeHandle) {
           case "heroImageFullWidth":
             return (
               <React.Fragment key={`news-comp-${index}`}>
-                {component?.imageThumb?.[0].url && (
+                {component?.imageThumb?.[0]?.url && (
                   <HeroImageFullWidth
                     key={`news-comp-${index}`}
                     image={component.imageThumb[0]}
@@ -63,7 +64,7 @@ const BodyContent = ({ pageData }) => {
           case "largeImage":
             return (
               <React.Fragment key={`news-comp-${index}`}>
-                {component?.imageThumb?.[0].url && (
+                {component?.imageThumb?.[0]?.url && (
                   <LargeImage
                     key={`news-comp-${index}`}
                     image={component.imageThumb[0]}
