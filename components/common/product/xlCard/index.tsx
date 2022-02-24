@@ -36,11 +36,10 @@ const ProductCard = ({
     }
     setShowModal(!showModal);
   }
-  console.log("product", product);
   return (
     <Wrapper>
       {showModal && (
-        <div
+        <div className="popupBlock"
           css={css({
             position: "fixed",
             top: 0,
@@ -55,7 +54,7 @@ const ProductCard = ({
             // transform: 'translate(-50%, -50%)',
           })}
         >
-          <div
+          <div className="popupBlockClose"
             css={css({
               display: "flex",
               position: "absolute",
