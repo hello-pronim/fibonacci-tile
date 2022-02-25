@@ -18,14 +18,14 @@ const Wrapper = styled("div")(
   })
 );
 
-const Container = styled("div")(({ compact }: { compact: boolean }) =>
+const Container = styled("div")(({ compact, hoverBG }: { compact: boolean, hoverBG?: string }) =>
   css({
     padding: compact ? "0" : "38px 18px",
     textAlign: "center",
     transition: "ease all 0.4s",
     backgroundColor: "rgba(237, 236, 232, 0)",
     "&:hover": {
-      backgroundColor: !compact && "rgba(237, 236, 232, 1.000)",
+      backgroundColor: !compact && hoverBG ? hoverBG : "rgba(237, 236, 232, 1.000)",
       div: {
         boxShadow: "none",
       },

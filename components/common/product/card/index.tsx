@@ -47,6 +47,16 @@ import {
 import { css } from "@emotion/react";
 import Arrow from "@components/common/icons/arrow";
 
+interface CardProps {
+  product: any,
+  displayMode?: string;
+  isSelected?: boolean;
+  toggleProductSelect?: any;
+  compact?: boolean;
+  activeCollectionSlug?: any;
+  hoverBG?: string;
+}
+
 const ProductCard = ({
   product,
   displayMode = "grid",
@@ -54,7 +64,8 @@ const ProductCard = ({
   toggleProductSelect,
   compact = false,
   activeCollectionSlug = null,
-}) => {
+  hoverBG,
+}:CardProps) => {
   const [detailShown, setDetailShown] = useState(false);
   let collectionSlug = activeCollectionSlug
     ? activeCollectionSlug
@@ -305,7 +316,7 @@ const ProductCard = ({
   }
   return (
     <Wrapper>
-      <Container compact={compact}>
+      <Container compact={compact} hoverBG={hoverBG}>
         <GridCardImgContainer compact={compact}>
           {product?.thumbImageList?.[0]?.url && (
             <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>

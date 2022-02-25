@@ -6,6 +6,7 @@ import { css } from "@styled-system/css";
 import { CollectionProductsContainer } from "./styles";
 import AccentText from "@components/common/accentText";
 import { CaptionText } from "./styles";
+import theme from "@styles/theme";
 
 
 const CollectionProducts = ({ products, backgroundColor, collection }) => {
@@ -25,6 +26,7 @@ const CollectionProducts = ({ products, backgroundColor, collection }) => {
       {products.map((product) => (
         <ProductCard
           product={product}
+          hoverBG={theme.colors.white}
           isSelected={
             state?.selectedProducts.findIndex((sp) => sp.id === product.id) !==
             -1
