@@ -33,9 +33,12 @@ import {
 export default function Footer({ disableSelectionCart = false }) {
   const { state, dispatch } = useAppContext();
   const [newSelection, setNewSelection] = useState(false);
+  const [newletterSubmit, setNewletterSubmit] = useState(false);
   const [selectionsCount, setSelectionsCount] = useState(0);
   const selectionsMounted = useRef(false);
-
+  function handleNewsletterSubmit (submit) {
+    setNewletterSubmit(submit)
+  }
   useEffect(() => {
     let timerId: ReturnType<typeof setTimeout>;
     if (
@@ -188,10 +191,19 @@ export default function Footer({ disableSelectionCart = false }) {
             </TextSegment>
             <Signup action="/thank-you">
               <input type="text" placeholder="Enter your email address"></input>
-              <button>
+              {!newletterSubmit &&
+              <button
+                onClick={() => handleNewsletterSubmit(true)}
+              >
                 Submit
                 <Arrow color={theme.colors.white} />
               </button>
+              }
+              {newletterSubmit &&
+              <TextSegment>
+                Thank you for registering.
+              </TextSegment>
+              }
             </Signup>
           </Segment>
           <FooterFlavourText>

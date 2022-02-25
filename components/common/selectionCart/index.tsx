@@ -1,6 +1,7 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Button from "@components/common/button";
 import { css } from "@styled-system/css";
 // import useOnClickOutside from "use-onclickoutside";
 import { useAppContext } from "@contexts/AppContext";
@@ -42,6 +43,7 @@ const textareaStyles = {
 };
 
 const SelectionCart = ({ active, newSelection, tab }) => {
+  const [contactSubmit, setContactSubmit] = useState(false);
   const { state, dispatch } = useAppContext();
   const { selectedProducts } = state;
   const ref = useRef(null);
@@ -113,13 +115,21 @@ const SelectionCart = ({ active, newSelection, tab }) => {
             />
           </div>
           <div css={css({ display: "flex", alignItems: "center" })}>
+            {!contactSubmit && 
             <Text variant="Display-Small" altFont>
               Need further assistance? <br />
               <br />
               Call us on 1300 342 662 <br />
               or fill in the form below.
             </Text>
+            }
+            {contactSubmit && 
+              <Text variant="Display-Small" altFont>
+                Thank you for getting in contact. One of our friendly team will be in contact shortly. <br />
+              </Text>
+            }
           </div>
+        
           <div
             css={css({
               display: "flex",
@@ -128,6 +138,12 @@ const SelectionCart = ({ active, newSelection, tab }) => {
               rowGap: "8px",
             })}
           >
+            {contactSubmit && 
+            <Button color="dark" css={css({ cursor:"pointer", maxWidth: "210px", textAlign: "center", })} href="/terrazzo">
+              Continue browsing
+            </Button>
+            }
+            {!contactSubmit && 
             <form
               css={css({
                 display: "flex",
@@ -164,11 +180,12 @@ const SelectionCart = ({ active, newSelection, tab }) => {
               <ArrowButton
                 mode="dark"
                 title="Submit enquiry"
-                onClick={() => {}}
+                onClick={() => {setContactSubmit(!contactSubmit)}}
                 fullWidth
                 size=""
               />
             </form>
+             }
           </div>
         </div>
       )}
