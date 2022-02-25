@@ -41,7 +41,7 @@ const ProductCarousel = ({ products }) => {
 
   const settings = {
     dots: false,
-    infinite: false,
+    infinite: true,
     slidesToShow: 5,
     slidesToScroll: 5,
     arrows: false,
@@ -72,9 +72,6 @@ const ProductCarousel = ({ products }) => {
   return (
     <Container>
       <AccentText top={160}>An imaginative selection</AccentText>
-      <NextWrapper onClick={() => gotoNext()}>
-        <Arrow color={theme.colors.white} width={40} />
-      </NextWrapper>
       <Wrapper>
         <AccentTextMobile css={css({ pb: 24 })}>
           An imaginative selection
@@ -111,11 +108,14 @@ const ProductCarousel = ({ products }) => {
             </span>
             <LinkWrapper>
               <Link href="/terrazzo">Explore the full range </Link>
-              <Arrow type="short" />
+              {/* <Arrow type="short" /> */}
             </LinkWrapper>
           </BottomBarInner>
         </BottomBar>
       </Wrapper>
+      <NextWrapper onClick={() => gotoNext()}>
+        <Arrow color={theme.colors.white} width={40} />
+      </NextWrapper>
     </Container>
   );
 };
