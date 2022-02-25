@@ -60,6 +60,63 @@ const ProductCard = ({
     ? activeCollectionSlug
     : product?.collections[0]?.slug;
 
+  const getProductVariationsText = (productVariations) => {
+    let text = "";
+    let sizeArray = [];
+
+    productVariations.forEach((variant: any) => {
+      variant.productSize.forEach((size: any) => {
+        if (!size.parent) {
+          const checkIndex = sizeArray.findIndex((item) => item.id === size.id);
+          if (checkIndex === -1) {
+            sizeArray.push({
+              ...size,
+              child: [],
+            });
+          }
+        } else {
+          let parentIndex = sizeArray.findIndex(
+            (item) => item.id === size.parent.id
+          );
+          sizeArray[parentIndex].child.push(size);
+        }
+      });
+    });
+    sizeArray.forEach((size) => {
+      text += size.title + " ";
+      size?.child.forEach((cSize, index) => {
+        text += cSize.title;
+        text +=
+          size.child.length - index === 2
+            ? " & "
+            : size.child.length > 2 && index !== size.child.length - 1
+            ? ", "
+            : "";
+      });
+      text += "\n";
+    });
+
+    return text;
+  };
+
+  const handleTechnicalSpecificationCopy = (product) => {
+    let copyText = "";
+    let productVariationsText = getProductVariationsText(
+      product.productVariations
+    );
+
+    copyText +=
+      "Material and composition: " + product.materialsComposition + "\n";
+    copyText += "Finish and appearance: " + product.finishAppearance + "\n";
+    copyText += "Sizes:\n";
+    copyText += productVariationsText;
+    copyText += "Applications: " + product.applications + "\n";
+
+    navigator.clipboard.writeText(copyText).then(() => {
+      alert("Copied to clipboard");
+    });
+  };
+
   if (displayMode === "list") {
     return (
       <TableRow detailView={detailShown}>
@@ -164,11 +221,12 @@ const ProductCard = ({
                       {product.applications}
                     </li>
 
-                    <TechnicalSpecification href="#">
+                    <TechnicalSpecification
+                      onClick={() => handleTechnicalSpecificationCopy(product)}
+                    >
                       <span style={{ marginRight: "12px" }}>
                         Click here to copy technical specification
                       </span>
-                      <Arrow type="short" direction="right" />
                     </TechnicalSpecification>
                   </ul>
                 </Listings>

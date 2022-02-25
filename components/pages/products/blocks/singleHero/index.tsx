@@ -125,7 +125,6 @@ const SingleHeroModule = ({ product, collectionSlug }) => {
               rowGap: 16,
             })}
           >
-            <Text variant="Display-Overline">Overline Eleifend convallis</Text>
             <Text variant="Display-Small">Samples right now</Text>
             <Text variant="Body-Regular">
               Select your samples before 4pm for immediate dispatch and next
