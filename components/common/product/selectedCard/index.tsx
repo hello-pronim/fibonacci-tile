@@ -37,14 +37,14 @@ const SelectedProductCard = ({
   const {
     state: { confirmedProducts },
   } = useAppContext();
-  
+
   return (
     <Wrapper>
       <Container>
         {confirmedProducts?.length >= sampleSelectedCount && !isSelected && (
           <div className="overlay">
-            Choose upto {sampleSelectedCount}, samples remove one and the
-            confirm your choosen samples
+            Choose up to {sampleSelectedCount} samples. Remove one to select
+            this sample.
           </div>
         )}
         <GridCardImgContainer compact={true}>
