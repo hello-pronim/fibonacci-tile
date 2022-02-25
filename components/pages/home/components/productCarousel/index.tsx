@@ -43,7 +43,7 @@ const ProductCarousel = ({ products }) => {
 
   const settings = {
     dots: false,
-    infinite: false,
+    infinite: true,
     slidesToShow: 5,
     slidesToScroll: 5,
     arrows: false,
@@ -74,9 +74,6 @@ const ProductCarousel = ({ products }) => {
   return (
     <Container>
       <AccentText top={160}>An imaginative selection</AccentText>
-      <NextWrapper onClick={() => gotoNext()}>
-        <Arrow color={theme.colors.white} width={40} />
-      </NextWrapper>
       <Wrapper>
         <AccentTextMobile css={css({ pb: 42 })}>
           An imaginative selection
@@ -112,14 +109,15 @@ const ProductCarousel = ({ products }) => {
               {currentSlide} of {slideCount}
             </ProgBarText>
             <LinkWrapper>
-              <Link href="/terrazzo" passHref>
-                <LinkText>Explore the full range</LinkText>
-              </Link>
-              <Arrow type="short" />
+              <Link href="/terrazzo">Explore the full range </Link>
+              {/* <Arrow type="short" /> */}
             </LinkWrapper>
           </BottomBarInner>
         </BottomBar>
       </Wrapper>
+      <NextWrapper onClick={() => gotoNext()}>
+        <Arrow color={theme.colors.white} width={40} />
+      </NextWrapper>
     </Container>
   );
 };
