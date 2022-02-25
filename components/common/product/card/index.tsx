@@ -47,6 +47,16 @@ import {
 import { css } from "@emotion/react";
 import Arrow from "@components/common/icons/arrow";
 
+interface CardProps {
+  product: any,
+  displayMode?: string;
+  isSelected?: boolean;
+  toggleProductSelect?: any;
+  compact?: boolean;
+  activeCollectionSlug?: any;
+  hoverBG?: string;
+}
+
 const ProductCard = ({
   product,
   displayMode = "grid",
@@ -55,7 +65,7 @@ const ProductCard = ({
   compact = false,
   activeCollectionSlug = null,
   hoverBG,
-}) => {
+}:CardProps) => {
   const [detailShown, setDetailShown] = useState(false);
   let collectionSlug = activeCollectionSlug
     ? activeCollectionSlug
