@@ -40,11 +40,12 @@ export default function ProductFilter({
             })}
           >
             <Text as="h3" variant="Body-Small">
-              All products{" "}
+              All products
               <Text
                 variant="Body-XSmall"
                 bg="stoneTints.7"
                 p="2px 5px"
+                ml="8px"
                 color="charcoal"
               >
                 {totalProducts}
@@ -77,11 +78,12 @@ export default function ProductFilter({
                 })}
               >
                 <Text as="h3" variant="Body-Small">
-                  {cat.title}{" "}
+                  {cat.title}
                   <Text
                     variant="Body-XSmall"
                     bg="stoneTints.7"
                     p="2px 5px"
+                    ml="8px"
                     color="charcoal"
                   >
                     {productCategoryCounts[cat.slug]["entryCount"]}
