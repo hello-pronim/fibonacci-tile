@@ -40,7 +40,7 @@ export default function ProductFilter({
             })}
           >
             <Text as="h3" variant="Body-Small">
-              All products
+              All products{" "}
               <Text
                 variant="Body-XSmall"
                 bg="stoneTints.7"
