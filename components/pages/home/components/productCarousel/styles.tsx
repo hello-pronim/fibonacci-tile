@@ -184,6 +184,7 @@ const NextWrapper = styled("button")(
     border: "none",
     position: "absolute",
     right: 0,
+    bottom: 166,
     bg: "charcoal",
     px: 10,
     py: 10,
