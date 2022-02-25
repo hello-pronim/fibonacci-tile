@@ -1,37 +1,3 @@
-// import css from "@styled-system/css";
-// import Image from "next/image";
-// import Slider from "react-slick";
-// import Text from "@components/common/typography";
-// import AccentText, { AccentTextMobile } from "@components/common/accentText";
-// import { Container, ImageWrapper, TextWrapper } from "./styles";
-
-// const SocialModule = ({ instaFeed }) => {
-//   return (
-//     <Container>
-//       <AccentText top={120}>Instagram</AccentText>
-//       <AccentTextMobile css={css({ pb: 80, gridColumn: "1/span 6" })}>
-//         Instagram
-//       </AccentTextMobile>
-//       <ImageWrapper>
-//         <Slider {...settings}>
-//           {instaFeed.map((ig: any) => (
-//             <Image
-//               key={`ig-${ig.shortcode}`}
-//               alt={"Instagram @fibonaccistone"}
-//               src={ig.image}
-//               width={292}
-//               height={292}
-//               layout="fixed"
-//             />
-//           ))}
-//         </Slider>
-//       </ImageWrapper>
-//     </Container>
-//   );
-// };
-
-// export default SocialModule;
-
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import Image from "next/image";
@@ -39,7 +5,9 @@ import { css } from "@styled-system/css";
 import Text from "@components/common/typography";
 import { useAppContext } from "@contexts/AppContext";
 import Container from "@components/common/layout/container";
+import Arrow from "@components/common/icons/arrow";
 import AccentText, { AccentTextMobile } from "@components/common/accentText";
+import theme from "styles/theme";
 import {
   Wrapper,
   ProgBar,
@@ -66,13 +34,17 @@ const SocialModule = ({ instaFeed }) => {
   var scrollCompletion = (currentSlide / slideCount) * 100;
 
   useEffect(() => {
-    setCurrentSlide(
-      slider.current && slider.current.innerSlider.state.currentSlide + 5
-    );
+    if (slider.current.innerSlider.state.currentSlide + 5 > instaFeed.length) {
+      setCurrentSlide(instaFeed.length);
+    } else {
+      setCurrentSlide(
+        slider.current && slider.current.innerSlider.state.currentSlide + 5
+      );
+    }
     setSlideCount(
       slider.current && slider.current.innerSlider.state.slideCount
     );
-  }, []);
+  }, [instaFeed.length]);
 
   const settings = {
     dots: false,
@@ -81,7 +53,7 @@ const SocialModule = ({ instaFeed }) => {
     slidesToScroll: 5,
     arrows: false,
     pauseOnHover: false,
-    autoplaySpeed: 5000,
+    autoplaySpeed: 10000,
     beforeChange: (current: number, next: number) => {
       setCurrentSlide(next + 5);
     },
@@ -121,6 +93,9 @@ const SocialModule = ({ instaFeed }) => {
             />
           ))}
         </Slider>
+        <NextWrapper onClick={() => gotoNext()}>
+          <Arrow color={theme.colors.white} width={40} />
+        </NextWrapper>
         <TextWrapper>
           <Text as="p" variant="Body-Small">
             Follow us on instagram{" "}
