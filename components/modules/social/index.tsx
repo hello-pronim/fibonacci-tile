@@ -7,9 +7,9 @@ import { Container, ImageWrapper, TextWrapper } from "./styles";
 const SocialModule = ({ instaFeed }) => {
   return (
     <Container>
-      <AccentText top={120}>From our community</AccentText>
+      <AccentText top={120}>Instagram</AccentText>
       <AccentTextMobile css={css({ pb: 80, gridColumn: "1/span 6" })}>
-        From our community
+        Instagram
       </AccentTextMobile>
       <ImageWrapper>
         {instaFeed.map((ig: any) => (

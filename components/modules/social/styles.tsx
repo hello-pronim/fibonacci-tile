@@ -38,6 +38,7 @@ const ImageWrapper = styled("div")(() =>
     gridColumn: ["1 / span 2", "1  / span 6", "1 / span 6", "2 / span 12"],
     div: {
       flex: "none",
+      marginRight: 2,
     },
     // gridColumn: ['2 / span 12'],
     display: "flex",
