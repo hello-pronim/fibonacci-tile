@@ -297,6 +297,7 @@ const TopBar = styled("div")(
     backgroundColor: theme.colors.white,
     justifyContent: "space-between",
     padding: "10px 20px",
+    borderBottom: "1px solid #D4D4D8",
     [theme.mediaQueries.small]: {
       padding: "10px 20px",
     },

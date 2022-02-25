@@ -11,7 +11,7 @@ export const CategoriesQuery: any = gql`
         textColor
       }
       ... on productCategories_Category {
-        description
+        descriptionText
       }
       ... on collections_Category {
         introduction

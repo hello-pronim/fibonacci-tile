@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 const CollectionProductsContainer = styled('div')(() =>
   css({
     alignItems: "flex-start",
+    position: "relative",
     pt: 164,
     pb: 140,
     pl: "40%",
@@ -15,6 +16,17 @@ const CollectionProductsContainer = styled('div')(() =>
   })
 );
 
+const CaptionText = styled("div")(() =>
+  css({
+    position: "absolute",
+    top: "190px",
+    left: "220px",
+    textAlign: "left",
+    maxWidth: 350,
+  })
+);
+
 export {
   CollectionProductsContainer,
+  CaptionText
 };

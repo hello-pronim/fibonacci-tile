@@ -179,7 +179,7 @@ export default function Footer({ disableSelectionCart = false }) {
               Be the first to know about season launches, exciting new products,
               and exclusive offers by joining our mailing list.
             </TextSegment>
-            <Signup>
+            <Signup action="/thank-you">
               <input type="text" placeholder="Enter your email address"></input>
               <button>
                 Submit

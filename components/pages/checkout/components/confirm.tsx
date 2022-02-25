@@ -1,14 +1,18 @@
 import Text from "@components/common/typography";
 import { css } from "@styled-system/css";
 import Button from "@components/common/button";
-const Confirm = () => {
+import { CheckoutFooter } from "../styles";
+const Confirm = ({stepChange}) => {
   return (
-    <div>
+    <div  
+    css={css({
+      maxWidth: "560px",
+    })}>
       <Text
         variant="Display-Large"
         altFont
         css={css({
-          fontSize: 32,
+          fontSize: 42,
         })}
       >
         Thank you for your order.
@@ -20,9 +24,14 @@ const Confirm = () => {
       >
         One of our friendly staff will be in contact shortly.
       </Text>
-      <Button color="dark" href="/terrazzo">
-        Continue browsing
-      </Button>
+      <CheckoutFooter>
+        <div className="back" onClick={() => stepChange(3)}>
+          Back
+        </div>
+        <Button color="dark" css={css({ cursor:"pointer", minWidth: "210px", textAlign: "center", })} href="/terrazzo">
+          Continue browsing
+        </Button>
+      </CheckoutFooter>
     </div>
   );
 };

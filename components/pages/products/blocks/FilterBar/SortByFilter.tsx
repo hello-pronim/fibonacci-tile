@@ -40,18 +40,18 @@ export default function SortByFilter({}) {
               [styles.mobileDetails]: state.isMobileFilterActive,
             })}
           >
-            <Text as="h3" variant="Body-Small">
+            <Text as="h3" textAlign="center" variant="Body-Small">
               Featured{" "}
-              {!state.isMobileFilterActive &&
+              {/* {!state.isMobileFilterActive &&
                 state.filter.sortBy.value === "featured" && (
                   <CheckMarkIcon color="#141414" />
-                )}
+                )} */}
             </Text>
           </div>
-          {state.isMobileFilterActive &&
+          {/* {state.isMobileFilterActive &&
             state.filter.sortBy.value === "featured" && (
               <CheckMarkIcon color="#141414" />
-            )}
+            )} */}
         </div>
       </div>
       <div
@@ -72,10 +72,10 @@ export default function SortByFilter({}) {
           >
             <Text as="h3" variant="Body-Small">
               A -Z{" "}
-              {!state.isMobileFilterActive &&
+              {/* {!state.isMobileFilterActive &&
                 state.filter.sortBy.value === "asc" && (
                   <CheckMarkIcon color="#141414" />
-                )}
+                )} */}
             </Text>
           </div>
           {state.isMobileFilterActive &&
@@ -102,10 +102,10 @@ export default function SortByFilter({}) {
           >
             <Text as="h3" variant="Body-Small">
               Z - A{" "}
-              {!state.isMobileFilterActive &&
+              {/* {!state.isMobileFilterActive &&
                 state.filter.sortBy.value === "desc" && (
                   <CheckMarkIcon color="#141414" />
-                )}
+                )} */}
             </Text>
           </div>
           {state.isMobileFilterActive &&
@@ -132,10 +132,10 @@ export default function SortByFilter({}) {
           >
             <Text as="h3" variant="Body-Small">
               Collections{" "}
-              {!state.isMobileFilterActive &&
+              {/* {!state.isMobileFilterActive &&
                 state.filter.sortBy.value === "collections" && (
                   <CheckMarkIcon color="#141414" />
-                )}
+                )} */}
             </Text>
           </div>
           {state.isMobileFilterActive &&

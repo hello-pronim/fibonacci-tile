@@ -9,6 +9,7 @@ import CheckMarkIcon from "@components/icons/checkmark";
 import CrossIcon from "@components/icons/cross";
 import ArrowDown from "@components/icons/arrowDown";
 import ArrowUp from "@components/icons/arrowUp";
+import theme from "styles/theme";
 import {
   ActionBtn,
   ActionBtnContainer,
@@ -32,6 +33,7 @@ import {
   NameBox,
   ProductDescriptionBox,
   ProductListTitle,
+  ProductTitleLink,
   ProductName,
   ProductInfoBox,
   ProductsInfoDetails,
@@ -77,7 +79,11 @@ const ProductCard = ({
                 </Link>
               </div>
             </ProductName>
-            <CollectionNameBox>
+            <CollectionNameBox
+              onClick={() => {
+                setDetailShown(!detailShown);
+              }}
+            >
               <DisplayNameBox>
                 <AvailableBox>
                   <div>
@@ -95,11 +101,15 @@ const ProductCard = ({
                 </NameBox>
               </DisplayNameBox>
             </CollectionNameBox>
-            <DescriptionBox detailView={detailShown}>
+            <DescriptionBox
+              onClick={() => {
+                setDetailShown(!detailShown);
+              }}
+            >
               <div>
                 <Text
                   as="h4"
-                  variant="Body-Small"
+                  variant="Body-Regular"
                   dangerouslySetInnerHTML={{ __html: product.subline }}
                 />
               </div>
@@ -130,6 +140,7 @@ const ProductCard = ({
                 />
               </Details>
             </ProductInfoBox>
+
             <ProductDescriptionBox>
               <Details detailView={detailShown}>
                 <Listings>
@@ -167,7 +178,7 @@ const ProductCard = ({
         </DetailsBoxLeft>
         <DetailsBoxRight>
           <ImgCell detailView={detailShown}>
-            <ListCardImgContainer>
+            <ListCardImgContainer detailView={detailShown}>
               <CardImg detailView={detailShown}>
                 {product?.thumbImageList?.[0]?.url && (
                   <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
@@ -244,8 +255,12 @@ const ProductCard = ({
                 <div
                   css={css({
                     position: "relative",
-                    width: compact ? "100%" : 228,
-                    height: compact ? "auto" : 228,
+                    width: compact ? "100%" : 180,
+                    height: compact ? "auto" : 180,
+                    [theme.mediaQueries.mLarge]: {
+                      width: compact ? "100%" : 228,
+                      height: compact ? "auto" : 228,
+                    },
                     "&::after": compact && {
                       width: "100%",
                       content: '" "',
@@ -310,8 +325,8 @@ const ProductCard = ({
           altFont={true}
           marginTop="25px"
         >
-          <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
-            <a>{product.title}</a>
+          <Link href={`/terrazzo/${collectionSlug}/${product.slug}`} passHref>
+            <ProductTitleLink>{product.title}</ProductTitleLink>
           </Link>
         </CardTitle>
         {!compact && (

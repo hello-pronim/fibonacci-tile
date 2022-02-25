@@ -19,6 +19,7 @@
   background-color: #fff;
   justify-content: space-between;
   padding: 10px 20px;
+  border-bottom: 1px solid #D4D4D8;
   @include bp($md) {
     padding: 10px 20px;
   }
@@ -258,7 +259,7 @@
     position: relative;
     padding-top: 56px;
     justify-content: space-between;
-    align-items: center;
+    // align-items: center;
     display: flex;
   }
   .colorSchemeItemsContainer {
@@ -278,6 +279,10 @@
         justify-content: space-evenly;
         text-align: center;
         flex-direction: column;
+      }
+      & span {
+        font-size: 16px;
+        font-weight: 500;
       }
     }
   }
@@ -302,7 +307,7 @@
       content: "";
       display: block;
       width: 100%;
-      height: 1px;
+      height: 3px;
       background-color: #000;
       bottom: 0px;
     }
@@ -332,7 +337,8 @@
   bottom: -20px;
   border: solid 1px #c4c4c4;
   color: #141414;
-  font-size: 12px;
+  font-size: 14px;
+  font-weight: 500;
   line-height: 24px;
   padding: 3px 16px 3px 16px;
   height: 24px;

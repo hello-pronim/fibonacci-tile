@@ -86,6 +86,7 @@ const DualColumnModule = ({ data }) => {
             altFont
             css={css({
               color: theme.colors.charcoal,
+              width: "50%",
               [theme.mediaQueries.medium]: {
                 fontSize: 74,
               },

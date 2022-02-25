@@ -4,8 +4,11 @@ import ProductCard from "@components/common/product/card";
 import { useAppContext } from "@contexts/AppContext";
 import { css } from "@styled-system/css";
 import { CollectionProductsContainer } from "./styles";
+import AccentText from "@components/common/accentText";
+import { CaptionText } from "./styles";
 
-const CollectionProducts = ({ products, backgroundColor }) => {
+
+const CollectionProducts = ({ products, backgroundColor, collection }) => {
   const { state, dispatch } = useAppContext();
   return (
     <CollectionProductsContainer
@@ -13,6 +16,12 @@ const CollectionProducts = ({ products, backgroundColor }) => {
         background: backgroundColor ? backgroundColor : "#E6EBEA",
       })}
     >
+      <AccentText top={202}>{collection.title} Collection</AccentText>
+      <CaptionText>
+        <Text as="h2" variant="Display-Medium" altFont>
+          {collection.subline}
+        </Text>
+      </CaptionText>
       {products.map((product) => (
         <ProductCard
           product={product}

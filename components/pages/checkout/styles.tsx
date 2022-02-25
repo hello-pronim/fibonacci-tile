@@ -1,6 +1,7 @@
 import css from "@styled-system/css";
 import styled from "@emotion/styled";
 import theme from "styles/theme";
+import { display, maxWidth } from "styled-system";
 
 
 export interface containerProps {
@@ -86,19 +87,12 @@ css({
 
 const CheckoutFooter = styled("div")(({...props }) => 
   css({
-    pt: 24,
-    pb: 24,
-    pl: "2%",
-    pr: "2%",
-    position: "fixed",
-    bottom: 0,
-    left: 0,
-    backgroundColor: theme.colors.stoneTints[7],
-    width: "96%",
-    zIndex: "9999999",
+    pt: 50,
+    pb: 40,
+    width: "100%",
     display: "flex",
     alignItems: "center",
-    justifyContent: "flex-start",
+    justifyContent: "flex-end",
     "span": {
       fontSize: 16,
       mr:30,
@@ -106,11 +100,11 @@ const CheckoutFooter = styled("div")(({...props }) =>
     },
     ".back": {
       fontSize: 16,
-      ml: 20,
+      mr: 20,
       cursor: "pointer",
       textDecoration: "underline",
       [theme.mediaQueries.small]: {
-        ml: 50,
+        mr: 50,
       },
       "&:hover": {
         textDecoration: "none",
@@ -118,6 +112,7 @@ const CheckoutFooter = styled("div")(({...props }) =>
     }
   })
 );
+
 
 export {
   CheckoutStepWrapper,
@@ -128,5 +123,5 @@ export {
   RightContent,
   SelectionWrapper,
   NoSamples,
-  CheckoutFooter
+  CheckoutFooter,
 };

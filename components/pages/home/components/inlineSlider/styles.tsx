@@ -13,7 +13,7 @@ const Wrapper = styled("div")(
   css({
     position: "relative",
     gridColumn: ["1 / span 2", "1 / span 6", "1 / span 6", "2 / span 10"],
-    py: 40,
+    pb: 40,
     width: "100%",
     ".slick-slider .slick-list": {
       [theme.mediaQueries.medium]: { overflow: "visible" },
@@ -47,7 +47,7 @@ const ContentWrapper = styled("div")(
     flexDirection: "column",
     justifyContent: "center",
     my: "auto",
-    px: 40,
+    px: 24,
     zIndex: 9999,
     left: 0,
     right: 0,
@@ -58,6 +58,7 @@ const ContentWrapper = styled("div")(
     rowGap: 24,
     [theme.mediaQueries.medium]: {
       rowGap: 32,
+      px: 40,
     },
     opacity: 0,
     transition: "ease all 0.3s",
@@ -193,14 +194,19 @@ const Pill = styled("div")(
     px: "12px",
     bg: "charcoal",
     position: "absolute",
-    top: 32,
-    left: 32,
+    top: 24,
+    left: 24,
     zIndex: 99999,
     textTransform: "uppercase",
     color: "white",
-    borderRadius: 32,
+    borderRadius: 24,
     fontSize: 0,
     lineHeight: 2,
+    [theme.mediaQueries.small]: {
+      top: 32,
+      left: 32,
+      borderRadius: 32,
+    },
   })
 );
 

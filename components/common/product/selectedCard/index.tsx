@@ -31,24 +31,32 @@ const SelectedProductCard = ({
     ? activeCollectionSlug
     : product?.collections[0]?.slug;
 
-  const sampleSelectedCount = Number(process.env.NEXT_PUBLIC_SAMPLE_SELECTION_COUNT);
-  const { state: { confirmedProducts } } = useAppContext();
+  const sampleSelectedCount = Number(
+    process.env.NEXT_PUBLIC_SAMPLE_SELECTION_COUNT
+  );
+  const {
+    state: { confirmedProducts },
+  } = useAppContext();
+  
   return (
     <Wrapper>
       <Container>
-        {confirmedProducts?.length > sampleSelectedCount && !isSelected && (
+        {confirmedProducts?.length >= sampleSelectedCount && !isSelected && (
           <div className="overlay">
-            Choose upto {sampleSelectedCount}, samples remove one and the confirm your choosen
-            samples
+            Choose upto {sampleSelectedCount}, samples remove one and the
+            confirm your choosen samples
           </div>
         )}
-        <GridCardImgContainer>
+        <GridCardImgContainer compact={true}>
           {product?.thumbImageList?.[0]?.url && (
             <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
               <a>
                 <Image
                   placeholder="blur"
-                  blurDataURL={product?.blurThumbUrl?.[0].url}
+                  blurDataURL={
+                    product?.blurThumbUrl?.[0].url ||
+                    product?.thumbImageList?.[0].url
+                  }
                   src={product?.thumbImageList?.[0].url}
                   alt={product.title}
                   width={product?.thumbImageList?.[0].width}

@@ -93,6 +93,7 @@ const SingleHeroModule = ({ product, collectionSlug }) => {
               display: "flex",
               columnGap: 32,
               alignItems: "flex-end",
+              py: 60,
             })}
           >
             {activeCollection.heroImageThumb?.[0]?.url && (
@@ -114,6 +115,23 @@ const SingleHeroModule = ({ product, collectionSlug }) => {
                 <Arrow type="short" />
               </LinkWrapper>
             </div>
+          </div>
+          <div
+            css={css({
+              bg: theme.colors.greys[5],
+              padding: 16,
+              display: "flex",
+              flexDirection: "column",
+              rowGap: 16,
+            })}
+          >
+            <Text variant="Display-Overline">Overline Eleifend convallis</Text>
+            <Text variant="Display-Small">Samples right now</Text>
+            <Text variant="Body-Regular">
+              Select your samples before 4pm for immediate dispatch and next
+              working day delivery to Melbourne metropolitan and 1-2 days
+              interstate.
+            </Text>
           </div>
         </div>
         <div
@@ -262,23 +280,6 @@ const SingleHeroModule = ({ product, collectionSlug }) => {
               </Link>
               <Arrow type="short" />
             </LinkWrapper>
-          </div>
-          <div
-            css={css({
-              bg: theme.colors.greys[5],
-              padding: 16,
-              display: "flex",
-              flexDirection: "column",
-              rowGap: 16,
-            })}
-          >
-            <Text variant="Display-Overline">Overline Eleifend convallis</Text>
-            <Text variant="Display-Small">Samples right now</Text>
-            <Text variant="Body-Regular">
-              Select your samples before 4pm for immediate dispatch and next
-              working day delivery to Melbourne metropolitan and 1-2 days
-              interstate.
-            </Text>
           </div>
         </div>
       </Container>

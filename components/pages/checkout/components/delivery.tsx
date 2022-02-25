@@ -31,33 +31,33 @@ const Delivery = ({ activeCheckoutStep, disabled, stepChange }) => {
       type: "SET_CHECKOUT_DETAILS",
       value: data,
     });
-		const {checkoutDetails, confirmedProducts} = state;
-		// console.log("checkoutDetails", checkoutDetails)
+    const { checkoutDetails, confirmedProducts } = state;
+    // console.log("checkoutDetails", checkoutDetails)
     const confirmedProductIds = [];
-    if(confirmedProducts?.length > 0) {
-      confirmedProducts.forEach(product => {
-        confirmedProductIds.push(product.id)
+    if (confirmedProducts?.length > 0) {
+      confirmedProducts.forEach((product) => {
+        confirmedProductIds.push(product.id);
       });
     }
     checkoutDetails["products"] = confirmedProductIds;
 
-		// TODO: Api call s
-		try { 
-			// const rawResponse = await fetch(process.env.NEXT_PUBLIC_SAMPLE_ORDERS_CONTROLLER_URL, {
-			// 	method: 'POST',
-			// 	headers: {
-			// 		'Accept': 'application/json',
-			// 		'Content-Type': 'application/json'
-			// 	},
-			// 	body: JSON.stringify(checkoutDetails)
-			// });
-			// const content = await rawResponse.json();
-			// console.log("content", content);
-		} catch (e) {
-			console.log(e)
-		}
-	 
-		// TODO: Reset Checkout details & selected products
+    // TODO: Api call s
+    try {
+      // const rawResponse = await fetch(process.env.NEXT_PUBLIC_SAMPLE_ORDERS_CONTROLLER_URL, {
+      // 	method: 'POST',
+      // 	headers: {
+      // 		'Accept': 'application/json',
+      // 		'Content-Type': 'application/json'
+      // 	},
+      // 	body: JSON.stringify(checkoutDetails)
+      // });
+      // const content = await rawResponse.json();
+      // console.log("content", content);
+    } catch (e) {
+      console.log(e);
+    }
+
+    // TODO: Reset Checkout details & selected products
     stepChange(4);
   };
   return (
@@ -66,10 +66,10 @@ const Delivery = ({ activeCheckoutStep, disabled, stepChange }) => {
         variant="Display-Large"
         altFont
         css={css({
-          fontSize: 32,
+          fontSize: 42,
         })}
       >
-        Send my samples to:
+        Delivery details
       </Text>
       <FormWrapper>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -93,21 +93,17 @@ const Delivery = ({ activeCheckoutStep, disabled, stepChange }) => {
             />
             <SelectThirty {...register("state", { required: true })}>
               <option value="">State</option>
-              <option value="interiorDesigner">Interior Designer</option>
-              <option value="architect">Architect</option>
-              <option value="builder">Builder</option>
-              <option value="installer">Installer</option>
-              <option value="stonemason">Stonemason</option>
-              <option value="other">Other</option>
+              <option value="NSW">NSW</option>
+              <option value="VIC">QLD</option>
+              <option value="SA">SA</option>
+              <option value="TAS">TAS</option>
+              <option value="VIC">VIC</option>
+              <option value="WA">WA</option>
             </SelectThirty>
             <SelectThirty {...register("country", { required: true })}>
               <option value="">Country</option>
-              <option value="interiorDesigner">Interior Designer</option>
-              <option value="architect">Architect</option>
-              <option value="builder">Builder</option>
-              <option value="installer">Installer</option>
-              <option value="stonemason">Stonemason</option>
-              <option value="other">Other</option>
+              <option value="Australia">Australia</option>
+              <option value="New Zealand">New Zealand</option>
             </SelectThirty>
           </ThreeItemRow>
           <OneItemRow>
@@ -116,29 +112,16 @@ const Delivery = ({ activeCheckoutStep, disabled, stepChange }) => {
               {...register("information", { required: true })}
             ></TextareaFullwidth>
           </OneItemRow>
-          <InfoText>
+          {/* <InfoText>
             <p>
               <strong>NB:</strong> We can not send samples to PO Boxes.
             </p>
-          </InfoText>
-          <Details>
-            <p>
-              <strong>
-                All Sample Requests will be actioned within 24 hours of
-                receiving all of the required information.
-              </strong>
-            </p>
-            <p>
-              As part of our commitment to the environment and keeping you
-              up-to-date with the latest products and colours in our range we do
-              not provide samples for libraries. Instead we encourage our
-              customers to view our range and request samples as required, per
-              project and take advantage of our same-day dispatch express
-              service.
-            </p>
-          </Details>
+          </InfoText> */}
           {activeCheckoutStep === 3 && (
             <CheckoutFooter>
+              <div className="back" onClick={() => stepChange(2)}>
+                Back
+              </div>
               <ArrowButton
                 mode="light"
                 bgColor="#141414"
@@ -146,11 +129,19 @@ const Delivery = ({ activeCheckoutStep, disabled, stepChange }) => {
                 link=""
                 disabled={disabled}
               />
-              <div className="back" onClick={() => stepChange(2)}>
-                Back
-              </div>
             </CheckoutFooter>
           )}
+          <Details className="detailsBox">
+            <p>
+              <strong>
+               Delivery details
+              </strong>
+            </p>
+            <p>
+              As part of our commitment to the environment and keeping you up-to-date with the latest products and colours in our range we do
+              not provide samples for libraries. Instead we encourage our customers to view our range and request samples as required, per project and take advantage of our same-day dispatch express service.
+            </p>
+          </Details>
         </form>
       </FormWrapper>
     </div>
