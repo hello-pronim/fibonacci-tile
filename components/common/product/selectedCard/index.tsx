@@ -43,7 +43,7 @@ const SelectedProductCard = ({
       <Container>
         {confirmedProducts?.length >= sampleSelectedCount && !isSelected && (
           <div className="overlay">
-            Choose upto {sampleSelectedCount}, samples remove one and the
+            Choose up to {sampleSelectedCount}, samples remove one and the
             confirm your choosen samples
           </div>
         )}
