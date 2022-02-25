@@ -3,7 +3,7 @@ import Image from "next/image";
 import Text from "@components/common/typography";
 import { css } from "@styled-system/css";
 import theme from "@styles/theme";
-import { CollectionHeroContainer, CaptionText, ImageContent } from "./styles";
+import { CollectionHeroContainer, ImageContent } from "./styles";
 import styles from "./styles.module.scss";
 import BreadCrumb from "@components/common/breadcrumb";
 
@@ -87,11 +87,6 @@ const CollectionHeroModule = ({ collection, width = "30%", top }) => {
             height={collection.heroImage[0].height}
           />
         )}
-        <CaptionText>
-          <Text as="h2" variant="Display-Medium" altFont>
-            {collection.subline}
-          </Text>
-        </CaptionText>
       </ImageContent>
     </CollectionHeroContainer>
   );

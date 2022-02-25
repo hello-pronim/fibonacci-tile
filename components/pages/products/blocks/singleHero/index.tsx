@@ -125,7 +125,6 @@ const SingleHeroModule = ({ product, collectionSlug }) => {
               rowGap: 16,
             })}
           >
-            <Text variant="Display-Overline">Overline Eleifend convallis</Text>
             <Text variant="Display-Small">Samples right now</Text>
             <Text variant="Body-Regular">
               Select your samples before 4pm for immediate dispatch and next
@@ -140,7 +139,6 @@ const SingleHeroModule = ({ product, collectionSlug }) => {
             gridRow: 1,
             display: "flex",
             flexDirection: "column",
-            justifyContent: "space-between",
             height: "100%",
             [theme.mediaQueries.small]: {
               gridColumn: "5 / span 4",
@@ -169,6 +167,7 @@ const SingleHeroModule = ({ product, collectionSlug }) => {
               display: "none",
               justifyContent: "space-between",
               flexDirection: "row",
+              mt: 52,
               [theme.mediaQueries.small]: {
                 display: "flex",
               },

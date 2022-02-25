@@ -29,7 +29,7 @@ interface ProjectModuleTypes {
 
 const ProjectsModule = ({ accentText, product }: ProjectModuleTypes) => {
   const { project1, project2, backgroundColor } = product;
-  console.log(product);
+
   return (
     <Container
       id="projects"

@@ -365,6 +365,7 @@ const TechnicalSpecification = styled("a")(
     display: "flex",
     alignItems: "center",
     position: "relative",
+    cursor: "pointer",
     "&:after": {
       position: "absolute",
       top: "0px",
