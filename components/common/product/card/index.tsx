@@ -54,6 +54,7 @@ const ProductCard = ({
   toggleProductSelect,
   compact = false,
   activeCollectionSlug = null,
+  hoverBG,
 }) => {
   const [detailShown, setDetailShown] = useState(false);
   let collectionSlug = activeCollectionSlug
@@ -305,7 +306,7 @@ const ProductCard = ({
   }
   return (
     <Wrapper>
-      <Container compact={compact}>
+      <Container compact={compact} hoverBG={hoverBG}>
         <GridCardImgContainer compact={compact}>
           {product?.thumbImageList?.[0]?.url && (
             <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
