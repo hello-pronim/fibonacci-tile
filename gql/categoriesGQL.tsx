@@ -25,6 +25,11 @@ export const CategoriesQuery: any = gql`
   }
 `;
 
+export const CategoryEntryCount: any = gql`
+  query categoriesEntryCount($productCategories: [QueryArgument]) {
+    entryCount(productCategories: $productCategories)
+  }
+`;
 const galleryImageThumb = [710 * 2, 900 * 2];
 const galleryImageBlurThumb = [
   Math.round(galleryImageThumb[0] / 100),

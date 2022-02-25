@@ -21,6 +21,7 @@ const ProductsPage = ({
   cta2,
   customSolutionsCta,
   notifications,
+  productCategoryCounts,
 }) => {
   const client = initializeApollo();
   const { state } = useAppContext();
@@ -126,11 +127,19 @@ const ProductsPage = ({
 
   return (
     <Container>
-      {!fixFilterBar && <Header mode="light" notifications={notifications} hideBorderOnScroll={true} />}
+      {!fixFilterBar && (
+        <Header
+          mode="light"
+          notifications={notifications}
+          hideBorderOnScroll={true}
+        />
+      )}
       <Slider items={banners} disableNext={true} />
       <SectionTitle show={showFilterBar} title={pageData.bannerSubline} />
       <section ref={ref}>
         <ProductFilterBar
+          totalProducts={initialProducts.length}
+          productCategoryCounts={productCategoryCounts}
           applyFilter={applyFilter}
           show={showFilterBar}
           colourSchemes={colourSchemes}
