@@ -21,6 +21,8 @@ import Logo from "public/assets/brandmarks/symbol-primary.svg";
 import styles from "./styles.module.scss";
 
 export default function ProductFilters({
+  totalProducts,
+  productCategoryCounts,
   show,
   applyFilter,
   colourSchemes,
@@ -249,7 +251,11 @@ export default function ProductFilters({
               <ArrowDownIcon />
             </div>
             {activeFilter === "products" && (
-              <ProductFilter productCategories={productCategories} />
+              <ProductFilter
+                totalProducts={totalProducts}
+                productCategories={productCategories}
+                productCategoryCounts={productCategoryCounts}
+              />
             )}
             <div
               className={classnames(
@@ -323,7 +329,11 @@ export default function ProductFilters({
         <div className={styles.filterContainer}>
           {activeFilter === "search" && <SearchFilter />}
           {activeFilter === "products" && (
-            <ProductFilter productCategories={productCategories} />
+            <ProductFilter
+              totalProducts={totalProducts}
+              productCategories={productCategories}
+              productCategoryCounts={productCategoryCounts}
+            />
           )}
           {activeFilter === "sort-by" && <SortByFilter />}
           {activeFilter === "colour-schemes" && (

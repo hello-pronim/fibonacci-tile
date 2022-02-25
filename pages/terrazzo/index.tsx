@@ -5,7 +5,7 @@ import ProductPage from "@components/pages/products";
 import { initializeApollo } from "@utils/apolloClient";
 import { PageQuery } from "@gql/pageGQL";
 import { ProductsQuery } from "@gql/productGQL";
-import { CategoriesQuery } from "@gql/categoriesGQL";
+import { CategoriesQuery, CategoryEntryCount } from "@gql/categoriesGQL";
 import {
   sampleCta1Query,
   sampleCta2Query,
@@ -23,6 +23,7 @@ interface ProductPageProps {
   sampleCta2: any;
   customSolutionsCta: any;
   notifications: Array<any>;
+  productCategoryCounts: any;
 }
 
 const Products: NextPage<ProductPageProps> = ({
@@ -35,6 +36,7 @@ const Products: NextPage<ProductPageProps> = ({
   sampleCta2,
   customSolutionsCta,
   notifications,
+  productCategoryCounts
 }) => {
   return (
     <>
@@ -52,6 +54,7 @@ const Products: NextPage<ProductPageProps> = ({
         cta2={sampleCta2}
         customSolutionsCta={customSolutionsCta?.customSolutionsCTA}
         notifications={notifications}
+        productCategoryCounts={productCategoryCounts}
       />
       <Footer />
     </>
@@ -120,6 +123,17 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
       group: "productCategories",
     },
   });
+  const productCategoryCounts = {};
+  for (const productCategory of productCategories) {
+    const { data } = await client.query({
+      query: CategoryEntryCount,
+      variables: {
+        productCategories: [productCategory.id],
+      },
+    });
+    data;
+    productCategoryCounts[productCategory.slug] = data;
+  }
 
   return {
     props: {
@@ -131,6 +145,7 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
       sampleCta1,
       sampleCta2,
       customSolutionsCta,
+      productCategoryCounts,
     },
     revalidate: parseInt(process.env.NEXT_PAGE_REVALIDATE),
   };

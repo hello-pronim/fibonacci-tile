@@ -4,9 +4,12 @@ import CheckMarkIcon from "@components/icons/checkmark";
 import CloseIcon from "@components/icons/close";
 import { useAppContext } from "@contexts/AppContext";
 import styles from "./styles.module.scss";
-import SelectionCount from "@components/common/product/selectionCount";
 
-export default function ProductFilter({ productCategories }) {
+export default function ProductFilter({
+  totalProducts,
+  productCategories,
+  productCategoryCounts,
+}) {
   const { state, dispatch } = useAppContext();
   const handleFilter = (value: String | Number, label: String) => {
     dispatch({
@@ -37,7 +40,15 @@ export default function ProductFilter({ productCategories }) {
             })}
           >
             <Text as="h3" variant="Body-Small">
-              All products <SelectionCount />
+              All products
+              <Text
+                variant="Body-XSmall"
+                bg="stoneTints.7"
+                p="2px 5px"
+                color="charcoal"
+              >
+                {totalProducts}
+              </Text>
             </Text>
           </div>
           {state.isMobileFilterActive &&
@@ -66,7 +77,15 @@ export default function ProductFilter({ productCategories }) {
                 })}
               >
                 <Text as="h3" variant="Body-Small">
-                  {cat.title} <SelectionCount />
+                  {cat.title}{" "}
+                  <Text
+                    variant="Body-XSmall"
+                    bg="stoneTints.7"
+                    p="2px 5px"
+                    color="charcoal"
+                  >
+                    {productCategoryCounts[cat.slug]["entryCount"]}
+                  </Text>
                 </Text>
                 <Text
                   style={{ paddingTop: 8 }}
@@ -75,7 +94,9 @@ export default function ProductFilter({ productCategories }) {
                     state.isMobileFilterActive ? "Body-XSmall" : "Body-Small"
                   }
                 >
-                  <span dangerouslySetInnerHTML={{ __html: cat.descriptionText }} />
+                  <span
+                    dangerouslySetInnerHTML={{ __html: cat.descriptionText }}
+                  />
                 </Text>
               </div>
               {state.isMobileFilterActive &&
