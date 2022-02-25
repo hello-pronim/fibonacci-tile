@@ -54,6 +54,14 @@ const MobileLogo = styled("div")(() =>
   })
 );
 
+const SocialIconLink = styled("a")(
+  css({
+    display: "flex",
+    alignItems: "center",
+    gap: "8px",
+  })
+);
+
 const SubFooterWrapper = styled("div")(({ ...props }) =>
   css({
     mx: "auto",
@@ -72,25 +80,26 @@ const SubFooterWrapper = styled("div")(({ ...props }) =>
   })
 );
 
-const SubFooterItems = styled("div")(({mobileOrder}: {mobileOrder: number}) =>
-  css({
-    fontSize: 1,
-    lineHeight: 0,
-    fontFamily: 1,
-    color: theme.colors.stoneTints[4],
-    a: { 
-      color: "stone", 
-      textDecoration: "none",
-      transition: "all 0.4s ease-in-out",
-      "&:hover": {
-        color: "#fff",
+const SubFooterItems = styled("div")(
+  ({ mobileOrder }: { mobileOrder: number }) =>
+    css({
+      fontSize: 1,
+      lineHeight: 0,
+      fontFamily: 1,
+      color: theme.colors.stoneTints[4],
+      a: {
+        color: "stone",
+        textDecoration: "none",
+        transition: "all 0.4s ease-in-out",
+        "&:hover": {
+          color: "#fff",
+        },
       },
-    },
-    order: mobileOrder && mobileOrder,
-    [theme.mediaQueries.small]: {
-      order: 'initial'
-    },
-  })
+      order: mobileOrder && mobileOrder,
+      [theme.mediaQueries.small]: {
+        order: "initial",
+      },
+    })
 );
 const Column = styled("div")(() =>
   css({
@@ -100,14 +109,15 @@ const Column = styled("div")(() =>
   })
 );
 
-const Segment = styled("div")(({ col, row, mobileRow }: { col: number; row: number; mobileRow: number; }) =>
-  css({
-    gridRow: mobileRow && mobileRow,
-    [theme.mediaQueries.small]: {
-      gridColumn: col && col,
-      gridRow: row && row,
-    },
-  })
+const Segment = styled("div")(
+  ({ col, row, mobileRow }: { col: number; row: number; mobileRow: number }) =>
+    css({
+      gridRow: mobileRow && mobileRow,
+      [theme.mediaQueries.small]: {
+        gridColumn: col && col,
+        gridRow: row && row,
+      },
+    })
 );
 
 const SegmentTitle = styled("h4")(() =>
@@ -133,9 +143,9 @@ const Item = styled("li")(() =>
     "&:not(:last-child)": {
       paddingBottom: 16,
     },
-    a: { 
-      color: "inherit", 
-      textDecoration: "none", 
+    a: {
+      color: "inherit",
+      textDecoration: "none",
       transition: "all 0.4s ease-in-out",
       "&:hover": {
         color: "#b1aba6",
@@ -207,10 +217,10 @@ const Signup = styled("form")(() =>
       backgroundColor: "transparent",
       fontFamily: 1,
       fontSize: 2,
-      lineHeight: '125%',
+      lineHeight: "125%",
       fontWeight: 0,
       px: 16,
-      py: '9px',
+      py: "9px",
       transition: "all .4s ease-in-out",
       cursor: "pointer",
       "&:hover": {
@@ -242,6 +252,7 @@ export {
   Item,
   TextSegment,
   Signup,
+  SocialIconLink,
   SubFooterItems,
   Symbol,
   MobileLogo,

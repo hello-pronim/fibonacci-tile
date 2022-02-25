@@ -5,6 +5,9 @@ import { useAppContext } from "@contexts/AppContext";
 import RotatedTertiary from "public/assets/brandmarks/rotated-tertiary.svg";
 import Tertiary from "public/assets/brandmarks/logo-tertiary.svg";
 import SymbolWhite from "public/assets/brandmarks/symbol-secondary.svg";
+import FacebookIcon from "@components/icons/facebook";
+import InstagramIcon from "@components/icons/instagram";
+import LinkedInIcon from "@components/icons/linkedin";
 import Arrow from "@components/common/icons/arrow";
 import SelectionCart from "@components/common/selectionCart";
 import theme from "styles/theme";
@@ -21,6 +24,7 @@ import {
   ItemList,
   Item,
   Signup,
+  SocialIconLink,
   SubFooterItems,
   Symbol,
   MobileLogo,
@@ -130,31 +134,34 @@ export default function Footer({ disableSelectionCart = false }) {
             <SegmentTitle>Follow us</SegmentTitle>
             <ItemList>
               <Item>
-                <a
+                <SocialIconLink
                   target="_blank"
                   rel="noreferrer"
                   href="https://www.instagram.com/fibonaccistone/"
                 >
+                  <InstagramIcon />
                   Instagram
-                </a>
+                </SocialIconLink>
               </Item>
               <Item>
-                <a
+                <SocialIconLink
                   target="_blank"
                   rel="noreferrer"
                   href="https://www.facebook.com/FibonacciStone/"
                 >
+                  <FacebookIcon />
                   Facebook
-                </a>
+                </SocialIconLink>
               </Item>
               <Item>
-                <a
+                <SocialIconLink
                   target="_blank"
                   rel="noreferrer"
                   href="https://www.linkedin.com/company/fibonacci-stone/"
                 >
+                  <LinkedInIcon />
                   LinkedIn
-                </a>
+                </SocialIconLink>
               </Item>
             </ItemList>
           </Segment>
