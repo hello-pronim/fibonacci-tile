@@ -43,8 +43,9 @@ const SelectedProductCard = ({
       <Container>
         {confirmedProducts?.length >= sampleSelectedCount && !isSelected && (
           <div className="overlay">
-            Choose up to {sampleSelectedCount} samples. Remove one to select
-            this sample.
+            Choose up to {sampleSelectedCount} samples.
+            <br />
+            Remove one to select this sample.
           </div>
         )}
         <GridCardImgContainer compact={true}>
