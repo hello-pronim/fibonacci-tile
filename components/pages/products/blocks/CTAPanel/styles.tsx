@@ -79,7 +79,7 @@ const ImgContainer = styled("div")(({ position }: ImgContainerProps) =>
   css({
     order: 2,
     [theme.mediaQueries.small]: {
-      width: "55%",
+      width: "53%",
       order: position === "left" ? 2 : "unset",
     },
   })

@@ -4,11 +4,12 @@ import Image from "next/image";
 import { css } from "@styled-system/css";
 import Text from "@components/common/typography";
 import { useAppContext } from "@contexts/AppContext";
-import Container from "@components/common/layout/container";
+// import Container from "@components/common/layout/container";
 import Arrow from "@components/common/icons/arrow";
 import AccentText, { AccentTextMobile } from "@components/common/accentText";
 import theme from "styles/theme";
 import {
+  Container,
   Wrapper,
   ProgBar,
   ProgBarInner,
@@ -78,7 +79,7 @@ const SocialModule = ({ instaFeed }) => {
 
   return (
     <Container>
-      <AccentText top={160}>Instagram</AccentText>
+      <AccentText top={120}>Instagram</AccentText>
       <Wrapper>
         <AccentTextMobile css={css({ pb: 42 })}>Instagram</AccentTextMobile>
         <Slider {...settings} ref={slider}>
@@ -89,7 +90,7 @@ const SocialModule = ({ instaFeed }) => {
               src={ig.image}
               width={292}
               height={292}
-              layout="fixed"
+              layout="responsive"
             />
           ))}
         </Slider>
