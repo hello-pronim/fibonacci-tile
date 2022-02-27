@@ -12,7 +12,7 @@ const Container = styled(Cntnr)(
 const Wrapper = styled("div")(
   css({
     position: "relative",
-    gridColumn: ["1 / span 2", "1 / span 6", "1 / span 6", "2 / span 10"],
+    gridColumn: ["1 / span 2", "1 / span 6", "1 / span 6", "2 / span 12"],
     pb: 40,
     width: "100%",
     ".slick-slider .slick-list": {
@@ -86,7 +86,7 @@ const BottomBar = styled("div")(
     display: "flex",
     flexDirection: "column",
     width: "100%",
-    mt: 40,
+    mt: 50,
   })
 );
 
@@ -235,7 +235,7 @@ const NextWrapper = styled("button")(
     border: "none",
     position: "absolute",
     right: 0,
-    bottom: 30,
+    bottom: 87,
     bg: "charcoal",
     px: 10,
     py: 10,
