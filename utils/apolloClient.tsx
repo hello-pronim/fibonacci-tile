@@ -34,7 +34,6 @@ function createApolloClient() {
           graphQLErrors.forEach((gqlErr) => {
             const { message } = gqlErr;
             console.log(message, gqlErr);
-            // todo warn error
           });
         }
       }),

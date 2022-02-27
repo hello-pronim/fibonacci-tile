@@ -23,6 +23,10 @@ export const PageQuery = gql`
   query PageQuery($slug: [String]) {
     entry(slug: $slug) {
       id
+      ... on termsAndConditions_termsAndConditions_Entry {
+        title
+        pageContent
+      }
       ... on privacyPolicy_privacyPolicy_Entry {
         title
         pageContent
