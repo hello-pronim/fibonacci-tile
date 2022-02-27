@@ -3,17 +3,10 @@ import styled from "@emotion/styled";
 import Cntnr from "@components/common/layout/container";
 import theme from "styles/theme";
 
-const Container = styled(Cntnr)(() =>
+const Container = styled(Cntnr)(
   css({
-    bg: "white",
-    pl: 80,
-    pr: "0 !important",
-    pt: 80,
-    pb: 80,
     overflowX: "hidden",
-    [theme.mediaQueries.small]: {
-      pb: 120,
-    },
+    paddingRight: "0px !important",
   })
 );
 
@@ -49,7 +42,7 @@ const ImageWrapper = styled("div")(() =>
 const Wrapper = styled("div")(
   css({
     position: "relative",
-    gridColumn: "1 / span 12",
+    gridColumn: ["1 / span 2", "1 / span 6", "1 / span 6", "2 / span 12"],
     py: 80,
     width: "100%",
     [theme.mediaQueries.medium]: {
@@ -58,6 +51,9 @@ const Wrapper = styled("div")(
     ".slick-slider": {
       ".slick-list": {
         padding: "0 !important",
+        ".slick-slide": {
+          paddingRight: "5px",
+        },
       },
     },
   })
@@ -228,7 +224,7 @@ const NextWrapper = styled("button")(
     border: "none",
     position: "absolute",
     right: 0,
-    bottom: 166,
+    bottom: 140,
     bg: "charcoal",
     px: 10,
     py: 10,
@@ -263,5 +259,5 @@ export {
   Title,
   TextWrapper,
   ImageWrapper,
-  Container
+  Container,
 };
