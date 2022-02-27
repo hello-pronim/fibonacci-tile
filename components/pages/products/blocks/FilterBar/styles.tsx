@@ -79,8 +79,10 @@ const ProductFilterItem = styled("div")(
       marginTop: "40px",
       marginBottom: "30px",
       padding: "20px 40px",
-      minHeight: "60px",
+      minHeight: "90px",
       borderRight: "1px solid #c4c4c4",
+      display: "flex",
+      alignItems: "center",
     },
   })
 );

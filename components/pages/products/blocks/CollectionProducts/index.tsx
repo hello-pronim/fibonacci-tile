@@ -8,7 +8,6 @@ import AccentText from "@components/common/accentText";
 import { CaptionText } from "./styles";
 import theme from "@styles/theme";
 
-
 const CollectionProducts = ({ products, backgroundColor, collection }) => {
   const { state, dispatch } = useAppContext();
   return (
@@ -19,11 +18,14 @@ const CollectionProducts = ({ products, backgroundColor, collection }) => {
     >
       <AccentText top={202}>{collection.title} Collection</AccentText>
       <CaptionText>
-        <Text as="h2" variant="Display-Medium" altFont>
-          {collection.subline}
-        </Text>
+        <Text
+          as="h2"
+          variant="Display-Medium"
+          altFont
+          dangerouslySetInnerHTML={{ __html: collection.subline }}
+        />
       </CaptionText>
-      {products.map((product) => (
+      {products.map((product: any) => (
         <ProductCard
           product={product}
           hoverBG={theme.colors.white}
