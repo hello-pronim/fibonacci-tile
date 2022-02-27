@@ -3,8 +3,10 @@ import Image from "next/image";
 import moment from "moment";
 import css from "@styled-system/css";
 import Text from "@components/common/typography";
+import BreadCrumb from "@components/common/breadcrumb";
 import AddIcon from "@components/icons/add";
 import Container from "@components/common/layout/container";
+import theme from "@styles/theme";
 import {
   LeftCol,
   RightCol,
@@ -13,37 +15,44 @@ import {
   DetailsWrapper,
   Detail,
 } from "./styles";
-import theme from "@styles/theme";
 
 const Hero = ({ project }) => {
+  const crumbs = [
+    { path: "/", name: "Home" },
+    { path: "/in-use", name: "In Use" },
+    { name: project.title },
+  ];
   return (
     <Container css={css({ pr: "0 !important", pt: 80 })}>
       <LeftCol>
-        <ContentWrapper>
-          {project.location && (
-            <Text
-              Base="h6"
-              variant="Body-Large"
-              css={css({ color: theme.colors.taupe })}
-            >
-              {project.location}
+        <div>
+          <BreadCrumb crumbs={crumbs} pt={0} pb={40} pl={0} />
+          <ContentWrapper>
+            {project.location && (
+              <Text
+                Base="h6"
+                variant="Body-Large"
+                css={css({ color: theme.colors.taupe })}
+              >
+                {project.location}
+              </Text>
+            )}
+            <Text Base="h1" variant="Display-Large">
+              {project.title}
             </Text>
-          )}
-          <Text Base="h1" variant="Display-Large">
-            {project.title}
-          </Text>
-          {/* {project.projectCompleted && (
+            {/* {project.projectCompleted && (
             <Text Base="h6" variant="Body-Large">
               {moment(project.projectCompleted).format("Do MMMM YYYY")}
             </Text>
           )} */}
-          {project.label && (
-            <Pill>
-              <AddIcon color="white" />
-              {project.label}
-            </Pill>
-          )}
-        </ContentWrapper>
+            {project.label && (
+              <Pill>
+                <AddIcon color="white" />
+                {project.label}
+              </Pill>
+            )}
+          </ContentWrapper>
+        </div>
         <DetailsWrapper>
           <Detail>
             <Text variant="Display-Overline">PROJECT</Text>
