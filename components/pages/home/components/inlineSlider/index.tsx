@@ -46,7 +46,7 @@ const InlineSlider = ({ projects }) => {
 
   const settings = {
     dots: false,
-    infinite: false,
+    infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
