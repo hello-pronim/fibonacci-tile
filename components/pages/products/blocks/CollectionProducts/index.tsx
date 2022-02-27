@@ -25,7 +25,7 @@ const CollectionProducts = ({ products, backgroundColor, collection }) => {
           dangerouslySetInnerHTML={{ __html: collection.subline }}
         />
       </CaptionText>
-      {products.map((product) => (
+      {products.map((product: any) => (
         <ProductCard
           product={product}
           hoverBG={theme.colors.white}
