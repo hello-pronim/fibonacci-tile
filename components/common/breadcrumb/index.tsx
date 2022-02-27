@@ -7,7 +7,7 @@ import Arrow from "@components/common/icons/arrow";
 import { BackBttn, BottomBarInner, LinkWrapper } from "./styles";
 import router from "next/router";
 
-const Breadcrumb = ({ crumbs, pt = 130 }) => {
+const Breadcrumb = ({ crumbs, pt = 130, pb = 0, pl = 19 }) => {
   // Don't render a single breadcrumb.
   if (crumbs.length <= 1) {
     return null;
@@ -24,7 +24,7 @@ const Breadcrumb = ({ crumbs, pt = 130 }) => {
     );
   };
   return (
-    <BottomBarInner css={css({ pt })}>
+    <BottomBarInner css={css({ pt, pb, pl })}>
       <LinkWrapper>
         <Arrow type="short" direction="left" />
         <BackBttn
