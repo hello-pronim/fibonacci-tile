@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import Image from "next/image";
+import Link from "next/link";
+import { css } from "@styled-system/css";
 import Text from "@components/common/typography";
-import Slide1 from "public/assets/temp/project-slide-1.jpg";
-import Slide1Mobile from "public/assets/temp/project-slide-mobile.jpg";
 import AccentText, { AccentTextMobile } from "@components/common/accentText";
 import AddIcon from "@components/icons/add";
-import Link from "next/link";
 import Arrow from "@components/common/icons/arrow";
+import theme from "styles/theme";
 import {
   Container,
   Wrapper,
@@ -21,9 +21,8 @@ import {
   Pill,
   SlideImage,
   SlideImageMobile,
+  NextWrapper,
 } from "./styles";
-import { css } from "@styled-system/css";
-import theme from "styles/theme";
 
 const InlineSlider = ({ projects }) => {
   const slider = React.useRef<Slider>(null);
@@ -31,6 +30,10 @@ const InlineSlider = ({ projects }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   var scrollCompletion = (currentSlide / slideCount) * 100;
+
+  const gotoNext = () => {
+    slider.current !== null && slider.current.slickNext();
+  };
 
   useEffect(() => {
     setCurrentSlide(
@@ -124,6 +127,9 @@ const InlineSlider = ({ projects }) => {
           </BottomBarInner>
         </BottomBar>
       </Wrapper>
+      <NextWrapper onClick={() => gotoNext()}>
+        <Arrow color={theme.colors.white} width={40} />
+      </NextWrapper>
     </Container>
   );
 };

@@ -229,6 +229,23 @@ const SlideImageMobile = styled("div")(
   })
 );
 
+const NextWrapper = styled("button")(
+  css({
+    display: "none",
+    border: "none",
+    position: "absolute",
+    right: 0,
+    bottom: 30,
+    bg: "charcoal",
+    px: 10,
+    py: 10,
+    cursor: "pointer",
+    [theme.mediaQueries.medium]: {
+      display: "block",
+    },
+  })
+);
+
 export {
   Container,
   Wrapper,
@@ -243,4 +260,5 @@ export {
   Pill,
   SlideImage,
   SlideImageMobile,
+  NextWrapper,
 };
