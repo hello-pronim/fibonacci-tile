@@ -10,7 +10,7 @@ interface ActionBtnProps {
 const Wrapper = styled("div")(
   css({
     width: "100%",
-    position: "relative"
+    position: "relative",
   })
 );
 
@@ -23,23 +23,25 @@ const Container = styled("div")(
       visibility: "hidden",
       opacity: 0,
       height: "100%",
-      top: "0px",
-      left: "0px",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
       zIndex: "9999",
       margin: "0 30px",
       position: "absolute",
-      transition: "background-color ease 0.3s"
+      transition: "background-color ease 0.3s",
     },
     "&:hover": {
       backgroundColor: theme.colors.cold,
       ".overlay": {
         visibility: "visible",
         opacity: 0.8,
-        backgroundColor: theme.colors.cold
-      }
+        backgroundColor: theme.colors.cold,
+      },
     },
   })
 );
@@ -54,7 +56,9 @@ const ActionBtn = styled("button")(({ checked }: ActionBtnProps) =>
     cursor: "pointer",
     backgroundColor: checked ? theme.colors.charcoal : theme.colors.white,
     // border: checked ? "none" : "1px solid #B0ABA7",
-    border: checked ?  `1px solid ${theme.colors.charcoal}` : "1px solid #B0ABA7",
+    border: checked
+      ? `1px solid ${theme.colors.charcoal}`
+      : "1px solid #B0ABA7",
     transition: "ease all 0.3s",
     ".hovered": {
       position: "absolute",
@@ -115,7 +119,7 @@ const ConfirmActionBtnContainer = styled("div")(
     right: 0,
     bottom: "-20px",
     height: "39px",
-    width: "39px"
+    width: "39px",
   })
 );
 
@@ -124,5 +128,5 @@ export {
   Container,
   ActionBtn,
   ConfirmActionBtnContainer,
-  ConfirmActionBtn
+  ConfirmActionBtn,
 };

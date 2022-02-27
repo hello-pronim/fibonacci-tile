@@ -12,7 +12,6 @@ import {
   SlideImage,
   SlideImageMobile,
 } from "./styles";
-import { css } from "@emotion/react";
 
 const Hero = () => {
   const slider = React.useRef<Slider>(null);

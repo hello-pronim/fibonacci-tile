@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import Link from "next/link";
+import { css } from "@styled-system/css";
 import { useAppContext } from "@contexts/AppContext";
 import Container from "@components/common/layout/container";
 import ProductCard from "@components/common/product/card";
 import AccentText, { AccentTextMobile } from "@components/common/accentText";
+import Arrow from "@components/common/icons/arrow";
+import theme from "styles/theme";
 import {
   Wrapper,
   ProgBar,
@@ -17,9 +20,6 @@ import {
   NextWrapper,
   Title,
 } from "./styles";
-import { css } from "@styled-system/css";
-import Arrow from "@components/common/icons/arrow";
-import theme from "styles/theme";
 
 const ProductCarousel = ({ products }) => {
   const { state, dispatch } = useAppContext();
