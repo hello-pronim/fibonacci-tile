@@ -135,7 +135,9 @@ const ProductsPage = ({
         />
       )}
       <Slider items={banners} disableNext={true} />
-      <SectionTitle show={showFilterBar} title={pageData.bannerSubline} />
+      {pageData.bannerSubline && (
+        <SectionTitle show={showFilterBar} title={pageData.bannerSubline} />
+      )}
       <section ref={ref}>
         <ProductFilterBar
           totalProducts={initialProducts.length}
