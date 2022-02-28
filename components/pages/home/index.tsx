@@ -26,10 +26,9 @@ const Homepage = ({ pageData, instaFeed }) => {
   return (
     <>
       {banners.length > 0 && <Hero banners={banners} />}
-      <SectionTitle
-        show={false}
-        title="Terrazzo tiles and slabs for residential, retail, hospitality, corporate and commercial projects."
-      />
+      {pageData.bannerSubline && (
+        <SectionTitle show={false} title={pageData.bannerSubline} />
+      )}
       {pageData?.homePageComponents?.length > 0 &&
         pageData.homePageComponents.map((component: any) => {
           switch (component.typeHandle) {

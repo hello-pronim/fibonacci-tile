@@ -258,6 +258,7 @@ export const HomePageQuery = gql`
     entry(slug: $slug) {
       id
       ... on homePage_homePage_Entry {
+        bannerSubline
         homePageComponents {
           ... on homePageComponents_bannerType1_BlockType {
             id
