@@ -14,6 +14,7 @@ import {
   InputThirty,
   SelectThirty,
   InputTwentyFour,
+  InputFullwidth,
   TextareaFullwidth,
   InputFourtyFive,
   Seperator
@@ -76,7 +77,7 @@ const Delivery = ({ activeCheckoutStep, disabled, stepChange }) => {
       <FormWrapper>
         <form onSubmit={handleSubmit(onSubmit)}>
           <TwoItemRow>
-            <InputFourtyFive type="date" placeholder="Delivery Date" {...register("deliveryDate", {required: true})} />
+            <InputFullwidth type="date" placeholder="Delivery Date" {...register("deliveryDate", {required: true})} />
           </TwoItemRow>
           <TwoItemRow>
             <InputSixty
