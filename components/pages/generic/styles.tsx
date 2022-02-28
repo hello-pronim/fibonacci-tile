@@ -56,7 +56,7 @@ const InnerContainer = styled("div")(
     },
     "& .detailsContentBlock": {
       display: "flex",
-      justifyContent: "flex-end",
+      justifyContent: "flex-start",
       "& p": {
         fontSize: "20px",
         lineHeight: "140%",
@@ -80,13 +80,16 @@ const InnerContainer = styled("div")(
       "& div": {
         maxWidth: "100%",
         [theme.mediaQueries.xxMedium]: {
-          maxWidth: "65%",
+          maxWidth: "60%",
+          marginLeft: "35%",
         },
         [theme.mediaQueries.mLarge]: {
-          maxWidth: "70%",
+          maxWidth: "63%",
+          marginLeft: "31%",
         },
         [theme.mediaQueries.xLarge]: {
-          maxWidth: "73%",
+          maxWidth: "63%",
+          marginLeft: "27%",
         },
       },
     },

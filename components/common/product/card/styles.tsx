@@ -219,6 +219,10 @@ const CardSubTitle = styled(Text)(
     lineHeight: "19.6px",
     fontWeight: "300",
     color: theme.colors.charcoal,
+    "& span": {
+      color: "#9e9084",
+      fontWeight: "400",
+    },
   })
 );
 
