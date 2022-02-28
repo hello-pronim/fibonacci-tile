@@ -64,9 +64,11 @@ const Details = ({ activeCheckoutStep, disabled, stepChange }) => {
               </TwoItemRow>
               {activeCheckoutStep === 2 && (
                 <CheckoutFooter>
+                  {state.selectedProducts.length > 6 &&
                   <div className="back" onClick={() => stepChange(1)}>
                     Back
                   </div>
+                  }
                   <ArrowButton
                     mode="light"
                     bgColor="#141414"

@@ -71,6 +71,7 @@ const CheckoutPage = ({ notifications }) => {
     }
     setActiveCheckoutStep(step);
   };
+
   return (
     <CheckoutContainer>
       <Header mode="dark" notifications={notifications} />
@@ -82,10 +83,17 @@ const CheckoutPage = ({ notifications }) => {
         >
           <BreadCrumb crumbs={crumbs} pt={100} />
           <CheckoutStepWrapper>
-            <StepItem step={1} activeStep={activeCheckoutStep} />
-            <StepItem step={2} activeStep={activeCheckoutStep} />
-            <StepItem step={3} activeStep={activeCheckoutStep} />
-            <StepItem step={4} activeStep={activeCheckoutStep} />
+          {
+          selectedProducts?.length !== 0 &&
+          <>
+          {selectedProducts?.length > sampleSelectedCount &&
+          <StepItem step={1} activeStep={activeCheckoutStep} />
+          }
+          <StepItem step={ selectedProducts?.length > sampleSelectedCount ? 2 : 1 } activeStep={activeCheckoutStep} />
+          <StepItem step={ selectedProducts?.length > sampleSelectedCount ? 3 : 2 } activeStep={activeCheckoutStep} />
+          <StepItem step={ selectedProducts?.length > sampleSelectedCount ? 4 : 3 } activeStep={activeCheckoutStep} />
+          </>
+          }
           </CheckoutStepWrapper>
           {selectedProducts?.length > 0 && (
             <CheckoutContentWrapper>
