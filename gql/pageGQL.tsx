@@ -236,11 +236,16 @@ const homeSamplesBlurThumb1 = [
   Math.round(homeSamplesThumb1[0] / 2),
   Math.round(homeSamplesThumb1[1] / 2),
 ];
-const homeProjectThumb = [1460 * 2, 900 * 2];
+const homeProjectThumb = [710 * 2, 900 * 2];
 const homeProjectBlurThumb = [
   Math.round(homeProjectThumb[0] / 100),
   Math.round(homeProjectThumb[1] / 100),
 ];
+// const homeProjectThumb = [1460 * 2, 900 * 2];
+// const homeProjectBlurThumb = [
+//   Math.round(homeProjectThumb[0] / 100),
+//   Math.round(homeProjectThumb[1] / 100),
+// ];
 const homeLeftThumb1 = [560 * 2, 560 * 2];
 const homeLeftBlurThumb1 = [
   Math.round(homeLeftThumb1[0] / 100),
