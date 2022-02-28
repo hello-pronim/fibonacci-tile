@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Button from "@components/common/button";
 import { css } from "@styled-system/css";
+import { useForm } from 'react-hook-form';
 // import useOnClickOutside from "use-onclickoutside";
 import { useAppContext } from "@contexts/AppContext";
 import ProductCard from "@components/common/product/card";
@@ -47,12 +48,18 @@ const SelectionCart = ({ active, newSelection, tab }) => {
   const { state, dispatch } = useAppContext();
   const { selectedProducts } = state;
   const ref = useRef(null);
+  const { register, handleSubmit, formState: { errors } } = useForm();
   // useOnClickOutside(ref, () => {
   //   dispatch({
   //     type: "OPEN_DRAWER",
   //     value: false,
   //   });
   // });
+  console.log("errors", errors)
+  const onSubmit = (data: any) => {
+    console.log("formdata", data)
+    setContactSubmit(true)
+  }
   return (
     <div
       ref={ref}
@@ -150,21 +157,20 @@ const SelectionCart = ({ active, newSelection, tab }) => {
                 flexDirection: "column",
                 rowGap: "8px",
               })}
-              action="/thank-you"
+              // action="/thank-you"
+              onSubmit={handleSubmit(onSubmit)}
             >
-              <input css={css(fieldStyles)} placeholder="First Name"></input>
-              <input css={css(fieldStyles)} placeholder="Last Name"></input>
-              <input
-                css={css(fieldStyles)}
-                placeholder="Contact Number"
-              ></input>
-              <input css={css(fieldStyles)} placeholder="Email Address"></input>
+              <input css={css(fieldStyles)} placeholder="First Name" {...register("firstName", {required: true, maxLength: 100})} />
+              <input css={css(fieldStyles)} placeholder="Last Name" {...register("lastName", {required: true, maxLength: 100})} />
+              <input css={css(fieldStyles)} placeholder="Contact Number" {...register("contactNumber", {required: true, minLength: 6, maxLength: 12})} />
+              <input css={css(fieldStyles)} placeholder="Email Address"  {...register("email", {required: true, pattern: /^\S+@\S+$/i})}/>
               <textarea
                 css={css(textareaStyles)}
                 placeholder="Message"
+                {...register("message", { required: true })}
               ></textarea>
-              <label css={css({ mb: 39 })}>
-                <input type="checkbox"></input>
+              <label>
+                <input type="checkbox" {...register("acceptTerms", { required: true })}/>
                 <span
                   css={css({
                     fontFamily: 1,
@@ -177,10 +183,27 @@ const SelectionCart = ({ active, newSelection, tab }) => {
                   I agree to the terms and conditions{" "}
                 </span>
               </label>
+              {errors?.acceptTerms && 
+                <span
+                css={css({
+                 color: "red",
+                 fontSize: 12,
+                 display: "block"
+                })}>
+                  Accept terms and conditions is required.
+                </span>
+              }
+              <div
+                css={css({
+                  mt: 30
+                })}
+              ></div>
               <ArrowButton
                 mode="dark"
                 title="Submit enquiry"
-                onClick={() => {setContactSubmit(!contactSubmit)}}
+                // onClick={() => {
+                //   // setContactSubmit(!contactSubmit)
+                // }}
                 fullWidth
                 size=""
               />
