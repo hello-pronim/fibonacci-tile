@@ -226,6 +226,15 @@ const TextareaFullwidth = styled("textarea")(()=>
   })
 );
 
+const Seperator = styled("hr")(()=> 
+  css({
+    width: "100%",
+    mb: 50,
+    mt: 50,
+    background: "#D6CEC5"
+  })
+);
+
 export {
     StepItemWrapper,
     StepCount,
@@ -246,5 +255,6 @@ export {
     InputThirty,
     SelectThirty,
     InputTwentyFour,
-    TextareaFullwidth
+    TextareaFullwidth,
+    Seperator
   };

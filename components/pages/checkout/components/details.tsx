@@ -44,7 +44,7 @@ const Details = ({ activeCheckoutStep, disabled, stepChange }) => {
                   <InputFullwidth type="text" placeholder="Email" {...register("email", {required: true, pattern: /^\S+@\S+$/i})} />
               </OneItemRow>
               <TwoItemRow>
-                  <InputFourtyFive type="text" placeholder="First name" {...register("firstName", {required: true, maxLength: 80})} />
+                  <InputFourtyFive type="text" placeholder="First name" {...register("firstName", {required: true, maxLength: 100})} />
                   <InputFourtyFive type="text" placeholder="Last name" {...register("lastName", {required: true, maxLength: 100})} />
               </TwoItemRow>
               <TwoItemRow>
@@ -64,9 +64,11 @@ const Details = ({ activeCheckoutStep, disabled, stepChange }) => {
               </TwoItemRow>
               {activeCheckoutStep === 2 && (
                 <CheckoutFooter>
+                  {state.selectedProducts.length > 6 &&
                   <div className="back" onClick={() => stepChange(1)}>
                     Back
                   </div>
+                  }
                   <ArrowButton
                     mode="light"
                     bgColor="#141414"

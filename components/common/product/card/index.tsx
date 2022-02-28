@@ -48,7 +48,7 @@ import { css } from "@emotion/react";
 import Arrow from "@components/common/icons/arrow";
 
 interface CardProps {
-  product: any,
+  product: any;
   displayMode?: string;
   isSelected?: boolean;
   toggleProductSelect?: any;
@@ -65,8 +65,9 @@ const ProductCard = ({
   compact = false,
   activeCollectionSlug = null,
   hoverBG,
-}:CardProps) => {
+}: CardProps) => {
   const [detailShown, setDetailShown] = useState(false);
+  const [copyProductId, setCopyProductId] = useState(undefined);
   let collectionSlug = activeCollectionSlug
     ? activeCollectionSlug
     : product?.collections[0]?.slug;
@@ -110,7 +111,30 @@ const ProductCard = ({
     return text;
   };
 
+  function fallbackCopyTextToClipboard(text) {
+    let textArea = document.createElement("textarea");
+    textArea.value = text;
+    textArea.style.top = "0";
+    textArea.style.left = "0";
+    textArea.style.position = "fixed";
+
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+
+    try {
+      let successful = document.execCommand("copy");
+      let msg = successful ? "successful" : "unsuccessful";
+      console.log("Fallback: Copying text command was " + msg);
+    } catch (err) {
+      console.error("Fallback: Oops, unable to copy", err);
+    }
+
+    document.body.removeChild(textArea);
+  }
+
   const handleTechnicalSpecificationCopy = (product) => {
+    console.log(product);
     let copyText = "";
     let productVariationsText = getProductVariationsText(
       product.productVariations
@@ -123,9 +147,17 @@ const ProductCard = ({
     copyText += productVariationsText;
     copyText += "Applications: " + product.applications + "\n";
 
-    navigator.clipboard.writeText(copyText).then(() => {
-      alert("Copied to clipboard");
-    });
+    setCopyProductId(product.id);
+
+    if (navigator.clipboard !== undefined) {
+      // Chrome
+      navigator.clipboard.writeText(copyText).then(() => {
+        alert("Copied to clipboard");
+      });
+    } else {
+      fallbackCopyTextToClipboard(copyText);
+      return;
+    }
   };
 
   if (displayMode === "list") {
@@ -231,14 +263,19 @@ const ProductCard = ({
                       <Headline>Applications</Headline>
                       {product.applications}
                     </li>
-
-                    <TechnicalSpecification
-                      onClick={() => handleTechnicalSpecificationCopy(product)}
-                    >
-                      <span style={{ marginRight: "12px" }}>
-                        Click here to copy technical specification
-                      </span>
-                    </TechnicalSpecification>
+                    <li>
+                      <TechnicalSpecification
+                        onClick={() =>
+                          handleTechnicalSpecificationCopy(product)
+                        }
+                      >
+                        <span style={{ marginRight: "12px" }}>
+                          {copyProductId === product.id
+                            ? "Copied to your clipboard"
+                            : "Click here to copy technical specification"}
+                        </span>
+                      </TechnicalSpecification>
+                    </li>
                   </ul>
                 </Listings>
               </Details>

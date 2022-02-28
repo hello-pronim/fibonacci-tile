@@ -18,19 +18,21 @@ const Wrapper = styled("div")(
   })
 );
 
-const Container = styled("div")(({ compact, hoverBG }: { compact: boolean, hoverBG?: string }) =>
-  css({
-    padding: compact ? "0" : "38px 18px",
-    textAlign: "center",
-    transition: "ease all 0.4s",
-    backgroundColor: "rgba(237, 236, 232, 0)",
-    "&:hover": {
-      backgroundColor: !compact && hoverBG ? hoverBG : "rgba(237, 236, 232, 1.000)",
-      div: {
-        boxShadow: "none",
+const Container = styled("div")(
+  ({ compact, hoverBG }: { compact: boolean; hoverBG?: string }) =>
+    css({
+      padding: compact ? "0" : "38px 18px",
+      textAlign: "center",
+      transition: "ease all 0.4s",
+      backgroundColor: "rgba(237, 236, 232, 0)",
+      "&:hover": {
+        backgroundColor:
+          !compact && hoverBG ? hoverBG : "rgba(237, 236, 232, 1.000)",
+        div: {
+          boxShadow: "none",
+        },
       },
-    },
-  })
+    })
 );
 
 const GridCardImgContainer = styled("div")(
@@ -340,6 +342,9 @@ const Listings = styled("div")(
         padding: "15px 0",
         "&:first-child": {
           paddingTop: 0,
+        },
+        "&:last-child": {
+          border: "none",
         },
       },
     },

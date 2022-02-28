@@ -15,6 +15,8 @@ import {
   SelectThirty,
   InputTwentyFour,
   TextareaFullwidth,
+  InputFourtyFive,
+  Seperator
 } from "./styles";
 
 import { CheckoutFooter } from "../styles";
@@ -74,6 +76,9 @@ const Delivery = ({ activeCheckoutStep, disabled, stepChange }) => {
       <FormWrapper>
         <form onSubmit={handleSubmit(onSubmit)}>
           <TwoItemRow>
+            <InputFourtyFive type="date" placeholder="Delivery Date" {...register("deliveryDate", {required: true})} />
+          </TwoItemRow>
+          <TwoItemRow>
             <InputSixty
               type="text"
               placeholder="Address"
@@ -106,6 +111,11 @@ const Delivery = ({ activeCheckoutStep, disabled, stepChange }) => {
               <option value="New Zealand">New Zealand</option>
             </SelectThirty>
           </ThreeItemRow>
+          <Seperator/>
+          <TwoItemRow>
+            <InputFourtyFive type="text" placeholder="Site Contact" {...register("siteContact", {required: true, minLength: 6, maxLength: 12})} />
+            <InputFourtyFive type="text" placeholder="Contact number" {...register("contactNumber", {required: true, minLength: 6, maxLength: 12})} />
+          </TwoItemRow>
           <OneItemRow>
             <TextareaFullwidth
               placeholder="Additional Information/Special Requirements"
