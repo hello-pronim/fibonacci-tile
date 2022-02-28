@@ -88,7 +88,7 @@ const FormWrapper = styled("div")(()=>
   css({
     paddingTop: "30px",
     maxWidth: "860px",
-    "input[type='text'], input[type='tel'], input[type='email'], textarea, select": {
+    "input[type='text'], input[type='tel'], input[type='email'], input[type='date'], textarea, select": {
       fontSize: 2,
       padding: "20px 25px",
       color: "charcoal",
