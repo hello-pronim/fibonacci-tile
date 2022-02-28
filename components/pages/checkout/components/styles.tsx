@@ -90,9 +90,11 @@ const FormWrapper = styled("div")(()=>
     maxWidth: "860px",
     "input[type='text'], input[type='tel'], input[type='email'], textarea, select": {
       fontSize: 2,
-      padding: "20px 15px",
+      padding: "20px 25px",
       color: "charcoal",
       fontFamily: 1,
+      borderRadius: "0",
+      border: "1px solid #B0ABA7",
       "&::-webkit-input-placeholder": {  
         color: "charcoal"
       },
@@ -166,49 +168,61 @@ const Details = styled("div")(()=>
 
 const InputFullwidth = styled("input")(()=> 
   css({
-    width: "95.8%"
+    width: "93.95%"
   })
 );
 
 const InputFourtyFive= styled("input")(()=> 
   css({
-    width: "45%"
+    width: "43%"
   })
 );
 
 const SelectFourtyFive = styled("select")(()=> 
   css({
-    width: "45%"
+    width: "43%",
+    webkitAppearance: "none !important",
+    mozAppearance: "none !important",
+    appearance: "none !important",
+    backgroundImage: `url("/assets/icons/dropdown_Icon.svg")`,
+    backgroundPosition: "98%",
+    backgroundRepeat: "no-repeat",
   })
 );
 
 const InputSixty = styled("input")(()=> 
   css({
-    width: "60%"
+    width: "58%"
   })
 );
 
 const InputThirty = styled("input")(()=> 
   css({
-    width: "30%"
+    width: "28%"
   })
 );
 
 const InputTwentyFour = styled("input")(()=> 
   css({
-    width: "24%"
+    width: "22%"
   })
 );
 
 const SelectThirty = styled("select")(()=> 
   css({
-    width: "30%"
+    width: "28%",
+    webkitAppearance: "none !important",
+    mozAppearance: "none !important",
+    appearance: "none !important",
+    backgroundImage: `url("/assets/icons/dropdown_Icon.svg")`,
+    backgroundPosition: "98%",
+    backgroundRepeat: "no-repeat",
   })
 );
 
 const TextareaFullwidth = styled("textarea")(()=> 
   css({
-    width: "96%"
+    width: "93.95%"
   })
 );
 
