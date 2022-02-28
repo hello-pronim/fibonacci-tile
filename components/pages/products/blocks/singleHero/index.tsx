@@ -1,20 +1,20 @@
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { css } from "@styled-system/css";
-import { useAppContext } from "@contexts/AppContext";
-import ProductCard from "@components/common/product/xlCard";
-import Text from "@components/common/typography";
-import BreadCrumb from "@components/common/breadcrumb";
-import SizeDisplay from "@components/common/product/card/SizeDisplay";
-import Arrow from "@components/common/icons/arrow";
-import theme from "@styles/theme";
-import { Container, LinkWrapper, LinkWrapperLeft, Pill } from "./styles";
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { css } from '@styled-system/css';
+import { useAppContext } from '@contexts/AppContext';
+import ProductCard from '@components/common/product/xlCard';
+import Text from '@components/common/typography';
+import BreadCrumb from '@components/common/breadcrumb';
+import SizeDisplay from '@components/common/product/card/SizeDisplay';
+import Arrow from '@components/common/icons/arrow';
+import theme from '@styles/theme';
+import { Container, LinkWrapper, LinkWrapperLeft, Pill } from './styles';
 
 const SingleHeroModule = ({ product, collectionSlug }) => {
   const crumbs = [
-    { path: "/terrazzo", name: "Our Products" },
-    { path: "/terrazzo", name: "Terrazzo" },
+    { path: '/terrazzo', name: 'Our Products' },
+    { path: '/terrazzo', name: 'Terrazzo' },
     { name: product.title },
   ];
   const { state, dispatch } = useAppContext();
@@ -25,8 +25,8 @@ const SingleHeroModule = ({ product, collectionSlug }) => {
     <>
       <div
         css={css({
-          maxWidth: "2560px",
-          pl: "27px",
+          maxWidth: '2560px',
+          pl: '27px',
           pt: 100,
           pb: 0,
         })}
@@ -40,20 +40,20 @@ const SingleHeroModule = ({ product, collectionSlug }) => {
       >
         <div
           css={css({
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            gridColumn: "1 / span 2",
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            gridColumn: '1 / span 2',
             gridRow: 2,
-            height: "100%",
+            height: '100%',
             [theme.mediaQueries.small]: {
-              gridColumn: "1 / span 3",
+              gridColumn: '1 / span 3',
               gridRow: 1,
             },
           })}
         >
           <div
-            css={css({ display: "flex", flexDirection: "column", rowGap: 24 })}
+            css={css({ display: 'flex', flexDirection: 'column', rowGap: 24 })}
           >
             <Text
               variant="Display-Large"
@@ -80,9 +80,8 @@ const SingleHeroModule = ({ product, collectionSlug }) => {
             <Text
               variant="Body-Large"
               css={css({ span: { color: theme.colors.taupe } })}
-            >
-              {product.subline}
-            </Text>
+              dangerouslySetInnerHTML={{ __html: product.subline }}
+            />
             <Text
               variant="Body-Large"
               dangerouslySetInnerHTML={{ __html: product.designStory }}
@@ -90,9 +89,9 @@ const SingleHeroModule = ({ product, collectionSlug }) => {
           </div>
           <div
             css={css({
-              display: "flex",
+              display: 'flex',
               columnGap: 32,
-              alignItems: "flex-end",
+              alignItems: 'flex-end',
               py: 60,
             })}
           >
@@ -120,8 +119,8 @@ const SingleHeroModule = ({ product, collectionSlug }) => {
             css={css({
               bg: theme.colors.greys[5],
               padding: 16,
-              display: "flex",
-              flexDirection: "column",
+              display: 'flex',
+              flexDirection: 'column',
               rowGap: 16,
             })}
           >
@@ -135,13 +134,13 @@ const SingleHeroModule = ({ product, collectionSlug }) => {
         </div>
         <div
           css={css({
-            gridColumn: "1 / span 2",
+            gridColumn: '1 / span 2',
             gridRow: 1,
-            display: "flex",
-            flexDirection: "column",
-            height: "100%",
+            display: 'flex',
+            flexDirection: 'column',
+            height: '100%',
             [theme.mediaQueries.small]: {
-              gridColumn: "5 / span 4",
+              gridColumn: '5 / span 4',
             },
           })}
         >
@@ -155,7 +154,7 @@ const SingleHeroModule = ({ product, collectionSlug }) => {
               }
               toggleProductSelect={() =>
                 dispatch({
-                  type: "TOGGLE_PRODUCT_SELECTION",
+                  type: 'TOGGLE_PRODUCT_SELECTION',
                   product,
                 })
               }
@@ -164,12 +163,12 @@ const SingleHeroModule = ({ product, collectionSlug }) => {
           </div>
           <div
             css={css({
-              display: "none",
-              justifyContent: "space-between",
-              flexDirection: "row",
+              display: 'none',
+              justifyContent: 'space-between',
+              flexDirection: 'row',
               mt: 52,
               [theme.mediaQueries.small]: {
-                display: "flex",
+                display: 'flex',
               },
             })}
           >
@@ -197,28 +196,28 @@ const SingleHeroModule = ({ product, collectionSlug }) => {
         </div>
         <div
           css={css({
-            display: "flex",
-            flexDirection: "column",
+            display: 'flex',
+            flexDirection: 'column',
             rowGap: 60,
-            gridColumn: "1 / span 2",
+            gridColumn: '1 / span 2',
             gridRow: 4,
-            justifyContent: "space-between",
+            justifyContent: 'space-between',
             [theme.mediaQueries.small]: {
-              gridColumn: "10 / span 3",
+              gridColumn: '10 / span 3',
               gridRow: 1,
             },
           })}
         >
           <div
-            css={css({ display: "flex", flexDirection: "column", rowGap: 24 })}
+            css={css({ display: 'flex', flexDirection: 'column', rowGap: 24 })}
           >
             <div
               css={css({
                 borderBottom: `1px solid ${theme.colors.warm}`,
                 pb: 16,
                 mb: 16,
-                display: "flex",
-                flexDirection: "column",
+                display: 'flex',
+                flexDirection: 'column',
               })}
             >
               <Text variant="Display-Overline">MATERIAL AND COMPOSITION</Text>
@@ -231,8 +230,8 @@ const SingleHeroModule = ({ product, collectionSlug }) => {
                 borderBottom: `1px solid ${theme.colors.warm}`,
                 pb: 16,
                 mb: 16,
-                display: "flex",
-                flexDirection: "column",
+                display: 'flex',
+                flexDirection: 'column',
               })}
             >
               <Text variant="Display-Overline">FINISH AND APPEARANCE</Text>
@@ -246,8 +245,8 @@ const SingleHeroModule = ({ product, collectionSlug }) => {
                   borderBottom: `1px solid ${theme.colors.warm}`,
                   pb: 16,
                   mb: 16,
-                  display: "flex",
-                  flexDirection: "column",
+                  display: 'flex',
+                  flexDirection: 'column',
                 })}
               >
                 <Text variant="Display-Overline">SIZES</Text>
@@ -263,9 +262,9 @@ const SingleHeroModule = ({ product, collectionSlug }) => {
               css={css({
                 borderBottom: `1px solid ${theme.colors.warm}`,
                 pb: 16,
-                mb: "8px",
-                display: "flex",
-                flexDirection: "column",
+                mb: '8px',
+                display: 'flex',
+                flexDirection: 'column',
               })}
             >
               <Text variant="Display-Overline">APPLICATIONS</Text>
