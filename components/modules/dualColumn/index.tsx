@@ -1,9 +1,9 @@
-import Image from "next/image";
-import { css } from "@styled-system/css";
-import Text from "@components/common/typography";
-import AccentText, { AccentTextMobile } from "@components/common/accentText";
-import ArrowButton from "@components/common/button/arrowButton";
-import theme from "@styles/theme";
+import Image from 'next/image';
+import { css } from '@styled-system/css';
+import Text from '@components/common/typography';
+import AccentText, { AccentTextMobile } from '@components/common/accentText';
+import ArrowButton from '@components/common/button/arrowButton';
+import theme from '@styles/theme';
 import {
   Container,
   ImageWrapper,
@@ -11,7 +11,7 @@ import {
   RightCol,
   Segment,
   BottomRow,
-} from "./styles";
+} from './styles';
 
 const DualColumnModule = ({ data }) => {
   return (
@@ -35,16 +35,18 @@ const DualColumnModule = ({ data }) => {
             css={css({ color: theme.colors.charcoal })}
             as="h6"
             variant="Display-Overline"
-          >
-            {data.left1Caption}
-          </Text>
+            dangerouslySetInnerHTML={{
+              __html: data.left1Caption,
+            }}
+          />
           <Text
             css={css({ color: theme.colors.charcoal })}
             as="h3"
             variant="Display-Medium"
-          >
-            {data.left1Text}
-          </Text>
+            dangerouslySetInnerHTML={{
+              __html: data.left1Text,
+            }}
+          />
         </Segment>
         <Segment>
           {data?.left2Image?.url && (
@@ -63,16 +65,18 @@ const DualColumnModule = ({ data }) => {
             css={css({ color: theme.colors.charcoal })}
             as="h6"
             variant="Display-Overline"
-          >
-            {data.left2Caption}
-          </Text>
+            dangerouslySetInnerHTML={{
+              __html: data.left2Caption,
+            }}
+          />
           <Text
             css={css({ color: theme.colors.charcoal })}
             as="h3"
             variant="Display-Medium"
-          >
-            {data.left2Text}
-          </Text>
+            dangerouslySetInnerHTML={{
+              __html: data.left2Text,
+            }}
+          />
         </Segment>
       </LeftCol>
       <RightCol>
@@ -86,14 +90,15 @@ const DualColumnModule = ({ data }) => {
             altFont
             css={css({
               color: theme.colors.charcoal,
-              width: "50%",
+              width: '50%',
               [theme.mediaQueries.medium]: {
                 fontSize: 74,
               },
             })}
-          >
-            {data.rightText}
-          </Text>
+            dangerouslySetInnerHTML={{
+              __html: data.rightText,
+            }}
+          />
         </div>
         <Segment>
           <ImageWrapper>
@@ -114,16 +119,18 @@ const DualColumnModule = ({ data }) => {
             css={css({ color: theme.colors.charcoal })}
             as="h6"
             variant="Display-Overline"
-          >
-            {data.right1Caption}
-          </Text>
+            dangerouslySetInnerHTML={{
+              __html: data.right1Caption,
+            }}
+          />
           <Text
             css={css({ color: theme.colors.charcoal })}
             as="h3"
             variant="Display-Medium"
-          >
-            {data.right1Text}
-          </Text>
+            dangerouslySetInnerHTML={{
+              __html: data.right1Text,
+            }}
+          />
         </Segment>
         <Segment>
           <ImageWrapper>
@@ -144,16 +151,16 @@ const DualColumnModule = ({ data }) => {
             css={css({ color: theme.colors.charcoal })}
             as="h6"
             variant="Display-Overline"
-          >
-            {data.right2Caption}
-          </Text>
+            dangerouslySetInnerHTML={{
+              __html: data.right2Caption,
+            }}
+          />
           <Text
             css={css({ color: theme.colors.charcoal })}
             as="h3"
             variant="Display-Medium"
-          >
-            {data.right2Text}
-          </Text>
+            dangerouslySetInnerHTML={{ __html: data.right2Text }}
+          />
         </Segment>
       </RightCol>
       <BottomRow>
