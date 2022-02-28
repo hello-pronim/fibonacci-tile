@@ -1,11 +1,11 @@
-import css from "@styled-system/css";
-import styled from "@emotion/styled";
-import Cntnr from "@components/common/layout/container";
-import theme from "styles/theme";
+import css from '@styled-system/css';
+import styled from '@emotion/styled';
+import Cntnr from '@components/common/layout/container';
+import theme from 'styles/theme';
 
 const Container = styled(Cntnr)(
   css({
-    overflowX: "hidden",
+    overflowX: 'hidden',
   })
 );
 
@@ -24,7 +24,7 @@ const Wrapper = styled("div")(
             mr: 40,
           },
         },
-        ".slick-current": {
+        ".slick-active": {
           ".slide-content": {
             opacity: 1,
           },
@@ -34,34 +34,74 @@ const Wrapper = styled("div")(
   })
 );
 
-const SlideItem = styled("div")(
+// const Wrapper = styled('div')(
+//   css({
+//     position: 'relative',
+//     gridColumn: ['1 / span 2', '1 / span 6', '2 / span 10'],
+//     pt: 60,
+//     pb: 40,
+//     width: '100%',
+//     [theme.mediaQueries.small]: {
+//       pt: 120,
+//     },
+//     '.slick-slider .slick-list': {
+//       paddingLeft: '0 !important',
+//       [theme.mediaQueries.small]: {
+//         pl: 50,
+//       },
+//       [theme.mediaQueries.medium]: { overflow: 'visible' },
+//       '.slick-track': {
+//         display: 'flex',
+//         '.slick-slide': {
+//           mr: 16,
+//           height: 'auto',
+//           maxWidth: 710,
+//           maxHeight: 900,
+//           div: {
+//             height: '100%',
+//           },
+//           [theme.mediaQueries.medium]: {
+//             mr: 40,
+//           },
+//         },
+//         '.slick-current': {
+//           '.slide-content': {
+//             opacity: 1,
+//           },
+//         },
+//       },
+//     },
+//   })
+// );
+
+const SlideItem = styled('div')(
   css({
-    position: "relative",
+    position: 'relative',
   })
 );
 
-const ContentWrapper = styled("div")(
+const ContentWrapper = styled('div')(
   css({
-    position: "absolute",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    my: "auto",
+    position: 'absolute',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    my: 'auto',
     px: 24,
     zIndex: 9999,
     left: 0,
     right: 0,
     top: 0,
     bottom: 0,
-    color: "white",
-    width: "100%",
+    color: 'white',
+    width: '100%',
     rowGap: 24,
     [theme.mediaQueries.medium]: {
       rowGap: 32,
       px: 40,
     },
     opacity: 0,
-    transition: "ease all 0.3s",
+    transition: 'ease all 0.3s',
     h6: {
       fontSize: 16,
       [theme.mediaQueries.medium]: {
@@ -76,108 +116,108 @@ const ContentWrapper = styled("div")(
     },
     a: {
       fontSize: 14,
-      color: "white !important",
+      color: 'white !important',
     },
   })
 );
 
-const BottomBar = styled("div")(
+const BottomBar = styled('div')(
   css({
-    display: "flex",
-    flexDirection: "column",
-    width: "100%",
+    display: 'flex',
+    flexDirection: 'column',
+    width: '100%',
     mt: 50,
   })
 );
 
-const ProgBar = styled("div")(
+const ProgBar = styled('div')(
   css({
-    width: "100%",
-    height: "3px",
-    bg: "border",
+    width: '100%',
+    height: '3px',
+    bg: 'border',
   })
 );
-const ProgBarInner = styled("div")(
+const ProgBarInner = styled('div')(
   css({
-    height: "3px",
-    bg: "charcoal",
-    transition: "ease all 0.3s",
+    height: '3px',
+    bg: 'charcoal',
+    transition: 'ease all 0.3s',
   })
 );
 
-const BottomBarInner = styled("div")(
+const BottomBarInner = styled('div')(
   css({
-    width: "100%",
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     pt: 24,
   })
 );
 
-const Loader = styled("div")(({ prog }: { prog: number }) =>
+const Loader = styled('div')(({ prog }: { prog: number }) =>
   css({
-    width: "auto",
+    width: 'auto',
     svg: {
       width: 30,
       height: 30,
       circle: {
         width: 30,
         height: 30,
-        position: "absolute",
-        fill: "none",
-        strokeWidth: "3",
-        transform: "translate(3px, 3px)",
-        strokeDasharray: "73",
-        strokeLinecap: "round",
-        "&:nth-of-type(1)": {
+        position: 'absolute',
+        fill: 'none',
+        strokeWidth: '3',
+        transform: 'translate(3px, 3px)',
+        strokeDasharray: '73',
+        strokeLinecap: 'round',
+        '&:nth-of-type(1)': {
           strokeDashoffset: 0,
-          stroke: "rgba(212,212,216,0.5)",
+          stroke: 'rgba(212,212,216,0.5)',
         },
-        "&:nth-of-type(2)": {
+        '&:nth-of-type(2)': {
           strokeDashoffset: `calc(73 - (73 * ${prog}) / 100)`,
-          stroke: "#fff",
-          animation: "percent 1.5s linear",
-          animationDelay: "1s",
+          stroke: '#fff',
+          animation: 'percent 1.5s linear',
+          animationDelay: '1s',
         },
       },
     },
   })
 );
 
-const LinkWrapper = styled("div")(
+const LinkWrapper = styled('div')(
   css({
-    display: "flex",
-    alignItems: "center",
+    display: 'flex',
+    alignItems: 'center',
     columnGap: 20,
     svg: {
-      transition: "ease all 0.3s",
+      transition: 'ease all 0.3s',
     },
-    "&:hover": {
+    '&:hover': {
       svg: {
-        transform: "translateX(6px)",
+        transform: 'translateX(6px)',
       },
     },
     a: {
-      textDecoration: "none",
+      textDecoration: 'none',
       fontSize: 2,
       lineHeight: 2,
-      color: "charcoal",
-      "&:before": {
-        position: "relative",
-        backgroundColor: "charcoal",
+      color: 'charcoal',
+      '&:before': {
+        position: 'relative',
+        backgroundColor: 'charcoal',
         content: "' '",
-        display: "block",
-        height: "2px",
-        width: "100%",
-        transform: "translateY(40px)",
-        transition: "ease all 0.3s",
-        pointerEvents: "none",
+        display: 'block',
+        height: '2px',
+        width: '100%',
+        transform: 'translateY(40px)',
+        transition: 'ease all 0.3s',
+        pointerEvents: 'none',
         opacity: 0,
       },
-      "&:hover": {
-        "&:before": {
-          transform: "translateY(28px)",
+      '&:hover': {
+        '&:before': {
+          transform: 'translateY(28px)',
           opacity: 1,
         },
       },
@@ -185,20 +225,20 @@ const LinkWrapper = styled("div")(
   })
 );
 
-const Pill = styled("div")(
+const Pill = styled('div')(
   css({
-    display: "flex",
-    alignItems: "center",
-    columnGap: "4px",
-    py: "3.5px",
-    px: "12px",
-    bg: "charcoal",
-    position: "absolute",
+    display: 'flex',
+    alignItems: 'center',
+    columnGap: '4px',
+    py: '3.5px',
+    px: '12px',
+    bg: 'charcoal',
+    position: 'absolute',
     top: 24,
     left: 24,
     zIndex: 99999,
-    textTransform: "uppercase",
-    color: "white",
+    textTransform: 'uppercase',
+    color: 'white',
     borderRadius: 24,
     fontSize: 0,
     lineHeight: 2,
@@ -210,38 +250,59 @@ const Pill = styled("div")(
   })
 );
 
-const SlideImage = styled("div")(
+const SlideImage = styled('div')(
   css({
-    display: "none !important",
-    "&: > *": { display: "none !important" },
+    height: '100%',
+    display: 'none !important',
+    '&: > *': { display: 'none !important' },
     [theme.mediaQueries.small]: {
-      display: "block !important",
+      display: 'block !important',
     },
   })
 );
 
-const SlideImageMobile = styled("div")(
+const SlideImageMobile = styled('div')(
   css({
-    display: "block !important",
+    height: '100%',
+    display: 'block !important',
     [theme.mediaQueries.small]: {
-      display: "none !important",
+      display: 'none !important',
     },
   })
 );
 
-const NextWrapper = styled("button")(
+// const SlideImage = styled("div")(
+//   css({
+//     display: "none !important",
+//     "&: > *": { display: "none !important" },
+//     [theme.mediaQueries.small]: {
+//       display: "block !important",
+//     },
+//   })
+// );
+
+// const SlideImageMobile = styled("div")(
+//   css({
+//     display: "block !important",
+//     [theme.mediaQueries.small]: {
+//       display: "none !important",
+//     },
+//   })
+// );
+
+const NextWrapper = styled('button')(
   css({
-    display: "none",
-    border: "none",
-    position: "absolute",
+    display: 'none',
+    border: 'none',
+    position: 'absolute',
     right: 0,
     bottom: 87,
-    bg: "charcoal",
+    bg: 'charcoal',
     px: 10,
     py: 10,
-    cursor: "pointer",
+    cursor: 'pointer',
     [theme.mediaQueries.medium]: {
-      display: "block",
+      display: 'block',
     },
   })
 );

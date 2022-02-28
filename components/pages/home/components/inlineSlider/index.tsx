@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import Slider from "react-slick";
-import Image from "next/image";
-import Link from "next/link";
-import { css } from "@styled-system/css";
-import Text from "@components/common/typography";
-import AccentText, { AccentTextMobile } from "@components/common/accentText";
-import AddIcon from "@components/icons/add";
-import Arrow from "@components/common/icons/arrow";
-import theme from "styles/theme";
+import React, { useState, useEffect } from 'react';
+import Slider from 'react-slick';
+import Image from 'next/image';
+import Link from 'next/link';
+import { css } from '@styled-system/css';
+import Text from '@components/common/typography';
+import AccentText, { AccentTextMobile } from '@components/common/accentText';
+import AddIcon from '@components/icons/add';
+import Arrow from '@components/common/icons/arrow';
+import theme from 'styles/theme';
 import {
   Container,
   Wrapper,
@@ -22,7 +22,7 @@ import {
   SlideImage,
   SlideImageMobile,
   NextWrapper,
-} from "./styles";
+} from './styles';
 
 const InlineSlider = ({ projects }) => {
   const slider = React.useRef<Slider>(null);
@@ -37,17 +37,31 @@ const InlineSlider = ({ projects }) => {
 
   useEffect(() => {
     setCurrentSlide(
-      slider.current && slider.current.innerSlider.state.currentSlide + 1
+      slider.current && slider.current.innerSlider.state.currentSlide + 2
     );
     setSlideCount(
-      slider.current && slider.current.innerSlider.state.slideCount
+      // slider.current && slider.current.innerSlider.state.slideCount
+      projects?.length
     );
   }, []);
 
+  // const settings = {
+  //   dots: false,
+  //   infinite: false,
+  //   slidesToShow: 1,
+  //   slidesToScroll: 1,
+  //   arrows: false,
+  //   pauseOnHover: false,
+  //   autoplaySpeed: 10000,
+  //   beforeChange: (current: number, next: number) => {
+  //     setCurrentSlide(next + 1);
+  //   },
+  // };
+
   const settings = {
     dots: false,
-    infinite: false,
-    slidesToShow: 1,
+    infinite: true,
+    slidesToShow: 2,
     slidesToScroll: 1,
     arrows: false,
     pauseOnHover: false,
@@ -55,6 +69,16 @@ const InlineSlider = ({ projects }) => {
     beforeChange: (current: number, next: number) => {
       setCurrentSlide(next + 1);
     },
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          centerMode: true,
+        },
+      },
+    ],
   };
 
   return (
@@ -114,7 +138,7 @@ const InlineSlider = ({ projects }) => {
         </Slider>
         <BottomBar>
           <ProgBar>
-            <ProgBarInner css={css({ width: scrollCompletion + "%" })} />
+            <ProgBarInner css={css({ width: scrollCompletion + '%' })} />
           </ProgBar>
           <BottomBarInner>
             <span>
