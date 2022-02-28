@@ -154,9 +154,6 @@ const ProductCard = ({
       navigator.clipboard.writeText(copyText).then(() => {
         alert("Copied to clipboard");
       });
-    } else if (window.clipboardData) {
-      // Internet Explorer
-      window.clipboardData.setData("technicalSpecifications", copyText);
     } else {
       fallbackCopyTextToClipboard(copyText);
       return;
