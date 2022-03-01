@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const CategoriesQuery: any = gql`
   query categories($group: [String]) {
@@ -60,6 +60,7 @@ export const CategoryQuery: any = gql`
           id
           slug
           title
+          postDate
           ... on projects_projectDetails_Entry {
             heroImage {
               url
