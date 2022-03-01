@@ -2,7 +2,7 @@ import css from "@styled-system/css";
 import styled from "@emotion/styled";
 import theme from "styles/theme";
 
-const BreakCrumbWrapper = styled("div")(
+const BreadCrumbWrapper = styled("div")(
   css({
     pl: "32px",
     pt: 92,
@@ -15,4 +15,4 @@ const BreakCrumbWrapper = styled("div")(
   })
 );
 
-export { BreakCrumbWrapper };
+export { BreadCrumbWrapper };

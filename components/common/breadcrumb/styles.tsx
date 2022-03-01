@@ -25,8 +25,8 @@ const LinkWrapper = styled("div")(
     [theme.mediaQueries.small]: {
       fontSize: 2,
       lineHeight: 2,
-      columnGap: 20,
-      paddingRight: 14,
+      columnGap: "5px",
+      paddingRight: "5px",
     },
     svg: {
       transition: "ease all 0.3s",
