@@ -4,7 +4,9 @@ import theme from "styles/theme";
 
 const BreakCrumbWrapper = styled("div")(
   css({
-    pt: 100,
+    pl: "32px",
+    pt: 92,
+    pb: 0,
     [theme.mediaQueries.small]: {
       maxWidth: "2560px",
       pl: "27px",

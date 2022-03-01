@@ -78,11 +78,9 @@ const LatestNews: NextPage<LatestPageProps> = ({
       <div
         css={css({
           maxWidth: "2560px",
-          pl: "27px",
-          pt: 100,
+          pl: "32px",
+          pt: 92,
           pb: 0,
-          ml: "auto",
-          mr: "auto",
         })}
       >
         <BreadCrumb crumbs={crumbs} pt={0} />
