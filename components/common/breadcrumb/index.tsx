@@ -5,7 +5,6 @@ import css from '@styled-system/css';
 import Arrow from '@components/common/icons/arrow';
 
 import { BackBttn, BottomBarInner, LinkWrapper } from './styles';
-import router from 'next/router';
 
 const Breadcrumb = ({ crumbs, pt = 130, pb = 0, pl = 19 }) => {
   // Don't render a single breadcrumb.
@@ -39,14 +38,12 @@ const Breadcrumb = ({ crumbs, pt = 130, pb = 0, pl = 19 }) => {
           <span>Back</span>
         </BackBttn>
       </LinkWrapper>
-      {crumbs.map(({ name, path }, index: number) => {
+      {crumbs.map(({ name, path, mobileHide }, index: number) => {
         if (path) {
           return (
             <LinkWrapper key={`crumb-${index}`}>
               <Link href={path}>
-                <a className={crumbs.mobileHide ? 'crumbHideOnMobile' : ''}>
-                  {name}
-                </a>
+                <a className={mobileHide ? 'crumbHideOnMobile' : ''}>{name}</a>
               </Link>{' '}
               {renderCrumbSeperator(crumbs, index)}
             </LinkWrapper>
