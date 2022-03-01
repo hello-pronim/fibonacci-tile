@@ -26,7 +26,11 @@ const CollectionHeroContainer = styled("div")(() =>
     "& .CollectionTextBlock": {
       width: "auto",
       padding: "80px 15px",
-      [theme.mediaQueries.smedium]: {
+      [theme.mediaQueries.medium]: {
+        width: "40%",
+        padding: "104px 50px 50px 50px",
+      },
+      [theme.mediaQueries.xxMedium]: {
         width: "21.6%",
         padding: "104px 80px 50px 80px",
       },
@@ -43,9 +47,12 @@ const ImageContent = styled("div")(() =>
     div: {
       height: "100%",
     },
-    [theme.mediaQueries.smedium]: {
-      width: "70%",
+    [theme.mediaQueries.medium]: {
+      width: "60%",
       height: "auto",
+    },
+    [theme.mediaQueries.xxMedium]: {
+      width: "70%",
     },
   })
 );
