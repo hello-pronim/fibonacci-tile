@@ -1,33 +1,31 @@
 import { css } from "@emotion/react";
-import Text from "@components/common/typography";
-import { Container } from "./styles";
+import {
+  Container,
+  HeroTextWrapper,
+  PrimaryText,
+  SecondaryText,
+} from "./styles";
 
 const Hero = ({ pageTitle }) => {
   return (
     <Container
       css={css({ backgroundImage: "url(/assets/temp/support-hero.jpg)" })}
     >
-      <div
-        css={css({
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          rowGap: 32,
-          paddingTop: 120,
-          paddingBottom: 120,
-        })}
-      >
-        <Text variant="Display-Large" altFont css={css({color: 'white'})}>
+      <HeroTextWrapper>
+        <PrimaryText
+          variant="Display-Large"
+          altFont
+          css={css({ color: "white" })}
+        >
           {pageTitle}
-        </Text>
-        <Text
+        </PrimaryText>
+        <SecondaryText
           variant="Display-Overline"
-          css={css({ textTransform: "uppercase", color: 'white', })}
+          css={css({ textTransform: "uppercase", color: "white" })}
         >
           How can we help?
-        </Text>
-      </div>
+        </SecondaryText>
+      </HeroTextWrapper>
     </Container>
   );
 };
