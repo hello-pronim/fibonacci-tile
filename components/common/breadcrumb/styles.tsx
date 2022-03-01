@@ -96,6 +96,8 @@ const LinkWrapper = styled("div")(
         fontSize: "12px",
         color: "#B0ABA7",
         display: "block",
+        position: "relative",
+        top: "1px",
         [theme.mediaQueries.medium]: {
           display: "none",
         },
