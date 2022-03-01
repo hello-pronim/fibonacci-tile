@@ -15,7 +15,13 @@ const CollectionProductsContainer = styled('div')(() =>
       "repeat(1, 1fr)",
     ],
     display: "grid",
-    [theme.mediaQueries.smedium]: {
+    [theme.mediaQueries.medium]: {
+      pt: 340,
+      gridTemplateColumns: [
+        "repeat(3, 1fr)",
+      ],
+    },
+    [theme.mediaQueries.xxMedium]: {
       pt: 164,
       pb: 140,
       pl: "40%",
