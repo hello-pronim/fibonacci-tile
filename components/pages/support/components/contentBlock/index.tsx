@@ -29,7 +29,12 @@ const ContentWithImageModule = ({ id = "", content }) => {
                   {title}
                 </Text>
               )}
-              {body && <Text variant="Body-Regular" dangerouslySetInnerHTML={{ __html: body }} />}
+              {body && (
+                <Text
+                  variant="Body-Regular"
+                  dangerouslySetInnerHTML={{ __html: body }}
+                />
+              )}
               {emphasisText && (
                 <span style={{ color: "#a19082" }}>{emphasisText}</span>
               )}
@@ -48,7 +53,9 @@ const ContentWithImageModule = ({ id = "", content }) => {
       <ImageWrapper orientation={content.orientation}>
         {content?.image?.url && (
           <Image
+            className="image"
             layout="responsive"
+            objectFit="cover"
             placeholder="blur"
             blurDataURL={content.blurThumb.url}
             alt={content.image.title}

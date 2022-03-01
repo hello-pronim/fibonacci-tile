@@ -1,134 +1,145 @@
 import css from "@styled-system/css";
 import styled from "@emotion/styled";
 import Cntnr from "@components/common/layout/container";
-import theme from 'styles/theme';
+import theme from "styles/theme";
 
 const Container = styled(Cntnr)(() =>
   css({
-      alignItems: 'flex-start',
-      bg: "white",
-      rowGap: 40,
+    alignItems: "flex-start",
+    bg: "white",
+    rowGap: 40,
   })
 );
 
-const Wrapper = styled('div')(() =>
+const Wrapper = styled("div")(() =>
   css({
-    gridColumn: '2 / span 10'
+    gridColumn: "2 / span 10",
   })
 );
 
-const IntroWrapper = styled('div')(() =>
+const IntroWrapper = styled("div")(() =>
   css({
     gridRow: 1,
-    gridColumn: ['1 / span 2', '1 / span 2', '1 / span 6', '2 / span 7' , '2 / span 7'],
-    pb: 80,
+    gridColumn: [
+      "1 / span 2",
+      "1 / span 2",
+      "1 / span 6",
+      "2 / span 7",
+      "2 / span 7",
+    ],
+    pb: 0,
+    pt: 80,
+    [theme.mediaQueries.small]: {
+      pt: 0,
+      pb: 80,
+    },
   })
 );
 
-const Sections = styled('div')(() =>
+const Sections = styled("div")(() =>
   css({
-    gridRow: '1',
-    gridColumn: '10 / span 3',
+    gridRow: "1",
+    gridColumn: "10 / span 3",
     pl: 16,
     borderLeft: `1px solid #c4c4c4`,
-    display: 'none',
+    display: "none",
     [theme.mediaQueries.small]: {
-      display: 'block',
-  },
+      display: "block",
+    },
   })
 );
 
-const SectionList = styled('ul')(() =>
+const SectionList = styled("ul")(() =>
   css({
     mt: 20,
   })
 );
 
-const SectionItem = styled('li')(() =>
+const SectionItem = styled("li")(() =>
   css({
-    color: 'taupe',
-    width: '100%',
-      pb: '4px',
+    color: "taupe",
+    width: "100%",
+    pb: "4px",
   })
 );
 
-const Details = styled('div')(() =>
+const Details = styled("div")(() =>
   css({
     gridRow: 3,
-    gridColumn: '1 / span 2',
-    display: 'flex',
-    flexDirection: 'column',
+    gridColumn: "1 / span 2",
+    display: "flex",
+    flexDirection: "column",
     [theme.mediaQueries.small]: {
       gridRow: 2,
       gridColumn: 2,
-  },
+    },
   })
 );
 
-const ProjectWrapper = styled('div')(() =>
+const ProjectWrapper = styled("div")(() =>
   css({
-    width: '100%',
+    width: "100%",
   })
 );
 
-const ImageWrapper = styled('div')(() =>
+const ImageWrapper = styled("div")(() =>
   css({
-    gridColumn: '1 / span 2',
+    gridColumn: "1 / span 2",
     gridRow: 1,
   })
 );
 
-const Project = styled('div')(() =>
+const Project = styled("div")(() =>
   css({
     gridRow: 2,
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
     rowGap: 24,
   })
 );
 
-const Bottom = styled('div')(() =>
+const Bottom = styled("div")(() =>
   css({
     gridRow: 4,
-    gridColumn: '1 / span 2',
-    width: '100%',
-    display: 'flex',
+    gridColumn: "1 / span 2",
+    width: "100%",
+    display: "flex",
     [theme.mediaQueries.small]: {
       gridRow: 3,
-      gridColumn: '9 / span 3',
-      justifyContent: 'flex-end'
-  },
+      gridColumn: "9 / span 3",
+      justifyContent: "flex-end",
+    },
   })
 );
 
-const Top = styled('div')(() =>
+const Top = styled("div")(() =>
   css({
-    position: 'relative',
-    display: 'flex',
-    width: '100%',
-    justifyContent: 'space-between',
+    position: "relative",
+    display: "flex",
+    width: "100%",
+    justifyContent: "space-between",
     py: 40,
-    borderBottom: '2px solid white',
+    borderBottom: "2px solid white",
   })
 );
 
-const Inner = styled('div')(() =>
+const Inner = styled("div")(() =>
   css({
-    boxSizing: 'border-box',
-    position: 'relative',
-    display: 'flex',
-    flexDirection: 'column',
-    width: '100%',
+    boxSizing: "border-box",
+    position: "relative",
+    display: "flex",
+    flexDirection: "column",
+    width: "100%",
     padding: 40,
-    '&:before': {
-      position:'absolute',
-      backgroundColor:'white',
+    "&:before": {
+      position: "absolute",
+      backgroundColor: "white",
       content: "' '",
-      display: 'block',
-      height: '2px',
-      width: '100%',
-      transition: 'ease all 0.3s',
-      pointerEvents: 'none',
+      display: "block",
+      height: "2px",
+      width: "100%",
+      transition: "ease all 0.3s",
+      pointerEvents: "none",
       opacity: 1,
       bottom: 0,
       left: 0,
@@ -136,10 +147,12 @@ const Inner = styled('div')(() =>
   })
 );
 
-const Toggle = styled('div')(css({
-  background: 'transparent',
-  border: 'none',
-}));
+const Toggle = styled("div")(
+  css({
+    background: "transparent",
+    border: "none",
+  })
+);
 
 const LinkWrapper = styled("div")(
   css({
@@ -149,11 +162,11 @@ const LinkWrapper = styled("div")(
     fontWeight: 700,
     mt: 16,
     svg: {
-      transition: 'ease all 0.3s',
+      transition: "ease all 0.3s",
     },
-    '&:hover': {
+    "&:hover": {
       svg: {
-        transform: 'translateX(6px)',
+        transform: "translateX(6px)",
       },
     },
     a: {
@@ -161,21 +174,21 @@ const LinkWrapper = styled("div")(
       fontSize: 2,
       lineHeight: 2,
       color: "charcoal",
-      '&:before': {
-        position:'relative',
-        backgroundColor:'charcoal',
+      "&:before": {
+        position: "relative",
+        backgroundColor: "charcoal",
         content: "' '",
-        display: 'block',
-        height: '2px',
-        width: '100%',
-        transform: 'translateY(40px)',
-        transition: 'ease all 0.3s',
-        pointerEvents: 'none',
+        display: "block",
+        height: "2px",
+        width: "100%",
+        transform: "translateY(40px)",
+        transition: "ease all 0.3s",
+        pointerEvents: "none",
         opacity: 0,
       },
-      '&:hover': {
-        '&:before': {
-          transform: 'translateY(28px)',
+      "&:hover": {
+        "&:before": {
+          transform: "translateY(28px)",
           opacity: 1,
         },
       },
