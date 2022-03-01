@@ -1,10 +1,11 @@
-import React, { useState } from "react";
-import AccentText from "@components/common/accentText";
-import ArrowButton from "@components/common/button/arrowButton";
-import Input from "@components/common/input";
-import TextArea from "@components/common/textarea";
-import AddIcon from "@components/icons/add";
-import ProductSelectRow from "./ProductSelectRow";
+import React, { useState } from 'react';
+import Text from '@components/common/typography';
+import AccentText from '@components/common/accentText';
+import ArrowButton from '@components/common/button/arrowButton';
+import Input from '@components/common/input';
+import TextArea from '@components/common/textarea';
+import AddIcon from '@components/icons/add';
+import ProductSelectRow from './ProductSelectRow';
 import {
   AddProductButton,
   AddProductButtonText,
@@ -22,10 +23,12 @@ import {
   FormTitle,
   Row,
   Wrapper,
-} from "./styles";
+  FormSubmitDetails,
+} from './styles';
 
 const QuoteRequestForm = ({ products }) => {
-  const defaultProduct = { productId: 0, size: 0, qty: "" };
+  const defaultProduct = { productId: 0, size: 0, qty: '' };
+  const [formSubmitted, setFormSubmitted] = useState(false);
   const [myProducts, setMyProducts] = useState([
     defaultProduct,
     defaultProduct,
@@ -196,13 +199,25 @@ const QuoteRequestForm = ({ products }) => {
                 </Col>
               </Row>
             </FormGroup>
-            <FormGroup>
-              <ArrowButton
-                mode="dark"
-                title="Submit enquiry"
-                onClick={() => {}}
-              />
-            </FormGroup>
+            {!formSubmitted && (
+              <FormGroup>
+                <ArrowButton
+                  mode="dark"
+                  title="Submit enquiry"
+                  onClick={() => {
+                    setFormSubmitted(true);
+                  }}
+                />
+              </FormGroup>
+            )}
+            {formSubmitted && (
+              <FormSubmitDetails>
+                <Text variant="Display-Small">
+                  Thank you for getting in contact. One of our friendly team
+                  will be in contact shortly.
+                </Text>
+              </FormSubmitDetails>
+            )}
           </Form>
         </FormBody>
       </Wrapper>
