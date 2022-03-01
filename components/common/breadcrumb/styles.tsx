@@ -17,22 +17,18 @@ const LinkWrapper = styled("div")(
     display: "flex",
     alignItems: "center",
     mt: 16,
-    paddingRight: 10,
-    columnGap: 10,
-    fontSize: "12px",
-    lineHeight: "16.8px",
-    [theme.mediaQueries.small]: {
-      fontSize: 2,
-      lineHeight: 2,
-      columnGap: 20,
-      paddingRight: 14,
-    },
+    columnGap: '5px',
+    paddingRight: '5px',
+    cursor: 'pointer',
+    fontSize: 2,
+    lineHeight: 2,
+
     svg: {
       transition: "ease all 0.3s",
     },
     "&:hover": {
       svg: {
-        transform: "rotate(-180deg) translateX(6px)",
+        transform: "translateX(-6px)",
       },
     },
     span: {
@@ -85,8 +81,8 @@ const BackBttn = styled("div")(() =>
     display: "flex",
     alignItems: "center",
     columnGap: 20,
+    pr: '12px',
     cursor: "pointer",
-    paddingRight: 14,
     svg: {
       transition: "ease all 0.3s",
     },

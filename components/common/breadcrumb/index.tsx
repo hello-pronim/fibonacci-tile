@@ -3,11 +3,9 @@ import Link from "next/link";
 import Router from "next/router";
 import css from "@styled-system/css";
 import Arrow from "@components/common/icons/arrow";
-
 import { BackBttn, BottomBarInner, LinkWrapper } from "./styles";
-import router from "next/router";
 
-const Breadcrumb = ({ crumbs, pt = 130, pb = 0, pl = 19 }) => {
+const Breadcrumb = ({ crumbs, pt = 130, pb = 0, pl = 0 }) => {
   // Don't render a single breadcrumb.
   if (crumbs.length <= 1) {
     return null;
@@ -25,17 +23,17 @@ const Breadcrumb = ({ crumbs, pt = 130, pb = 0, pl = 19 }) => {
   };
   return (
     <BottomBarInner css={css({ pt, pb, pl })}>
-      <LinkWrapper>
-        <Arrow type="short" direction="left" />
-        <BackBttn
-          onClick={() => {
-            if (true) {
-              Router.back();
-            } else {
-              // router.pop("/")
-            }
-          }}
-        >
+      <LinkWrapper
+        onClick={() => {
+          if (true) {
+            Router.back();
+          } else {
+            // router.pop("/")
+          }
+        }}
+      >
+        <Arrow type="breadcrumb" direction="left" />
+        <BackBttn>
           <span>Back</span>
         </BackBttn>
       </LinkWrapper>

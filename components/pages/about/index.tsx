@@ -3,16 +3,23 @@ import Hero from "./hero";
 import BodyContent from "./bodyContent";
 import Header from "../generic/Header";
 import { Container } from "../generic/styles";
-import { BreakCrumbWrapper } from "./styles";
+import css from "@styled-system/css";
 
 const AboutPage = ({ pageData, notifications }) => {
   const crumbs = [{ path: "/", name: "Home" }, { name: "Our Story" }];
   return (
     <Container>
       <Header mode="dark" notifications={notifications} />
-      <BreakCrumbWrapper>
+      <div
+        css={css({
+          maxWidth: "2560px",
+          pl: "32px",
+          pt: 92,
+          pb: 0,
+        })}
+      >
         <BreadCrumb crumbs={crumbs} pt={0} />
-      </BreakCrumbWrapper>
+      </div>
       <Hero
         headingLeft={pageData.pageHeading}
         textRight={pageData.rightHeader}
