@@ -17,10 +17,10 @@ const CollectionHeroContainer = styled("div")(() =>
     "& .CollectionBreadCrumbBlock": {
       top: "70px",
       zIndex: "1",
-      marginLeft: "0px",
+      marginLeft: "15px",
       [theme.mediaQueries.smedium]: {
         top: "80px",
-        marginLeft: "15px",
+        marginLeft: "30px",
       },
     },
     "& .CollectionTextBlock": {
