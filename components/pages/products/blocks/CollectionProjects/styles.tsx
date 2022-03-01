@@ -18,6 +18,7 @@ const Bottom = styled('div')(() =>
     gridColumn: '1 / span 2',
     width: '100%',
     display: 'flex',
+    marginTop: '10px',
     [theme.mediaQueries.small]: {
       gridRow: 3,
       gridColumn: '9 / span 3',
