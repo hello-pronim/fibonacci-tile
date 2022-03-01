@@ -15,7 +15,7 @@ const CollectionHeroModule = ({ collection, width = "30%", top }) => {
   ];
   return (
     <CollectionHeroContainer>
-      <div
+      <div className="CollectionBreadCrumbBlock"
         css={css({
           maxWidth: "2560px",
           ml: "27px",
@@ -26,7 +26,7 @@ const CollectionHeroModule = ({ collection, width = "30%", top }) => {
       >
         <BreadCrumb crumbs={crumbs} pt={0} />
       </div>
-      <div
+      <div className="CollectionTextBlock"
         css={css({
           height: "auto",
           background: collection.backgroundColor1
@@ -56,8 +56,12 @@ const CollectionHeroModule = ({ collection, width = "30%", top }) => {
             dangerouslySetInnerHTML={{ __html: collection.introduction }}
             css={css({
               fontSize: 20,
-              pt: 140,
-              pb: 140,
+              pt: 20,
+              pb: 30,
+              [theme.mediaQueries.smedium]: {
+                pt: 140,
+                pb: 140,
+              },
             })}
           />
           <Text

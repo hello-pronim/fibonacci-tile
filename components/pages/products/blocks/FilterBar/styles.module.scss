@@ -294,7 +294,7 @@
   }
   display: flex;
   position: relative;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   .productFilterItem {
     cursor: pointer;
@@ -323,7 +323,7 @@
       min-height: 90px;
       border-right: 1px solid #c4c4c4;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
     }
   }
   .productFilterItemTitle {

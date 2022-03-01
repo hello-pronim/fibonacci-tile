@@ -82,7 +82,7 @@ const ProductFilterItem = styled("div")(
       minHeight: "90px",
       borderRight: "1px solid #c4c4c4",
       display: "flex",
-      alignItems: "center",
+      alignItems: "flex-start",
     },
   })
 );

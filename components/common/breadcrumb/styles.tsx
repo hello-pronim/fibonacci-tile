@@ -1,5 +1,6 @@
 import css from "@styled-system/css";
 import styled from "@emotion/styled";
+import theme from "@styles/theme";
 
 
 const BottomBarInner = styled("div")(
@@ -16,11 +17,21 @@ const LinkWrapper = styled("div")(
   css({
     display: "flex",
     alignItems: "center",
-    columnGap: 20,
+    columnGap: "4px",
     mt: 16,
-    paddingRight: 14,
+    paddingRight: "4px",
+    fontSize: "12px",
     svg: {
       transition: "ease all 0.3s",
+      width: "12px",
+      [theme.mediaQueries.medium]: {
+        width: "20px",
+      },
+    },
+    [theme.mediaQueries.medium]: {
+      fontSize: "16px",
+      columnGap: "10px",
+      paddingRight: "10px",
     },
     "&:hover": {
       svg: {
@@ -29,9 +40,12 @@ const LinkWrapper = styled("div")(
     },
     a: {
       textDecoration: "none",
-      fontSize: 2,
+      fontSize: "12px",
       lineHeight: 2,
       color: "charcoal",
+      [theme.mediaQueries.medium]: {
+        fontSize: "16px",
+      },
       "&:before": {
         position: "relative",
         backgroundColor: "charcoal",
@@ -51,6 +65,28 @@ const LinkWrapper = styled("div")(
         },
       },
     },
+    "& .crumbHideOnMobile": {
+      fontSize: "0px",
+      position: "relative",
+      [theme.mediaQueries.medium]: {
+        fontSize: "16px",
+      },
+      "&:before": {
+        display: "none",
+        [theme.mediaQueries.medium]: {
+          display: "block",
+        },
+      },
+      "&:after": {
+        content: "'•'",
+        fontSize: "12px",
+        color: "#B0ABA7",
+        display: "block",
+        [theme.mediaQueries.medium]: {
+          display: "none",
+        },
+      },
+    },
   })
 );
 
@@ -61,9 +97,12 @@ const BackBttn = styled("div")(() =>
     alignItems: "center",
     columnGap: 20,
     cursor: "pointer",
-    paddingRight: 14,
+    paddingRight: "8px",
     svg: {
       transition: "ease all 0.3s",
+    },
+    [theme.mediaQueries.medium]: {
+      paddingRight: "10px",
     },
     "&:hover": {
       svg: {
@@ -72,9 +111,12 @@ const BackBttn = styled("div")(() =>
     },
     span: {
       textDecoration: "none",
-      fontSize: 2,
+      fontSize: "12px",
       lineHeight: 2,
       color: "charcoal",
+      [theme.mediaQueries.medium]: {
+        fontSize: "16px",
+      },
       "&:before": {
         position: "relative",
         backgroundColor: "charcoal",
