@@ -2,7 +2,7 @@ import css from "@styled-system/css";
 import styled from "@emotion/styled";
 import theme from "@styles/theme";
 
-const CollectionProjectsContainer = styled("div")(() =>
+const CollectionProjectsContainer = styled('div')(() =>
   css({
     pt: 55,
     pb: 60,
@@ -18,5 +18,21 @@ const CollectionProjectsContainer = styled("div")(() =>
   })
 );
 
+const Bottom = styled('div')(() =>
+  css({
+    gridRow: 4,
+    gridColumn: '1 / span 2',
+    width: '100%',
+    display: 'block',
+    marginTop: '20px',
+    [theme.mediaQueries.small]: {
+      display: 'flex',
+      gridRow: 3,
+      gridColumn: '9 / span 3',
+      justifyContent: 'flex-end',
+      marginTop: '40px',
+    },
+  })
+);
 
-export { CollectionProjectsContainer };
+export { CollectionProjectsContainer, Bottom };

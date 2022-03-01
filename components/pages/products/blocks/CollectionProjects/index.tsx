@@ -1,10 +1,11 @@
-import React from "react";
-import Text from "@components/common/typography";
+import React from 'react';
+import { css } from '@styled-system/css';
+import Text from '@components/common/typography';
 import AccentText, { AccentTextMobile } from "@components/common/accentText";
-import { css } from "@styled-system/css";
+import ProjectCard from '@components/common/project/card';
+import ArrowButton from '@components/common/button/arrowButton';
+import { CollectionProjectsContainer, Bottom } from './styles';
 import theme from "@styles/theme";
-import ProjectCard from "@components/common/project/card";
-import { CollectionProjectsContainer } from "./styles";
 
 const CollectionProjects = ({ projects }) => {
   return (
@@ -12,12 +13,13 @@ const CollectionProjects = ({ projects }) => {
       <AccentText top={275}>Fibonacci in use</AccentText>
       <AccentTextMobile css={css({ pb: 80 })}> Fibonacci in use</AccentTextMobile>
       <Text variant="Display-Small" altFont={true}>
-        Exercise your democratic right with this one - <br /> you know you can trust it.
+        Exercise your democratic right with this one - <br /> you know you can
+        trust it.
       </Text>
       <div
         css={css({
-          display: "flex",
-          justifyContent: "space-between",
+          display: 'flex',
+          justifyContent: 'space-between',
           mt: 80,
           flexWrap: "wrap",
         })}
@@ -38,6 +40,9 @@ const CollectionProjects = ({ projects }) => {
           </div>
         ))}
       </div>
+      <Bottom>
+        <ArrowButton mode="" title="View all projects" link="/in-use" />
+      </Bottom>
     </CollectionProjectsContainer>
   );
 };

@@ -61,7 +61,7 @@ const Details = styled('div')(() =>
     [theme.mediaQueries.small]: {
       gridRow: 2,
       gridColumn: 2,
-  },
+    },
   })
 );
 
