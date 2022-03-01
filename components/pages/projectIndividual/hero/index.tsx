@@ -23,10 +23,21 @@ const Hero = ({ project }) => {
     { name: project.title },
   ];
   return (
+    <>
+          <div
+        css={css({
+          position: 'absolute',
+          maxWidth: "2560px",
+          pl: "32px",
+          pt: 92,
+          pb: 0,
+        })}
+      >
+        <BreadCrumb crumbs={crumbs} pt={0} />
+      </div>
     <Container css={css({ pr: "0 !important", pt: 80 })}>
       <LeftCol>
         <div>
-          <BreadCrumb crumbs={crumbs} pt={0} pb={40} pl={0} />
           <ContentWrapper>
             {project.location && (
               <Text
@@ -156,6 +167,7 @@ const Hero = ({ project }) => {
         )}
       </RightCol>
     </Container>
+    </>
   );
 };
 export default Hero;

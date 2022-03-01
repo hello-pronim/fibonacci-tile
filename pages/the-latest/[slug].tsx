@@ -2,7 +2,7 @@ import { GetStaticProps, GetStaticPaths, NextPage } from "next";
 import Head from "next/head";
 import { css } from "@styled-system/css";
 import { initializeApollo } from "@utils/apolloClient";
-import Breadcrumb from "@components/common/breadcrumb";
+import BreadCrumb from "@components/common/breadcrumb";
 import Footer from "@components/common/footer";
 import Header from "@components/common/header";
 import SinglePage from "@components/pages/latest/singlePage";
@@ -29,14 +29,12 @@ const SingleLatest: NextPage<SingleLatestProps> = ({ pageData }) => {
       <div
         css={css({
           maxWidth: "2560px",
-          pl: "27px",
-          pt: 100,
+          pl: "32px",
+          pt: 92,
           pb: 0,
-          ml: "auto",
-          mr: "auto"
         })}
       >
-        <Breadcrumb crumbs={crumbs} pt={0} />
+        <BreadCrumb crumbs={crumbs} pt={0} />
       </div>
       <SinglePage pageData={pageData} />
       <Footer />

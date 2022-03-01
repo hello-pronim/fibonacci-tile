@@ -16,15 +16,15 @@ const LinkWrapper = styled("div")(
   css({
     display: "flex",
     alignItems: "center",
-    columnGap: 20,
-    mt: 16,
-    paddingRight: 14,
+    columnGap: '5px',
+    paddingRight: '5px',
+    cursor: 'pointer',
     svg: {
       transition: "ease all 0.3s",
     },
     "&:hover": {
       svg: {
-        transform: "rotate(-180deg) translateX(6px)",
+        transform: "translateX(-6px)",
       },
     },
     a: {
@@ -60,8 +60,8 @@ const BackBttn = styled("div")(() =>
     display: "flex",
     alignItems: "center",
     columnGap: 20,
+    pr: '12px',
     cursor: "pointer",
-    paddingRight: 14,
     svg: {
       transition: "ease all 0.3s",
     },
