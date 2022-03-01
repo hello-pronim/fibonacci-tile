@@ -8,19 +8,22 @@ const Wrapper = styled("div")(() =>
     gridColumn: ["1 / span 2", "1 / span 6", "1 / span 6", "2 / span 10"],
     // gridColumn: ['2 / span 10'],
     display: "flex",
-    flexDirection: "row",
+    flexDirection: "column",
     justifyContent: "space-between",
     rowGap: 32,
     zIndex: 999,
     alignItems: "center",
+    [theme.mediaQueries.small]: {
+      flexDirection: "row",
+    },
   })
 );
 
 const Container = styled(Cntnr)(() =>
   css({
-    paddingBottom: "40px",
+    paddingBottom: "80px",
     [theme.mediaQueries.small]: {
-      paddingBottom: "80px",
+      paddingBottom: "100px",
     },
   })
 );
@@ -66,18 +69,53 @@ const PanelRight = styled("div")(
     },
     h2: {
       color: theme.colors.charcoal,
-      fontSize: "32px",
+      fontSize: "18px",
       lineHeight: "130%",
-      marginBottom: "20px",
+      marginBottom: "32px",
       letterSpacing: "-0.02em",
+      [theme.mediaQueries.small]: {
+        fontSize: "32px",
+        marginBottom: "20px",
+      },
     },
     p: {
       color: theme.colors.charcoal,
-      fontSize: "20px",
+      fontSize: "16px",
       lineHeight: "1.4",
       marginBottom: "20px",
+      [theme.mediaQueries.small]: {
+        fontSize: "20px",
+      },
     },
   })
 );
 
-export {Container, Wrapper, Panel, PanelLeft, PanelRight };
+const ImageWrapper = styled("div")(
+  css({
+    width: "100%",
+    "& > div": {
+      position: "unset!important",
+      [theme.mediaQueries.small]: {
+        position: "relative!important",
+      },
+      "& >div": {
+        display: "none!important",
+        [theme.mediaQueries.small]: {
+          display: "block!important",
+        },
+      },
+    },
+    ".image": {
+      objectFit: "cover!important",
+      width: "100%!important",
+      position: "relative!important",
+      height: "100%!important",
+      [theme.mediaQueries.small]: {
+        height: "100%!important",
+        position: "absolute!important",
+      },
+    },
+  })
+);
+
+export { Container, Wrapper, ImageWrapper, Panel, PanelLeft, PanelRight };
