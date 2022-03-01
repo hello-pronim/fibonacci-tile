@@ -146,7 +146,6 @@ const InlineSlider = ({ projects }) => {
             </span>
             <LinkWrapper>
               <Link href="/in-use">Explore all projects</Link>
-              <Arrow type="short" />
             </LinkWrapper>
           </BottomBarInner>
         </BottomBar>
