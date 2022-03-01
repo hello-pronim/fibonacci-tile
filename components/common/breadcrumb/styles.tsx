@@ -125,20 +125,11 @@ const BackBttn = styled("div")(() =>
     },
     span: {
       textDecoration: "none",
-<<<<<<< HEAD
       fontSize: "12px",
       lineHeight: 2,
       color: "charcoal",
       [theme.mediaQueries.medium]: {
         fontSize: "16px",
-=======
-      color: "charcoal",
-      fontSize: "12px",
-      lineHeight: "16.8px",
-      [theme.mediaQueries.small]: {
-        fontSize: 2,
-        lineHeight: 2,
->>>>>>> origin/develop
       },
       "&:before": {
         position: "relative",
