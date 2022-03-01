@@ -10,7 +10,7 @@ import BreadCrumb from "@components/common/breadcrumb";
 const CollectionHeroModule = ({ collection, width = "30%", top }) => {
   const crumbs = [
     { path: "/terrazzo", name: "Our Products" },
-    { path: "/terrazzo/collections", name: "Collections" },
+    { path: "/terrazzo/collections", name: "Collections", mobileHide: true },
     { name: collection.title },
   ];
   return (
