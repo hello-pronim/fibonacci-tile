@@ -80,15 +80,13 @@ const InnerContainer = styled("div")(
       "& div": {
         maxWidth: "100%",
         [theme.mediaQueries.xxMedium]: {
-          maxWidth: "60%",
+          maxWidth: "1010px",
           marginLeft: "35%",
         },
         [theme.mediaQueries.mLarge]: {
-          maxWidth: "63%",
           marginLeft: "31%",
         },
         [theme.mediaQueries.xLarge]: {
-          maxWidth: "63%",
           marginLeft: "27%",
         },
       },

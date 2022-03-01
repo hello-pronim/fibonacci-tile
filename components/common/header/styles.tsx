@@ -58,7 +58,8 @@ const Wrapper = styled("div")(() =>
     px: 32,
     height: 80,
     "@media screen and (max-width: 768px)": {
-      px: 10,
+      pl: 10,
+      pr: 15,
     },
   })
 );

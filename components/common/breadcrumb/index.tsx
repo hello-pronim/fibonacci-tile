@@ -1,9 +1,9 @@
-import React from "react";
-import Link from "next/link";
-import Router from "next/router";
-import css from "@styled-system/css";
-import Arrow from "@components/common/icons/arrow";
-import { BackBttn, BottomBarInner, LinkWrapper } from "./styles";
+import React from 'react';
+import Link from 'next/link';
+import Router from 'next/router';
+import css from '@styled-system/css';
+import Arrow from '@components/common/icons/arrow';
+import { BackBttn, BottomBarInner, LinkWrapper } from './styles';
 
 const Breadcrumb = ({ crumbs, pt = 130, pb = 0, pl = 0 }) => {
   // Don't render a single breadcrumb.
@@ -14,9 +14,9 @@ const Breadcrumb = ({ crumbs, pt = 130, pb = 0, pl = 0 }) => {
     return (
       <>
         {index !== crumbs.length - 1 ? (
-          <span css={css({ color: "#B0ABA7" })}> • </span>
+          <span css={css({ color: '#B0ABA7' })}> • </span>
         ) : (
-          ""
+          ''
         )}
       </>
     );
@@ -37,11 +37,13 @@ const Breadcrumb = ({ crumbs, pt = 130, pb = 0, pl = 0 }) => {
           <span>Back</span>
         </BackBttn>
       </LinkWrapper>
-      {crumbs.map(({ name, path }, index: number) => {
+      {crumbs.map(({ name, path, mobileHide }, index: number) => {
         if (path) {
           return (
             <LinkWrapper key={`crumb-${index}`}>
-              <Link href={path}>{name}</Link>{" "}
+              <Link href={path}>
+                <a className={mobileHide ? 'crumbHideOnMobile' : ''}>{name}</a>
+              </Link>{' '}
               {renderCrumbSeperator(crumbs, index)}
             </LinkWrapper>
           );

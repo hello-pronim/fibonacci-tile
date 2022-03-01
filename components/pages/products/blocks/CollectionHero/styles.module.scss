@@ -1,4 +1,9 @@
+@import "@styles/settings";
+
 .img {
   object-fit: cover;
-  object-position: center;
+  object-position: left;
+  @include bp($ml) {
+    object-position: center;
+  }
 }

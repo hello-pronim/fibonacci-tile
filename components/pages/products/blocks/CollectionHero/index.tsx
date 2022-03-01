@@ -10,12 +10,12 @@ import BreadCrumb from "@components/common/breadcrumb";
 const CollectionHeroModule = ({ collection, width = "30%", top }) => {
   const crumbs = [
     { path: "/terrazzo", name: "Our Products" },
-    { path: "/terrazzo/collections", name: "Collections" },
+    { path: "/terrazzo/collections", name: "Collections", mobileHide: true },
     { name: collection.title },
   ];
   return (
     <CollectionHeroContainer>
-      <div
+      <div className="CollectionBreadCrumbBlock"
         css={css({
           maxWidth: "2560px",
           ml: "32px",
@@ -26,7 +26,7 @@ const CollectionHeroModule = ({ collection, width = "30%", top }) => {
       >
         <BreadCrumb crumbs={crumbs} pt={0} />
       </div>
-      <div
+      <div className="CollectionTextBlock"
         css={css({
           height: "auto",
           background: collection.backgroundColor1
@@ -56,8 +56,12 @@ const CollectionHeroModule = ({ collection, width = "30%", top }) => {
             dangerouslySetInnerHTML={{ __html: collection.introduction }}
             css={css({
               fontSize: 20,
-              pt: 140,
-              pb: 140,
+              pt: 20,
+              pb: 30,
+              [theme.mediaQueries.smedium]: {
+                pt: 140,
+                pb: 140,
+              },
             })}
           />
           <Text

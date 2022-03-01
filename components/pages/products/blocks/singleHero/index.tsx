@@ -14,7 +14,7 @@ import { Container, LinkWrapper, LinkWrapperLeft, Pill } from './styles';
 const SingleHeroModule = ({ product, collectionSlug }) => {
   const crumbs = [
     { path: '/terrazzo', name: 'Our Products' },
-    { path: '/terrazzo', name: 'Terrazzo' },
+    { path: '/terrazzo', name: 'Terrazzo', mobileHide: true },
     { name: product.title },
   ];
   const { state, dispatch } = useAppContext();
