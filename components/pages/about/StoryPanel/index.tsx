@@ -39,6 +39,7 @@ function StoryPanel({ story, titleClassName = "" }: storyPanelProps) {
         {story?.thumbnail?.[0]?.url && (
           <StoryImageWrapper>
             <Image
+              className="image"
               placeholder="blur"
               blurDataURL={story.blurThumb[0].url}
               src={story.thumbnail[0].url}
