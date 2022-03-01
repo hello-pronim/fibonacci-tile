@@ -26,9 +26,12 @@ const SingleHeroModule = ({ product, collectionSlug }) => {
       <div
         css={css({
           maxWidth: "2560px",
-          pl: "32px",
+          pl: "20px",
           pt: 92,
           pb: 0,
+          [theme.mediaQueries.small]: {
+            pl: "32px",
+          },
         })}
       >
         <BreadCrumb crumbs={crumbs} pt={0} />
