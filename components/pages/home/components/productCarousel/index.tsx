@@ -75,7 +75,13 @@ const ProductCarousel = ({ products }) => {
     <Container>
       <AccentText top={160}>An imaginative selection</AccentText>
       <Wrapper>
-        <AccentTextMobile css={css({ pb: 42 })}>
+        <AccentTextMobile
+          css={css({
+            pb: 42,
+            textShadow:
+              "0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25)",
+          })}
+        >
           An imaginative selection
         </AccentTextMobile>
         <Slider {...settings} ref={slider}>
