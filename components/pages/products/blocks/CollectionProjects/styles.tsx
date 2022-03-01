@@ -9,9 +9,13 @@ const CollectionProjectsContainer = styled('div')(() =>
     pl: 15,
     pr: 15,
     position: "relative",
-    [theme.mediaQueries.smedium]: {
+    [theme.mediaQueries.medium]: {
       pt: 120,
       pb: 120,
+      pl: 100,
+      pr: 100,
+    },
+    [theme.mediaQueries.xxMedium]: {
       pl: 230,
       pr: 230,
     },
