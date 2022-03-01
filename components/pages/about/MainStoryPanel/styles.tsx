@@ -90,6 +90,28 @@ const StoryImageWrapper = styled("div")(
       paddingTop: "120px",
       paddingBottom: "120px",
     },
+    "& > div": {
+      position: "unset!important",
+      [theme.mediaQueries.small]: {
+        position: "relative!important",
+      },
+      "& >div": {
+        display: "none!important",
+        [theme.mediaQueries.small]: {
+          display: "block!important",
+        },
+      },
+    },
+    ".image": {
+      objectFit: "cover!important",
+      width: "100%!important",
+      position: "relative!important",
+      height: "400px!important",
+      [theme.mediaQueries.small]: {
+        height: "0px!important",
+        position: "absolute!important",
+      },
+    },
   })
 );
 
