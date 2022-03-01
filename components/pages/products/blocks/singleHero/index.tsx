@@ -25,9 +25,9 @@ const SingleHeroModule = ({ product, collectionSlug }) => {
     <>
       <div
         css={css({
-          maxWidth: '2560px',
-          pl: '27px',
-          pt: 100,
+          maxWidth: "2560px",
+          pl: "32px",
+          pt: 92,
           pb: 0,
         })}
       >

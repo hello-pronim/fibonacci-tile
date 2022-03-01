@@ -8,7 +8,7 @@ const GenericPage = ({ pageData, notifications }) => {
       <InnerContainer>
         <div className="titleContentBlock">
           {pageData?.title && (
-            <PageTitle Base="h2" variant="Display-Large">
+            <PageTitle as="h2" variant="Display-Large">
               {pageData.title}
             </PageTitle>
           )}

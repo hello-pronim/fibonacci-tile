@@ -14,13 +14,13 @@ const Hero = ({ headingLeft, textRight }) => {
       <Container>
         <LeftCol>
           <ContentWrapper>
-            <HeroTitle Base="h1" variant="Display-Large">
+            <HeroTitle as="h1" variant="Display-Large">
               {headingLeft}
             </HeroTitle>
           </ContentWrapper>
         </LeftCol>
         <RightCol>
-          <HeroBodyText Base="h4" variant="Display-Medium">
+          <HeroBodyText as="h4" variant="Display-Medium">
             {textRight}
           </HeroBodyText>
         </RightCol>

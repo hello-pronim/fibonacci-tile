@@ -15,7 +15,7 @@ const Container = styled(Cont)(
   css({
     alignItems: "flex-start",
     pt: "28px",
-    pb: "48px",
+    pb: "80px",
     [theme.mediaQueries.small]: {
       pt: "60px!important",
       pr: [
@@ -130,16 +130,45 @@ const HeroTitle = styled(Text)(
 
 const HeroBodyText = styled(Text)(
   css({
-    fontSize: "26px",
-    lineHeight: "33.8px",
+    display: "block",
+    width: "80%",
+    fontSize: "32px",
+    lineHeight: "41.6px",
     [theme.mediaQueries.small]: {
+      width: "100%",
       fontSize: "44px",
       lineHeight: "50.6px",
     },
   })
 );
 
-const HeroImageContainer = styled("div")(css({}));
+const HeroImageContainer = styled("div")(
+  css({
+    width: "100%",
+    "& > div": {
+      position: "unset!important",
+      [theme.mediaQueries.small]: {
+        position: "relative!important",
+      },
+      "& >div": {
+        display: "none!important",
+        [theme.mediaQueries.small]: {
+          display: "block!important",
+        },
+      },
+    },
+    ".image": {
+      objectFit: "cover!important",
+      width: "100%!important",
+      position: "relative!important",
+      height: "400px!important",
+      [theme.mediaQueries.small]: {
+        height: "0px!important",
+        position: "absolute!important",
+      },
+    },
+  })
+);
 
 export {
   LeftCol,

@@ -35,7 +35,21 @@ const LinkWrapper = styled("div")(
     },
     "&:hover": {
       svg: {
-        transform: "rotate(-180deg) translateX(6px)",
+        transform: "translateX(-6px)",
+      },
+    },
+    span: {
+      "&:before": {
+        position: "relative",
+        backgroundColor: "charcoal",
+        content: "' '",
+        display: "block",
+        height: "2px",
+        width: "100%",
+        transform: "translateY(40px)",
+        transition: "ease all 0.3s",
+        pointerEvents: "none",
+        opacity: 0,
       },
     },
     a: {
@@ -90,12 +104,12 @@ const LinkWrapper = styled("div")(
   })
 );
 
-
 const BackBttn = styled("div")(() =>
   css({
     display: "flex",
     alignItems: "center",
     columnGap: 20,
+    pr: "12px",
     cursor: "pointer",
     paddingRight: "8px",
     svg: {
@@ -111,11 +125,20 @@ const BackBttn = styled("div")(() =>
     },
     span: {
       textDecoration: "none",
+<<<<<<< HEAD
       fontSize: "12px",
       lineHeight: 2,
       color: "charcoal",
       [theme.mediaQueries.medium]: {
         fontSize: "16px",
+=======
+      color: "charcoal",
+      fontSize: "12px",
+      lineHeight: "16.8px",
+      [theme.mediaQueries.small]: {
+        fontSize: 2,
+        lineHeight: 2,
+>>>>>>> origin/develop
       },
       "&:before": {
         position: "relative",
@@ -139,8 +162,4 @@ const BackBttn = styled("div")(() =>
   })
 );
 
-export {
-  BackBttn,
-  BottomBarInner,
-  LinkWrapper
-};
+export { BackBttn, BottomBarInner, LinkWrapper };

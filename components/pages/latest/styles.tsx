@@ -75,7 +75,7 @@ const LeftCol = styled("div")(
     flexDirection: "column",
     // rowGap: 160,
     pt: "8px",
-    pb: "56px",
+
     px: 0,
     [theme.mediaQueries.small]: {
       gridColumn: "1 / span 3",

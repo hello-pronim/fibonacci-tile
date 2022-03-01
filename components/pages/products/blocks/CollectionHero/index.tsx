@@ -18,7 +18,7 @@ const CollectionHeroModule = ({ collection, width = "30%", top }) => {
       <div className="CollectionBreadCrumbBlock"
         css={css({
           maxWidth: "2560px",
-          ml: "27px",
+          ml: "32px",
           pt: 12,
           pb: 0,
           position: "absolute",

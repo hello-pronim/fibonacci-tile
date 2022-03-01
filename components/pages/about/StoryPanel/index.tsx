@@ -39,12 +39,14 @@ function StoryPanel({ story, titleClassName = "" }: storyPanelProps) {
         {story?.thumbnail?.[0]?.url && (
           <StoryImageWrapper>
             <Image
+              className="image"
               placeholder="blur"
               blurDataURL={story.blurThumb[0].url}
               src={story.thumbnail[0].url}
               alt={story.thumbnail[0].title}
               width={story.thumbnail[0].width}
               height={story.thumbnail[0].height}
+              objectFit="cover"
               layout="responsive"
             />
           </StoryImageWrapper>

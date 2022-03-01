@@ -9,6 +9,7 @@ import Details from "./components/details";
 import StepItem from "./components/stepItem";
 import Delivery from "./components/delivery";
 import Confirm from "./components/confirm";
+import css from "@styled-system/css";
 
 import {
   CheckoutStepWrapper,
@@ -80,8 +81,16 @@ const CheckoutPage = ({ notifications }) => {
           displayRight={
             activeCheckoutStep === 1 || activeCheckoutStep === 4 ? false : true
           }
-        >
-          <BreadCrumb crumbs={crumbs} pt={100} />
+        >      <div
+        css={css({
+          maxWidth: "2560px",
+          pl: "32px",
+          pt: 92,
+          pb: 0,
+        })}
+      >
+        <BreadCrumb crumbs={crumbs} pt={0} />
+      </div>
           <CheckoutStepWrapper>
           {
           selectedProducts?.length !== 0 &&

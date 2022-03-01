@@ -23,25 +23,36 @@ const Hero = ({ project }) => {
     { name: project.title },
   ];
   return (
+    <>
+          <div
+        css={css({
+          position: 'absolute',
+          maxWidth: "2560px",
+          pl: "32px",
+          pt: 92,
+          pb: 0,
+        })}
+      >
+        <BreadCrumb crumbs={crumbs} pt={0} />
+      </div>
     <Container css={css({ pr: "0 !important", pt: 80 })}>
       <LeftCol>
         <div>
-          <BreadCrumb crumbs={crumbs} pt={0} pb={40} pl={0} />
           <ContentWrapper>
             {project.location && (
               <Text
-                Base="h6"
+                as="h6"
                 variant="Body-Large"
                 css={css({ color: theme.colors.taupe })}
               >
                 {project.location}
               </Text>
             )}
-            <Text Base="h1" variant="Display-Large">
+            <Text as="h1" variant="Display-Large">
               {project.title}
             </Text>
             {/* {project.projectCompleted && (
-            <Text Base="h6" variant="Body-Large">
+            <Text as="h6" variant="Body-Large">
               {moment(project.projectCompleted).format("Do MMMM YYYY")}
             </Text>
           )} */}
@@ -62,7 +73,7 @@ const Hero = ({ project }) => {
           </Detail>
           {project?.sector?.length > 0 && (
             <Detail>
-              <Text Base="h6" variant="Display-Overline">
+              <Text as="h6" variant="Display-Overline">
                 SECTOR
               </Text>
               <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
@@ -76,7 +87,7 @@ const Hero = ({ project }) => {
           )}
           {project.architect && (
             <Detail>
-              <Text Base="h6" variant="Display-Overline">
+              <Text as="h6" variant="Display-Overline">
                 ARCHITECT
               </Text>
               <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
@@ -86,7 +97,7 @@ const Hero = ({ project }) => {
           )}
           {project.designer && (
             <Detail>
-              <Text Base="h6" variant="Display-Overline">
+              <Text as="h6" variant="Display-Overline">
                 DESIGNER
               </Text>
               <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
@@ -96,7 +107,7 @@ const Hero = ({ project }) => {
           )}
           {project.builder && (
             <Detail>
-              <Text Base="h6" variant="Display-Overline">
+              <Text as="h6" variant="Display-Overline">
                 BUILDER
               </Text>
               <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
@@ -106,7 +117,7 @@ const Hero = ({ project }) => {
           )}
           {project.projectCompleted && (
             <Detail>
-              <Text Base="h6" variant="Display-Overline">
+              <Text as="h6" variant="Display-Overline">
                 PROJECT COMPLETED
               </Text>
               <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
@@ -116,7 +127,7 @@ const Hero = ({ project }) => {
           )}
           {project?.featuredProducts?.length > 0 && (
             <Detail>
-              <Text Base="h6" variant="Display-Overline">
+              <Text as="h6" variant="Display-Overline">
                 FEATURED PRODUCTS
               </Text>
               <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
@@ -133,7 +144,7 @@ const Hero = ({ project }) => {
           )}
           {project.photographer && (
             <Detail>
-              <Text Base="h6" variant="Display-Overline">
+              <Text as="h6" variant="Display-Overline">
                 PHOTOGRAPHER
               </Text>
               <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
@@ -156,6 +167,7 @@ const Hero = ({ project }) => {
         )}
       </RightCol>
     </Container>
+    </>
   );
 };
 export default Hero;

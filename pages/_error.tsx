@@ -33,7 +33,7 @@ const Error: NextPage<ErrorPageProps> = ({ statusCode }) => {
         <Header mode="dark" disableSelectionCart={true} />
         <InnerContainer>
           <PageNotFoundBlock>
-            <PageTitle Base="h2" variant="Display-Large">
+            <PageTitle as="h2" variant="Display-Large">
               {statusCode
                 ? `An error ${statusCode} occurred on server`
                 : "An error occurred on client"}

@@ -41,7 +41,7 @@ function ProductLists({
       {loadingProducts && <Loading />}
       {products.length === 0 && (
         <div className="zeroStateBlock">
-          <PageTitle Base="h2" variant="Display-Large">
+          <PageTitle as="h2" variant="Display-Large">
             We couldn&rsquo;t find any products you were looking for at this time.{" "}
           </PageTitle>
           <p>

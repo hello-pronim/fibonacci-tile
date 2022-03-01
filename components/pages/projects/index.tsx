@@ -13,8 +13,8 @@ const ProjectPage = ({ heroDetails, projects, types, notifications }) => {
       <div
         css={css({
           maxWidth: "2560px",
-          pl: "27px",
-          pt: 100,
+          pl: "32px",
+          pt: 92,
           pb: 0,
         })}
       >

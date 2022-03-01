@@ -10,7 +10,7 @@ const LeftCol = styled("div")(
     display: "flex",
     flexDirection: "column",
     rowGap: 160,
-    pt: 56,
+    pt: 110,
     pb: 104,
   })
 );

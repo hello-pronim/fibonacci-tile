@@ -10,6 +10,7 @@ const Hero = ({ pageData: { pageHeading, pageIntro } }) => {
     <Container
       css={css({
         pt: "40px",
+        rowGap: 56,
         [theme.mediaQueries.small]: {
           pt: "60px",
         },
@@ -19,7 +20,7 @@ const Hero = ({ pageData: { pageHeading, pageIntro } }) => {
         <ContentWrapper>
           <Text
             className={styles.title}
-            Base="h1"
+            as="h1"
             variant="Display-Large"
             altFont={true}
           >
@@ -28,7 +29,7 @@ const Hero = ({ pageData: { pageHeading, pageIntro } }) => {
         </ContentWrapper>
       </LeftCol>
       <RightCol>
-        <Text className={styles.bodyText} Base="h4" variant="Display-Medium">
+        <Text className={styles.bodyText} as="h4" variant="Display-Medium">
           {pageIntro}
         </Text>
       </RightCol>

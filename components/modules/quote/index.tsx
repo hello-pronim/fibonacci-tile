@@ -1,16 +1,15 @@
-import { Container, Wrapper } from "./styles";
-import Text from "@components/common/typography";
+import { Container, Wrapper, PrimaryText, SecondaryText } from "./styles";
 
 const QuoteModule = ({ children, source }) => {
   return (
     <Container>
       <Wrapper>
-        <Text as="h3" variant="Display-Medium" altFont>
+        <PrimaryText as="h3" variant="Display-Medium" altFont>
           {children}
-        </Text>
-        <Text as="h5" variant="Body-Regular">
+        </PrimaryText>
+        <SecondaryText as="h5" variant="Body-Regular">
           {source}
-        </Text>
+        </SecondaryText>
       </Wrapper>
     </Container>
   );
