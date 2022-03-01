@@ -45,6 +45,7 @@ function StoryPanel({ story, titleClassName = "" }: storyPanelProps) {
               alt={story.thumbnail[0].title}
               width={story.thumbnail[0].width}
               height={story.thumbnail[0].height}
+              objectFit="cover"
               layout="responsive"
             />
           </StoryImageWrapper>

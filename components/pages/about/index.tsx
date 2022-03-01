@@ -1,25 +1,18 @@
-import { css } from "@styled-system/css";
 import BreadCrumb from "@components/common/breadcrumb";
 import Hero from "./hero";
 import BodyContent from "./bodyContent";
 import Header from "../generic/Header";
 import { Container } from "../generic/styles";
+import { BreadCrumbWrapper } from "./styles";
 
 const AboutPage = ({ pageData, notifications }) => {
   const crumbs = [{ path: "/", name: "Home" }, { name: "Our Story" }];
   return (
     <Container>
       <Header mode="dark" notifications={notifications} />
-      <div
-        css={css({
-          maxWidth: "2560px",
-          pl: "32px",
-          pt: 92,
-          pb: 0,
-        })}
-      >
+      <BreadCrumbWrapper>
         <BreadCrumb crumbs={crumbs} pt={0} />
-      </div>
+      </BreadCrumbWrapper>
       <Hero
         headingLeft={pageData.pageHeading}
         textRight={pageData.rightHeader}

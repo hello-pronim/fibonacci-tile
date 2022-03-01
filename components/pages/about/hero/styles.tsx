@@ -15,7 +15,7 @@ const Container = styled(Cont)(
   css({
     alignItems: "flex-start",
     pt: "28px",
-    pb: "48px",
+    pb: "80px",
     [theme.mediaQueries.small]: {
       pt: "60px!important",
       pr: [
@@ -130,9 +130,12 @@ const HeroTitle = styled(Text)(
 
 const HeroBodyText = styled(Text)(
   css({
-    fontSize: "26px",
-    lineHeight: "33.8px",
+    display: "block",
+    width: "80%",
+    fontSize: "32px",
+    lineHeight: "41.6px",
     [theme.mediaQueries.small]: {
+      width: "100%",
       fontSize: "44px",
       lineHeight: "50.6px",
     },

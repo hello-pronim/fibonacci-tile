@@ -48,7 +48,9 @@ const Breadcrumb = ({ crumbs, pt = 130, pb = 0, pl = 0 }) => {
         }
         return (
           <LinkWrapper key={`crumb-${index}`}>
-            {name} {renderCrumbSeperator(crumbs, index)}
+            <span>
+              {name} {renderCrumbSeperator(crumbs, index)}
+            </span>
           </LinkWrapper>
         );
       })}
