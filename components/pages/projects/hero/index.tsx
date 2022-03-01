@@ -13,13 +13,13 @@ const Hero = ({ heroDetails: { pageHeading, pageIntro } }) => {
     <Container>
       <LeftCol>
         <ContentWrapper>
-          <HeroTitle Base="h1" variant="Display-Large">
+          <HeroTitle as="h1" variant="Display-Large">
             {pageHeading}
           </HeroTitle>
         </ContentWrapper>
       </LeftCol>
       <RightCol>
-        <HeroBodyText Base="h4" variant="Display-Medium">
+        <HeroBodyText as="h4" variant="Display-Medium">
           {pageIntro}
         </HeroBodyText>
       </RightCol>

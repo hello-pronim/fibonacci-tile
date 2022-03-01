@@ -41,18 +41,18 @@ const Hero = ({ project }) => {
           <ContentWrapper>
             {project.location && (
               <Text
-                Base="h6"
+                as="h6"
                 variant="Body-Large"
                 css={css({ color: theme.colors.taupe })}
               >
                 {project.location}
               </Text>
             )}
-            <Text Base="h1" variant="Display-Large">
+            <Text as="h1" variant="Display-Large">
               {project.title}
             </Text>
             {/* {project.projectCompleted && (
-            <Text Base="h6" variant="Body-Large">
+            <Text as="h6" variant="Body-Large">
               {moment(project.projectCompleted).format("Do MMMM YYYY")}
             </Text>
           )} */}
@@ -73,7 +73,7 @@ const Hero = ({ project }) => {
           </Detail>
           {project?.sector?.length > 0 && (
             <Detail>
-              <Text Base="h6" variant="Display-Overline">
+              <Text as="h6" variant="Display-Overline">
                 SECTOR
               </Text>
               <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
@@ -87,7 +87,7 @@ const Hero = ({ project }) => {
           )}
           {project.architect && (
             <Detail>
-              <Text Base="h6" variant="Display-Overline">
+              <Text as="h6" variant="Display-Overline">
                 ARCHITECT
               </Text>
               <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
@@ -97,7 +97,7 @@ const Hero = ({ project }) => {
           )}
           {project.designer && (
             <Detail>
-              <Text Base="h6" variant="Display-Overline">
+              <Text as="h6" variant="Display-Overline">
                 DESIGNER
               </Text>
               <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
@@ -107,7 +107,7 @@ const Hero = ({ project }) => {
           )}
           {project.builder && (
             <Detail>
-              <Text Base="h6" variant="Display-Overline">
+              <Text as="h6" variant="Display-Overline">
                 BUILDER
               </Text>
               <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
@@ -117,7 +117,7 @@ const Hero = ({ project }) => {
           )}
           {project.projectCompleted && (
             <Detail>
-              <Text Base="h6" variant="Display-Overline">
+              <Text as="h6" variant="Display-Overline">
                 PROJECT COMPLETED
               </Text>
               <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
@@ -127,7 +127,7 @@ const Hero = ({ project }) => {
           )}
           {project?.featuredProducts?.length > 0 && (
             <Detail>
-              <Text Base="h6" variant="Display-Overline">
+              <Text as="h6" variant="Display-Overline">
                 FEATURED PRODUCTS
               </Text>
               <Text css={css({ color: "#9E9084" })} variant="Body-Regular">
@@ -144,7 +144,7 @@ const Hero = ({ project }) => {
           )}
           {project.photographer && (
             <Detail>
-              <Text Base="h6" variant="Display-Overline">
+              <Text as="h6" variant="Display-Overline">
                 PHOTOGRAPHER
               </Text>
               <Text css={css({ color: "#9E9084" })} variant="Body-Regular">

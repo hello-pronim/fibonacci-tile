@@ -13,7 +13,6 @@ const StyledRoot = styled.div`
 `;
 
 const StyledContainer = styled.div`
-  padding-top: 80px;
   max-width: 400px;
   width: 100%;
   margin-left: auto;

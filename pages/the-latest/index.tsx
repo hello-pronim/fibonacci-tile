@@ -16,6 +16,7 @@ import BottomHero from "@components/pages/latest/bottom-hero";
 import MobileCategory from "@components/pages/latest/mobileCategory";
 import Category from "@components/pages/latest/categories/Category";
 import { Card } from "@components/pages/latest/cards-container/Card";
+import theme from "@styles/theme";
 import {
   AllCategory,
   CategorysBarInner,
@@ -78,7 +79,10 @@ const LatestNews: NextPage<LatestPageProps> = ({
       <div
         css={css({
           maxWidth: "2560px",
-          pl: "32px",
+          [theme.mediaQueries.medium]: {
+            pl: 32,
+          },
+          pl: 22,
           pt: 92,
           pb: 0,
         })}

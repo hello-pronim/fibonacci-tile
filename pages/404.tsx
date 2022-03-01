@@ -28,7 +28,7 @@ const Custom404: NextPage<Custom404Props> = ({ notifications }) => {
         <Header mode="dark" notifications={notifications} />
         <InnerContainer>
           <PageNotFoundBlock>
-            <PageTitle Base="h2" variant="Display-Large">
+            <PageTitle as="h2" variant="Display-Large">
               Oops, We can&rsquo;t find the page you were looking for.
             </PageTitle>
             <p>

@@ -10,7 +10,7 @@ const BottomHero = ({heading, subHeading}) => {
       <Left>
         {heading && 
         <Text
-          Base="h1"
+          as="h1"
           variant="Display-Large"
           altFont={true}
           className={styles.title}

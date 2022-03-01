@@ -29,7 +29,7 @@ const Thankyou: NextPage<ThnkyouPageProps> = ({ notifications }) => {
         <Header mode="dark" notifications={notifications} />
         <InnerContainer>
           <PageNotFoundBlock>
-            <PageTitle Base="h2" variant="Display-Large">
+            <PageTitle as="h2" variant="Display-Large">
               Thank you for contacting us
             </PageTitle>
             <p>We will get back to you soon.</p>
