@@ -9,7 +9,7 @@ import {
 } from "./styles";
 
 const LeftImageRightText = ({ data }) => {
-  console.log(data.thumbnail[0].width, data.thumbnail[0].height);
+
   return (
     <Panel>
       <Container>

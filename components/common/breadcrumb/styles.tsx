@@ -102,7 +102,7 @@ const LinkWrapper = styled("div")(({ color }) =>
       "&:after": {
         content: "'•'",
         fontSize: "12px",
-        color: "#B0ABA7",
+        color: "inherit",
         display: "block",
         position: "relative",
         top: "1px",
