@@ -195,6 +195,24 @@ const NextWrapper = styled("button")(
   })
 );
 
+const PreviousWrapper = styled("button")(
+  css({
+    display: "none",
+    border: "none",
+    position: "absolute",
+    right: 0,
+    bottom: 166,
+    bg: "charcoal",
+    px: 20,
+    py: 10,
+    mr: 50,
+    cursor: "pointer",
+    [theme.mediaQueries.medium]: {
+      display: "block",
+    },
+  })
+);
+
 const Title = styled("h2")(
   css({
     fontSize: "44px",
@@ -216,5 +234,6 @@ export {
   LinkWrapper,
   LinkText,
   NextWrapper,
+  PreviousWrapper,
   Title,
 };

@@ -6,6 +6,7 @@ import { css } from '@styled-system/css';
 import Text from '@components/common/typography';
 import AccentText, { AccentTextMobile } from '@components/common/accentText';
 import AddIcon from '@components/icons/add';
+import SliderArrow from '@components/common/icons/sliderArrow';
 import Arrow from '@components/common/icons/arrow';
 import theme from 'styles/theme';
 import {
@@ -22,6 +23,7 @@ import {
   SlideImage,
   SlideImageMobile,
   NextWrapper,
+  PreviousWrapper
 } from './styles';
 
 const InlineSlider = ({ projects }) => {
@@ -30,6 +32,10 @@ const InlineSlider = ({ projects }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   var scrollCompletion = (currentSlide / slideCount) * 100;
+
+  const gotoPrevious = () => {
+    slider.current !== null && slider.current.slickPrev();
+  }
 
   const gotoNext = () => {
     slider.current !== null && slider.current.slickNext();
@@ -150,8 +156,11 @@ const InlineSlider = ({ projects }) => {
           </BottomBarInner>
         </BottomBar>
       </Wrapper>
+      <PreviousWrapper onClick={() => gotoPrevious()}>
+        <SliderArrow direction='left' color={theme.colors.white} width={40} />
+      </PreviousWrapper>
       <NextWrapper onClick={() => gotoNext()}>
-        <Arrow color={theme.colors.white} width={40} />
+        <SliderArrow color={theme.colors.white} width={40} />
       </NextWrapper>
     </Container>
   );

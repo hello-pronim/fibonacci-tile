@@ -307,6 +307,24 @@ const NextWrapper = styled('button')(
   })
 );
 
+const PreviousWrapper = styled('button')(
+  css({
+    display: 'none',
+    border: 'none',
+    position: 'absolute',
+    right: 0,
+    bottom: 87,
+    bg: 'charcoal',
+    px: 20,
+    py: 10,
+    mr: 50,
+    cursor: 'pointer',
+    [theme.mediaQueries.medium]: {
+      display: 'block',
+    },
+  })
+);
+
 export {
   Container,
   Wrapper,
@@ -322,4 +340,5 @@ export {
   SlideImage,
   SlideImageMobile,
   NextWrapper,
+  PreviousWrapper,
 };

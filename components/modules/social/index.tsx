@@ -5,6 +5,7 @@ import { css } from "@styled-system/css";
 import Text from "@components/common/typography";
 import { useAppContext } from "@contexts/AppContext";
 // import Container from "@components/common/layout/container";
+import SliderArrow from "@components/common/icons/sliderArrow";
 import Arrow from "@components/common/icons/arrow";
 import AccentText, { AccentTextMobile } from "@components/common/accentText";
 import theme from "styles/theme";
@@ -19,6 +20,7 @@ import {
   LinkText,
   BottomBar,
   NextWrapper,
+  PreviousWrapper,
   TextWrapper,
   Title,
 } from "./styles";
@@ -28,7 +30,9 @@ const SocialModule = ({ instaFeed }) => {
   const slider = React.useRef<Slider>(null);
   const [slideCount, setSlideCount] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
-
+  const gotoPrevous = () => {
+    slider.current !== null && slider.current.slickPrev();
+  };
   const gotoNext = () => {
     slider.current !== null && slider.current.slickNext();
   };
@@ -94,8 +98,11 @@ const SocialModule = ({ instaFeed }) => {
             />
           ))}
         </Slider>
+        <PreviousWrapper onClick={() => gotoPrevous()}>
+          <SliderArrow direction="left" color={theme.colors.white} width={40} />
+        </PreviousWrapper>
         <NextWrapper onClick={() => gotoNext()}>
-          <Arrow color={theme.colors.white} width={40} />
+          <SliderArrow color={theme.colors.white} width={40} />
         </NextWrapper>
         <TextWrapper>
           <Text as="p" variant="Body-Small">

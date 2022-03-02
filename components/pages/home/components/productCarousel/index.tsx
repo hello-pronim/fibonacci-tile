@@ -6,6 +6,7 @@ import { useAppContext } from "@contexts/AppContext";
 import Container from "@components/common/layout/container";
 import ProductCard from "@components/common/product/card";
 import AccentText, { AccentTextMobile } from "@components/common/accentText";
+import SliderArrow from '@components/common/icons/sliderArrow';
 import Arrow from "@components/common/icons/arrow";
 import theme from "styles/theme";
 import {
@@ -18,6 +19,7 @@ import {
   LinkText,
   BottomBar,
   NextWrapper,
+  PreviousWrapper,
   Title,
 } from "./styles";
 
@@ -29,6 +31,9 @@ const ProductCarousel = ({ products }) => {
 
   const gotoNext = () => {
     slider.current !== null && slider.current.slickNext();
+  };
+  const gotoPrevous = () => {
+    slider.current !== null && slider.current.slickPrev();
   };
   var scrollCompletion = (currentSlide / slideCount) * 100;
 
@@ -121,8 +126,11 @@ const ProductCarousel = ({ products }) => {
           </BottomBarInner>
         </BottomBar>
       </Wrapper>
+      <PreviousWrapper onClick={() => gotoPrevous()}>
+        <SliderArrow direction="left" color={theme.colors.white} width={40} />
+      </PreviousWrapper>
       <NextWrapper onClick={() => gotoNext()}>
-        <Arrow color={theme.colors.white} width={40} />
+        <SliderArrow color={theme.colors.white} width={40} />
       </NextWrapper>
     </Container>
   );
