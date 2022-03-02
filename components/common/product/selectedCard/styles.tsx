@@ -14,7 +14,7 @@ const Wrapper = styled('div')(
   })
 );
 
-const Container = styled('div')(
+const ContainerSideBar = styled('div')(
   ({ compact, hoverBG }: { compact: boolean; hoverBG?: string }) =>
     css({
       padding: compact ? '0' : '38px 18px',
@@ -31,37 +31,37 @@ const Container = styled('div')(
     })
 );
 
-// const Container = styled('div')(
-//   css({
-//     padding: '38px',
-//     textAlign: 'center',
-//     transition: 'background-color ease 0.3s',
-//     '.overlay': {
-//       visibility: 'hidden',
-//       opacity: 0,
-//       height: '100%',
-//       top: 0,
-//       left: 0,
-//       right: 0,
-//       bottom: 0,
-//       display: 'flex',
-//       justifyContent: 'center',
-//       alignItems: 'center',
-//       zIndex: '9999',
-//       margin: '0 30px',
-//       position: 'absolute',
-//       transition: 'background-color ease 0.3s',
-//     },
-//     '&:hover': {
-//       backgroundColor: theme.colors.cold,
-//       '.overlay': {
-//         visibility: 'visible',
-//         opacity: 0.8,
-//         backgroundColor: theme.colors.cold,
-//       },
-//     },
-//   })
-// );
+const Container = styled('div')(({ compact }: { compact: boolean }) =>
+  css({
+    padding: '38px',
+    textAlign: 'center',
+    transition: 'background-color ease 0.3s',
+    '.overlay': {
+      visibility: 'hidden',
+      opacity: 0,
+      height: '100%',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      zIndex: '9999',
+      margin: '0 30px',
+      position: 'absolute',
+      transition: 'background-color ease 0.3s',
+    },
+    '&:hover': {
+      backgroundColor: theme.colors.cold,
+      '.overlay': {
+        visibility: 'visible',
+        opacity: 0.8,
+        backgroundColor: theme.colors.cold,
+      },
+    },
+  })
+);
 
 const ActionBtn = styled('button')(({ checked }: ActionBtnProps) =>
   css({
@@ -146,4 +146,5 @@ export {
   ActionBtn,
   ConfirmActionBtnContainer,
   ConfirmActionBtn,
+  ContainerSideBar,
 };

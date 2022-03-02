@@ -38,22 +38,19 @@ const CheckoutPage = ({ notifications }) => {
       });
     }, 100);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-
-    if (
-      selectedProducts?.length !== 0 &&
-      selectedProducts?.length <= sampleSelectedCount
-    ) {
-      dispatch({
-        type: 'AUTO_CONFIRM_PRODUCT_SELECTION',
-        products: selectedProducts,
-      });
-      setActiveCheckoutStep(2);
-    }
-    if (
-      selectedProducts?.length === 0 ||
-      selectedProducts?.length > sampleSelectedCount
-    ) {
+    if (selectedProducts?.length > sampleSelectedCount) {
       setActiveCheckoutStep(1);
+    } else {
+      if (
+        selectedProducts?.length > 0 &&
+        selectedProducts?.length <= sampleSelectedCount
+      ) {
+        dispatch({
+          type: 'AUTO_CONFIRM_PRODUCT_SELECTION',
+          products: selectedProducts,
+        });
+        setActiveCheckoutStep(2);
+      }
     }
   }, [selectedProducts]);
 
@@ -127,11 +124,7 @@ const CheckoutPage = ({ notifications }) => {
           {selectedProducts?.length > 0 && (
             <CheckoutContentWrapper>
               {activeCheckoutStep === 1 && (
-                <Samples
-                  disabled={disabled}
-                  stepChange={stepChange}
-                  activeCheckoutStep={activeCheckoutStep}
-                />
+                <Samples disabled={disabled} stepChange={stepChange} />
               )}
               {activeCheckoutStep === 2 && (
                 <Details
