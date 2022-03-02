@@ -3,20 +3,26 @@ import { StepItemWrapper, StepCount } from "./styles";
 import CheckMarkIcon from "@components/icons/checkmark";
 
 
-const StepItem = ({ step, activeStep = 1 }) => {
+const StepItem = ({ step, activeStep = 1, stepChange }) => {
   const { state } = useAppContext();
   let stepName = ["Details", "Delivery", "Confirm"];
   if(state.selectedProducts.length > 6) {
     stepName = ["Sample", "Details", "Delivery", "Confirm"];
   }
+  const itemStep = state.selectedProducts.length <= 6 ? step+1 : step;
+  function handleStepChange () {
+    if(itemStep < activeStep || (itemStep === 4 && activeStep === 4)) {
+      stepChange(itemStep)
+    }
+  }
   return (
-    <StepItemWrapper>
-      <StepCount 
-      active={activeStep === (state.selectedProducts.length <= 6 ? step+1 : step) ||  
-      (state.selectedProducts.length <= 6 ? step+1 : step) < activeStep || 
-      ((state.selectedProducts.length <= 6 ? step+1 : step) === 4 && activeStep === 4) ? true : false}>
-        { (state.selectedProducts.length <= 6 ? step+1 : step) < activeStep || 
-        ((state.selectedProducts.length <= 6 ? step+1 : step) === 4 && activeStep === 4) ? <CheckMarkIcon color="white" /> : step} 
+    <StepItemWrapper
+    onClick={ () => handleStepChange()}
+    >
+      <StepCount
+      active={activeStep === itemStep || itemStep < activeStep || (itemStep === 4 && activeStep === 4) ? true : false}
+      >
+        {itemStep < activeStep || (itemStep === 4 && activeStep === 4) ? <CheckMarkIcon color="white" /> : step}
       </StepCount>
       {stepName[ step - 1 ]}
     </StepItemWrapper>
