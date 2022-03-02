@@ -51,7 +51,7 @@ const SelectedProductCard = ({
         )}
         <GridCardImgContainer compact={true}>
           {product?.thumbImageList?.[0]?.url && (
-            <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
+            <Link href={`/terrazzo/${product.slug}`}>
               <a>
                 <Image
                   placeholder="blur"
@@ -119,7 +119,7 @@ const SelectedProductCard = ({
           altFont={true}
           marginTop="25px"
         >
-          <Link href={`/terrazzo/${collectionSlug}/${product?.slug}`}>
+          <Link href={`/terrazzo/${product?.slug}`}>
             <a>{product?.title}</a>
           </Link>
         </CardTitle>
