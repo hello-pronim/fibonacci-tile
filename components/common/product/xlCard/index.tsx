@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Transition } from "react-transition-group";
 import Image from "next/image";
 import Link from "next/link";
 import css from "@styled-system/css";
@@ -13,7 +14,21 @@ import {
   GridCardImgContainer,
   Wrapper,
 } from "./styles";
-import { flex } from "styled-system";
+
+const duration = 500;
+
+const defaultStyle = {
+  transition: `opacity ${duration}ms ease-in-out`,
+  opacity: 0,
+  zIndex: "unset",
+};
+
+const transitionStyles = {
+  entering: { opacity: 1, zIndex: 999999 },
+  entered: { opacity: 1, zIndex: 999999 },
+  exiting: { opacity: 0, zIndex: "unset" },
+  exited: { opacity: 0, zIndex: "unset" },
+};
 
 const ProductCard = ({
   product,
@@ -28,81 +43,89 @@ const ProductCard = ({
     : product.collections[0].slug;
   const largeImageUrl =
     product?.largeImage.length > 0 ? product?.largeImage[0].url : null;
-  function handleModel() {
+
+  const handleModel = () => {
+    console.log(showModal);
     if (!showModal) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
     }
     setShowModal(!showModal);
-  }
+  };
+
   return (
     <Wrapper>
-      {showModal && (
-        <div className="popupBlock"
-          css={css({
-            position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            height: "100vh",
-            zIndex: 999999,
-            // right: 'auto',
-            // bottom: 'auto',
-            // marginRight: '-50%',
-            // transform: 'translate(-50%, -50%)',
-          })}
-        >
-          <div className="popupBlockClose"
+      <Transition in={showModal} timeout={500}>
+        {(state) => (
+          <div
+            className="popupBlock"
             css={css({
-              display: "flex",
-              position: "absolute",
-              top: "0",
-              right: "0",
-              zIndex: "9",
-              background: "#D6CEC5",
-              alignItems: "center",
-              padding: "15px 25px",
-              textTransform: "uppercase",
-              fontSize: "12px",
-              letterSpacing: "0.1em",
-              color: "#000",
-              fontWeight: "500",
+              position: "fixed",
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              height: "100vh",
+              // right: 'auto',
+              // bottom: 'auto',
+              // marginRight: '-50%',
+              // transform: 'translate(-50%, -50%)',
+              ...defaultStyle,
+              ...transitionStyles[state],
             })}
           >
-            <span>Close</span>
-            <span
-              onClick={() => handleModel()}
+            <div
+              className="popupBlockClose"
               css={css({
-                background: "#000000",
-                width: "30px",
-                height: "30px",
-                borderRadius: "50%",
-                textAlign: "center",
-                lineHeight: "33px",
-                cursor: "pointer",
-                marginLeft: "10px",
+                display: "flex",
+                position: "absolute",
+                top: "0",
+                right: "0",
+                zIndex: "9",
+                background: "#D6CEC5",
+                alignItems: "center",
+                padding: "15px 25px",
+                textTransform: "uppercase",
+                fontSize: "12px",
+                letterSpacing: "0.1em",
+                color: "#000",
+                fontWeight: "500",
               })}
             >
-              <CrossIcon />
-            </span>
+              <span>Close</span>
+              <span
+                onClick={handleModel}
+                css={css({
+                  background: "#000000",
+                  width: "30px",
+                  height: "30px",
+                  borderRadius: "50%",
+                  textAlign: "center",
+                  lineHeight: "33px",
+                  cursor: "pointer",
+                  marginLeft: "10px",
+                })}
+              >
+                <CrossIcon />
+              </span>
+            </div>
+            <Image
+              placeholder="blur"
+              blurDataURL={product.blurThumb[0].url}
+              src={largeImageUrl}
+              alt={product.title}
+              width={product?.largeImage[0].width}
+              height={product?.largeImage[0].height}
+            />
           </div>
-          <Image
-            placeholder="blur"
-            blurDataURL={product.blurThumb[0].url}
-            src={largeImageUrl}
-            alt={product.title}
-            width={product?.largeImage[0].width}
-            height={product?.largeImage[0].height}
-          />
-        </div>
-      )}
+        )}
+      </Transition>
       <Container>
         <GridCardImgContainer>
           {product?.thumbImageSingle?.[0]?.url && (
             <div
-              onClick={() => handleModel()}
+              onClick={handleModel}
               css={css({
                 cursor: "pointer",
               })}
