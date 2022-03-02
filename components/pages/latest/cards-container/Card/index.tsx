@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { excerpt } from "@utils/utility";
@@ -6,21 +7,29 @@ import { StyledContainer, Title, CardPill, Description } from "./styles";
 export const Card = ({
   component: { slug, title, newsCategory, newsComponents },
 }): any => {
-  let imageBlock = null;
-  let descBlock = null;
-  newsComponents?.length > 0 &&
-    newsComponents.forEach((component: any) => {
-      if (
-        component.__typename === "newsComponents_contentFullWidth_BlockType"
-      ) {
-        descBlock = component;
-      }
-      if (
-        component.__typename === "newsComponents_heroImageFullWidth_BlockType"
-      ) {
-        imageBlock = component;
-      }
-    });
+  const [imageBlock, setImageBlock] = useState(null);
+  const [descBlock, setDescBlock] = useState(null);
+
+  useEffect(() => {
+    setImageBlock(
+      newsComponents
+        .filter(
+          (component) =>
+            component.__typename ===
+            "newsComponents_heroImageFullWidth_BlockType"
+        )
+        .shift()
+    );
+    setDescBlock(
+      newsComponents
+        .filter(
+          (component) =>
+            component.__typename === "newsComponents_contentFullWidth_BlockType"
+        )
+        .shift()
+    );
+  }, []);
+
   return (
     <StyledContainer>
       <Link href={`/the-latest/${slug}`} passHref>
