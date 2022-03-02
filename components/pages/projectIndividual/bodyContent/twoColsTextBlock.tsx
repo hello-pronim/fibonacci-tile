@@ -15,6 +15,7 @@ const TwoColsTextBlock = ({ component, backgroundColor, pt = 60, pb = 60 }) => {
       {component?.headline && (
         <LeftCol>
           <Text
+            className="textHeroBlock"
             variant="Display-Medium"
             altFont
             dangerouslySetInnerHTML={{ __html: component.headline }}

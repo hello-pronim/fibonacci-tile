@@ -1,7 +1,7 @@
 import Image from "next/image";
 import css from "@styled-system/css";
 import Container from "@components/common/layout/container";
-import { ImageLeft, ImageRight } from "./styles";
+import { ImageLeft, ImageRight, TwoColsImageBlockContainer } from "./styles";
 
 const TwoColsImageBlock = ({
   component,
@@ -15,7 +15,8 @@ const TwoColsImageBlock = ({
     pb,
   };
   return (
-    <Container css={css(cssProps)}>
+    <TwoColsImageBlockContainer>
+    <Container className="TwoColsImageContainer" css={css(cssProps)}>
       {component?.image1Thumb?.[0]?.url && (
         <ImageLeft>
           <Image
@@ -45,6 +46,7 @@ const TwoColsImageBlock = ({
         </ImageRight>
       )}
     </Container>
+    </TwoColsImageBlockContainer>
   );
 };
 export default TwoColsImageBlock;
