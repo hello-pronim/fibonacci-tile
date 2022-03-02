@@ -20,14 +20,14 @@ const duration = 500;
 const defaultStyle = {
   transition: `opacity ${duration}ms ease-in-out`,
   opacity: 0,
-  zIndex: "unset",
+  zIndex: -1,
 };
 
 const transitionStyles = {
   entering: { opacity: 1, zIndex: 999999 },
   entered: { opacity: 1, zIndex: 999999 },
-  exiting: { opacity: 0, zIndex: "unset" },
-  exited: { opacity: 0, zIndex: "unset" },
+  exiting: { opacity: 0, zIndex: -1 },
+  exited: { opacity: 0, zIndex: -1 },
 };
 
 const ProductCard = ({
