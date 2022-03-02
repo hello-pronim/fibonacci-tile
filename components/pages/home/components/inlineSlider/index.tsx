@@ -153,15 +153,15 @@ const InlineSlider = ({ projects }) => {
             <LinkWrapper>
               <Link href="/in-use">Explore all projects</Link>
             </LinkWrapper>
+            <PreviousWrapper onClick={() => gotoPrevious()}>
+              <SliderArrow direction='left' color={theme.colors.charcoal} width={20} />
+            </PreviousWrapper>
+            <NextWrapper onClick={() => gotoNext()}>
+              <SliderArrow color={theme.colors.charcoal} width={20} />
+            </NextWrapper>
           </BottomBarInner>
         </BottomBar>
       </Wrapper>
-      <PreviousWrapper onClick={() => gotoPrevious()}>
-        <SliderArrow direction='left' color={theme.colors.white} width={40} />
-      </PreviousWrapper>
-      <NextWrapper onClick={() => gotoNext()}>
-        <SliderArrow color={theme.colors.white} width={40} />
-      </NextWrapper>
     </Container>
   );
 };

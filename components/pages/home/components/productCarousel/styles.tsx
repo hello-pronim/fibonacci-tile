@@ -136,6 +136,7 @@ const LinkWrapper = styled("div")(
     svg: {
       transition: "ease all 0.3s",
     },
+    paddingRight: "120px",
     "&:hover": {
       svg: {
         transform: "translateX(6px)",
@@ -184,11 +185,11 @@ const NextWrapper = styled("button")(
     border: "none",
     position: "absolute",
     right: 0,
-    bottom: 166,
-    bg: "charcoal",
-    px: 10,
-    py: 10,
+    bottom: 118,
+    bg: "transparent",
     cursor: "pointer",
+    padding: "0",
+    outline: "none",
     [theme.mediaQueries.medium]: {
       display: "block",
     },
@@ -201,12 +202,12 @@ const PreviousWrapper = styled("button")(
     border: "none",
     position: "absolute",
     right: 0,
-    bottom: 166,
-    bg: "charcoal",
-    px: 20,
-    py: 10,
-    mr: 50,
+    bottom: 118,
+    bg: "transparent",
+    mr: 40,
     cursor: "pointer",
+    padding: "0",
+    outline: "none",
     [theme.mediaQueries.medium]: {
       display: "block",
     },

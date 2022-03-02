@@ -123,15 +123,15 @@ const ProductCarousel = ({ products }) => {
               <Link href="/terrazzo">Explore the full range </Link>
               {/* <Arrow type="short" /> */}
             </LinkWrapper>
+            <PreviousWrapper onClick={() => gotoPrevous()}>
+              <SliderArrow direction="left" color={theme.colors.charcoal} width={20} />
+            </PreviousWrapper>
+            <NextWrapper onClick={() => gotoNext()}>
+              <SliderArrow color={theme.colors.charcoal} width={20} />
+            </NextWrapper>
           </BottomBarInner>
         </BottomBar>
       </Wrapper>
-      <PreviousWrapper onClick={() => gotoPrevous()}>
-        <SliderArrow direction="left" color={theme.colors.white} width={40} />
-      </PreviousWrapper>
-      <NextWrapper onClick={() => gotoNext()}>
-        <SliderArrow color={theme.colors.white} width={40} />
-      </NextWrapper>
     </Container>
   );
 };

@@ -208,25 +208,33 @@ const FilterWrapperMobile = styled("div")(
     alignItems: "center",
     justifyContent: "space-between",
     paddingTop: "32px",
-    paddingBottom: "32px",
+    paddingBottom: "5px",
     px: "16px",
     [theme.mediaQueries.small]: {
       display: "none",
     },
-  })
+    "& Select": {
+      backgroundImage: `url("assets/icons/arrowDownGrey.svg")`,
+      textAlign: "right",
+      fontSize: "14px",
+      color: "#B0ABA7",
+      letterSpacing: "0.1em",
+    },
+  }),
 );
 
 const LoadMoreWrapper = styled("div")(
   css({
     gridColumn: "1 / span 12",
-    display: "flex",
+    display: "block",
     alignItems: "center",
     justifyContent: "center",
-    paddingTop: "128px",
-    paddingBottom: "128px",
+    paddingTop: "100px",
+    paddingBottom: "100px",
     [theme.mediaQueries.small]: {
-      paddingTop: "180px",
-      paddingBottom: "180px",
+      display: "flex",
+      paddingTop: "150px",
+      paddingBottom: "150px",
     },
   })
 );
@@ -238,6 +246,9 @@ const MasonryGrid = styled(Masonry)(
     "& .masonry-grid-column": {
       padding: "0px",
       [theme.mediaQueries.small]: {
+        padding: "0px 20px",
+      },
+      [theme.mediaQueries.smedium]: {
         padding: "0px 80px",
       },
     },

@@ -99,10 +99,10 @@ const SocialModule = ({ instaFeed }) => {
           ))}
         </Slider>
         <PreviousWrapper onClick={() => gotoPrevous()}>
-          <SliderArrow direction="left" color={theme.colors.white} width={40} />
+          <SliderArrow direction="left" color={theme.colors.charcoal} width={20} />
         </PreviousWrapper>
         <NextWrapper onClick={() => gotoNext()}>
-          <SliderArrow color={theme.colors.white} width={40} />
+          <SliderArrow color={theme.colors.charcoal} width={20} />
         </NextWrapper>
         <TextWrapper>
           <Text as="p" variant="Body-Small">
