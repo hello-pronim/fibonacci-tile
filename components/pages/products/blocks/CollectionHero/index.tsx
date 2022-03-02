@@ -6,6 +6,7 @@ import theme from "@styles/theme";
 import { CollectionHeroContainer, ImageContent } from "./styles";
 import styles from "./styles.module.scss";
 import BreadCrumb from "@components/common/breadcrumb";
+import getTextColor from "@utils/contrastAwareColors";
 
 const CollectionHeroModule = ({ collection, width = "30%", top }) => {
   const crumbs = [
@@ -15,7 +16,8 @@ const CollectionHeroModule = ({ collection, width = "30%", top }) => {
   ];
   return (
     <CollectionHeroContainer>
-      <div className="CollectionBreadCrumbBlock"
+      <div
+        className="CollectionBreadCrumbBlock"
         css={css({
           maxWidth: "2560px",
           ml: "32px",
@@ -24,9 +26,18 @@ const CollectionHeroModule = ({ collection, width = "30%", top }) => {
           position: "absolute",
         })}
       >
-        <BreadCrumb crumbs={crumbs} pt={0} />
+        <BreadCrumb
+          crumbs={crumbs}
+          pt={0}
+          color={getTextColor(
+            collection.backgroundColor1
+              ? collection.backgroundColor1
+              : "#8B9B94"
+          )}
+        />
       </div>
-      <div className="CollectionTextBlock"
+      <div
+        className="CollectionTextBlock"
         css={css({
           height: "auto",
           background: collection.backgroundColor1

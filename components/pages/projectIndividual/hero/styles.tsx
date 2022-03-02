@@ -12,6 +12,7 @@ const LeftCol = styled("div")(
     rowGap: 160,
     pt: 110,
     pb: 104,
+    zIndex: 1,
   })
 );
 
