@@ -6,7 +6,8 @@ function CheckMarkIcon({ color = "#141414", width = 14 }) {
       viewBox="0 0 14 10"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      css={css({ width: width })}
+      css={css({ width: width, height: 10 })}
+      preserveAspectRatio="none"
     >
       <path
         fillRule="evenodd"
