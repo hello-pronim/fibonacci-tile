@@ -362,7 +362,7 @@ const ProductCard = ({
                     },
                     "&::after": compact && {
                       width: "100%",
-                      content: '" "',
+                      content: "' '",
                       display: "block",
                       paddingBottom: "100%",
                       position: "absolute",
