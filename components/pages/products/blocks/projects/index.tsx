@@ -37,6 +37,14 @@ const ProjectsModule = ({
 }: ProjectModuleTypes) => {
   const { project1, project2, backgroundColor } = product;
 
+  const handleSectionLinkClick = (e, elementId) => {
+    e.preventDefault();
+
+    const element = document.getElementById(elementId);
+
+    element.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <Container
       id="projects"
@@ -70,6 +78,7 @@ const ProjectsModule = ({
               <Text variant="Body-Regular">
                 <a
                   href="#projects"
+                  onClick={(e) => handleSectionLinkClick(e, "products")}
                   css={css({ color: "inherit", textDecoration: "none" })}
                 >
                   Products in use
@@ -82,6 +91,7 @@ const ProjectsModule = ({
               <Text variant="Body-Regular">
                 <a
                   href="#gallery"
+                  onClick={(e) => handleSectionLinkClick(e, "gallery")}
                   css={css({ color: "inherit", textDecoration: "none" })}
                 >
                   Gallery
@@ -94,6 +104,9 @@ const ProjectsModule = ({
               <Text variant="Body-Regular">
                 <a
                   href="#technical-specifications"
+                  onClick={(e) =>
+                    handleSectionLinkClick(e, "technical-specifications")
+                  }
                   css={css({ color: "inherit", textDecoration: "none" })}
                 >
                   Technical specs
@@ -106,6 +119,7 @@ const ProjectsModule = ({
               <Text variant="Body-Regular">
                 <a
                   href="#related-products"
+                  onClick={(e) => handleSectionLinkClick(e, "related-products")}
                   css={css({ color: "inherit", textDecoration: "none" })}
                 >
                   Related products
