@@ -25,7 +25,7 @@ const CTAPanel = ({ imagePosition = "left", data }) => {
           />
         </ImgContainer>
       )}
-      <CTADetails>
+      <CTADetails position={imagePosition}>
         {data?.samplesHeading && (
           <CTAHeaderTextWrapper>
             <CTAHeaderText variant="Display-Large">
