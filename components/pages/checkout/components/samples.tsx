@@ -121,6 +121,10 @@ const Samples = ({ activeCheckoutStep, disabled, stepChange }) => {
           link=""
           onClick={() => {
             stepChange(2);
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth', // for smoothly scrolling
+            });
           }}
           disabled={disabled}
         />
