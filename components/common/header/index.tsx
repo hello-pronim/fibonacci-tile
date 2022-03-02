@@ -1,19 +1,20 @@
-import React, { useState, useEffect, useRef } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { Transition } from "react-transition-group";
-import css from "@styled-system/css";
-import { useAppContext } from "@contexts/AppContext";
-import Text from "@components/common/typography";
-import ProductSelectionCount from "@components/common/product/selectionCount";
-import Logo from "public/assets/brandmarks/logo-primary.svg";
-import LogoWhite from "public/assets/brandmarks/logo-secondary.svg";
+import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Transition } from 'react-transition-group';
+import css from '@styled-system/css';
+import { useAppContext } from '@contexts/AppContext';
+import Text from '@components/common/typography';
+import ProductSelectionCount from '@components/common/product/selectionCount';
+import Logo from 'public/assets/brandmarks/logo-primary.svg';
+import LogoWhite from 'public/assets/brandmarks/logo-secondary.svg';
 import {
   Container,
   Wrapper,
   NavLeft,
   NavRight,
   NavItem,
+  SubNavItem,
   LogoWrapper,
   NavIcon,
   NavDrawer,
@@ -22,7 +23,7 @@ import {
   AlertBar,
   AlertLabel,
   AlertClose,
-} from "./styles";
+} from './styles';
 
 const duration = 400;
 
@@ -39,7 +40,7 @@ const transitionStyles = {
 };
 
 const Header = ({
-  mode = "light",
+  mode = 'light',
   notifications = null,
   hideBorderOnScroll = false,
   disableSelectionCart = false,
@@ -48,16 +49,16 @@ const Header = ({
   const [navOpen, setNavOpen] = useState(false);
   const [alertActive, setAlertActive] = useState(true);
   const [scrolledActive, setScrolledActive] = useState(false);
-  const activeLogo = mode === "dark" ? Logo : LogoWhite;
+  const activeLogo = mode === 'dark' ? Logo : LogoWhite;
   let navRightMode = mode;
   if (state.openDrawer) {
-    if (state.activeDrawerTab === "support" && !scrolledActive) {
-      navRightMode = "light";
+    if (state.activeDrawerTab === 'support' && !scrolledActive) {
+      navRightMode = 'light';
     } else {
-      navRightMode = "dark";
+      navRightMode = 'dark';
     }
-    if (scrolledActive && mode !== "dark") {
-      navRightMode = "light";
+    if (scrolledActive && mode !== 'dark') {
+      navRightMode = 'light';
     }
   }
 
@@ -67,22 +68,22 @@ const Header = ({
 
   useEffect(() => {
     function watchScroll() {
-      window.addEventListener("scroll", checkScroll);
+      window.addEventListener('scroll', checkScroll);
     }
     watchScroll();
     return () => {
-      window.removeEventListener("scroll", checkScroll);
+      window.removeEventListener('scroll', checkScroll);
     };
   });
 
   useEffect(() => {
-    const alertState = sessionStorage.getItem("alert-state");
-    const alertToBool = alertState === "true";
+    const alertState = sessionStorage.getItem('alert-state');
+    const alertToBool = alertState === 'true';
     alertState && setAlertActive(alertToBool);
   }, []);
 
   useEffect(() => {
-    sessionStorage.setItem("alert-state", alertActive.toString());
+    sessionStorage.setItem('alert-state', alertActive.toString());
   }, [alertActive]);
 
   // select first notification in array
@@ -90,12 +91,12 @@ const Header = ({
   return (
     <div
       css={css({
-        position: "fixed",
+        position: 'fixed',
         top: 0,
         left: 0,
         right: 0,
-        mx: "auto",
-        width: "100%",
+        mx: 'auto',
+        width: '100%',
         maxWidth: 2560,
         zIndex: 99999,
       })}
@@ -111,7 +112,7 @@ const Header = ({
         </AlertBar>
       )}
       <Container
-        position={"relative"}
+        position={'relative'}
         navOpen={navOpen}
         mode={mode}
         scrolledActive={scrolledActive}
@@ -154,15 +155,15 @@ const Header = ({
               mode={navRightMode}
               onClick={() => {
                 dispatch({
-                  type: "OPEN_DRAWER",
+                  type: 'OPEN_DRAWER',
                   value:
-                    state.activeDrawerTab !== "support"
+                    state.activeDrawerTab !== 'support'
                       ? true
                       : !state.openDrawer,
                 });
                 dispatch({
-                  type: "SET_ACTIVE_DRAWER_TAB",
-                  value: "support",
+                  type: 'SET_ACTIVE_DRAWER_TAB',
+                  value: 'support',
                 });
               }}
             >
@@ -172,15 +173,15 @@ const Header = ({
               mode={navRightMode}
               onClick={() => {
                 dispatch({
-                  type: "OPEN_DRAWER",
+                  type: 'OPEN_DRAWER',
                   value:
-                    state.activeDrawerTab !== "contact"
+                    state.activeDrawerTab !== 'contact'
                       ? true
                       : !state.openDrawer,
                 });
                 dispatch({
-                  type: "SET_ACTIVE_DRAWER_TAB",
-                  value: "contact",
+                  type: 'SET_ACTIVE_DRAWER_TAB',
+                  value: 'contact',
                 });
               }}
             >
@@ -191,15 +192,15 @@ const Header = ({
                 mode={navRightMode}
                 onClick={() => {
                   dispatch({
-                    type: "OPEN_DRAWER",
+                    type: 'OPEN_DRAWER',
                     value:
-                      state.activeDrawerTab !== "cart"
+                      state.activeDrawerTab !== 'cart'
                         ? true
                         : !state.openDrawer,
                   });
                   dispatch({
-                    type: "SET_ACTIVE_DRAWER_TAB",
-                    value: "cart",
+                    type: 'SET_ACTIVE_DRAWER_TAB',
+                    value: 'cart',
                   });
                 }}
               >
@@ -226,6 +227,12 @@ const Header = ({
                 <NavItem mode={mode} href="/terrazzo">
                   Our Products
                 </NavItem>
+                <SubNavItem mode={mode} href="/terrazzo">
+                  Terrazzo
+                </SubNavItem>
+                <SubNavItem mode={mode} href="/terrazzo/collections">
+                  Collections
+                </SubNavItem>
                 <NavItem mode={mode} href="/in-use">
                   In Use
                 </NavItem>
@@ -242,15 +249,15 @@ const Header = ({
                   mode={mode}
                   onClick={() => {
                     dispatch({
-                      type: "OPEN_DRAWER",
+                      type: 'OPEN_DRAWER',
                       value:
-                        state.activeDrawerTab !== "contact"
+                        state.activeDrawerTab !== 'contact'
                           ? true
                           : !state.openDrawer,
                     });
                     dispatch({
-                      type: "SET_ACTIVE_DRAWER_TAB",
-                      value: "contact",
+                      type: 'SET_ACTIVE_DRAWER_TAB',
+                      value: 'contact',
                     });
                   }}
                 >
