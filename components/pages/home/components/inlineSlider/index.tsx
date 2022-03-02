@@ -6,6 +6,7 @@ import { css } from '@styled-system/css';
 import Text from '@components/common/typography';
 import AccentText, { AccentTextMobile } from '@components/common/accentText';
 import AddIcon from '@components/icons/add';
+import SliderArrow from '@components/common/icons/sliderArrow';
 import Arrow from '@components/common/icons/arrow';
 import theme from 'styles/theme';
 import {
@@ -22,6 +23,7 @@ import {
   SlideImage,
   SlideImageMobile,
   NextWrapper,
+  PreviousWrapper
 } from './styles';
 
 const InlineSlider = ({ projects }) => {
@@ -30,6 +32,10 @@ const InlineSlider = ({ projects }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   var scrollCompletion = (currentSlide / slideCount) * 100;
+
+  const gotoPrevious = () => {
+    slider.current !== null && slider.current.slickPrev();
+  }
 
   const gotoNext = () => {
     slider.current !== null && slider.current.slickNext();
@@ -60,7 +66,7 @@ const InlineSlider = ({ projects }) => {
 
   const settings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     slidesToShow: 2,
     slidesToScroll: 1,
     arrows: false,
@@ -147,12 +153,15 @@ const InlineSlider = ({ projects }) => {
             <LinkWrapper>
               <Link href="/in-use">Explore all projects</Link>
             </LinkWrapper>
+            <PreviousWrapper onClick={() => gotoPrevious()}>
+              <SliderArrow direction='left' color={theme.colors.charcoal} width={20} />
+            </PreviousWrapper>
+            <NextWrapper onClick={() => gotoNext()}>
+              <SliderArrow color={theme.colors.charcoal} width={20} />
+            </NextWrapper>
           </BottomBarInner>
         </BottomBar>
       </Wrapper>
-      <NextWrapper onClick={() => gotoNext()}>
-        <Arrow color={theme.colors.white} width={40} />
-      </NextWrapper>
     </Container>
   );
 };

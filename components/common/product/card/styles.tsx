@@ -2,7 +2,6 @@ import css from "@styled-system/css";
 import Text from "@components/common/typography";
 import styled from "@emotion/styled";
 import theme from "styles/theme";
-import { height } from "styled-system";
 
 interface ActionBtnProps {
   checked: boolean;
@@ -26,8 +25,10 @@ const Container = styled("div")(
       transition: "ease all 0.4s",
       backgroundColor: "rgba(237, 236, 232, 0)",
       "&:hover": {
-        backgroundColor:
-          !compact && hoverBG ? hoverBG : "rgba(237, 236, 232, 1.000)",
+        [theme.mediaQueries.small]: {
+          backgroundColor:
+            !compact && hoverBG ? hoverBG : "rgba(237, 236, 232, 1.000)",
+        },
         div: {
           boxShadow: "none",
         },

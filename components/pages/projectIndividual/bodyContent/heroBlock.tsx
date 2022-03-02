@@ -2,8 +2,8 @@ import Image from "next/image";
 import css from "@styled-system/css";
 import Text from "@components/common/typography";
 import Container from "@components/common/layout/container";
-import AccentText from "@components/common/accentText";
-import { FwWrapper } from "./styles";
+import AccentText, { AccentTextMobile } from "@components/common/accentText";
+import { FwWrapper, ProductIndividualImageBlock } from "./styles";
 
 const HeroBlock = ({ component, backgroundColor, pt = 60, pb = 60 }) => {
   const cssProps: any = {
@@ -23,25 +23,33 @@ const HeroBlock = ({ component, backgroundColor, pt = 60, pb = 60 }) => {
         </AccentText>
       )}
       <FwWrapper>
+        <AccentTextMobile
+          css={css({ top: pt + (component.heading ? 174 : 0) })}
+        >
+          {component.sideText}
+        </AccentTextMobile>
         {component.heading && (
           <Text
+            className="textHeroBlock"
             dangerouslySetInnerHTML={{ __html: component.heading }}
             variant="Display-Medium"
             altFont
             css={css({ mb: 65, maxWidth: "50%" })}
           />
         )}
-        {component?.imageThumb?.[0]?.url && (
-          <Image
-            layout="responsive"
-            placeholder="blur"
-            blurDataURL={component.blurThumb[0].url}
-            alt={component.imageThumb[0].title}
-            src={component.imageThumb[0].url}
-            width={component.imageThumb[0].width}
-            height={component.imageThumb[0].height}
-          />
-        )}
+        <ProductIndividualImageBlock>
+          {component?.imageThumb?.[0]?.url && (
+            <Image
+              layout="responsive"
+              placeholder="blur"
+              blurDataURL={component.blurThumb[0].url}
+              alt={component.imageThumb[0].title}
+              src={component.imageThumb[0].url}
+              width={component.imageThumb[0].width}
+              height={component.imageThumb[0].height}
+            />
+          )}
+        </ProductIndividualImageBlock>
         {component?.imageCaption && (
           <Text
             dangerouslySetInnerHTML={{ __html: component.imageCaption }}

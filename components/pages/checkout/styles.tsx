@@ -45,15 +45,21 @@ const CheckoutWrapper = styled("div")(() =>
 
 const LeftContent = styled("div")(({...props }: containerProps) =>
   css({
-    width: props.displayRight === true ? "70%" : "100%",
+    width: props.displayRight === true ? "100%" : "100%",
+    paddingRight:  props.displayRight === true ? "480px" : 0,
   })
 );
 const RightContent = styled("div")(({...props }: containerProps) =>
   css({
-    width: "30%",
+    overflow: "scroll",
+    position: "absolute",
+    right: 0,
+    width: "460px",
+    height: "calc(100% - 80px)",
     mt: 80,
     border: `solid 1px ${theme.colors.stoneTints[7]}`,
     borderTop: "none",
+    borderBottom: "none",
     pl: 20,
     display: props.displayRight === true ? "block" : "none",
     'p': {

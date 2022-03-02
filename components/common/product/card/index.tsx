@@ -1,15 +1,15 @@
-import { useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import SizeDisplay from './SizeDisplay';
-import Text from '@components/common/typography';
-import AddIcon from '@components/icons/add';
-import ArrowButton from '@components/common/button/arrowButton';
-import CheckMarkIcon from '@components/icons/checkmark';
-import CrossIcon from '@components/icons/cross';
-import ArrowDown from '@components/icons/arrowDown';
-import ArrowUp from '@components/icons/arrowUp';
-import theme from 'styles/theme';
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import SizeDisplay from "./SizeDisplay";
+import Text from "@components/common/typography";
+import AddIcon from "@components/icons/add";
+import ArrowButton from "@components/common/button/arrowButton";
+import CheckMarkIcon from "@components/icons/checkmark";
+import CrossIcon from "@components/icons/cross";
+import ArrowDown from "@components/icons/arrowDown";
+import ArrowUp from "@components/icons/arrowUp";
+import theme from "styles/theme";
 import {
   ActionBtn,
   ActionBtnContainer,
@@ -43,9 +43,9 @@ import {
   TechnicalSpecification,
   TitleText,
   Wrapper,
-} from './styles';
-import { css } from '@emotion/react';
-import Arrow from '@components/common/icons/arrow';
+} from "./styles";
+import { css } from "@emotion/react";
+import Arrow from "@components/common/icons/arrow";
 
 interface CardProps {
   product: any;
@@ -59,7 +59,7 @@ interface CardProps {
 
 const ProductCard = ({
   product,
-  displayMode = 'grid',
+  displayMode = "grid",
   isSelected = false,
   toggleProductSelect,
   compact = false,
@@ -68,12 +68,9 @@ const ProductCard = ({
 }: CardProps) => {
   const [detailShown, setDetailShown] = useState(false);
   const [copyProductId, setCopyProductId] = useState(undefined);
-  let collectionSlug = activeCollectionSlug
-    ? activeCollectionSlug
-    : product?.collections[0]?.slug;
 
   const getProductVariationsText = (productVariations) => {
-    let text = '';
+    let text = "";
     let sizeArray = [];
 
     productVariations.forEach((variant: any) => {
@@ -95,64 +92,63 @@ const ProductCard = ({
       });
     });
     sizeArray.forEach((size) => {
-      text += size.title + ' ';
+      text += size.title + " ";
       size?.child.forEach((cSize, index) => {
         text += cSize.title;
         text +=
           size.child.length - index === 2
-            ? ' & '
+            ? " & "
             : size.child.length > 2 && index !== size.child.length - 1
-            ? ', '
-            : '';
+            ? ", "
+            : "";
       });
-      text += '\n';
+      text += "\n";
     });
 
     return text;
   };
 
   function fallbackCopyTextToClipboard(text) {
-    let textArea = document.createElement('textarea');
+    let textArea = document.createElement("textarea");
     textArea.value = text;
-    textArea.style.top = '0';
-    textArea.style.left = '0';
-    textArea.style.position = 'fixed';
+    textArea.style.top = "0";
+    textArea.style.left = "0";
+    textArea.style.position = "fixed";
 
     document.body.appendChild(textArea);
     textArea.focus();
     textArea.select();
 
     try {
-      let successful = document.execCommand('copy');
-      let msg = successful ? 'successful' : 'unsuccessful';
-      console.log('Fallback: Copying text command was ' + msg);
+      let successful = document.execCommand("copy");
+      let msg = successful ? "successful" : "unsuccessful";
+      console.log("Fallback: Copying text command was " + msg);
     } catch (err) {
-      console.error('Fallback: Oops, unable to copy', err);
+      console.error("Fallback: Oops, unable to copy", err);
     }
 
     document.body.removeChild(textArea);
   }
 
   const handleTechnicalSpecificationCopy = (product) => {
-  
-    let copyText = '';
+    let copyText = "";
     let productVariationsText = getProductVariationsText(
       product.productVariations
     );
 
     copyText +=
-      'Material and composition: ' + product.materialsComposition + '\n';
-    copyText += 'Finish and appearance: ' + product.finishAppearance + '\n';
-    copyText += 'Sizes:\n';
+      "Material and composition: " + product.materialsComposition + "\n";
+    copyText += "Finish and appearance: " + product.finishAppearance + "\n";
+    copyText += "Sizes:\n";
     copyText += productVariationsText;
-    copyText += 'Applications: ' + product.applications + '\n';
+    copyText += "Applications: " + product.applications + "\n";
 
     setCopyProductId(product.id);
 
     if (navigator.clipboard !== undefined) {
       // Chrome
       navigator.clipboard.writeText(copyText).then(() => {
-        alert('Copied to clipboard');
+        alert("Copied to clipboard");
       });
     } else {
       fallbackCopyTextToClipboard(copyText);
@@ -160,17 +156,14 @@ const ProductCard = ({
     }
   };
 
-  if (displayMode === 'list') {
+  if (displayMode === "list") {
     return (
       <TableRow detailView={detailShown}>
         <DetailsBoxLeft detailView={detailShown}>
           <ProductsInfoRow>
             <ProductName>
               <div>
-                <Link
-                  href={`/terrazzo/${collectionSlug}/${product.slug}`}
-                  passHref
-                >
+                <Link href={`/terrazzo/${product.slug}`} passHref>
                   <ProductListTitle>
                     <Text as="h3" variant="Display-XSmall" altFont={true}>
                       {product.title}
@@ -236,7 +229,7 @@ const ProductCard = ({
                 <ArrowButton
                   mode="dark"
                   title="View product details"
-                  link={`/terrazzo/${collectionSlug}/${product.slug}`}
+                  link={`/terrazzo/${product.slug}`}
                 />
               </Details>
             </ProductInfoBox>
@@ -269,10 +262,10 @@ const ProductCard = ({
                           handleTechnicalSpecificationCopy(product)
                         }
                       >
-                        <span style={{ marginRight: '12px' }}>
+                        <span style={{ marginRight: "12px" }}>
                           {copyProductId === product.id
-                            ? 'Copied to your clipboard'
-                            : 'Click here to copy technical specification'}
+                            ? "Copied to your clipboard"
+                            : "Click here to copy technical specification"}
                         </span>
                       </TechnicalSpecification>
                     </li>
@@ -287,7 +280,7 @@ const ProductCard = ({
             <ListCardImgContainer detailView={detailShown}>
               <CardImg detailView={detailShown}>
                 {product?.thumbImageList?.[0]?.url && (
-                  <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
+                  <Link href={`/terrazzo/${product.slug}`}>
                     <a>
                       <Image
                         placeholder="blur"
@@ -309,7 +302,7 @@ const ProductCard = ({
                 >
                   {!isSelected && (
                     <span className="hovered">
-                      <AddIcon color="white" />{' '}
+                      <AddIcon color="white" />{" "}
                       <Text color="white" variant="Body-XSmall">
                         Add To Selection
                       </Text>
@@ -327,7 +320,7 @@ const ProductCard = ({
                   )}
                   {isSelected && (
                     <span className="hovered">
-                      <CrossIcon />{' '}
+                      <CrossIcon />{" "}
                       <Text color="white" variant="Body-XSmall">
                         Remove Selection
                       </Text>
@@ -356,24 +349,24 @@ const ProductCard = ({
       <Container compact={compact} hoverBG={hoverBG}>
         <GridCardImgContainer compact={compact}>
           {product?.thumbImageList?.[0]?.url && (
-            <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
-              <a css={css({ width: compact && '100%', cursor: 'pointer' })}>
+            <Link href={`/terrazzo/${product.slug}`}>
+              <a css={css({ width: compact && "100%", cursor: "pointer" })}>
                 <div
                   css={css({
-                    position: 'relative',
-                    width: compact ? '100%' : 180,
-                    height: compact ? 'auto' : 180,
+                    position: "relative",
+                    width: compact ? "100%" : 228,
+                    height: compact ? "auto" : 228,
                     [theme.mediaQueries.mLarge]: {
-                      width: compact ? '100%' : 228,
-                      height: compact ? 'auto' : 228,
+                      width: compact ? "100%" : 228,
+                      height: compact ? "auto" : 228,
                     },
-                    '&::after': compact && {
-                      width: '100%',
-                      content: '" "',
-                      display: 'block',
-                      paddingBottom: '100%',
-                      position: 'absolute',
-                      bottom: '0',
+                    "&::after": compact && {
+                      width: "100%",
+                      content: "' '",
+                      display: "block",
+                      paddingBottom: "100%",
+                      position: "absolute",
+                      bottom: "0",
                     },
                   })}
                 >
@@ -398,7 +391,7 @@ const ProductCard = ({
             >
               {!isSelected && (
                 <span className="hovered">
-                  <AddIcon color="white" />{' '}
+                  <AddIcon color="white" />{" "}
                   <Text color="white" variant="Body-XSmall">
                     Add To Selection
                   </Text>
@@ -416,7 +409,7 @@ const ProductCard = ({
               )}
               {isSelected && (
                 <span className="hovered">
-                  <CrossIcon />{' '}
+                  <CrossIcon />{" "}
                   <Text color="white" variant="Body-XSmall">
                     Remove Selection
                   </Text>
@@ -431,7 +424,7 @@ const ProductCard = ({
           altFont={true}
           marginTop="25px"
         >
-          <Link href={`/terrazzo/${collectionSlug}/${product.slug}`} passHref>
+          <Link href={`/terrazzo/${product.slug}`} passHref>
             <ProductTitleLink>{product.title}</ProductTitleLink>
           </Link>
         </CardTitle>

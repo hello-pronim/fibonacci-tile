@@ -8,6 +8,7 @@ import AddIcon from "@components/icons/add";
 import Container from "@components/common/layout/container";
 import theme from "@styles/theme";
 import {
+  ProductIndividualHeroContainer,
   LeftCol,
   RightCol,
   Pill,
@@ -19,12 +20,13 @@ import {
 const Hero = ({ project }) => {
   const crumbs = [
     { path: "/", name: "Home" },
-    { path: "/in-use", name: "In Use" },
+    { path: "/in-use", name: "In Use", mobileHide: true },
     { name: project.title },
   ];
   return (
-    <>
+    <ProductIndividualHeroContainer>
       <div
+        className="CollectionBreadCrumbBlock"
         css={css({
           position: "absolute",
           maxWidth: "2560px",
@@ -36,10 +38,10 @@ const Hero = ({ project }) => {
       >
         <BreadCrumb crumbs={crumbs} pt={0} />
       </div>
-      <Container css={css({ pr: "0 !important", pt: 80 })}>
+      <Container className="projectIndividualContainer" css={css({ pr: "0 !important", pt: 80 })}>
         <LeftCol>
           <div>
-            <ContentWrapper>
+            <ContentWrapper className="projectContentWrapper">
               {project.location && (
                 <Text
                   as="h6"
@@ -170,7 +172,7 @@ const Hero = ({ project }) => {
           )}
         </RightCol>
       </Container>
-    </>
+    </ProductIndividualHeroContainer>
   );
 };
 export default Hero;

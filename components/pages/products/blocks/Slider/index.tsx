@@ -48,12 +48,14 @@ function TopSlider({ items = [], disableNext = false }) {
               }}
             >
               <Image
+                className="image"
                 placeholder="blur"
                 blurDataURL={item.blurThumb.url}
                 src={item.bannerImage.url}
                 alt={item.bannerImage.title}
                 width={item.bannerImage.width}
                 height={item.bannerImage.height}
+                objectFit="cover"
                 layout="responsive"
               />
               <BannerTextWrapper>

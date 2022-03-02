@@ -1,16 +1,16 @@
-import Image from "next/image";
-import Link from "next/link";
-import { useAppContext } from "@contexts/AppContext";
-import Text from "@components/common/typography";
-import AddIcon from "@components/icons/add";
-import CheckMarkIcon from "@components/icons/checkmark";
-import CrossIcon from "@components/icons/cross";
+import Image from 'next/image';
+import Link from 'next/link';
+import { useAppContext } from '@contexts/AppContext';
+import Text from '@components/common/typography';
+import AddIcon from '@components/icons/add';
+import CheckMarkIcon from '@components/icons/checkmark';
+import CrossIcon from '@components/icons/cross';
 import {
   ActionBtnContainer,
   CardSubTitle,
   CardTitle,
   GridCardImgContainer,
-} from "../card/styles";
+} from '../card/styles';
 
 import {
   Wrapper,
@@ -18,29 +18,30 @@ import {
   ActionBtn,
   ConfirmActionBtn,
   ConfirmActionBtnContainer,
-} from "./styles";
+  ContainerSideBar,
+} from './styles';
 
 const SelectedProductCard = ({
   product,
   isSelected = false,
   toggleProductSelect,
+  isSampleSelected = false,
   confirmSample = false,
-  activeCollectionSlug = null,
+  compact = false,
 }) => {
-  let collectionSlug = activeCollectionSlug
-    ? activeCollectionSlug
-    : product?.collections[0]?.slug;
-
   const sampleSelectedCount = Number(
     process.env.NEXT_PUBLIC_SAMPLE_SELECTION_COUNT
   );
   const {
     state: { confirmedProducts },
   } = useAppContext();
-
+  let MyContainer = Container;
+  if (compact) {
+    MyContainer = ContainerSideBar;
+  }
   return (
     <Wrapper>
-      <Container>
+      <MyContainer compact={compact}>
         {confirmedProducts?.length >= sampleSelectedCount && !isSelected && (
           <div className="overlay">
             Choose up to {sampleSelectedCount} samples.
@@ -50,7 +51,7 @@ const SelectedProductCard = ({
         )}
         <GridCardImgContainer compact={true}>
           {product?.thumbImageList?.[0]?.url && (
-            <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
+            <Link href={`/terrazzo/${product.slug}`}>
               <a>
                 <Image
                   placeholder="blur"
@@ -74,25 +75,18 @@ const SelectedProductCard = ({
               >
                 {!isSelected && (
                   <span className="hovered">
-                    <AddIcon color="white" />{" "}
+                    <AddIcon color="white" />{' '}
                     <Text color="white" variant="Body-XSmall">
                       Confirm Sample
                     </Text>
                   </span>
                 )}
-                {!isSelected && (
-                  <span className="initial">
-                    <AddIcon color="black" />
-                  </span>
-                )}
-                {isSelected && (
-                  <span className="initial">
-                    <CheckMarkIcon color="white" />
-                  </span>
-                )}
+                <span className="initial">
+                  <CheckMarkIcon color={isSelected ? 'white' : 'black'} />
+                </span>
                 {isSelected && (
                   <span className="hovered">
-                    <CrossIcon />{" "}
+                    <CrossIcon />{' '}
                     <Text color="white" variant="Body-XSmall">
                       Remove Sample
                     </Text>
@@ -117,14 +111,14 @@ const SelectedProductCard = ({
           altFont={true}
           marginTop="25px"
         >
-          <Link href={`/terrazzo/${collectionSlug}/${product?.slug}`}>
+          <Link href={`/terrazzo/${product?.slug}`}>
             <a>{product?.title}</a>
           </Link>
         </CardTitle>
         <CardSubTitle as="h4" variant="Body-Small">
           {product?.subHeading}
         </CardSubTitle>
-      </Container>
+      </MyContainer>
     </Wrapper>
   );
 };

@@ -1,28 +1,40 @@
-import Text from "@components/common/typography";
-import { css } from "@styled-system/css";
-import ArrowButton from "@components/common/button/arrowButton";
-import SelectedProductCard from "@components/common/product/selectedCard";
-import { useAppContext } from "@contexts/AppContext";
-import Button from "@components/common/button/arrowButton";
+import Text from '@components/common/typography';
+import { css } from '@styled-system/css';
+import ArrowButton from '@components/common/button/arrowButton';
+import SelectedProductCard from '@components/common/product/selectedCard';
+import { useAppContext } from '@contexts/AppContext';
+import Button from '@components/common/button/arrowButton';
 
 import {
   TopBar,
   ProductContainer,
   ButtonWrapper,
   BttnLeftPadding,
-} from "./styles";
+} from './styles';
 
-import {
-  CheckoutFooter,
-} from "../styles";
-const numberToWord = ["one", "two", "threee", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"];
+import { CheckoutFooter } from '../styles';
+const numberToWord = [
+  'one',
+  'two',
+  'threee',
+  'four',
+  'five',
+  'six',
+  'seven',
+  'eight',
+  'nine',
+  'ten',
+  'eleven',
+  'twelve',
+];
 
-const Samples = ({ activeCheckoutStep, disabled, stepChange }) => {
+const Samples = ({ disabled, stepChange }) => {
   const { state, dispatch } = useAppContext();
   const selectedProducts = state.selectedProducts;
   const confirmedProducts = state.confirmedProducts;
-  const sampleSelectionCount = Number(process.env.NEXT_PUBLIC_SAMPLE_SELECTION_COUNT);
-  
+  const sampleSelectionCount = Number(
+    process.env.NEXT_PUBLIC_SAMPLE_SELECTION_COUNT
+  );
   return (
     <>
       <TopBar>
@@ -33,7 +45,8 @@ const Samples = ({ activeCheckoutStep, disabled, stepChange }) => {
             fontSize: 32,
           })}
         >
-          Confirm your {numberToWord[sampleSelectionCount - 1]} Fibonacci samples
+          Confirm your {numberToWord[sampleSelectionCount - 1]} Fibonacci
+          samples
         </Text>
         <ButtonWrapper>
           <Button
@@ -41,15 +54,15 @@ const Samples = ({ activeCheckoutStep, disabled, stepChange }) => {
             title="Share my selections"
             onClick={() => {
               dispatch({
-                type: "OPEN_DRAWER",
+                type: 'OPEN_DRAWER',
                 value:
-                  state.activeDrawerTab !== "share-selection"
+                  state.activeDrawerTab !== 'share-selection'
                     ? true
                     : !state.openDrawer,
               }),
                 dispatch({
-                  type: "SET_ACTIVE_DRAWER_TAB",
-                  value: "share-selection",
+                  type: 'SET_ACTIVE_DRAWER_TAB',
+                  value: 'share-selection',
                 });
             }}
           />
@@ -59,15 +72,15 @@ const Samples = ({ activeCheckoutStep, disabled, stepChange }) => {
               title="Need more than six samples "
               onClick={() => {
                 dispatch({
-                  type: "OPEN_DRAWER",
+                  type: 'OPEN_DRAWER',
                   value:
-                    state.activeDrawerTab !== "need-more-selection"
+                    state.activeDrawerTab !== 'need-more-selection'
                       ? true
                       : !state.openDrawer,
                 }),
                   dispatch({
-                    type: "SET_ACTIVE_DRAWER_TAB",
-                    value: "need-more-selection",
+                    type: 'SET_ACTIVE_DRAWER_TAB',
+                    value: 'need-more-selection',
                   });
               }}
             />
@@ -81,11 +94,16 @@ const Samples = ({ activeCheckoutStep, disabled, stepChange }) => {
               product={product}
               isSelected={
                 confirmedProducts &&
-                confirmedProducts.findIndex((sp) => sp?.id === product.id) !== -1
+                confirmedProducts.findIndex((sp) => sp?.id === product.id) !==
+                  -1
+              }
+              isSampleSelected={
+                selectedProducts &&
+                selectedProducts.findIndex((sp) => sp?.id === product.id) !== -1
               }
               toggleProductSelect={() =>
                 dispatch({
-                  type: "TOGGLE_CONFIRM_PRODUCT_SELECTION",
+                  type: 'TOGGLE_CONFIRM_PRODUCT_SELECTION',
                   product,
                 })
               }
@@ -101,7 +119,13 @@ const Samples = ({ activeCheckoutStep, disabled, stepChange }) => {
           bgColor="#141414"
           title="Continue to Details"
           link=""
-          onClick={() => stepChange(2)}
+          onClick={() => {
+            stepChange(2);
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth', // for smoothly scrolling
+            });
+          }}
           disabled={disabled}
         />
       </CheckoutFooter>

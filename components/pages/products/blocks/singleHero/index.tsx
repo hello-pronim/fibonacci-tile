@@ -11,26 +11,24 @@ import Arrow from '@components/common/icons/arrow';
 import theme from '@styles/theme';
 import { Container, LinkWrapper, LinkWrapperLeft, Pill } from './styles';
 
-const SingleHeroModule = ({ product, collectionSlug }) => {
+const SingleHeroModule = ({ product }) => {
   const crumbs = [
     { path: '/terrazzo', name: 'Our Products' },
     { path: '/terrazzo', name: 'Terrazzo', mobileHide: true },
     { name: product.title },
   ];
   const { state, dispatch } = useAppContext();
-  const activeCollection = product.collections.find(
-    (collection: any) => collection.slug === collectionSlug
-  );
+  const activeCollection = product.collections[0];
   return (
     <>
       <div
         css={css({
-          maxWidth: "2560px",
-          pl: "20px",
+          maxWidth: '2560px',
+          pl: '20px',
           pt: 92,
           pb: 0,
           [theme.mediaQueries.small]: {
-            pl: "32px",
+            pl: '32px',
           },
         })}
       >
@@ -111,7 +109,7 @@ const SingleHeroModule = ({ product, collectionSlug }) => {
             <div>
               <Text variant="Display-Overline">EXPLORE COLLECTION</Text>
               <LinkWrapper>
-                <Link href={`/terrazzo/${activeCollection.slug}`}>
+                <Link href={`/terrazzo/collection/${activeCollection.slug}`}>
                   {activeCollection?.title}
                 </Link>
                 <Arrow type="short" />
@@ -178,18 +176,14 @@ const SingleHeroModule = ({ product, collectionSlug }) => {
             {product?.prev?.collections?.[0]?.slug && (
               <LinkWrapperLeft>
                 <Arrow type="short" direction="left" />
-                <Link
-                  href={`/terrazzo/${product?.prev?.collections?.[0]?.slug}/${product.prev.slug}`}
-                >
+                <Link href={`/terrazzo/${product.prev.slug}`}>
                   Previous Product
                 </Link>
               </LinkWrapperLeft>
             )}
             {product.next && (
               <LinkWrapper>
-                <Link
-                  href={`/terrazzo/${product?.next?.collections?.[0]?.slug}/${product.next.slug}`}
-                >
+                <Link href={`/terrazzo/${product.next.slug}`}>
                   Next Product
                 </Link>
                 <Arrow type="short" />

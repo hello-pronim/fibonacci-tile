@@ -19,7 +19,7 @@ const ProductSelectRow = ({ row, products, onProductUpdate }) => {
 
   const isDisabled = sizes.length > 0 ? false : true;
   return (
-    <Row key={row.id}>
+    <Row key={row.id} borderBottom={true}>
       <Col>
         <ProductSelect
           name="productId"

@@ -10,7 +10,10 @@ const Container = styled("section")(
 );
 
 const SliderWrapper = styled("div")({
-  width: "80%",
+  width: "66.7%",
+  [theme.mediaQueries.small]: {
+    width: "80%",
+  },
   ".slick-list": {
     overflow: "visible",
     padding: "0 20% 0 0",
@@ -21,6 +24,29 @@ const SliderItem = styled("div")(
   css({
     position: "relative",
     cursor: "pointer",
+    width: "100%",
+    "& > div:first-child": {
+      position: "unset!important",
+      [theme.mediaQueries.small]: {
+        position: "relative!important",
+      },
+      "& >div:first-child": {
+        display: "none!important",
+        [theme.mediaQueries.small]: {
+          display: "block!important",
+        },
+      },
+    },
+    ".image": {
+      objectFit: "cover!important",
+      width: "100%!important",
+      position: "relative!important",
+      height: "480px!important",
+      [theme.mediaQueries.small]: {
+        height: "0px!important",
+        position: "absolute!important",
+      },
+    },
   })
 );
 
@@ -28,17 +54,21 @@ const BannerTextWrapper = styled("div")(
   css({
     position: "absolute",
     color: theme.colors.white,
-    top: "50%",
-    transform: "translateY(-50%)",
-    left: "70px",
-    width: "512px",
+    left: "16px",
+    top: "160px",
+    [theme.mediaQueries.small]: {
+      top: "50%",
+      left: "70px",
+      width: "512px",
+      transform: "translateY(-50%)",
+    },
   })
 );
 
 const BannerSubHeading = styled("h3")(
   css({
     fontSize: "12px",
-    lineHeight: 1.5,
+    lineHeight: "16.8px",
     textTransform: "uppercase",
     letterSpacing: "0.1em",
   })
@@ -46,18 +76,28 @@ const BannerSubHeading = styled("h3")(
 
 const BannerHeading = styled("h2")(
   css({
-    fontSize: "80px",
-    lineHeight: 1,
-    paddingTop: "25px",
+    fontSize: "44px",
+    lineHeight: "50.6px",
+    paddingTop: "8px",
+    [theme.mediaQueries.small]: {
+      fontSize: "80px",
+      lineHeight: "88px",
+      paddingTop: "16px",
+    },
   })
 );
 
 const BannerDescription = styled("p")(
   css({
-    fontSize: "20px",
-    lineHeight: 1.6,
-    fontWeight: 300,
-    paddingTop: "25px",
+    width: "80%",
+    fontSize: "16px",
+    lineHeight: "22.4px",
+    paddingTop: "8px",
+    [theme.mediaQueries.small]: {
+      fontSize: "20px",
+      lineHeight: "28px",
+      paddingTop: "16px",
+    },
   })
 );
 
