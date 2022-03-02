@@ -24,6 +24,7 @@ const SelectedProductCard = ({
   product,
   isSelected = false,
   toggleProductSelect,
+  isSampleSelected = false,
   confirmSample = false,
   activeCollectionSlug = null,
 }) => {
@@ -69,7 +70,7 @@ const SelectedProductCard = ({
           {!confirmSample && (
             <ActionBtnContainer>
               <ActionBtn
-                checked={isSelected}
+                checked={isSampleSelected}
                 onClick={() => toggleProductSelect(product)}
               >
                 {!isSelected && (
@@ -80,12 +81,13 @@ const SelectedProductCard = ({
                     </Text>
                   </span>
                 )}
-                {!isSelected && (
+                {/* {!isSelected && (
                   <span className="initial">
+                    asd
                     <AddIcon color="black" />
                   </span>
-                )}
-                {isSelected && (
+                )} */}
+                {isSampleSelected && (
                   <span className="initial">
                     <CheckMarkIcon color="white" />
                   </span>

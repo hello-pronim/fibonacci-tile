@@ -65,7 +65,7 @@ const CheckoutPage = ({ notifications }) => {
     disabled = true;
   }
 
-  const crumbs = [{ path: "/terrazo", name: "Terrazzo" }, { name: "Checkout" }];
+  const crumbs = [{ path: "/terrazzo", name: "Terrazzo" }, { name: "Checkout" }];
   const stepChange = (step) => {
     if (disabled) {
       return;
