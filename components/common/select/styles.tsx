@@ -29,6 +29,7 @@ const StyledSelect = styled("select")(
           : "none",
       marginBottom: "24px",
       appearance: "none",
+      outline: "none",
     })
 );
 

@@ -193,6 +193,7 @@ const LinkWrapper = styled('div')(
     svg: {
       transition: 'ease all 0.3s',
     },
+    paddingRight: "120px",
     '&:hover': {
       svg: {
         transform: 'translateX(6px)',
@@ -290,37 +291,37 @@ const SlideImageMobile = styled('div')(
 //   })
 // );
 
-const NextWrapper = styled('button')(
+const NextWrapper = styled("button")(
   css({
-    display: 'none',
-    border: 'none',
-    position: 'absolute',
+    display: "none",
+    border: "none",
+    position: "absolute",
     right: 0,
-    bottom: 87,
-    bg: 'charcoal',
-    px: 10,
-    py: 10,
-    cursor: 'pointer',
+    bottom: 40,
+    bg: "transparent",
+    cursor: "pointer",
+    padding: "0",
+    outline: "none",
     [theme.mediaQueries.medium]: {
-      display: 'block',
+      display: "block",
     },
   })
 );
 
-const PreviousWrapper = styled('button')(
+const PreviousWrapper = styled("button")(
   css({
-    display: 'none',
-    border: 'none',
-    position: 'absolute',
+    display: "none",
+    border: "none",
+    position: "absolute",
     right: 0,
-    bottom: 87,
-    bg: 'charcoal',
-    px: 20,
-    py: 10,
-    mr: 50,
-    cursor: 'pointer',
+    bottom: 40,
+    bg: "transparent",
+    mr: 40,
+    cursor: "pointer",
+    padding: "0",
+    outline: "none",
     [theme.mediaQueries.medium]: {
-      display: 'block',
+      display: "block",
     },
   })
 );
