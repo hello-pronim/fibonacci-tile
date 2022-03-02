@@ -86,7 +86,6 @@ const CheckoutPage = ({ notifications }) => {
             activeCheckoutStep === 1 || activeCheckoutStep === 4 ? false : true
           }
         >
-          {' '}
           <div
             css={css({
               maxWidth: '2560px',

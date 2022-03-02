@@ -33,7 +33,6 @@ const Product: NextPage<ProductPageProps> = ({
         relatedProducts={relatedProducts}
         product={product}
         specifications={specifications}
-        collectionSlug={params["collection-slug"]}
         notifications={notifications}
       />
       <Footer />
