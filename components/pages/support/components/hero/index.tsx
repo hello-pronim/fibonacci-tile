@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { css } from "@emotion/react";
-import Text from "@components/common/typography";
-import { Container } from "./styles";
 import BreadCrumb from "@components/common/breadcrumb";
 import getTextColor from "@utils/contrastAwareColors";
 import avgBgColor from "@utils/avgBgColor";
+import {
+  Container,
+  HeroTextWrapper,
+  PrimaryText,
+  SecondaryText,
+} from "./styles";
 
 const Hero = ({ pageTitle }) => {
   const [bgColor, setBgColor] = useState("");
@@ -33,29 +37,25 @@ const Hero = ({ pageTitle }) => {
           color={bgColor && getTextColor(bgColor)}
         />
       </div>
-      <Container css={css({ backgroundImage: `url(${bg})` })}>
-        <div
-          css={css({
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            rowGap: 32,
-            paddingTop: 120,
-            paddingBottom: 120,
-          })}
+      <Container
+    css={css({ backgroundImage: `url(${bg})` })}
+    >
+      <HeroTextWrapper>
+        <PrimaryText
+          variant="Display-Large"
+          altFont
+          css={css({ color: "white" })}
         >
-          <Text variant="Display-Large" altFont css={css({ color: "white" })}>
-            {pageTitle}
-          </Text>
-          <Text
-            variant="Display-Overline"
-            css={css({ textTransform: "uppercase", color: "white" })}
-          >
-            How can we help?
-          </Text>
-        </div>
-      </Container>
+          {pageTitle}
+        </PrimaryText>
+        <SecondaryText
+          variant="Display-Overline"
+          css={css({ textTransform: "uppercase", color: "white" })}
+        >
+          How can we help?
+        </SecondaryText>
+      </HeroTextWrapper>
+    </Container>
     </>
   );
 };
