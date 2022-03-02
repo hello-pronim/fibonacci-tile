@@ -6,6 +6,9 @@ import Text from "@components/common/typography";
 interface ImgContainerProps {
   position: string;
 }
+interface CTADetailsProps {
+  position: string;
+}
 
 const CTAContainer = styled("section")(
   css({
@@ -18,19 +21,22 @@ const CTAContainer = styled("section")(
     maxWidth: "2560px",
     position: "relative",
     width: "100%",
-    gap: "24px",
+    gap: "40px",
     [theme.mediaQueries.small]: {
       flexWrap: "wrap",
       flexDirection: "row",
       justifyContent: "space-between",
+      gap: "24px",
     },
   })
 );
 
-const CTADetails = styled("div")(
+const CTADetails = styled("div")(({ position }: CTADetailsProps) =>
   css({
+    order: position === "left" ? 1 : 2,
     padding: "0px 16px",
     [theme.mediaQueries.small]: {
+      order: position === "left" ? 2 : 1,
       width: "34%",
       padding: "0px 75px",
     },
@@ -77,10 +83,10 @@ const CTAIntroWrapper = styled("div")(css({}));
 
 const ImgContainer = styled("div")(({ position }: ImgContainerProps) =>
   css({
-    order: 2,
+    order: position === "left" ? 1 : 2,
     [theme.mediaQueries.small]: {
       width: "53%",
-      order: position === "left" ? 2 : "unset",
+      order: position === "left" ? 2 : 1,
     },
   })
 );
