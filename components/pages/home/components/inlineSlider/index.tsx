@@ -60,7 +60,7 @@ const InlineSlider = ({ projects }) => {
 
   const settings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     slidesToShow: 2,
     slidesToScroll: 1,
     arrows: false,
