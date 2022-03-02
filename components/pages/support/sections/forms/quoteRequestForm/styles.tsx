@@ -131,16 +131,25 @@ const FormGroupTitle = styled('div')(
 );
 
 const Row = styled('div')(
-  css({
-    display: 'flex',
-    width: '100%',
-    gap: '16px',
-  })
+  ({ borderBottom = false }: { borderBottom?: boolean }) =>
+    css({
+      width: '100%',
+      borderBottom: borderBottom ? '1px solid #D6CEC5' : '',
+      paddingTop: borderBottom ? 15 : 0,
+      mb: borderBottom ? 10 : 0,
+      [theme.mediaQueries.small]: {
+        display: 'flex',
+        gap: '16px',
+      },
+    })
 );
 
 const Col = styled('div')(
   css({
-    flex: 1,
+    width: '100%',
+    [theme.mediaQueries.small]: {
+      flex: 1,
+    },
   })
 );
 
