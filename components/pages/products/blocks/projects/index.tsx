@@ -25,9 +25,16 @@ import theme from "@styles/theme";
 interface ProjectModuleTypes {
   accentText: string;
   product: any;
+  specifications: any;
+  relatedProducts: any;
 }
 
-const ProjectsModule = ({ accentText, product }: ProjectModuleTypes) => {
+const ProjectsModule = ({
+  accentText,
+  product,
+  specifications,
+  relatedProducts,
+}: ProjectModuleTypes) => {
   const { project1, project2, backgroundColor } = product;
 
   return (
@@ -38,7 +45,11 @@ const ProjectsModule = ({ accentText, product }: ProjectModuleTypes) => {
       {(project1?.length > 0 || project1?.length > 0) && (
         <AccentText top={420}>{accentText}</AccentText>
       )}
-      <IntroWrapper>
+      <IntroWrapper
+        css={css({
+          pb: project1?.length === 0 && project2?.length === 0 && 0,
+        })}
+      >
         <Text
           variant="Display-Medium"
           altFont
@@ -54,46 +65,54 @@ const ProjectsModule = ({ accentText, product }: ProjectModuleTypes) => {
       <Sections>
         <Text variant="Display-Overline">SECTIONS</Text>
         <SectionList>
-          <SectionItem>
-            <Text variant="Body-Regular">
-              <a
-                href="#projects"
-                css={css({ color: "inherit", textDecoration: "none" })}
-              >
-                Products in use
-              </a>
-            </Text>
-          </SectionItem>
-          <SectionItem>
-            <Text variant="Body-Regular">
-              <a
-                href="#gallery"
-                css={css({ color: "inherit", textDecoration: "none" })}
-              >
-                Gallery
-              </a>
-            </Text>
-          </SectionItem>
-          <SectionItem>
-            <Text variant="Body-Regular">
-              <a
-                href="#technical-specifications"
-                css={css({ color: "inherit", textDecoration: "none" })}
-              >
-                Technical specs
-              </a>
-            </Text>
-          </SectionItem>
-          <SectionItem>
-            <Text variant="Body-Regular">
-              <a
-                href="#related-products"
-                css={css({ color: "inherit", textDecoration: "none" })}
-              >
-                Related products
-              </a>
-            </Text>
-          </SectionItem>
+          {(project1?.length > 0 || project2?.length > 0) && (
+            <SectionItem>
+              <Text variant="Body-Regular">
+                <a
+                  href="#projects"
+                  css={css({ color: "inherit", textDecoration: "none" })}
+                >
+                  Products in use
+                </a>
+              </Text>
+            </SectionItem>
+          )}
+          {product?.gallery?.length > 0 && (
+            <SectionItem>
+              <Text variant="Body-Regular">
+                <a
+                  href="#gallery"
+                  css={css({ color: "inherit", textDecoration: "none" })}
+                >
+                  Gallery
+                </a>
+              </Text>
+            </SectionItem>
+          )}
+          {specifications?.length > 0 && (
+            <SectionItem>
+              <Text variant="Body-Regular">
+                <a
+                  href="#technical-specifications"
+                  css={css({ color: "inherit", textDecoration: "none" })}
+                >
+                  Technical specs
+                </a>
+              </Text>
+            </SectionItem>
+          )}
+          {relatedProducts?.length > 0 && (
+            <SectionItem>
+              <Text variant="Body-Regular">
+                <a
+                  href="#related-products"
+                  css={css({ color: "inherit", textDecoration: "none" })}
+                >
+                  Related products
+                </a>
+              </Text>
+            </SectionItem>
+          )}
         </SectionList>
       </Sections>
       {project1?.length > 0 && (
