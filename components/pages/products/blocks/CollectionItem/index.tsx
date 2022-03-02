@@ -25,7 +25,7 @@ const CollectionsItem = ({ collection, collectionProducts }) => {
           <ArrowButton
             mode="dark"
             title="Explore Collection"
-            link={`/terrazzo/${collection.slug}`}
+            link={`/terrazzo/collection/${collection.slug}`}
             visibleArrow={true}
           />
         </CollectionDetail>
