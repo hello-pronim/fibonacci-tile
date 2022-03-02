@@ -18,6 +18,7 @@ import {
   ActionBtn,
   ConfirmActionBtn,
   ConfirmActionBtnContainer,
+  ContainerSideBar,
 } from './styles';
 
 const SelectedProductCard = ({
@@ -34,10 +35,13 @@ const SelectedProductCard = ({
   const {
     state: { confirmedProducts },
   } = useAppContext();
-
+  let MyContainer = Container;
+  if (compact) {
+    MyContainer = ContainerSideBar;
+  }
   return (
     <Wrapper>
-      <Container compact={compact}>
+      <MyContainer compact={compact}>
         {confirmedProducts?.length >= sampleSelectedCount && !isSelected && (
           <div className="overlay">
             Choose up to {sampleSelectedCount} samples.
@@ -66,7 +70,7 @@ const SelectedProductCard = ({
           {!confirmSample && (
             <ActionBtnContainer>
               <ActionBtn
-                checked={isSampleSelected}
+                checked={isSelected}
                 onClick={() => toggleProductSelect(product)}
               >
                 {!isSelected && (
@@ -77,17 +81,9 @@ const SelectedProductCard = ({
                     </Text>
                   </span>
                 )}
-                {/* {!isSelected && (
-                  <span className="initial">
-                    asd
-                    <AddIcon color="black" />
-                  </span>
-                )} */}
-                {isSampleSelected && (
-                  <span className="initial">
-                    <CheckMarkIcon color="white" />
-                  </span>
-                )}
+                <span className="initial">
+                  <CheckMarkIcon color={isSelected ? 'white' : 'black'} />
+                </span>
                 {isSelected && (
                   <span className="hovered">
                     <CrossIcon />{' '}
@@ -122,7 +118,7 @@ const SelectedProductCard = ({
         <CardSubTitle as="h4" variant="Body-Small">
           {product?.subHeading}
         </CardSubTitle>
-      </Container>
+      </MyContainer>
     </Wrapper>
   );
 };

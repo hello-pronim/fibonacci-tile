@@ -28,7 +28,7 @@ const numberToWord = [
   'twelve',
 ];
 
-const Samples = ({ activeCheckoutStep, disabled, stepChange }) => {
+const Samples = ({ disabled, stepChange }) => {
   const { state, dispatch } = useAppContext();
   const selectedProducts = state.selectedProducts;
   const confirmedProducts = state.confirmedProducts;
