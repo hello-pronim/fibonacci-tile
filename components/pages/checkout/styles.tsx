@@ -46,7 +46,7 @@ const CheckoutWrapper = styled("div")(() =>
 const LeftContent = styled("div")(({...props }: containerProps) =>
   css({
     width: props.displayRight === true ? "100%" : "100%",
-    paddingRight: "480px"
+    paddingRight:  props.displayRight === true ? "480px" : 0,
   })
 );
 const RightContent = styled("div")(({...props }: containerProps) =>
