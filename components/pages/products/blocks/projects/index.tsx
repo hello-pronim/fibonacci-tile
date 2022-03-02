@@ -78,7 +78,7 @@ const ProjectsModule = ({
               <Text variant="Body-Regular">
                 <a
                   href="#projects"
-                  onClick={(e) => handleSectionLinkClick(e, "products")}
+                  onClick={(e) => handleSectionLinkClick(e, "projects")}
                   css={css({ color: "inherit", textDecoration: "none" })}
                 >
                   Products in use
