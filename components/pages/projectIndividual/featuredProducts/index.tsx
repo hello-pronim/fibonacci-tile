@@ -10,7 +10,7 @@ const FeaturedProducts = ({ products }) => {
   return (
     <Container css={css({ pt: 80, pb: 80 })}>
       <LeftCol>
-        <Text variant="Display-Medium" altFont>
+        <Text className="textHeroBlock" variant="Display-Medium" altFont>
           Featured Products
         </Text>
       </LeftCol>
