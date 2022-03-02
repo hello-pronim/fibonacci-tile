@@ -10,14 +10,13 @@ const ProductPage = ({
   product,
   relatedProducts,
   specifications,
-  collectionSlug,
   notifications,
 }) => {
   const { backgroundColor } = product;
   return (
     <>
       <Header mode="dark" notifications={notifications} />
-      <SingleHeroModule product={product} collectionSlug={collectionSlug} />
+      <SingleHeroModule product={product} />
       <Projects
         product={product}
         specifications={specifications}

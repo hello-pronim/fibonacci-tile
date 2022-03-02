@@ -68,9 +68,6 @@ const ProductCard = ({
 }: CardProps) => {
   const [detailShown, setDetailShown] = useState(false);
   const [copyProductId, setCopyProductId] = useState(undefined);
-  let collectionSlug = activeCollectionSlug
-    ? activeCollectionSlug
-    : product?.collections[0]?.slug;
 
   const getProductVariationsText = (productVariations) => {
     let text = "";
@@ -166,10 +163,7 @@ const ProductCard = ({
           <ProductsInfoRow>
             <ProductName>
               <div>
-                <Link
-                  href={`/terrazzo/${collectionSlug}/${product.slug}`}
-                  passHref
-                >
+                <Link href={`/terrazzo/${product.slug}`} passHref>
                   <ProductListTitle>
                     <Text as="h3" variant="Display-XSmall" altFont={true}>
                       {product.title}
@@ -235,7 +229,7 @@ const ProductCard = ({
                 <ArrowButton
                   mode="dark"
                   title="View product details"
-                  link={`/terrazzo/${collectionSlug}/${product.slug}`}
+                  link={`/terrazzo/${product.slug}`}
                 />
               </Details>
             </ProductInfoBox>
@@ -286,7 +280,7 @@ const ProductCard = ({
             <ListCardImgContainer detailView={detailShown}>
               <CardImg detailView={detailShown}>
                 {product?.thumbImageList?.[0]?.url && (
-                  <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
+                  <Link href={`/terrazzo/${product.slug}`}>
                     <a>
                       <Image
                         placeholder="blur"
@@ -355,7 +349,7 @@ const ProductCard = ({
       <Container compact={compact} hoverBG={hoverBG}>
         <GridCardImgContainer compact={compact}>
           {product?.thumbImageList?.[0]?.url && (
-            <Link href={`/terrazzo/${collectionSlug}/${product.slug}`}>
+            <Link href={`/terrazzo/${product.slug}`}>
               <a css={css({ width: compact && "100%", cursor: "pointer" })}>
                 <div
                   css={css({
@@ -430,7 +424,7 @@ const ProductCard = ({
           altFont={true}
           marginTop="25px"
         >
-          <Link href={`/terrazzo/${collectionSlug}/${product.slug}`} passHref>
+          <Link href={`/terrazzo/${product.slug}`} passHref>
             <ProductTitleLink>{product.title}</ProductTitleLink>
           </Link>
         </CardTitle>

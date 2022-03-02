@@ -2,7 +2,6 @@ import css from "@styled-system/css";
 import Text from "@components/common/typography";
 import styled from "@emotion/styled";
 import theme from "styles/theme";
-import { height } from "styled-system";
 
 interface ActionBtnProps {
   checked: boolean;
