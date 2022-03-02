@@ -51,10 +51,11 @@ const LeftContent = styled("div")(({...props }: containerProps) =>
 );
 const RightContent = styled("div")(({...props }: containerProps) =>
   css({
+    overflow: "scroll",
     position: "absolute",
     right: 0,
     width: "460px",
-    height: "100%",
+    height: "calc(100% - 80px)",
     mt: 80,
     border: `solid 1px ${theme.colors.stoneTints[7]}`,
     borderTop: "none",

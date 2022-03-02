@@ -1,15 +1,16 @@
-import { useEffect, useState } from "react";
-import { useAppContext } from "@contexts/AppContext";
-import BreadCrumb from "@components/common/breadcrumb";
-import SelectedProductCard from "@components/common/product/selectedCard";
-import ArrowButton from "@components/common/button/arrowButton";
-import Header from "@components/common/header";
-import Samples from "./components/samples";
-import Details from "./components/details";
-import StepItem from "./components/stepItem";
-import Delivery from "./components/delivery";
-import Confirm from "./components/confirm";
-import css from "@styled-system/css";
+import { useEffect, useState } from 'react';
+import css from '@styled-system/css';
+import { useAppContext } from '@contexts/AppContext';
+import BreadCrumb from '@components/common/breadcrumb';
+import SelectedProductCard from '@components/common/product/selectedCard';
+import ArrowButton from '@components/common/button/arrowButton';
+import Header from '@components/common/header';
+import Text from '@components/common/typography';
+import Samples from './components/samples';
+import Details from './components/details';
+import StepItem from './components/stepItem';
+import Delivery from './components/delivery';
+import Confirm from './components/confirm';
 
 import {
   CheckoutStepWrapper,
@@ -21,7 +22,7 @@ import {
   SelectionWrapper,
   NoSamples,
   //CheckoutFooter,
-} from "./styles";
+} from './styles';
 const sampleSelectedCount = Number(
   process.env.NEXT_PUBLIC_SAMPLE_SELECTION_COUNT
 );
@@ -32,7 +33,7 @@ const CheckoutPage = ({ notifications }) => {
   useEffect(() => {
     setTimeout(() => {
       dispatch({
-        type: "OPEN_DRAWER",
+        type: 'OPEN_DRAWER',
         value: false,
       });
     }, 100);
@@ -43,7 +44,7 @@ const CheckoutPage = ({ notifications }) => {
       selectedProducts?.length <= sampleSelectedCount
     ) {
       dispatch({
-        type: "AUTO_CONFIRM_PRODUCT_SELECTION",
+        type: 'AUTO_CONFIRM_PRODUCT_SELECTION',
         products: selectedProducts,
       });
       setActiveCheckoutStep(2);
@@ -65,7 +66,10 @@ const CheckoutPage = ({ notifications }) => {
     disabled = true;
   }
 
-  const crumbs = [{ path: "/terrazzo", name: "Terrazzo" }, { name: "Checkout" }];
+  const crumbs = [
+    { path: '/terrazzo', name: 'Terrazzo' },
+    { name: 'Checkout' },
+  ];
   const stepChange = (step) => {
     if (disabled) {
       return;
@@ -81,28 +85,44 @@ const CheckoutPage = ({ notifications }) => {
           displayRight={
             activeCheckoutStep === 1 || activeCheckoutStep === 4 ? false : true
           }
-        >      <div
-        css={css({
-          maxWidth: "2560px",
-          pl: "32px",
-          pt: 92,
-          pb: 0,
-        })}
-      >
-        <BreadCrumb crumbs={crumbs} pt={0} />
-      </div>
+        >
+          <div
+            css={css({
+              maxWidth: '2560px',
+              pl: '32px',
+              pt: 92,
+              pb: 0,
+            })}
+          >
+            <BreadCrumb crumbs={crumbs} pt={0} />
+          </div>
           <CheckoutStepWrapper>
-          {
-          selectedProducts?.length !== 0 &&
-          <>
-          {selectedProducts?.length > sampleSelectedCount &&
-          <StepItem step={1} activeStep={activeCheckoutStep} stepChange={stepChange} />
-          }
-          <StepItem step={ selectedProducts?.length > sampleSelectedCount ? 2 : 1 } activeStep={activeCheckoutStep} stepChange={stepChange} />
-          <StepItem step={ selectedProducts?.length > sampleSelectedCount ? 3 : 2 } activeStep={activeCheckoutStep} stepChange={stepChange} />
-          <StepItem step={ selectedProducts?.length > sampleSelectedCount ? 4 : 3 } activeStep={activeCheckoutStep} stepChange={stepChange} />
-          </>
-          }
+            {selectedProducts?.length !== 0 && (
+              <>
+                {selectedProducts?.length > sampleSelectedCount && (
+                  <StepItem
+                    step={1}
+                    activeStep={activeCheckoutStep}
+                    stepChange={stepChange}
+                  />
+                )}
+                <StepItem
+                  step={selectedProducts?.length > sampleSelectedCount ? 2 : 1}
+                  activeStep={activeCheckoutStep}
+                  stepChange={stepChange}
+                />
+                <StepItem
+                  step={selectedProducts?.length > sampleSelectedCount ? 3 : 2}
+                  activeStep={activeCheckoutStep}
+                  stepChange={stepChange}
+                />
+                <StepItem
+                  step={selectedProducts?.length > sampleSelectedCount ? 4 : 3}
+                  activeStep={activeCheckoutStep}
+                  stepChange={stepChange}
+                />
+              </>
+            )}
           </CheckoutStepWrapper>
           {selectedProducts?.length > 0 && (
             <CheckoutContentWrapper>
@@ -127,7 +147,7 @@ const CheckoutPage = ({ notifications }) => {
                   activeCheckoutStep={activeCheckoutStep}
                 />
               )}
-              {activeCheckoutStep === 4 && <Confirm  stepChange={stepChange} />}
+              {activeCheckoutStep === 4 && <Confirm stepChange={stepChange} />}
             </CheckoutContentWrapper>
           )}
           {selectedProducts?.length === 0 && (
@@ -147,31 +167,47 @@ const CheckoutPage = ({ notifications }) => {
             activeCheckoutStep === 2 || activeCheckoutStep === 3 ? true : false
           }
         >
-          <p>
-            Selections (
-            {confirmedProducts?.length > 0 ? confirmedProducts?.length : 0})
-          </p>
-          <SelectionWrapper>
-            {confirmedProducts?.length > 0 &&
-              confirmedProducts.map((product) => (
-                <SelectedProductCard
-                  product={product}
-                  isSelected={
-                    state?.selectedProducts.findIndex(
-                      (sp) => sp.id === product?.id
-                    ) !== -1
-                  }
-                  toggleProductSelect={() =>
-                    dispatch({
-                      type: "TOGGLE_CONFIRM_PRODUCT_SELECTION",
-                      product,
-                    })
-                  }
-                  key={`product-${product?.id}`}
-                  confirmSample={true}
-                />
-              ))}
-          </SelectionWrapper>
+          <div
+            css={css({
+              pt: 35,
+              pr: 20,
+            })}
+          >
+            <Text variant="Body-Large">
+              Selections (
+              {confirmedProducts?.length > 0 ? confirmedProducts?.length : 0})
+            </Text>
+            <div
+              css={css({
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                pt: 28,
+                columnGap: 24,
+                rowGap: 16,
+              })}
+            >
+              {confirmedProducts?.length > 0 &&
+                confirmedProducts.map((product) => (
+                  <SelectedProductCard
+                    product={product}
+                    isSelected={
+                      state?.selectedProducts.findIndex(
+                        (sp) => sp.id === product?.id
+                      ) !== -1
+                    }
+                    toggleProductSelect={() =>
+                      dispatch({
+                        type: 'TOGGLE_CONFIRM_PRODUCT_SELECTION',
+                        product,
+                      })
+                    }
+                    key={`product-${product?.id}`}
+                    confirmSample={true}
+                    compact
+                  />
+                ))}
+            </div>
+          </div>
         </RightContent>
       </CheckoutWrapper>
 
