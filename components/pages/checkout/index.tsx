@@ -65,7 +65,7 @@ const CheckoutPage = ({ notifications }) => {
     disabled = true;
   }
 
-  const crumbs = [{ path: "/terrazo", name: "Terrazzo" }, { name: "Checkout" }];
+  const crumbs = [{ path: "/terrazzo", name: "Terrazzo" }, { name: "Checkout" }];
   const stepChange = (step) => {
     if (disabled) {
       return;
@@ -96,11 +96,11 @@ const CheckoutPage = ({ notifications }) => {
           selectedProducts?.length !== 0 &&
           <>
           {selectedProducts?.length > sampleSelectedCount &&
-          <StepItem step={1} activeStep={activeCheckoutStep} />
+          <StepItem step={1} activeStep={activeCheckoutStep} stepChange={stepChange} />
           }
-          <StepItem step={ selectedProducts?.length > sampleSelectedCount ? 2 : 1 } activeStep={activeCheckoutStep} />
-          <StepItem step={ selectedProducts?.length > sampleSelectedCount ? 3 : 2 } activeStep={activeCheckoutStep} />
-          <StepItem step={ selectedProducts?.length > sampleSelectedCount ? 4 : 3 } activeStep={activeCheckoutStep} />
+          <StepItem step={ selectedProducts?.length > sampleSelectedCount ? 2 : 1 } activeStep={activeCheckoutStep} stepChange={stepChange} />
+          <StepItem step={ selectedProducts?.length > sampleSelectedCount ? 3 : 2 } activeStep={activeCheckoutStep} stepChange={stepChange} />
+          <StepItem step={ selectedProducts?.length > sampleSelectedCount ? 4 : 3 } activeStep={activeCheckoutStep} stepChange={stepChange} />
           </>
           }
           </CheckoutStepWrapper>

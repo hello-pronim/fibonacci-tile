@@ -22,7 +22,6 @@ const Samples = ({ activeCheckoutStep, disabled, stepChange }) => {
   const selectedProducts = state.selectedProducts;
   const confirmedProducts = state.confirmedProducts;
   const sampleSelectionCount = Number(process.env.NEXT_PUBLIC_SAMPLE_SELECTION_COUNT);
-  
   return (
     <>
       <TopBar>
@@ -82,6 +81,10 @@ const Samples = ({ activeCheckoutStep, disabled, stepChange }) => {
               isSelected={
                 confirmedProducts &&
                 confirmedProducts.findIndex((sp) => sp?.id === product.id) !== -1
+              }
+              isSampleSelected={
+                selectedProducts &&
+                selectedProducts.findIndex((sp) => sp?.id === product.id) !== -1
               }
               toggleProductSelect={() =>
                 dispatch({

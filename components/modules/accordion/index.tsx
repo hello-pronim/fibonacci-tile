@@ -6,7 +6,7 @@ import { Item, Top, Inner, Toggle } from "./styles";
 import theme from "styles/theme";
 
 const Accordion = ({ items }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(null);
   const myRef = useRef({});
   const executeScroll = (value: any) => {
     setTimeout(() => {
