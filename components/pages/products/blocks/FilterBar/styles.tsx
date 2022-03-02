@@ -220,9 +220,9 @@ const IconContainer = styled("div")(({ active }: IsActiveProps) =>
 
 const LogoWrapper = styled("div")(
   css({
-    width: "4%;",
+    width: "100%",
     [theme.mediaQueries.small]: {
-      width: "4%;",
+      width: "4%",
     },
   })
 );
