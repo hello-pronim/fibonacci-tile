@@ -82,7 +82,7 @@ const ProjectList = ({ projects, types }: ProjectListType) => {
         ))}
       </FilterWrapperDesktop>
       <FilterWrapperMobile>
-        <Text variant="Body-Small">Filter</Text>
+        <Text variant="Body-Small" css={{ letterSpacing: "0.1em", }}>FILTER</Text>
         <Select
           variant="default"
           onChange={onProjectTypeChange}
@@ -90,7 +90,7 @@ const ProjectList = ({ projects, types }: ProjectListType) => {
           css={{ margin: 0 }}
         >
           <option key='all' value='all'>
-            All
+            ALL
           </option>
           {types.map((type) => (
             <option key={type.slug} value={type.slug}>
@@ -103,7 +103,7 @@ const ProjectList = ({ projects, types }: ProjectListType) => {
         <MasonryGrid
           breakpointCols={{
             default: 2,
-            768: 1,
+            1200: 1,
           }}
           className="masonry-grid"
           columnClassName="masonry-grid-column"
@@ -114,7 +114,7 @@ const ProjectList = ({ projects, types }: ProjectListType) => {
         </MasonryGrid>
         {displayedProjects.length ? (
           <LoadMoreWrapper>
-            {/* <ArrowButton mode="" title="Load more" link="#" size="" /> */}
+            <ArrowButton mode="" title="Load more" link="#" size="" />
           </LoadMoreWrapper>
         ) : (
           <></>

@@ -30,8 +30,8 @@ const ProjectCard = ({ project }) => {
         </Text>
       )}
       <Details>
-        <Text variant="Display-XSmall">{project.title}</Text>
-        <Text variant="Display-XSmall" color={theme.colors.concrete}>
+        <Text className="textSize" variant="Display-XSmall">{project.title}</Text>
+        <Text className="textSize" variant="Display-XSmall" color={theme.colors.concrete}>
           {project.location}
         </Text>
         <LinkWrapper>

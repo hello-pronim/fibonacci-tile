@@ -224,11 +224,30 @@ const NextWrapper = styled("button")(
     border: "none",
     position: "absolute",
     right: 0,
-    bottom: 140,
-    bg: "charcoal",
-    px: 10,
-    py: 10,
+    bottom: 138,
+    bg: "transparent",
     cursor: "pointer",
+    padding: "0",
+    outline: "none",
+    mr: 15,
+    [theme.mediaQueries.medium]: {
+      display: "block",
+    },
+  })
+);
+
+const PreviousWrapper = styled("button")(
+  css({
+    display: "none",
+    border: "none",
+    position: "absolute",
+    right: 0,
+    bottom: 138,
+    bg: "transparent",
+    mr: 50,
+    cursor: "pointer",
+    padding: "0",
+    outline: "none",
     [theme.mediaQueries.medium]: {
       display: "block",
     },
@@ -259,5 +278,6 @@ export {
   Title,
   TextWrapper,
   ImageWrapper,
+  PreviousWrapper,
   Container,
 };

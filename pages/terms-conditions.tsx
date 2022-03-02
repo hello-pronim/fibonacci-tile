@@ -33,7 +33,6 @@ export const getStaticProps: GetStaticProps = withGlobalData(async () => {
       slug: "terms-and-conditions",
     },
   });
-  console.log(pageData);
   return {
     props: {
       pageData,

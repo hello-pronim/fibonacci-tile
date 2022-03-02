@@ -2,7 +2,6 @@ import css from "@styled-system/css";
 import styled from "@emotion/styled";
 import theme from "@styles/theme";
 
-
 const BottomBarInner = styled("div")(
   css({
     // width: "100%",
@@ -13,7 +12,7 @@ const BottomBarInner = styled("div")(
   })
 );
 
-const LinkWrapper = styled("div")(
+const LinkWrapper = styled("div")(({ color }) =>
   css({
     display: "flex",
     alignItems: "center",
@@ -21,6 +20,7 @@ const LinkWrapper = styled("div")(
     mt: 16,
     paddingRight: "4px",
     fontSize: "12px",
+    color: color,
     svg: {
       transition: "ease all 0.3s",
       width: "12px",
@@ -37,11 +37,17 @@ const LinkWrapper = styled("div")(
       svg: {
         transform: "translateX(-6px)",
       },
+      a: {
+        "&:before": {
+          transform: "translateY(28px)",
+          opacity: 1,
+        },
+      },
     },
     span: {
       "&:before": {
         position: "relative",
-        backgroundColor: "charcoal",
+        backgroundColor: color,
         content: "' '",
         display: "block",
         height: "2px",
@@ -50,19 +56,20 @@ const LinkWrapper = styled("div")(
         transition: "ease all 0.3s",
         pointerEvents: "none",
         opacity: 0,
+        zIndex: 999,
       },
     },
     a: {
       textDecoration: "none",
       fontSize: "12px",
       lineHeight: 2,
-      color: "charcoal",
+      color: "inherit",
       [theme.mediaQueries.medium]: {
         fontSize: "16px",
       },
       "&:before": {
         position: "relative",
-        backgroundColor: "charcoal",
+        backgroundColor: color,
         content: "' '",
         display: "block",
         height: "2px",
@@ -71,6 +78,7 @@ const LinkWrapper = styled("div")(
         transition: "ease all 0.3s",
         pointerEvents: "none",
         opacity: 0,
+        zIndex: 999,
       },
       "&:hover": {
         "&:before": {
@@ -94,7 +102,7 @@ const LinkWrapper = styled("div")(
       "&:after": {
         content: "'•'",
         fontSize: "12px",
-        color: "#B0ABA7",
+        color: "inherit",
         display: "block",
         position: "relative",
         top: "1px",
@@ -129,13 +137,13 @@ const BackBttn = styled("div")(() =>
       textDecoration: "none",
       fontSize: "12px",
       lineHeight: 2,
-      color: "charcoal",
+      color: "inherit",
       [theme.mediaQueries.medium]: {
         fontSize: "16px",
       },
       "&:before": {
         position: "relative",
-        backgroundColor: "charcoal",
+        backgroundColor: "inherit",
         content: "' '",
         display: "block",
         height: "2px",

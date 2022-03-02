@@ -4,7 +4,7 @@ import ProductCard from "@components/common/product/card";
 import { useAppContext } from "@contexts/AppContext";
 import { css } from "@styled-system/css";
 import { CollectionProductsContainer } from "./styles";
-import AccentText from "@components/common/accentText";
+import AccentText, { AccentTextMobile } from "@components/common/accentText";
 import { CaptionText } from "./styles";
 import theme from "@styles/theme";
 
@@ -17,6 +17,7 @@ const CollectionProducts = ({ products, backgroundColor, collection }) => {
       })}
     >
       <AccentText top={202}>{collection.title} Collection</AccentText>
+      <AccentTextMobile css={css({ pb: 80 })}>{collection.title} Collection</AccentTextMobile>
       <CaptionText>
         <Text
           as="h2"

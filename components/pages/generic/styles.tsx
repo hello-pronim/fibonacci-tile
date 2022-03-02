@@ -29,12 +29,12 @@ const HeaderContainer = styled("div")(
 const InnerContainer = styled("div")(
   css({
     alignItems: "flex-start",
-    pt: "136px",
+    pt: "160px",
     pb: "48px",
     pl: "20px",
     pr: "20px",
     [theme.mediaQueries.small]: {
-      pt: "160px!important",
+      pt: "190px !important",
       pr: [
         "16px !important",
         "16px !important",

@@ -10,22 +10,18 @@ const Container = styled(Cont)(
     alignItems: "flex-start",
     pt: "28px",
     pb: "48px",
-    [theme.mediaQueries.small]: {
-      pt: "60px!important",
-      pr: [
-        "16px !important",
-        "16px !important",
-        "40px !important",
-        "56px !important",
-        "80px !important",
-      ],
-      pl: [
-        "16px !important",
-        "16px !important",
-        "40px !important",
-        "56px !important",
-        "80px !important",
-      ],
+    [theme.mediaQueries.xSmall]: {
+      pl: "30px !important",
+      pr: "30px !important",
+    },
+    [theme.mediaQueries.smedium]: {
+      pl: "40px !important",
+      pr: "40px !important",
+    },
+    [theme.mediaQueries.xxMedium]: {
+      pt: "40px",
+      pl: "80px !important",
+      pr: "80px !important",
     },
   })
 );
@@ -35,13 +31,13 @@ const LeftCol = styled("div")(
     gridRow: 1,
     position: "relative",
     height: "100%",
-    gridColumn: "1 / span 2",
+    gridColumn: "1 / span 12",
     display: "flex",
     flexDirection: "column",
     pt: "8px",
     pb: "56px",
     px: 0,
-    [theme.mediaQueries.small]: {
+    [theme.mediaQueries.smedium]: {
       gridColumn: "1 / span 3",
       gridRow: 1,
     },
@@ -50,13 +46,13 @@ const LeftCol = styled("div")(
 
 const RightCol = styled("div")(
   css({
-    gridColumn: "1 / span 2",
+    gridColumn: "1 / span 12",
     gridRow: 2,
     height: "100%",
     div: {
       height: "inherit",
     },
-    [theme.mediaQueries.small]: {
+    [theme.mediaQueries.smedium]: {
       gridRow: 1,
       gridColumn: "7 / span 5",
     },
@@ -114,10 +110,11 @@ const HeroTitle = styled(Text)(
     fontFamily: "Canela",
     fontSize: "42px",
     lineHeight: "54.6px",
-    maxWidth: 200,
+    maxWidth: "100%",
     [theme.mediaQueries.small]: {
       fontSize: "74px",
       lineHeight: "81.4px",
+      maxWidth: 200,
     },
   })
 );

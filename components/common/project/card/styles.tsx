@@ -9,6 +9,16 @@ const Details = styled("div")(() =>
     gridColumn: 2,
     display: "flex",
     flexDirection: "column",
+    marginTop: "20px",
+    [theme.mediaQueries.small]: {
+      marginTop: "0px",
+    },
+    "& .textSize": {
+      fontSize: "18px",
+      [theme.mediaQueries.small]: {
+        fontSize: "26px",
+      },
+    },
   })
 );
 
@@ -18,13 +28,17 @@ const ImageWrapper = styled("a")(() =>
     position: "relative",
     gridColumn: "1 / span 2",
     gridRow: 1,
+    marginBottom: "10px",
+    [theme.mediaQueries.small]: {
+      marginBottom: "0px",
+    },
   })
 );
 
 const Project = styled("div")(() =>
   css({
     gridRow: 2,
-    display: "grid",
+    display: "block",
     gridTemplateColumns: "1fr 1fr",
     rowGap: 24,
     pt: 40,
@@ -38,6 +52,7 @@ const Project = styled("div")(() =>
     [theme.mediaQueries.small]: {
       pt: 100,
       pb: 100,
+      display: "grid",
     },
   })
 );

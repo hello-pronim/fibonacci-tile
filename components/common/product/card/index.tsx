@@ -134,7 +134,7 @@ const ProductCard = ({
   }
 
   const handleTechnicalSpecificationCopy = (product) => {
-    console.log(product);
+  
     let copyText = '';
     let productVariationsText = getProductVariationsText(
       product.productVariations
