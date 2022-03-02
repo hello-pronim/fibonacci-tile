@@ -1,16 +1,16 @@
-import Image from "next/image";
-import Link from "next/link";
-import { useAppContext } from "@contexts/AppContext";
-import Text from "@components/common/typography";
-import AddIcon from "@components/icons/add";
-import CheckMarkIcon from "@components/icons/checkmark";
-import CrossIcon from "@components/icons/cross";
+import Image from 'next/image';
+import Link from 'next/link';
+import { useAppContext } from '@contexts/AppContext';
+import Text from '@components/common/typography';
+import AddIcon from '@components/icons/add';
+import CheckMarkIcon from '@components/icons/checkmark';
+import CrossIcon from '@components/icons/cross';
 import {
   ActionBtnContainer,
   CardSubTitle,
   CardTitle,
   GridCardImgContainer,
-} from "../card/styles";
+} from '../card/styles';
 
 import {
   Wrapper,
@@ -18,7 +18,7 @@ import {
   ActionBtn,
   ConfirmActionBtn,
   ConfirmActionBtnContainer,
-} from "./styles";
+} from './styles';
 
 const SelectedProductCard = ({
   product,
@@ -26,12 +26,8 @@ const SelectedProductCard = ({
   toggleProductSelect,
   isSampleSelected = false,
   confirmSample = false,
-  activeCollectionSlug = null,
+  compact = false,
 }) => {
-  let collectionSlug = activeCollectionSlug
-    ? activeCollectionSlug
-    : product?.collections[0]?.slug;
-
   const sampleSelectedCount = Number(
     process.env.NEXT_PUBLIC_SAMPLE_SELECTION_COUNT
   );
@@ -41,7 +37,7 @@ const SelectedProductCard = ({
 
   return (
     <Wrapper>
-      <Container>
+      <Container compact={compact}>
         {confirmedProducts?.length >= sampleSelectedCount && !isSelected && (
           <div className="overlay">
             Choose up to {sampleSelectedCount} samples.
@@ -75,7 +71,7 @@ const SelectedProductCard = ({
               >
                 {!isSelected && (
                   <span className="hovered">
-                    <AddIcon color="white" />{" "}
+                    <AddIcon color="white" />{' '}
                     <Text color="white" variant="Body-XSmall">
                       Confirm Sample
                     </Text>
@@ -94,7 +90,7 @@ const SelectedProductCard = ({
                 )}
                 {isSelected && (
                   <span className="hovered">
-                    <CrossIcon />{" "}
+                    <CrossIcon />{' '}
                     <Text color="white" variant="Body-XSmall">
                       Remove Sample
                     </Text>

@@ -68,9 +68,6 @@ const ProductCard = ({
 }: CardProps) => {
   const [detailShown, setDetailShown] = useState(false);
   const [copyProductId, setCopyProductId] = useState(undefined);
-  let collectionSlug = activeCollectionSlug
-    ? activeCollectionSlug
-    : product?.collections[0]?.slug;
 
   const getProductVariationsText = (productVariations) => {
     let text = '';
