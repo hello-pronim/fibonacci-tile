@@ -34,6 +34,9 @@ const global = css`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+  a {
+    color: inherit;
+  }
 
   ol,
   ul {

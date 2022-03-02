@@ -65,6 +65,19 @@ const CardPill = styled("div")(
   })
 );
 
+const ImageWrapper = styled("div")(({ imageType }: { imageType: number }) =>
+  css({
+    height:
+      (imageType === 1 && 248) ||
+      (imageType === 2 && 586) ||
+      (imageType === 3 && 440),
+    overflow: "hidden",
+    div: {
+      height: "100%",
+    },
+  })
+);
+
 export {
   StyledRoot,
   StyledPhoto,
@@ -72,4 +85,5 @@ export {
   Title,
   CardPill,
   Description,
+  ImageWrapper,
 };

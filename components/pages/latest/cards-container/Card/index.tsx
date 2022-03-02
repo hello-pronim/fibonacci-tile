@@ -2,10 +2,17 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { excerpt } from "@utils/utility";
-import { StyledContainer, Title, CardPill, Description } from "./styles";
+import {
+  StyledContainer,
+  Title,
+  CardPill,
+  Description,
+  ImageWrapper,
+} from "./styles";
 
 export const Card = ({
   component: { slug, title, newsCategory, newsComponents },
+  imageType,
 }): any => {
   const [imageBlock, setImageBlock] = useState(null);
   const [descBlock, setDescBlock] = useState(null);
@@ -35,14 +42,18 @@ export const Card = ({
       <Link href={`/the-latest/${slug}`} passHref>
         <a>
           {imageBlock?.imageThumb?.[0]?.url && (
-            <Image
-              placeholder="blur"
-              blurDataURL={imageBlock.blurThumb[0]?.url}
-              width={imageBlock.imageThumb[0]?.width}
-              height={imageBlock.imageThumb[0]?.height}
-              src={imageBlock.imageThumb[0]?.url}
-              alt={imageBlock.imageThumb[0]?.title}
-            />
+            <ImageWrapper imageType={imageType}>
+              <Image
+                placeholder="blur"
+                blurDataURL={imageBlock.blurThumb[0]?.url}
+                width={imageBlock.imageThumb[0]?.width}
+                height={imageBlock.imageThumb[0]?.height}
+                src={imageBlock.imageThumb[0]?.url}
+                alt={imageBlock.imageThumb[0]?.title}
+                layout="responsive"
+                objectFit="cover"
+              />
+            </ImageWrapper>
           )}
           {newsCategory?.length > 0 && (
             <CardPill>{"# " + newsCategory[0].slug}</CardPill>

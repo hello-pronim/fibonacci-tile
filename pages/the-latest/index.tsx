@@ -52,9 +52,10 @@ const LatestNews: NextPage<LatestPageProps> = ({
     setDisplayedProjects(cardsList);
     setSelectedType(type);
   };
-
+  let cardCounter = 0;
   const Cards = displayedCategory.map((item, index) => {
-    return <Card key={index} component={item} />;
+    cardCounter < 3 ? cardCounter++ : (cardCounter = 1);
+    return <Card key={index} component={item} imageType={cardCounter} />;
   });
   const useWidth = () => {
     if (process.browser) {
