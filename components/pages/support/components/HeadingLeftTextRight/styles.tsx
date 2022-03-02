@@ -8,18 +8,21 @@ const Wrapper = styled("div")(() =>
     gridColumn: ["1 / span 2", "1 / span 6", "1 / span 6", "2 / span 10"],
     // gridColumn: ['2 / span 10'],
     display: "flex",
-    flexDirection: "row",
+    flexDirection: "column",
     justifyContent: "space-between",
-    rowGap: 32,
+    rowGap: 40,
     zIndex: 999,
     alignItems: "flex-start",
+    [theme.mediaQueries.small]: {
+      flexDirection: "row",
+    },
   })
 );
 
 const Container = styled(Cntnr)(() =>
   css({
     py: "40px",
-    marginBottom: "20px",
+    marginBottom: "0px",
     [theme.mediaQueries.small]: {
       py: "40px",
       marginBottom: "70px",
@@ -40,7 +43,7 @@ const PanelLeft = styled("div")(
       padding: 0,
     },
     ">span": {
-      display: "block",
+      display: "none",
       position: "relative",
       left: "20px",
       top: "50px",
@@ -51,6 +54,7 @@ const PanelLeft = styled("div")(
       letterSpacing: "-0.01em",
       height: "max-content",
       [theme.mediaQueries.small]: {
+        display: "block",
         position: "absolute",
         fontSize: "26px",
         writingMode: "vertical-rl",
@@ -73,11 +77,12 @@ const StoryTitleWrapper = styled("div")(
     h4: {
       color: theme.colors.charcoal,
       fontFamily: "Canela",
-      fontSize: "32px",
+      fontSize: "24px",
       lineHeight: "140%",
-      marginBottom: "30px",
+      marginBottom: "0px",
       [theme.mediaQueries.small]: {
         fontSize: "42px",
+        marginBottom: "30px",
       },
     },
   })
@@ -92,10 +97,13 @@ const StoryContentWrapper = styled("div")(
     },
     p: {
       color: theme.colors.charcoal,
-      fontSize: "20px",
+      fontSize: "16px",
       lineHeight: "1.4",
       gridColumn: "1/span 12",
       marginBottom: "20px",
+      [theme.mediaQueries.small]: {
+        fontSize: "20px",
+      },
     },
   })
 );
