@@ -26,6 +26,9 @@ const Container = styled("div")(
       backgroundColor: "rgba(237, 236, 232, 0)",
       "&:hover": {
         backgroundColor: "transparent",
+        div: {
+          boxShadow: "none",
+        },
         [theme.mediaQueries.sSmall]: {
           backgroundColor:
           !compact && hoverBG ? hoverBG : "rgba(237, 236, 232, 1.000)",
