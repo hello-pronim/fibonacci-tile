@@ -113,6 +113,14 @@ const FormGroup = styled('div')(
     [theme.mediaQueries.small]: {
       paddingBottom: '80px',
     },
+    "& .bttnArrow": {
+      width: "100%",
+      textAlign: "left",
+      [theme.mediaQueries.sSmall]: {
+        width: "auto",
+        textAlign: "unset",
+      },
+    },
   })
 );
 
