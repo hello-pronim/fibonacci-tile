@@ -106,7 +106,7 @@ const FormWrapper = styled("div")(()=>
       },
       "&:-moz-placeholder": {  
         color: "charcoal"
-      }
+      },
     },
     textarea: {
       height: "100px"
@@ -118,28 +118,41 @@ const FormWrapper = styled("div")(()=>
 const OneItemRow = styled("div")(()=> 
   css({
     boxSizing: 'initial',
-    paddingBottom: "10px",
-    width: "100%"
+    paddingBottom: "0",
+    width: "100%",
+    [theme.mediaQueries.xMedium]: {
+      paddingBottom: "10px",
+    },
   })
 );
 
 const TwoItemRow = styled("div")(()=> 
   css({
     boxSizing: 'initial',
-    paddingBottom: "10px",
+    paddingBottom: "0px",
     width: "100%",
     display: "flex",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    flexWrap: "wrap",
+    [theme.mediaQueries.xMedium]: {
+      flexWrap: "unset",
+      paddingBottom: "10px",
+    },
   })
 );
 
 const ThreeItemRow = styled("div")(()=> 
   css({
     boxSizing: 'initial',
-    paddingBottom: "10px",
+    paddingBottom: "0px",
     width: "100%",
     display: "flex",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    flexWrap: "wrap",
+    [theme.mediaQueries.xMedium]: {
+      flexWrap: "unset",
+      paddingBottom: "10px",
+    },
   })
 );
 
@@ -171,61 +184,117 @@ const Details = styled("div")(()=>
 
 const InputFullwidth = styled("input")(()=> 
   css({
-    width: "93.95%"
+    width: "auto",
+    minWidth: "-webkit-fill-available",
+    marginBottom: "10px",
+    [theme.mediaQueries.xMedium]: {
+      width: "93.95%",
+      minWidth: "unset",
+      marginBottom: "0px",
+    },
   })
 );
 
 const InputFourtyFive= styled("input")(()=> 
   css({
-    width: "43%"
+    width: "auto",
+    minWidth: "-webkit-fill-available",
+    marginBottom: "10px",
+    [theme.mediaQueries.xMedium]: {
+      width: "43%",
+      minWidth: "unset",
+      marginBottom: "0px",
+    },
   })
 );
 
 const SelectFourtyFive = styled("select")(()=> 
   css({
-    width: "43%",
+    width: "auto",
+    minWidth: "-webkit-fill-available",
+    marginBottom: "10px",
     webkitAppearance: "none !important",
     mozAppearance: "none !important",
     appearance: "none !important",
     backgroundImage: `url("/assets/icons/dropdown_Icon.svg")`,
     backgroundPosition: "98%",
     backgroundRepeat: "no-repeat",
+    [theme.mediaQueries.xMedium]: {
+      width: "43%",
+      minWidth: "unset",
+      marginBottom: "0px",
+    },
   })
 );
 
 const InputSixty = styled("input")(()=> 
   css({
-    width: "58%"
+    width: "auto",
+    minWidth: "-webkit-fill-available",
+    marginBottom: "10px",
+    [theme.mediaQueries.xMedium]: {
+      width: "58%",
+      minWidth: "unset",
+      marginBottom: "0px",
+    },
   })
 );
 
 const InputThirty = styled("input")(()=> 
   css({
-    width: "28%"
+    width: "auto",
+    minWidth: "-webkit-fill-available",
+    marginBottom: "10px",
+    [theme.mediaQueries.xMedium]: {
+      width: "28%",
+      minWidth: "unset",
+      marginBottom: "0px",
+    },
   })
 );
 
 const InputTwentyFour = styled("input")(()=> 
   css({
-    width: "22%"
+    width: "auto",
+    minWidth: "-webkit-fill-available",
+    marginBottom: "10px",
+    [theme.mediaQueries.xMedium]: {
+      width: "22%",
+      minWidth: "unset",
+      marginBottom: "0px",
+    },
   })
 );
 
 const SelectThirty = styled("select")(()=> 
   css({
-    width: "28%",
     webkitAppearance: "none !important",
     mozAppearance: "none !important",
     appearance: "none !important",
     backgroundImage: `url("/assets/icons/dropdown_Icon.svg")`,
     backgroundPosition: "98%",
     backgroundRepeat: "no-repeat",
+    width: "auto",
+    minWidth: "-webkit-fill-available",
+    marginBottom: "10px",
+    [theme.mediaQueries.xMedium]: {
+      width: "28%",
+      minWidth: "unset",
+      marginBottom: "0px",
+    },
   })
 );
 
 const TextareaFullwidth = styled("textarea")(()=> 
   css({
-    width: "93.95%"
+    width: "auto",
+    minWidth: "-webkit-fill-available",
+    marginBottom: "10px",
+    [theme.mediaQueries.xMedium]: {
+      width: "93.95%",
+      minWidth: "unset",
+      marginBottom: "0px",
+    },
   })
 );
 
