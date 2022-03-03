@@ -13,6 +13,10 @@ export interface navItemProps {
   mode: string;
 }
 
+export interface dropdownProps {
+  open: boolean;
+}
+
 export interface NavIconProps {
   isOpen: boolean;
   mode: string;
@@ -148,10 +152,31 @@ const NavItem = styled('a')(({ mode }: navItemProps) =>
   })
 );
 
+const DropDownNavItem = styled('span')(({ mode }: navItemProps) =>
+  css({
+    display: 'flex',
+    textDecoration: 'none',
+    fontSize: [1, 1, 1, 1, 1, 3, 3],
+    fontFamily: 1,
+    color: mode === 'light' ? 'white' : 'charcoal',
+    alignSelf: 'center',
+    alignItems: 'center',
+    fontWeight: 400,
+    columnGap: '8px',
+    cursor: 'pointer',
+  })
+);
+
 const SubNavItem = styled(NavItem)(({ mode }: navItemProps) =>
   css({
     pl: 25,
     fontWeight: 300,
+  })
+);
+
+const Dropdown = styled('div')(({ open }: dropdownProps) =>
+  css({
+    display: open ? 'block' : 'none',
   })
 );
 
@@ -220,7 +245,7 @@ const DrawerInner = styled('div')(() =>
     width: '100%',
     background: 'white',
     padding: '16px',
-    a: {
+    "a, span": {
       color: 'charcoal',
       textAlign: 'left',
       fontSize: 3,
@@ -295,6 +320,8 @@ export {
   NavLeft,
   NavRight,
   NavItem,
+  Dropdown,
+  DropDownNavItem,
   SubNavItem,
   LogoWrapper,
   NavIcon,
