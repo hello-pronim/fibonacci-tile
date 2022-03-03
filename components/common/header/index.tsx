@@ -14,6 +14,8 @@ import {
   NavLeft,
   NavRight,
   NavItem,
+  Dropdown,
+  DropDownNavItem,
   SubNavItem,
   LogoWrapper,
   NavIcon,
@@ -48,6 +50,7 @@ const Header = ({
   const { state, dispatch } = useAppContext();
   const [navOpen, setNavOpen] = useState(false);
   const [alertActive, setAlertActive] = useState(true);
+  const [clicked, setClicked] = useState(null);
   const [scrolledActive, setScrolledActive] = useState(false);
   const activeLogo = mode === 'dark' ? Logo : LogoWhite;
   let navRightMode = mode;
@@ -88,6 +91,13 @@ const Header = ({
 
   // select first notification in array
   const activeNotification = notifications?.[0];
+  function handleDropdownClicked (clickedItem) {
+    if(clicked === clickedItem) {
+      setClicked(null);
+    } else {
+      setClicked(clickedItem);
+    }
+  }
   return (
     <div
       css={css({
@@ -224,18 +234,40 @@ const Header = ({
               }}
             >
               <DrawerInner>
-                <NavItem mode={mode} href="/terrazzo">
+                <DropDownNavItem onClick={() => handleDropdownClicked('products')} mode={mode}>
                   Our Products
-                </NavItem>
-                <SubNavItem mode={mode} href="/terrazzo">
-                  Terrazzo
-                </SubNavItem>
-                <SubNavItem mode={mode} href="/terrazzo/collections">
-                  Collections
-                </SubNavItem>
-                <NavItem mode={mode} href="/in-use">
+                </DropDownNavItem>
+                <Dropdown open={ clicked === 'products' ? true : false }>
+                  <SubNavItem mode={mode} href="/terrazzo">
+                    Terrazzo
+                  </SubNavItem>
+                  <SubNavItem mode={mode} href="/terrazzo/collections">
+                    Collections
+                  </SubNavItem>
+                </Dropdown>
+                <DropDownNavItem onClick={() => handleDropdownClicked('inUse')} mode={mode}>
                   In Use
-                </NavItem>
+                </DropDownNavItem>
+                <Dropdown open={ clicked === 'inUse' ? true : false }>
+                  <SubNavItem mode={mode} href="/">
+                    All projects
+                  </SubNavItem>
+                  <SubNavItem mode={mode} href="/">
+                    Residental
+                  </SubNavItem>
+                  <SubNavItem mode={mode} href="/">
+                    Commercial
+                  </SubNavItem>
+                  <SubNavItem mode={mode} href="/">
+                    Workplaces
+                  </SubNavItem>
+                  <SubNavItem mode={mode} href="/">
+                    Recreation
+                  </SubNavItem>
+                  <SubNavItem mode={mode} href="/">
+                    Retail
+                  </SubNavItem>
+                </Dropdown>
                 <NavItem mode={mode} href="/our-story">
                   Our Story
                 </NavItem>
