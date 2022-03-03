@@ -23,6 +23,8 @@ const CustomSolutionsCTAPanel = ({ data }) => {
             width={data.customImageThumb[0].width}
             height={data.customImageThumb[0].height}
             alt={data.customImageThumb[0].title}
+            layout="responsive"
+            objectFit="cover"
           />
         </CTAImgBox>
       )}
@@ -30,7 +32,7 @@ const CustomSolutionsCTAPanel = ({ data }) => {
         <CTADetailsBox>
           <Text
             as="h3"
-            variant="Body-XSmall"
+            variant="Display-Overline"
             marginTop="25px"
             color={data.textColour ? data.textColour : "white"}
           >

@@ -6,15 +6,24 @@ const CustomSolutionsCTAContainer = styled("section")(
   css({
     marginTop: "20px",
     display: "flex",
-    flexWrap: "wrap",
-    flexDirection: "row",
     alignItems: "stretch",
+    flexDirection: 'column',
+    [theme.mediaQueries.xSmall]: {
+      flexWrap: "wrap",
+      flexDirection: "row",
+    },
   })
 );
 
 const CTAImgBox = styled("div")(
   css({
-    width: "50%",
+    width: '100%',
+    [theme.mediaQueries.xSmall]: {
+      width: "35%",
+    },
+    "@media screen and (min-width: 800px)": {
+      width: '50%',
+    },
     div: {
       display: "block",
       width: "100%",
@@ -26,7 +35,13 @@ const CTAImgBox = styled("div")(
 const CTADetails = styled("div")(
   ({ backgroundColor }: { backgroundColor?: string }) =>
     css({
-      width: "50%",
+      width: '100%',
+      [theme.mediaQueries.xSmall]: {
+        width: "65%",
+      },
+      "@media screen and (min-width: 800px)": {
+        width: '50%',
+      },
       backgroundColor: backgroundColor
         ? backgroundColor
         : theme.colors.greys[1],
@@ -38,7 +53,10 @@ const CTADetailsBox = styled("div")(
     padding: "30px 55px 55px 55px",
     maxWidth: "400px",
     h2: {
-      fontSize: "44px",
+      [theme.mediaQueries.smedium]: {
+        fontSize: "44px",
+      },
+      fontSize: 32,
       lineHeight: "51px",
       letterSpacing: "0.01em",
       marginBottom: "25px",
