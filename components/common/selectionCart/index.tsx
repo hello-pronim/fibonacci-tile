@@ -55,7 +55,6 @@ const SelectionCart = ({ active, newSelection, tab }) => {
   //     value: false,
   //   });
   // });
-  console.log("errors", errors)
   const onSubmit = (data: any) => {
     console.log("formdata", data)
     setContactSubmit(true)
