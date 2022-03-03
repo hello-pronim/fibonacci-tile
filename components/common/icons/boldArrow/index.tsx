@@ -24,6 +24,7 @@ const BoldArrow = ({
       css={css({
         transform: direction === "right" && "rotate(-180deg)",
         width: width,
+        height: '100%',
       })}
       onClick={props.onClick}
     >

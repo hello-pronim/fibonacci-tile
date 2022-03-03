@@ -302,7 +302,7 @@ const ProductCard = ({
                 >
                   {!isSelected && (
                     <span className="hovered">
-                      <AddIcon color="white" />{" "}
+                      <AddIcon color="white" />
                       <Text color="white" variant="Body-XSmall">
                         Add To Selection
                       </Text>

@@ -26,6 +26,7 @@ const Arrow = ({
         css={css({
           transform: direction === "left" && "rotate(-180deg)",
           width: width,
+          height: '100%',
         })}
       >
         <path
@@ -61,6 +62,7 @@ const Arrow = ({
       css={css({
         transform: direction === "left" && "rotate(-180deg)",
         width: width,
+        height: '100%',
       })}
     >
       <path

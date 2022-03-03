@@ -6,7 +6,7 @@ function AddIcon({ color = "white", width = 13 }) {
       viewBox="0 0 13 14"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      css={css({width: width})}
+      css={css({width: width, height: '100%'})}
     >
       <path
         fillRule="evenodd"
