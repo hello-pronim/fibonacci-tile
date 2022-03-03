@@ -117,6 +117,7 @@ const FormWrapper = styled("div")(()=>
 
 const OneItemRow = styled("div")(()=> 
   css({
+    boxSizing: 'initial',
     paddingBottom: "10px",
     width: "100%"
   })
@@ -124,6 +125,7 @@ const OneItemRow = styled("div")(()=>
 
 const TwoItemRow = styled("div")(()=> 
   css({
+    boxSizing: 'initial',
     paddingBottom: "10px",
     width: "100%",
     display: "flex",
@@ -133,6 +135,7 @@ const TwoItemRow = styled("div")(()=>
 
 const ThreeItemRow = styled("div")(()=> 
   css({
+    boxSizing: 'initial',
     paddingBottom: "10px",
     width: "100%",
     display: "flex",

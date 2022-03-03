@@ -11,7 +11,7 @@ import Details from './components/details';
 import StepItem from './components/stepItem';
 import Delivery from './components/delivery';
 import Confirm from './components/confirm';
-
+import Container from '@components/common/layout/container';
 import {
   CheckoutStepWrapper,
   CheckoutContentWrapper,
@@ -23,6 +23,7 @@ import {
   NoSamples,
   //CheckoutFooter,
 } from './styles';
+
 const sampleSelectedCount = Number(
   process.env.NEXT_PUBLIC_SAMPLE_SELECTION_COUNT
 );
@@ -75,6 +76,18 @@ const CheckoutPage = ({ notifications }) => {
   };
 
   return (
+    <Container>
+    <div
+            css={css({
+              position: 'absolute',
+              maxWidth: '2560px',
+              left: '32px',
+              top: 92,
+              pb: 0,
+            })}
+          >
+            <BreadCrumb crumbs={crumbs} pt={0} />
+          </div>
     <CheckoutContainer>
       <Header mode="dark" notifications={notifications} />
       <CheckoutWrapper>
@@ -83,16 +96,6 @@ const CheckoutPage = ({ notifications }) => {
             activeCheckoutStep === 1 || activeCheckoutStep === 4 ? false : true
           }
         >
-          <div
-            css={css({
-              maxWidth: '2560px',
-              pl: '32px',
-              pt: 92,
-              pb: 0,
-            })}
-          >
-            <BreadCrumb crumbs={crumbs} pt={0} />
-          </div>
           <CheckoutStepWrapper>
             {selectedProducts?.length !== 0 && (
               <>
@@ -250,6 +253,7 @@ const CheckoutPage = ({ notifications }) => {
         </CheckoutFooter>
       )} */}
     </CheckoutContainer>
+    </Container>
   );
 };
 

@@ -82,6 +82,9 @@ const ContentWrapper = styled("div")(
         width: "initial",
       },
       [theme.mediaQueries.medium]: {
+        fontSize: 80,
+      },
+      [theme.mediaQueries.xMedium]: {
         fontSize: 120,
       },
       width: "100%",
