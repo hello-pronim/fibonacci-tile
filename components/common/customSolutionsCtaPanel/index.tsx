@@ -1,6 +1,8 @@
 import Image from "next/image";
 import ArrowButton from "@components/common/button/arrowButton";
 import Text from "@components/common/typography";
+import { useAppContext } from "@contexts/AppContext";
+
 import {
   CustomSolutionsCTAContainer,
   CTAImgBox,
@@ -9,6 +11,7 @@ import {
 } from "./styles";
 
 const CustomSolutionsCTAPanel = ({ data }) => {
+  const { state, dispatch } = useAppContext();
   return (
     <CustomSolutionsCTAContainer>
       {data?.customImageThumb?.[0]?.url && (
@@ -50,11 +53,27 @@ const CustomSolutionsCTAPanel = ({ data }) => {
           >
             {data.customSolutionsText}
           </Text>
-          {data?.customCtaLink?.[0]?.url && (
+          {data?.customCtaButton && (
             <ArrowButton
               mode="light"
               title={data.customCtaButton}
-              link={data?.customCtaLink?.[0]?.url}
+              link={
+                data?.customCtaLink?.[0]?.url && data?.customCtaLink?.[0]?.url
+              }
+              onClick={() => {
+                !data?.customCtaLink?.[0]?.url &&
+                  dispatch({
+                    type: "OPEN_DRAWER",
+                    value:
+                      state.activeDrawerTab !== "contact"
+                        ? true
+                        : !state.openDrawer,
+                  });
+                dispatch({
+                  type: "SET_ACTIVE_DRAWER_TAB",
+                  value: "contact",
+                });
+              }}
             />
           )}
         </CTADetailsBox>
