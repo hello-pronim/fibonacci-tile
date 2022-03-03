@@ -11,8 +11,6 @@ export interface containerProps {
 const CheckoutStepWrapper = styled("div")(() =>
   css({
     columnGap: "24px",
-    pl: 80,
-    pr: 80,
     mt: 50,
     display: "flex",
     "@media screen and (max-width: 768px)": {
@@ -23,8 +21,6 @@ const CheckoutStepWrapper = styled("div")(() =>
 
 const CheckoutContentWrapper = styled("div")(() =>
   css({
-    paddingLeft: "80px",
-    paddingRight: "80px",
     paddingTop: "80px",
     paddingBottom: "80px"
   })
@@ -32,6 +28,7 @@ const CheckoutContentWrapper = styled("div")(() =>
 
 const CheckoutContainer = styled("section")(() =>
   css({
+    gridColumn: '1 / span 12',
     position: "relative"
   })
 );
@@ -39,7 +36,8 @@ const CheckoutContainer = styled("section")(() =>
 const CheckoutWrapper = styled("div")(() =>
   css({
     display: "flex",
-    flexDirection: "row"
+    flexDirection: "row",
+
   })
 );
 
@@ -47,13 +45,14 @@ const LeftContent = styled("div")(({...props }: containerProps) =>
   css({
     width: props.displayRight === true ? "100%" : "100%",
     paddingRight:  props.displayRight === true ? "480px" : 0,
+    pt: 138,
   })
 );
 const RightContent = styled("div")(({...props }: containerProps) =>
   css({
     overflow: "scroll",
     position: "absolute",
-    right: 0,
+    right: [-16, -16, -40, -56, -80],
     width: "460px",
     height: "calc(100% - 80px)",
     mt: 80,
