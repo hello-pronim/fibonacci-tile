@@ -4,74 +4,39 @@ import styled from "@emotion/styled";
 import theme from "styles/theme";
 import Cont from "@components/common/layout/container";
 import { justifyContent } from "styled-system";
+import Text from "@components/common/typography";
 
 const Left = styled("div")(
   css({
-    [theme.mediaQueries.small]: {
-      width: "60%",
-    },
-    width: "100%",
-    h4: {
-      pt: "40px",
-    },
+    gridColumn: '1 / span 7'
   })
 );
-const SingleCategory = styled("span")(
+const Container = styled(Cont)(css({
+  pt: 60,
+}))
+const SingleCategory = styled(Text)(
   css({
-    position: "relative",
-    display: "inline-block",
-    textTransform: "uppercase",
-    fontSize: "12px",
-    lineHeight: "115%",
-    padding: "8px 16px",
-    borderWidth: "1px",
-    borderColor: "#d4d4d8",
-    borderStyle: "solid",
-    borderRadius: "32px",
-    cursor: "pointer",
-    color: "#ffffff",
-    backgroundColor: "#141414",
+    display: 'inline-flex',
+    color: 'white',
+    background: theme.colors.charcoal,
+    px: '12px',
+    py: '3.5px',
+    whiteSpace: 'nowrap',
+    textTransform: 'uppercase',
+    borderRadius: '32px',
+    columnGap: '4px',
+    fontWeight: 500,
   })
 );
 const Right = styled("div")(
   css({
-    display: "grid",
-    gridTemplateColumns: "auto",
-    padding: "10px",
-    gridColumnGap: "10px",
-    gridRowGap: "11px",
-    float: "right",
-
-    [theme.mediaQueriesMaxWidth.xxLarge]: {
-      float: "right",
-      paddingTop: "78px",
-      input: {
-        outline: "none",
-        border: "none",
-        pl: "10px",
-        pr: "210px",
-        py: "18px",
-        color: theme.colors.charcoal,
-        mb: "8px",
-        fontFamily: 1,
-        fontSize: 2,
-        lineHeight: "125%",
-        fontWeight: 0,
-        "&::placeholder": {
-          color: theme.colors.charcoal,
-        },
-        bg: theme.colors.cold,
-      },
-    },
-    [theme.mediaQueriesMaxWidth.small]: {
-      display: "flex",
-      flexWrap: "wrap",
-      justifyContent: "center",
-      width: "100%",
-      input: {
-        pr: "142px",
-      },
-    },
+    alignSelf: 'flex-end',
+    width: 'fit-content',
+    gridColumn: '12',
+    gridRow: 2,
+    display: 'flex',
+    flexDirection: 'column',
+    rowGap: 24,
   })
 );
 
@@ -79,23 +44,12 @@ const Categories = styled("div")(
   css({
     display: "grid",
     gridTemplateColumns: "auto auto",
-    padding: "10px",
-    gridColumnGap: "10px",
-    gridRowGap: "11px",
+    gridColumnGap: "8px",
+    gridRowGap: "8px",
   })
 );
-const Date = styled("span")(
+const Date = styled(Text)(
   css({
-    ml: "13px",
-    [theme.mediaQueriesMaxWidth.small]: {
-      display: "flex",
-      flexWrap: "wrap",
-      justifyContent: "center",
-      width: "100%",
-      input: {
-        pr: "142px",
-      },
-    },
   })
 );
 const Row = styled("div")(
@@ -119,4 +73,4 @@ const Row = styled("div")(
   })
 );
 
-export { Left, Right, Row, SingleCategory, Categories, Date };
+export { Left, Right, Container, SingleCategory, Categories, Date };

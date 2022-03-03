@@ -1,7 +1,11 @@
 import Image from "next/image";
 import { FwWrapper } from "../styles";
 
-const HeroImageFullWidth = ({ image, blurThumb }) => {
+const HeroImageFullWidth = ({ content }) => {
+
+  const image = content.imageThumb[0];
+  const blurThumb = content.blurThumb[0];
+
   return (
     <FwWrapper>
       <Image
