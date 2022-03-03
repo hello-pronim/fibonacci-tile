@@ -1,33 +1,43 @@
-import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { css } from '@styled-system/css';
-import { useAppContext } from '@contexts/AppContext';
-import ProductCard from '@components/common/product/xlCard';
-import Text from '@components/common/typography';
-import BreadCrumb from '@components/common/breadcrumb';
-import SizeDisplay from '@components/common/product/card/SizeDisplay';
-import Arrow from '@components/common/icons/arrow';
-import theme from '@styles/theme';
-import { Container, LinkWrapper, LinkWrapperLeft, Pill } from './styles';
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { css } from "@styled-system/css";
+import { useAppContext } from "@contexts/AppContext";
+import ProductCard from "@components/common/product/xlCard";
+import Text from "@components/common/typography";
+import BreadCrumb from "@components/common/breadcrumb";
+import SizeDisplay from "@components/common/product/card/SizeDisplay";
+import Arrow from "@components/common/icons/arrow";
+import theme from "@styles/theme";
+import { Container, LinkWrapper, LinkWrapperLeft, Pill } from "./styles";
 
 const SingleHeroModule = ({ product }) => {
   const crumbs = [
-    { path: '/terrazzo', name: 'Terrazzo' },
+    { path: "/terrazzo", name: "Our Products" },
+    { path: "/terrazzo", name: "Terrazzo", mobileHide: true },
     { name: product.title },
   ];
   const { state, dispatch } = useAppContext();
   const activeCollection = product.collections[0];
+
+  const handleLinkClick = (e, elementId) => {
+    e.preventDefault();
+
+    const element = document.getElementById(elementId);
+
+    element.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <>
       <div
         css={css({
-          maxWidth: '2560px',
-          pl: '20px',
+          maxWidth: "2560px",
+          pl: "20px",
           pt: 92,
           pb: 0,
           [theme.mediaQueries.small]: {
-            pl: '32px',
+            pl: "32px",
           },
         })}
       >
@@ -40,20 +50,20 @@ const SingleHeroModule = ({ product }) => {
       >
         <div
           css={css({
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-            gridColumn: '1 / span 2',
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            gridColumn: "1 / span 2",
             gridRow: 2,
-            height: '100%',
+            height: "100%",
             [theme.mediaQueries.small]: {
-              gridColumn: '1 / span 3',
+              gridColumn: "1 / span 3",
               gridRow: 1,
             },
           })}
         >
           <div
-            css={css({ display: 'flex', flexDirection: 'column', rowGap: 24 })}
+            css={css({ display: "flex", flexDirection: "column", rowGap: 24 })}
           >
             <Text
               variant="Display-Large"
@@ -89,9 +99,9 @@ const SingleHeroModule = ({ product }) => {
           </div>
           <div
             css={css({
-              display: 'flex',
+              display: "flex",
               columnGap: 32,
-              alignItems: 'flex-end',
+              alignItems: "flex-end",
               py: 60,
             })}
           >
@@ -119,8 +129,8 @@ const SingleHeroModule = ({ product }) => {
             css={css({
               bg: theme.colors.greys[5],
               padding: 16,
-              display: 'flex',
-              flexDirection: 'column',
+              display: "flex",
+              flexDirection: "column",
               rowGap: 16,
             })}
           >
@@ -134,17 +144,21 @@ const SingleHeroModule = ({ product }) => {
         </div>
         <div
           css={css({
-            gridColumn: '1 / span 2',
+            gridColumn: "1 / span 2",
             gridRow: 1,
-            display: 'flex',
-            flexDirection: 'column',
-            height: '100%',
+            display: "flex",
+            flexDirection: "column",
+            height: "100%",
             [theme.mediaQueries.small]: {
-              gridColumn: '5 / span 4',
+              gridColumn: "5 / span 4",
             },
           })}
         >
-          <div>
+          <div
+            css={css({
+              margin: "auto",
+            })}
+          >
             <ProductCard
               product={product}
               isSelected={
@@ -154,7 +168,7 @@ const SingleHeroModule = ({ product }) => {
               }
               toggleProductSelect={() =>
                 dispatch({
-                  type: 'TOGGLE_PRODUCT_SELECTION',
+                  type: "TOGGLE_PRODUCT_SELECTION",
                   product,
                 })
               }
@@ -163,12 +177,12 @@ const SingleHeroModule = ({ product }) => {
           </div>
           <div
             css={css({
-              display: 'none',
-              justifyContent: 'space-between',
-              flexDirection: 'row',
+              display: "none",
+              justifyContent: "space-between",
+              flexDirection: "row",
               mt: 52,
               [theme.mediaQueries.small]: {
-                display: 'flex',
+                display: "flex",
               },
             })}
           >
@@ -192,28 +206,28 @@ const SingleHeroModule = ({ product }) => {
         </div>
         <div
           css={css({
-            display: 'flex',
-            flexDirection: 'column',
+            display: "flex",
+            flexDirection: "column",
             rowGap: 60,
-            gridColumn: '1 / span 2',
+            gridColumn: "1 / span 2",
             gridRow: 4,
-            justifyContent: 'space-between',
+            justifyContent: "space-between",
             [theme.mediaQueries.small]: {
-              gridColumn: '10 / span 3',
+              gridColumn: "10 / span 3",
               gridRow: 1,
             },
           })}
         >
           <div
-            css={css({ display: 'flex', flexDirection: 'column', rowGap: 24 })}
+            css={css({ display: "flex", flexDirection: "column", rowGap: 24 })}
           >
             <div
               css={css({
                 borderBottom: `1px solid ${theme.colors.warm}`,
                 pb: 16,
                 mb: 16,
-                display: 'flex',
-                flexDirection: 'column',
+                display: "flex",
+                flexDirection: "column",
               })}
             >
               <Text variant="Display-Overline">MATERIAL AND COMPOSITION</Text>
@@ -226,8 +240,8 @@ const SingleHeroModule = ({ product }) => {
                 borderBottom: `1px solid ${theme.colors.warm}`,
                 pb: 16,
                 mb: 16,
-                display: 'flex',
-                flexDirection: 'column',
+                display: "flex",
+                flexDirection: "column",
               })}
             >
               <Text variant="Display-Overline">FINISH AND APPEARANCE</Text>
@@ -241,8 +255,8 @@ const SingleHeroModule = ({ product }) => {
                   borderBottom: `1px solid ${theme.colors.warm}`,
                   pb: 16,
                   mb: 16,
-                  display: 'flex',
-                  flexDirection: 'column',
+                  display: "flex",
+                  flexDirection: "column",
                 })}
               >
                 <Text variant="Display-Overline">SIZES</Text>
@@ -258,9 +272,9 @@ const SingleHeroModule = ({ product }) => {
               css={css({
                 borderBottom: `1px solid ${theme.colors.warm}`,
                 pb: 16,
-                mb: '8px',
-                display: 'flex',
-                flexDirection: 'column',
+                mb: "8px",
+                display: "flex",
+                flexDirection: "column",
               })}
             >
               <Text variant="Display-Overline">APPLICATIONS</Text>
@@ -269,9 +283,12 @@ const SingleHeroModule = ({ product }) => {
               </Text>
             </div>
             <LinkWrapper>
-              <Link href="#technical-specifications">
+              <a
+                href="#technical-specifications"
+                onClick={(e) => handleLinkClick(e, "technical-specifications")}
+              >
                 View technical specifications
-              </Link>
+              </a>
               <Arrow type="short" />
             </LinkWrapper>
           </div>

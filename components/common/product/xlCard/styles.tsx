@@ -34,6 +34,10 @@ const Container = styled("div")(
   css({
     textAlign: "center",
     transition: "background-color ease 0.3s",
+    width: "280px",
+    [theme.mediaQueries.small]: {
+      width: "unset",
+    },
   })
 );
 
