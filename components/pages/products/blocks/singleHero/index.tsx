@@ -13,8 +13,7 @@ import { Container, LinkWrapper, LinkWrapperLeft, Pill } from './styles';
 
 const SingleHeroModule = ({ product }) => {
   const crumbs = [
-    { path: '/terrazzo', name: 'Our Products' },
-    { path: '/terrazzo', name: 'Terrazzo', mobileHide: true },
+    { path: '/terrazzo', name: 'Terrazzo' },
     { name: product.title },
   ];
   const { state, dispatch } = useAppContext();

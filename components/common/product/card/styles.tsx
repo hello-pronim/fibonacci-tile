@@ -24,13 +24,15 @@ const Container = styled("div")(
       textAlign: "center",
       transition: "ease all 0.4s",
       backgroundColor: "rgba(237, 236, 232, 0)",
-      "&:hover": {
-        [theme.mediaQueries.small]: {
-          backgroundColor:
-            !compact && hoverBG ? hoverBG : "rgba(237, 236, 232, 1.000)",
-        },
-        div: {
-          boxShadow: "none",
+      '@media (hover: hover)': {
+        "&:hover": {
+          [theme.mediaQueries.small]: {
+            backgroundColor:
+              !compact && hoverBG ? hoverBG : "rgba(237, 236, 232, 1.000)",
+          },
+          div: {
+            boxShadow: "none",
+          },
         },
       },
     })
@@ -57,8 +59,10 @@ const TableRow = styled("div")(({ detailView }: DetailViewProps) =>
     alignItems: "stretch",
     borderTop: "1px solid #d4d4d8",
     backgroundColor: detailView ? "#FFFFF8" : "inherit",
-    "&:hover": {
-      backgroundColor: "#FFFFF8",
+    '@media (hover: hover)': {
+      "&:hover": {
+        backgroundColor: "#FFFFF8",
+      },
     },
   })
 );
@@ -138,8 +142,10 @@ const ActionBtnContainer = styled("div")(
     bottom: "-20px",
     height: "39px",
     width: "39px",
-    "&:hover": {
-      width: "auto",
+    '@media (hover: hover)': {
+      "&:hover": {
+        width: "auto",
+      },
     },
   })
 );
@@ -164,7 +170,7 @@ const ActionBtn = styled("button")(({ checked }: ActionBtnProps) =>
       display: "flex",
       justifyContent: "center",
     },
-    "&:hover": {
+    '.touchActivation': {
       border: "none",
       display: "flex",
       justifyContent: "center",
@@ -185,6 +191,31 @@ const ActionBtn = styled("button")(({ checked }: ActionBtnProps) =>
       },
       ".initial": {
         display: "none",
+      },
+    },
+    '@media (hover: hover)': {
+      "&:hover": {
+        border: "none",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        width: "167px",
+        height: "inherit",
+        borderRadius: "32px",
+        color: theme.colors.white,
+        backgroundColor: theme.colors.charcoal,
+        ".hovered": {
+          display: "flex",
+          opacity: 1,
+          transitionDelay: "0.4s",
+          transition: "ease all 0.3s",
+          span: {
+            marginLeft: "5px",
+          },
+        },
+        ".initial": {
+          display: "none",
+        },
       },
     },
   })
@@ -404,10 +435,12 @@ const TechnicalSpecification = styled("a")(
         pointerEvents: "none",
         opacity: 0,
       },
-      "&:hover": {
-        "&:before": {
-          transform: "translateY(28px)",
-          opacity: 1,
+      '@media (hover: hover)': {
+        "&:hover": {
+          "&:before": {
+            transform: "translateY(28px)",
+            opacity: 1,
+          },
         },
       },
     },
