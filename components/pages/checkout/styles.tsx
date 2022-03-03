@@ -37,15 +37,17 @@ const CheckoutWrapper = styled("div")(() =>
   css({
     display: "flex",
     flexDirection: "row",
-
   })
 );
 
 const LeftContent = styled("div")(({...props }: containerProps) =>
   css({
     width: props.displayRight === true ? "100%" : "100%",
-    paddingRight:  props.displayRight === true ? "480px" : 0,
+    paddingRight: "0",
     pt: 138,
+    [theme.mediaQueries.xMedium]: {
+      paddingRight:  props.displayRight === true ? "480px" : 0,
+    },
   })
 );
 const RightContent = styled("div")(({...props }: containerProps) =>
@@ -60,10 +62,13 @@ const RightContent = styled("div")(({...props }: containerProps) =>
     borderTop: "none",
     borderBottom: "none",
     pl: 20,
-    display: props.displayRight === true ? "block" : "none",
     'p': {
       pt: 20
-    }
+    },
+    display: "none",
+    [theme.mediaQueries.xMedium]: {
+      display: props.displayRight === true ? "block" : "none",
+    },
   })
 );
 

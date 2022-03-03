@@ -24,12 +24,14 @@ const Container = styled("div")(
       textAlign: "center",
       transition: "ease all 0.4s",
       backgroundColor: "rgba(237, 236, 232, 0)",
-      '@media (hover: hover)': {
-        "&:hover": {
-          [theme.mediaQueries.small]: {
-            backgroundColor:
-              !compact && hoverBG ? hoverBG : "rgba(237, 236, 232, 1.000)",
-          },
+      "&:hover": {
+        backgroundColor: "transparent",
+        div: {
+          boxShadow: "none",
+        },
+        [theme.mediaQueries.sSmall]: {
+          backgroundColor:
+          !compact && hoverBG ? hoverBG : "rgba(237, 236, 232, 1.000)",
           div: {
             boxShadow: "none",
           },

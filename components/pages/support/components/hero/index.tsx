@@ -24,7 +24,7 @@ const Hero = ({ pageTitle }) => {
       <div
         css={css({
           maxWidth: "2560px",
-          left: "32px",
+          left: "28px",
           top: 92,
           pb: 0,
           position: "absolute",
