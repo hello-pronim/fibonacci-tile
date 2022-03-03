@@ -53,7 +53,7 @@ const CheckoutPage = ({ notifications }) => {
         setActiveCheckoutStep(2);
       }
     }
-  }, [selectedProducts]);
+  }, [selectedProducts, dispatch]);
 
   let disabled = false;
   if (
@@ -77,137 +77,149 @@ const CheckoutPage = ({ notifications }) => {
 
   return (
     <Container>
-    <div
-            css={css({
-              position: 'absolute',
-              maxWidth: '2560px',
-              left: '32px',
-              top: 92,
-              pb: 0,
-            })}
+      <div
+        css={css({
+          position: 'absolute',
+          maxWidth: '2560px',
+          left: '32px',
+          top: 92,
+          pb: 0,
+        })}
+      >
+        <BreadCrumb crumbs={crumbs} pt={0} />
+      </div>
+      <CheckoutContainer>
+        <Header mode="dark" notifications={notifications} />
+        <CheckoutWrapper>
+          <LeftContent
+            displayRight={
+              activeCheckoutStep === 1 || activeCheckoutStep === 4
+                ? false
+                : true
+            }
           >
-            <BreadCrumb crumbs={crumbs} pt={0} />
-          </div>
-    <CheckoutContainer>
-      <Header mode="dark" notifications={notifications} />
-      <CheckoutWrapper>
-        <LeftContent
-          displayRight={
-            activeCheckoutStep === 1 || activeCheckoutStep === 4 ? false : true
-          }
-        >
-          <CheckoutStepWrapper>
-            {selectedProducts?.length !== 0 && (
-              <>
-                {selectedProducts?.length > sampleSelectedCount && (
+            <CheckoutStepWrapper>
+              {selectedProducts?.length !== 0 && (
+                <>
+                  {selectedProducts?.length > sampleSelectedCount && (
+                    <StepItem
+                      step={1}
+                      activeStep={activeCheckoutStep}
+                      stepChange={stepChange}
+                    />
+                  )}
                   <StepItem
-                    step={1}
+                    step={
+                      selectedProducts?.length > sampleSelectedCount ? 2 : 1
+                    }
                     activeStep={activeCheckoutStep}
                     stepChange={stepChange}
                   />
+                  <StepItem
+                    step={
+                      selectedProducts?.length > sampleSelectedCount ? 3 : 2
+                    }
+                    activeStep={activeCheckoutStep}
+                    stepChange={stepChange}
+                  />
+                  <StepItem
+                    step={
+                      selectedProducts?.length > sampleSelectedCount ? 4 : 3
+                    }
+                    activeStep={activeCheckoutStep}
+                    stepChange={stepChange}
+                  />
+                </>
+              )}
+            </CheckoutStepWrapper>
+            {selectedProducts?.length > 0 && (
+              <CheckoutContentWrapper>
+                {activeCheckoutStep === 1 && (
+                  <Samples disabled={disabled} stepChange={stepChange} />
                 )}
-                <StepItem
-                  step={selectedProducts?.length > sampleSelectedCount ? 2 : 1}
-                  activeStep={activeCheckoutStep}
-                  stepChange={stepChange}
-                />
-                <StepItem
-                  step={selectedProducts?.length > sampleSelectedCount ? 3 : 2}
-                  activeStep={activeCheckoutStep}
-                  stepChange={stepChange}
-                />
-                <StepItem
-                  step={selectedProducts?.length > sampleSelectedCount ? 4 : 3}
-                  activeStep={activeCheckoutStep}
-                  stepChange={stepChange}
-                />
-              </>
+                {activeCheckoutStep === 2 && (
+                  <Details
+                    disabled={disabled}
+                    stepChange={stepChange}
+                    activeCheckoutStep={activeCheckoutStep}
+                  />
+                )}
+                {activeCheckoutStep === 3 && (
+                  <Delivery
+                    disabled={disabled}
+                    stepChange={stepChange}
+                    activeCheckoutStep={activeCheckoutStep}
+                  />
+                )}
+                {activeCheckoutStep === 4 && (
+                  <Confirm stepChange={stepChange} />
+                )}
+              </CheckoutContentWrapper>
             )}
-          </CheckoutStepWrapper>
-          {selectedProducts?.length > 0 && (
-            <CheckoutContentWrapper>
-              {activeCheckoutStep === 1 && (
-                <Samples disabled={disabled} stepChange={stepChange} />
-              )}
-              {activeCheckoutStep === 2 && (
-                <Details
+            {selectedProducts?.length === 0 && (
+              <NoSamples>
+                <p>No selected samples</p>
+                <ArrowButton
                   disabled={disabled}
-                  stepChange={stepChange}
-                  activeCheckoutStep={activeCheckoutStep}
+                  mode="dark"
+                  title="Continue Selections"
+                  link="/terrazzo"
                 />
-              )}
-              {activeCheckoutStep === 3 && (
-                <Delivery
-                  disabled={disabled}
-                  stepChange={stepChange}
-                  activeCheckoutStep={activeCheckoutStep}
-                />
-              )}
-              {activeCheckoutStep === 4 && <Confirm stepChange={stepChange} />}
-            </CheckoutContentWrapper>
-          )}
-          {selectedProducts?.length === 0 && (
-            <NoSamples>
-              <p>No selected samples</p>
-              <ArrowButton
-                disabled={disabled}
-                mode="dark"
-                title="Continue Selections"
-                link="/terrazzo"
-              />
-            </NoSamples>
-          )}
-        </LeftContent>
-        <RightContent
-          displayRight={
-            activeCheckoutStep === 2 || activeCheckoutStep === 3 ? true : false
-          }
-        >
-          <div
-            css={css({
-              pt: 35,
-              pr: 20,
-            })}
+              </NoSamples>
+            )}
+          </LeftContent>
+          <RightContent
+            displayRight={
+              activeCheckoutStep === 2 || activeCheckoutStep === 3
+                ? true
+                : false
+            }
           >
-            <Text variant="Body-Large">
-              Selections (
-              {confirmedProducts?.length > 0 ? confirmedProducts?.length : 0})
-            </Text>
             <div
               css={css({
-                display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
-                pt: 28,
-                columnGap: 24,
-                rowGap: 16,
+                pt: 35,
+                pr: 20,
               })}
             >
-              {confirmedProducts?.length > 0 &&
-                confirmedProducts.map((product) => (
-                  <SelectedProductCard
-                    product={product}
-                    isSelected={
-                      state?.selectedProducts.findIndex(
-                        (sp) => sp.id === product?.id
-                      ) !== -1
-                    }
-                    toggleProductSelect={() =>
-                      dispatch({
-                        type: 'TOGGLE_CONFIRM_PRODUCT_SELECTION',
-                        product,
-                      })
-                    }
-                    key={`product-${product?.id}`}
-                    confirmSample={true}
-                    compact
-                  />
-                ))}
+              <Text variant="Body-Large">
+                Selections (
+                {confirmedProducts?.length > 0 ? confirmedProducts?.length : 0})
+              </Text>
+              <div
+                css={css({
+                  display: 'grid',
+                  gridTemplateColumns: '1fr 1fr',
+                  pt: 28,
+                  columnGap: 24,
+                  rowGap: 16,
+                })}
+              >
+                {confirmedProducts?.length > 0 &&
+                  confirmedProducts.map((product) => (
+                    <SelectedProductCard
+                      product={product}
+                      isSelected={
+                        state?.selectedProducts.findIndex(
+                          (sp) => sp.id === product?.id
+                        ) !== -1
+                      }
+                      toggleProductSelect={() =>
+                        dispatch({
+                          type: 'TOGGLE_CONFIRM_PRODUCT_SELECTION',
+                          product,
+                        })
+                      }
+                      key={`product-${product?.id}`}
+                      confirmSample={true}
+                      compact
+                    />
+                  ))}
+              </div>
             </div>
-          </div>
-        </RightContent>
-      </CheckoutWrapper>
+          </RightContent>
+        </CheckoutWrapper>
 
-      {/* {activeCheckoutStep === 1 && selectedProducts?.length > 0 && (
+        {/* {activeCheckoutStep === 1 && selectedProducts?.length > 0 && (
         <CheckoutFooter contentAlign="right">
           <span>{`You currently have ${confirmedProducts.length} selected, you can choose up 6 samples`}</span>
           <ArrowButton
@@ -221,7 +233,7 @@ const CheckoutPage = ({ notifications }) => {
         </CheckoutFooter>
       )} */}
 
-      {/* {activeCheckoutStep === 2 && (
+        {/* {activeCheckoutStep === 2 && (
         <CheckoutFooter contentAlign="right">
           <div className="back" onClick={() => stepChange(1)}>
             Back
@@ -237,7 +249,7 @@ const CheckoutPage = ({ notifications }) => {
         </CheckoutFooter>
       )} */}
 
-      {/* {activeCheckoutStep === 3 && (
+        {/* {activeCheckoutStep === 3 && (
         <CheckoutFooter contentAlign="left">
           <ArrowButton
             mode="dark"
@@ -252,7 +264,7 @@ const CheckoutPage = ({ notifications }) => {
           </div>
         </CheckoutFooter>
       )} */}
-    </CheckoutContainer>
+      </CheckoutContainer>
     </Container>
   );
 };
