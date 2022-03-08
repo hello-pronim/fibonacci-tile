@@ -32,11 +32,11 @@ interface ProjectListType {
   setOffset: any;
   limit: number;
   offset: number;
-  fetchProjects: any;
+  loadMoreProjects: any;
   loading: boolean;
 }
 
-const ProjectList = ({ projects, types, setOffset, limit, offset, fetchProjects, loading }: ProjectListType) => {
+const ProjectList = ({ projects, types, setOffset, limit, offset, loadMoreProjects, loading }: ProjectListType) => {
   const [selectedType, setSelectedType] = useState("all");
   const [totalProjects, setTotalProjects] = useState(0);
   const [showLoadMore, setShowLoadMore] = useState(false);
@@ -72,7 +72,7 @@ const ProjectList = ({ projects, types, setOffset, limit, offset, fetchProjects,
   const handleSetOffset = (offset, limit) => {
     const newOffset = parseInt(offset) + parseInt(limit);
     setOffset(newOffset);
-    fetchProjects(limit, newOffset);
+    loadMoreProjects(limit, newOffset);
     if((newOffset+limit) >= totalProjects) {
       setShowLoadMore(false);
     }
