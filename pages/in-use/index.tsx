@@ -29,11 +29,11 @@ const Projects: NextPage<ProjectPageProps> = ({
   const handleSetOffset = (value) => {
     setOffset(value)
   }
-  const fetchProjects = async (limit, offset) => {
+  const loadMoreProjects = async (limit, offset) => {
     setLoading(true)
     try {
       const {
-        data: { entries: loadMoreProjects },
+        data: { entries: moreProjects },
       } = await client.query({
         query: ProjectsQuery,
         variables: {
@@ -41,13 +41,19 @@ const Projects: NextPage<ProjectPageProps> = ({
           offset: offset
         },
       });
-      setProjects(loadMoreProjects);
+      
+      setProjects([
+        ...projects,
+        ...moreProjects
+      ]);
+      
     } catch (e) {
       console.log(e);
     } finally {
       setLoading(false)
     }
   }  
+  // console.log("projects", projects);
   return (
     <>
       <Head>
@@ -62,7 +68,7 @@ const Projects: NextPage<ProjectPageProps> = ({
         setOffset={handleSetOffset}
         limit={limit}
         offset={offset}
-        fetchProjects={fetchProjects}
+        loadMoreProjects={loadMoreProjects}
         loading={loading}
       />
       <Footer />
