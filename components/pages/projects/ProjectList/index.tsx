@@ -16,6 +16,7 @@ import {
 } from "./styles";
 import mockData from "./constants";
 import ArrowButton from "@components/common/button/arrowButton";
+import Button from "@components/common/button";
 import Chip from "@components/common/chip";
 import { EntryCountQuery } from "@gql/entryCountGQL";
 import ProductCard from "@components/common/product/card";
@@ -80,22 +81,25 @@ const ProjectList = ({ projects, types, setOffset, handleSetCategory, limit, off
   }
 
   const client = initializeApollo();
-
+  const projectsCount = async () => {
+    const { data: { entryCount : totalProjects }} = await client.query({
+      query: EntryCountQuery,
+      variables: {
+        entry: "projects",
+        sector: selectedType !== "all" ? [selectedType] : []
+      },
+    });
+    setTotalProjects(totalProjects);
+    if(totalProjects > limit) {
+      setShowLoadMore(true);
+    } else {
+      setShowLoadMore(false);
+    }
+  } 
   useEffect(() => {
-    const projectsCount = async () => {
-      const { data: { entryCount : totalProjects }} = await client.query({
-        query: EntryCountQuery,
-        variables: {
-          entry: "projects"
-        },
-      });
-      setTotalProjects(totalProjects);
-      if(totalProjects > limit) {
-        setShowLoadMore(true);
-      }
-    } 
-    projectsCount()
-  }, [])
+    projectsCount();
+  }, [selectedType])
+
   return (
     <>
       <FilterWrapperDesktop>
@@ -132,7 +136,7 @@ const ProjectList = ({ projects, types, setOffset, handleSetCategory, limit, off
             ALL
           </option>
           {types.map((type) => (
-            <option key={type.slug} value={type.slug}>
+            <option key={type.id} value={type.id}>
               {type.title.toUpperCase()}
             </option>
           ))}
@@ -151,7 +155,14 @@ const ProjectList = ({ projects, types, setOffset, handleSetCategory, limit, off
             <ProjectCard key={project.id} project={project}/>
           ))}
         </MasonryGrid>
-        {showLoadMore ? (
+        {loading && 
+          <LoadMoreWrapper>
+            <Button color="dark" css={css({minWidth: "200px", textAlign: "center", })}>
+              Loading...
+            </Button>
+          </LoadMoreWrapper>
+        }
+        {showLoadMore && !loading ? (
           <LoadMoreWrapper>
             <ArrowButton onClick={() => handleSetOffset(offset, limit)} mode="" title={loading ? "Loading ..." : "Load more"} />
           </LoadMoreWrapper>

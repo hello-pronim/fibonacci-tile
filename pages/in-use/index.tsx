@@ -30,69 +30,78 @@ const Projects: NextPage<ProjectPageProps> = ({
 
   const handleSetCategory = (cat) => {
     setCategory(cat);
+    setOffset(0);
   }
 
   const handleSetOffset = (value) => {
-    setOffset(value)
+    setOffset(value);
   }
 
-  const loadMoreProjects = async (limit, offset, category) => {
-    setLoading(true)
-    try {
-      const {
-        data: { entries: moreProjects },
-      } = await client.query({
-        query: ProjectsQuery,
-        variables: {
-          limit: limit,
-          offset: offset,
-          sector: category !== "all" ? [category] : []
-        },
-      });
-      setProjects([
-        ...projects,
-        ...moreProjects
-      ]);
-    } catch (e) {
-      console.log(e);
-    } finally {
-      setLoading(false)
-    }
-  }  
+  // const loadMoreProjects = async (limit, offset, category) => {
+  //   setLoading(true)
+  //   try {
+  //     const {
+  //       data: { entries: moreProjects },
+  //     } = await client.query({
+  //       query: ProjectsQuery,
+  //       variables: {
+  //         limit: limit,
+  //         offset: offset,
+  //         sector: category !== "all" ? [category] : []
+  //       },
+  //     });
+  //     setProjects([
+  //       ...projects,
+  //       ...moreProjects
+  //     ]);
+  //   } catch (e) {
+  //     console.log(e);
+  //   } finally {
+  //     setLoading(false)
+  //   }
+  // }  
 
-  const filterProjectsByCategory = async (limit, offset, category) => {
-    console.log(limit, offset, category)
-    setLoading(true)
-    try {
-      const {
-        data: { entries: moreProjects },
-      } = await client.query({
-        query: ProjectsQuery,
-        variables: {
-          limit: limit,
-          offset: offset,
-          sector: category !== "all" ? [category] : []
-        },
-      });
-      setProjects([
-        ...moreProjects
-      ]);
-    } catch (e) {
-      console.log(e);
-    } finally {
-      setLoading(false)
-    }
-  }  
+  // useEffect(() => {
+  //   if(offset > 0) {
+  //     loadMoreProjects(limit, offset, category);
+  //   }
+  // }, [offset])
+
+  
   
   useEffect(() => {
-    filterProjectsByCategory(limit, offset, category);
-  }, [category])
-
-  useEffect(() => {
-    if(offset > 0) {
-      loadMoreProjects(limit, offset, category);
-    }
-  }, [offset, category])
+    const filterProjects = async () => {
+      setLoading(true)
+      try {
+        const {
+          data: { entries: moreProjects },
+        } = await client.query({
+          query: ProjectsQuery,
+          variables: {
+            limit: limit,
+            offset: offset,
+            sector: category !== "all" ? [category] : []
+          },
+        });
+        if(category) {
+          setProjects([
+            ...moreProjects
+          ]);
+        }
+        if(offset) {
+          setProjects([
+            ...projects,
+            ...moreProjects
+          ]);
+        }
+      } catch (e) {
+        console.log(e);
+      } finally {
+        setLoading(false)
+      }
+    } 
+    filterProjects();
+  }, [category, offset])
   
   return (
     <>
@@ -109,7 +118,6 @@ const Projects: NextPage<ProjectPageProps> = ({
         handleSetCategory={handleSetCategory}
         limit={limit}
         offset={offset}
-        
         loading={loading}
       />
       <Footer />
