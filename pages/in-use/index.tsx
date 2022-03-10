@@ -25,11 +25,18 @@ const Projects: NextPage<ProjectPageProps> = ({
 }) => {
   const [offset, setOffset] = useState(0);
   const [projects, setProjects] = useState(initialProjects);
+  const [category, setCategory] = useState("all");
   const [loading, setLoading] = useState(false);
+
+  const handleSetCategory = (cat) => {
+    setCategory(cat);
+  }
+
   const handleSetOffset = (value) => {
     setOffset(value)
   }
-  const loadMoreProjects = async (limit, offset) => {
+
+  const loadMoreProjects = async (limit, offset, category) => {
     setLoading(true)
     try {
       const {
@@ -38,22 +45,55 @@ const Projects: NextPage<ProjectPageProps> = ({
         query: ProjectsQuery,
         variables: {
           limit: limit,
-          offset: offset
+          offset: offset,
+          sector: category !== "all" ? [category] : []
         },
       });
-      
       setProjects([
         ...projects,
         ...moreProjects
       ]);
-      
     } catch (e) {
       console.log(e);
     } finally {
       setLoading(false)
     }
   }  
-  // console.log("projects", projects);
+
+  const filterProjectsByCategory = async (limit, offset, category) => {
+    console.log(limit, offset, category)
+    setLoading(true)
+    try {
+      const {
+        data: { entries: moreProjects },
+      } = await client.query({
+        query: ProjectsQuery,
+        variables: {
+          limit: limit,
+          offset: offset,
+          sector: category !== "all" ? [category] : []
+        },
+      });
+      setProjects([
+        ...moreProjects
+      ]);
+    } catch (e) {
+      console.log(e);
+    } finally {
+      setLoading(false)
+    }
+  }  
+  
+  useEffect(() => {
+    filterProjectsByCategory(limit, offset, category);
+  }, [category])
+
+  useEffect(() => {
+    if(offset > 0) {
+      loadMoreProjects(limit, offset, category);
+    }
+  }, [offset, category])
+  
   return (
     <>
       <Head>
@@ -66,9 +106,10 @@ const Projects: NextPage<ProjectPageProps> = ({
         types={types}
         notifications={notifications}
         setOffset={handleSetOffset}
+        handleSetCategory={handleSetCategory}
         limit={limit}
         offset={offset}
-        loadMoreProjects={loadMoreProjects}
+        
         loading={loading}
       />
       <Footer />

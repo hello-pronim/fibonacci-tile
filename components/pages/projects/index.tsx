@@ -6,7 +6,7 @@ import ProjectsHeader from "./Header";
 import { Container } from "./styles";
 import theme from "@styles/theme";
 
-const ProjectPage = ({ heroDetails, projects, types, notifications, setOffset, limit, offset, loadMoreProjects, loading }) => {
+const ProjectPage = ({ heroDetails, projects, types, notifications, setOffset, handleSetCategory, limit, offset, loading }) => {
   const crumbs = [{ path: "/", name: "Home" }, { name: "In Use" }];
   return (
     <Container>
@@ -29,9 +29,10 @@ const ProjectPage = ({ heroDetails, projects, types, notifications, setOffset, l
       projects={projects} 
       types={types} 
       setOffset={setOffset} 
+      handleSetCategory={handleSetCategory}
       limit={limit} 
       offset={offset} 
-      loadMoreProjects={loadMoreProjects} 
+      
       loading={loading}
       />
     </Container>
