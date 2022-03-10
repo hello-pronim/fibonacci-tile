@@ -1,8 +1,6 @@
 import React from "react";
 import Text from "@components/common/typography";
-
 import { Categories, Left, Right, Container, SingleCategory, Date } from "../styles";
-import styles from "./styles.module.scss";
 import moment from "moment";
 
 const SingleHero = ({ pageData }) => {

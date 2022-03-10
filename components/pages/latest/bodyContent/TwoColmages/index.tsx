@@ -6,47 +6,47 @@ import { ImageLeft, ImageRight } from "../styles";
 
 const TwoColImage = ({ content, index }) => {
   const { image1Thumb, image2Thumb, blurThumb1, blurThumb2, caption } = content;
-
-  const myImage1 = image1Thumb?.[0];
-  const myImage2 = image2Thumb?.[0];
-
   return (
-    <div css={css({ py: 120, bg: "#FFFFF8" })}>
-      <Container css={css({ bg: "#FFFFF8" })}>
-        {myImage1?.url && (
+    <div css={css({ bg: "#FFFFF8" })}>
+      <Container>
+        {image1Thumb[0]?.url && (
           <ImageLeft>
             <Image
-              alt={myImage1.title}
-              src={myImage1.url}
+              alt={image1Thumb[0]?.title}
+              src={image1Thumb[0]?.url}
               placeholder="blur"
-              blurDataURL={blurThumb1.url}
+              blurDataURL={blurThumb1[0]?.url}
               objectFit="cover"
               layout="intrinsic"
-              width="710"
-              height="820"
+              width={image1Thumb[0]?.width}
+              height={image1Thumb[0]?.height}
             />
           </ImageLeft>
         )}
-        {myImage2?.url && (
+        {image2Thumb[0]?.url && (
           <ImageRight>
             <Image
+              alt={image2Thumb[0]?.title}
+              src={image2Thumb[0]?.url}
               placeholder="blur"
-              blurDataURL={blurThumb2.url}
-              alt={myImage2.title}
-              src={myImage2.url}
-              width="710"
-              height="820"
+              blurDataURL={blurThumb2[0]?.url}
+              objectFit="cover"
+              layout="intrinsic"
+              width={image2Thumb[0]?.width}
+              height={image2Thumb[0]?.height}
             />
           </ImageRight>
         )}
       </Container>
-      <Container css={css({ bg: "#FFFFF8" })}>
-        <ImageLeft css={css({ alignItems: "center", display: "flex" })}>
-          <Text variant="Body-Small" css={css({ mt: 16, mr: 40 })} altFont>
-            {caption}
-          </Text>
-        </ImageLeft>
-      </Container>
+      {caption && (
+        <Container css={css({ bg: "#FFFFF8" })}>
+          <ImageLeft css={css({ alignItems: "center", display: "flex" })}>
+            <Text variant="Body-Small" css={css({ mt: 16, mr: 40 })} altFont>
+              {caption}
+            </Text>
+          </ImageLeft>
+        </Container>
+      )}
     </div>
   );
 };

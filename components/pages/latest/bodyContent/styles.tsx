@@ -62,9 +62,6 @@ const ImageLeft = styled("div")(
     div: {
       width: "100% !important",
     },
-    [theme.mediaQueriesMaxWidth.xSmall]: {
-      gridColumn: "1 / span 2",
-    },
   })
 );
 
