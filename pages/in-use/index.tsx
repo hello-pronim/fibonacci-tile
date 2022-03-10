@@ -25,35 +25,84 @@ const Projects: NextPage<ProjectPageProps> = ({
 }) => {
   const [offset, setOffset] = useState(0);
   const [projects, setProjects] = useState(initialProjects);
+  const [category, setCategory] = useState("all");
   const [loading, setLoading] = useState(false);
-  const handleSetOffset = (value) => {
-    setOffset(value)
+
+  const handleSetCategory = (cat) => {
+    setCategory(cat);
+    setOffset(0);
   }
-  const loadMoreProjects = async (limit, offset) => {
-    setLoading(true)
-    try {
-      const {
-        data: { entries: moreProjects },
-      } = await client.query({
-        query: ProjectsQuery,
-        variables: {
-          limit: limit,
-          offset: offset
-        },
-      });
-      
-      setProjects([
-        ...projects,
-        ...moreProjects
-      ]);
-      
-    } catch (e) {
-      console.log(e);
-    } finally {
-      setLoading(false)
-    }
-  }  
-  // console.log("projects", projects);
+
+  const handleSetOffset = (value) => {
+    setOffset(value);
+  }
+
+  // const loadMoreProjects = async (limit, offset, category) => {
+  //   setLoading(true)
+  //   try {
+  //     const {
+  //       data: { entries: moreProjects },
+  //     } = await client.query({
+  //       query: ProjectsQuery,
+  //       variables: {
+  //         limit: limit,
+  //         offset: offset,
+  //         sector: category !== "all" ? [category] : []
+  //       },
+  //     });
+  //     setProjects([
+  //       ...projects,
+  //       ...moreProjects
+  //     ]);
+  //   } catch (e) {
+  //     console.log(e);
+  //   } finally {
+  //     setLoading(false)
+  //   }
+  // }  
+
+  // useEffect(() => {
+  //   if(offset > 0) {
+  //     loadMoreProjects(limit, offset, category);
+  //   }
+  // }, [offset])
+
+  
+  
+  useEffect(() => {
+    const filterProjects = async () => {
+      setLoading(true)
+      try {
+        const {
+          data: { entries: moreProjects },
+        } = await client.query({
+          query: ProjectsQuery,
+          variables: {
+            limit: limit,
+            offset: offset,
+            sector: category !== "all" ? [category] : []
+          },
+        });
+        if(category) {
+          setProjects([
+            ...moreProjects
+          ]);
+        }
+        if(offset) {
+          setProjects([
+            ...projects,
+            ...moreProjects
+          ]);
+        }
+      } catch (e) {
+        console.log(e);
+      } finally {
+        setLoading(false)
+      }
+    } 
+    filterProjects();
+  }, [category, offset])
+  
   return (
     <>
       <Head>
@@ -66,9 +115,9 @@ const Projects: NextPage<ProjectPageProps> = ({
         types={types}
         notifications={notifications}
         setOffset={handleSetOffset}
+        handleSetCategory={handleSetCategory}
         limit={limit}
         offset={offset}
-        loadMoreProjects={loadMoreProjects}
         loading={loading}
       />
       <Footer />
