@@ -2,7 +2,7 @@ import Container from "@components/common/layout/container";
 import Text from "@components/common/typography";
 import { css } from "@styled-system/css";
 
-const PullQuote = ({ content }) => {
+const PullQuote = ({ content, index }) => {
   const { quote } = content;
   return (
     <Container css={css({ pb: 120, bg: "#fffff8" })}>

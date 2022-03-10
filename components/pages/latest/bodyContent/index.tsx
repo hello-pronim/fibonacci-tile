@@ -4,6 +4,7 @@ import HeroImageFullWidth from "./HeroImageFullWidth";
 import LargeImage from "./LargeImage";
 import PullQuote from "./PullQuote";
 import TwoColImage from "./TwoColmages";
+import { ModuleWrapper } from "./styles";
 
 const Modules = new Map([
   ["heroImageFullWidth", HeroImageFullWidth],
@@ -15,15 +16,21 @@ const Modules = new Map([
 
 const BodyContent = ({ pageData }) => {
   return (
-    <>
+    <ModuleWrapper>
       {pageData?.newsComponents?.map((component, index) => {
         const Module = Modules.get(component.typeHandle);
         if (Module === undefined) {
           return null;
         }
-        return <Module key={`news-comp-${index}`} content={component} />;
+        return (
+          <Module
+            key={`news-comp-${index}`}
+            index={index}
+            content={component}
+          />
+        );
       })}
-    </>
+    </ModuleWrapper>
   );
 };
 

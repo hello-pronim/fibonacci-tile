@@ -12,7 +12,7 @@ const Left = styled("div")(
   })
 );
 const Container = styled(Cont)(css({
-  pt: 60,
+  py: 60,
 }))
 const SingleCategory = styled(Text)(
   css({

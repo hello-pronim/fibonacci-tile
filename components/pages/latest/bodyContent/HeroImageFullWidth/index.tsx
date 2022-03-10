@@ -1,11 +1,9 @@
 import Image from "next/image";
 import { FwWrapper } from "../styles";
 
-const HeroImageFullWidth = ({ content }) => {
-
+const HeroImageFullWidth = ({ content, index }) => {
   const image = content.imageThumb[0];
   const blurThumb = content.blurThumb[0];
-
   return (
     <FwWrapper>
       <Image
@@ -14,8 +12,9 @@ const HeroImageFullWidth = ({ content }) => {
         alt={image.title}
         src={image.url}
         layout="responsive"
-        width="1920"
-        height="1080"
+        objectFit="cover"
+        width={image.width}
+        height={image.height}
       />
     </FwWrapper>
   );

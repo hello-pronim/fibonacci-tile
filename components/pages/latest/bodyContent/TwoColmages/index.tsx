@@ -4,12 +4,12 @@ import Container from "@components/common/layout/container";
 import Text from "@components/common/typography";
 import { ImageLeft, ImageRight } from "../styles";
 
-const TwoColImage = ({content}) => {
-  const {image1Thumb, image2Thumb, blurThumb1, blurThumb2, caption} = content;
+const TwoColImage = ({ content, index }) => {
+  const { image1Thumb, image2Thumb, blurThumb1, blurThumb2, caption } = content;
 
   const myImage1 = image1Thumb?.[0];
   const myImage2 = image2Thumb?.[0];
-  
+
   return (
     <div css={css({ py: 120, bg: "#FFFFF8" })}>
       <Container css={css({ bg: "#FFFFF8" })}>
