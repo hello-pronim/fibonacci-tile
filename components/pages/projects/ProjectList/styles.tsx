@@ -239,6 +239,20 @@ const LoadMoreWrapper = styled("div")(
   })
 );
 
+
+const Spacer = styled("div")(
+  css({
+    display: "block",
+    paddingTop: "100px",
+    paddingBottom: "100px",
+    [theme.mediaQueries.small]: {
+      display: "flex",
+      paddingTop: "150px",
+      paddingBottom: "150px",
+    },
+  })
+);
+
 const MasonryGrid = styled(Masonry)(
   css({
     display: "flex",
@@ -275,4 +289,5 @@ export {
   Top,
   Wrapper,
   MasonryGrid,
+  Spacer
 };

@@ -1,8 +1,8 @@
-import { useAppContext } from "@contexts/AppContext";
-import Text from "@components/common/typography";
-import { css } from "@styled-system/css";
-import { useForm } from "react-hook-form";
-import ArrowButton from "@components/common/button/arrowButton";
+import { useAppContext } from '@contexts/AppContext';
+import Text from '@components/common/typography';
+import { css } from '@styled-system/css';
+import { useForm } from 'react-hook-form';
+import ArrowButton from '@components/common/button/arrowButton';
 import {
   FormWrapper,
   OneItemRow,
@@ -17,10 +17,10 @@ import {
   InputFullwidth,
   TextareaFullwidth,
   InputFourtyFive,
-  Seperator
-} from "./styles";
+  Seperator,
+} from './styles';
 
-import { CheckoutFooter } from "../styles";
+import { CheckoutFooter } from '../styles';
 
 const Delivery = ({ activeCheckoutStep, disabled, stepChange }) => {
   const { dispatch, state } = useAppContext();
@@ -31,7 +31,7 @@ const Delivery = ({ activeCheckoutStep, disabled, stepChange }) => {
   } = useForm();
   const onSubmit = async (data) => {
     dispatch({
-      type: "SET_CHECKOUT_DETAILS",
+      type: 'SET_CHECKOUT_DETAILS',
       value: data,
     });
     const { checkoutDetails, confirmedProducts } = state;
@@ -42,7 +42,7 @@ const Delivery = ({ activeCheckoutStep, disabled, stepChange }) => {
         confirmedProductIds.push(product.id);
       });
     }
-    checkoutDetails["products"] = confirmedProductIds;
+    checkoutDetails['products'] = confirmedProductIds;
 
     // TODO: Api call s
     try {
@@ -58,10 +58,12 @@ const Delivery = ({ activeCheckoutStep, disabled, stepChange }) => {
       // console.log("content", content);
     } catch (e) {
       console.log(e);
+    } finally {
+      dispatch({
+        type: 'RESET_PRODUCT_SELECTIONS',
+      });
+      stepChange(4);
     }
-
-    // TODO: Reset Checkout details & selected products
-    stepChange(4);
   };
   return (
     <div>
@@ -77,27 +79,31 @@ const Delivery = ({ activeCheckoutStep, disabled, stepChange }) => {
       <FormWrapper>
         <form onSubmit={handleSubmit(onSubmit)}>
           <TwoItemRow>
-            <InputFullwidth type="date" placeholder="Delivery Date" {...register("deliveryDate", {required: true})} />
+            <InputFullwidth
+              type="date"
+              placeholder="Delivery Date"
+              {...register('deliveryDate', { required: true })}
+            />
           </TwoItemRow>
           <TwoItemRow>
             <InputSixty
               type="text"
               placeholder="Address"
-              {...register("address", { required: true, maxLength: 80 })}
+              {...register('address', { required: true, maxLength: 80 })}
             />
             <InputThirty
               type="text"
               placeholder="Suburb"
-              {...register("suburb", { required: true, maxLength: 100 })}
+              {...register('suburb', { required: true, maxLength: 100 })}
             />
           </TwoItemRow>
           <ThreeItemRow>
             <InputTwentyFour
               type="text"
               placeholder="Postcode"
-              {...register("postcode", { required: true, maxLength: 80 })}
+              {...register('postcode', { required: true, maxLength: 80 })}
             />
-            <SelectThirty {...register("state", { required: true })}>
+            <SelectThirty {...register('state', { required: true })}>
               <option value="">State</option>
               <option value="NSW">NSW</option>
               <option value="VIC">QLD</option>
@@ -106,21 +112,37 @@ const Delivery = ({ activeCheckoutStep, disabled, stepChange }) => {
               <option value="VIC">VIC</option>
               <option value="WA">WA</option>
             </SelectThirty>
-            <SelectThirty {...register("country", { required: true })}>
+            <SelectThirty {...register('country', { required: true })}>
               <option value="">Country</option>
               <option value="Australia">Australia</option>
               <option value="New Zealand">New Zealand</option>
             </SelectThirty>
           </ThreeItemRow>
-          <Seperator/>
+          <Seperator />
           <TwoItemRow>
-            <InputFourtyFive type="text" placeholder="Site Contact" {...register("siteContact", {required: true, minLength: 6, maxLength: 12})} />
-            <InputFourtyFive type="text" placeholder="Contact number" {...register("contactNumber", {required: true, minLength: 6, maxLength: 12})} />
+            <InputFourtyFive
+              type="text"
+              placeholder="Site Contact"
+              {...register('siteContact', {
+                required: true,
+                minLength: 6,
+                maxLength: 12,
+              })}
+            />
+            <InputFourtyFive
+              type="text"
+              placeholder="Contact number"
+              {...register('contactNumber', {
+                required: true,
+                minLength: 6,
+                maxLength: 12,
+              })}
+            />
           </TwoItemRow>
           <OneItemRow>
             <TextareaFullwidth
               placeholder="Additional Information/Special Requirements"
-              {...register("information", { required: true })}
+              {...register('information', { required: true })}
             ></TextareaFullwidth>
           </OneItemRow>
           {/* <InfoText>
@@ -144,13 +166,15 @@ const Delivery = ({ activeCheckoutStep, disabled, stepChange }) => {
           )}
           <Details className="detailsBox">
             <p>
-              <strong>
-               Delivery details
-              </strong>
+              <strong>Delivery details</strong>
             </p>
             <p>
-              As part of our commitment to the environment and keeping you up-to-date with the latest products and colours in our range we do
-              not provide samples for libraries. Instead we encourage our customers to view our range and request samples as required, per project and take advantage of our same-day dispatch express service.
+              As part of our commitment to the environment and keeping you
+              up-to-date with the latest products and colours in our range we do
+              not provide samples for libraries. Instead we encourage our
+              customers to view our range and request samples as required, per
+              project and take advantage of our same-day dispatch express
+              service.
             </p>
           </Details>
         </form>

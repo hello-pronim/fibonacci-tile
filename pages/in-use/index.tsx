@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import { GetStaticProps, NextPage } from "next";
 import { withGlobalData } from "@hoc/withGlobalData";
@@ -11,16 +12,48 @@ import { initializeApollo } from "@utils/apolloClient";
 interface ProjectPageProps {
   heroDetails: any;
   types: any;
-  projects: any;
+  initialProjects: any;
   notifications: any;
 }
-
+const client = initializeApollo();
+const limit = 4;
 const Projects: NextPage<ProjectPageProps> = ({
   heroDetails,
   types,
-  projects,
+  initialProjects,
   notifications,
 }) => {
+  const [offset, setOffset] = useState(0);
+  const [projects, setProjects] = useState(initialProjects);
+  const [loading, setLoading] = useState(false);
+  const handleSetOffset = (value) => {
+    setOffset(value)
+  }
+  const loadMoreProjects = async (limit, offset) => {
+    setLoading(true)
+    try {
+      const {
+        data: { entries: moreProjects },
+      } = await client.query({
+        query: ProjectsQuery,
+        variables: {
+          limit: limit,
+          offset: offset
+        },
+      });
+      
+      setProjects([
+        ...projects,
+        ...moreProjects
+      ]);
+      
+    } catch (e) {
+      console.log(e);
+    } finally {
+      setLoading(false)
+    }
+  }  
+  // console.log("projects", projects);
   return (
     <>
       <Head>
@@ -32,6 +65,11 @@ const Projects: NextPage<ProjectPageProps> = ({
         projects={projects}
         types={types}
         notifications={notifications}
+        setOffset={handleSetOffset}
+        limit={limit}
+        offset={offset}
+        loadMoreProjects={loadMoreProjects}
+        loading={loading}
       />
       <Footer />
     </>
@@ -39,7 +77,6 @@ const Projects: NextPage<ProjectPageProps> = ({
 };
 
 export const getStaticProps: GetStaticProps = withGlobalData(async function () {
-  const client = initializeApollo();
   const {
     data: { entry: heroDetails },
   } = await client.query({
@@ -55,15 +92,18 @@ export const getStaticProps: GetStaticProps = withGlobalData(async function () {
     },
   });
   const {
-    data: { entries: projects },
+    data: { entries: initialProjects },
   } = await client.query({
     query: ProjectsQuery,
+    variables: {
+      limit: limit
+    },
   });
   return {
     props: {
       heroDetails,
       types,
-      projects,
+      initialProjects,
     },
     revalidate: parseInt(process.env.NEXT_PAGE_REVALIDATE),
   };

@@ -7,8 +7,8 @@ const projectListBlurThumb = [
 ];
 
 export const ProjectsQuery: any = gql`
-  query ProjectsQuery {
-    entries(section: "projects", orderBy: "postDate DESC") {
+  query ProjectsQuery( $limit: Int = 4,  $offset: Int = 0 ) {
+    entries(limit: $limit, offset: $offset, section: "projects", orderBy: "postDate DESC") {
       id
       slug
       title

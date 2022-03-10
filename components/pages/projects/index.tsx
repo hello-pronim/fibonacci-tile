@@ -6,7 +6,7 @@ import ProjectsHeader from "./Header";
 import { Container } from "./styles";
 import theme from "@styles/theme";
 
-const ProjectPage = ({ heroDetails, projects, types, notifications }) => {
+const ProjectPage = ({ heroDetails, projects, types, notifications, setOffset, limit, offset, loadMoreProjects, loading }) => {
   const crumbs = [{ path: "/", name: "Home" }, { name: "In Use" }];
   return (
     <Container>
@@ -25,7 +25,15 @@ const ProjectPage = ({ heroDetails, projects, types, notifications }) => {
         <BreadCrumb crumbs={crumbs} pt={0} />
       </div>
       <Hero heroDetails={heroDetails} />
-      <ProjectList projects={projects} types={types} />
+      <ProjectList
+      projects={projects} 
+      types={types} 
+      setOffset={setOffset} 
+      limit={limit} 
+      offset={offset} 
+      loadMoreProjects={loadMoreProjects} 
+      loading={loading}
+      />
     </Container>
   );
 };

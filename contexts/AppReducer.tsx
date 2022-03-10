@@ -145,6 +145,12 @@ export const AppReducer = (state, action) => {
         confirmedProducts: action.products,
       };
     }
+    case "RESET_PRODUCT_SELECTIONS": {
+      return {
+        ...state,
+        confirmedProducts: [],
+      };
+    }
     case "SET_MOBILE_FILTER": {
       return {
         ...state,
