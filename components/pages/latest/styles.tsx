@@ -190,15 +190,20 @@ const AllCategory = styled("div")(
   })
 );
 
-const LinkWrapper = styled("div")(
+const LinkWrapper = styled("div")(({ left }: { left?: boolean }) =>
   css({
+    cursor: "pointer",
     display: "flex",
     alignItems: "center",
-    columnGap: 20,
-    mt: 16,
-    paddingRight: 14,
+    columnGap: 12,
     svg: {
       transition: "ease all 0.3s",
+    },
+    "&:hover": {
+      svg: {
+        // transform: `translateX(${left ? '-8px': '8px'})`,
+        transform: left ? "rotate(-180deg) translateX(8px)" : "translateX(8px)",
+      },
     },
     a: {
       textDecoration: "none",
