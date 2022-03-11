@@ -1,17 +1,21 @@
 import Image from "next/image";
+import css from '@styled-system/css';
 import { FwWrapper } from "../styles";
 
-const HeroImageFullWidth = ({ image, blurThumb }) => {
+const HeroImageFullWidth = ({ content, index }) => {
+  const image = content.imageThumb[0];
+  const blurThumb = content.blurThumb[0];
   return (
-    <FwWrapper>
+    <FwWrapper css={css({ bg: "#FFFFF8" })}>
       <Image
         placeholder="blur"
         blurDataURL={blurThumb.url}
         alt={image.title}
         src={image.url}
         layout="responsive"
-        width="1920"
-        height="1080"
+        objectFit="cover"
+        width={image.width}
+        height={image.height}
       />
     </FwWrapper>
   );

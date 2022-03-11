@@ -3,17 +3,25 @@ import css from "@styled-system/css";
 import styled from "@emotion/styled";
 import theme from "@styles/theme";
 
-const LeftCol = styled("div")(
+const ModuleWrapper = styled("div")(
   css({
-    // display: "none",
-    position: "relative",
-    height: "100%",
+    "& > *": {
+      pb: 120,
+    },
+  })
+);
+
+const SocialWrapper = styled("div")(
+  css({
+    height: "fit-content",
+    zIndex: 9999,
+    alignSelf: "flex-start",
     gridColumn: "1 / span 1",
     display: "flex",
     flexDirection: "column",
     a: {
       fontSize: 17,
-      lineHeight: '140%',
+      lineHeight: "140%",
       textDecoration: "none",
       color: "charcoal",
     },
@@ -54,9 +62,6 @@ const ImageLeft = styled("div")(
     div: {
       width: "100% !important",
     },
-    [theme.mediaQueriesMaxWidth.xSmall]: {
-      gridColumn: "1 / span 2",
-    },
   })
 );
 
@@ -79,7 +84,7 @@ const ImageRight = styled("div")(
 const FwWrapper = styled("div")(
   css({
     position: "relative",
-    pt: "200px",
+    // pt: "200px",
     mr: "auto",
     ml: "auto",
     maxWidth: "2560px",
@@ -91,26 +96,6 @@ const TextCol = styled("div")(
     gridColumn: "5 / span 6",
     display: "flex",
     flexDirection: "column",
-    h1: {
-      pt: 120,
-    },
-    h2: {
-      // pt: "32px",
-    },
-
-    h5: {
-      pt: "32px",
-    },
-    ul: {
-      pt: "32px",
-    },
-
-    [theme.mediaQueriesMaxWidth.small]: {
-      gridColumn: "2 / span 10",
-    },
-    [theme.mediaQueriesMaxWidth.xSmall]: {
-      gridColumn: "1 / span 2",
-    },
   })
 );
 const Ul = styled("div")(
@@ -126,30 +111,20 @@ const Ol = styled("div")(
 );
 const Wrapper = styled("div")(
   css({
+    gridColumn: "2 / span 10",
     position: "relative",
     boxSizing: "border-box",
     width: "100%",
-    maxWidth: "2560px",
-    pb: 120,
-    px: 230,
     ml: "auto",
     mr: "auto",
-    bg: "#FFFFF8",
-    h1: {
-      pb: "120px",
-    },
-    h5: { pt: 30 },
-    [theme.mediaQueriesMaxWidth.medium]: {
-      px: 16,
-    },
   })
 );
 
-const SahreLinkWrapper = styled("div")(
+const SocialItem = styled("div")(
   css({
     display: "flex",
     alignItems: "center",
-    columnGap: '7.2px',
+    columnGap: "7.2px",
     mt: 12.5,
     paddingRight: 14,
     a: {
@@ -188,7 +163,6 @@ const Row = styled("div")(
 );
 
 export {
-  LeftCol,
   RightCol,
   FwWrapper,
   ImageLeft,
@@ -197,6 +171,8 @@ export {
   Ul,
   Ol,
   Wrapper,
-  SahreLinkWrapper,
+  SocialWrapper,
+  SocialItem,
   Row,
+  ModuleWrapper,
 };

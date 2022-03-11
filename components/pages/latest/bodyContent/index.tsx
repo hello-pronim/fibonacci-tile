@@ -1,130 +1,37 @@
 import React from "react";
-import Link from "next/link";
-import css from "@styled-system/css";
-import Arrow from "@components/common/icons/arrow";
 import ContentFullWidth from "./ContentFullWidth";
 import HeroImageFullWidth from "./HeroImageFullWidth";
 import LargeImage from "./LargeImage";
 import PullQuote from "./PullQuote";
 import TwoColImage from "./TwoColmages";
-import FirstContentSection from "./FirstContentSection";
-import { LinkWrapper } from "../styles";
-import { LeftCol, SahreLinkWrapper, Row } from "./styles";
+import { ModuleWrapper } from "./styles";
+
+const Modules = new Map([
+  ["heroImageFullWidth", HeroImageFullWidth],
+  ["contentFullWidth", ContentFullWidth],
+  ["pullQuote", PullQuote],
+  ["twoColImages", TwoColImage],
+  ["largeImage", LargeImage],
+]);
 
 const BodyContent = ({ pageData }) => {
-  let fistContentUsed = false;
-
   return (
-    <div>
-      {pageData?.newsComponents?.map((component: any, index: any) => {
-        switch (component.typeHandle) {
-          case "heroImageFullWidth":
-            return (
-              <React.Fragment key={`news-comp-${index}`}>
-                {component?.imageThumb?.[0]?.url && (
-                  <HeroImageFullWidth
-                    key={`news-comp-${index}`}
-                    image={component.imageThumb[0]}
-                    blurThumb={component.blurThumb[0]}
-                  />
-                )}
-              </React.Fragment>
-            );
-          case "contentFullWidth":
-            if (!fistContentUsed) {
-              fistContentUsed = true;
-              return (
-                <FirstContentSection
-                  key={`news-comp-${index}`}
-                  content={component.contentText}
-                />
-              );
-            }
-            return (
-              <ContentFullWidth
-                key={`news-comp-${index}`}
-                content={component.contentText}
-              />
-            );
-          case "pullQuote":
-            return (
-              <PullQuote key={`news-comp-${index}`} quote={component.quote} />
-            );
-          case "twoColImages":
-            return (
-              <TwoColImage
-                key={`news-comp-${index}`}
-                image1={component.image1Thumb}
-                blurThumb1={component.blurThumb1?.[0]}
-                image2={component.image2Thumb}
-                blurThumb2={component.blurThumb2?.[0]}
-                caption={component.caption}
-              />
-            );
-          case "largeImage":
-            return (
-              <React.Fragment key={`news-comp-${index}`}>
-                {component?.imageThumb?.[0]?.url && (
-                  <LargeImage
-                    key={`news-comp-${index}`}
-                    image={component.imageThumb[0]}
-                    blurThumb={component.blurThumb[0]}
-                    caption={component.caption}
-                  />
-                )}
-              </React.Fragment>
-            );
+    <ModuleWrapper>
+      {pageData?.newsComponents?.map((component, index) => {
+        const Module = Modules.get(component.typeHandle);
+        if (Module === undefined) {
+          return null;
         }
+        return (
+          <Module
+            key={`news-comp-${index}`}
+            index={index}
+            content={component}
+          />
+        );
       })}
-      <Row
-        css={css({
-          bg: "#ffffff",
-          display: "flex",
-          alignItems: "ceneter",
-          justifyContent: "space-around",
-          pb: 25,
-          pt: 9,
-        })}
-      >
-        {pageData.prev && (
-          <LinkWrapper>
-            <Arrow type="short" direction="left" />
-            <Link href={`/the-latest/${pageData.prev.slug}`}>
-              Previous article
-            </Link>
-          </LinkWrapper>
-        )}
-
-        {pageData.next && (
-          <LinkWrapper>
-            <Link href={`/the-latest/${pageData.next.slug}`}>Next article</Link>
-            <Arrow type="short" direction="right" />
-          </LinkWrapper>
-        )}
-      </Row>
-      {/* <LeftCol
-        css={css({
-          py: 80,
-          bg: "#FFFFF8",
-          px: 16,
-        })}
-      >
-        <SahreLinkWrapper>
-          <Link href="https://www.instagram.com/">Instagram</Link>
-          <Arrow type="short" direction="right" />
-        </SahreLinkWrapper>
-
-        <SahreLinkWrapper>
-          <Link href="https://www.facebook.com/login">Facebook</Link>
-          <Arrow type="short" direction="right" />
-        </SahreLinkWrapper>
-
-        <SahreLinkWrapper>
-          <Link href="https://www.linkedin.com/">Linkedin</Link>
-          <Arrow type="short" direction="right" />
-        </SahreLinkWrapper>
-      </LeftCol> */}
-    </div>
+    </ModuleWrapper>
   );
 };
+
 export default BodyContent;

@@ -30,9 +30,13 @@ export const NewsQuery: any = gql`
             typeHandle
             image {
               url
+              width
+              height
             }
             blurThumb: image @transform(width: ${newsBlurThumb[0]}, height: ${newsBlurThumb[1]}){
               url
+              width
+              height
             }
             imageThumb: image @transform(width: ${newsThumb[0]}, height: ${newsThumb[1]}){
               url
@@ -95,9 +99,13 @@ export const NewsItemQuery: any = gql`
             typeHandle
             image {
               url
+              width
+              height
             }
             blurThumb: image @transform(width: ${newsHeroBlurThumb[0]}, height: ${newsHeroBlurThumb[1]}) {
               url
+              width
+              height
             }
             imageThumb: image @transform(width: ${newsHeroThumb[0]}, height: ${newsHeroThumb[1]}) {
               url
@@ -115,9 +123,13 @@ export const NewsItemQuery: any = gql`
             id
             image1 {
               url
+              width
+              height
             }
             blurThumb1: image1 @transform(width: ${newsTwoColBlurThumb[0]}, height: ${newsTwoColBlurThumb[1]}) {
               url
+              width
+              height
             }
             image1Thumb: image1 @transform(width: ${newsTwoColThumb[0]}, height: ${newsTwoColThumb[1]}) {
               url
@@ -127,9 +139,13 @@ export const NewsItemQuery: any = gql`
             }
             image2 {
               url
+              width
+              height
             }
             blurThumb2: image2 @transform(width: ${newsTwoColBlurThumb[0]}, height: ${newsTwoColBlurThumb[1]}) {
               url
+              width
+              height
             }
             image2Thumb: image2 @transform(width: ${newsTwoColThumb[0]}, height: ${newsTwoColThumb[1]}) {
               url
@@ -145,9 +161,13 @@ export const NewsItemQuery: any = gql`
             typeHandle
             image {
               url
+              width
+              height
             }
             blurThumb: image @transform(width: ${newsLargeBlurThumb[0]}, height: ${newsLargeBlurThumb[1]}) {
               url
+              width
+              height
             }
             imageThumb: image @transform(width: ${newsLargeThumb[0]}, height: ${newsLargeThumb[1]}) {
               url

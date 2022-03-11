@@ -1,5 +1,7 @@
 import Image from "next/image";
 import AccentText from "@components/common/accentText";
+import Text from "@components/common/typography";
+import richTextRenderer from "@utils/richTextRenderer";
 import {
   Panel,
   PanelLeft,
@@ -23,7 +25,7 @@ function StoryPanel({ story, titleClassName = "" }: storyPanelProps) {
         )}
         {story.title && (
           <StoryTitleWrapper>
-            <h4
+            <Text as="h4" variant="Display-Medium"
               className={titleClassName}
               dangerouslySetInnerHTML={{ __html: story.title }}
             />
@@ -32,9 +34,9 @@ function StoryPanel({ story, titleClassName = "" }: storyPanelProps) {
       </PanelLeft>
       <PanelRight>
         {story.content && (
-          <StoryContentWrapper
-            dangerouslySetInnerHTML={{ __html: story.content }}
-          />
+          <StoryContentWrapper>
+            {richTextRenderer(story.content)}
+          </StoryContentWrapper>
         )}
         {story?.thumbnail?.[0]?.url && (
           <StoryImageWrapper>

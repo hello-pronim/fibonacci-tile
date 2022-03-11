@@ -13,6 +13,7 @@ import {
   StoryContentWrapperLeft,
   StoryContentWrapperRight,
 } from "./styles";
+import richTextRenderer from "@utils/richTextRenderer";
 
 interface mainStoryPanelProps {
   story: any;
@@ -60,9 +61,9 @@ function MainStoryPanel({ story, bgColor }: mainStoryPanelProps) {
         )}
         <StoryContentWrapper>
           <StoryContentWrapperLeft></StoryContentWrapperLeft>
-          <StoryContentWrapperRight
-            dangerouslySetInnerHTML={{ __html: story.content }}
-          ></StoryContentWrapperRight>
+          <StoryContentWrapperRight>
+            {richTextRenderer(story.content)}
+          </StoryContentWrapperRight>
         </StoryContentWrapper>
       </Container>
     </Panel>

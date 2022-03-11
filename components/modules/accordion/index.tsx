@@ -4,6 +4,7 @@ import Text from "@components/common/typography";
 import Arrow from "@components/icons/arrowDown";
 import { Item, Top, Inner, Toggle } from "./styles";
 import theme from "styles/theme";
+import richTextRenderer from "@utils/richTextRenderer";
 
 const Accordion = ({ items }) => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -72,7 +73,9 @@ const Accordion = ({ items }) => {
               </Toggle>
             </Top>
             {index === activeIndex && (
-              <Inner variant="Body-Large" dangerouslySetInnerHTML={{ __html: item.content }} />
+              <Inner variant="Body-Large">
+                {richTextRenderer(item.content)}
+              </Inner>
             )}
           </Item>
         );
