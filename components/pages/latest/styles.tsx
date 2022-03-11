@@ -192,6 +192,7 @@ const AllCategory = styled("div")(
 
 const LinkWrapper = styled("div")(({ left }: { left?: boolean }) =>
   css({
+    width: 'max-content',
     cursor: "pointer",
     display: "flex",
     alignItems: "center",

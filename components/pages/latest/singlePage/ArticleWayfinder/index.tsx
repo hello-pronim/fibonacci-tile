@@ -6,28 +6,21 @@ import Link from "next/link";
 
 const ArticleWayfinder = ({ content }) => {
   return (
-    <Container css={css({ bg: "#ffffff", py: 25 })}>
-      <div
-        css={css({
-          gridColumn: "4 / span 7",
-          display: "flex",
-        })}
-      >
-        {content.prev.slug && (
-          <LinkWrapper left css={css({justifySelf: 'flex-start'})}>
+    <Container css={css({ bg: "#ffffff", py: 25, position: 'sticky', bottom: 0 })}>
+        {content.next?.slug && (
+          <LinkWrapper left css={css({justifySelf: 'flex-start', gridColumn: 4})}>
             <Arrow type="short" direction="left" />
-            <Link href={`/the-latest/${content.prev.slug}`}>
+            <Link href={`/the-latest/${content.next.slug}`}>
               Previous article
             </Link>
           </LinkWrapper>
         )}
-        {content.next.slug && (
-          <LinkWrapper css={css({justifySelf: 'flex-end'})}>
-            <Link href={`/the-latest/${content.next.slug}`}>Next article</Link>
+        {content.prev?.slug && (
+          <LinkWrapper css={css({justifySelf: 'flex-end', gridColumn: 10})}>
+            <Link href={`/the-latest/${content.prev.slug}`}>Next article</Link>
             <Arrow type="short" direction="right" />
           </LinkWrapper>
         )}
-      </div>
     </Container>
   );
 };
