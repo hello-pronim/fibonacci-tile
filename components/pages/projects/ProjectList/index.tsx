@@ -16,6 +16,7 @@ import {
 } from "./styles";
 import mockData from "./constants";
 import ArrowButton from "@components/common/button/arrowButton";
+import Button from "@components/common/button";
 import Chip from "@components/common/chip";
 import { EntryCountQuery } from "@gql/entryCountGQL";
 import ProductCard from "@components/common/product/card";
@@ -30,13 +31,13 @@ interface ProjectListType {
   projects: Array<any>;
   types: Array<any>;
   setOffset: any;
+  handleSetCategory: any;
   limit: number;
   offset: number;
-  loadMoreProjects: any;
   loading: boolean;
 }
 
-const ProjectList = ({ projects, types, setOffset, limit, offset, loadMoreProjects, loading }: ProjectListType) => {
+const ProjectList = ({ projects, types, setOffset, handleSetCategory, limit, offset, loading }: ProjectListType) => {
   const [selectedType, setSelectedType] = useState("all");
   const [totalProjects, setTotalProjects] = useState(0);
   const [showLoadMore, setShowLoadMore] = useState(false);
@@ -47,12 +48,13 @@ const ProjectList = ({ projects, types, setOffset, limit, offset, loadMoreProjec
   }, [projects])
 
   const onProjectTypeClick = (type) => {
-    const projectList = projects.filter(
-      (project) => project?.sector[0]?.slug === type || type === "all"
-    );
+    // const projectList = projects.filter(
+    //   (project) => project?.sector[0]?.slug === type || type === "all"
+    // );
   
-    setDisplayedProjects(projectList);
+    // setDisplayedProjects(projectList);
     setSelectedType(type);
+    handleSetCategory(type)
   };
 
   const onProjectTypeChange = (e) => {
@@ -65,35 +67,39 @@ const ProjectList = ({ projects, types, setOffset, limit, offset, loadMoreProjec
     setSelectedType(type);
   };
 
-  let populatedCategories = [];
-  projects && projects.forEach(project => populatedCategories.push(project.sector[0].slug));
+  // let populatedCategories = [];
+  // projects && projects.forEach(project => populatedCategories.push(project.sector[0].slug));
 
-  let categorySet = [...Array.from(new Set(populatedCategories))];
+  // let categorySet = [...Array.from(new Set(populatedCategories))];
+
   const handleSetOffset = (offset, limit) => {
     const newOffset = parseInt(offset) + parseInt(limit);
     setOffset(newOffset);
-    loadMoreProjects(limit, newOffset);
     if((newOffset+limit) >= totalProjects) {
       setShowLoadMore(false);
     }
   }
-  const client = initializeApollo();
 
+  const client = initializeApollo();
+  const projectsCount = async () => {
+    const { data: { entryCount : totalProjects }} = await client.query({
+      query: EntryCountQuery,
+      variables: {
+        entry: "projects",
+        sector: selectedType !== "all" ? [selectedType] : []
+      },
+    });
+    setTotalProjects(totalProjects);
+    if(totalProjects > limit) {
+      setShowLoadMore(true);
+    } else {
+      setShowLoadMore(false);
+    }
+  } 
   useEffect(() => {
-    const projectsCount = async () => {
-      const { data: { entryCount : totalProjects }} = await client.query({
-        query: EntryCountQuery,
-        variables: {
-          entry: "projects"
-        },
-      });
-      setTotalProjects(totalProjects);
-      if(totalProjects > limit) {
-        setShowLoadMore(true);
-      }
-    } 
-    projectsCount()
-  }, [])
+    projectsCount();
+  }, [selectedType])
+
   return (
     <>
       <FilterWrapperDesktop>
@@ -106,15 +112,15 @@ const ProjectList = ({ projects, types, setOffset, limit, offset, loadMoreProjec
         >
           All
         </Chip>
-        {categorySet.map((type) => (
+        {types.map((type) => (
           <Chip
-            key={type}
-            onClick={() => onProjectTypeClick(type)}
-            active={type === selectedType}
+            key={type.id}
+            onClick={() => onProjectTypeClick(type.id)}
+            active={type.id === selectedType}
             size="small"
             rounded
           >
-            {type}
+            {type.title}
           </Chip>
         ))}
       </FilterWrapperDesktop>
@@ -130,7 +136,7 @@ const ProjectList = ({ projects, types, setOffset, limit, offset, loadMoreProjec
             ALL
           </option>
           {types.map((type) => (
-            <option key={type.slug} value={type.slug}>
+            <option key={type.id} value={type.id}>
               {type.title.toUpperCase()}
             </option>
           ))}
@@ -149,7 +155,14 @@ const ProjectList = ({ projects, types, setOffset, limit, offset, loadMoreProjec
             <ProjectCard key={project.id} project={project}/>
           ))}
         </MasonryGrid>
-        {showLoadMore ? (
+        {loading && 
+          <LoadMoreWrapper>
+            <Button color="dark" css={css({minWidth: "200px", textAlign: "center", })}>
+              Loading...
+            </Button>
+          </LoadMoreWrapper>
+        }
+        {showLoadMore && !loading ? (
           <LoadMoreWrapper>
             <ArrowButton onClick={() => handleSetOffset(offset, limit)} mode="" title={loading ? "Loading ..." : "Load more"} />
           </LoadMoreWrapper>
