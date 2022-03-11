@@ -11,19 +11,22 @@ const ArticleWayfinder = ({ content }) => {
         css={css({
           gridColumn: "4 / span 7",
           display: "flex",
-          justifyContent: "space-between",
         })}
       >
-        <LinkWrapper left>
-          <Arrow type="short" direction="left" />
-          <Link href={`/the-latest/${content.prev.slug}`}>
-            Previous article
-          </Link>
-        </LinkWrapper>
-        <LinkWrapper>
-          <Link href={`/the-latest/${content.next.slug}`}>Next article</Link>
-          <Arrow type="short" direction="right" />
-        </LinkWrapper>
+        {content.prev.slug && (
+          <LinkWrapper left css={css({justifySelf: 'flex-start'})}>
+            <Arrow type="short" direction="left" />
+            <Link href={`/the-latest/${content.prev.slug}`}>
+              Previous article
+            </Link>
+          </LinkWrapper>
+        )}
+        {content.next.slug && (
+          <LinkWrapper css={css({justifySelf: 'flex-end'})}>
+            <Link href={`/the-latest/${content.next.slug}`}>Next article</Link>
+            <Arrow type="short" direction="right" />
+          </LinkWrapper>
+        )}
       </div>
     </Container>
   );
